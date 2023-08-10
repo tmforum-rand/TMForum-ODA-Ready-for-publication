@@ -1,0 +1,82 @@
+@startyaml
+exposedAPIs:
+  PerformanceManagement:
+      version: 4.0
+      id: TMF28
+      measurementCollectionJob*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+      onDemandCollection*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+      performanceIndicatorGroupSpecification*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+      performanceIndicatorSpecification*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+      trackingRecord*:
+          - GET
+          - GET /id
+         
+          
+  PerformanceThresholdManagement:
+      version: 4.0
+      id: TMF649
+      threshold*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+      thresholdJob*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+  
+  AlarmManagement:
+      version: 4.0
+      id: TMF642
+      alarm:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+                
+      
+  ProcessFlowManagement:
+      version: 4.0
+      id: TMF701
+      processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+      taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+  Event:
+      version: 4.0
+      id: TMF688
+      listener:
+            - POST
+      hub:
+            - POST
+            - DELETE
+@endyaml

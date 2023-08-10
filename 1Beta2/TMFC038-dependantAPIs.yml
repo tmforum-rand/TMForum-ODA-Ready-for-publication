@@ -1,0 +1,85 @@
+@startyaml
+dependantAPIs: 
+      PerformanceManagement:
+          version: 4.0
+          id: TMF628
+          measurementCollectionJob*:
+              - POST
+              - GET
+              - GET /id
+              - PATCH /id
+              - DELETE /id
+          onDemandCollection*:
+              - POST
+              - GET
+              - GET /id
+              - PATCH /id
+              - DELETE /id
+          performanceIndicatorGroupSpecification*:
+              - POST
+              - GET
+              - GET /id
+              - PATCH /id
+              - DELETE /id
+          performanceIndicatorSpecification*:
+              - POST
+              - GET
+              - GET /id
+              - PATCH /id
+              - DELETE /id
+          trackingRecord*:
+              - GET
+              - GET /id
+      
+      ResourceCatalogManagement:
+          version: 4.0
+          id : TMF634
+          resource:
+              - GET /id
+              - GET
+      
+      ResourceInventoryManagement:
+          version: 4.0
+          id : TMF639
+          resource:
+              - GET /id
+              - GET
+             
+      GeographicAddressManagement:
+          version: 4.0
+          id : TMF673
+          geographicAddress:
+              - GET
+              - GET /id
+          geographicSubAddress:
+              - GET
+              - GET /id      
+          
+      GeographicSiteManagement:
+          version: 4.0
+          id : TMF674
+          geographicSite:
+              - GET
+              - GET /id
+   
+      Event:
+          version: 4.0
+          id : TMF688
+          event:
+              - POST
+              - GET /id
+              - GET
+      ProcessFlow:
+          version: 4.0
+          id : TMF701
+          processFlow:
+              - POST
+              - PATCH
+              - GET /id
+              - GET
+          taskFlow:
+              - POST
+              - PATCH
+              - GET /id
+              - GET
+@endyaml

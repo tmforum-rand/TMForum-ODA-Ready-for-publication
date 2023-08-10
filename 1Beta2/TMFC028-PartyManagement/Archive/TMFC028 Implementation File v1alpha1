@@ -1,0 +1,140 @@
+apiVersion: oda.tmforum.org/v1alpha1
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: Party Management
+    oda.tmforum.org/funtionalBlockName: Party Management
+    name: TAG_REALESE_NAME - Party Management
+spec:
+  componentKinds:
+    - group: core
+      kind: Inventory
+  coreFunction:
+    exposedAPIs:
+    - name: PartnershipTypeManagement
+      specification: https://github.com/tmforum-apis/TMF668_PartnershipType/blob/master/TMF668-PartnershipType-v4.0.0.swagger.json
+      required: true
+      implementation: '/{{.Release.Name}}-PartnershipTypeManagement'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartnershipTypeManagement/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartnershipTypeManagement/v4/docs'
+      port: 8080
+    - name: PartyRoleManagement
+      specification: https://github.com/tmforum-apis/TMF669_PartyRole/blob/master/TMF669-PartyRole-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-PartyRoleManagement'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4/docs'
+      port: 8080
+    - name: Party
+      specification: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-Party'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/v4/docs'
+      port: 8080
+    - name: Customer
+      specification: https://github.com/tmforum-apis/TMF629_CustomerManagement/blob/master/TMF629-Customer-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-Customer'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Customer/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Customer/v4/docs'
+      port: 8080
+    - name: ProcessFlowManagement
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-ProcessFlowManagement'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/processFlowManagement/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/processFlowManagement/v4/docs'
+      port: 8080
+    - name: Event
+      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-Event'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/event/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/event/v4/docs'
+      port: 8080
+    dependantAPIs:
+    - name: UserRolesPermissions
+      specification: https://github.com/tmforum-apis/TMF672_UserRolesPermissions/blob/master/UserRoles%26Permissions_v1draft3_swagger_Released.json
+      implementation: '/{{.Release.Name}}-UserRolesPermissions'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesPermissions/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesPermissions/v4/docs'
+      port: 8080
+    - name: GeographicAddress
+      specification: 'https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json'
+      implementation: '/{{.Release.Name}}-GeographicAddress'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddress/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddress/v4/docs'
+      port: 8080
+    - name: GeographicSite
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/v4'
+      developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/v4/docs
+      port: 8080
+    - name: GeographicLocation
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-GeographicLocation'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4/docs'
+      port: 8080
+    - name: Event
+      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-Event'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Event/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Event/v4/docs'
+      port: 8080
+    - name: ProcessFlowManagement
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-ProcessFlowManagement'
+      path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/processFlowManagement/v4'
+      developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/processFlowManagement/v4/docs'
+      port: 8080
+    managementAPIs: 
+  eventNotification:
+    PublishedEvent:
+      PartnershipSpecification:
+      - PartnershipSpecificationCreateEvent
+      - PartnershipSpecificationChangeEvent
+      - PartnershipSpecificationDeleteEvent
+      Partnership:
+      - PartnershipCreateEvent
+      - PartnershipChangeEvent
+      - PartnershipDeleteEvent
+      Individual:
+      - IndividualCreateEvent
+      - IndividualAttributeValueChangeEvent
+      - IndividualStateChangeEvent
+      - IndividualDeleteEvent
+      Organization:
+      - OrganizationCreateEvent
+      - OrganizationAttributeValueChangeEvent
+      - OrganizationStateChangeEvent
+      - OrganizationDeleteEvent
+      Customer:
+      - CustomerCreateEvent
+      - CustomerAttributeValueChangeEvent
+      - CustomerStateChangeEvent
+      - CustomerDeleteEvent
+      PartyRole:
+      - PartyRoleCreateEvent
+      - PartyRoleAttributeValueChangeEvent
+      - PartyRoleStateChangeEvent
+      - PartyRoleDeleteEvent
+    SubscribedEvent:
+      UserRoles:
+      - UserRoleCreationNotification
+      - UserRoleChangeNotification
+  maintainers:
+    - email: gaetano.biancardi@accenture.com
+      name: Gaetano Biancardi
+  management: []
+  owners:
+    - email: gaetano.biancardi@accenture.com
+      name: Gaetano Biancardi
+  security:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  selector:
+    matchLabels:
+      oda.tmforum.org/componentName: Party Management
+  type: Party Management
+  version: 1.0.0

@@ -1,0 +1,118 @@
+apiVersion: oda.tmforum.org/v1alpha1
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: Digital Identity Management
+    oda.tmforum.org/funtionalBlockName: Party Management
+  name: TAG_REALESE_NAME - Product Inventory
+spec:
+  componentKinds:
+    - group: core
+      kind: Inventory
+  coreFunction:
+    exposedAPIs:
+      ProductInventory:
+        version: 4
+        id: TMF710
+        DigitalIdentity:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        roles:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+      ProcessFlowManagement:
+        version: 4
+        id: TMF701
+        processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+      Event:
+        version: 4
+        id: TMF688
+        listener:
+          - POST
+        hub:
+          - POST
+          - DELETE
+    dependantAPIs:
+      PartyRoleManagement:
+        version: 4
+        id: TMF669
+        partyRole:
+          - POST
+      Party:
+        version: 4
+        id: TMF632
+        individual:
+          - GET
+          - GET /id
+        organization:
+          - GET
+          - GET /id
+      UserRolePermission:
+        version: 4
+        id: TMF672
+        permission:
+          - GET
+          - GET /id
+      Event:
+        version: 4
+        id: TMF688
+        event:
+          - POST
+          - GET /id
+          - GET
+      ProcessFlowManagement:
+        version: 4
+        id: TMF701
+        processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+    managementAPIs: null
+  eventNotification:
+    PublishedEvent:
+      DigitalIdentity:
+        - DigitalIdentityCreateEvent
+        - DigitalIdentityStateChangeEvent
+        - DigitalIdentityDeleteEvent
+        - DigitalIdentityAttributeValueChangeEvent
+    SubscribedEvent:
+      UserRoles:
+        - UserRoleCreationNotification
+        - UserRoleChangeNotification
+  maintainers:
+    - email: gaetano.biancardi@accenture.com
+      name: Gaetano Biancardi
+  management: []
+  owners:
+    - email: kgaetano.biancardi@accenture.com
+      name: Gaetano Biancardi
+  security:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  selector:
+    matchLabels:
+      oda.tmforum.org/componentName: Digital Identity Management
+  type: Product Inventory
+  version: 1.0.0

@@ -1,0 +1,634 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  maintainers:
+    - name: Tassos Sarantis
+      email: Anastasios.sarantis@cityfibre.com
+  owners:
+    - name: Gaetano Biancardi
+      email: gaetano.biancardi@accenture.com
+    - name: Tassos Sarantis
+      email: Anastasios.sarantis@cityfibre.com
+  coreFunction:
+    exposedAPIs:
+      - name: ServiceOrderingManagement
+        id: TMF641
+        version: 4.1
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrdering/master/TMF641-ServiceOrdering-v4.1.0.swagger.json
+        implementation: /{{.Release.Name}}-serviceorderingmanagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/v4/
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/v4/docs
+        port: 8080
+        resources:
+          - serviceOrder:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+          - cancelServiceOrder:
+              - GET
+              - GET /id
+              - POST
+        required: true
+      - name: ProcessFlowManagement
+        id: TMF701
+        version: 4
+        specification: >-
+          ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ProcessFlowManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+        port: 8080
+        resources:
+          - processFlow:
+              - POST
+              - GET
+              - GET /id
+              - DELETE
+          - taskFlow:
+              - PATCH
+              - GET
+              - GET /id
+        required: false
+      - name: Event
+        id: TMF688
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-PromotionManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+        port: 8080
+        resources:
+          - listener:
+              - POST
+          - hub:
+              - POST
+              - DELETE
+        required: false
+    publishedEvents:
+      - name: ServiceOrderingManagement
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrdering/master/TMF641-ServiceOrdering-v4.1.0.swagger.json
+        hub: >-
+          /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/hub
+        implementation: /{{.Release.Name}}-serviceOrderingManagementEvent
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/v4/docs
+        apitype: openapi
+        port: 80
+        '-resources':
+          ServiceOrdering:
+            - serviceOrderCreateEvent
+            - serviceOrderStateChangeEvent
+            - serviceOrderDeleteEvent
+            - serviceOrderAttributeValueChangeEvent
+            - serviceOrderInformationRequiredEvent
+            - serviceOrderMilestoneEvent
+            - serviceOrderJeopardyEvent
+            - cancelServiceOrderCreateEvent
+            - cancelServiceOrderStateChangeEvent
+            - cancelServiceOrderInformationRequiredEvent
+      - name: ProcessFlowManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+        hub: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+        implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+        apitype: openapi
+        port: 80
+        '-resources':
+          ProcessFlowManagement:
+            - processFlowCreateEvent
+            - processFlowStateChangeEvent
+            - processFlowStateDeleteEvent
+            - processFlowStateAttributeValueChangeEvent
+            - taskFlowCreateEvent
+            - taskFlowStateChangeEvent
+            - taskFlowDeleteEvent
+            - taskFlowAttributeValueChangeEvent
+            - taskFlowInformationRequiredEvent
+    subscribedEvents:
+      - name: ResourceOrderManagement
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF652_ResourceOrderManagement/master/TMF652-ResourceOrder-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrderManagement/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-ResourceOrderManagement
+        apitype: openapi
+        resources:
+          - ResourceOrderManagement:
+              - resourceOrderStateChange
+              - resourceOrderAttributeValueChangeEvent
+              - resourceOrderInformationRequiredEvent
+              - cancelResourceOrderStateChange
+              - cancelResourceOrderInformationRequiredEvent
+      - name: ServiceActivationAndConfiguration
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF640_ActivationConfiguration/master/TMF640-ServiceActivation-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ActivationConfiguration/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-ActivationConfiguration
+        apitype: openapi
+        resources:
+          - ServiceActivationConfiguration:
+              - serviceCreateEvent
+              - serviceStateChangeEvent
+              - monitorCreateEvent
+              - monitorStatechangeEvent
+      - name: ServiceQualification
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-ServiceQualification
+        apitype: openapi
+        resources:
+          - ServiceQualification:
+              - checkServiceQualificationStateChangeEvent
+              - queryServiceQualificationStateChangeEvent
+      - name: ResourceFunctionActivationConfiguration
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF664_ResourceFunctionActivationConfiguration/master/TMF664-ResourceFunctionActivation-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceFunctionActivationConfiguration/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-ResourceFunctionActivationConfiguration
+        apitype: openapi
+        resources:
+          - ResourceFunctionActivationConfiguration:
+              - resourceFunctionCreateEvent
+              - resourceFunctionChangeEvent
+              - monitorStatechangeEvent
+              - healStatechangeEvent
+              - scaleStatechangeEvent
+              - migrateStatechangeEvent
+      - name: ResourceActivationAndConfiguration
+        specification: https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceActivationAndConfiguration/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-ResourceActivationAndConfiguration
+        apitype: openapi
+        resources:
+          - ResourceActivationAndConfiguration:
+              - resourceChangeEvent
+              - monitorCreateEvent
+              - monitorStatechangeEvent
+      - name: ResourcePoolManagement
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF685_ResourcePool/master/Resource_Pool_Management.admin.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourcePoolManagement/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-/ResourcePoolManagement
+        apitype: openapi
+        resources:
+          - ResourcePoolManagement:
+              - reservationStateChangeNotification
+      - name: Communication
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF681_Communication/master/TMF681-Communication-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Communication/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-Communication
+        apitype: openapi
+        resources:
+          - communication:
+              - communicationMessageStateChangeEvent
+      - name: WorkOrder
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF697_Work_Order/main/TMF697-WorkOrder-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/WorkOrder/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-WorkOrder
+        apitype: openapi
+        resources:
+          - WorkOrder:
+              - workOrderStateChange
+    dependentAPIs:
+      - name: ServiceCatalogManagement
+        id: TMF633
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+        apitype: openapi
+        implementation: /{{.Release.Name}}-ServiceCatalogManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalogManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalogManagement/v4/docs
+        port: 8080
+        resources:
+          - serviceSpecification:
+              - GET
+              - GET /id
+        required: true
+      - name: ServiceInventory
+        id: TMF638
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/master/TMF638-ServiceInventory-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ServiceInventory
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/v4/docs
+        port: 8080
+        resources:
+          - service:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+        required: true
+      - name: ServiceActivationAndConfiguration
+        id: TMF640
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF640_ActivationConfiguration/master/TMF640-ServiceActivation-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ActivationConfiguration
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ActivationConfiguration/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ActivationConfiguration/v4/docs
+        port: 8080
+        resources:
+          - service:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+          - monitor:
+              - GET
+              - GET /id
+        required: false
+      - name: ServiceQualification
+        id: TMF645
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ServiceQualification
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/v4/docs
+        port: 8080
+        resources:
+          - checkServiceQualification:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+          - queryServiceQualification:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+        required: false
+      - name: ServiceTestManagement
+        id: TMF653
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF653_ServiceTestManagement/master/TMF653-ServiceTest-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ServiceTestManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceTestManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceTestManagement/v4/docs
+        port: 8080
+        resources:
+          - serviceTest:
+              - GET
+              - GET /id
+          - serviceTestSpecification:
+              - GET
+              - GET /id
+        required: false
+      - name: ResourceInventoryManagement
+        id: TMF639
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ResourceInventory
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
+        port: 8080
+        resources:
+          - resource:
+              - GET
+              - GET /id
+        required: false
+      - name: ResourceCatalog
+        id: TMF634
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/master/TMF634-ResourceCatalog-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ResourceCatalog
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/v4/docs
+        port: 8080
+        resources:
+          - resourceSpecification:
+              - GET
+              - GET /id
+        required: false
+      - name: ResourceOrderManagement
+        id: TMF652
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF652_ResourceOrderManagement/master/TMF652-ResourceOrder-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ResourceOrderManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrderManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrderManagement/v4/docs
+        port: 8080
+        resources:
+          - resourceOrder:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+          - cancelResourceOrder:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+        required: false
+      - name: ResourceActivationConfiguration
+        id: TMF702
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF702-ResourceActivationConfiguration/master/TMF702-ResourceActivation-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ResourceActivationConfiguration
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceActivationConfiguration/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceActivationConfiguration/v4/docs
+        port: 8080
+        resources:
+          - resource:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+          - monitor:
+              - GET
+              - GET /id
+        required: false
+      - name: ResourceFunctionActivationConfiguration
+        id: TMF664
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF664_ResourceFunctionActivationConfiguration/master/TMF664-ResourceFunctionActivation-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ResourceFunctionActivationConfiguration
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceFunctionActivationConfiguration/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceFunctionActivationConfiguration/v4/docs
+        port: 8080
+        resources:
+          - resourceFunction: null
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+          - monitor: null
+          - GET
+          - GET /id
+        required: false
+      - name: ResourcePoolManagement
+        id: TMF685
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF685_ResourcePool/master/Resource_Pool_Management.admin.swagger.json
+        implementation: /{{.Release.Name}}-ResourcePoolManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourcePoolManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourcePoolManagement/v4/docs
+        port: 8080
+        resources:
+          - reservation: null
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+          - resourcePool: null
+          - GET
+          - GET /id
+        required: false
+      - name: AppointmentManagement
+        id: TMF646
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF646_AppointmentManagement/master/TMF646-Appointment-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-AppointmentManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AppointmentManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AppointmentManagement/v4/docs
+        port: 8080
+        resources:
+          - appointment:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+          - searchTimeSlot:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+        required: false
+      - name: WorkOrder
+        id: TMF697
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF697_Work_Order/main/TMF697-WorkOrder-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-Work_Order
+        path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Work_Order/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Work_Order/v4/docs
+        port: 8080
+        resources:
+          - workOrder:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+        required: false
+      - name: PartyManagement
+        id: TMF632
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-Party-v4.0.0.swagger.json
+        apitype: openapi
+        implementation: /{{.Release.Name}}-PartyManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4/docs
+        port: 8080
+        resources:
+          - individual:
+              - GET
+              - GET /id
+          - organization:
+              - GET
+              - GET /id
+        required: false
+      - name: PartyRoleManagement
+        id: TMF669
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        apitype: openapi
+        implementation: /{{.Release.Name}}-PartyRoleManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4/docs
+        port: 8080
+        resources:
+          - partyRole:
+              - GET
+              - GET /id
+        required: false
+      - name: GeographicAddressManagement
+        id: TMF673
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+        implementation: /{{.Release.Name}}-GeographicAddressManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4/docs
+        port: 8080
+        resources:
+          - geographicAddress:
+              - GET
+              - GET /id
+        required: true
+      - name: GeographicSiteManagement
+        id: TMF674
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-GeographicSiteManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs
+        port: 8080
+        resources:
+          - geographicSite:
+              - GET
+              - GET /id
+        required: true
+      - name: GeographicLocation
+        id: TMF675
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-GeographicLocation
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4/docs
+        port: 8080
+        resources:
+          - geographicLocation:
+              - GET
+              - GET /id
+        required: true
+      - name: UserRolesPermissions
+        id: TMF672
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesPermissions/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-UserRolesPermissions
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesPermissions/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesPermissions/v4/docs
+        port: 8080
+        resources:
+          - permission:
+              - GET
+              - GET /id
+        required: true
+      - name: Event
+        id: TMF688
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - event:
+              - GET
+              - GET /id
+        required: false
+      - name: Communication
+        id: TMF681
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF681_Communication/master/TMF681-Communication-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - communication: null
+          - POST
+          - GET /id
+          - GET
+        required: false
+  securityFunction: []
+  managementFunction: []
+  id: TMFC007
+  name: ServiceOrderManagement
+  functionalBlock: Production
+  publicationDate: 2023-08-18T00:00:00.000Z
+  status: specified
+  version: 1.1.0
+  description: >-
+    The SOM is the entry point of the Production Domain. It oversees
+    Customer-Facing-Service (CFS) delivery of resources (network and service
+    platforms equipment). The SOM exposes in particular the API" ServiceOrder".
+    It is triggered when the Product Order Orchestration Management component
+    calls this API to request CFS delivery. To achieve delivery of a CFS, the
+    SOM orchestrates the CFS delivery process which. Identifies possible RFS and
+    chooses one, using the catalog and technical inventory. Selects the
+    resources (servers, equipment, etc.) and their instances. Requests the ROM
+    to update selected resource instances to deliver CFS. Request sent to the
+    ROM contain the CFS and the list of configured resource instances to update.

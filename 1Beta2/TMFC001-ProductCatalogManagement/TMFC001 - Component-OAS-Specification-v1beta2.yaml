@@ -1,0 +1,390 @@
+apiVersion: oda.tmforum.org/v1beta3
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  componentId: TMFC001
+  componentName: ProductCatalogManagement
+  componentFunctionalBlock: CoreCommerce 
+  componenentDescription: The Product Catalog Management ODA Component is responsible for organizing the collection of Products and Product Offerings specifications that identify and define all requirements of a product or a product offering that can be commercialized.
+  componentVersion: 1.2.1
+  componentStatus: specified 
+  componentPublicationDate: 2023-08-18
+  maintainers:
+  - name: Gaetano Biancardi
+    email: gaetano.biancardi@accenture.com
+  owners:
+  - name: Gaetano Biancardi
+    email: gaetano.biancardi@accenture.com
+coreFunction:
+    exposedAPIs:
+    - name: productcatalogmanagement
+      id: TMF620
+      isRequired: yes
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-prodcatapi
+      apitype: openapi
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/v4/docs
+      port: 8080
+      resources:
+        - catalog:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        - category:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        - productSpecification:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        - productOffering:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        - productOfferingPrice:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        - exportJob :
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        - importJob :
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+    - name: ProcessFlowManagement
+      id: TMF701
+      isRequired: no
+      version: 4.0
+      specification: ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-ProcessFlowManagement
+      apitype: openapi
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+      port: 8080
+      resources: 
+      - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+      - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+    - name: PromotionManagement
+      id: TMF671
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-PromotionManagement
+      apitype: openapi
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+      port: 8080
+      resource:
+      - promotion:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+    - name: Event
+      id: TMF688
+      isRequired: no
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-PromotionManagement
+      apitype: openapi
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+      port: 8080
+      resources: 
+      - listener:  
+        - POST
+      - hub:  
+        - POST
+        - DELETE
+    dependantAPIs:
+    - name: ServiceCatalogManagement 
+      id: TMF633
+      isRequired: no
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+      apitype: openapi     
+      resources: 
+      - serviceSpecification:
+        - GET
+        - GET /id  
+    - name: PartyRoleManagement
+      id: TMF669
+      isRequired: no
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      apitype: openapi
+      resources:  
+      - PartyRole:
+        - GET
+        - GET /id
+    - name: Party
+      id: TMF632
+      isRequired: no
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+      apitype: openapi
+      resources:  
+      - Individual:
+        - GET
+        - GET /id
+      - Organisation:
+        - GET
+        - GET /id
+    - name: ResourceCatalog
+      id: TMF634
+      isRequired: no
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF634-ResourceCatalog/master/TMF634-ResourceCatalog-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+      - resourceSpecification:
+        - GET
+        - GET /id
+    - name: AgreementManagement
+      id: TMF651
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/master/TMF651-Agreement-v4.0.0.swagger.json
+      apitype: openapi
+      resources: 
+      - agreement:
+        - GET
+        - GET /id
+      - agreementSpecification:
+        - GET
+        - GET /id
+    - name: SLA
+      id: TMF623
+      isRequired: no
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF623_SLA/master/TMF623-SLA-v4.0.0.swagger.json
+      apitype: openapi
+      resources:  
+      - serviceLevelAgreement:
+        - GET
+        - GET /id
+    - name: GeographicAddressManagement
+      version: 4.0
+      id : TMF673
+      specification: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+      apitype: openapi
+      resources:
+      - geographicAddress:
+        - GET
+        - GET /id
+    - name: GeographicSiteManagement
+      id: TMF674
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF674_GeographicSite/blob/master/TMF674-GeographicSite-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+      - geographicSite:
+        - GET
+        - GET /id
+    - name: GeographicLocation
+      id: TMF675
+      version: 4.0
+      specification:  https://github.com/tmforum-apis/TMF675_GeographicLocation/blob/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+      - geographicLocation: 
+        - GET
+        - GET /id    
+    - name: UserRolePermission 
+      id: TMF672
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF672_UserRolesPermissions/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json     
+      apitype: openapi     
+      resources: 
+      - permission:
+        - GET
+        - GET /id    
+    - name: EntityCatalogManagement 
+      id: TMF662
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/master/TMF662-EntityCatalog-v4.0.0.swagger.json     
+      apitype: openapi     
+      resources: 
+      - entitySpecification:
+        - GET
+        - GET /id      
+      - associationSpecification:
+        - GET
+        - GET /id      
+    - name: ProductCatalogManagement 
+      id: TMF620
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json     
+      apitype: openapi     
+      resources: 
+      - catalog:
+        - GET
+        - GET /id
+      - category:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - productOffering:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - ProductOfferingPrice:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - importJob:
+        - GET
+        - POST
+        - DELETE
+      - exportJob:
+        - GET
+        - POST
+        - DELETE
+    - name: Event 
+      id: TMF688
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json      
+      apitype: openapi     
+      resources: 
+      - event:
+        - POST
+        - GET
+        - GET /id                                  
+    publishedEvents: 
+    - name: ProductCatalogManagement
+      specification: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productspecification/hub
+      implementation: /{{.Release.Name}}-ProductCatalogManagementEvent
+      apitype: openapi
+      port: 80
+      -resources: 
+         ProductCatalogManagement:
+          - productSpecificationCreate
+          - productSpecificationDeleteEvent
+          - categoryCreateEvent
+          - categoryDeleteEvent
+          - productOfferingCreateEvent
+          - productOfferingAttributeValueChangeEvent
+          - productOfferingStateChangeEvent
+          - productOfferingDeleteEvent
+          - productOfferingPriceCreateEvent
+          - productOfferingPriceAttributeValueChangeEvent
+          - productOfferingPriceStateChangeEvent
+          - productOfferingPriceDeleteEvent
+          - catalogCreateEvent
+          - catalogDeleteEvent
+          - catalogBatchEvent     
+    - name: PromotionManagement
+      specification: https://github.com/tmforum-apis/TMF671_Promotion/blob/master/TMF671-Promotion-v4.0.0.swagger.json
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagementEvent/hub
+      implementation: /{{.Release.Name}}-PromotionManagementEvent
+      apitype: openapi
+      port: 80
+      -resources: 
+        PromotionManagement:
+          - promotionCreateEvent
+          - promotionDeleteEvent
+          - promotionAttributeValueChangeEvent
+          - promotionStateChangeEvent
+          - promotionInformationRequiredEvent      
+    - name: ProcessFlowManagement
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      apitype: openapi
+      port: 80
+      -resources: 
+        ProcessFlowManagement:
+        - processFlowCreateEvent
+        - processFlowStateChangeEvent
+        - processFlowStateDeleteEvent
+        - processFlowStateAttributeValueChangeEvent
+        - taskFlowCreateEvent
+        - taskFlowStateChangeEvent
+        - taskFlowDeleteEvent
+        - taskFlowAttributeValueChangeEvent
+        - taskFlowInformationRequiredEvent
+    subscribedEvents: 
+    - name: ServiceCatalogManagement
+      specification: https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-ServiceCatalogManagement
+      apitype: openapi
+      resources:   
+      - ServiceCatalogManagement:
+        - serviceSpecificationStateChange
+        - serviceSpecificationAttributeValueChangeEvent
+        - serviceSpecificationCreateEvent
+        - serviceSpecificationDeleteEvent    
+      - ResourceCatalog:
+        - resourceSpecificationCreateEvent
+        - resourceSpecificationChangeEvent
+        - resourceSpecificationDeleteEvent         
+    - name: PartyRoleManagement
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-PartyRoleManagement
+      apitype: openapi
+      resources:   
+      - PartyRoleManagement:
+        - partyRoleDeleteEvent
+    - name: UserRolePermission 
+      specification: https://github.com/tmforum-apis/TMF672_UserRolesPermissions/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json     
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-UserRolePermission
+      apitype: openapi     
+      resources: 
+      - UserRolePermission:
+        - permissionDeleteEvent
+    - name: Party
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-Party
+      apitype: openapi
+      resources:  
+      - Party:
+        - individualDeleteEvent
+        - organizationDeleteEvent
+managementFunction: []
+reportingFunction: []
+securityFunction: []

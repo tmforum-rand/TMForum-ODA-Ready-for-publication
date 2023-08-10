@@ -1,0 +1,169 @@
+apiVersion: oda.tmforum.org/v1alpha1
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: Party Management
+    oda.tmforum.org/funtionalBlockName: Party Management
+  name: TAG_REALESE_NAME - Party Management
+spec:
+  componentKinds:
+    - group: core
+      kind: Inventory
+  coreFunction:
+    exposedAPIs:
+      PartnershipTypeManagement:
+        version: 4.0
+        id: TMF668
+        PartnershipSpecification:
+        - GET
+        - GET /id
+        - POST
+        - PATCH / id
+        - DELETE 
+      PartyManagement:
+        version: 4.0
+        id: TMF632
+        Individual:
+        - GET
+        - GET /id
+        - POST
+        - PATCH / id
+        - DELETE  
+        Organization:
+         - GET
+         - GET /id
+         - POST
+         - PATCH / id
+         - DELETE
+      Customer:
+        version: 4.0
+        id: TMF629
+        customer:
+        - GET
+        - GET /id
+        - POST
+        - PATCH / id
+        - DELETE                    
+      ProcessFlowManagement:
+        version: 4.0
+        id: TMF701
+        processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+        taskFlow:
+         - PATCH
+         - GET
+         - GET /id  
+      Event:
+        version: 4.0
+        id : TMF688
+        event:
+        - GET /id
+        - GET
+    dependantAPIs:
+      UsersandRoles:
+        version: 4.0
+        id : TMF672
+        permission:
+        - GET
+        - GET /id
+        role:
+        - GET
+        - GET /id  
+      Event:
+        version: 4.0
+        id : TMF688
+        event:
+        - GET /id
+        - GET
+      PartyRoleManagement:
+        version: 4.0
+        id: TMF669
+        PartyRole:
+        - GET
+        - GET /id   
+      GeographicAddressManagement:
+        version: 4.0
+        id: TMF673
+        GeographicAddress:
+        - GET
+        - GET /id
+      GeographicSiteManagement:
+        version: 4.0
+        id: TMF674
+        GeographicSite:
+        - GET
+        - GET /id
+      GeographicLocationManagement:
+         version: 4.0
+         id: TMF675
+         GeographicSite:
+         - GET
+         - GET /id         
+      ProcessFlowManagement:
+          version: 4.0
+          id: TMF701
+          processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+          taskFlow:
+          - PATCH
+          - GET
+          - GET /id 
+    managementAPIs: null
+    eventNotification:
+     PublishedEvent:
+       PartnershipSpecification:
+       - PartnershipSpecificationCreateEvent
+       - PartnershipSpecificationChangeEvent
+       - PartnershipSpecificationDeleteEvent
+       Partnership:
+       - PartnershipCreateEvent
+       - PartnershipChangeEvent
+       - PartnershipDeleteEvent
+       Individual:
+       - IndividualCreateEvent
+       - IndividualAttributeValueChangeEvent
+       - IndividualStateChangeEvent
+       - IndividualDeleteEvent    
+       Organization:
+       - OrganizationCreateEvent
+       - OrganizationAttributeValueChangeEvent
+       - OrganizationStateChangeEvent
+       - OrganizationDeleteEvent
+       Customer:
+       - CustomerCreateEvent
+       - CustomerAttributeValueChangeEvent
+       - CustomerStateChangeEvent
+       - CustomerDeleteEvent
+       PartyRole:
+       - PartyRoleCreateEvent
+       - PartyRoleAttributeValueChangeEvent
+       - PartyRoleStateChangeEvent
+       - PartyRoleDeleteEvent 
+     SubscribedEvent:
+       UserRoles:
+       - UserRoleCreationNotification
+       - UserRoleChangeNotification
+  mainiainers:
+    - email: gaetano.biancardi@accenture.com
+      name: Gaetano Biancardi
+  management: []
+  owners:
+    - email: gaetano.biancardi@accenture.com
+      name: Gaetano Biancardi
+  security:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  selector:
+    matchLabels:
+      oda.tmforum.org/componentName: Party Management
+  type: Party Management
+  version: 1.0.0

@@ -1,0 +1,169 @@
+apiVersion: oda.tmforum.org/v1beta1
+kind: component
+metadata:
+  name: TMFC020-digitalidentitymanagement
+  labels:
+    oda.tmforum.org/componentName: TMFC020-digitalidentitymanagement
+    oda.tmforum.org/funtionalBlockName: PartyManagement
+spec:
+  type: TMFC020-digitalidentitymanagement
+  version: 1.1.0
+  description: >-
+    Digital Identity management ODA-Component specification, from Open-API
+    reference implementation.
+  maintainers:
+    - name: Matteo Destino
+      email: matteo.destino@accenture.com
+      owners: null
+    - name: Matteo Destino
+      email: matteo.destino@accenture.com
+coreFunction:
+  exposedAPIs:
+    - name: DigitalIdentityManagement
+      id: TMF720
+      isRequired: 'yes'
+      version: 4
+      specification: >-
+        https://raw.githubusercontent.com/tmforum-apis/TMF720_DigitalIdentityManagement/master/TMF720-DigitalIdentityManagement-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-digidemngt'
+      apitype: openapi
+      path: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DigitalIdentityManagement/v4
+      developerUI: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DigitalIdentityManagement/v4/docs
+      port: 8080
+      resources:
+        - digitalIdentity:
+            - GET
+            - GET/id
+            - POST
+            - PATCH/id
+            - DELETE/id
+        - roles:
+            - GET
+            - GET/id
+            - POST
+            - PATCH/id
+            - DELETE/id
+    - name: ProcessFlowManagement
+      id: TMF701
+      isRequired: 'no'
+      version: 4
+      specification: >-
+        https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlowManagement/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-procmngttapi'
+      apitype: openapi
+      path: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+      developerUI: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+      port: 8080
+      resources:
+        - processFlow:
+            - GET
+            - GET/id
+            - POST
+            - DELETE/id
+        - taskFlow:
+            - GET
+            - GET/id
+            - PATCH/id
+    - name: Event
+      id: TMF688
+      isRequired: not
+      version: 4
+      specification: >-
+        https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-PromotionManagement'
+      apitype: openapi
+      path: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+      developerUI: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+      port: 8080
+      resources:
+        - event:
+            - GET
+            - GET /id
+            - POST
+            - PATCH
+            - DELETE
+  dependantAPIs:
+    - name: PartyManagement
+      id: TMF632
+      isRequired: 'yes'
+      version: 4
+      specification: >-
+        https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+        - individual:
+            - GET
+            - GET/id
+        - organization:
+            - GET
+            - GET/id
+    - name: PartyRoleManagement
+      id: TMF669
+      isRequired: 'yes'
+      version: 4
+      specification: >-
+        https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+        - partyRole:
+            - POST
+    - name: ProcessFlowManagement
+      id: TMF701
+      isRequired: 'no'
+      version: 4
+      specification: >-
+        ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+        - processFlow:
+            - POST
+            - GET
+            - GET /id
+            - DELETE
+        - taskFlow:
+            - PATCH
+            - GET
+            - GET /id
+    - name: Event
+      id: TMF688
+      isRequired: 'no'
+      version: 4
+      specification: >-
+        https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+        - event:
+            - GET
+            - GET /id
+  publishedEvents:
+    - name: digitalIdentity
+      specification: >-
+        https://raw.githubusercontent.com/tmforum-apis/TMF720_DigitalIdentityManagement/master/TMF720-DigitalIdentityManagement-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-digidemngt'
+      apitype: openapi
+      port: 80
+      resources:
+        DigitalIdentity:
+          - DigitalIdentityCreateEvent
+          - DigitalIdentityStateChangeEvent
+          - DigitalIdentityDeleteEvent
+          - DigitalIdentityAttributeValueChangeEvent
+  subscribedEvents:
+    - name: PartyRoleManagement
+      specification: >-
+        https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+      apitype: openapi
+      port: 80
+      resources:
+        userRoles
+          - UserRoleCreationNotification
+          - UserRoleChangeNotification
+management: []
+reporting: []
+security: []

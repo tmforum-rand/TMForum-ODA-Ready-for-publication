@@ -1,0 +1,229 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  componentId: TMFC023
+  componentName: PartyInteractionManagement
+  componentFunctionalBlock: PartyManagement 
+  componenentDescription: "Party Interaction deals with the initial greeting and welcoming of a new contact. This will typically be the first component in a customer experience journey, shared by unassisted (self-service, retail kiosk) or assisted (call center, retail store) channels. It will identify known parties or new parties and react appropriately to propose available actions. It records all the interactions for the parties from all channels."
+  componentVersion: 1.1.1
+  componentStatus: specified 
+  componentPublicationDate: 2023-08-18
+  maintainers:
+  - name: Gaetano Biancardi
+    email: gaetano.biancardi@accenture.com
+  owners:
+  - name: Gaetano Biancardi
+    email: gaetano.biancardi@accenture.com
+coreFunction:
+    exposedAPIs:
+    - name: PartyInteractionManagement
+      id: TMF683
+      isRequired: yes
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF683_PartyInteraction/blob/master/partyInteractionManagement_TMF_v1.0.0Review2.json
+      implementation: /{{.Release.Name}}-PartyInteractionManagement
+      apitype: openapi
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyInteractionManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyInteractionManagement/v4/docs
+      port: 8080
+      resources:
+        - PartyInteraction:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+    - name: ProcessFlowManagement
+      id: TMF701
+      isRequired: no
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-ProcessFlowManagement
+      apitype: openapi
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+      port: 8080
+      resources: 
+      - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+      - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+    - name: Event
+      id: TMF688
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-PromotionManagement
+      apitype: openapi
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4/docs
+      port: 8080
+      resources: 
+      - listener:  
+        - POST
+      - hub:
+        - POST
+        - DELETE
+    dependantAPIs:
+    - name: PartyManagement
+      id: TMF632
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+      apitype: openapi
+      resources:  
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET 
+        - GET /id
+    - name: PartyRoleManagement
+      id: TMF669
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF669_PartyRole/blob/master/TMF669-PartyRole-v4.0.0.swagger.json
+      apitype: openapi
+      resources:  
+      - PartyRoleManagement:
+        - GET
+        - GET /id
+    - name: UserRolePermission 
+      id: TMF672
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF672_UserRolesPermissions/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json     
+      apitype: openapi     
+      resources: 
+      - permission:
+        - GET
+        - GET /id    
+    - name: EntityCatalogManagement 
+      id: TMF662
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/master/TMF662-EntityCatalog-v4.0.0.swagger.json     
+      apitype: openapi     
+      resources: 
+      - entitySpecification:
+        - GET
+        - GET /id 
+      - entityCategory:
+        - GET
+        - GET /id 
+      - entityCatalog:
+        - GET
+        - GET /id      
+      - entityCatalogItem:
+        - GET
+        - GET /id      
+    - name: DocumentManagement 
+      id: TMF667
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF667_Document/blob/master/TMF667-Document-v4.0.0.swagger.json     
+      apitype: openapi     
+      resources: 
+      - document:
+        - GET
+        - GET /id  
+    - name: Event 
+      id: TMF688
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json      
+      apitype: openapi     
+      resources: 
+      - event:
+        - GET
+        - GET /id                                  
+    publishedEvents: 
+    - name: PartyInteractionManagement
+      specification: https://github.com/tmforum-apis/TMF683_PartyInteraction/blob/master/partyInteractionManagement_TMF_v1.0.0Review2.json
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyInteractionManagement/hub
+      implementation: /{{.Release.Name}}-PartyInteractionManagementEvent
+      apitype: openapi
+      port: 80
+      -resources: 
+         partyInteractionManagement:
+         - partyInteractionCreateEvent
+         - partyInteractionAttributeValueChangeEvent
+         - partyInteractionDeleteEvent
+         - partyInteractionStatusChangeEvent   
+    - name: ProcessFlowManagement
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      apitype: openapi
+      port: 80
+      -resources: 
+        ProcessFlowManagement:
+        - processFlowCreateEvent
+        - processFlowStateChangeEvent
+        - processFlowStateDeleteEvent
+        - processFlowStateAttributeValueChangeEvent
+        - taskFlowCreateEvent
+        - taskFlowStateChangeEvent
+        - taskFlowDeleteEvent
+        - taskFlowAttributeValueChangeEvent
+        - taskFlowInformationRequiredEvent
+    subscribedEvents: 
+    - name: PartyManagement
+      specification: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-PartyManagement
+      apitype: openapi
+      resources:   
+      - Individual:
+        - IndividualCreateEvent
+        - IndividualAttributeValueChangeEvent
+        - IndividualStateChangeEvent
+        - IndividualDeleteEvent
+      - Organization:
+        - OrganizationCreateEvent
+        - OrganizationAttributeValueChangeEvent
+        - OrganizationStateChangeEvent
+        - OrganizationDeleteEvent    
+    - name: PartyRoleManagement
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json  
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-PartyRoleManagement
+      apitype: openapi
+      resources:   
+      - PartyRole:
+        - PartyRoleCreateEvent                
+    - name: documentManagement
+      specification: https://github.com/tmforum-apis/TMF667_Document/blob/master/TMF667-Document-v4.0.0.swagger.json    
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-DocumentgManagementEvent
+      apitype: openapi
+      resources:   
+      - documentManagement:
+        - documentChangeEvent
+        - documentSpecificationAttributeValueChangeEvent 
+    - name: ProcessFlowManagement
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      apitype: openapi
+      port: 80
+      -resources: 
+        ProcessFlowManagement:
+        - processFlowCreateEvent
+        - processFlowStateChangeEvent
+        - taskFlowCreateEvent
+        - taskFlowStateChangeEvent
+managementFunction: []
+reportingFunction: []
+securityFunction: []
+  

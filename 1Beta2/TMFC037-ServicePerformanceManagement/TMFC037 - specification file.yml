@@ -1,0 +1,256 @@
+apiVersion: oda.tmforum.org/v1alpha1
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: Service Performance Management
+    oda.tmforum.org/funtionalBlockName: Production Management
+  name: TAG_RELEASE_NAME - Service Performance Management
+spec:
+  componentKinds:
+    - group: core
+      kind: Inventory
+  coreFunction:
+    exposedAPIs:
+      PerformanceManagement:
+        version: 4.1
+        id: TMF28
+        measurementCollectionJob*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        onDemandCollection*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        performanceIndicatorGroupSpecification*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        performanceIndicatorSpecification*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        trackingRecord*:
+          - GET
+          - GET /id     
+      PerformanceThresholdManagement:
+        version: 4.1
+        id: TMF649
+        threshold*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        thresholdJob*:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+      AlarmManagement:
+        version: 4.0
+        id: TMF642
+        alarm:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+      ProcessFlowManagement:
+        version: 4.0
+        id: TMF701
+        processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+      Event:
+        version: 4.0
+        id: TMF688
+        listener:
+          - POST
+        hub:
+          - POST
+          - DELETE
+    dependantAPIs:
+      PerformanceManagement:
+          version: 4.0
+          id: TMF628
+          measurementCollectionJob*:
+              - POST
+              - GET
+              - GET /id
+              - PATCH /id
+              - DELETE /id
+          onDemandCollection*:
+              - POST
+              - GET
+              - GET /id
+              - PATCH /id
+              - DELETE /id
+          performanceIndicatorGroupSpecification*:
+              - POST
+              - GET
+              - GET /id
+              - PATCH /id
+              - DELETE /id
+          performanceIndicatorSpecification*:
+              - POST
+              - GET
+              - GET /id
+              - PATCH /id
+              - DELETE /id
+          trackingRecord*:
+              - GET
+              - GET /id
+   
+      ServiceInventory:
+          version: 4.0
+          id : TMF638
+          service:
+              - GET /id
+              - GET
+      ResourceInventory:
+          version: 4.0
+          id : TMF639
+          resource:
+              - GET /id
+              - GET
+      
+      ServiceQualityManagement:
+          version: 4.0
+          id: TMF657
+          serviceLevelObjective:
+              - GET
+              - GET /id
+          serviceLevelSpecification:
+              - GET
+              - GET /id 
+   
+      GeographicAddressManagement:
+          version: 4.0
+          id : TMF673
+          geographicAddress:
+              - GET
+              - GET /id
+          geographicSubAddress:
+              - GET
+              - GET /id      
+          
+      GeographicSiteManagement:
+          version: 4.0
+          id : TMF674
+          geographicSite:
+              - GET
+              - GET /id
+      Event:
+          version: 4.0
+          id : TMF688
+          event:
+              - POST
+              - GET /id
+              - GET
+      ProcessFlow:
+          version: 4.0
+          id : TMF701
+          processFlow:
+              - POST
+              - PATCH
+              - GET /id
+              - GET
+          taskFlow:
+              - POST
+              - PATCH
+              - GET /id
+              - GET
+    managementAPIs: null
+    eventNotification:
+    PublishedEvent:
+       ProcessFlowManagement:
+        - processFlowCreateEvent
+        - processFlowStateChangeEvent
+        - processFlowStateDeleteEvent
+        - processFlowStateAttributeValueChangeEvent
+        - taskFlowCreateEvent
+        - taskFlowStateChangeEvent
+        - taskFlowDeleteEvent
+        - taskFlowAttributeValueChangeEvent
+        - taskFlowInformationRequiredEvent
+       AlarmManagement:
+        - alarmStateChange**
+        - alarmCreateEvent**
+        - alarmClearEvent**
+        - alarmAckEvent**
+       PerformanceManagement:
+        - measurementCollectionJobCreateEvent
+        - measurementCollectionJobExecutionStateChangeEvent
+        - measurementCollectionJobDeleteEvent
+        - measurementCollectionJobAttributeValueChangeEvent
+        - measurementCollectionJobFilesReadyEvent
+        - measurementCollectionJobFilesPreparationErrorEvent
+        - onDemandCollectionCreateEvent
+        - onDemandCollectionExecutionStateChangeEvent
+        - onDemandCollectionDeleteEvent
+        - onDemandCollectionAttributeValueChangeEvent
+        - onDemandCollectionFilesReadyEvent
+        - onDemandCollectionFilesPreparationErrorEvent
+       PerformanceThresholdManagement:
+        - thresholdCreateNotification
+        - thresholdChangeNotification
+        - thresholdRuleCreateNotification
+        - thresholdRuleChangedNotification
+        - thresholdJobCreateNotification
+        - thresholdJobChangedNotification
+        - thresholdJobSuspendNotification
+        - thresholdJobResumeNotification
+    SubscribedEvent:
+        ServiceCatalogManagement:
+          - serviceSpecificationChangeEvent
+        ServiceInventoryManagement:
+          - serviceCreateEvent
+          - serviceAttributeValueChangeEvent
+          - serviceStateChangeEvent
+          - serviceDeleteEvent
+        ResourceInventoryManagement:
+          - resourceCreateEvent
+          - resourceAttributeValueChangeEvent
+          - resourceStateChangeEvent
+          - resourceDeleteEvent
+        GeographicAddressManagement:
+          - geographicAddressValidationStateChange
+        ProcessFlowManagement:
+          - processFlowCreateEvent
+          - processFlowStateChangeEvent
+          - taskFlowCreateEvent
+          - taskFlowStateChangeEvent
+  maintainers:
+    - email: milind.2.bhagwat@bt.com
+      name: Milind Bhagwat
+  management: []
+  owners:
+    - email: milind.2.bhagwat@bt.com
+      name: Milind Bhagwat
+  security:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  selector:
+    matchLabels:
+      oda.tmforum.org/componentName: Service Performance Management
+  type: Service Performance Management
+  version: 1.0.0             

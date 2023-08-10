@@ -1,0 +1,13 @@
+apiVersion: oda.tmforum.org/v1beta1
+metadata:
+  name: IG1242
+  labels:
+ 
+spec:
+  documentId: IG1242
+  documentName: bla bla bla
+  documentDescription: bla bla bla
+  documentPublicationDate: 04/07/2023 
+  componentList:
+  /specs/
+  

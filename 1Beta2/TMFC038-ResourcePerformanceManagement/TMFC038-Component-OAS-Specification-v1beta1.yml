@@ -1,0 +1,145 @@
+apiVersion: oda.tmforum.org/v1beta1
+kind: component
+metadata:
+  name: TMFC038-resourceperformancemanagement
+  labels:
+    oda.tmforum.org/componentName: TMFC038-resourceperformancemanagement
+    oda.tmforum.org/funtionalBlockName: IntelligenceManagement
+spec:
+  type: TMFC038-resourceperformancemanagement
+  version: 0.0.1
+  description: "Simple Resource Performance Management ODA-Component from Open-API reference implementation."
+  maintainers:
+    - name: Milind Bhagwat
+      email: milind.2.bhagwat@bt.com
+  owners:
+    - name: Milind Bhagwat
+      email: milind.2.bhagwat@bt.com
+coreFunction:
+  exposedAPIs:
+    - name: PerformanceManagement
+      id: TMFXXX
+      specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
+      required: true
+      implementation: /{{.Release.Name}}-PerformanceManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4/docs
+      port: 8080
+    - name: AlarmManagement
+      id: TMF642
+      specification: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
+      required: true
+      implementation: /{{.Release.Name}}-AlarmManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/v4/docs
+      port: 8080
+    - name: ProcessFlowManagement
+      id: TMF688
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-ProcessFlowManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/processFlowManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/processFlowManagement/v4/docs
+      port: 8080
+    - name: Event
+      id: TMF701
+      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-EventManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4/docs
+      port: 8080
+  dependantAPIs:
+    - name: PerformanceManagement
+      specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
+      required: true
+      implementation: /{{.Release.Name}}-PerformanceManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4/docs
+      port: 8080
+    - name: ResourceInventory
+      specification: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-ResourceInventory
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
+      port: 8080
+    - name: GeographicAddressManagement
+      specification: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+      implementation: /{{.Release.Name}}-GeographicAddressManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagementt/v4/docs
+      port: 8080
+    - name: GeographicSiteManagement
+      specification: https://github.com/tmforum-apis/TMF674_GeographicSite/blob/master/TMF674-GeographicSite-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-GeographicSiteManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs
+      port: 8080
+    - name: ProcessFlowManagement
+      specification: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-ProcessFlowManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+      port: 8080
+    - name: EventManagement
+      specification: https://github.com/tmforum-apis/TMF688-EventManagement/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-EventManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4/docs
+      port: 8080
+  managementAPIs:
+  eventNotification:
+  PublishedEvent:
+    ProcessFlowManagement:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+
+    AlarmManagement:
+      - alarmStateChange**
+      - alarmCreateEvent**
+      - alarmClearEvent**
+      - alarmAckEvent**
+    PerformanceManagement:
+      - measurementCollectionJobCreateEvent
+      - measurementCollectionJobExecutionStateChangeEvent
+      - measurementCollectionJobDeleteEvent
+      - measurementCollectionJobAttributeValueChangeEvent
+      - measurementCollectionJobFilesReadyEvent
+      - measurementCollectionJobFilesPreparationErrorEvent
+      - onDemandCollectionCreateEvent
+      - onDemandCollectionExecutionStateChangeEvent
+      - onDemandCollectionDeleteEvent
+      - onDemandCollectionAttributeValueChangeEvent
+      - onDemandCollectionFilesReadyEvent
+      - onDemandCollectionFilesPreparationErrorEvent
+    PerformanceThresholdManagement:
+      - thresholdCreateNotification
+      - thresholdChangeNotification
+      - thresholdRuleCreateNotification
+      - thresholdRuleChangedNotification
+      - thresholdJobCreateNotification
+      - thresholdJobChangedNotification
+      - thresholdJobSuspendNotification
+      - thresholdJobResumeNotification
+
+  SubscribedEvent:
+    ResourceCatalogManagement:
+      - ResourceSpecificationChangeEvent
+    ResourceInventoryManagement:
+      - ResourceCreateEvent
+      - ResourceAttributeValueChangeEvent
+      - ResourceStateChangeEvent
+      - ResourceDeleteEvent
+    ProcessFlowManagement:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+management: []
+reporting: []
+security: []

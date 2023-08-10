@@ -1,0 +1,240 @@
+apiVersion: oda.tmforum.org/v1alpha1
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: Product Configurator
+    oda.tmforum.org/funtionalBlockName: Core Commerce Management
+    name: TAG_REALESE_NAME - Product Configurator
+spec:
+  componentKinds:
+    - group: core
+      kind: Inventory
+  coreFunction:
+    exposedAPIs:
+      - name: ProductOfferingQualification
+        specification: >-
+          https://github.com/tmforum-apis/TMF679_ProductOfferingQualification/blob/main/TMF679-ProductOfferingQualification-v4.0.0.swagger.json
+        required: true
+        implementation: '/{{.Release.Name}}-ProductOfferingQualification'
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOfferingQualification/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOfferingQualification/v4/docs
+        port: 8080
+      - name: ProcessFlowManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-ProcessFlowManagement'
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/processFlowManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/processFlowManagement/v4/docs
+        port: 8080
+      - name: Event
+        specification: >-
+          https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-Event'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/event/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/event/v4/docs'
+        port: 8080
+    dependantAPIs:
+      - name: SalesQuoteManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF648_SalesQuoteManagement/blob/master/TMF648-SalesQuoteManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-SalesQuoteManagement'
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/SalesQuoteManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/SalesQuoteManagement/v4/docs
+        port: 8080
+      - name: ShoppingCartManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF663_ShoppingCartManagement/blob/master/TMF663-ShoppingCartManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-ShoppingCartManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ShoppingCartManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ShoppingCartManagement/v4/docs'
+        port: 8080
+      - name: ProductInventoryManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF637_ProductInventoryManagement/blob/master/TMF637-ProductInventoryManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-ProductInventoryManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductInventoryManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductInventoryManagement/v4/docs'
+        port: 8080        
+      - name: ProductCatalogManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF620_ProductCatalogManagement/blob/master/TMF620-ProductCatalogManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-ProductCatalogManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/v4/docs'
+        port: 8080        
+      - name: ServiceQualificationManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF645_ServiceQualificationManagement/blob/master/TMF645-ServiceQualificationManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-ServiceQualificationManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualificationManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualificationManagement/v4/docs'
+        port: 8080
+      - name: ProductOrdering
+        specification: >-
+          https://github.com/tmforum-apis/TMF622_ProductOrdering/blob/master/TMF622-ProductOrdering-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-ProductOrdering'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOrdering/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOrdering/v4/docs'
+        port: 8080
+      - name: StockManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF687_StockManagement/blob/master/TMF687-StockManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-StockManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/StockManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/StockManagement/v4/docs'
+        port: 8080
+      - name: SalesManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF699_SalesManagement/blob/master/TMF699-SalesManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-SalesManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/SalesManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/SalesManagement/v4/docs'
+        port: 8080
+      - name: PartyManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-PartyManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-PartyManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4/docs'
+        port: 8080
+      - name: AgreemenentManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF651_AgreemenentManagement/blob/master/TMF651-AgreemenentManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-AgreemenentManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AgreemenentManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AgreemenentManagement/v4/docs'
+        port: 8080
+      - name: AppointmentManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF645_AppointmentManagement/blob/master/TMF645-AppointmentManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-AppointmentManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AppointmentManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AppointmentManagement/v4/docs'
+        port: 8080        
+      - name: AccountManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF666_AccountManagement/blob/master/TMF666-AccountManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-AccountManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AccountManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AccountManagement/v4/docs'
+        port: 8080       
+      - name: AccountManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF666_AccountManagement/blob/master/TMF666-AccountManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-AccountManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AccountManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AccountManagement/v4/docs'
+        port: 8080         
+      - name: ServiceInventoryManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF638_ServiceInventoryManagement/blob/master/TMF638-ServiceInventoryManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-ServiceInventoryManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventoryManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventoryManagement/v4/docs'
+        port: 8080         
+      - name: ResourceInventoryManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF639_ResourceInventoryManagement/blob/master/TMF639-ResourceInventoryManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-ResourceInventoryManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventoryManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventoryManagement/v4/docs'
+        port: 8080        
+      - name: PartyRoleManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF669_PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-PartyRoleManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4/docs'
+        port: 8080         
+      - name: UserRolesandPermissions
+        specification: >-
+          https://github.com/tmforum-apis/TMF672_UserRolesandPermissions/blob/master/TMF672-UserRolesandPermissions-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-UserRolesandPermissions'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesandPermissions/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesandPermissions/v4/docs'
+        port: 8080        
+      - name: RiskManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF696_RiskManagement/blob/master/TMF696-RiskManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-RiskManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/RiskManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/RiskManagement/v4/docs'
+        port: 8080      
+      - name: GeographicAddressManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF673_GeographicAddressManagement/blob/master/TMF673-GeographicAddressManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-GeographicAddressManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4/docs'
+        port: 8080       
+      - name: GeographicSiteManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF674_GeographicSiteManagement/blob/master/TMF674-GeographicSiteManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-GeographicSiteManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs'
+        port: 8080
+      - name: ProcessFlowManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-ProcessFlowManagement'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs'
+        port: 8080
+      - name: Event
+        specification: >-
+          https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+        implementation: '/{{.Release.Name}}-Event'
+        path: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/event/v4'
+        developerUI: '/{{.Release.Name}}-{{.Values.component.type}}/tmf-api/event/v4/docs'
+        port: 8080
+    managementAPIs: null
+  eventNotification:
+    PublishedEvent:
+      ProductOfferingQualification:
+        - ProductOfferingQualificationCreateEvent
+        - ProductOfferingQualificationAttributeValueChangeEvent
+        - ProductOfferingQualificationStateChangeEvent
+        - ProductOfferingQualificationDeleteEvent
+        - ProductOfferingQualificationInformationRequiredEvent
+    SubscribedEvent:
+      ProductCatalogManagement:
+        - CatalogCreateEvent
+        - CatalogAttributeValueChangeEvent
+        - CatalogStateChangeEvent
+        - ProductOfferingCreateEvent
+        - ProductOfferingAttributeValueChangeEvent
+        - ProductOfferingStateChangeEvent
+        - ProductOfferingDeleteEvent
+        - ProductOfferingPriceCreateEvent
+        - ProductOfferingPriceAttributeValueChangeEvent
+        - ProductOfferingPriceStateChangeEvent
+        - ProductOfferingPriceDeleteEvent  
+        - ProductSpecificationCreateEvent
+        - ProductSpecificationAttributeValueChangeEvent
+        - ProductSpecificationStateChangeEvent
+        - ProductSpecificationDeleteEvent  
+  maintainers:
+    - email: matteo.destino@accenture.com
+      name: Matteo Destino
+  management: []
+  owners:
+    - email: matteo.destino@accenture.com
+      name: Matteo Destino
+  security:
+    securitySchemes:
+      bearerAuth:
+        type: http
+        scheme: bearer
+        bearerFormat: JWT
+  selector:
+    matchLabels:
+      oda.tmforum.org/componentName: Product Configurator
+  type: Product Inventory
+  version: 1.0.0

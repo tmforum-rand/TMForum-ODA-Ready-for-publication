@@ -1,0 +1,341 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  maintainers:
+    - name: Matteo Destino
+      email: matteo.destino@accenture.com
+  owners:
+    - name: Matteo Destino
+      email: matteo.destino@accenture.com
+  coreFunction:
+    exposedAPIs:
+      - name: ProductOfferingQualification
+        id: TMF679
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF679_ProductOfferingQualificationManagement/master/TMF679-ProductOfferingQualificationManagement-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-pdtquali
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOfferingQualificationManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOfferingQualificationManagement/v4/docs
+        port: 8080
+        resources:
+          - ProductOfferingQualification:
+              - GET
+              - GET/id
+              - POST
+              - PATCH/id
+              - DELETE
+        required: true
+      - name: Event
+        id: TMF688
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-PromotionManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+        port: 8080
+        resources:
+          - listener:
+              - POST
+          - hub:
+              - POST
+              - DELETE
+        required: false
+    publishedEvents:
+      - name: ProductOfferingQualification
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF679-ProductOfferingQualification/master/TMF679-ProductOfferingQualification-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-pdtquali
+        apitype: openapi
+        port: 80
+        resources:
+          ProductOfferingQualification:
+            - ProductOfferingQualificationCreateEvent
+            - ProductOfferingQualificationAttributeValueChangeEvent
+            - ProductOfferingQualificationStateChangeEvent
+            - ProductOfferingQualificationDeleteEvent
+            - ProductOfferingQualificationInformationRequiredEvent
+    subscribedEvents:
+      - name: ProductCatalogManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF622-ProductCatalogManagement/blob/master/TMF622-ProductCatalogManagement-v4.0.0.swagger.json
+        apitype: openapi
+        port: 80
+        resources:
+          ProductCatalogManagement:
+            - CatalogCreateEvent
+            - CatalogAttributeValueChangeEvent
+            - CatalogStateChangeEvent
+            - ProductOfferingCreateEvent
+            - ProductOfferingAttributeValueChangeEvent
+            - ProductOfferingStateChangeEvent
+            - ProductOfferingDeleteEvent
+            - ProductOfferingPriceCreateEvent
+            - ProductOfferingPriceAttributeValueChangeEvent
+            - ProductOfferingPriceStateChangeEvent
+            - ProductOfferingPriceDeleteEvent
+            - ProductSpecificationCreateEvent
+            - ProductSpecificationAttributeValueChangeEvent
+            - ProductSpecificationStateChangeEvent
+            - ProductSpecificationDeleteEvent
+    dependentAPIs:
+      - name: SalesQuote
+        id: TMF648
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF648_SalesQuoteManagement/master/TMF648-SalesQuoteManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - quote:
+              - GET
+              - GET/id
+        required: true
+      - name: ShoppingCart
+        id: TMF663
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF663-ShoppingCartManagement/blob/master/TMF663-ShoppingCartManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - shoppingCart:
+              - GET
+              - GET /id
+        required: true
+      - name: ProductInventoryManagement
+        id: TMF637
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF637-ProductInventoryManagement/blob/master/TMF637-ProductInventoryManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - product:
+              - GET
+              - GET /id
+        required: true
+      - name: ProductCatalogManagement
+        id: TMF620
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF620-ProductCatalogManagement/blob/master/TMF620-ProductCatalogManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - catalog:
+              - GET
+              - GET /id
+          - productOffering:
+              - GET
+              - GET /id
+          - productOfferingPrice:
+              - GET
+              - GET /id
+          - productSpecification:
+              - GET
+              - GET /id
+        required: true
+      - name: ServiceQualificationManagement
+        id: TMF645
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF645-ServiceQualificationManagement/blob/master/TMF645-ServiceQualificationManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - checkServiceQualification:
+              - GET
+              - GET /id
+        required: true
+      - name: ProductOrdering
+        id: TMF622
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF622-ProductOrdering/blob/master/TMF622-ProductOrdering-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - productOrder:
+              - GET
+              - GET /id
+        required: false
+      - name: StockManagement
+        id: TMF687
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF687-StockManagement/blob/master/TMF687-StockManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - productStock:
+              - GET
+              - GET /id
+        required: false
+      - name: SalesManagement
+        id: TMF699
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF699-SalesManagement/blob/master/TMF699-SalesManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - sales:
+              - GET
+              - GET /id
+        required: false
+      - name: PartyManagement
+        id: TMF632
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF632-PartyManagement/blob/master/TMF632-PartyManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - individual:
+              - GET
+              - GET /id
+          - organization:
+              - GET
+              - GET /id
+        required: false
+      - name: AgreementManagement
+        id: TMF651
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF651-AgreementManagement/blob/master/TMF651-AgreementManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - agreement:
+              - GET
+              - GET /id
+        required: false
+      - name: AppointmentManagement
+        id: TMF646
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF646_AppointmentManagement/master/TMF646-Appointment-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - appointment:
+              - GET
+              - GET /id
+        required: false
+      - name: AccountManagement
+        id: TMF666
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF666-AccountManagement/blob/master/TMF666-AccountManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - partyAccount:
+              - GET
+              - GET /id
+        required: false
+      - name: ServiceInventoryManagement
+        id: TMF638
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF638-ServiceInventoryManagement/blob/master/TMF638-ServiceInventoryManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - service:
+              - GET
+              - GET /id
+        required: false
+      - name: ResourceInventoryManagement
+        id: TMF639
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF639-ResourceInventoryManagement/blob/master/TMF639-ResourceInventoryManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - resource:
+              - GET
+              - GET /id
+        required: false
+      - name: PartyRoleManagement
+        id: TMF669
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - partyRole:
+              - GET
+              - GET /id
+        required: false
+      - name: UserRolesPermissions
+        id: TMF672
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF672-UserRolesandPermissions/blob/master/TMF672-UserRolesandPermissions-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - permission:
+              - GET
+              - GET /id
+          - userRole:
+              - GET
+              - GET /id
+        required: false
+      - name: RiskManagement
+        id: TMF696
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF696-RiskManagement/blob/master/TMF696-RiskManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - partyRoleRiskAssessment:
+              - GET
+              - GET /id
+          - productOfferingRiskAssessment:
+              - GET
+              - GET /id
+        required: false
+      - name: GeographicAddressManagement
+        id: TMF673
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF673-GeographicAddressManagement/blob/master/TMF673-GeographicAddressManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - GeographicAddress:
+              - GET
+              - GET /id
+        required: false
+      - name: GeographicSiteManagement
+        id: TMF674
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF674-GeographicSiteManagement/blob/master/TMF674-GeographicSiteManagement-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - GeographicSite:
+              - GET
+              - GET /id
+        required: false
+      - name: Event
+        id: TMF688
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - event:
+              - GET
+              - GET /id
+        required: false
+  securityFunction: []
+  managementFunction: []
+  id: TMFC027
+  name: ProductConfigurator
+  functionalBlock: CoreCommerceManagement
+  publicationDate: 2023-08-18T00:00:00.000Z
+  status: specified
+  version: 1.1.0
+  description: >-
+    The Product Configurator ODA Component is empowering sales by offering the
+    right product combinations, controlling discounting, and automating
+    approvals through support of configuration, pricing and quote generation
+    activities.

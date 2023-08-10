@@ -1,0 +1,376 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  componentId: TMFC037
+  componentName: ServicePerformanceManagement
+  componentFunctionalBlock: IntelligenceManagement 
+  componenentDescription: "Service Performance Management will monitor, analyze, and report on the end-end service performance. This can include a real-time, end-to-end view to ensure that each service is functioning correctly as well as a historical view. These functions build on the Resource Performance data and active end-end service performance test data to provide a view of a service. The component provides a key input to determine the Quality of Service."
+  componentVersion: 1.1.0
+  componentStatus: specified 
+  componentPublicationDate: 2023-08-18
+  maintainers:
+    - email: milind.2.bhagwat@bt.com
+      name: Milind Bhagwat
+  owners:
+    - email: milind.2.bhagwat@bt.com
+      name: Milind Bhagwat
+  coreFunction:
+    exposedAPIs:
+    - name: PerformanceManagement
+      id: TMF628
+      isRequired: yes
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-PerformanceManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4/docs
+      port: 8080
+      resources:
+        - measurementCollectionJob*:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        - onDemandCollection*:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        - performanceIndicatorGroupSpecification*:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        - performanceIndicatorSpecification*:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        - trackingRecord*:
+            - GET
+            - GET /id     
+    - name: PerformanceThresholdManagement
+      id: TMF649
+      isRequired: yes
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF649_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-PerformanceManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThresholdManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThresholdManagement/v4/docs
+      port: 8080
+      resources:
+        - threshold:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        - thresholdJob:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        
+    - name: AlarmManagement
+      id: TMF642
+      isRequired: no
+      specification: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-AlarmManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/v4/docs
+      port: 8080
+      resources:
+        - alarm:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+    - name: ProcessFlowManagement
+      id: TMF701
+      isRequired: no
+      version: 4
+      specification: >-
+        https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlowManagement/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-procflowapi'
+      apitype: openapi
+      path: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+      developerUI: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+      port: 8080
+      resources:
+        - processFlow:
+            - POST
+            - GET
+            - GET /id
+            - DELETE
+        - taskFlow:
+            - PATCH
+            - GET
+            - GET /id
+    - name: Event
+      id: TMF688
+      isRequired: no
+      version: 4
+      specification: >-
+        https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+      implementation: '/{{.Release.Name}}-PromotionManagement'
+      apitype: openapi
+      path: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+      developerUI: >-
+        /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+      port: 8080
+      resources:
+        - listener:  
+            - POST
+        - hub:  
+            - POST
+            - DELETE
+    dependantAPIs:
+    - name: PerformanceManagement
+      id: TMF628
+      isRequired: no
+      specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-PerformanceManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4/docs
+      port: 8080
+      resources:
+        - measurementCollectionJob*:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        - onDemandCollection*:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        - performanceIndicatorGroupSpecification*:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        - performanceIndicatorSpecification*:
+            - POST
+            - GET
+            - GET /id
+            - PATCH /id
+            - DELETE /id
+        - trackingRecord*:
+            - GET
+            - GET /id
+    - name: ResourceInventory
+      id: TMF639
+      isRequired: no
+      specification: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-ResourceInventory
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
+      port: 8080
+      resources:
+        - resource:
+            - GET
+            - GET /id
+    - name: ServiceInventory
+      id: TMF638
+      isRequired: no
+      specification: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-ResourceInventory
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
+      port: 8080
+      resources:
+        - service:
+            - GET
+            - GET /id
+    - name: GeographicAddressManagement
+      id: TMF673
+      isRequired: no
+      specification: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+      implementation: /{{.Release.Name}}-GeographicAddressManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagementt/v4/docs
+      port: 8080
+      resources:
+        - geographicAddress:
+            - GET
+            - GET/id
+        - geographicSubAddress:
+            - GET
+            - GET /id    
+    - name: GeographicSiteManagement
+      id: TMF674
+      isRequired: no
+      specification: https://github.com/tmforum-apis/TMF674_GeographicSite/blob/master/TMF674-GeographicSite-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-GeographicSiteManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs
+      port: 8080
+      resources:
+        - geographicSite:
+            - GET
+            - GET/id
+    - name: ServiceQualityManagement
+      id: TMF657
+      isRequired: no
+      specification: https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/master/TMF675-ServiceQualityManagement-v4.0.0.swagger.json
+      implementation: /{{.Release.Name}}-ServiceQualityManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/v4/docs
+      port: 8080
+      resources:
+        - serviceLevelObjective:
+            - GET
+            - GET/id
+        - serviceLevelSpecification:
+            - GET
+            - GET/id            
+    - name: Event 
+      id: TMF688
+      isRequired: no
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json      
+      apitype: openapi     
+      resources: 
+      - event:
+        - GET
+        - GET /id   
+        
+    - name: ProcessFlowManagement
+      id: TMF701
+      isRequired: no
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      apitype: openapi
+      resources: 
+      - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+      - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+    PublishedEvent:
+    - name: ProcessFlowManagement
+      specification: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub 
+      implementation: /{{.Release.Name}}-processFlowEvent
+      apitype:
+      port: 80
+      -resources: 
+         ProcessFlowManagement:
+         - processFlowCreateEvent
+         - processFlowStateChangeEvent
+         - processFlowStateDeleteEvent
+         - processFlowStateAttributeValueChangeEvent
+         - taskFlowCreateEvent
+         - taskFlowStateChangeEvent
+         - taskFlowDeleteEvent
+         - taskFlowAttributeValueChangeEvent
+         - taskFlowInformationRequiredEvent
+    - name: AlarmManagement
+      specification: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/hub
+      implementation: /{{.Release.Name}}-AlarmManagement
+      apitype: openapi
+      port: 80
+      -resources:       
+       AlarmManagement:
+        - alarmStateChange**
+        - alarmCreateEvent**
+        - alarmClearEvent**
+        - alarmAckEvent**
+    - name: PerformanceManagement
+      specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.1.0.swagger.json
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/hub 
+      implementation: /{{.Release.Name}}-PerformanceManagement
+      apitype: openapi
+      port: 80
+      -resources:  
+       PerformanceManagement:      
+        - measurementCollectionJobCreateEvent
+        - measurementCollectionJobExecutionStateChangeEvent
+        - measurementCollectionJobDeleteEvent
+        - measurementCollectionJobAttributeValueChangeEvent
+        - measurementCollectionJobFilesReadyEvent
+        - measurementCollectionJobFilesPreparationErrorEvent
+        - onDemandCollectionCreateEvent
+        - onDemandCollectionExecutionStateChangeEvent
+        - onDemandCollectionDeleteEvent
+        - onDemandCollectionAttributeValueChangeEvent
+        - onDemandCollectionFilesReadyEvent
+        - onDemandCollectionFilesPreparationErrorEvent
+       PerformanceThresholdManagement:
+        - thresholdCreateNotification
+        - thresholdChangeNotification
+        - thresholdRuleCreateNotification
+        - thresholdRuleChangedNotification
+        - thresholdJobCreateNotification
+        - thresholdJobChangedNotification
+        - thresholdJobSuspendNotification
+        - thresholdJobResumeNotification
+    SubscribedEvent:
+    - name: ServiceCatalogManagement
+      specification: https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-ServiceCatalogManagement
+      apitype: openapi
+      resources:       
+      -  ServiceCatalog:
+          - serviceSpecificationChangeEvent
+    - name: ServiceInventoryManagement
+      specification: https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/master/TMF638-ServiceInventory-v4.0.0.swagger.json
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-ServiceInventoryManagement
+      apitype: openapi
+      resources:     
+      -   ServiceInventory:
+          - serviceCreateEvent
+          - serviceAttributeValueChangeEvent
+          - serviceStateChangeEvent
+          - serviceDeleteEvent
+    - name: ResourceInventoryManagement
+      specification: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-ResourceInventory
+      apitype: openapi
+      resources:          
+      - ResourceInventory:
+          - resourceCreateEvent
+          - resourceAttributeValueChangeEvent
+          - resourceStateChangeEvent
+          - resourceDeleteEvent
+    - name: ProcessFlowManagement
+      specification: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/call-back
+      port: 80
+      implementation: /{{.Release.Name}}-ProcessFlowManagement
+      apitype: openapi
+      resources:   
+      - ProcessFlow:      
+          - processFlowCreateEvent
+          - processFlowStateChangeEvent
+          - taskFlowCreateEvent
+          - taskFlowStateChangeEvent
+managementFunction: []
+reportingFunction: []
+securityFunction: []
+   

@@ -1,0 +1,565 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  maintainers:
+    - name: Gaetano Biancardi
+      email: gaetano.biancardi@accenture.com
+  owners:
+    - name: Gaetano Biancardi
+      email: gaetano.biancardi@accenture.com
+  coreFunction:
+    exposedAPIs:
+      - name: ProductOrder
+        id: TMF622
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF622_ProductOrder/blob/master/TMF622-ProductOrder-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ProductOrder
+        apitype: openapi
+        resources:
+          - productOrder:
+              - POST
+              - GET
+              - GET /id
+              - PATCH
+              - DELETE
+          - cancelProductOrder:
+              - POST
+              - GET
+              - GET /id
+        required: true
+      - name: QuoteManagement
+        id: TMF648
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-QuoteManagement
+        apitype: openapi
+        resources:
+          - Quote:
+              - POST
+              - GET
+              - GET /id
+              - PATCH
+              - DELETE
+        required: false
+      - name: ShoppingCart
+        id: TMF663
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v2.0.4.swagger.json
+        implementation: /{{.Release.Name}}-QuoteManagement
+        apitype: openapi
+        resources:
+          - ShoppingCart:
+              - POST
+              - GET
+              - GET /id
+              - PATCH
+              - DELETE
+        required: false
+      - name: ProcessFlowManagement
+        id: TMF701
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ProcessFlowManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+        port: 8080
+        resources:
+          - processFlow:
+              - POST
+              - GET
+              - GET /id
+              - DELETE
+          - taskFlow:
+              - PATCH
+              - GET
+              - GET /id
+        required: false
+      - name: Event
+        id: TMF688
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-PromotionManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4/docs
+        port: 8080
+        resources:
+          - listener:
+              - POST
+          - hub:
+              - POST
+              - DELETE
+        required: false
+    publishedEvents:
+      - name: ProductOrder
+        specification: >-
+          https://github.com/tmforum-apis/TMF622_ProductOrder/blob/master/TMF622-ProductOrder-v4.0.0.swagger.json
+        hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOrder/hub
+        implementation: /{{.Release.Name}}-ProductOrderEvent
+        apitype: openapi
+        port: 80
+        '-resources':
+          ProductOrderingManagement:
+            - productOrderStateChange
+            - productOrderCreateEvent
+            - productOrderAttributeValueChange
+            - productOrderDelete
+            - productOrderInformationRequired
+            - cancelProductOrderCreateEvent
+            - cancelProductOrderStateChange
+            - cancelProductOrderInformationRequired
+      - name: Quote
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
+        hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Quote/hub
+        implementation: /{{.Release.Name}}-QuoteEvent
+        apitype: openapi
+        port: 80
+        '-resources':
+          QuoteManagement:
+            - quoteStateChange
+            - quoteCreateEvent
+            - quoteAttributeValueChange
+            - quoteDelete
+            - quoteInformationRequired
+      - name: ShoppingCart
+        specification: >-
+          https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v2.0.4.swagger.json
+        hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ShoppingCart/hub
+        implementation: /{{.Release.Name}}-ShoppingCartEvent
+        apitype: openapi
+        port: 80
+        '-resources':
+          ShoppingCartManagement:
+            - shoppingCartCreateEvent
+            - shoppingCartAttributeValueChange
+            - shoppingCartDelete
+      - name: ProcessFlowManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+        hub: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+        implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+        apitype: openapi
+        port: 80
+        '-resources':
+          ProcessFlowManagement:
+            - processFlowCreateEvent
+            - processFlowStateChangeEvent
+            - processFlowStateDeleteEvent
+            - processFlowStateAttributeValueChangeEvent
+            - taskFlowCreateEvent
+            - taskFlowStateChangeEvent
+            - taskFlowDeleteEvent
+            - taskFlowAttributeValueChangeEvent
+            - taskFlowInformationRequiredEvent
+    subscribedEvents:
+      - name: ProductOfferingQualification
+        specification: >-
+          https://github.com/tmforum-apis/TMF679_ProductOfferingQualification/blob/master/TMF679-ProductOfferingQualification-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOfferingQualification/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-ProductOfferingQualificationEvent
+        apitype: openapi
+        resources:
+          - ProductOfferingQualification:
+              - productOfferingQualificationStateChangeEvent
+      - name: ServiceQualification
+        specification: >-
+          https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-ServiceQualificationEvent
+        apitype: openapi
+        resources:
+          - ServiceQualification:
+              - checkServiceQualificationStateChangeEvent
+              - queryServiceQualificationStateChangeEvent
+      - name: GeographicAddressManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-GeographicAddressManagementEvent
+        apitype: openapi
+        resources:
+          - GeographicAddressManagement:
+              - geographicAddressValidationStateChange
+      - name: ResourcePoolManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF685_ResourcePool/blob/master/Resource_Pool_Management.regular.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourcePoolManagementEvent/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-ResourcePoolManagementEvent
+        apitype: openapi
+        resources:
+          - ResourcePoolManagementEvent:
+              - reservationStateChangeNotification
+      - name: StockManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF685_ResourcePool/blob/master/Resource_Pool_Management.regular.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/StockManagementEvent/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-StockManagementEvent
+        apitype: openapi
+        resources:
+          - CheckProductStock:
+              - checkProductStockStateChange
+          - QueryProductStock:
+              - queryProductStockStateChange
+          - ReserveProductStock:
+              - reserveProductStockStateChange
+      - name: PaymentManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF676_PaymentManagement/blob/master/TMF676-Payment-v4.0.0.swagger.json
+        call-back: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentManagementEvent/call-back
+        port: 80
+        implementation: /{{.Release.Name}}-PaymentManagementEvent
+        apitype: openapi
+        resources:
+          - PaymentManagement:
+              - paymentCreate
+              - paymentStateChange
+      - name: ProcessFlowManagement
+        specification: >-
+          https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+        hub: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+        implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+        apitype: openapi
+        port: 80
+        '-resources':
+          ProcessFlowManagement:
+            - processFlowCreateEvent
+            - processFlowStateChangeEvent
+            - taskFlowCreateEvent
+            - taskFlowStateChangeEvent
+    dependentAPIs:
+      - name: ProductCatalogManagement
+        id: TMF620
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - productCategory:
+              - GET
+              - GET /id
+          - productOffering:
+              - GET
+              - GET /id
+          - productOfferingPrice:
+              - GET
+              - GET /id
+          - productSpecification:
+              - GET
+              - GET /id
+        required: true
+      - name: ProductInventory
+        id: TMF637
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF637_ProductInventory/blob/master/TMF637-ProductInventory-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - product:
+              - GET
+              - GET /id
+              - POST
+        required: true
+      - name: productOfferingQualification
+        id: TMF679
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF679_ProductOfferingQualification/blob/master/Product_Offering_Qualification_Management.regular.swagger.json
+        apitype: openapi
+        resources:
+          - productOfferingQualification:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+        required: false
+      - name: ServiceQualification
+        id: TMF645
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/master/TMF645-ServiceQualification-v4.0.1.swagger.json
+        apitype: openapi
+        resources:
+          - checkServiceQualification:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+          - queryServiceQualification:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+        required: false
+      - name: AppointmentManagement
+        id: TMF646
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF646_AppointmentManagement/blob/master/TMF646-Appointment-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - appointment:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+          - searchTimeSlot:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+        required: false
+      - name: GeographicAddressManagement
+        id: TMF673
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+        apitype: openapi
+        resources:
+          - geographicAddress:
+              - GET
+              - GET /id
+          - geographicSubAddress:
+              - GET
+              - GET /id
+          - geographicAddressValidation:
+              - GET
+              - GET /id
+              - POST
+        required: false
+      - name: GeographicSiteManagement
+        id: TMF674
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF674_GeographicSite/blob/master/TMF674-GeographicSite-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - geographicSite:
+              - GET
+              - GET /id
+        required: false
+      - name: ResourcePoolManagement
+        id: TMF685
+        version: 1.0.1
+        specification: >-
+          https://github.com/tmforum-apis/TMF685_ResourcePool/blob/master/Resource_Pool_Management.regular.swagger.json
+        apitype: openapi
+        resources:
+          - reservation:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+          - resourcePool:
+              - GET
+              - GET /id
+        required: false
+      - name: StockManagement
+        id: TMF687
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF687_StockManagement/blob/master/TMF687-Stock-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - checkProductStock:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+          - queryProductStock:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+          - reserveProductStock:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+          - productStock:
+              - GET
+              - GET /id
+        required: false
+      - name: PartyManagement
+        id: TMF632
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-Party-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - individual:
+              - GET
+              - GET /id
+          - organization:
+              - GET
+              - GET /id
+        required: false
+      - name: PartyRoleManagement
+        id: TMF669
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF669_PartyRole/blob/master/TMF669-PartyRole-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - PartyRoleManagement:
+              - GET
+              - GET /id
+        required: false
+      - name: AccountManagement
+        id: TMF666
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF666_AccountManagement/blob/master/TMF666-Account-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - billingAccount:
+              - GET /id
+              - GET
+        required: false
+      - name: PaymentManagement
+        id: TMF676
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF676_PaymentManagement/blob/master/TMF676-Payment-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - payment:
+              - GET / id
+              - GET
+        required: false
+      - name: PartyInteraction
+        id: TMF683
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF683_PartyInteraction/blob/master/TMF683-PartyInteraction-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - partyInteraction:
+              - GET / id
+              - GET
+        required: false
+      - name: ServiceInventory
+        id: TMF638
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/master/TMF638-ServiceInventory-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - service:
+              - GET / id
+              - GET
+        required: false
+      - name: ResourceInventory
+        id: TMF639
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - resource:
+              - GET / id
+              - GET
+        required: false
+      - name: UserRolePermission
+        id: TMF672
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF672_UserRolesPermissions/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - permission:
+              - GET /id
+              - GET
+        required: false
+      - name: ProcessFlowManagement
+        id: TMF701
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - processFlow:
+              - POST
+              - PATCH
+              - GET
+              - GET /id
+          - taskFlow:
+              - POST
+              - PATCH
+              - GET
+              - GET /id
+        required: false
+      - name: Event
+        id: TMF688
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - event:
+              - POST
+              - GET
+              - GET /id
+        required: false
+      - name: Customer
+        id: TMF629
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF629-Event/blob/master/TMF629-Customer-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - customer:
+              - GET
+              - GET /id
+        required: false
+  securityFunction: []
+  managementFunction: []
+  id: TMFC002
+  name: ProductOrderCaptureAndValidation
+  functionalBlock: CoreCommerce
+  publicationDate: 2023-08-18T00:00:00.000Z
+  status: specified
+  version: 1.1.1
+  description: >-
+    Addresses the means of capturing what a customer wants to order, based on
+    the CSP Product Catalog. This component permits to choose the configuration
+    of the product offerings and products desired, to provide a quote, to check
+    the eligibility of the customer order, and to complete it with information
+    needed such as the related parties or associated the billing account and the
+    delivery appointment if needed. This component is globally in charge of
+    these quote management, order capture and validation steps, using dedicated
+    components (e.g., Offering Configurator, Service Qualification, Party Mgt)
+    when needed. After the delivery of the customer product order items, this
+    component is also in charge of the commercial closure of the order. It
+    includes update of the Product Inventory (status and starting/end date of
+    tariffs and discounts) and potential commercial rules control (e.g. receipt
+    of the contract document signed by the customer)
