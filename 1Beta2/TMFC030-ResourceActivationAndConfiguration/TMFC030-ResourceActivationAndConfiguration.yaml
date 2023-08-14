@@ -1,0 +1,22 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  maintainers:
+    - name: Hugo Vaughan
+      email: hvaughan@tmforum.org
+  owners:
+    - name: Hugo Vaughan
+      email: hvaughan@tmforum.org
+  coreFunction: []
+  securityFunction: []
+  managementFunction: []
+  id: TMFC030
+  name: ResourceActivationAndConfiguration
+  functionalBlock: Production
+  publicationDate: 2023-08-18T00:00:00.000Z
+  status: Pre-production
+  version: 1.0.1
+  description: >-
+    TBD
