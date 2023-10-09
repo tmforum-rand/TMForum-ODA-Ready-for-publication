@@ -1,0 +1,192 @@
+apiVersion: oda.tmforum.org/v1beta1
+coreFunction:
+  dependantAPIs:
+  - apitype: openapi
+    id: TMF632
+    isRequired: 'yes'
+    name: PartyManagement
+    resources:
+    - individual:
+      - GET
+      - GET/id
+    - organization:
+      - GET
+      - GET/id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+    version: 4
+  - apitype: openapi
+    id: TMF669
+    isRequired: 'yes'
+    name: PartyRoleManagement
+    resources:
+    - partyRole:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+    version: 4
+  - apitype: openapi
+    id: TMF672
+    isRequired: 'yes'
+    name: UserRolePermission
+    resources:
+    - permission:
+      - GET
+      - GET /id
+    - userRole:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+    version: 4
+  - apitype: openapi
+    id: TMF670
+    isRequired: 'yes'
+    name: PaymentMethodManagement
+    resources:
+    - paymentMethod:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF670-PaymentMethodManagement/blob/master/TMF670-PaymentMethodManagement-v4.0.0.swagger.json
+    version: 4
+  - apitype: openapi
+    id: TMF701
+    isRequired: 'no'
+    name: ProcessFlowManagement
+    resources:
+    - processFlow:
+      - POST
+      - GET
+      - GET /id
+      - DELETE
+    - taskFlow:
+      - PATCH
+      - GET
+      - GET /id
+    specification: ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+    version: 4
+  - apitype: openapi
+    id: TMF688
+    isRequired: 'no'
+    name: Event
+    resources:
+    - event:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+    version: 4
+  exposedAPIs:
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AccountManagement/v4/docs
+    id: TMF666
+    implementation: /{{.Release.Name}}-accmngt
+    isRequired: 'yes'
+    name: AccountManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AccountManagement/v4
+    port: 8080
+    resources:
+    - partyAccount:
+      - GET
+      - GET/id
+      - POST
+      - PATCH/id
+      - DELETE/id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/TMF666-AccountManagement-v4.0.0.swagger.json
+    version: 4
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+    id: TMF701
+    implementation: /{{.Release.Name}}-procmngttapi
+    isRequired: 'no'
+    name: ProcessFlowManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+    port: 8080
+    resources:
+    - processFlow:
+      - GET
+      - GET/id
+      - POST
+      - DELETE/id
+    - taskFlow:
+      - GET
+      - GET/id
+      - PATCH/id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlowManagement/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+    version: 4
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+    id: TMF688
+    implementation: /{{.Release.Name}}-PromotionManagement
+    isRequired: not
+    name: Event
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+    port: 8080
+    resources:
+    - event:
+      - GET
+      - GET /id
+      - POST
+      - PATCH
+      - DELETE
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+    version: 4
+  publishedEvents:
+  - apitype: openapi
+    implementation: /{{.Release.Name}}-accmngt
+    name: AccountManagement
+    port: 80
+    resources:
+      Account:
+      - partyAccountAttributeValueChangeEvent
+      - partyAccountStateChangeEvent
+      - billingAccountAttributeValueChangeEvent
+      - billingAccountStateChangeEvent
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/TMF666-AccountManagement-v4.0.0.swagger.json
+  subscribedEvents:
+  - apitype: openapi
+    name: PartyRoleManagement
+    port: 80
+    resources: partyRole - partyRoleCreateEvent - partyRoleAttributeValueChangeEvent
+      - partyRoleStateChangeEvent - partyRoleDeleteEvent - UserRoleChangeNotification
+    specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+  - apitype: openapi
+    name: UserRoleandPermission
+    port: 80
+    resources: partyRole - partyRoleCreateEvent - partyRoleAttributeValueChangeEvent
+      - partyRoleStateChangeEvent - partyRoleDeleteEvent - UserRoleChangeNotification
+    specification: https://github.com/tmforum-apis/TMF672-UserRoleandPermission/blob/master/TMF672-UserRoleandPermission-v4.0.0.swagger.json
+kind: component
+management: []
+managementFunction:
+  exposedAPIs:
+  - apitype: prometheus
+    implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+    name: metrics
+    path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+    port: 4000
+metadata:
+  labels:
+    oda.tmforum.org/componentName: TMFC024-billingaccountmanagement
+    oda.tmforum.org/funtionalBlockName: PartyManagement
+  name: TMFC024-billingaccountmanagement
+reporting: []
+security: []
+securityFunction:
+  controllerRole: '{{ .Values.security.controllerRole }}'
+  exposedAPIs:
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+    implementation: '{{.Release.Name}}-partyroleapi'
+    name: partyrole
+    path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+    port: 8080
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+spec:
+  description: Billing Account management ODA-Component specification, from Open-API
+    reference implementation.
+  maintainers:
+  - email: matteo.destino@accenture.com
+    name: Matteo Destino
+    owners: null
+  - email: matteo.destino@accenture.com
+    name: Matteo Destino
+  type: TMFC024-billingaccountmanagement
+  version: 1.1.0

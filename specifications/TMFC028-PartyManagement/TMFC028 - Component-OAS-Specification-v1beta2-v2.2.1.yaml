@@ -1,0 +1,216 @@
+apiVersion: oda.tmforum.org/v1beta2
+coreFunction:
+  dependantAPIs:
+  - apitype: openapi
+    id: TMF672
+    isRequired: true
+    name: UserRolesandPermissions
+    resources:
+    - permission:
+      - GET
+      - GET/id
+    - role:
+      - GET
+      - GET/id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesandPermissions/master/TMF672-UserRolesandPermissions-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF669
+    isRequired: true
+    name: PartyRoleManagement
+    resources:
+    - partyRole:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF673
+    isRequired: false
+    name: GeographicAddressManagement
+    resources:
+    - GeographicAddress:
+      - GET
+      - GET /id
+    - apitype: openapi
+      id: TMF674
+      isRequired: false
+      name: GeographicSiteManagement
+      resources: null
+      specification: https://github.com/tmforum-apis/TMF674-GeographicSiteManagement/blob/master/TMF674-GeographicSiteManagement-v4.0.0.swagger.json
+      version: 4.0
+    - GeographicSite:
+      - GET
+      - GET /id
+    - apitype: openapi
+      id: TMF675
+      isRequired: false
+      name: GeographicLocationManagement
+      resources: null
+      specification: https://github.com/tmforum-apis/TMF675-GeographicLocationManagement/blob/master/TMF675-GeographicLocationManagement-v4.0.0.swagger.json
+      version: 4.0
+    - GeographicLocation:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF673-GeographicAddressManagement/blob/master/TMF673-GeographicAddressManagement-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF701
+    isRequired: false
+    name: ProcessFlowManagement
+    resources:
+    - processFlow:
+      - POST
+      - GET
+      - GET /id
+      - DELETE
+    - taskFlow:
+      - PATCH
+      - GET
+      - GET /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF688
+    isRequired: false
+    name: Event
+    resources:
+    - event:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+    version: 4.0
+  exposedAPIs:
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4/docs
+    id: TMF632
+    implementation: /{{.Release.Name}}-partymngtapi
+    isRequired: true
+    name: PartyManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4
+    port: 8080
+    resources:
+    - individual:
+      - GET
+      - GET/id
+      - POST
+      - PATCH/id
+      - DELETE/id
+    - organization:
+      - GET
+      - GET/id
+      - POST
+      - PATCH/id
+      - DELETE/id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+    id: TMF701
+    implementation: /{{.Release.Name}}-procmngttapi
+    isRequired: false
+    name: ProcessFlowManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+    port: 8080
+    resources:
+    - processFloe:
+      - GET
+      - GET/id
+      - POST
+      - DELETE/id
+    - taskFlow:
+      - GET
+      - GET/id
+      - PATCH/id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlowManagement/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+    id: TMF688
+    implementation: /{{.Release.Name}}-PromotionManagement
+    isRequired: false
+    name: EventManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+    port: 8080
+    resources:
+    - event:
+      - GET
+      - GET /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+    version: 4.0
+  publishedEvents:
+  - apitype: openapi
+    implementation: /{{.Release.Name}}-partymngtapi
+    name: partyManagement
+    port: 80
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+  - resources:
+      Individual:
+      - IndividualCreateEvent
+      - IndividualAttributeValueChangeEvent
+      - IndividualStateChangeEvent
+      - IndividualDeleteEvent
+      Organization:
+      - OrganizationCreateEvent
+      - OrganizationAttributeValueChangeEvent
+      - OrganizationStateChangeEvent
+      - OrganizationDeleteEvent
+  subscribedEvents:
+  - apitype: openapi
+    name: UserRolesandPermissions
+    port: 80
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesandPermissions/master/TMF672-UserRolesandPermissions-v4.0.0.swagger.json
+  - resources:
+      UserRoles:
+      - UserRoleCreationNotification
+      - UserRoleChangeNotification
+  - apitype: openapi
+    name: PartyRoleManagement
+    port: 80
+    specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+  - resources:
+      PartyRole:
+      - PartyRoleCreateEvent
+      - PartyRoleAttributeValueChangeEvent
+      - PartyRoleStateChangeEvent
+      - PartyRoleDeleteEvent
+kind: component
+managementFunction:
+  exposedAPIs:
+  - apitype: prometheus
+    implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+    name: metrics
+    path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+    port: 4000
+metadata:
+  name: components.oda.tmforum.org
+reportingFunction: []
+securityFunction:
+  controllerRole: '{{ .Values.security.controllerRole }}'
+  exposedAPIs:
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+    implementation: '{{.Release.Name}}-partyroleapi'
+    name: partyrole
+    path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+    port: 8080
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+spec:
+  componenentDescription: 'Party Management component is responsible for the capture,
+    validation and management of Parties and their Roles. A Party may be an individual
+    or organization that has a relationship with an enterprise. In this context it
+    is responsible for the e2e life cycle of: Individual, Organization. and its related
+    sub-entities:Contact Medium, Currency and tax exemption certificates, Identification,
+    Community'
+  componentFunctionalBlock: PartyManagement
+  componentId: TMFC028
+  componentName: PartyManagement
+  componentPublicationDate: 2023-08-18
+  componentStatus: specified
+  componentVersion: 2.2.1
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi

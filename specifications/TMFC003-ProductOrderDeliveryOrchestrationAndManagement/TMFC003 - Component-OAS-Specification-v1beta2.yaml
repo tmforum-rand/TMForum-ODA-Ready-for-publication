@@ -1,0 +1,281 @@
+apiVersion: oda.tmforum.org/v1beta2
+coreFunction:
+  dependantAPIs:
+  - apitype: openapi
+    id: TMF620
+    isRequired: false
+    name: ProductCatalogManagement
+    resources:
+    - productSpecification:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+    version: 4.1
+  - apitype: openapi
+    id: TMF622
+    implementation: /{{.Release.Name}}-ProductOrder
+    isRequired: true
+    name: ProductOrder
+    resources:
+    - productOrder:
+      - GET /id
+      - PATCH
+    specification: https://github.com/tmforum-apis/TMF622_ProductOrder/blob/master/TMF622-ProductOrder-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF637
+    isRequired: false
+    name: ProductInventory
+    resources:
+    - product:
+      - GET
+      - GET /id
+      - PATCH
+    specification: https://github.com/tmforum-apis/TMF637_ProductInventory/blob/master/TMF637-ProductInventory-v4.0.0.swagger.json
+    version: 4.0
+  - developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/v4/docs
+    id: TMF641
+    implementation: /{{.Release.Name}}-serviceorderingmanagement
+    isRequired: true
+    name: ServiceOrderingManagement
+    path: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/v4/
+    port: 8080
+    resources:
+    - serviceOrder:
+      - GET
+      - GET /id
+      - POST
+      - PATCH
+      - DELETE
+    - cancelServiceOrder:
+      - GET
+      - GET /id
+      - POST
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrdering/master/TMF641-ServiceOrdering-v4.1.0.swagger.json
+    version: 4.1
+  - apitype: openapi
+    id: TMF633
+    isRequired: false
+    name: ServiceCatalogManagement
+    resources:
+    - serviceSpecification:
+      - GET
+      - GET /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF634
+    isRequired: false
+    name: ResourceCatalogManagement
+    resources:
+    - resourceSpecification:
+      - GET
+      - GET /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/master/TMF634-ResourceCatalog-v4.0.0.swagger.json
+    version: 4.1
+  - developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/v4/docs
+    id: TMF641
+    implementation: /{{.Release.Name}}-serviceorderingmanagement
+    isRequired: true
+    name: ServiceOrderingManagement
+    path: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/v4/
+    port: 8080
+    resources:
+    - serviceOrder:
+      - GET /id
+      - POST
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrdering/master/TMF641-ServiceOrdering-v4.1.0.swagger.json
+    version: 4.1
+  - apitype: openapi
+    id: TMF638
+    isRequired: false
+    name: ServiceInventory
+    resources:
+    - service:
+      - GET / id
+      - GET
+    specification: https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/master/TMF638-ServiceInventory-v4.0.0.swagger.json
+    version: 4.0
+  - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
+    id: TMF639
+    implementation: /{{.Release.Name}}-ResourceInventory
+    isRequired: false
+    name: ResourceInventoryManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4
+    port: 8080
+    resources:
+    - resource: null
+    - GET
+    - GET /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+    version: 4.0
+  - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrderManagement/v4/docs
+    id: TMF652
+    implementation: /{{.Release.Name}}-ResourceOrderManagement
+    isRequired: false
+    name: ResourceOrderManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrderManagement/v4
+    port: 8080
+    resources:
+    - resourceOrder: null
+    - GET /id
+    - POST
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF652_ResourceOrderManagement/master/TMF652-ResourceOrder-v4.0.0.swagger.json
+    version: 4.0
+  exposedAPIs:
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+    id: TMF701
+    implementation: /{{.Release.Name}}-ProcessFlowManagement
+    isRequired: false
+    name: ProcessFlowManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+    port: 8080
+    resources:
+    - processFlow:
+      - POST
+      - GET
+      - GET /id
+      - DELETE
+    - taskFlow:
+      - PATCH
+      - GET
+      - GET /id
+    specification: ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+    id: TMF688
+    implementation: /{{.Release.Name}}-PromotionManagement
+    isRequired: false
+    name: Event
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+    port: 8080
+    resources:
+    - listener:
+      - POST
+    - hub:
+      - POST
+      - DELETE
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF688
+    isRequired: false
+    name: Event
+    resources:
+    - listener:
+      - POST
+    - hub:
+      - POST
+      - DELETE
+    - event:
+      - POST
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+    version: 4.0
+  publishedEvents:
+  - -resources:
+      ProcessFlowManagement:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+    apitype: openapi
+    hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+    implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    name: ProcessFlowManagement
+    port: 80
+    specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+  subscribedEvents:
+  - -resources:
+      ProductOrderingManagement:
+      - productOrderStateChangeEvent
+      - cancelProductOrderStateChangeEvent
+    apitype: openapi
+    call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOrder/call-back
+    implementation: /{{.Release.Name}}-ProductOrderEvent
+    name: ProductOrder
+    port: 80
+    specification: https://github.com/tmforum-apis/TMF622_ProductOrder/blob/master/TMF622-ProductOrder-v4.0.0.swagger.json
+  - -resources:
+      ServiceOrderingManagement:
+      - serviceOrderStateChangeEvent
+      - serviceOrderAttributeValueChangeEvent
+      - serviceOrderInformationRequiredEvent
+      - serviceOrderMilestoneEvent
+      - serviceOrderJeopardyEvent
+      - cancelServiceOrderStateChangeEvent
+      - cancelServiceOrderInformationRequiredEvent
+    apitype: openapi
+    call-back: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/call-back
+    developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/v4/docs
+    implementation: /{{.Release.Name}}-serviceOrderingManagementEvent
+    name: ServiceOrder
+    port: 80
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrdering/master/TMF641-ServiceOrdering-v4.1.0.swagger.json
+  - -resources:
+      ResourceOrderManagement:
+      - resourceOrderStateChange
+      - resourceOrderAttributeValueChangeEvent
+      - resourceOrderInformationRequiredEvent
+      - cancelResourceOrderStateChange
+      - cancelResourceOrderInformationRequiredEvent
+    apitype: openapi
+    call-back: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ResourceOrder/call-back
+    developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ResourceOrder/v4/docs
+    implementation: /{{.Release.Name}}-ResourceOrder
+    name: ResourceOrder
+    port: 80
+    specification: https://github.com/tmforum-apis/TMF652_ResourceOrderManagement/blob/master/TMF652-ResourceOrder-v4.0.0.swagger.json
+kind: component
+managementFunction:
+  exposedAPIs:
+  - apitype: prometheus
+    implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+    name: metrics
+    path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+    port: 4000
+metadata:
+  name: components.oda.tmforum.org
+reportingFunction: []
+securityFunction:
+  controllerRole: '{{ .Values.security.controllerRole }}'
+  exposedAPIs:
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+    implementation: '{{.Release.Name}}-partyroleapi'
+    name: partyrole
+    path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+    port: 8080
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+spec:
+  componenentDescription: 'This component is in charge of the orchestration of the
+    delivery of Product Orders (status accepted). Based on the Product specification
+    level of information available in the Product Catalog (ex: prerequisite links
+    between product specifications, links between product and CFS specifications,
+    ...): it determines in which order the product specification level order items
+    need to be delivered, and to which CFS (or Resource) specification each ordered
+    product corresponds, and prepares and addresses each related service (or resource)
+    order to the production system in charge. During the delivery process execution,
+    this component is in charge of the evolution of the status of the product specification
+    level order items, and of the related product items . So, it triggers the updates
+    of the related inventories.'
+  componentFunctionalBlock: CoreCommerce
+  componentId: TMFC003
+  componentName: ProductOrderDeliveryOrchestrationAndManagement
+  componentPublicationDate: 2023-08-18
+  componentStatus: specified
+  componentVersion: 1.1.1
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
