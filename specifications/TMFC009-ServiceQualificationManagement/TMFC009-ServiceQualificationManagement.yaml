@@ -1,243 +1,265 @@
 apiVersion: oda.tmforum.org/v1beta2
 kind: component
-managementFunction:
-  exposedAPIs:
-  - apitype: prometheus
-    implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-    name: metrics
-    path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-    port: 4000
 metadata:
   name: components.oda.tmforum.org
-securityFunction:
-  controllerRole: '{{ .Values.security.controllerRole }}'
-  exposedAPIs:
-  - apitype: openapi
-    developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
-    implementation: '{{.Release.Name}}-partyroleapi'
-    name: partyrole
-    path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
-    port: 8080
-    specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
 spec:
-  coreFunction:
-    dependentAPIs:
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalogManagement/v4/docs
-      id: TMF633
-      implementation: /{{.Release.Name}}-ServiceCatalogManagement
-      name: ServiceCatalogManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalogManagement/v4
-      port: 8080
-      required: true
-      resources:
-      - serviceSpecification:
-        - GET
-        - GET /id
-      - serviceCategory:
-        - GET
-        - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
-      version: 4
-    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/v4/docs
-      id: TMF638
-      implementation: /{{.Release.Name}}-ServiceInventory
-      name: ServiceInventory
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/v4
-      port: 8080
-      required: false
-      resources:
-      - service:
-        - GET
-        - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/master/TMF638-ServiceInventory-v4.0.0.swagger.json
-      version: 4
-    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/v4/docs
-      id: TMF634
-      implementation: /{{.Release.Name}}-ResourceCatalog
-      name: ResourceCatalog
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/v4
-      port: 8080
-      required: false
-      resources:
-      - resourceSpecification:
-        - GET
-        - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/master/TMF634-ResourceCatalog-v4.0.0.swagger.json
-      version: 4
-    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
-      id: TMF639
-      implementation: /{{.Release.Name}}-ResourceInventory
-      name: ResourceInventoryManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4
-      port: 8080
-      required: false
-      resources:
-      - resource:
-        - GET
-        - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json
-      version: 4
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4/docs
-      id: TMF632
-      implementation: /{{.Release.Name}}-PartyManagement
-      name: PartyManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4
-      port: 8080
-      required: false
-      resources:
-      - individual:
-        - GET
-        - GET /id
-      - organization:
-        - GET
-        - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-Party-v4.0.0.swagger.json
-      version: 4
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4/docs
-      id: TMF669
-      implementation: /{{.Release.Name}}-PartyRoleManagement
-      name: PartyRoleManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4
-      port: 8080
-      required: false
-      resources:
-      - partyRole:
-        - GET
-        - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
-      version: 4
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4/docs
-      id: TMF673
-      implementation: /{{.Release.Name}}-GeographicAddressManagement
-      name: GeographicAddressManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4
-      port: 8080
-      required: false
-      resources:
-      - geographicAddress:
-        - GET
-        - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
-      version: 4
-    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs
-      id: TMF674
-      implementation: /{{.Release.Name}}-GeographicSiteManagement
-      name: GeographicSiteManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4
-      port: 8080
-      required: false
-      resources: null
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
-      version: 4
-    - geographicSite:
-      - GET
-      - GET /id
-    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4/docs
-      id: TMF675
-      implementation: /{{.Release.Name}}-GeographicLocation
-      name: GeographicLocation
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4
-      port: 8080
-      required: false
-      resources: null
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
-      version: 4
-    - geographicLocation:
-      - GET
-      - GET /id
-    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesPermissions/v4/docs
-      id: TMF672
-      implementation: /{{.Release.Name}}-UserRolesPermissions
-      name: UserRolesPermissions
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesPermissions/v4
-      port: 8080
-      required: false
-      resources: null
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesPermissions/master/TMF672-UserRolePermission-v4.0.0.swagger.json
-      version: 4
-    - permission:
-      - GET
-      - GET /id
-    - apitype: openapi
-      id: TMF688
-      name: Event
-      required: false
-      resources:
-      - event:
-        - GET
-        - GET /id
-      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
-      version: 4
-    exposedAPIs:
-    - developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualificationManagement/v4/docs
-      id: TMF645
-      implementation: /{{.Release.Name}}-ServiceQualificationManagement
-      name: ServiceQualificationManagement
-      path: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualificationManagement/v4/
-      port: 8080
-      required: true
-      resources:
-      - checkServiceQualification:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      - queryServiceQualification:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
-      version: 4
-    publishedEvents:
-    - -resources:
-        ServiceQualification:
-        - checkServiceQualificationCreateEvent
-        - checkServiceQualificationStateChangeEvent
-        - checkServiceQualificationInformationRequiredEvent
-        - checkServiceQualificationAttributeValueChangeEvent
-        - checkServiceQualificationDeleteEvent
-        - queryServiceQualificationStateChangeEvent
-        - queryServiceQualificationCreateEvent
-        - queryServiceQualificationDeleteEvent
-      apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualification/v4/docs
-      hub: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualification/hub
-      implementation: /{{.Release.Name}}-ServiceQualification
-      name: ServiceQualification
-      port: 80
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
-  description: Service Qualification component is responsible for checking and validating
-    the availability of a service according to specified and configured business rules.
-    It must identify at least one technical solution (RFSspec) available to deliver
-    the service (CFSspec) and check the availability of all the resources types involved
-    in this technical solution. No resources are allocated during Service Qualification.
-    Service Qualification component has functionality that include checking service
-    feasibility status and publishing or reporting service qualification result, but
-    also calculated service delivery due date and identified need of an appointment
-    at the customer site. Service Qualification can also be in charge of the cost
-    calculation of the technical solution identified, when it cannot be determined
-    at catalog design time (complex B2B services). This information will be used as
-    an input to price calculation.
-  functionalBlock: Production
-  id: TMFC009
   maintainers:
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
-  managementFunction: []
-  name: ServiceQualificationManagement
+    - name: Tassos Sarantis
+      email: Anastasios.sarantis@cityfibre.com
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
-  publicationDate: 2023-08-18 00:00:00+00:00
+    - name: Gaetano Biancardi
+      email: gaetano.biancardi@accenture.com
+    - name: Tassos Sarantis
+      email: Anastasios.sarantis@cityfibre.com
+  coreFunction:
+    exposedAPIs:
+      - name: ServiceQualificationManagement
+        id: TMF645
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ServiceQualificationManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualificationManagement/v4/
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualificationManagement/v4/docs
+        port: 8080
+        resources:
+          - checkServiceQualification:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+          - queryServiceQualification:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+        required: true
+    publishedEvents:
+      - name: ServiceQualification
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+        hub: >-
+          /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualification/hub
+        implementation: /{{.Release.Name}}-ServiceQualification
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualification/v4/docs
+        apitype: openapi
+        port: 80
+        '-resources':
+          ServiceQualification:
+            - checkServiceQualificationCreateEvent
+            - checkServiceQualificationStateChangeEvent
+            - checkServiceQualificationInformationRequiredEvent
+            - checkServiceQualificationAttributeValueChangeEvent
+            - checkServiceQualificationDeleteEvent
+            - queryServiceQualificationStateChangeEvent
+            - queryServiceQualificationCreateEvent
+            - queryServiceQualificationDeleteEvent
+    dependentAPIs:
+      - name: ServiceCatalogManagement
+        id: TMF633
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF633_ServiceCatalog/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+        apitype: openapi
+        implementation: /{{.Release.Name}}-ServiceCatalogManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalogManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalogManagement/v4/docs
+        port: 8080
+        resources:
+          - serviceSpecification:
+              - GET
+              - GET /id
+          - serviceCategory:
+              - GET
+              - GET /id
+        required: true
+      - name: ServiceInventory
+        id: TMF638
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF638_ServiceInventory/master/TMF638-ServiceInventory-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ServiceInventory
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/v4/docs
+        port: 8080
+        resources:
+          - service:
+              - GET
+              - GET /id
+        required: false
+      - name: ResourceCatalog
+        id: TMF634
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/master/TMF634-ResourceCatalog-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ResourceCatalog
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/v4/docs
+        port: 8080
+        resources:
+          - resourceSpecification:
+              - GET
+              - GET /id
+        required: false
+      - name: ResourceInventoryManagement
+        id: TMF639
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF639_ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ResourceInventory
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
+        port: 8080
+        resources:
+          - resource:
+              - GET
+              - GET /id
+        required: false
+      - name: PartyManagement
+        id: TMF632
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-Party-v4.0.0.swagger.json
+        apitype: openapi
+        implementation: /{{.Release.Name}}-PartyManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4/docs
+        port: 8080
+        resources:
+          - individual:
+              - GET
+              - GET /id
+          - organization:
+              - GET
+              - GET /id
+        required: false
+      - name: PartyRoleManagement
+        id: TMF669
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+        apitype: openapi
+        implementation: /{{.Release.Name}}-PartyRoleManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/v4/docs
+        port: 8080
+        resources:
+          - partyRole:
+              - GET
+              - GET /id
+        required: false
+      - name: GeographicAddressManagement
+        id: TMF673
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+        implementation: /{{.Release.Name}}-GeographicAddressManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4/docs
+        port: 8080
+        resources:
+          - geographicAddress:
+              - GET
+              - GET /id
+        required: false
+      - name: GeographicSiteManagement
+        id: TMF674
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-GeographicSiteManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs
+        port: 8080
+        resources: null
+        required: false
+      - geographicSite:
+          - GET
+          - GET /id
+      - name: GeographicLocation
+        id: TMF675
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-GeographicLocation
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4/docs
+        port: 8080
+        resources: null
+        required: false
+      - geographicLocation:
+          - GET
+          - GET /id
+      - name: UserRolesPermissions
+        id: TMF672
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesPermissions/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-UserRolesPermissions
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesPermissions/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolesPermissions/v4/docs
+        port: 8080
+        resources: null
+        required: false
+      - permission:
+          - GET
+          - GET /id
+      - name: Event
+        id: TMF688
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - event:
+              - GET
+              - GET /id
+        required: false
   securityFunction: []
+  managementFunction: []
+  id: TMFC009
+  name: ServiceQualificationManagement
+  functionalBlock: Production
+  publicationDate: 2023-08-18T00:00:00.000Z
   status: specified
   version: 1.1.1
+  description: >-
+    Service Qualification component is responsible for checking and validating
+    the availability of a service according to specified and configured business
+    rules. It must identify at least one technical solution (RFSspec) available
+    to deliver the service (CFSspec) and check the availability of all the
+    resources types involved in this technical solution. No resources are
+    allocated during Service Qualification. Service Qualification component has
+    functionality that include checking service feasibility status and
+    publishing or reporting service qualification result, but also calculated
+    service delivery due date and identified need of an appointment at the
+    customer site. Service Qualification can also be in charge of the cost
+    calculation of the technical solution identified, when it cannot be
+    determined at catalog design time (complex B2B services). This information
+    will be used as an input to price calculation.

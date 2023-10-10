@@ -1,0 +1,116 @@
+   dependantAPIs:
+    - name: ServiceCatalogManagement 
+      id: TMF633
+      isRequired: not
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+      apitype: openapi     
+      resources: 
+      - serviceSpecification:
+        - GET
+        - GET /id  
+    - name: PartyRoleManagement
+      id: TMF669
+      isRequired: not
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      apitype: openapi
+      resources:  
+      - PartyRoleManagement:
+        - GET
+        - GET /id
+    - name: ResourceCatalog
+      id: TMF672
+      isRequired: not
+      version: 4.0
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF688-ResourceCatalog/master/TMF688-ResourceCatalog-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+      - resourceSpecification:
+        - GET
+        - GET /id
+    - name: AgreementManagement
+      id: TMF651
+      isRequired: not
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/master/TMF651-Agreement-v4.0.0.swagger.json
+      apitype: openapi
+      resources: 
+      - agreement:
+        - GET
+        - GET /id
+      - agreementSpecification:
+        - GET
+        - GET /id
+    - name: GeographicAddressManagement
+      version: 4.0
+      id : TMF673
+      specification: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+      apitype: openapi
+      resources:
+      - geographicAddress:
+        - GET
+        - GET /id
+    - name: GeographicSiteManagement
+      id: TMF674
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF674_GeographicSite/blob/master/TMF674-GeographicSite-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+      - geographicSite:
+        - GET
+        - GET /id
+    - name: GeographicLocation
+      id: TMF675
+      version: 4.0
+      specification:  https://github.com/tmforum-apis/TMF675_GeographicLocation/blob/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+      apitype: openapi
+      resources:
+      - geographicLocation: 
+        - GET
+        - GET /id    
+    - name: UserRolePermission 
+      id: TMF672
+      isRequired: not
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF672_UserRolesPermissions/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json     
+      apitype: openapi     
+      resources: 
+      - permission:
+        - GET
+        - GET /id    
+    - name: EntityCatalogManagement 
+      id: TMF662
+      isRequired: not
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/master/TMF662-EntityCatalog-v4.0.0.swagger.json     
+      apitype: openapi     
+      resources: 
+      - entitySpecification:
+        - GET
+        - GET /id      
+      - associationSpecification:
+        - GET
+        - GET /id      
+    - name: ProductCatalogManagement 
+      id: TMF620
+      isRequired: not
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json     
+      apitype: openapi     
+      resources: 
+      - GET
+      - GET /id
+      - POST
+      - PATCH
+      - DELETE    
+    - name: Event 
+      id: TMF688
+      isRequired: not
+      version: 4.0
+      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json      
+      apitype: openapi     
+      resources: 
+      - event:
+        - GET
+        - GET /id               

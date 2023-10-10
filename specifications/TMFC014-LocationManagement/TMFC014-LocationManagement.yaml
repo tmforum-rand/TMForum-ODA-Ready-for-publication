@@ -1,208 +1,217 @@
 apiVersion: oda.tmforum.org/v1beta2
 kind: component
-managementFunction:
-  exposedAPIs:
-  - apitype: prometheus
-    implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-    name: metrics
-    path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-    port: 4000
 metadata:
   name: components.oda.tmforum.org
-securityFunction:
-  controllerRole: '{{ .Values.security.controllerRole }}'
-  exposedAPIs:
-  - apitype: openapi
-    developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
-    implementation: '{{.Release.Name}}-partyroleapi'
-    name: partyrole
-    path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
-    port: 8080
-    specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
 spec:
-  coreFunction:
-    dependentAPIs:
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4/docs
-      id: TMF632
-      implementation: /{{.Release.Name}}-PartyManagement
-      name: PartyManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4
-      port: 8080
-      required: false
-      resources:
-      - individual:
-        - GET
-        - GET /id
-      - organization:
-        - GET
-        - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-Party-v4.0.0.swagger.json
-      version: 4
-    - apitype: openapi
-      id: TMF674
-      name: GeographicSiteManagement
-      resources:
-      - geographicSite:
-        - GET
-        - GET /id
-      specification: https://github.com/tmforum-apis/TMF674_GeographicSite/blob/master/TMF674-GeographicSite-v4.0.0.swagger.json
-      version: 4
-    - apitype: openapi
-      id: TMF688
-      name: Event
-      required: false
-      resources:
-      - event:
-        - GET
-        - GET /id
-      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
-      version: 4
-    exposedAPIs:
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4/docs
-      id: TMF673
-      implementation: /{{.Release.Name}}-GeographicAddressManagement
-      name: GeographicAddressManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4
-      port: 8080
-      required: true
-      resources:
-      - geographicAddressValidation:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-      - geographicAddress:
-        - GET
-        - GET /id
-      - geographicSubAddress:
-        - GET
-        - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
-      version: 4
-    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs
-      id: TMF674
-      implementation: /{{.Release.Name}}-GeographicSiteManagement
-      name: GeographicSiteManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4
-      port: 8080
-      required: true
-      resources:
-      - geographicSite:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
-      version: 4
-    - name: GeographicLocation
-    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4/docs
-      id: TMF675
-      implementation: /{{.Release.Name}}-GeographicLocation
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4
-      port: 8080
-      required: true
-      resources:
-      - geographicLocation:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
-      version: 4
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
-      id: TMF701
-      implementation: /{{.Release.Name}}-ProcessFlowManagement
-      name: ProcessFlowManagement
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
-      port: 8080
-      required: false
-      resources:
-      - processFlow:
-        - POST
-        - GET
-        - GET /id
-        - DELETE
-      - taskFlow:
-        - PATCH
-        - GET
-        - GET /id
-      specification: ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
-      version: 4
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
-      id: TMF688
-      implementation: /{{.Release.Name}}-PromotionManagement
-      name: Event
-      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
-      port: 8080
-      required: false
-      resources:
-      - listener:
-        - POST
-      - hub:
-        - POST
-        - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
-      version: 4
-    publishedEvents:
-    - apitype: openapi
-      hub: /{{.Release.Name}}-GeographicAddressManagement/hub
-      id: TMF673
-      implementation: /{{.Release.Name}}-GeographicAddressManagement
-      name: GeographicAddressManagement
-      port: 8080
-      resources:
-      - geographicAddressValidation:
-        - geographicAddressValidationStateChangeEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/hub
-      implementation: /{{.Release.Name}}-GeographicSiteManagementEvent
-      name: GeographicSiteManagement
-      port: 8080
-      resources:
-      - geographicSiteManagement:
-        - geographicSiteAttributeValueChangeEvent
-        - geographicSiteCreateEvent
-        - geographicSiteDeleteEvent
-        - geographicSiteStatusChangeEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/hub
-      implementation: /{{.Release.Name}}-GeographicLocationEvent
-      name: GeographicLocation
-      port: 80
-      resources:
-      - geographicLocation:
-        - geographicLocationAttributeValueChangeEvent
-        - geographicLocationCreateEvent
-        - geographicLocationDeleteEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
-    subscribedEvents: null
-  description: "The Location Management Component  allows easy reference to geographic\
-    \ places important to other entities, where a geographic place is an entity that\
-    \ can answer the question \u201Cwhere?\u201D . This component could  be a facade\
-    \ tool into GIS systems (e.g. Google Maps)"
-  functionalBlock: Production
-  id: TMFC014
   maintainers:
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
-  - email: adam.tlemsani@cityfibre.com
-    name: Adam Tlemsani
-  managementFunction: []
-  name: LocationManagement
+    - name: Tassos Sarantis
+      email: Anastasios.sarantis@cityfibre.com
+    - name: Adam Tlemsani
+      email: adam.tlemsani@cityfibre.com
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
-  publicationDate: 2023-08-18 00:00:00+00:00
+    - name: Gaetano Biancardi
+      email: gaetano.biancardi@accenture.com
+    - name: Tassos Sarantis
+      email: Anastasios.sarantis@cityfibre.com
+  coreFunction:
+    exposedAPIs:
+      - name: GeographicAddressManagement
+        id: TMF673
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+        implementation: /{{.Release.Name}}-GeographicAddressManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4/docs
+        port: 8080
+        resources:
+          - geographicAddressValidation:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+          - geographicAddress:
+              - GET
+              - GET /id
+          - geographicSubAddress:
+              - GET
+              - GET /id
+        required: true
+      - name: GeographicSiteManagement
+        id: TMF674
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-GeographicSiteManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs
+        port: 8080
+        resources:
+          - geographicSite:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+        required: true
+      - name: GeographicLocation
+      - id: TMF675
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-GeographicLocation
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4/docs
+        port: 8080
+        resources:
+          - geographicLocation:
+              - GET
+              - GET /id
+              - POST
+              - PATCH
+              - DELETE
+        required: true
+      - name: ProcessFlowManagement
+        id: TMF701
+        version: 4
+        specification: >-
+          ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-ProcessFlowManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+        port: 8080
+        resources:
+          - processFlow:
+              - POST
+              - GET
+              - GET /id
+              - DELETE
+          - taskFlow:
+              - PATCH
+              - GET
+              - GET /id
+        required: false
+      - name: Event
+        id: TMF688
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+        implementation: /{{.Release.Name}}-PromotionManagement
+        apitype: openapi
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+        port: 8080
+        resources:
+          - listener:
+              - POST
+          - hub:
+              - POST
+              - DELETE
+        required: false
+    publishedEvents:
+      - name: GeographicAddressManagement
+        id: TMF673
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+        hub: /{{.Release.Name}}-GeographicAddressManagement/hub
+        implementation: /{{.Release.Name}}-GeographicAddressManagement
+        apitype: openapi
+        port: 8080
+        resources:
+          - geographicAddressValidation:
+              - geographicAddressValidationStateChangeEvent
+      - name: GeographicSiteManagement
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+        hub: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/hub
+        implementation: /{{.Release.Name}}-GeographicSiteManagementEvent
+        apitype: openapi
+        port: 8080
+        resources:
+          - geographicSiteManagement:
+              - geographicSiteAttributeValueChangeEvent
+              - geographicSiteCreateEvent
+              - geographicSiteDeleteEvent
+              - geographicSiteStatusChangeEvent
+      - name: GeographicLocation
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+        hub: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/hub
+        implementation: /{{.Release.Name}}-GeographicLocationEvent
+        apitype: openapi
+        port: 80
+        resources:
+          - geographicLocation:
+              - geographicLocationAttributeValueChangeEvent
+              - geographicLocationCreateEvent
+              - geographicLocationDeleteEvent
+    subscribedEvents: null
+    dependentAPIs:
+      - name: PartyManagement
+        id: TMF632
+        version: 4
+        specification: >-
+          https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-Party-v4.0.0.swagger.json
+        apitype: openapi
+        implementation: /{{.Release.Name}}-PartyManagement
+        path: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4
+        developerUI: >-
+          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/v4/docs
+        port: 8080
+        resources:
+          - individual:
+              - GET
+              - GET /id
+          - organization:
+              - GET
+              - GET /id
+        required: false
+      - name: GeographicSiteManagement
+        id: TMF674
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF674_GeographicSite/blob/master/TMF674-GeographicSite-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - geographicSite:
+              - GET
+              - GET /id
+      - name: Event
+        id: TMF688
+        version: 4
+        specification: >-
+          https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+        apitype: openapi
+        resources:
+          - event:
+              - GET
+              - GET /id
+        required: false
   securityFunction: []
+  managementFunction: []
+  id: TMFC014
+  name: LocationManagement
+  functionalBlock: Production
+  publicationDate: 2023-08-18T00:00:00.000Z
   status: specified
   version: 1.1.1
+  description: >-
+    The Location Management Component  allows easy reference to geographic
+    places important to other entities, where a geographic place is an entity
+    that can answer the question “where?” . This component could  be a facade
+    tool into GIS systems (e.g. Google Maps)
