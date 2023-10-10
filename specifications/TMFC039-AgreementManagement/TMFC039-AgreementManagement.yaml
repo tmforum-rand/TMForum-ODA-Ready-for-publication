@@ -3,227 +3,222 @@ kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
-  maintainers:
-    - name: Gaetano Biancardi
-      email: gaetano.biancardi@accenture.com
-  owners:
-    - name: Gaetano Biancardi
-      email: gaetano.biancardi@accenture.com
   coreFunction:
-    exposedAPIs:
-      - name: AgreementManagement
-        id: TMF651
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
-        implementation: /{{.Release.Name}}- agreemngtapi
-        apitype: openapi
-        path: >-
-          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AgreementManagement/v4
-        developerUI: >-
-          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AgreementManagement/v4/docs
-        port: 8080
-        resources:
-          - agreement:
-              - GET
-              - GET/id
-              - POST
-              - PATCH/id
-              - DELETE/id
-          - agreementSpecification:
-              - GET
-              - GET/id
-              - POST
-              - PATCH/id
-              - DELETE/id
-        required: true
-      - name: ProcessFlowManagement
-        id: TMF701
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlowManagement/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
-        implementation: /{{.Release.Name}}-procflowapi
-        apitype: openapi
-        path: >-
-          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
-        developerUI: >-
-          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
-        port: 8080
-        resources:
-          - processFlow:
-              - POST
-              - GET
-              - GET /id
-              - DELETE
-          - taskFlow:
-              - PATCH
-              - GET
-              - GET /id
-        required: false
-      - name: Event
-        id: TMF688
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
-        implementation: /{{.Release.Name}}-PromotionManagement
-        apitype: openapi
-        path: >-
-          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
-        developerUI: >-
-          /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
-        port: 8080
-        resources:
-          - listener:
-              - POST
-          - hub:
-              - POST
-              - DELETE
-        required: false
-    publishedEvents:
-      - name: userRole
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
-        implementation: /{{.Release.Name}}-agreemngtapi
-        apitype: openapi
-        port: 80
-        resources:
-          agreement:
-            - agreementCreateEvent
-            - agreementAttributeValueChangeEvent
-            - agreementStateChangeEvent
-            - agreementSpecificationCreateEvent
-            - agreementSpecificationAttributeValueChangeEvent
-    subscribedEvents:
-      - name: PartyManagement
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
-        implementation: /{{.Release.Name}}-PartyManagement
-        apitype: openapi
-        port: 80
-        resources:
-          party:
-            - individualDeleteEvent
-            - organizationDeleteEvent
     dependentAPIs:
-      - name: PartyManagement
-        id: TMF632
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
-        apitype: openapi
-        resources:
-          - individual:
-              - GET
-              - GET/id
-          - organization:
-              - GET
-              - GET/id
-        required: true
-      - name: UserRolesandPermissions
-        id: TMF672
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesandPermissions/master/TMF672-UserRolesandPermissions-v4.0.0.swagger.json
-        apitype: openapi
-        resources:
-          - permission:
-              - GET
-              - GET/id
-          - userRole:
-              - GET
-              - GET/id
-        required: true
-      - name: PartyRoleManagement
-        id: TMF669
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRoleManagement/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
-        apitype: openapi
-        resources:
-          - partyRole:
-              - GET
-              - GET/id
-        required: false
-      - name: ProductCatalogManagement
-        id: TMF620
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalogManagement/master/TMF620-ProductCatalogManagement-v4.0.0.swagger.json
-        apitype: openapi
-        resources:
-          - productOffering:
-              - GET
-              - GET/id
-          - productOfferingPrice:
-              - GET
-              - GET/id
-        required: false
-      - name: ProductInventory
-        id: TMF637
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF620-ProductInventory-v4.0.0.swagger.json
-        apitype: openapi
-        resources:
-          - product:
-              - GET
-              - GET/id
-        required: false
-      - name: DocumentManagement
-        id: TMF667
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF667_DocumentManagement/master/TMF667-DocumentManagement-v4.0.0.swagger.json
-        apitype: openapi
-        resources:
-          - document:
-              - GET
-              - GET/id
-        required: false
-      - name: ProcessFlowManagement
-        id: TMF701
-        version: 4
-        specification: >-
-          https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
-        apitype: openapi
-        resources:
-          - processFlow:
-              - POST
-              - GET
-              - GET /id
-              - DELETE
-          - taskFlow:
-              - PATCH
-              - GET
-              - GET /id
-        required: false
-      - name: Event
-        id: TMF688
-        version: 4
-        specification: >-
-          https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
-        apitype: openapi
-        resources:
-          - event:
-              - GET
-              - GET /id
-        required: false
-  securityFunction: []
-  managementFunction: []
-  id: TMFC039
-  name: AgreementManagement
+    - apitype: openapi
+      id: TMF632
+      name: PartyManagement
+      required: true
+      resources:
+      - individual:
+        - GET
+        - GET/id
+      - organization:
+        - GET
+        - GET/id
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+      version: 4
+    - apitype: openapi
+      id: TMF672
+      name: UserRolesandPermissions
+      required: true
+      resources:
+      - permission:
+        - GET
+        - GET/id
+      - userRole:
+        - GET
+        - GET/id
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesandPermissions/master/TMF672-UserRolesandPermissions-v4.0.0.swagger.json
+      version: 4
+    - apitype: openapi
+      id: TMF669
+      name: PartyRoleManagement
+      required: false
+      resources:
+      - partyRole:
+        - GET
+        - GET/id
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRoleManagement/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+      version: 4
+    - apitype: openapi
+      id: TMF620
+      name: ProductCatalogManagement
+      required: false
+      resources:
+      - productOffering:
+        - GET
+        - GET/id
+      - productOfferingPrice:
+        - GET
+        - GET/id
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalogManagement/master/TMF620-ProductCatalogManagement-v4.0.0.swagger.json
+      version: 4
+    - apitype: openapi
+      id: TMF637
+      name: ProductInventory
+      required: false
+      resources:
+      - product:
+        - GET
+        - GET/id
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF637_ProductInventory/master/TMF620-ProductInventory-v4.0.0.swagger.json
+      version: 4
+    - apitype: openapi
+      id: TMF667
+      name: DocumentManagement
+      required: false
+      resources:
+      - document:
+        - GET
+        - GET/id
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF667_DocumentManagement/master/TMF667-DocumentManagement-v4.0.0.swagger.json
+      version: 4
+    - apitype: openapi
+      id: TMF701
+      name: ProcessFlowManagement
+      required: false
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      version: 4
+    - apitype: openapi
+      id: TMF688
+      name: Event
+      required: false
+      resources:
+      - event:
+        - GET
+        - GET /id
+      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+      version: 4
+    exposedAPIs:
+    - apitype: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AgreementManagement/v4/docs
+      id: TMF651
+      implementation: /{{.Release.Name}}- agreemngtapi
+      name: AgreementManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AgreementManagement/v4
+      port: 8080
+      required: true
+      resources:
+      - agreement:
+        - GET
+        - GET/id
+        - POST
+        - PATCH/id
+        - DELETE/id
+      - agreementSpecification:
+        - GET
+        - GET/id
+        - POST
+        - PATCH/id
+        - DELETE/id
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
+      version: 4
+    - apitype: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+      id: TMF701
+      implementation: /{{.Release.Name}}-procflowapi
+      name: ProcessFlowManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+      port: 8080
+      required: false
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlowManagement/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+      version: 4
+    - apitype: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+      id: TMF688
+      implementation: /{{.Release.Name}}-PromotionManagement
+      name: Event
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+      port: 8080
+      required: false
+      resources:
+      - listener:
+        - POST
+      - hub:
+        - POST
+        - DELETE
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+      version: 4
+    publishedEvents:
+    - apitype: openapi
+      implementation: /{{.Release.Name}}-agreemngtapi
+      name: userRole
+      port: 80
+      resources:
+        agreement:
+        - agreementCreateEvent
+        - agreementAttributeValueChangeEvent
+        - agreementStateChangeEvent
+        - agreementSpecificationCreateEvent
+        - agreementSpecificationAttributeValueChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
+    subscribedEvents:
+    - apitype: openapi
+      implementation: /{{.Release.Name}}-PartyManagement
+      name: PartyManagement
+      port: 80
+      resources:
+        party:
+        - individualDeleteEvent
+        - organizationDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+  description: Agreement Management component is responsible for creating, storing,
+    editing, and tracking agreed  arrangements with related terms and conditions over
+    a lifecycle. The component manages offers, records acceptance, and associated
+    considerations and intentions to establish agreements as legally binding. As well
+    this components provides workfows and templates that facilitates collaboration,
+    communication and negotiation of agreements between parties, and administers the
+    specificities related to translate  agreements into contracts, when it is required.
+    It provides a secure storage, version control, compliance management, and renewal
+    notifications for agreements.
   functionalBlock: CoreCommerce
-  publicationDate: 2023-08-18T00:00:00.000Z
+  id: TMFC039
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  name: AgreementManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: 2023-08-18 00:00:00+00:00
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
+      name: partyrole
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      port: 8080
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
   status: specified
   version: 1.1.0
-  description: >-
-    Agreement Management component is responsible for creating, storing,
-    editing, and tracking agreed  arrangements with related terms and conditions
-    over a lifecycle. The component manages offers, records acceptance, and
-    associated considerations and intentions to establish agreements as legally
-    binding. As well this components provides workfows and templates that
-    facilitates collaboration, communication and negotiation of agreements
-    between parties, and administers the specificities related to translate 
-    agreements into contracts, when it is required. It provides a secure
-    storage, version control, compliance management, and renewal notifications
-    for agreements.

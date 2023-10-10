@@ -3,24 +3,39 @@ kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
-  maintainers:
-    - name: Hugo Vaughan
-      email: hvaughan@tmforum.org
-  owners:
-    - name: Hugo Vaughan
-      email: hvaughan@tmforum.org
   coreFunction: []
-  securityFunction: []
-  managementFunction: []
-  id: TMFC011
-  name: ResourceOrderManagement
+  description: Resource Order Management Component manages the end-to-end lifecycle
+    of a resource  order request. This includes validating resource availability as
+    well as the  resource order request. Other functionality includes resource order
+    assurance,  resource order decomposition and resource order tracking, along with
+    orchestrating  the activation and the test and turn-up processes.
   functionalBlock: Production
-  publicationDate: 2023-08-18T00:00:00.000Z
+  id: TMFC011
+  maintainers:
+  - email: hvaughan@tmforum.org
+    name: Hugo Vaughan
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  name: ResourceOrderManagement
+  owners:
+  - email: hvaughan@tmforum.org
+    name: Hugo Vaughan
+  publicationDate: 2023-08-18 00:00:00+00:00
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
+      name: partyrole
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      port: 8080
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
   status: Pre-production
   version: 1.0.1
-  description: >-
-    Resource Order Management Component manages the end-to-end lifecycle of a resource 
-    order request. This includes validating resource availability as well as the 
-    resource order request. Other functionality includes resource order assurance, 
-    resource order decomposition and resource order tracking, along with orchestrating 
-    the activation and the test and turn-up processes.
