@@ -1,0 +1,120 @@
+apiVersion: oda.tmforum.org/v1beta2
+coreFunction:
+  dependantAPIs:
+  - apitype: openapi
+    id: TMF688
+    isRequired: false
+    name: EventManagement
+    resources:
+    - hub:
+      - GET
+      - POST
+      - GET /id
+      - DELETE /id
+    specification: https://github.com/tmforum-apis/TMF688-EventManagement/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
+    version: 4.0
+  exposedAPIs:
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4/docs
+    id: TMF688
+    implementation: /{{.Release.Name}}-EventManagement
+    isRequired: true
+    name: EventManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4
+    port: 8080
+    resources:
+    - topic:
+      - GET
+      - POST
+      - GET /id
+      - PATCH /id
+      - DELETE /id
+    - topic/id/event:
+      - POST
+    - topic/id/queryStore:
+      - GET
+    - topic/id/hub:
+      - GET
+      - POST
+      - GET /id
+      - PATCH /id
+      - DELETE /id
+    - topic/id/importJob:
+      - GET
+      - POST
+      - GET /id
+      - PATCH /id
+      - DELETE /id
+    - topic/id/exportJob:
+      - GET
+      - POST
+      - GET /id
+      - PATCH /id
+      - DELETE /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF688-EventManagement/master/TMF688-EventManagement-v4.0.0.swagger.json
+    version: 4.0
+  publishedEvents:
+  - apitype: openapi
+    call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/call-back
+    implementation: /{{.Release.Name}}-EventManagement
+    name: EventManagement
+    port: 80
+    resources:
+    - EventManagement:
+      - topicCreateEvent
+      - TopicAttributeValueChangeEvent
+      - TopicStateChangeEvent
+      - TopicDeleteEvent
+      - HubCreateEvent
+      - HubAttributeValueChangeEvent
+      - HubStateChangeEvent
+      - HubDeleteEvent
+    specification: https://github.com/tmforum-apis/TMF688-EventManagement/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
+  subscribedEvents: []
+kind: component
+managementFunction: []
+metadata:
+  name: components.oda.tmforum.org
+reportingFunction: []
+securityFunction: []
+spec:
+  componenentDescription: Event Management component is a messaging management component
+    that is responsible for processing events as they happen from components. Processing
+    of record of activities include modelling event messages, syntax validation and
+    formatting of event messages and sending/receiving messages between components
+    (consumer/producer). Event Management component supports different patterns of
+    usage, including Event notification (subscription), Event-sourcing (representational
+    state changes) and Event-carried state transfer (including data needed to perform
+    further processing). Event Management component should include functionality providing
+    a centralised CQRS queryStore for all components that implement event-sourcing
+    with event carrier state transfer.
+  componentFunctionalBlock: DecouplingAndIntegration
+  componentId: TMFC019
+  componentName: EventManagement
+  componentPublicationDate: 2023-08-18
+  componentStatus: specified
+  componentVersion: 1.1.1
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  owners:
+  - email: koen.peeters@ciminko.lu
+    name: Loen Peeters
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
+      name: partyrole
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      port: 8080
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json

@@ -1,0 +1,307 @@
+apiVersion: oda.tmforum.org/v1beta2
+coreFunction:
+  dependantAPIs:
+  - apitype: openapi
+    id: TMF634
+    isRequired: false
+    name: ResourceCatalog
+    resources:
+    - resourceSpecification:
+      - GET
+      - GET /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF688-ResourceCatalog/master/TMF688-ResourceCatalog-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF669
+    isRequired: false
+    name: PartyRoleManagement
+    resources:
+    - PartyRole:
+      - GET
+      - GET /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF632
+    isRequired: false
+    name: PartyManagement
+    resources:
+    - individual:
+      - GET
+      - GET /id
+    - organization:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF662
+    isRequired: false
+    name: EntityCatalogManagement
+    resources:
+    - 'entitySpecification:':
+      - GET
+      - GET /id
+    - associationSpecification:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/master/TMF662-EntityCatalog-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF672
+    name: UserRoleAndPermission
+    resources:
+    - permission:
+      - GET
+      - GET /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRoleAndPermission/master/TMF672-UserRoleAndPermission-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF688
+    isRequired: false
+    name: Event
+    resources:
+    - event:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+    version: 4.0
+  exposedAPIs:
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/v4/docs
+    id: TMF633
+    implementation: /{{.Release.Name}}-TMF633_ServiceCatalog
+    isRequired: true
+    name: ServiceCatalogManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/v4
+    port: 8080
+    resources:
+    - catalog:
+      - GET
+      - GET /id
+      - POST
+      - PATCH
+      - DELETE
+    - category:
+      - GET
+      - GET /id
+      - POST
+      - PATCH
+      - DELETE
+    - serviceSpecification:
+      - GET
+      - GET /id
+      - POST
+      - PATCH
+      - DELETE
+    - serviceCandidate:
+      - GET
+      - GET /id
+      - POST
+      - PATCH
+      - DELETE
+    - exportJob:
+      - POST
+      - GET
+      - GET /id
+      - DELETE
+    - importJob:
+      - POST
+      - GET
+      - GET /id
+      - DELETE
+    specification: https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/v4/docs
+    id: TMF633
+    implementation: /{{.Release.Name}}-ServiceQualityManagement
+    isRequired: true
+    name: ServiceQualityManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/v4
+    port: 8080
+    resources:
+    - serviceLevelSpecification:
+      - GET
+      - GET/id
+      - POST
+      - PATCH
+      - DELETE
+    - serviceLevelObjective:
+      - GET
+      - GET/id
+      - POST
+      - PATCH
+      - DELETE
+    - serviceLevelSpecParameter:
+      - GET
+      - GET/id
+      - POST
+      - PATCH
+      - DELETE
+    specification: https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/master/TMF657-ServiceQualityManagement-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+    id: TMF701
+    implementation: /{{.Release.Name}}-ProcessFlowManagement
+    isRequired: false
+    name: ProcessFlowManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+    port: 8080
+    resources:
+    - processFlow:
+      - POST
+      - GET
+      - GET /id
+      - DELETE
+    - taskFlow:
+      - PATCH
+      - GET
+      - GET /id
+    specification: ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+    id: TMF688
+    implementation: /{{.Release.Name}}-PromotionManagement
+    isRequired: false
+    name: Event
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+    port: 8080
+    resources:
+    - listener:
+      - POST
+    - hub:
+      - POST
+      - DELETE
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+    version: 4.0
+  publishedEvents:
+  - -resources:
+      ServiceCatalogManagement:
+      - serviceSpecificationCreateEvent
+      - serviceSpecificationChangeEvent
+      - serviceSpecificationDeleteEvent
+      - serviceCategoryCreateEvent
+      - serviceCategoryChangeEvent
+      - serviceCategoryDeleteEvent
+      - serviceCandidateCreateEvent
+      - serviceCandidateChangeEvent
+      - serviceCandidateDeleteEvent
+      - serviceCatalogCreateEvent
+      - serviceCatalogChangeEvent
+      - serviceCatalogDeleteEvent
+      - serviceCatalogBatchEvent
+    apitype: openapi
+    hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/hub
+    implementation: /{{.Release.Name}}-ServiceCatalog
+    name: ServiceCatalogManagement
+    port: 80
+    specification: https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+  - -resources:
+      ServiceQuality:
+      - serviceLevelObjectiveCreateEvent
+      - serviceLevelObjectiveChangeEvent
+      - serviceLevelObjectiveAttributeValueChangeEvent
+      - serviceLevelSpecificationCreateEvent
+      - serviceLevelSpecificationDeleteEvent
+      - serviceLevelSpecificationAttributeValueChangeEvent
+    apitype: openapi
+    hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/hub
+    implementation: /{{.Release.Name}}-ServiceQualityManagement
+    name: ServiceQualityManagement
+    port: 80
+    specification: https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/master/TMF657-ServiceQualityManagement-v4.0.0.swagger.json
+  - -resources:
+      ProcessFlowManagement:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+    apitype: openapi
+    hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+    implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    name: ProcessFlowManagement
+    port: 80
+    specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+  subscribedEvents:
+  - apitype: openapi
+    call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/call-back
+    implementation: /{{.Release.Name}}-ResourceCatalog
+    name: ResourceCatalogManagement
+    port: 80
+    resources:
+    - ResourceCatalog:
+      - resourceSpecificationCreateEvent
+      - resourceSpecificationChangeEvent
+      - resourceSpecificationDeleteEvent
+    specification: https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
+  - apitype: openapi
+    call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EntityCatalog/call-back
+    implementation: /{{.Release.Name}}-EntityCatalog
+    name: EntityCatalogManagement
+    port: 80
+    resources:
+    - ResourceCatalog:
+      - entitySpecificationCreateEvent
+      - entitySpecificationAttributeValueChangeEvent
+      - entitySpecificationChangeEvent
+      - entitySpecificationDeleteEvent
+    specification: https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/master/TMF662-EntityCatalog-v4.0.0.swagger.json
+kind: component
+managementFunction: []
+metadata:
+  name: components.oda.tmforum.org
+reportingFunction: []
+securityFunction: []
+spec:
+  componenentDescription: "\tService Catalog Management component is responsible for\
+    \ organizing the collection of service specifications that identify and define\
+    \ all requirements of a service that can be performed. Service Catalog Management\
+    \ component has the functionality that enable present a customer-facing view so\
+    \ users are able to search and select services they need, as well as a technical\
+    \ view to enable define and setup what's needed to deliver service specifications\
+    \ (Customer Facing Service Specifications (CFSSs) and Resource Facing Service\
+    \ Specifications (RFSSs)) contained in the service catalog. Service Catalog Management\
+    \ component has functionalities that include creation of new service specifications,\
+    \ managing service specifications, administering the lifecycle of services, describing\
+    \ relationships between service specification attributes, reporting on service\
+    \ specification and their changes, and facilitating easy and systematic indexing\
+    \ and access to services, as well as facilitate automating the service delivery\
+    \ process."
+  componentFunctionalBlock: Production
+  componentId: TMFC006
+  componentName: ServiceCatalogManagement
+  componentPublicationDate: 2023-08-18
+  componentStatus: specified
+  componentVersion: 1.1.1
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
+      name: partyrole
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      port: 8080
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json

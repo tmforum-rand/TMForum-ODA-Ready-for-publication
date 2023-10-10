@@ -1,8 +1,23 @@
 apiVersion: oda.tmforum.org/v1beta2
 kind: component
+managementFunction: []
 metadata:
   name: components.oda.tmforum.org
+reportingFunction: []
+securityFunction: []
 spec:
+  componenentDescription: Service Performance Management will monitor, analyze, and
+    report on the end-end service performance. This can include a real-time, end-to-end
+    view to ensure that each service is functioning correctly as well as a historical
+    view. These functions build on the Resource Performance data and active end-end
+    service performance test data to provide a view of a service. The component provides
+    a key input to determine the Quality of Service.
+  componentFunctionalBlock: IntelligenceManagement
+  componentId: TMFC037
+  componentName: ServicePerformanceManagement
+  componentPublicationDate: 2023-08-18
+  componentStatus: specified
+  componentVersion: 1.1.0
   coreFunction:
     PublishedEvent:
     - -resources:
@@ -109,14 +124,14 @@ spec:
         - taskFlowCreateEvent
         - taskFlowStateChangeEvent
       specification: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
-    dependentAPIs:
+    dependantAPIs:
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4/docs
       id: TMF628
       implementation: /{{.Release.Name}}-PerformanceManagement
+      isRequired: false
       name: PerformanceManagement
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4
       port: 8080
-      required: false
       resources:
       - measurementCollectionJob*:
         - POST
@@ -149,10 +164,10 @@ spec:
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
       id: TMF639
       implementation: /{{.Release.Name}}-ResourceInventory
+      isRequired: false
       name: ResourceInventory
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4
       port: 8080
-      required: false
       resources:
       - resource:
         - GET
@@ -161,10 +176,10 @@ spec:
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
       id: TMF638
       implementation: /{{.Release.Name}}-ResourceInventory
+      isRequired: false
       name: ServiceInventory
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4
       port: 8080
-      required: false
       resources:
       - service:
         - GET
@@ -173,10 +188,10 @@ spec:
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagementt/v4/docs
       id: TMF673
       implementation: /{{.Release.Name}}-GeographicAddressManagement
+      isRequired: false
       name: GeographicAddressManagement
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/v4
       port: 8080
-      required: false
       resources:
       - geographicAddress:
         - GET
@@ -188,10 +203,10 @@ spec:
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs
       id: TMF674
       implementation: /{{.Release.Name}}-GeographicSiteManagement
+      isRequired: false
       name: GeographicSiteManagement
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4
       port: 8080
-      required: false
       resources:
       - geographicSite:
         - GET
@@ -200,10 +215,10 @@ spec:
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/v4/docs
       id: TMF657
       implementation: /{{.Release.Name}}-ServiceQualityManagement
+      isRequired: false
       name: ServiceQualityManagement
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/v4
       port: 8080
-      required: false
       resources:
       - serviceLevelObjective:
         - GET
@@ -214,18 +229,18 @@ spec:
       specification: https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/master/TMF675-ServiceQualityManagement-v4.0.0.swagger.json
     - apitype: openapi
       id: TMF688
+      isRequired: false
       name: Event
-      required: false
       resources:
       - event:
         - GET
         - GET /id
       specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
-      version: 4
+      version: 4.0
     - apitype: openapi
       id: TMF701
+      isRequired: false
       name: ProcessFlowManagement
-      required: false
       resources:
       - processFlow:
         - POST
@@ -237,15 +252,15 @@ spec:
         - GET
         - GET /id
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
-      version: 4
+      version: 4.0
     exposedAPIs:
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4/docs
       id: TMF628
       implementation: /{{.Release.Name}}-PerformanceManagement
+      isRequired: true
       name: PerformanceManagement
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/v4
       port: 8080
-      required: true
       resources:
       - measurementCollectionJob*:
         - POST
@@ -275,14 +290,14 @@ spec:
         - GET
         - GET /id
       specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
-      version: 4
+      version: 4.0
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThresholdManagement/v4/docs
       id: TMF649
       implementation: /{{.Release.Name}}-PerformanceManagement
+      isRequired: true
       name: PerformanceThresholdManagement
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThresholdManagement/v4
       port: 8080
-      required: true
       resources:
       - threshold:
         - POST
@@ -297,14 +312,14 @@ spec:
         - PATCH /id
         - DELETE /id
       specification: https://github.com/tmforum-apis/TMF649_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
-      version: 4
+      version: 4.0
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/v4/docs
       id: TMF642
       implementation: /{{.Release.Name}}-AlarmManagement
+      isRequired: false
       name: AlarmManagement
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/v4
       port: 8080
-      required: false
       resources:
       - alarm:
         - POST
@@ -317,10 +332,10 @@ spec:
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
       id: TMF701
       implementation: /{{.Release.Name}}-procflowapi
+      isRequired: false
       name: ProcessFlowManagement
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
       port: 8080
-      required: false
       resources:
       - processFlow:
         - POST
@@ -337,10 +352,10 @@ spec:
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
       id: TMF688
       implementation: /{{.Release.Name}}-PromotionManagement
+      isRequired: false
       name: Event
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
       port: 8080
-      required: false
       resources:
       - listener:
         - POST
@@ -349,14 +364,6 @@ spec:
         - DELETE
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
       version: 4
-  description: Service Performance Management will monitor, analyze, and report on
-    the end-end service performance. This can include a real-time, end-to-end view
-    to ensure that each service is functioning correctly as well as a historical view.
-    These functions build on the Resource Performance data and active end-end service
-    performance test data to provide a view of a service. The component provides a
-    key input to determine the Quality of Service.
-  functionalBlock: IntelligenceManagement
-  id: TMFC037
   maintainers:
   - email: milind.2.bhagwat@bt.com
     name: Milind Bhagwat
@@ -367,11 +374,9 @@ spec:
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
-  name: ServicePerformanceManagement
   owners:
   - email: milind.2.bhagwat@bt.com
     name: Milind Bhagwat
-  publicationDate: 2023-08-18 00:00:00+00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
@@ -383,5 +388,3 @@ spec:
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
-  status: specified
-  version: 1.1.0
