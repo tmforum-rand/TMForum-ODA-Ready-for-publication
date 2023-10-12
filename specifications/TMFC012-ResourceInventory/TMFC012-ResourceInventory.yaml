@@ -205,7 +205,7 @@ spec:
         - GET
         - GET /id
         - POST
-      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/Resource_Pool_.admin.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF685-ResourcePool-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs

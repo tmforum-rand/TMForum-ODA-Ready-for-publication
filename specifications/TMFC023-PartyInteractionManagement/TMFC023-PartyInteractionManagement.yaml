@@ -93,7 +93,7 @@ spec:
         - POST
         - PATCH
         - DELETE
-      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/partyInteraction_TMF_v1.0.0Review2.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF683-PartyInteraction-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
