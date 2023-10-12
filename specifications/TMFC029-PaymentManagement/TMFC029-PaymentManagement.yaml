@@ -127,7 +127,7 @@ spec:
         - POST
         - PATCH
         - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF670_PaymentMethods/master/TMF670-PaymentMethod-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF670-PaymentMethod-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentManagement/v4/docs
@@ -146,7 +146,7 @@ spec:
         - GET
         - GET /id
         - POST
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF676_PaymentManagement/master/TMF676-Payment-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF676-Payment-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
@@ -166,7 +166,7 @@ spec:
         - PATCH
         - GET
         - GET /id
-      specification: ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF701-ProcessFlow-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
@@ -182,7 +182,7 @@ spec:
       - hub:
         - POST
         - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF671-Promotion-v4.0.0.swagger.json
       version: 4
     publishedEvents:
     - -resources:

@@ -274,7 +274,7 @@ spec:
       - trackingRecord*:
         - GET
         - GET /id
-      specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF628-Performance-v4.0.0.swagger.json
       version: 4
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThresholdManagement/v4/docs
       id: TMF649
@@ -296,7 +296,7 @@ spec:
         - GET /id
         - PATCH /id
         - DELETE /id
-      specification: https://github.com/tmforum-apis/TMF649_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF628-Performance-v4.0.0.swagger.json
       version: 4
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/v4/docs
       id: TMF642
@@ -312,7 +312,7 @@ spec:
         - GET /id
         - PATCH /id
         - DELETE /id
-      specification: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF642-Alarm-v4.0.0.swagger.json
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
       id: TMF701
@@ -331,7 +331,7 @@ spec:
         - PATCH
         - GET
         - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlowManagement/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
@@ -347,7 +347,7 @@ spec:
       - hub:
         - POST
         - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF671-Promotion-v4.0.0.swagger.json
       version: 4
   description: Service Performance Management will monitor, analyze, and report on
     the end-end service performance. This can include a real-time, end-to-end view

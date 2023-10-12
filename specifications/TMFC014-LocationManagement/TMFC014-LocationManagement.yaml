@@ -62,7 +62,7 @@ spec:
       - geographicSubAddress:
         - GET
         - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF673-GeographicAddress-v4.0.1.swagger.json
       version: 4
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/v4/docs
       id: TMF674
@@ -78,12 +78,12 @@ spec:
         - POST
         - PATCH
         - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF674-GeographicSite-v4.0.0.swagger.json
       version: 4
-    - name: GeographicLocation
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4/docs
       id: TMF675
       implementation: /{{.Release.Name}}-GeographicLocation
+      name: GeographicLocation
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/v4
       port: 8080
       required: true
@@ -94,7 +94,7 @@ spec:
         - POST
         - PATCH
         - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF675-GeographicLocation-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
@@ -114,7 +114,7 @@ spec:
         - PATCH
         - GET
         - GET /id
-      specification: ttps://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF701-ProcessFlow-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
@@ -130,7 +130,7 @@ spec:
       - hub:
         - POST
         - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF671-Promotion-v4.0.0.swagger.json
       version: 4
     publishedEvents:
     - apitype: openapi

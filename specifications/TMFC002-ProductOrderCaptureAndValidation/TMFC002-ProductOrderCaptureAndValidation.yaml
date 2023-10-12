@@ -290,7 +290,7 @@ spec:
         - POST
         - GET
         - GET /id
-      specification: https://github.com/tmforum-apis/TMF622_ProductOrder/blob/master/TMF622-ProductOrder-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF622-ProductOrder-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       id: TMF648
@@ -304,7 +304,7 @@ spec:
         - GET /id
         - PATCH
         - DELETE
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF648-QuoteManagement-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       id: TMF663
@@ -318,7 +318,7 @@ spec:
         - GET /id
         - PATCH
         - DELETE
-      specification: https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v2.0.4.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF663-ShoppingCart-v2.0.4.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
@@ -338,7 +338,7 @@ spec:
         - PATCH
         - GET
         - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF701-ProcessFlow-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4/docs
@@ -354,7 +354,7 @@ spec:
       - hub:
         - POST
         - DELETE
-      specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF688-Event-v4.0.0.swagger.json
       version: 4
     publishedEvents:
     - -resources:
