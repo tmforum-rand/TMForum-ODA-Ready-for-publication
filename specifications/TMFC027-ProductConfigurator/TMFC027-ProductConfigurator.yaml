@@ -239,7 +239,7 @@ spec:
         - POST
         - PATCH/id
         - DELETE
-      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF679-ProductOfferingQualificationManagement-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF679-ProductOfferingQualification-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
@@ -255,7 +255,7 @@ spec:
       - hub:
         - POST
         - DELETE
-      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF671-Promotion-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF671-Promotion-v4.1.0.swagger.json
       version: 4
     publishedEvents:
     - apitype: openapi

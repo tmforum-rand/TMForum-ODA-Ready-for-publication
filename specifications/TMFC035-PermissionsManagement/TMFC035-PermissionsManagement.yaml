@@ -32,7 +32,7 @@ spec:
         - PATCH
         - GET
         - GET /id
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
       version: 4
     - apitype: openapi
       id: TMF688
@@ -83,7 +83,7 @@ spec:
         - POST
         - PATCH/id
         - DELETE/id
-      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF672-PartyRoleManagement-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF672-PartyRole-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
@@ -99,7 +99,7 @@ spec:
       - hub:
         - POST
         - DELETE
-      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF671-Promotion-v4.0.0.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF671-Promotion-v4.1.0.swagger.json
       version: 4
     publishedEvents:
     - apitype: openapi
@@ -154,7 +154,7 @@ spec:
         - processFlowStateChangeEvent
         - taskFlowCreateEvent
         - taskFlowStateChangeEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
   description: 'Party Roles & Permissions Management component aims to manage and
     expose, roles and related permissions. Permissions Management component allows
     to: create, modify and delete permissions. delegate permissions. When a specific
