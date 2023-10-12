@@ -318,7 +318,7 @@ spec:
         - GET /id
         - PATCH
         - DELETE
-      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF663-ShoppingCart-v2.0.4.swagger.json
+      specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF663-ShoppingCart-v4.0.0.swagger.json
       version: 4
     - apitype: openapi
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
@@ -396,7 +396,7 @@ spec:
       implementation: /{{.Release.Name}}-ShoppingCartEvent
       name: ShoppingCart
       port: 80
-      specification: https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v2.0.4.swagger.json
+      specification: https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v4.0.0.swagger.json
     - -resources:
         ProcessFlowManagement:
         - processFlowCreateEvent
