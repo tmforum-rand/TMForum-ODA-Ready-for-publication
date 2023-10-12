@@ -187,7 +187,7 @@ spec:
       - userRoleAttributeValueChangeEvent
       - userRoleStateChangeEvent
       - userRoleDeleteEvent
-      specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRoleandPermission-v4.0.0.swagger.json
+      specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
   description: The billing account management component aims to provide all the needed
     functionalities to create, configure and modify billing accounts. BAM component
     has the goal to support and handle the following capabilities/ functionalities.
