@@ -172,6 +172,7 @@ spec:
     - apitype: openapi
       id: TMF688
       name: Event
+      port: 8080
       required: false
       resources:
       - listener:
