@@ -278,6 +278,7 @@ spec:
       id: TMF622
       implementation: /{{.Release.Name}}-ProductOrder
       name: ProductOrder
+      port: 8080
       required: true
       resources:
       - productOrder:
@@ -296,6 +297,7 @@ spec:
       id: TMF648
       implementation: /{{.Release.Name}}-QuoteManagement
       name: QuoteManagement
+      port: 8080
       required: false
       resources:
       - Quote:
@@ -310,6 +312,7 @@ spec:
       id: TMF663
       implementation: /{{.Release.Name}}-QuoteManagement
       name: ShoppingCart
+      port: 8080
       required: false
       resources:
       - ShoppingCart:

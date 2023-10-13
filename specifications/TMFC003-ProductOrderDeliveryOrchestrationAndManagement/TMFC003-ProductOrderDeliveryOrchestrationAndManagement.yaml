@@ -8,6 +8,7 @@ spec:
     - apitype: openapi
       id: TMF620
       name: ProductCatalogManagement
+      port: 8080
       required: false
       resources:
       - productSpecification:
@@ -19,6 +20,7 @@ spec:
       id: TMF622
       implementation: /{{.Release.Name}}-ProductOrder
       name: ProductOrder
+      port: 8080
       required: true
       resources:
       - productOrder:
@@ -29,6 +31,7 @@ spec:
     - apitype: openapi
       id: TMF637
       name: ProductInventory
+      port: 8080
       required: false
       resources:
       - product:
@@ -60,6 +63,7 @@ spec:
     - apitype: openapi
       id: TMF633
       name: ServiceCatalogManagement
+      port: 8080
       required: false
       resources:
       - serviceSpecification:
@@ -70,6 +74,7 @@ spec:
     - apitype: openapi
       id: TMF634
       name: ResourceCatalogManagement
+      port: 8080
       required: false
       resources:
       - resourceSpecification:
@@ -93,6 +98,7 @@ spec:
     - apitype: openapi
       id: TMF638
       name: ServiceInventory
+      port: 8080
       required: false
       resources:
       - service:
