@@ -216,15 +216,10 @@ kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
-  componenentDescription: Bill Invoice mgmt. manage the party invoice management.
-    It addresses the invoice formatting, presentation and dispatching to the proper
-    means of communication.
-  componentFunctionalBlock: PartyManagement
-  componentId: TMFC030
-  componentName: BillingaInvoiceManagement
-  componentPublicationDate: 2023-09-27
-  componentStatus: specified
-  componentVersion: 1.0.0
+  description: Bill Invoice mgmt. manage the party invoice management. It addresses
+    the invoice formatting, presentation and dispatching to the proper means of communication.
+  functionalBlock: PartyManagement
+  id: TMFC030
   maintainers:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
@@ -235,9 +230,11 @@ spec:
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
+  name: BillingaInvoiceManagement
   owners:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
+  publicationDate: 2023-09-27
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
@@ -249,3 +246,5 @@ spec:
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
+  status: specified
+  version: 1.0.0
