@@ -1,0 +1,234 @@
+apiVersion: oda.tmforum.org/v1beta2
+coreFunction:
+  dependantAPIs:
+  - apitype: openapi
+    id: TMF632
+    isRequired: true
+    name: PartyManagement
+    resources:
+    - individual:
+      - GET
+      - GET /id
+    - organization:
+      - GET
+      - GET /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF669
+    isRequired: true
+    name: PartyRoleManagement
+    resources:
+    - partyRole:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF672
+    isRequired: true
+    name: UserRolePermissionManagement
+    resources:
+    - permission:
+      - GET
+      - GET /id
+    - userRole:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF701
+    isRequired: false
+    name: ProcessFlowManagement
+    resources:
+    - processFlow:
+      - POST
+      - GET
+      - GET /id
+      - PATCH
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF688
+    isRequired: false
+    name: Event
+    resources:
+    - event:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF688-Event/blob/master/TMF688-Event-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF667
+    isRequired: false
+    name: Document
+    port: 8080
+    resources:
+    - document:
+      - GET
+      - GET /id
+      - POST
+    specification: https://github.com/tmforum-apis/TMF667_Document/blob/master/TMF667-Document-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    id: TMF620
+    isRequired: false
+    name: ProductCatalogManagement
+    resources:
+    - productOffering:
+      - GET
+      - GET /id
+    specification: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+    version: 4.1
+  exposedAPIs:
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PrivacyManagement/v4/docs
+    id: TMF644
+    implementation: /{{.Release.Name}}-PrivacyManagement
+    isRequired: true
+    name: PrivacyManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PrivacyManagement/v4
+    port: 8080
+    resources:
+    - PartyPrivacyProfileSpecification:
+      - GET
+      - GET /id
+      - POST
+      - PATCH /id
+      - DELETE
+    - PartyPrivacyProfile:
+      - GET
+      - GET /id
+      - POST
+      - PATCH /id
+      - DELETE
+    - PartyPrivacyAgreement:
+      - GET
+      - GET /id
+      - POST
+      - PATCH /id
+      - DELETE
+    specification: https://github.com/tmforum-apis/TMF644_Privacy/blob/master/TMF644-Privacy-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4/docs
+    id: TMF701
+    implementation: /{{.Release.Name}}-procmngttapi
+    isRequired: false
+    name: ProcessFlowManagement
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
+    port: 8080
+    resources:
+    - processFlow:
+      - GET
+      - GET /id
+      - POST
+      - DELETE /id
+    - taskFlow:
+      - GET
+      - GET /id
+      - PATCH /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlowManagement/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+    version: 4.0
+  - apitype: openapi
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+    id: TMF688
+    implementation: /{{.Release.Name}}-PromotionManagement
+    isRequired: false
+    name: Event
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+    port: 8080
+    resources:
+    - listener:
+      - POST
+    - hub:
+      - POST
+      - DELETE /id
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+    version: 4.0
+  publishedEvents:
+  - apitype: openapi
+    name: PrivacyManagement
+    port: 8080
+    resources:
+    - PartyPrivacyProfileCreateEvent
+    - PartyPrivacyProfileAttributeValueChangeEvent
+    - PartyPrivacyProfileDeleteEvent
+    - PartyPrivacyProfileStatusChangeEvent
+    - PartyPrivacyProfileSpecificationCreateEvent
+    - PartyPrivacyProfileSpecificationAttributeValueChangeEvent
+    - PartyPrivacyProfileSpecificationDeleteEvent
+    - PartyPrivacyProfileSpecificationStatusChangeEvent
+    - PartyPrivacyAgreementCreateEvent
+    - PartyPrivacyAgreementAttributeValueChangeEvent
+    - PartyPrivacyAgreementDeleteEvent
+    - PartyPrivacyAgreementStatusChangeEvent
+    specification: https://github.com/tmforum-apis/TMF644_Privacy/blob/master/TMF644-Privacy-v4.0.0.swagger.json
+  subscribedEvents:
+  - apitype: openapi
+    name: PartyRoleManagement
+    port: 80
+    resources:
+    - partyRoleDeleteEvent
+    specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+  - apitype: openapi
+    name: UserRolePermissionManagement
+    port: 80
+    resources:
+    - permissionDeleteEvent
+    specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRoleandPermission-v4.0.0.swagger.json
+  - name: PartyManagement
+    port: 80
+    resources:
+    - IndividualDeleteEvent
+    - OrganizationDeleteEvent
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+  - name: ProductCatalogManagement
+    port: 80
+    resources:
+    - ProductOfferingDeleteEvent
+    specification: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+kind: component
+managementFunction: []
+metadata:
+  name: components.oda.tmforum.org
+reportingFunction: []
+securityFunction: []
+spec:
+  componenentDescription: 'The Party Privacy Management component aims to: define
+    the Privacy Policy rules established by the CSP, according to applicable regulations,
+    such as GDPR in Europe, apply these rules to each Party interacting with the CSP
+    and to all of their personnal information and personally identifiable information
+    (PII); register explicit opt-in and opt-out given by Parties regarding the usage
+    of some of their personal information for dedicated purpose, such as marketing.'
+  componentFunctionalBlock: PartyManagement
+  componentId: TMFC022
+  componentName: PartyPrivacyManagement
+  componentPublicationDate: 2023-11-28
+  componentStatus: specified
+  componentVersion: 1.0.0
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  owners:
+  - email: sylvie.demarest@orange.com
+    name: sylvie Demarest
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
+      name: partyrole
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      port: 8080
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
