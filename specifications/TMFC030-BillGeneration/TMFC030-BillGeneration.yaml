@@ -4,7 +4,7 @@ coreFunction:
   - apitype: openapi
     id: TMF666
     isRequired: true
-    name: AccountManagement
+    name: accountManagement
     resources:
     - BillingAccount:
       - GET
@@ -35,7 +35,7 @@ coreFunction:
   - apitype: openapi
     id: TMF632
     isRequired: true
-    name: PartyManagement
+    name: partyManagement
     resources:
     - individual:
       - GET
@@ -48,7 +48,7 @@ coreFunction:
   - apitype: openapi
     id: TMF676
     isRequired: false
-    name: PaymentManagement
+    name: paymentManagement
     port: 8080
     resources:
     - payment:
@@ -64,7 +64,7 @@ coreFunction:
   - apitype: openapi
     id: TMF667
     isRequired: false
-    name: Document
+    name: document
     port: 8080
     resources:
     - document:
@@ -76,7 +76,7 @@ coreFunction:
   - apitype: openapi
     id: TMF637
     isRequired: false
-    name: Productinventory
+    name: productinventory
     port: 8080
     resources:
     - product:
@@ -87,7 +87,7 @@ coreFunction:
   - apitype: openapi
     id: TMF669
     isRequired: true
-    name: PartyRoleManagement
+    name: partyRoleManagement
     resources:
     - PartyRole:
       - GET
@@ -97,7 +97,7 @@ coreFunction:
   - apitype: openapi
     id: TMF672
     isRequired: true
-    name: UserRolePermissionManagement
+    name: userRolePermissionManagement
     resources:
     - permission:
       - GET
@@ -110,7 +110,7 @@ coreFunction:
   - apitype: openapi
     id: TMF701
     isRequired: false
-    name: ProcessFlowManagement
+    name: processFlowManagement
     resources:
     - processFlow:
       - POST
@@ -122,7 +122,7 @@ coreFunction:
   - apitype: openapi
     id: TMF688
     isRequired: false
-    name: Event
+    name: event
     resources:
     - event:
       - GET
@@ -132,10 +132,10 @@ coreFunction:
   exposedAPIs:
   - apitype: openapi
     developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/customerBillManagement/v4/docs
-    id: TMF666
+    id: TMF678
     implementation: /{{.Release.Name}}-CustomerBill
     isRequired: true
-    name: AccountManagement
+    name: customerBillManagement
     path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/customerBillManagement/v4
     port: 8080
     resources:
@@ -147,9 +147,6 @@ coreFunction:
       - GET
       - GET /id
       - PATCH /id
-    - appliedCustomerBillingRate:
-      - GET
-      - GET /id
     specification: 'https://github.com/tmforum-apis/TMF678_CustomerBill/blob/master/TMF678-CustomerBill-v4.0.0.swagger.json#L33 '
     version: 4.0
   - apitype: openapi
@@ -157,7 +154,7 @@ coreFunction:
     id: TMF701
     implementation: /{{.Release.Name}}-procmngttapi
     isRequired: false
-    name: ProcessFlowManagement
+    name: processFlowManagement
     path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/v4
     port: 8080
     resources:
@@ -177,7 +174,7 @@ coreFunction:
     id: TMF688
     implementation: /{{.Release.Name}}-PromotionManagement
     isRequired: false
-    name: Event
+    name: event
     path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
     port: 8080
     resources:
@@ -191,7 +188,7 @@ coreFunction:
   publishedEvents: []
   subscribedEvents:
   - apitype: openapi
-    name: PartyRoleManagement
+    name: partyRoleManagement
     port: 80
     resources:
     - partyRoleCreateEvent
@@ -200,7 +197,7 @@ coreFunction:
     - partyRoleDeleteEvent
     specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
   - apitype: openapi
-    name: UserRolePermissionManagement
+    name: userRolePermissionManagement
     port: 80
     resources:
     - permissionCreateEvent
@@ -213,10 +210,13 @@ coreFunction:
     - userRoleDeleteEvent
     specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRoleandPermission-v4.0.0.swagger.json
 kind: component
+managementFunction: []
 metadata:
   name: components.oda.tmforum.org
+reportingFunction: []
+securityFunction: []
 spec:
-  description: Bill Invoice mgmt. manage the party invoice management. It addresses
+  description: Bill generation mgmt. manage the party invoice management. It addresses
     the invoice formatting, presentation and dispatching to the proper means of communication.
   functionalBlock: PartyManagement
   id: TMFC030
@@ -230,11 +230,11 @@ spec:
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
-  name: BillingaInvoiceManagement
+  name: BillGeneration
   owners:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
-  publicationDate: 2023-09-27
+  publicationDate: 2023-12-18
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
@@ -247,4 +247,4 @@ spec:
       port: 8080
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
   status: specified
-  version: 1.0.0
+  version: 2.0.0
