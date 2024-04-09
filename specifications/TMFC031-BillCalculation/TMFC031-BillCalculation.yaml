@@ -150,12 +150,12 @@ coreFunction:
     specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlowManagement/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
     version: 4.0
   - apitype: openapi
-    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4/docs
+    developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Event/v4/docs
     id: TMF688
-    implementation: /{{.Release.Name}}-PromotionManagement
+    implementation: /{{.Release.Name}}-Event
     isRequired: false
     name: Event
-    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagement/v4
+    path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Event/v4
     port: 8080
     resources:
     - listener:
@@ -163,9 +163,19 @@ coreFunction:
     - hub:
       - POST
       - DELETE /id
-    specification: https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json
+    specification: https://raw.githubusercontent.com/tmforum-apis/TMF688-Event/master/TMF688-Event-v4.0.0.swagger.json
     version: 4.0
-  publishedEvents: []
+  publishedEvents:
+    - apiType: OpenAPI
+      CustomerBill:
+      name: CustomerBill
+      port: 80
+      resources:
+      - CustomerBillCreateEvent
+      - CustomerBillOnDemandCreateEvent
+      - CustomerBillOnDemandStateChangeEvent
+      - CustomerBillStateChangeEven
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF678_CustomerBill/master/TMF678-CustomerBill-v4.0.0.swagger.json
   subscribedEvents:
   - apitype: openapi
     name: PartyRoleManagement
