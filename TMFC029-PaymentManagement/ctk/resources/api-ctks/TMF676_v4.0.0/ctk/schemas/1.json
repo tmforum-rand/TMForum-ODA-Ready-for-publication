@@ -1,0 +1,15 @@
+{
+    "account": {
+        "id": "15463151"
+    },
+    "paymentMethod": {
+        "id": "15492MIFB865654",
+        "href": "https://host:port/paymentMethodManagement/v4/voucher/15492MIFB865654",
+        "@referredType": "Voucher",
+        "@type": "PaymentMethodRef"
+    },
+    "totalAmount": {
+        "unit": "EUR",
+        "value": 11.6
+    }
+}

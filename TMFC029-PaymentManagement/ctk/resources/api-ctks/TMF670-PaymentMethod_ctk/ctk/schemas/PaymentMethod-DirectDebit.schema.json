@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "@type": {
+      "type": "string"
+    },
+    "mandateId": {
+      "type": "string"
+    },
+    "mandateType": {
+      "type": "string"
+    },
+    "accountNumber": {
+      "type": "string"
+    },
+    "firstDebitDate": {
+      "type": "string"
+    },
+    "lastDebitDate": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "bank": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "@type",
+    "accountNumber",
+    "bank",
+    "firstDebitDate",
+    "lastDebitDate",
+    "mandateId",
+    "mandateType",
+    "name",
+    "owner"
+  ]
+}

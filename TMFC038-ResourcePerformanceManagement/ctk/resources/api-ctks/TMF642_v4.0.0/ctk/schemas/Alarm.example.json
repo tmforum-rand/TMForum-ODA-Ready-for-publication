@@ -1,0 +1,1 @@
+{"alarmRaisedTime": "2019-07-03T03:32:17.235Z", "alarmType": "environmentalAlarm", "alarmedObject": {}, "perceivedSeverity": "minor", "probableCause": "rectifierLowVoltage", "sourceSystemId": "ems-1", "state": "raised"}

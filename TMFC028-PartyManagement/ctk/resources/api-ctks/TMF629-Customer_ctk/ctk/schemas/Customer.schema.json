@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "engagedParty": {
+            "type": "object",
+            "properties": {
+                "@referredType": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": ["@referredType", "id"]
+        }
+    },
+    "required": ["engagedParty", "name"]
+}

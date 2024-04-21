@@ -1,0 +1,9 @@
+component:
+  id: tmfc020
+  name: tmfc020-digitalidentitymanagement
+  publicationDate: '2023-08-18T00:00:00.000Z'
+images:
+  tmf669: tmforumorg/tmfc020-tmf669-v4.0.0:latest
+  tmf720: tmforumorg/tmfc020-tmf720-v4.0.0:latest
+security:
+  controllerRole: admin

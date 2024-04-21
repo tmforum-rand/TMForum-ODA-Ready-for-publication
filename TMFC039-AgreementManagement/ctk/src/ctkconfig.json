@@ -1,0 +1,15 @@
+{
+    "componentFilePath": "../resources/component/TMFC039-AgreementManagement.yaml",
+    "companyName": "TMForum",
+    "componentName": "TMFC039-AgreementManagement",
+    "productName": "Product Catalog",
+    "componentUrl": "https://oda-directory.labs.tmforum.org/component-map/Core%20Commerce%20Management/TMFC001",
+    "productUrl": "https://oda-directory.labs.tmforum.org/component-map/Core%20Commerce%20Management",
+    "ctkConfig": {},
+    "headers": {
+        "Authorization": "Bearer 1234567890bbbb",
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "goldenComponentFilePath": "../resources/golden-components/TMFC039-AgreementManagement.yaml"
+}

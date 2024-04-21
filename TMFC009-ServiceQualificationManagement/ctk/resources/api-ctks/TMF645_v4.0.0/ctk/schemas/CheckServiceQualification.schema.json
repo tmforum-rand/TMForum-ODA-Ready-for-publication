@@ -1,0 +1,15 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "serviceQualificationItem": {
+            "type": "array", 
+            "items": {
+                "type": "object"
+            }
+        }
+    },
+    "required": [
+        "serviceQualificationItem"
+    ]
+}

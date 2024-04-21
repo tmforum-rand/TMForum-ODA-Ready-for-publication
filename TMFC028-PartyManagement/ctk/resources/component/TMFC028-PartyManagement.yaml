@@ -1,0 +1,394 @@
+---
+# Source: tmfc028-partymanagement/templates/PersistentVolumeClaim-0.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-mongodb-pv-claim'
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+# Source: tmfc028-partymanagement/templates/Service-0.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-partnership-type-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-partner
+    port: 8080
+    targetPort: 'release-name-partner'
+  selector:
+    impl: 'release-name-partnership-type-management-api'
+---
+# Source: tmfc028-partymanagement/templates/Service-1.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-party-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-party-m
+    port: 8080
+    targetPort: 'release-name-party-m'
+  selector:
+    impl: 'release-name-party-management-api'
+---
+# Source: tmfc028-partymanagement/templates/Service-2.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-customer-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-custome
+    port: 8080
+    targetPort: 'release-name-custome'
+  selector:
+    impl: 'release-name-customer-management-api'
+---
+# Source: tmfc028-partymanagement/templates/Service-3.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-party-role-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-party-r
+    port: 8080
+    targetPort: 'release-name-party-r'
+  selector:
+    impl: 'release-name-party-role-management-api'
+---
+# Source: tmfc028-partymanagement/templates/Service-4.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-mongodb'
+spec:
+  ports:
+  - name: tcp-release-name-mongodb
+    port: 27017
+    targetPort: 'release-name-mongodb'
+  selector:
+    impl: 'release-name-mongodb'
+---
+# Source: tmfc028-partymanagement/templates/Deployment-0.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-partnership-type-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-partnership-type-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc028-partymanagement'
+        impl: 'release-name-partnership-type-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc028-partymanagement'
+        image: 'tmforumorg/tmfc028-tmf668-v4.0.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-partnership-type-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-partner'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc028-partymanagement/tmf-api/partnershipManagement/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc028-partymanagement/templates/Deployment-1.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-party-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-party-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc028-partymanagement'
+        impl: 'release-name-party-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc028-partymanagement'
+        image: 'tmforumorg/tmfc028-tmf632-v4.0.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-party-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-party-m'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc028-partymanagement/tmf-api/party/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc028-partymanagement/templates/Deployment-2.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-customer-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-customer-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc028-partymanagement'
+        impl: 'release-name-customer-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc028-partymanagement'
+        image: 'tmforumorg/tmfc028-tmf629-v4.0.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-customer-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-custome'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc028-partymanagement/tmf-api/customerManagement/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc028-partymanagement/templates/Deployment-3.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-party-role-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-party-role-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc028-partymanagement'
+        impl: 'release-name-party-role-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc028-partymanagement'
+        image: 'tmforumorg/tmfc028-tmf669-v4.0.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-party-role-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-party-r'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc028-partymanagement/tmf-api/partyRoleManagement/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc028-partymanagement/templates/Deployment-4.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-mongodb'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-mongodb'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc028-partymanagement'
+        impl: 'release-name-mongodb'
+        version: mongo-5.0.1
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc028-partymanagement'
+        image: mongo:5.0.1
+        imagePullPolicy: Always
+        name: 'release-name-mongodb'
+        ports:
+        - containerPort: 27017
+          name: 'release-name-mongodb'
+        volumeMounts:
+        - mountPath: /data/db
+          name: 'release-name-mongodb-pv-storage'
+      volumes:
+      - name: 'release-name-mongodb-pv-storage'
+        persistentVolumeClaim:
+          claimName: 'release-name-mongodb-pv-claim'
+---
+# Source: tmfc028-partymanagement/templates/component-0.yaml
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc028-partymanagement'
+  name: 'release-name-tmfc028-partymanagement'
+spec:
+  coreFunction:
+    dependentAPIs:
+    - apitype: openapi
+      name: user-role-permission-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: party-role-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: geographic-address-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+    exposedAPIs:
+    - apitype: openapi
+      implementation: 'release-name-partnership-type-management-api'
+      name: partnership-type-management-api
+      path: /release-name-tmfc028-partymanagement/tmf-api/partnershipManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF668_Partnership_Type/4.0.0/swagger/TMF668_Partnership_Type_v4.0.0_swagger.json
+    - apitype: openapi
+      implementation: 'release-name-party-management-api'
+      name: party-management-api
+      path: /release-name-tmfc028-partymanagement/tmf-api/party/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      implementation: 'release-name-customer-management-api'
+      name: customer-management-api
+      path: /release-name-tmfc028-partymanagement/tmf-api/customerManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF629_Customer/4.0.0/swagger/TMF629_Customer_Management_API_v4.0.0_swagger.json
+  description: 'Party Management component is responsible for the capture, validation
+    and management of Parties and their Roles. A Party may be an individual or organization
+    that has a relationship with an enterprise. In this context it is responsible
+    for the e2e life cycle of: Individual, Organization. and its related sub-entities:Contact
+    Medium, Currency and tax exemption certificates, Identification, Community'
+  functionalBlock: PartyManagement
+  id: TMFC028
+  maintainers:
+  - email: matteo.destino@accenture.com
+    name: Matteo Destino
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: 'release-name-tmfc028-partymanagement-sm'
+      name: metrics
+      path: /release-name-tmfc028-partymanagement/metrics
+      port: 4000
+  name: PartyManagement
+  owners:
+  - email: matteo.destino@accenture.com
+    name: Matteo Destino
+  publicationDate: '2023-08-18T00:00:00.000Z'
+  securityFunction:
+    controllerRole: 'admin'
+    exposedAPIs:
+    - apitype: openapi
+      implementation: 'release-name-party-role-management-api'
+      name: party-role-management-api
+      path: /release-name-tmfc028-partymanagement/tmf-api/partyRoleManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  status: specified
+  version: 1.3.1

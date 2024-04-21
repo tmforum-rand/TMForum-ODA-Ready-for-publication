@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-service-inventory-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: '{{.Release.Name}}-service-inventory-management-api'
+  template:
+    metadata:
+      labels:
+        app: '{{.Release.Name}}-{{.Values.component.name}}'
+        impl: '{{.Release.Name}}-service-inventory-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: '{{.Release.Name}}-mongodb'
+        - name: RELEASE_NAME
+          value: '{{.Release.Name}}'
+        - name: COMPONENT_NAME
+          value: '{{.Release.Name}}-{{.Values.component.name}}'
+        image: '{{.Values.images.tmf638}}'
+        imagePullPolicy: Always
+        name: '{{.Release.Name}}-service-inventory-management-api'
+        ports:
+        - containerPort: 8080
+          name: '{{.Release.Name}}-service'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v4
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5

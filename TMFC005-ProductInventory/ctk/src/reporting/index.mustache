@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODA Conformance Test Report</title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link rel="stylesheet" href="./styles/variables.css" />
+    <link rel="stylesheet" href="./styles/typography.css" />
+    <link rel="stylesheet" href="./styles/index.css" />
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img
+                src="http://www.tmforum.org/wp-content/uploads/2022/09/tmf-logo-2018.svg"
+                width="136"
+                height="28"
+            />
+        </div>
+        <div class="page-title">
+            <h1>ODA conformance test report</h1>
+            <h2>{{ componentName }}</h2>
+        </div>
+    </header>
+
+    <div class="container-restyle">
+        <div class="row">
+            <div class="col m4 s12">
+                <div class="card z-depth-2">
+                    <div class="card-content">
+                        <span class="card-title">Component</span>
+                        <div class="row">
+                            <div class="col s6">
+                                <strong>Name:</strong>
+                            </div>
+                            <div class="col s6">
+                                <p>{{ componentName }}</p>
+                            </div>
+                        </div>
+
+                        
+                        <div class="row">
+                            <div class="col s6">
+                                <strong>Version:</strong>
+                            </div>
+                            <div class="col s6">
+                                <p>{{ version }}</p>
+                            </div>
+                        </div>
+
+                        
+                        <div class="row ">
+                            <div class="col s6">
+                                <strong>Component url:</strong>
+
+                            </div>
+                            <div class="col s6">
+                                <p><a href="{{{ componentUrl }}}">link</a></p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col s6">
+                                <strong>CTK status:</strong> <!-- not implemented -->
+                            </div>
+                            <div class="col s6">
+                                {{ #ctkPassed}}
+                                <span class="lozenge success">Passed</span>
+                                {{ /ctkPassed}}
+                                {{ ^ctkPassed}}
+                                <span class="lozenge failure">Failed</span>
+                                {{ /ctkPassed}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m4 s12">
+                <div class="card z-depth-2">
+                    <div class="card-content">
+                        <span class="card-title">Product</span>
+
+                        <div class="row ">
+                            <div class="col s6">
+                                <strong>Company:</strong>
+                            </div>
+                            <div class="col s6">
+                                <p>{{ company }}</p>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col s6">
+                                <strong>Product Name:</strong>
+                            </div>
+                            <div class="col s6">
+                                <p>Product Inventory</p>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col s6">
+                                <strong>Product url:</strong>
+                            </div>
+                            <div class="col s6">
+                                <p><a href="{{ productUrl }}">link</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col m4 s12">
+                <div class="card z-depth-2">
+                    <div class="card-content">
+                        <span class="card-title">Canvas</span>
+                        <div class="row">
+                            <div class="col s6">
+                                <strong>Canvas version:</strong>
+                            </div>
+                            <div class="col s6">
+                                <p>{{ canvasVersion }}</p>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col s6">
+                                <strong>Kubernetes core apis:</strong>
+
+                            </div>
+                            <div class="col s6">
+                                <p>{{ kubernetes }}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col s6">
+                                <strong>Conformance status:<strong>
+                            </div>
+                            <div class="col s6">
+                                {{ #canvasCTKPassed}}
+                                <span class="lozenge success">Passed</span>
+                                {{ /canvasCTKPassed}}
+                                {{ ^canvasCTKPassed}}
+                                <span class="lozenge failure">Failed</span>
+                                {{ /canvasCTKPassed}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <h2 class="center-align">Summary</h2>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card z-depth-2">
+                    <table class="striped responsive-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Passed</th>
+                                <th>Failed</th>
+                                <th>Total</th>
+                                <th>Skipped</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{ #summaryTable}}
+                            <tr>
+                                <td>{{ name }}</td>
+                                <td>{{ passed }}</td>
+                                <td>{{ failed }}</td>
+                                <td>{{ total }}</td>
+                                <td>{{ skipped }}</td>
+                            <tr>
+                            {{ /summaryTable }}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+       <h2 class="center-align">Reports</h2>
+
+        <div class="row">
+            <div class="col s12">
+                <ul class="collapsible">
+                    <li>
+                        {{#configuration}}
+                        <div class="collapsible-header">
+                            <span>Configuration</span>
+                            {{ #passed }}
+                            <span class="lozenge success">Passed</span>
+                            {{ /passed }}
+                            {{ ^passed }}
+                            <span class="lozenge failure">Failed</span>
+                            {{ /passed }}
+                        </div>
+                        <div class="collapsible-body">
+                            <iframe src="{{ file }}" style="width: 100%; height: 50vh;"></iframe>
+
+                        </div>
+                        {{/configuration}}
+                    </li>
+                    <li> 
+                        {{ #deployment}}
+                        <div class="collapsible-header">
+                            <span>Deployment</span>
+                            {{ #passed }}
+                            <span class="lozenge success">Passed</span>
+                            {{ /passed }}
+                            {{ ^passed }}
+                            <span class="lozenge failure">Failed</span>
+                            {{ /passed }}
+                        </div>
+                        <div class="collapsible-body">
+                            <iframe src="{{ file }}" style="width: 100%; height: 50vh;"></iframe>
+                        </div>
+                        {{/deployment}}
+                    </li>
+
+                    <li>
+                        <div class="collapsible-header">
+                            <span>Core Functions</span>
+                            <span class="lozenge success">Passed</span>
+                        </div>
+                        <div class="collapsible-body">
+                            <ul class="collapsible">
+                                <li>
+                                    <div class="collapsible-header">
+                                        <span>Exposed</span>
+                                        <span class="lozenge success">Passed</span>
+                                    </div>
+                                    {{ #coreFunctionResults }}
+                                    <div class="collapsible-body">
+                                        <h3>{{ apiName }}</h3>
+                                        <iframe src="{{{ htmlUrl }}}" style="width: 100%; height: 50vh;"></iframe>
+                                    </div>
+                                    {{ /coreFunctionResults }}
+                                    
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="collapsible-header">
+                            <span>Security</span>
+                            <span class="lozenge success">Passed</span>
+                        </div>
+                        {{ #securityFunctionResults }}
+                        <div class="collapsible-body">
+                            <h3>{{ apiName }}</h3>
+                            <iframe src="{{{ htmlUrl }}}" style="width: 100%; height: 50vh;"></iframe>
+                        </div>
+                        {{ /securityFunctionResults }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="logo">
+            <img
+                src="http://www.tmforum.org/wp-content/uploads/2022/09/tmf-logo-2018.svg"
+                width="136"
+                height="28"
+            />
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.collapsible');
+            var instances = M.Collapsible.init(elems, {
+                accordion: false,
+                outDuration:600,
+                inDuration: 600
+            });
+        });
+    </script>
+</body>
+</html>

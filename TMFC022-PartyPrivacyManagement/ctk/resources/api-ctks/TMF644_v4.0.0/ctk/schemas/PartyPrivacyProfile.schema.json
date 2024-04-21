@@ -1,0 +1,115 @@
+{
+    "$schema": "http://json-schema.org/schema#", 
+    "type": "object", 
+    "properties": {
+        "agreedByParty": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "@referredType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@referredType",
+                "href",
+                "id",
+                "name",
+                "role"
+            ]
+        },
+        "partyPrivacyProfileCharacteristic": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "privacyUsagePurpose": {
+                        "type": "string"
+                    },
+                    "valueType": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    },
+                    "relatedParty": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "href": {
+                                    "type": "string"
+                                }, 
+                                "name": {
+                                    "type": "string"
+                                },
+                                "role": {
+                                    "type": "string"
+                                },
+                                "@referredType": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "@referredType",
+                                "href",
+                                "id",
+                                "name",
+                                "role"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "privacyUsagePurpose",
+                    "relatedParty",
+                    "value",
+                    "valueType"
+                ]
+            }
+        },
+        "partyPrivacyProfileSpecification": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }, 
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "name"
+            ]
+        }
+    },
+    "required": [
+        "agreedByParty",
+        "partyPrivacyProfileCharacteristic",
+        "partyPrivacyProfileSpecification"
+    ]
+}
+

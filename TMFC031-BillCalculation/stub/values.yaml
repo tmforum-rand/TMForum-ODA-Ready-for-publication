@@ -1,0 +1,9 @@
+component:
+  id: tmfc031
+  name: tmfc031-billcalculation
+  publicationDate: '2023-08-18T00:00:00.000Z'
+images:
+  tmf669: tmforumorg/tmfc031-tmf669-v4.0.0:latest
+  tmf678: tmforumorg/tmfc031-tmf678-v4.0.0:latest
+security:
+  controllerRole: admin

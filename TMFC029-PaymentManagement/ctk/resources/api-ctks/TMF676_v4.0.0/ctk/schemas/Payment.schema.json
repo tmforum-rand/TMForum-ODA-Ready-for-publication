@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "account": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ]
+        },
+        "paymentMethod": {
+            "type": "object",
+            "properties": {
+                "@referredType":{
+                    "type": "string"
+                },
+                "@type":{
+                    "type": "string"
+                },
+                "href": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "anyOf": [
+                {
+                    "required": [
+                        "@referredType",
+                        "@type",
+                        "href",
+                        "id"
+                    ]
+                },
+                {
+                    "required": [
+                        "@type"
+                    ]
+                }
+            ]
+        },
+        "totalAmount": {
+            "type": "object",
+            "properties": {
+                "unit": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "unit",
+                "value"
+            ]
+        }
+    },
+    "required": [
+        "account",
+        "paymentMethod",
+        "totalAmount"
+    ]
+}

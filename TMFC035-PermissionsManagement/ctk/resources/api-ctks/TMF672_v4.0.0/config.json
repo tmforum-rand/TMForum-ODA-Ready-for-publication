@@ -1,0 +1,44 @@
+{
+    "url": " http://localhost:8672/userrolepermission/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "UserRole": {
+            "POST": {
+                "payload": {
+                    "involvementRole": "product",
+                    "entitlement": [
+                        {
+                            "action": "1",
+                            "function": "f",
+                            "id": "123"
+                        }
+                    ]
+                }
+            }
+        },
+        "Permission": {
+            "POST": {
+                "payload": {
+                    "user": {
+                        "id": "cust-745712-A",
+                        "@referredType": "Individual"
+                    },
+                    "validFor": {
+                        "endDateTime": "2021-08-10T14:58:55Z",
+                        "startDateTime": "2021-08-10T14:58:55Z"
+                    },
+                    "privilege": [{
+                        "action": "1",
+                        "function": "f",
+                        "manageableAsset": {
+                            "id": "123123"
+                        }
+                    }]
+                }
+            }
+        }
+    }
+}

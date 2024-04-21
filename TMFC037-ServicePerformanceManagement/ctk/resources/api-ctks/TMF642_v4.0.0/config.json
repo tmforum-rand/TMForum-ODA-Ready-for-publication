@@ -1,0 +1,24 @@
+{
+    "url": " http://localhost:8642/tmf-api/alarmManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "Alarm": {
+            "POST": {
+                "payload": {
+                    "alarmRaisedTime": "2019-07-03T03:32:17.235Z",
+                    "alarmType": "environmentalAlarm",
+                    "alarmedObject": {
+                        "id": "93051825"
+                    },
+                    "perceivedSeverity": "minor",
+                    "probableCause": "rectifierLowVoltage",
+                    "sourceSystemId": "ems-1",
+                    "state": "raised"
+                }
+            }
+        }
+    }
+}

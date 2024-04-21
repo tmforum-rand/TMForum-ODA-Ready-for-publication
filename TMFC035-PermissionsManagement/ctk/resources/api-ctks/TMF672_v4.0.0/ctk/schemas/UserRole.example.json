@@ -1,0 +1,10 @@
+{
+    "involvementRole": "product",
+    "entitlement": [
+        {
+            "action": "1",
+            "function": "f",
+            "id": "123"
+        }
+    ]
+}

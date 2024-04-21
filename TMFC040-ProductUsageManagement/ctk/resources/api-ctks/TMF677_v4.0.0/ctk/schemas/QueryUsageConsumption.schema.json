@@ -1,0 +1,131 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "relatedParty": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/relatedParty"
+            }
+
+        },
+        "partyAccount": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/partyAccount"
+            }
+        },
+        "searchCriteria": {
+            "$ref": "#/definitions/searchCriteria"
+        }
+    },
+    "oneOf": [
+        {
+            "required": ["relatedParty"]
+        },
+        {
+            "required": ["partyAccount"]
+        },
+        {
+            "required": ["searchCriteria"]
+        }
+    ],
+    "definitions": {
+        "relatedParty": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "@referredType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "@referredType"
+            ]
+        },
+        "partyAccount": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "@referredType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "@referredType"
+            ]
+        },
+        "searchCriteria": {
+            "type": "object",
+            "properties": {
+                "partyAccount": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type" : "string"
+                            }
+                        },
+                        "required": ["id"]
+                    }
+                },
+                "service": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["id"]
+                    }
+                },
+                "relatedParty": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/relatedParty"
+                    }
+                },
+                "logicalResource": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["id"]
+                    }
+                },
+                "product": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["id"]
+                    }
+                }
+            },
+            "anyOf": [
+                {"required": ["partyAccount"]},
+                {"required": ["relatedParty"]},
+                {"required": ["product"]},
+                {"required": ["logicalResource"]},
+                {"required": ["service"]}
+            ]
+        }
+    }
+}

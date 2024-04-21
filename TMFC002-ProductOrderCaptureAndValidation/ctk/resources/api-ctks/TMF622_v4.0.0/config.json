@@ -1,0 +1,27 @@
+{
+    "url": " http://localhost:8622/tmf-api/productOrderingManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "ProductOrder": {
+            "POST": {
+                "payload": {
+                    "productOrderItem": [
+                        {
+                            "id": "123",
+                            "action": "add"
+                        }
+                    ],
+                    "relatedParty": [
+                        {
+                            "id": "456-dd-df45",
+                            "@referredType": "Individual"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

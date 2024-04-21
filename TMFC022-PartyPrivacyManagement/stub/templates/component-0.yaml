@@ -1,0 +1,65 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-{{.Values.component.name}}'
+spec:
+  coreFunction:
+    dependentAPIs:
+    - apitype: openapi
+      name: party-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: party-role-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: user-role-permission-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: document-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: product-catalog-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-privacy-management-api'
+      name: privacy-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/privacyManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF644_Privacy/4.0.0/swagger/TMF644_Privacy_Management_API_v4.0.0_swagger.json
+  description: 'The Party Privacy Management component aims to: define the Privacy
+    Policy rules established by the CSP, according to applicable regulations, such
+    as GDPR in Europe, apply these rules to each Party interacting with the CSP and
+    to all of their personnal information and personally identifiable information
+    (PII); register explicit opt-in and opt-out given by Parties regarding the usage
+    of some of their personal information for dedicated purpose, such as marketing.'
+  functionalBlock: PartyManagement
+  id: TMFC022
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  name: PartyPrivacyManagement
+  owners:
+  - email: sylvie.demarest@orange.com
+    name: sylvie Demarest
+  publicationDate: '{{.Values.component.publicationDate}}'
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-party-role-management-api'
+      name: party-role-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  status: specified
+  version: 1.0.0

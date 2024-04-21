@@ -1,0 +1,14 @@
+{
+    "url": " http://localhost:8674/tmf-api/geographicSiteManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "GeographicSite": {
+            "POST": {
+                "payload": {}
+            }
+        }
+    }
+}

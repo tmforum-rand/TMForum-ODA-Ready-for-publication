@@ -1,0 +1,26 @@
+{
+    "url": "http://tmf635-usage-v4.mybluemix.net/tmf-api/usageManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer 1321321",
+    },
+    "payloads": {
+        "Usage": {
+            "POST": {
+                "payload": {
+                    "usageSpecification": {
+                        "id": "af59-b504c742900e"
+                    }
+                }
+            }
+        },
+        "UsageSpecification": {
+            "POST": {
+                "payload": {
+                    "name": "Voice-Usage-Specification"
+                }
+            }
+        }
+    }
+}

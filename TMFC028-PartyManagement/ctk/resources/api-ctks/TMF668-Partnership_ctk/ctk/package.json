@@ -1,0 +1,28 @@
+{
+  "name": "tmf668partnership",
+  "version": "",
+  "description": "Conformance Test Kit for TMF668-Partnership",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "TMForum",
+    "Conformance",
+    "Test",
+    "Kit",
+    "CTK",
+    "Customer",
+    "Bill"
+  ],
+  "author": "Victor Mari Rodriguez (vrodriguez@tmforum.org)",
+  "dependencies": {
+    "ajv": "^6.12.3",
+    "jsonschema": "^1.2.6",
+    "newman": "^4.0.2",
+    "newman-reporter-html": "^1.0.1",
+    "readline": "^1.3.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}

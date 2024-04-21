@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "@type": {
+      "type": "string"
+    },
+    "service": {
+      "type": "string"
+    },
+    "walletId": {
+      "type": "string"
+    },
+    "walletUrl": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "@type",
+    "name",
+    "service",
+    "walletId",
+    "walletUrl"
+  ]
+}

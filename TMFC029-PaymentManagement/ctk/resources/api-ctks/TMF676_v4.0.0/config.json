@@ -1,0 +1,29 @@
+{
+    "url": "http://localhost:8676/paymentManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer 1321321"
+    },
+    "payloads": {
+        "Payment": {
+            "POST": {
+                "payload": {
+                    "account": {
+                        "id": "15463151"
+                    },
+                    "paymentMethod": {
+                        "id": "15492MIFB865654",
+                        "href": "https://host:port/paymentMethodManagement/v4/voucher/15492MIFB865654",
+                        "@referredType": "Voucher",
+                        "@type": "PaymentMethodRef"
+                    },
+                    "totalAmount": {
+                        "unit": "EUR",
+                        "value": 11.6
+                    }
+                }
+            }
+        }
+    }
+}

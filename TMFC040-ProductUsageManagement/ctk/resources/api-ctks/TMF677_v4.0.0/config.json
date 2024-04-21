@@ -1,0 +1,22 @@
+{
+    "url": "http://localhost:8677/tmf-api/usageConsumption/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "getmandatory": "true"
+    },
+    "payloads": {
+        "QueryUsageConsumption": {
+            "POST": {
+                "payload":{
+                    "relatedParty": [
+                        {
+                            "id": "USER11222",
+                            "@referredType": "individual"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

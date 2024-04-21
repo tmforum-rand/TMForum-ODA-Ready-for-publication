@@ -1,0 +1,36 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "anyOf": [{
+            "properties": {
+                "billingAccount": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["id"]
+                }
+            },
+            "required": ["billingAccount"]
+        },
+        {
+            "properties": {
+                "relatedParty": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        },
+                        "@referredType": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["@referredType", "id"]
+                }
+            },
+            "required": ["relatedParty"]
+        }
+    ]
+}

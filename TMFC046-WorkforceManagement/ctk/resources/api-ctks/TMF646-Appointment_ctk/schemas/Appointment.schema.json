@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "validFor": {
+      "type": "object",
+      "properties": {
+        "startDateTime": {
+          "type": "string"
+        },
+        "endDateTime": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "endDateTime",
+        "startDateTime"
+      ]
+    }
+  },
+  "required": [
+    "validFor"
+  ]
+}

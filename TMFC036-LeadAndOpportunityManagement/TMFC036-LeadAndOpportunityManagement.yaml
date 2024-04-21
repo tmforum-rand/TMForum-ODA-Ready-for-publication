@@ -1,0 +1,254 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF632
+      version: v4.0.0
+      name: party-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - individual:
+        - GET
+        - GET/id
+      - organization:
+        - GET
+        - GET/id
+    - id: TMF669
+      version: v4.0.0
+      name: party-role-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - PartyRoleManagement:
+        - GET
+        - GET/id
+    - id: TMF620
+      version: v4.1.0
+      name: product-catalog-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+      port: 8080
+      resources:
+      - productOffering:
+        - GET
+        - GET/id
+      - productOfferingPrice:
+        - GET
+        - GET/id
+    - id: TMF651
+      version: v4.0.0
+      name: agreement-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - agreement:
+        - GET
+        - GET/id
+      - agreementSpecification:
+        - GET
+        - GET/id
+    - id: TMF648
+      version: v4.0.0
+      name: quote-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF648_Quote/4.0.0/swagger/TMF648_Quote_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - Quote:
+        - GET
+        - GET /id
+    - id: TMF622
+      version: v4.0.0
+      name: product-ordering-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - ProductOrder:
+        - GET
+        - GET /id
+    exposedAPIs:
+    - id: TMF699
+      version: v4.0.0
+      name: sales-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF699_Sales/4.0.0/swagger/TMF699_Sales_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - SalesLead:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - SalesOpportunity:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+    publishedEvents:
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/SalesManagement/hub
+      implementation: /{{.Release.Name}}-SalesManagement
+      name: SalesManagement
+      port: 80
+      resources:
+      - SalesLeadCreateEvent
+      - SalesLeadAttributeValueChangeEvent
+      - SalesLeadStateChangeEvent
+      - SalesLeadDeleteEvent
+      - SalesOpportunityCreateEvent
+      - SalesOpportunityAttributeValueChangeEvent
+      - SalesOpportunityStateChangeEvent
+      - SalesOpportunityDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF699_SalesManagement/master/TMF699-SalesManagement-v4.0.0.swagger.json
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - processFlowSpecificationAttributeValueChangeEvent
+      - processFlowSpecificationCreateEvent
+      - processFlowSpecificationDeleteEvent
+      - processFlowSpecificationStateChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      - taskFlowSpecificationAttributeValueChangeEvent
+      - taskFlowSpecificationCreateEvent
+      - taskFlowSpecificationDeleteEvent
+      - taskFlowSpecificationStateChangeEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+    subscribedEvents:
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
+      implementation: /{{.Release.Name}}-PartyManagement
+      name: PartyManagement
+      port: 80
+      resources:
+      - IndividualCreateEvent
+      - IndividualAttributeValueChangeEvent
+      - IndividualStateChangeEvent
+      - IndividualDeleteEvent
+      - OrganizationCreateEvent
+      - OrganizationAttributeValueChangeEvent
+      - OrganizationStateChangeEvent
+      - OrganizationDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back
+      implementation: /{{.Release.Name}}-ProductCatalogManagement
+      name: ProductCatalogManagement
+      port: 80
+      resources:
+      - ProductOfferingCreateEvent
+      - ProductOfferingAttributeValueChangeEvent
+      - ProductOfferingStateChangeEvent
+      - ProductOfferingDeleteEvent
+      - ProductSpecificationCreateEvent
+      - ProductSpecificationAttributeValueChangeEvent
+      - ProductSpecificationStateChangeEvent
+      - ProductSpecificationDeleteEvent
+      - ProductOfferingPriceCreateEvent
+      - ProductOfferingPriceAttributeValueChangeEvent
+      - ProductOfferingPriceStateChangeEvent
+      - ProductOfferingPriceDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back
+      implementation: /{{.Release.Name}}-ProductOrder
+      name: ProductOrder
+      port: 80
+      resources:
+      - ProductOrderCreateEvent
+      - ProductOrderAttributeValueChangeEvent
+      - ProductOrderDeleteEvent
+      - ProductOrderStateChangeEvent
+      - ProductOrderInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF622_ProductOrder/blob/ProductOrder/TMF622-ProductOrder-v4.0.0.swagger.json
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Agreement/call-back
+      implementation: /{{.Release.Name}}-Agreement
+      name: AgreementManagement
+      port: 80
+      resources:
+      - AgreementCreateEvent
+      - AgreementAttributeValueChangeEvent
+      - AgreementStateChangeEvent
+      - AgreementDeleteEvent
+      - AgreementSpecificationCreateEvent
+      - AgreementSpecificationAttributeValueChangeEvent
+      - AgreementSpecificationStateChangeEvent
+      - AgreementSpecificationDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/master/TMF651-Agreement-v4.0.0.swagger.json
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/QuoteManagement/call-back
+      implementation: /{{.Release.Name}}-QuoteManagement
+      name: QuoteManagement
+      port: 80
+      resources:
+      - QuoteCreateEvent
+      - QuoteStateChangeEvent
+      - QuoteDeleteEvent
+      - QuoteInformationRequiredEvent
+      - QuoteAttributeValueChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
+      implementation: /{{.Release.Name}}-PartyRoleManagement
+      name: PartyRoleManagement
+      port: 80
+      resources:
+      - PartyRoleCreateEvent
+      - PartyRoleAttributeValueChangeEvent
+      - PartyRoleStateChangeEvent
+      - PartyRoleDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+  description: 'Lead and Opportunity Management provides the necessary functionality
+    during pre-sales stage in terms of: lead and opportunity capture, qualification,
+    reporting, support.'
+  functionalBlock: PartyManagement
+  id: TMFC036
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  name: LeadAndOpportunityManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: 2023-08-18 00:00:00
+  status: specified
+  version: 1.1.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []

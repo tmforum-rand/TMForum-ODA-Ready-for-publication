@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-quote-management-api'
+spec:
+  ports:
+  - name: tcp-{{.Release.Name}}-quote-m
+    port: 8080
+    targetPort: '{{.Release.Name}}-quote-m'
+  selector:
+    impl: '{{.Release.Name}}-quote-management-api'

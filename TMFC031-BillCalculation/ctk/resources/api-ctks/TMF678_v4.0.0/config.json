@@ -1,0 +1,18 @@
+{
+    "url": "http://tmf678-customerbill-v4.mybluemix.net/tmf-api/customerBillManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "CustomerBillOnDemand": {
+            "POST": {
+                "payload": {
+                    "billingAccount": {
+                        "id": "A0815"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,4 @@
+apiVersion: v2
+appVersion: v1beta1
+name: tmfc001-productcatalogmanagement
+version: 0.1.0

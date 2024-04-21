@@ -1,0 +1,22 @@
+{
+    "url": " http://localhost:8683/tmf-api/partyInteraction/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "PartyInteraction": {
+            "POST": {
+                "payload": {
+                    "channel": [
+                        {
+                            "id": "555"
+                        }
+                    ],
+                    "direction": "inbounds",
+                    "reason": "The user wanted to buy TV and internet plan"
+                }
+            }
+        }
+    }
+}

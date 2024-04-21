@@ -1,0 +1,132 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF632
+      name: party-management-api
+      port: 8080
+      required: false
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF674
+      name: geographic-site-management-api
+      port: 8080
+      required: false
+      resources:
+      - geographicSite:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    exposedAPIs:
+    - id: TMF673
+      name: geographic-address-management-api
+      port: 8080
+      required: true
+      resources:
+      - geographicAddressValidation:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+      - geographicAddress:
+        - GET
+        - GET /id
+      - geographicSubAddress:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF674
+      name: geographic-site-management-api
+      port: 8080
+      required: true
+      resources:
+      - geographicSite:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    publishedEvents:
+    - apitype: openapi
+      hub: /{{.Release.Name}}-GeographicAddressManagement/hub
+      id: TMF673
+      implementation: /{{.Release.Name}}-GeographicAddressManagement
+      name: GeographicAddressManagement
+      port: 8080
+      resources:
+      - geographicAddressValidationStateChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/hub
+      implementation: /{{.Release.Name}}-GeographicSiteManagementEvent
+      name: GeographicSiteManagement
+      port: 8080
+      resources:
+      - geographicSiteAttributeValueChangeEvent
+      - geographicSiteCreateEvent
+      - geographicSiteDeleteEvent
+      - geographicSiteStatusChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/hub
+      implementation: /{{.Release.Name}}-GeographicLocationEvent
+      name: GeographicLocation
+      port: 80
+      resources:
+      - geographicLocationAttributeValueChangeEvent
+      - geographicLocationCreateEvent
+      - geographicLocationDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+    subscribedEvents: []
+  description: "The Location Management Component  allows easy reference to geographic\
+    \ places important to other entities, where a geographic place is an entity that\
+    \ can answer the question \u201Cwhere?\u201D . This component could  be a facade\
+    \ tool into GIS systems (e.g. Google Maps)"
+  functionalBlock: Production
+  id: TMFC014
+  maintainers:
+  - email: Anastasios.sarantis@cityfibre.com
+    name: Tassos Sarantis
+  - email: adam.tlemsani@cityfibre.com
+    name: Adam Tlemsani
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  name: LocationManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  - email: Anastasios.sarantis@cityfibre.com
+    name: Tassos Sarantis
+  publicationDate: 2023-08-18 00:00:00
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    dependentAPIs: []
+    exposedAPIs:
+    - id: TMF669
+      name: party-role-management-api
+      port: 8080
+      required: true
+      resources: []
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+  status: specified
+  version: 1.1.1

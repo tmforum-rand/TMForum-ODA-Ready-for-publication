@@ -1,0 +1,21 @@
+{
+    "url": "https://tmf638-serviceinventory-v4.mybluemix.net/tmf-api/serviceInventory/v4/asdfasd",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer 1321321"
+    },
+    "payloads": {
+        "Service": {
+            "POST": {
+                "payload": {
+                    "state": "active",
+                    "serviceSpecification": {
+                        "id": "1212",
+                        "@referredType": "ServiceSpecification"
+                    }
+                }
+            }
+        }
+    }
+}

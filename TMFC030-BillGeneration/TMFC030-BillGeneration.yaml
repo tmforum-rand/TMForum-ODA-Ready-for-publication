@@ -1,0 +1,182 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF666
+      version: v4.0.0
+      name: account-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - BillingAccount:
+        - GET
+        - GET /id
+        - POST
+        - PATCH /id
+        - DELETE /id
+      - BillingCycleSpecification:
+        - GET
+        - GET /id
+        - POST
+        - PATCH /id
+        - DELETE /id
+      - BillFormat:
+        - GET
+        - GET /id
+        - POST
+        - PATCH /id
+        - DELETE /id
+      - BillPresentationMedia:
+        - GET
+        - GET /id
+        - POST
+        - PATCH /id
+        - DELETE /id
+    - id: TMF632
+      version: v4.0.0
+      name: party-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+    - id: TMF676
+      version: v4.0.0
+      name: payment-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - payment:
+        - GET
+        - GET /id
+        - POST
+      - refund:
+        - GET
+        - GET /id
+        - POST
+    - id: TMF667
+      version: v4.0.0
+      name: document-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - document:
+        - GET
+        - GET /id
+        - POST
+    - id: TMF637
+      version: v4.0.0
+      name: product-inventory-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - product:
+        - GET
+        - GET /id
+    - id: TMF669
+      version: v4.0.0
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - PartyRole:
+        - GET
+        - GET /id
+    - id: TMF672
+      version: v4.0.0
+      name: user-role-permission-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - permission:
+        - GET
+        - GET /id
+      - userRole:
+        - GET
+        - GET /id
+    exposedAPIs:
+    - id: TMF678
+      version: v4.0.0
+      name: customer-bill-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/4.0.0/swagger/TMF678_Customer_Bill_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - customerBillOnDemand:
+        - GET
+        - POST
+        - GET /id
+      - customerBill:
+        - GET
+        - GET /id
+        - PATCH /id
+    publishedEvents: []
+    subscribedEvents:
+    - apitype: openapi
+      name: partyRoleManagement
+      port: 80
+      resources:
+      - partyRoleCreateEvent
+      - partyRoleAttributeValueChangeEvent
+      - partyRoleStateChangeEvent
+      - partyRoleDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+    - apitype: openapi
+      name: userRolePermissionManagement
+      port: 80
+      resources:
+      - permissionCreateEvent
+      - permissionAttributeValueChangeEvent
+      - permissionStateChangeEvent
+      - permissionDeleteEvent
+      - userRoleCreateEvent
+      - userRoleAttributeValueChangeEvent
+      - userRoleStateChangeEvent
+      - userRoleDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRoleandPermission-v4.0.0.swagger.json
+  description: Bill generation mgmt. manage the party invoice management. It addresses
+    the invoice formatting, presentation and dispatching to the proper means of communication.
+  functionalBlock: PartyManagement
+  id: TMFC030
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  name: BillGeneration
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: 2023-12-18
+  status: specified
+  version: 2.0.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []

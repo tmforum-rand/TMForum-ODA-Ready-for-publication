@@ -1,0 +1,180 @@
+---
+# Source: tmfc019-eventmanagement/templates/PersistentVolumeClaim-0.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc019-eventmanagement'
+  name: 'release-name-mongodb-pv-claim'
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+# Source: tmfc019-eventmanagement/templates/Service-0.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc019-eventmanagement'
+  name: 'release-name-party-role-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-party-r
+    port: 8080
+    targetPort: 'release-name-party-r'
+  selector:
+    impl: 'release-name-party-role-management-api'
+---
+# Source: tmfc019-eventmanagement/templates/Service-1.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc019-eventmanagement'
+  name: 'release-name-mongodb'
+spec:
+  ports:
+  - name: tcp-release-name-mongodb
+    port: 27017
+    targetPort: 'release-name-mongodb'
+  selector:
+    impl: 'release-name-mongodb'
+---
+# Source: tmfc019-eventmanagement/templates/Deployment-0.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc019-eventmanagement'
+  name: 'release-name-party-role-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-party-role-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc019-eventmanagement'
+        impl: 'release-name-party-role-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc019-eventmanagement'
+        image: 'tmforumorg/tmfc019-tmf669-v4.0.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-party-role-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-party-r'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc019-eventmanagement/tmf-api/partyRoleManagement/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc019-eventmanagement/templates/Deployment-1.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc019-eventmanagement'
+  name: 'release-name-mongodb'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-mongodb'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc019-eventmanagement'
+        impl: 'release-name-mongodb'
+        version: mongo-5.0.1
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc019-eventmanagement'
+        image: mongo:5.0.1
+        imagePullPolicy: Always
+        name: 'release-name-mongodb'
+        ports:
+        - containerPort: 27017
+          name: 'release-name-mongodb'
+        volumeMounts:
+        - mountPath: /data/db
+          name: 'release-name-mongodb-pv-storage'
+      volumes:
+      - name: 'release-name-mongodb-pv-storage'
+        persistentVolumeClaim:
+          claimName: 'release-name-mongodb-pv-claim'
+---
+# Source: tmfc019-eventmanagement/templates/component-0.yaml
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc019-eventmanagement'
+  name: 'release-name-tmfc019-eventmanagement'
+spec:
+  description: Event Management component is a messaging management component that
+    is responsible for processing events as they happen from components. Processing
+    of record of activities include modelling event messages, syntax validation and
+    formatting of event messages and sending/receiving messages between components
+    (consumer/producer). Event Management component supports different patterns of
+    usage, including Event notification (subscription), Event-sourcing (representational
+    state changes) and Event-carried state transfer (including data needed to perform
+    further processing). Event Management component should include functionality providing
+    a centralised CQRS queryStore for all components that implement event-sourcing
+    with event carrier state transfer.
+  functionalBlock: DecouplingAndIntegration
+  id: TMFC019
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: 'release-name-tmfc019-eventmanagement-sm'
+      name: metrics
+      path: /release-name-tmfc019-eventmanagement/metrics
+      port: 4000
+  name: EventManagement
+  owners:
+  - email: koen.peeters@ciminko.lu
+    name: Loen Peeters
+  publicationDate: '2023-08-18T00:00:00.000Z'
+  securityFunction:
+    controllerRole: 'admin'
+    exposedAPIs:
+    - apitype: openapi
+      implementation: 'release-name-party-role-management-api'
+      name: party-role-management-api
+      path: /release-name-tmfc019-eventmanagement/tmf-api/partyRoleManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  status: specified
+  version: 1.1.1

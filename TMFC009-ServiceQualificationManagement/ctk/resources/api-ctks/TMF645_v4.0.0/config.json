@@ -1,0 +1,25 @@
+{
+  "url": "http://localhost:8645/tmf-api/serviceQualificationManagement/v4/",
+  "headers": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "payloads": {
+    "CheckServiceQualification": {
+      "POST": {
+        "payload": {
+          "serviceQualificationItem": [
+            {}
+          ]
+        }
+      }
+    },
+    "QueryServiceQualification": {
+        "POST": {
+          "payload": {
+            "searchCriteria": {}
+        }
+      }
+    }
+  }
+}

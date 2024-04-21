@@ -1,0 +1,9 @@
+component:
+  id: tmfc039
+  name: tmfc039-agreementmanagement
+  publicationDate: '2023-08-18T00:00:00.000Z'
+images:
+  tmf651: tmforumorg/tmfc039-tmf651-v4.0.0:latest
+  tmf669: tmforumorg/tmfc039-tmf669-v4.0.0:latest
+security:
+  controllerRole: admin

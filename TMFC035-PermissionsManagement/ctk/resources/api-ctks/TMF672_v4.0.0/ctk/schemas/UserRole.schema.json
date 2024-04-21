@@ -1,0 +1,35 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "involvementRole": {
+            "type": "string"
+        },
+        "entitlement": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "action": {
+                        "type": "string"
+                    },
+                    "function": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "action",
+                    "function",
+                    "id"
+                ]
+            }
+        }
+    },
+    "required": [
+        "entitlement",
+        "involvementRole"
+    ]
+}

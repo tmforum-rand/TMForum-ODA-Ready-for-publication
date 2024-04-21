@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "anyOf": [{
+            "properties": {
+                "billDocument": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["id"]
+                    }
+                },
+                "billingAccount": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["id"]
+                }
+            },
+            "required": ["billDocument", "billingAccount"]
+        },
+        {
+            "properties": {
+                "billDocument": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["id"]
+                    }
+                },
+                "financialAccount": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["id"]
+                }
+            },
+            "required": ["billDocument", "financialAccount"]
+        }
+    ]
+}

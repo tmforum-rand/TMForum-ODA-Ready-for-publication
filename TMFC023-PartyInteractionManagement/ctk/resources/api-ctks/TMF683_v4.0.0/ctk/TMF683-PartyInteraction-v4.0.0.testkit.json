@@ -1,0 +1,1769 @@
+{
+  "info": {
+    "_postman_id": "b153378e-d373-435c-822e-a74089685d05",
+    "name": "CTK-Party_Interaction-4.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "N1",
+      "item": [
+        {
+          "name": "/partyInteraction",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "802bcbda-b8dd-4619-90a4-561c90fa1ce0",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "if (Array.isArray(jsonData)) { ",
+                  "  ",
+                  "    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+                  "  ",
+                  "",
+                  "}",
+                  "",
+                  "pm.test(\"Status code is 201\", function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "var instance = pm.response.json();",
+                  "var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "",
+                  "pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "",
+                  "",
+                  "",
+                  "pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "",
+                  "pm.globals.set('DIRECTIONPI01', instance['direction']);",
+                  "pm.globals.set('HREFPI01', instance['href']);",
+                  "pm.globals.set('IDPI01', instance['id']);",
+                  "pm.globals.set('REASONPI01', instance['reason']);",
+                  "",
+                  "pm.test('Body includes value held on direction', function () {",
+                  "  pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "});",
+                  "pm.test('Body includes value held on href', function () {",
+                  "  pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "});",
+                  "pm.test('Body includes value held on id', function () {",
+                  "  pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "});",
+                  "pm.test('Body includes value held on reason', function () {",
+                  "  pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction",
+            "description": "This operation creates a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "e0b59d16-5bac-4a2f-a8e5-2343386f6d2d",
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "",
+                  "if (Array.isArray(jsonData)) { ",
+                  "  ",
+                  "    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+                  "  ",
+                  "",
+                  "}",
+                  "",
+                  "pm.test(\"Status code is 201\", function () {",
+                  "  pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "var instance = pm.response.json();",
+                  "var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "",
+                  "pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "",
+                  "",
+                  "",
+                  "pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "",
+                  "pm.globals.set('DIRECTIONPI02', instance['direction']);",
+                  "pm.globals.set('HREFPI02', instance['href']);",
+                  "pm.globals.set('IDPI02', instance['id']);",
+                  "pm.globals.set('REASONPI02', instance['reason']);",
+                  "",
+                  "pm.test('Body includes value held on direction', function () {",
+                  "  pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "});",
+                  "pm.test('Body includes value held on href', function () {",
+                  "  pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "});",
+                  "pm.test('Body includes value held on id', function () {",
+                  "  pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "});",
+                  "pm.test('Body includes value held on reason', function () {",
+                  "  pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction",
+            "description": "This operation creates another PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "0095abcc-5b57-4bdf-949d-2d05b06ded84",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }  ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "   ",
+                  "  }",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{Party_Interaction}}partyInteraction",
+            "description": "This operation search for the created PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction/{{IDPI01}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "191c2390-7272-4873-9288-112e7159d363",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{Party_Interaction}}partyInteraction/{{IDPI01}}",
+            "description": "This operation search for one of the created PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction/{{IDPI02}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6ab92c50-c1f2-4465-9d2c-0ada123cd62a",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{Party_Interaction}}partyInteraction/{{IDPI02}}",
+            "description": "This operation search for the other one of the created PartyInteraction"
+          },
+          "response": []
+        }
+      ],
+      "_postman_isSubFolder": true
+    },
+    {
+      "name": "N2",
+      "item": [
+        {
+          "name": "/partyInteraction?fields=direction",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b6ef48ac-6fe8-4448-9e36-d5080f4db66d",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?fields=direction",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?direction={{DIRECTIONPI01}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cd87e3f8-6dc5-42b3-8a04-10406e504a2d",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?direction={{DIRECTIONPI01}}",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?direction={{DIRECTIONPI02}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cbbb9f0e-9896-4ae4-b763-69b17c9061a6",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?direction={{DIRECTIONPI02}}",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?fields=href",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "6688b2d9-80c4-4639-a95a-8df9ac4b1ea6",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?fields=href",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?href={{HREFPI01}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5d5a8447-e3a9-40b5-aee2-58313c09a690",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?href={{HREFPI01}}",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?href={{HREFPI02}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "2032fe04-c5fb-446e-9e1b-34b41ba03728",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?href={{HREFPI02}}",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?fields=id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "4b842c21-7103-4f5d-9455-375ed5539fd9",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?fields=id",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?id={{IDPI01}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "76bb8d87-9243-4e9e-a638-be03913f9af3",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?id={{IDPI01}}",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?id={{IDPI02}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "25c7be39-c737-45de-abc1-a5875792c851",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?id={{IDPI02}}",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?fields=reason",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "a934f659-1a5b-4e6f-91cd-b7e88c2095e3",
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?fields=reason",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?reason={{REASONPI01}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9d2702b8-fe9c-4ca7-9a38-be96fd89753e",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI01\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI01');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI01');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI01');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI01\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI01');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('IDPI02 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?reason={{REASONPI01}}",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        },
+        {
+          "name": "/partyInteraction?reason={{REASONPI02}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "8fcee93f-ca19-4bc1-a787-8314c1dd7cd4",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "  ",
+                  "  ",
+                  "  ",
+                  "var jsonData = pm.response.json();",
+                  "  ",
+                  "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                  "    jsonData.forEach(function (instance, index) {",
+                  "      ",
+                  "        var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "          ",
+                  "    });",
+                  "  }",
+                  "  else {",
+                  "    var instance = pm.response.json();",
+                  "    var requiredAttributes = ['channel', 'direction', 'href', 'id', 'reason'];",
+                  "      ",
+                  "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                  "      ",
+                  "      ",
+                  "      ",
+                  "        pm.test('Response has channel attribute', function() { pm.expect(instance[\"channel\"]).to.be.a('array'); });",
+                  "        pm.test('Response has direction attribute', function() { pm.expect(instance[\"direction\"]).to.be.a('string'); });",
+                  "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                  "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                  "        pm.test('Response has reason attribute', function() { pm.expect(instance[\"reason\"]).to.be.a('string'); });",
+                  "      ",
+                  "        pm.test('Body includes value held on direction', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['direction']);",
+                  "        });",
+                  "        pm.test('Body includes value held on href', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                  "        });",
+                  "        pm.test('Body includes value held on id', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                  "        });",
+                  "        pm.test('Body includes value held on reason', function () {",
+                  "            pm.expect(pm.response.text()).to.include(instance['reason']);",
+                  "        });",
+                  "        // Individualized tests",
+                  "        if (instance.id == pm.globals.get(\"IDPI02\")) {",
+                  "            pm.test('direction is ' + pm.globals.get(\"DIRECTIONPI02\"), function() {pm.expect(instance['direction']) == pm.globals.get('DIRECTIONPI02');});",
+                  "            pm.test('href is ' + pm.globals.get(\"HREFPI02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFPI02');});",
+                  "            pm.test('id is ' + pm.globals.get(\"IDPI02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDPI02');});",
+                  "            pm.test('reason is ' + pm.globals.get(\"REASONPI02\"), function() {pm.expect(instance['reason']) == pm.globals.get('REASONPI02');});",
+                  "        }",
+                  "        if (instance.id == pm.globals.get(\"IDPI01\")) {",
+                  "            pm.test('IDPI01 not expected on this test', function () {",
+                  "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                  "            });",
+                  "        }",
+                  "",
+                  "        ",
+                  "   ",
+                  "}",
+                  "  ",
+                  "  "
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"channel\": [\n    {\n      \"id\": \"555\"\n    }\n  ],\n  \"direction\": \"inbounds\",\n  \"reason\": \"The user wanted to buy TV and internet plan\"\n}"
+            },
+            "url": "{{Party_Interaction}}partyInteraction?reason={{REASONPI02}}",
+            "description": "This operation filter a PartyInteraction"
+          },
+          "response": []
+        }
+      ],
+      "_postman_isSubFolder": true
+    },
+    {
+      "name": "E1",
+      "item": [
+        {
+          "name": "/partyInteraction/404ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "cb899e91-7372-4194-b447-3e0e42a4b1e2",
+                "exec": [
+                  "pm.test(\"Status code is 404\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{Party_Interaction}}partyInteraction/9537d3a7-af52-44a7-b675-26e2fa32df85",
+            "description": "This operation search for one of the created PartyInteraction"
+          },
+          "response": []
+        }
+      ],
+      "_postman_isSubFolder": true
+    }
+  ]
+}

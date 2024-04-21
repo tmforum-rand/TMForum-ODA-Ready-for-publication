@@ -1,0 +1,14 @@
+{
+  "provideAlternative": true,
+  "submittedGeographicAddress": {
+      "streetNr": "225",
+      "streetName": "strathmore",
+      "streetType": "terrace",
+      "postcode": "5004",
+      "locality": "Brighton",
+      "city": "Brighton",
+      "stateOrProvince": "SA",
+      "country": "Australia",
+      "geographicSubAddress": []
+  }
+}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-resource-inventory-management-api'
+spec:
+  ports:
+  - name: tcp-{{.Release.Name}}-resourc
+    port: 8080
+    targetPort: '{{.Release.Name}}-resourc'
+  selector:
+    impl: '{{.Release.Name}}-resource-inventory-management-api'

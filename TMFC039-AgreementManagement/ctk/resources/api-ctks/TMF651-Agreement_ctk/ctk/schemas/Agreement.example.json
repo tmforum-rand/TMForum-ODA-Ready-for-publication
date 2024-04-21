@@ -1,0 +1,27 @@
+{
+    "name": "Summer Contract Agreement", 
+    "agreementType": "commercial", 
+    "agreementItem": [
+        {
+           
+            "termOrCondition": [
+                {
+                    "description": "This  agreement term or condition ...", 
+                    "id": "5890", 
+                    "validFor": {
+                        "startDateTime": "2018-04-25T00:00:00.000Z", 
+                        "endDateTime": "2018-11-20T00:00:00.000Z"
+                    }
+                }
+            ]
+        }
+    ], 
+    "engagedParty": [
+        {
+            "@referredType": "Organization",
+            "id": "330", 
+            "role": "Supplier", 
+            "name": "Magic Tools Company"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-privacy-management-api'
+spec:
+  ports:
+  - name: tcp-{{.Release.Name}}-privacy
+    port: 8080
+    targetPort: '{{.Release.Name}}-privacy'
+  selector:
+    impl: '{{.Release.Name}}-privacy-management-api'

@@ -1,0 +1,294 @@
+---
+# Source: tmfc007-serviceordermanagement/templates/PersistentVolumeClaim-0.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc007-serviceordermanagement'
+  name: 'release-name-mongodb-pv-claim'
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+# Source: tmfc007-serviceordermanagement/templates/Service-0.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc007-serviceordermanagement'
+  name: 'release-name-service-ordering-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-service
+    port: 8080
+    targetPort: 'release-name-service'
+  selector:
+    impl: 'release-name-service-ordering-management-api'
+---
+# Source: tmfc007-serviceordermanagement/templates/Service-1.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc007-serviceordermanagement'
+  name: 'release-name-party-role-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-party-r
+    port: 8080
+    targetPort: 'release-name-party-r'
+  selector:
+    impl: 'release-name-party-role-management-api'
+---
+# Source: tmfc007-serviceordermanagement/templates/Service-2.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc007-serviceordermanagement'
+  name: 'release-name-mongodb'
+spec:
+  ports:
+  - name: tcp-release-name-mongodb
+    port: 27017
+    targetPort: 'release-name-mongodb'
+  selector:
+    impl: 'release-name-mongodb'
+---
+# Source: tmfc007-serviceordermanagement/templates/Deployment-0.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc007-serviceordermanagement'
+  name: 'release-name-service-ordering-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-service-ordering-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc007-serviceordermanagement'
+        impl: 'release-name-service-ordering-management-api'
+        version: v4.1.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc007-serviceordermanagement'
+        image: 'tmforumorg/tmfc007-tmf641-v4.1.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-service-ordering-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-service'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc007-serviceordermanagement/tmf-api/serviceOrdering/v4
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc007-serviceordermanagement/templates/Deployment-1.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc007-serviceordermanagement'
+  name: 'release-name-party-role-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-party-role-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc007-serviceordermanagement'
+        impl: 'release-name-party-role-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc007-serviceordermanagement'
+        image: 'tmforumorg/tmfc007-tmf669-v4.0.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-party-role-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-party-r'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc007-serviceordermanagement/tmf-api/partyRoleManagement/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc007-serviceordermanagement/templates/Deployment-2.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc007-serviceordermanagement'
+  name: 'release-name-mongodb'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-mongodb'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc007-serviceordermanagement'
+        impl: 'release-name-mongodb'
+        version: mongo-5.0.1
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc007-serviceordermanagement'
+        image: mongo:5.0.1
+        imagePullPolicy: Always
+        name: 'release-name-mongodb'
+        ports:
+        - containerPort: 27017
+          name: 'release-name-mongodb'
+        volumeMounts:
+        - mountPath: /data/db
+          name: 'release-name-mongodb-pv-storage'
+      volumes:
+      - name: 'release-name-mongodb-pv-storage'
+        persistentVolumeClaim:
+          claimName: 'release-name-mongodb-pv-claim'
+---
+# Source: tmfc007-serviceordermanagement/templates/component-0.yaml
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc007-serviceordermanagement'
+  name: 'release-name-tmfc007-serviceordermanagement'
+spec:
+  coreFunction:
+    dependentAPIs:
+    - apitype: openapi
+      name: party-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: service-catalog-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: service-inventory-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: resource-inventory-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: service-activation-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF640_Service_Activation/4.0.0/swagger/TMF640_Service_Activation_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: service-qualification-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: appointment-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: resource-order-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF652_Resource_Order/4.0.0/swagger/TMF652_Resource_Order_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: user-role-permission-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: party-role-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: geographic-address-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: geographic-site-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: communication-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+    exposedAPIs:
+    - apitype: openapi
+      implementation: 'release-name-service-ordering-management-api'
+      name: service-ordering-management-api
+      path: /release-name-tmfc007-serviceordermanagement/tmf-api/serviceOrdering/v4
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
+  description: The SOM is the entry point of the Production Domain. It oversees Customer-Facing-Service
+    (CFS) delivery of resources (network and service platforms equipment). The SOM
+    exposes in particular the API ServiceOrder. It is triggered when the Product Order
+    Orchestration Management component calls this API to request CFS delivery. To
+    achieve delivery of a CFS, the SOM orchestrates the CFS delivery process which.
+    Identifies possible RFS and chooses one, using the catalog and technical inventory.
+    Selects the resources (servers, equipment, etc.) and their instances. Requests
+    the ROM to update selected resource instances to deliver CFS. Request sent to
+    the ROM contain the CFS and the list of configured resource instances to update.
+  functionalBlock: Production
+  id: TMFC007
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  - email: sylvie.demarest@orange.com
+    name: Sylvie Demarest
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: 'release-name-tmfc007-serviceordermanagement-sm'
+      name: metrics
+      path: /release-name-tmfc007-serviceordermanagement/metrics
+      port: 4000
+  name: ServiceOrderManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  - email: sylvie.demarest@orange.com
+    name: Sylvie Demarest
+  publicationDate: '2023-08-18T00:00:00.000Z'
+  securityFunction:
+    controllerRole: 'admin'
+    exposedAPIs:
+    - apitype: openapi
+      implementation: 'release-name-party-role-management-api'
+      name: party-role-management-api
+      path: /release-name-tmfc007-serviceordermanagement/tmf-api/partyRoleManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  status: specified
+  version: 1.1.1

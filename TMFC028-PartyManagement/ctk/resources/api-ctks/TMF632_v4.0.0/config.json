@@ -1,0 +1,24 @@
+{
+    "url": " http://localhost:8632/tmf-api/party/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "Individual": {
+            "POST": {
+                "payload": {
+                    "familyName": "Lamborgizzia",
+                    "givenName": "Jane"
+                }
+            }
+        },
+        "Organization": {
+            "POST": {
+                "payload": {
+                    "tradingName": "Coffee Do Brazil Fair Trade"
+                }
+            }
+        }
+    }
+}

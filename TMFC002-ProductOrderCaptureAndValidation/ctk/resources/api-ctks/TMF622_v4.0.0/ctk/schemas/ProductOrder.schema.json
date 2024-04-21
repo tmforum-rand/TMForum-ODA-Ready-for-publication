@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "productOrderItem": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "action": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "action",
+                    "id"
+                ]
+            }
+        },
+        "relatedParty": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "@referredType": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "@referredType",
+                    "id"
+                ]
+            }
+        }
+    },
+    "required": [
+        "productOrderItem",
+        "relatedParty"
+    ]
+}

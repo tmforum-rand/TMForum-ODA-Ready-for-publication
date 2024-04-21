@@ -1,0 +1,17 @@
+{
+    "url": "http://localhost:8639/tmf-api/resourceInventoryManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer 1321321"
+    },
+    "payloads": {
+        "Resource": {
+            "POST": {
+                "payload": {
+                    "name": "RouterXX"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "productOrderItem": [
+        {
+            "id": "123",
+            "action": "add"
+        }
+    ],
+    "relatedParty": [
+        {
+            "id": "456-dd-df45",
+            "@referredType": "Individual"
+        }
+    ]
+}

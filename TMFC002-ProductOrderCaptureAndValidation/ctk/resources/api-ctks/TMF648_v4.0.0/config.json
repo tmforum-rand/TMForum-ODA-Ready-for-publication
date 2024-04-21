@@ -1,0 +1,21 @@
+{
+    "url": "http://127.0.0.1:8648/tmf-api/quoteManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "Quote": {
+            "POST": {
+                "payload": {
+                    "quoteItem": [
+                        {
+                            "id": "1",
+                            "action": "add"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

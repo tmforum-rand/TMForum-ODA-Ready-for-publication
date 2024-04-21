@@ -1,0 +1,4 @@
+apiVersion: v2
+appVersion: v1beta1
+name: tmfc009-servicequalificationmanagement
+version: 0.1.0

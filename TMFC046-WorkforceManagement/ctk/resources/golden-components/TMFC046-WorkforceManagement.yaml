@@ -1,0 +1,150 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF632
+      name: party-management-api
+      port: 8080
+      required: false
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF669
+      name: party-role-management-api
+      port: 8080
+      required: false
+      resources:
+      - PartyRole:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF672
+      name: user-role-permission-management-api
+      port: 8080
+      required: true
+      resources:
+      - permission:
+        - GET
+        - GET /id
+      - userRole:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    exposedAPIs:
+    - id: TMF646
+      name: appointment-management-api
+      port: 8080
+      required: true
+      resources:
+      - appointment:
+        - GET
+        - GET /id
+        - POST
+        - PATCH /id
+        - DELETE /id
+      - searchTimeSlot:
+        - GET
+        - GET /id
+        - POST
+        - PATCH /id
+        - DELETE /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    publishedEvents:
+    - apitype: openapi
+      implementation: /{{.Release.Name}}-appointmentManagement
+      name: appointmentManagement
+      port: 80
+      resources:
+      - appointmentStateChange
+      - appointmentCreateEvent
+      - appointmentAttributeValueChangeEvent
+      - appointmentDeleteEvent
+      - searchTimeSlotCreateEvent
+      - searchTimeSlotAttributeValueChangeEvent
+      - searchTimeSlotStateChangeEvent
+      - searchTimeSlotDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF646_AppointmentManagement/blob/master/TMF646-Appointment-v4.0.0.swagger.json
+    subscribedEvents:
+    - apitype: openapi
+      name: PartyRoleManagement
+      port: 80
+      resources:
+      - partyRoleCreateEvent
+      - partyRoleAttributeValueChangeEvent
+      - partyRoleStateChangeEvent
+      - partyRoleDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+    - apitype: openapi
+      name: UserRolePermissionManagement
+      port: 80
+      resources:
+      - permissionCreateEvent
+      - permissionAttributeValueChangeEvent
+      - permissionStateChangeEvent
+      - permissionDeleteEvent
+      - userRoleCreateEvent
+      - userRoleAttributeValueChangeEvent
+      - userRoleStateChangeEvent
+      - userRoleDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF672_UserRolesPermissions/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+    - apitype: openapi
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+  description: Workforce Management provides capabilities to describe teams, organizations,
+    skills and availability of sales / technical experts. It provides the ability
+    in reserving time slots to carry out assigned task (internal or customer facing).
+    It allows the reservation (and their updates / reschedule) of appointments and
+    interventions. option, etc.)
+  functionalBlock: Production
+  id: TMFC046
+  maintainers:
+  - email: milind.2.bhagwat@bt.com
+    name: Milind Bhagwat
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  name: WorkforceManagement
+  owners:
+  - email: milind.2.bhagwat@bt.com
+    name: Milind Bhagwat
+  publicationDate: 2024-04-18 00:00:00
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    dependentAPIs: []
+    exposedAPIs:
+    - id: TMF669
+      name: party-role-management-api
+      port: 8080
+      required: true
+      resources: []
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+  status: specified
+  version: 1.0.0

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "@type": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "value": {
+      "type": "object",
+      "description": "An amount in a given unit",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "float",
+          "default": 1,
+          "description": "Numeric value in a given unit"
+        },
+        "units": {
+          "type": "string",
+          "description": "Unit"
+        }
+      }
+    },
+    "expirationDate": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "@type",
+    "code",
+    "expirationDate",
+    "name",
+    "value"
+  ]
+}

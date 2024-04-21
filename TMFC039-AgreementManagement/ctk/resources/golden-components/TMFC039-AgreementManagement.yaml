@@ -1,0 +1,156 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF632
+      name: party-management-api
+      port: 8080
+      required: true
+      resources:
+      - individual:
+        - GET
+        - GET/id
+      - organization:
+        - GET
+        - GET/id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF672
+      name: user-role-permission-management-api
+      port: 8080
+      required: true
+      resources:
+      - permission:
+        - GET
+        - GET/id
+      - userRole:
+        - GET
+        - GET/id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF669
+      name: party-role-management-api
+      port: 8080
+      required: false
+      resources:
+      - partyRole:
+        - GET
+        - GET/id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF620
+      name: product-catalog-management-api
+      port: 8080
+      required: false
+      resources:
+      - productOffering:
+        - GET
+        - GET/id
+      - productOfferingPrice:
+        - GET
+        - GET/id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+      version: v4.1.0
+    - id: TMF637
+      name: product-inventory-management-api
+      port: 8080
+      required: false
+      resources:
+      - product:
+        - GET
+        - GET/id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF667
+      name: document-management-api
+      port: 8080
+      required: false
+      resources:
+      - document:
+        - GET
+        - GET/id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    exposedAPIs:
+    - id: TMF651
+      name: agreement-management-api
+      port: 8080
+      required: true
+      resources:
+      - agreement:
+        - GET
+        - GET/id
+        - POST
+        - PATCH/id
+        - DELETE/id
+      - agreementSpecification:
+        - GET
+        - GET/id
+        - POST
+        - PATCH/id
+        - DELETE/id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    publishedEvents:
+    - apitype: openapi
+      implementation: /{{.Release.Name}}-agreemngtapi
+      name: userRole
+      port: 80
+      resources:
+      - agreementCreateEvent
+      - agreementAttributeValueChangeEvent
+      - agreementStateChangeEvent
+      - agreementSpecificationCreateEvent
+      - agreementSpecificationAttributeValueChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
+    subscribedEvents:
+    - apitype: openapi
+      implementation: /{{.Release.Name}}-PartyManagement
+      name: PartyManagement
+      port: 80
+      resources:
+      - individualDeleteEvent
+      - organizationDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+  description: Agreement Management component is responsible for creating, storing,
+    editing, and tracking agreed  arrangements with related terms and conditions over
+    a lifecycle. The component manages offers, records acceptance, and associated
+    considerations and intentions to establish agreements as legally binding. As well
+    this components provides workfows and templates that facilitates collaboration,
+    communication and negotiation of agreements between parties, and administers the
+    specificities related to translate  agreements into contracts, when it is required.
+    It provides a secure storage, version control, compliance management, and renewal
+    notifications for agreements.
+  functionalBlock: CoreCommerce
+  id: TMFC039
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  name: AgreementManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: 2023-08-18 00:00:00
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    dependentAPIs: []
+    exposedAPIs:
+    - id: TMF669
+      name: party-role-management-api
+      port: 8080
+      required: true
+      resources: []
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+  status: specified
+  version: 1.1.0

@@ -1,0 +1,1087 @@
+{
+	"info": {
+		"_postman_id": "e5f94226-02b1-4b4d-ba73-24dda425b013",
+		"name": "CTK-Payment_Method-4.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7503975",
+		"_collection_link": "https://cloudy-meadow-674386.postman.co/workspace/v4.0.0CTKs~c3a3165b-0479-4ccd-bebb-f737fd593b7f/collection/7503975-e5f94226-02b1-4b4d-ba73-24dda425b013?action=share&source=collection_link&creator=7503975"
+	},
+	"item": [
+		{
+			"name": "N1",
+			"item": [
+				{
+					"name": "/PostPaymentMethod",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"}",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									"",
+									"let concreteTypeAttributes = {",
+									"    BankAccountDebit: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankAccountTransfer: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"nameOnCard\"],",
+									"    Check: [\"drawer\", \"payee\", \"signedDate\", \"bank\"],",
+									"    DigitalWallet: [\"service\", \"walletId\", \"walletUrl\"],",
+									"    DirectDebit: [\"mandateId\", \"mandateType\", \"accountNumber\", \"firstDebitDate\", \"lastDebitDate\", \"owner\",\"bank\"],",
+									"    TokenizedCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"lastFourDigits\"],",
+									"    Voucher: [\"code\", \"value\", \"expirationDate\"]",
+									"}",
+									"",
+									"",
+									"var instance = pm.response.json();",
+									"var baseAttributes = ['@type', 'name', 'id', 'status', 'statusDate'];",
+									"let concreteType = instance[\"@type\"]",
+									"if (concreteTypeAttributes[concreteType]){",
+									"    baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"    console.log(\"Processing type\", concreteType, baseAttributes)",
+									"}",
+									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes) });",
+									"",
+									"baseAttributes.forEach(attr => {",
+									"    pm.test('Response has ' + attr + ' attribute', () => {",
+									"        pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"    })",
+									"})",
+									"",
+									"",
+									"pm.globals.set('IDPM01', instance['id'])",
+									"pm.globals.set('NAMEPM01', instance['name']);",
+									"pm.globals.set('STATUSPM01', instance['status']);",
+									"pm.globals.set('STATUSDATEPM01', instance['statusDate']);",
+									"",
+									"pm.test('Body includes value held on name', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['name']);",
+									"});",
+									"pm.test('Body includes value held on name', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['name']);",
+									"});",
+									"pm.test('Body includes value held on status', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['status']);",
+									"});",
+									"pm.test('Body includes value held on statusDate', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let payloads = JSON.parse(pm.environment.get(\"payloads\")) || []\r",
+									"let index = parseInt(pm.environment.get(\"test_index\")) || 0\r",
+									"\r",
+									"let body = payloads[index]\r",
+									"pm.globals.set(\"PaymentBody\", JSON.stringify(body))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{{PaymentBody}}"
+						},
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							]
+						},
+						"description": "This operation creates a PaymentMethod"
+					},
+					"response": []
+				},
+				{
+					"name": "/PaymentMethod",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let concreteTypeAttributes = {",
+									"    BankAccountDebit: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankAccountTransfer: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"nameOnCard\"],",
+									"    Check: [\"drawer\", \"payee\", \"signedDate\", \"bank\"],",
+									"    DigitalWallet: [\"service\", \"walletId\", \"walletUrl\"],",
+									"    DirectDebit: [\"mandateId\", \"mandateType\", \"accountNumber\", \"firstDebitDate\", \"lastDebitDate\", \"owner\",\"bank\"],",
+									"    TokenizedCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"lastFourDigits\"],",
+									"    Voucher: [\"code\", \"value\", \"expirationDate\"]",
+									"}",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) {",
+									"    jsonData.forEach((instance, index) => {",
+									"        var baseAttributes = ['@type', 'name', 'id', 'status', 'statusDate'];",
+									"",
+									"        let concreteType = instance[\"@type\"]",
+									"        if (concreteTypeAttributes[concreteType]) {",
+									"            baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"        }",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes) });",
+									"",
+									"        baseAttributes.forEach(attr => {",
+									"            pm.test('Response has ' + attr + ' attribute', () => {",
+									"                pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"            })",
+									"        })",
+									"",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        pm.test('Body includes value held on status', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['status']);",
+									"        });",
+									"        pm.test('Body includes value held on statusDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) == pm.globals.get('NAMEPM01'); });",
+									"        pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) == pm.globals.get('STATUSPM01'); });",
+									"        pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) == pm.globals.get('STATUSDATEPM01'); });",
+									"    })",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"    var baseAttributes = ['@type', 'name', 'id', 'status', 'statusDate'];",
+									"",
+									"    let concreteType = instance[\"@type\"]",
+									"    if (concreteTypeAttributes[concreteType]) {",
+									"        baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"    }",
+									"    pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes)});",
+									"",
+									"    baseAttributes.forEach(attr => {",
+									"        pm.test('Response has ' + attr + ' attribute', () => {",
+									"            pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"        })",
+									"    })",
+									"",
+									"    pm.test('Body includes value held on name', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['name']);",
+									"    });",
+									"    pm.test('Body includes value held on status', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['status']);",
+									"    });",
+									"    pm.test('Body includes value held on statusDate', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"    });",
+									"    // Individualized tests",
+									"    pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) === pm.globals.get('NAMEPM01'); });",
+									"    pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) === pm.globals.get('STATUSPM01'); });",
+									"    pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) === pm.globals.get('STATUSDATEPM01'); });",
+									"}",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							]
+						},
+						"description": "This operation search for the created PaymentMethod"
+					},
+					"response": []
+				},
+				{
+					"name": "/PaymentMethod/{{IDPM01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let concreteTypeAttributes = {",
+									"    BankAccountDebit: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankAccountTransfer: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"nameOnCard\"],",
+									"    Check: [\"drawer\", \"payee\", \"signedDate\", \"bank\"],",
+									"    DigitalWallet: [\"service\", \"walletId\", \"walletUrl\"],",
+									"    DirectDebit: [\"mandateId\", \"mandateType\", \"accountNumber\", \"firstDebitDate\", \"lastDebitDate\", \"owner\",\"bank\"],",
+									"    TokenizedCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"lastFourDigits\"],",
+									"    Voucher: [\"code\", \"value\", \"expirationDate\"]",
+									"}",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) {",
+									"    jsonData.forEach((instance, index) => {",
+									"        var baseAttributes = ['@type', 'name', 'id', 'status', 'statusDate'];",
+									"",
+									"        let concreteType = instance[\"@type\"]",
+									"        if (concreteTypeAttributes[concreteType]) {",
+									"            baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"        }",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes) });",
+									"",
+									"        baseAttributes.forEach(attr => {",
+									"            pm.test('Response has ' + attr + ' attribute', () => {",
+									"                pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"            })",
+									"        })",
+									"",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        pm.test('Body includes value held on status', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['status']);",
+									"        });",
+									"        pm.test('Body includes value held on statusDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) == pm.globals.get('NAMEPM01'); });",
+									"        pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) == pm.globals.get('STATUSPM01'); });",
+									"        pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) == pm.globals.get('STATUSDATEPM01'); });",
+									"    })",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"    var baseAttributes = ['@type', 'name', 'id', 'status', 'statusDate'];",
+									"",
+									"    let concreteType = instance[\"@type\"]",
+									"    if (concreteTypeAttributes[concreteType]) {",
+									"        baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"    }",
+									"    pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes)});",
+									"",
+									"    baseAttributes.forEach(attr => {",
+									"        pm.test('Response has ' + attr + ' attribute', () => {",
+									"            pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"        })",
+									"    })",
+									"",
+									"    pm.test('Body includes value held on name', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['name']);",
+									"    });",
+									"    pm.test('Body includes value held on status', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['status']);",
+									"    });",
+									"    pm.test('Body includes value held on statusDate', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"    });",
+									"    // Individualized tests",
+									"    pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) === pm.globals.get('NAMEPM01'); });",
+									"    pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) === pm.globals.get('STATUSPM01'); });",
+									"    pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) === pm.globals.get('STATUSDATEPM01'); });",
+									"}",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod/{{IDPM01}}",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"path": [
+								"{{IDPM01}}"
+							]
+						},
+						"description": "This operation search for one of the created PaymentMethod"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "N2",
+			"item": [
+				{
+					"name": "/PaymentMethod?fields=name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod?fields=name",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "name"
+								}
+							]
+						},
+						"description": "This operation filter a PaymentMethod"
+					},
+					"response": []
+				},
+				{
+					"name": "/PaymentMethod?name={{NAMEPM01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let concreteTypeAttributes = {",
+									"    BankAccountDebit: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankAccountTransfer: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"nameOnCard\"],",
+									"    Check: [\"drawer\", \"payee\", \"signedDate\", \"bank\"],",
+									"    DigitalWallet: [\"service\", \"walletId\", \"walletUrl\"],",
+									"    DirectDebit: [\"mandateId\", \"mandateType\", \"accountNumber\", \"firstDebitDate\", \"lastDebitDate\", \"owner\",\"bank\"],",
+									"    TokenizedCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"lastFourDigits\"],",
+									"    Voucher: [\"code\", \"value\", \"expirationDate\"]",
+									"}",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) {",
+									"    jsonData.forEach((instance, index) => {",
+									"        var baseAttributes = ['@type', 'name', 'href', 'id', 'status', 'statusDate'];",
+									"",
+									"        let concreteType = instance[\"@type\"]",
+									"        if (concreteTypeAttributes[concreteType]) {",
+									"            baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"        }",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes) });",
+									"",
+									"        baseAttributes.forEach(attr => {",
+									"            pm.test('Response has ' + attr + ' attribute', () => {",
+									"                pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"            })",
+									"        })",
+									"",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        pm.test('Body includes value held on status', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['status']);",
+									"        });",
+									"        pm.test('Body includes value held on statusDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) == pm.globals.get('NAMEPM01'); });",
+									"        pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) == pm.globals.get('STATUSPM01'); });",
+									"        pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) == pm.globals.get('STATUSDATEPM01'); });",
+									"    })",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"    var baseAttributes = ['@type', 'name', 'href', 'id', 'status', 'statusDate'];",
+									"",
+									"    let concreteType = instance[\"@type\"]",
+									"    if (concreteTypeAttributes[concreteType]) {",
+									"        baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"    }",
+									"    pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes)});",
+									"",
+									"    baseAttributes.forEach(attr => {",
+									"        pm.test('Response has ' + attr + ' attribute', () => {",
+									"            pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"        })",
+									"    })",
+									"",
+									"    pm.test('Body includes value held on name', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['name']);",
+									"    });",
+									"    pm.test('Body includes value held on status', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['status']);",
+									"    });",
+									"    pm.test('Body includes value held on statusDate', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"    });",
+									"    // Individualized tests",
+									"    pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) === pm.globals.get('NAMEPM01'); });",
+									"    pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) === pm.globals.get('STATUSPM01'); });",
+									"    pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) === pm.globals.get('STATUSDATEPM01'); });",
+									"}",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod?name={{NAMEPM01}}",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{NAMEPM01}}"
+								}
+							]
+						},
+						"description": "This operation filter a PaymentMethod"
+					},
+					"response": []
+				},
+				{
+					"name": "/PaymentMethod?fields=name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod?fields=name",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "name"
+								}
+							]
+						},
+						"description": "This operation filter a PaymentMethod"
+					},
+					"response": []
+				},
+				{
+					"name": "/PaymentMethod?name={{NAMEPM01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let concreteTypeAttributes = {",
+									"    BankAccountDebit: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankAccountTransfer: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"nameOnCard\"],",
+									"    Check: [\"drawer\", \"payee\", \"signedDate\", \"bank\"],",
+									"    DigitalWallet: [\"service\", \"walletId\", \"walletUrl\"],",
+									"    DirectDebit: [\"mandateId\", \"mandateType\", \"accountNumber\", \"firstDebitDate\", \"lastDebitDate\", \"owner\",\"bank\"],",
+									"    TokenizedCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"lastFourDigits\"],",
+									"    Voucher: [\"code\", \"value\", \"expirationDate\"]",
+									"}",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) {",
+									"    jsonData.forEach((instance, index) => {",
+									"        var baseAttributes = ['@type', 'name', 'href', 'id', 'status', 'statusDate'];",
+									"",
+									"        let concreteType = instance[\"@type\"]",
+									"        if (concreteTypeAttributes[concreteType]) {",
+									"            baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"        }",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes) });",
+									"",
+									"        baseAttributes.forEach(attr => {",
+									"            pm.test('Response has ' + attr + ' attribute', () => {",
+									"                pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"            })",
+									"        })",
+									"",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        pm.test('Body includes value held on status', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['status']);",
+									"        });",
+									"        pm.test('Body includes value held on statusDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) == pm.globals.get('NAMEPM01'); });",
+									"        pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) == pm.globals.get('STATUSPM01'); });",
+									"        pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) == pm.globals.get('STATUSDATEPM01'); });",
+									"    })",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"    var baseAttributes = ['@type', 'name', 'href', 'id', 'status', 'statusDate'];",
+									"",
+									"    let concreteType = instance[\"@type\"]",
+									"    if (concreteTypeAttributes[concreteType]) {",
+									"        baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"    }",
+									"    pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes)});",
+									"",
+									"    baseAttributes.forEach(attr => {",
+									"        pm.test('Response has ' + attr + ' attribute', () => {",
+									"            pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"        })",
+									"    })",
+									"",
+									"    pm.test('Body includes value held on name', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['name']);",
+									"    });",
+									"    pm.test('Body includes value held on status', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['status']);",
+									"    });",
+									"    pm.test('Body includes value held on statusDate', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"    });",
+									"    // Individualized tests",
+									"    pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) === pm.globals.get('NAMEPM01'); });",
+									"    pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) === pm.globals.get('STATUSPM01'); });",
+									"    pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) === pm.globals.get('STATUSDATEPM01'); });",
+									"}",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod?name={{NAMEPM01}}",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{NAMEPM01}}"
+								}
+							]
+						},
+						"description": "This operation filter a PaymentMethod"
+					},
+					"response": []
+				},
+				{
+					"name": "/PaymentMethod?fields=status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod?fields=status",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "status"
+								}
+							]
+						},
+						"description": "This operation filter a PaymentMethod"
+					},
+					"response": []
+				},
+				{
+					"name": "/PaymentMethod?status={{STATUSPM01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let concreteTypeAttributes = {",
+									"    BankAccountDebit: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankAccountTransfer: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"nameOnCard\"],",
+									"    Check: [\"drawer\", \"payee\", \"signedDate\", \"bank\"],",
+									"    DigitalWallet: [\"service\", \"walletId\", \"walletUrl\"],",
+									"    DirectDebit: [\"mandateId\", \"mandateType\", \"accountNumber\", \"firstDebitDate\", \"lastDebitDate\", \"owner\",\"bank\"],",
+									"    TokenizedCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"lastFourDigits\"],",
+									"    Voucher: [\"code\", \"value\", \"expirationDate\"]",
+									"}",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) {",
+									"    jsonData.forEach((instance, index) => {",
+									"        var baseAttributes = ['@type', 'name', 'href', 'id', 'status', 'statusDate'];",
+									"",
+									"        let concreteType = instance[\"@type\"]",
+									"        if (concreteTypeAttributes[concreteType]) {",
+									"            baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"        }",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes) });",
+									"",
+									"        baseAttributes.forEach(attr => {",
+									"            pm.test('Response has ' + attr + ' attribute', () => {",
+									"                pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"            })",
+									"        })",
+									"",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        pm.test('Body includes value held on status', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['status']);",
+									"        });",
+									"        pm.test('Body includes value held on statusDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) == pm.globals.get('NAMEPM01'); });",
+									"        pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) == pm.globals.get('STATUSPM01'); });",
+									"        pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) == pm.globals.get('STATUSDATEPM01'); });",
+									"    })",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"    var baseAttributes = ['@type', 'name', 'href', 'id', 'status', 'statusDate'];",
+									"",
+									"    let concreteType = instance[\"@type\"]",
+									"    if (concreteTypeAttributes[concreteType]) {",
+									"        baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"    }",
+									"    pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes)});",
+									"",
+									"    baseAttributes.forEach(attr => {",
+									"        pm.test('Response has ' + attr + ' attribute', () => {",
+									"            pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"        })",
+									"    })",
+									"",
+									"    pm.test('Body includes value held on name', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['name']);",
+									"    });",
+									"    pm.test('Body includes value held on status', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['status']);",
+									"    });",
+									"    pm.test('Body includes value held on statusDate', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"    });",
+									"    // Individualized tests",
+									"    pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) === pm.globals.get('NAMEPM01'); });",
+									"    pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) === pm.globals.get('STATUSPM01'); });",
+									"    pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) === pm.globals.get('STATUSDATEPM01'); });",
+									"}",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod?status={{STATUSPM01}}",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "{{STATUSPM01}}"
+								}
+							]
+						},
+						"description": "This operation filter a PaymentMethod"
+					},
+					"response": []
+				},
+				{
+					"name": "/PaymentMethod?fields=statusDate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod?fields=statusDate",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "statusDate"
+								}
+							]
+						},
+						"description": "This operation filter a PaymentMethod"
+					},
+					"response": []
+				},
+				{
+					"name": "/PaymentMethod?statusDate={{STATUSDATEPM01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let concreteTypeAttributes = {",
+									"    BankAccountDebit: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankAccountTransfer: [\"accountNumber\", \"owner\", \"bank\"],",
+									"    BankCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"nameOnCard\"],",
+									"    Check: [\"drawer\", \"payee\", \"signedDate\", \"bank\"],",
+									"    DigitalWallet: [\"service\", \"walletId\", \"walletUrl\"],",
+									"    DirectDebit: [\"mandateId\", \"mandateType\", \"accountNumber\", \"firstDebitDate\", \"lastDebitDate\", \"owner\",\"bank\"],",
+									"    TokenizedCard: [\"cardNumber\", \"brand\", \"expirationDate\", \"lastFourDigits\"],",
+									"    Voucher: [\"code\", \"value\", \"expirationDate\"]",
+									"}",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) {",
+									"    jsonData.forEach((instance, index) => {",
+									"        var baseAttributes = ['@type', 'name', 'href', 'id', 'status', 'statusDate'];",
+									"",
+									"        let concreteType = instance[\"@type\"]",
+									"        if (concreteTypeAttributes[concreteType]) {",
+									"            baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"        }",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes) });",
+									"",
+									"        baseAttributes.forEach(attr => {",
+									"            pm.test('Response has ' + attr + ' attribute', () => {",
+									"                pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"            })",
+									"        })",
+									"",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        pm.test('Body includes value held on status', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['status']);",
+									"        });",
+									"        pm.test('Body includes value held on statusDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) == pm.globals.get('NAMEPM01'); });",
+									"        pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) == pm.globals.get('STATUSPM01'); });",
+									"        pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) == pm.globals.get('STATUSDATEPM01'); });",
+									"    })",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"    var baseAttributes = ['@type', 'name', 'href', 'id', 'status', 'statusDate'];",
+									"",
+									"    let concreteType = instance[\"@type\"]",
+									"    if (concreteTypeAttributes[concreteType]) {",
+									"        baseAttributes.push(...concreteTypeAttributes[concreteType])",
+									"    }",
+									"    pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(baseAttributes)});",
+									"",
+									"    baseAttributes.forEach(attr => {",
+									"        pm.test('Response has ' + attr + ' attribute', () => {",
+									"            pm.expect(instance[attr]).to.be.a(attr === 'value' ? 'object':'string');",
+									"        })",
+									"    })",
+									"",
+									"    pm.test('Body includes value held on name', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['name']);",
+									"    });",
+									"    pm.test('Body includes value held on status', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['status']);",
+									"    });",
+									"    pm.test('Body includes value held on statusDate', function () {",
+									"        pm.expect(pm.response.text()).to.include(instance['statusDate']);",
+									"    });",
+									"    // Individualized tests",
+									"    pm.test('name is ' + pm.globals.get(\"NAMEPM01\"), function () { pm.expect(instance['name']) === pm.globals.get('NAMEPM01'); });",
+									"    pm.test('status is ' + pm.globals.get(\"STATUSPM01\"), function () { pm.expect(instance['status']) === pm.globals.get('STATUSPM01'); });",
+									"    pm.test('statusDate is ' + pm.globals.get(\"STATUSDATEPM01\"), function () { pm.expect(instance['statusDate']) === pm.globals.get('STATUSDATEPM01'); });",
+									"}",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod?statusDate={{STATUSDATEPM01}}",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"query": [
+								{
+									"key": "statusDate",
+									"value": "{{STATUSDATEPM01}}"
+								}
+							]
+						},
+						"description": "This operation filter a PaymentMethod"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "E1",
+			"item": [
+				{
+					"name": "/PaymentMethod/404ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									"let payloads = JSON.parse(pm.environment.get(\"payloads\"))",
+									"pm.environment.set(\"test_index\", parseInt(pm.environment.get(\"test_index\")) + 1)",
+									"let index = parseInt(pm.environment.get(\"test_index\"))",
+									"",
+									"console.log(\"Index ==========>\", index)",
+									"if (index >= payloads.length) {",
+									"    postman.setNextRequest(null)",
+									"    pm.environment.set(\"test_index\", 0)",
+									"}",
+									"else {",
+									"    postman.setNextRequest(\"/PostPaymentMethod\")",
+									"    ",
+									"}",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{PaymentMethod}}paymentMethod/230b3c28-0a33-4b65-aa86-95de5ff17e04",
+							"host": [
+								"{{PaymentMethod}}paymentMethod"
+							],
+							"path": [
+								"230b3c28-0a33-4b65-aa86-95de5ff17e04"
+							]
+						},
+						"description": "This operation search for one of the created PaymentMethod"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

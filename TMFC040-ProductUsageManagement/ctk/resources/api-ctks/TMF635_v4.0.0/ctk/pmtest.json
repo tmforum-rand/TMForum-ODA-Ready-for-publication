@@ -1,0 +1,1337 @@
+{
+    "info": {
+        "_postman_id": "a2c56dc4-6225-4cf2-931e-7ac289dda2df",
+        "name": "CTK-Usage-4.0.0",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "N1",
+            "item": [
+                {
+                    "name": "/Usage",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "7c77ce9b-7fdd-46e7-9bf0-abaf7dc82cbf",
+                                "exec": [
+                                    "var jsonData = pm.response.json();",
+                                    "",
+                                    "if (Array.isArray(jsonData)) { ",
+                                    "  ",
+                                    "    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+                                    "  ",
+                                    "",
+                                    "}",
+                                    "",
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "  pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "var instance = pm.response.json();",
+                                    "var requiredAttributes = ['id', 'usageSpecification'];",
+                                    "",
+                                    "pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "",
+                                    "",
+                                    "",
+                                    "pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "",
+                                    "pm.globals.set('IDUS01', instance['id']);",
+                                    "",
+                                    "pm.test('Body includes value held on id', function () {",
+                                    "  pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"usageSpecification\": {\n    \"id\": \"af59-b504c742900e\"\n  }\n}"
+                        },
+                        "url": {
+                            "raw": "{{Usage}}usage",
+                            "host": [
+                                "{{Usage}}usage"
+                            ]
+                        },
+                        "description": "This operation creates a Usage"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/Usage",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "ff1b4b14-b50f-4974-8e0d-1c367fb14acb",
+                                "exec": [
+                                    "pm.test(\"Status code is 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "  ",
+                                    "  ",
+                                    "  ",
+                                    "var jsonData = pm.response.json();",
+                                    "  ",
+                                    "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                                    "    jsonData.forEach(function (instance, index) {",
+                                    "      ",
+                                    "        var requiredAttributes = ['id', 'usageSpecification'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS02');});",
+                                    "        }  ",
+                                    "    });",
+                                    "  }",
+                                    "  else {",
+                                    "    var instance = pm.response.json();",
+                                    "    var requiredAttributes = ['id', 'usageSpecification'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS02');});",
+                                    "        }",
+                                    "   ",
+                                    "  }",
+                                    "  ",
+                                    "  "
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usage",
+                            "host": [
+                                "{{Usage}}usage"
+                            ]
+                        },
+                        "description": "This operation search for the created Usage"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/Usage/{{IDUS01}}",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "9a6e1ca0-a283-428e-a360-23c77fab92aa",
+                                "exec": [
+                                    "pm.test(\"Status code is 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "  ",
+                                    "  ",
+                                    "  ",
+                                    "var jsonData = pm.response.json();",
+                                    "  ",
+                                    "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                                    "    jsonData.forEach(function (instance, index) {",
+                                    "      ",
+                                    "        var requiredAttributes = ['id', 'usageSpecification'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "          ",
+                                    "    });",
+                                    "  }",
+                                    "  else {",
+                                    "    var instance = pm.response.json();",
+                                    "    var requiredAttributes = ['id', 'usageSpecification'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "",
+                                    "        ",
+                                    "   ",
+                                    "}",
+                                    "  ",
+                                    "  "
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usage/{{IDUS01}}",
+                            "host": [
+                                "{{Usage}}usage"
+                            ],
+                            "path": [
+                                "{{IDUS01}}"
+                            ]
+                        },
+                        "description": "This operation search for one of the created Usage"
+                    },
+                    "response": []
+                }
+            ],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "N2",
+            "item": [
+                {
+                    "name": "/Usage?fields=id",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "bf5ee95a-08e1-49bf-9d9f-75f7befea7f2",
+                                "exec": [
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usage?fields=id",
+                            "host": [
+                                "{{Usage}}usage"
+                            ],
+                            "query": [
+                                {
+                                    "key": "fields",
+                                    "value": "id"
+                                }
+                            ]
+                        },
+                        "description": "This operation filter a Usage"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/Usage?id={{IDUS01}}",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "41426e62-fca8-4324-b0eb-94db2e4b12c7",
+                                "exec": [
+                                    "pm.test(\"Status code is 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "  ",
+                                    "  ",
+                                    "  ",
+                                    "var jsonData = pm.response.json();",
+                                    "  ",
+                                    "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                                    "    jsonData.forEach(function (instance, index) {",
+                                    "      ",
+                                    "        var requiredAttributes = ['id', 'usageSpecification'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "          ",
+                                    "    });",
+                                    "  }",
+                                    "  else {",
+                                    "    var instance = pm.response.json();",
+                                    "    var requiredAttributes = ['id', 'usageSpecification'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "",
+                                    "        ",
+                                    "   ",
+                                    "}",
+                                    "  ",
+                                    "  "
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usage?id={{IDUS01}}",
+                            "host": [
+                                "{{Usage}}usage"
+                            ],
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "{{IDUS01}}"
+                                }
+                            ]
+                        },
+                        "description": "This operation filter a Usage"
+                    },
+                    "response": []
+                }
+            ],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "E1",
+            "item": [
+                {
+                    "name": "/Usage/404ID",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "8e81e862-63ae-44f8-b54c-76596a719811",
+                                "exec": [
+                                    "pm.test(\"Status code is 404\", function () {",
+                                    "    pm.response.to.have.status(404);",
+                                    "});",
+                                    "",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usage/81017615-a16e-491b-905e-9b3e98de013f",
+                            "host": [
+                                "{{Usage}}usage"
+                            ],
+                            "path": [
+                                "81017615-a16e-491b-905e-9b3e98de013f"
+                            ]
+                        },
+                        "description": "This operation search for one of the created Usage"
+                    },
+                    "response": []
+                }
+            ],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "N1",
+            "item": [
+                {
+                    "name": "/UsageSpecification",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "fe85e525-f1d4-48eb-98a7-9bb772af1e0d",
+                                "exec": [
+                                    "var jsonData = pm.response.json();",
+                                    "",
+                                    "if (Array.isArray(jsonData)) { ",
+                                    "  ",
+                                    "    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+                                    "  ",
+                                    "",
+                                    "}",
+                                    "",
+                                    "pm.test(\"Status code is 201\", function () {",
+                                    "  pm.response.to.have.status(201);",
+                                    "});",
+                                    "",
+                                    "var instance = pm.response.json();",
+                                    "var requiredAttributes = ['id', 'href', 'name'];",
+                                    "",
+                                    "pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "",
+                                    "",
+                                    "",
+                                    "pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                                    "pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+                                    "",
+                                    "pm.globals.set('IDUS01', instance['id']);",
+                                    "pm.globals.set('HREFUS01', instance['href']);",
+                                    "pm.globals.set('NAMEUS01', instance['name']);",
+                                    "",
+                                    "pm.test('Body includes value held on id', function () {",
+                                    "  pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "});",
+                                    "pm.test('Body includes value held on href', function () {",
+                                    "  pm.expect(pm.response.text()).to.include(instance['href']);",
+                                    "});",
+                                    "pm.test('Body includes value held on name', function () {",
+                                    "  pm.expect(pm.response.text()).to.include(instance['name']);",
+                                    "});",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Voice-Usage-Specification\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{Usage}}usageSpecification",
+                            "host": [
+                                "{{Usage}}usageSpecification"
+                            ]
+                        },
+                        "description": "This operation creates a UsageSpecification"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/UsageSpecification",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "5f45320e-1590-4777-99d9-dc24121d4e1b",
+                                "exec": [
+                                    "pm.test(\"Status code is 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "  ",
+                                    "  ",
+                                    "  ",
+                                    "var jsonData = pm.response.json();",
+                                    "  ",
+                                    "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                                    "    jsonData.forEach(function (instance, index) {",
+                                    "      ",
+                                    "        var requiredAttributes = ['id', 'href', 'name'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on href', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on name', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['name']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS01');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS02');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS02');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS02\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS02');});",
+                                    "        }  ",
+                                    "    });",
+                                    "  }",
+                                    "  else {",
+                                    "    var instance = pm.response.json();",
+                                    "    var requiredAttributes = ['id', 'href', 'name'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on href', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on name', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['name']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS01');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS02');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS02');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS02\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS02');});",
+                                    "        }",
+                                    "   ",
+                                    "  }",
+                                    "  ",
+                                    "  "
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usageSpecification",
+                            "host": [
+                                "{{Usage}}usageSpecification"
+                            ]
+                        },
+                        "description": "This operation search for the created UsageSpecification"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/UsageSpecification/{{IDUS01}}",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "edc1a84d-204e-419a-9e42-3ce18955800a",
+                                "exec": [
+                                    "pm.test(\"Status code is 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "  ",
+                                    "  ",
+                                    "  ",
+                                    "var jsonData = pm.response.json();",
+                                    "  ",
+                                    "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                                    "    jsonData.forEach(function (instance, index) {",
+                                    "      ",
+                                    "        var requiredAttributes = ['id', 'href', 'name'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on href', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on name', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['name']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS01');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "          ",
+                                    "    });",
+                                    "  }",
+                                    "  else {",
+                                    "    var instance = pm.response.json();",
+                                    "    var requiredAttributes = ['id', 'href', 'name'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on href', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on name', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['name']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS01');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "",
+                                    "        ",
+                                    "   ",
+                                    "}",
+                                    "  ",
+                                    "  "
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usageSpecification/{{IDUS01}}",
+                            "host": [
+                                "{{Usage}}usageSpecification"
+                            ],
+                            "path": [
+                                "{{IDUS01}}"
+                            ]
+                        },
+                        "description": "This operation search for one of the created UsageSpecification"
+                    },
+                    "response": []
+                }
+            ],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "N2",
+            "item": [
+                {
+                    "name": "/UsageSpecification?fields=id",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "e102c2c9-164a-4c62-9f04-294e21eaf7a9",
+                                "exec": [
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usageSpecification?fields=id",
+                            "host": [
+                                "{{Usage}}usageSpecification"
+                            ],
+                            "query": [
+                                {
+                                    "key": "fields",
+                                    "value": "id"
+                                }
+                            ]
+                        },
+                        "description": "This operation filter a UsageSpecification"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/UsageSpecification?id={{IDUS01}}",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "a19480de-a20f-4c3e-a7f1-1b8fd43d8648",
+                                "exec": [
+                                    "pm.test(\"Status code is 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "  ",
+                                    "  ",
+                                    "  ",
+                                    "var jsonData = pm.response.json();",
+                                    "  ",
+                                    "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                                    "    jsonData.forEach(function (instance, index) {",
+                                    "      ",
+                                    "        var requiredAttributes = ['id', 'href', 'name'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on href', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on name', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['name']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS01');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "          ",
+                                    "    });",
+                                    "  }",
+                                    "  else {",
+                                    "    var instance = pm.response.json();",
+                                    "    var requiredAttributes = ['id', 'href', 'name'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on href', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on name', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['name']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS01');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "",
+                                    "        ",
+                                    "   ",
+                                    "}",
+                                    "  ",
+                                    "  "
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usageSpecification?id={{IDUS01}}",
+                            "host": [
+                                "{{Usage}}usageSpecification"
+                            ],
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "{{IDUS01}}"
+                                }
+                            ]
+                        },
+                        "description": "This operation filter a UsageSpecification"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/UsageSpecification?fields=href",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "8e934db0-568f-4070-8bbb-02210442609e",
+                                "exec": [
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usageSpecification?fields=href",
+                            "host": [
+                                "{{Usage}}usageSpecification"
+                            ],
+                            "query": [
+                                {
+                                    "key": "fields",
+                                    "value": "href"
+                                }
+                            ]
+                        },
+                        "description": "This operation filter a UsageSpecification"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/UsageSpecification?fields=name",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "435a9ce0-f7f3-4031-bbff-0e2a30f9af20",
+                                "exec": [
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usageSpecification?fields=name",
+                            "host": [
+                                "{{Usage}}usageSpecification"
+                            ],
+                            "query": [
+                                {
+                                    "key": "fields",
+                                    "value": "name"
+                                }
+                            ]
+                        },
+                        "description": "This operation filter a UsageSpecification"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "/UsageSpecification?name={{NAMEUS01}}",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "52930522-8ada-4049-a4d4-61a378f61106",
+                                "exec": [
+                                    "pm.test(\"Status code is 200\", function () {",
+                                    "    pm.response.to.have.status(200);",
+                                    "});",
+                                    "  ",
+                                    "  ",
+                                    "  ",
+                                    "var jsonData = pm.response.json();",
+                                    "  ",
+                                    "if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+                                    "    jsonData.forEach(function (instance, index) {",
+                                    "      ",
+                                    "        var requiredAttributes = ['id', 'href', 'name'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on href', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on name', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['name']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS01');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "          ",
+                                    "    });",
+                                    "  }",
+                                    "  else {",
+                                    "    var instance = pm.response.json();",
+                                    "    var requiredAttributes = ['id', 'href', 'name'];",
+                                    "      ",
+                                    "        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+                                    "      ",
+                                    "      ",
+                                    "      ",
+                                    "        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+                                    "        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+                                    "      ",
+                                    "        pm.test('Body includes value held on id', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['id']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on href', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['href']);",
+                                    "        });",
+                                    "        pm.test('Body includes value held on name', function () {",
+                                    "            pm.expect(pm.response.text()).to.include(instance['name']);",
+                                    "        });",
+                                    "        // Individualized tests",
+                                    "        if (instance.id == pm.globals.get(\"IDUS01\")) {",
+                                    "            pm.test('id is ' + pm.globals.get(\"IDUS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDUS01');});",
+                                    "            pm.test('href is ' + pm.globals.get(\"HREFUS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFUS01');});",
+                                    "            pm.test('name is ' + pm.globals.get(\"NAMEUS01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMEUS01');});",
+                                    "        }",
+                                    "        if (instance.id == pm.globals.get(\"IDUS02\")) {",
+                                    "            pm.test('IDUS02 not expected on this test', function () {",
+                                    "                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+                                    "            });",
+                                    "        }",
+                                    "",
+                                    "        ",
+                                    "   ",
+                                    "}",
+                                    "  ",
+                                    "  "
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usageSpecification?name={{NAMEUS01}}",
+                            "host": [
+                                "{{Usage}}usageSpecification"
+                            ],
+                            "query": [
+                                {
+                                    "key": "name",
+                                    "value": "{{NAMEUS01}}"
+                                }
+                            ]
+                        },
+                        "description": "This operation filter a UsageSpecification"
+                    },
+                    "response": []
+                }
+            ],
+            "protocolProfileBehavior": {}
+        },
+        {
+            "name": "E1",
+            "item": [
+                {
+                    "name": "/UsageSpecification/404ID",
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "id": "5fcf84ac-a8ca-4995-a50a-9da682643528",
+                                "exec": [
+                                    "pm.test(\"Status code is 404\", function () {",
+                                    "    pm.response.to.have.status(404);",
+                                    "});",
+                                    "",
+                                    ""
+                                ],
+                                "type": "text/javascript"
+                            }
+                        }
+                    ],
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer 1321321"
+                            },
+                            {
+                                "key": "X-TransactionId",
+                                "value": "123456789"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{Usage}}usageSpecification/31f18bc5-e9ff-4c56-953f-478828bd6f88",
+                            "host": [
+                                "{{Usage}}usageSpecification"
+                            ],
+                            "path": [
+                                "31f18bc5-e9ff-4c56-953f-478828bd6f88"
+                            ]
+                        },
+                        "description": "This operation search for one of the created UsageSpecification"
+                    },
+                    "response": []
+                }
+            ],
+            "protocolProfileBehavior": {}
+        }
+    ],
+    "protocolProfileBehavior": {}
+}

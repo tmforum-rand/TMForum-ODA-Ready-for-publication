@@ -1,0 +1,136 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "user": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "@referredType": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@referredType",
+                "id"
+            ]
+        },
+        "validFor": {
+            "type": "object",
+            "properties": {
+                "endDateTime": {
+                    "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        {
+                          "type": "string",
+                          "maxLength": 0
+                        }
+                    ]
+                },
+                "startDateTime": {
+                    "anyOf": [
+                        {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        {
+                          "type": "string",
+                          "maxLength": 0
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "endDateTime", 
+                "startDateTime"
+            ]
+            
+        }
+    },
+    "anyOf": [
+        {
+            "properties": {
+                "assetUserRole": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "manageableAsset": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ]
+                            },
+                            "userRole": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "manageableAsset",
+                            "userRole"
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "type": "object",
+            "properties": {
+                "privilege": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "action": {
+                                "type": "string"
+                            },
+                            "function": {
+                                "type": "string"
+                            },
+                            "manageableAsset": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "action",
+                            "function",
+                            "manageableAsset"
+                        ]
+                    }
+                }
+            },
+            "required": [
+                "privilege"
+            ]
+        }
+    ],
+    "required": [
+        "user",
+        "validFor"
+    ]
+}

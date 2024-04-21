@@ -1,0 +1,17 @@
+{
+    "user": {
+        "id": "cust-745712-A",
+        "@referredType": "Individual"
+    },
+    "validFor": {
+        "endDateTime": "",
+        "startDateTime": ""
+    },
+    "privilege": {
+        "action": "1",
+        "function": "f",
+        "manageableAsset": {
+            "id": "123123"
+        }
+    }
+}

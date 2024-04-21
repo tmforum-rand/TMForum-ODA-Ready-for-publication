@@ -1,0 +1,326 @@
+---
+# Source: tmfc029-paymentmanagement/templates/PersistentVolumeClaim-0.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-mongodb-pv-claim'
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+# Source: tmfc029-paymentmanagement/templates/Service-0.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-payment-method-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-payment
+    port: 8080
+    targetPort: 'release-name-payment'
+  selector:
+    impl: 'release-name-payment-method-management-api'
+---
+# Source: tmfc029-paymentmanagement/templates/Service-1.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-payment-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-payment
+    port: 8080
+    targetPort: 'release-name-payment'
+  selector:
+    impl: 'release-name-payment-management-api'
+---
+# Source: tmfc029-paymentmanagement/templates/Service-2.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-party-role-management-api'
+spec:
+  ports:
+  - name: tcp-release-name-party-r
+    port: 8080
+    targetPort: 'release-name-party-r'
+  selector:
+    impl: 'release-name-party-role-management-api'
+---
+# Source: tmfc029-paymentmanagement/templates/Service-3.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-mongodb'
+spec:
+  ports:
+  - name: tcp-release-name-mongodb
+    port: 27017
+    targetPort: 'release-name-mongodb'
+  selector:
+    impl: 'release-name-mongodb'
+---
+# Source: tmfc029-paymentmanagement/templates/Deployment-0.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-payment-method-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-payment-method-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc029-paymentmanagement'
+        impl: 'release-name-payment-method-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc029-paymentmanagement'
+        image: 'tmforumorg/tmfc029-tmf670-v4.0.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-payment-method-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-payment'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc029-paymentmanagement/tmf-api/paymentMethod/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc029-paymentmanagement/templates/Deployment-1.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-payment-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-payment-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc029-paymentmanagement'
+        impl: 'release-name-payment-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc029-paymentmanagement'
+        image: 'tmforumorg/tmfc029-tmf676-v4.0.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-payment-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-payment'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc029-paymentmanagement/payment/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc029-paymentmanagement/templates/Deployment-2.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-party-role-management-api'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-party-role-management-api'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc029-paymentmanagement'
+        impl: 'release-name-party-role-management-api'
+        version: v4.0.0
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc029-paymentmanagement'
+        image: 'tmforumorg/tmfc029-tmf669-v4.0.0:latest'
+        imagePullPolicy: Always
+        name: 'release-name-party-role-management-api'
+        ports:
+        - containerPort: 8080
+          name: 'release-name-party-r'
+        resources:
+          limits:
+            cpu: '0.5'
+            memory: 900Mi
+          requests:
+            cpu: '0.1'
+            memory: 600Mi
+        startupProbe:
+          failureThreshold: 30
+          httpGet:
+            path: /release-name-tmfc029-paymentmanagement/tmf-api/partyRoleManagement/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+---
+# Source: tmfc029-paymentmanagement/templates/Deployment-3.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-mongodb'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: 'release-name-mongodb'
+  template:
+    metadata:
+      labels:
+        app: 'release-name-tmfc029-paymentmanagement'
+        impl: 'release-name-mongodb'
+        version: mongo-5.0.1
+    spec:
+      containers:
+      - env:
+        - name: MONGO_SERVICE_HOST
+          value: 'release-name-mongodb'
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'release-name-tmfc029-paymentmanagement'
+        image: mongo:5.0.1
+        imagePullPolicy: Always
+        name: 'release-name-mongodb'
+        ports:
+        - containerPort: 27017
+          name: 'release-name-mongodb'
+        volumeMounts:
+        - mountPath: /data/db
+          name: 'release-name-mongodb-pv-storage'
+      volumes:
+      - name: 'release-name-mongodb-pv-storage'
+        persistentVolumeClaim:
+          claimName: 'release-name-mongodb-pv-claim'
+---
+# Source: tmfc029-paymentmanagement/templates/component-0.yaml
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc029-paymentmanagement'
+  name: 'release-name-tmfc029-paymentmanagement'
+spec:
+  coreFunction:
+    dependentAPIs:
+    - apitype: openapi
+      name: party-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: account-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: geographic-address-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: geographic-site-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+    exposedAPIs:
+    - apitype: openapi
+      implementation: 'release-name-payment-method-management-api'
+      name: payment-method-management-api
+      path: /release-name-tmfc029-paymentmanagement/tmf-api/paymentMethod/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF670_Payment_Method/4.0.0/swagger/TMF670_Payment_Method_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      implementation: 'release-name-payment-management-api'
+      name: payment-management-api
+      path: /release-name-tmfc029-paymentmanagement/payment/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json
+  description: Payment Management manages methods used by parties to make payments,
+    it also administers payment plan, handles payment, assigns payments against bills,
+    settlements, and other object requiring payments.
+  functionalBlock: PartyManagement
+  id: TMFC029
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: 'release-name-tmfc029-paymentmanagement-sm'
+      name: metrics
+      path: /release-name-tmfc029-paymentmanagement/metrics
+      port: 4000
+  name: PaymentManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: '2023-08-18T00:00:00.000Z'
+  securityFunction:
+    controllerRole: 'admin'
+    exposedAPIs:
+    - apitype: openapi
+      implementation: 'release-name-party-role-management-api'
+      name: party-role-management-api
+      path: /release-name-tmfc029-paymentmanagement/tmf-api/partyRoleManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  status: specified
+  version: 1.1.1

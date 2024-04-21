@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-party-role-management-api'
+spec:
+  ports:
+  - name: tcp-{{.Release.Name}}-party-r
+    port: 8080
+    targetPort: '{{.Release.Name}}-party-r'
+  selector:
+    impl: '{{.Release.Name}}-party-role-management-api'

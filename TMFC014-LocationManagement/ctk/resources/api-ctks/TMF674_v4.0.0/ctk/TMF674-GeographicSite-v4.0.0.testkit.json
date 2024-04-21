@@ -1,0 +1,552 @@
+{
+	"info": {
+		"_postman_id": "71a648d9-ba2a-4a2f-905b-ac4aca00323a",
+		"name": "CTK-Geographic_Site-4.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "N1",
+			"item": [
+				{
+					"name": "/geographicSite",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "55f96d20-c5c5-4263-8cbd-dd2c0def6b83",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"  ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var instance = pm.response.json();",
+									"var requiredAttributes = ['href', 'id'];",
+									"",
+									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"",
+									"",
+									"",
+									"pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"",
+									"pm.globals.set('HREFGS01', instance['href']);",
+									"pm.globals.set('IDGS01', instance['id']);",
+									"",
+									"pm.test('Body includes value held on href', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['href']);",
+									"});",
+									"pm.test('Body includes value held on id', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['id']);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{Geographic_Site}}geographicSite",
+							"host": [
+								"{{Geographic_Site}}geographicSite"
+							]
+						},
+						"description": "This operation creates a GeographicSite"
+					},
+					"response": []
+				},
+				{
+					"name": "/geographicSite",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9b40ca5f-4a9c-489c-bba9-f9901b0af4fe",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDGS01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFGS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFGS01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDGS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDGS01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDGS02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFGS02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFGS02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDGS02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDGS02');});",
+									"        }  ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDGS01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFGS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFGS01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDGS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDGS01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDGS02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFGS02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFGS02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDGS02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDGS02');});",
+									"        }",
+									"   ",
+									"  }",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Geographic_Site}}geographicSite",
+							"host": [
+								"{{Geographic_Site}}geographicSite"
+							]
+						},
+						"description": "This operation search for the created GeographicSite"
+					},
+					"response": []
+				},
+				{
+					"name": "/geographicSite/{{IDGS01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8585ed0a-4295-4b2b-bd7b-73d970c1d0a5",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDGS01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFGS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFGS01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDGS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDGS01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDGS02\")) {",
+									"            pm.test('IDGS02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDGS01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFGS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFGS01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDGS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDGS01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDGS02\")) {",
+									"            pm.test('IDGS02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Geographic_Site}}geographicSite/{{IDGS01}}",
+							"host": [
+								"{{Geographic_Site}}geographicSite"
+							],
+							"path": [
+								"{{IDGS01}}"
+							]
+						},
+						"description": "This operation search for one of the created GeographicSite"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "N2",
+			"item": [
+				{
+					"name": "/geographicSite?fields=href",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae497c3c-a4c7-4cc4-a73e-dae6b632e53a",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Geographic_Site}}geographicSite?fields=href",
+							"host": [
+								"{{Geographic_Site}}geographicSite"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "href"
+								}
+							]
+						},
+						"description": "This operation filter a GeographicSite"
+					},
+					"response": []
+				},
+				{
+					"name": "/geographicSite?fields=id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a22ccd81-c717-4f1d-b45c-520c137422fa",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Geographic_Site}}geographicSite?fields=id",
+							"host": [
+								"{{Geographic_Site}}geographicSite"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "id"
+								}
+							]
+						},
+						"description": "This operation filter a GeographicSite"
+					},
+					"response": []
+				},
+				{
+					"name": "/geographicSite?id={{IDGS01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "85b55498-e6bb-409f-ab89-06a5d1df4b84",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDGS01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFGS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFGS01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDGS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDGS01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDGS02\")) {",
+									"            pm.test('IDGS02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDGS01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFGS01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFGS01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDGS01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDGS01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDGS02\")) {",
+									"            pm.test('IDGS02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Geographic_Site}}geographicSite?id={{IDGS01}}",
+							"host": [
+								"{{Geographic_Site}}geographicSite"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{IDGS01}}"
+								}
+							]
+						},
+						"description": "This operation filter a GeographicSite"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "E1",
+			"item": [
+				{
+					"name": "/geographicSite/404ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b43e38d3-46f9-4812-be43-acb22b34f962",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Geographic_Site}}geographicSite/d15e1d39-5500-413d-87ed-2058cf7d90f8",
+							"host": [
+								"{{Geographic_Site}}geographicSite"
+							],
+							"path": [
+								"d15e1d39-5500-413d-87ed-2058cf7d90f8"
+							]
+						},
+						"description": "This operation search for one of the created GeographicSite"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

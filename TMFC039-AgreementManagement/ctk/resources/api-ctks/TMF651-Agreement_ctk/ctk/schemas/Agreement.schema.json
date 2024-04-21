@@ -1,0 +1,89 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "agreementType": {
+            "type": "string"
+        },
+        "agreementItem": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "termOrCondition": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "description": {
+                                    "type": "string"
+                                },
+                                "id": {
+                                    "type": "string"
+                                },
+                                "validFor": {
+                                    "type": "object",
+                                    "properties": {
+                                        "startDateTime": {
+                                            "type": "string"
+                                        },
+                                        "endDateTime": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "endDateTime",
+                                        "startDateTime"
+                                    ]
+                                }
+                            },
+                            "required": [
+                                "description",
+                                "id",
+                                "validFor"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "termOrCondition"
+                ]
+            }
+        },
+        "engagedParty": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "@referredType": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "@referredType",
+                    "id",
+                    "name",
+                    "role"
+                ]
+            }
+        }
+    },
+    "required": [
+        "agreementItem",
+        "agreementType",
+        "engagedParty",
+        "name"
+    ]
+}

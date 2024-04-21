@@ -1,0 +1,2264 @@
+{
+	"info": {
+		"_postman_id": "ba4e394a-93f6-4d62-b802-20ff150e66e6",
+		"name": "CTK-Alarm-4.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "N1",
+			"item": [
+				{
+					"name": "/Alarm",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"  ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var instance = pm.response.json();",
+									"var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"",
+									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"",
+									"",
+									"",
+									"pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"",
+									"pm.globals.set('ALARMRAISEDTIMEAL01', instance['alarmRaisedTime']);",
+									"pm.globals.set('HREFAL01', instance['href']);",
+									"pm.globals.set('IDAL01', instance['id']);",
+									"pm.globals.set('PROBABLECAUSEAL01', instance['probableCause']);",
+									"pm.globals.set('SOURCESYSTEMIDAL01', instance['sourceSystemId']);",
+									"pm.globals.set('STATEAL01', instance['state']);",
+									"",
+									"pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"});",
+									"pm.test('Body includes value held on href', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['href']);",
+									"});",
+									"pm.test('Body includes value held on id', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['id']);",
+									"});",
+									"pm.test('Body includes value held on probableCause', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"});",
+									"pm.test('Body includes value held on sourceSystemId', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"});",
+									"pm.test('Body includes value held on state', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['state']);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"alarmRaisedTime\": \"2019-07-03T03:32:17.235Z\",\n  \"alarmType\": \"environmentalAlarm\",\n  \"alarmedObject\": {},\n  \"perceivedSeverity\": \"minor\",\n  \"probableCause\": \"rectifierLowVoltage\",\n  \"sourceSystemId\": \"ems-1\",\n  \"state\": \"raised\"\n}"
+						},
+						"url": {
+							"raw": "{{Alarm}}alarm",
+							"host": [
+								"{{Alarm}}alarm"
+							]
+						},
+						"description": "This operation creates a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"       ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL02\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL02');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL02\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL02');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL02\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL02');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL02\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL02');});",
+									"        }  ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL02\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL02');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL02\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL02');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL02\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL02');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL02\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL02');});",
+									"        }",
+									"   ",
+									"  }",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm",
+							"host": [
+								"{{Alarm}}alarm"
+							]
+						},
+						"description": "This operation search for the created Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm/{{IDAL01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm/{{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"{{IDAL01}}"
+							]
+						},
+						"description": "This operation search for one of the created Alarm"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "N2",
+			"item": [
+				{
+					"name": "/Alarm?fields=alarmRaisedTime",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?fields=alarmRaisedTime",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "alarmRaisedTime"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm?alarmRaisedTime='{{ALARMRAISEDTIMEAL01}}'",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?alarmRaisedTime='{{ALARMRAISEDTIMEAL01}}'",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "alarmRaisedTime",
+									"value": "'{{ALARMRAISEDTIMEAL01}}'"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm?fields=id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['id','href', 'id'];",
+									"      ",
+									"        pm.test('Instance must have id, href and filtered attribute', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes)});",
+									"        pm.test('Instance has only id, href and filtered attribute', function () { pm.expect(requiredAttributes).to.include.members(Object.keys(instance))});",
+									"    });",
+									"",
+									"    ",
+									"}",
+									"else { ",
+									"  ",
+									"    pm.test('Array expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?fields=id",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "id"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm?id={{IDAL01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?id={{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{IDAL01}}"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm?fields=probableCause",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['id','href', 'probableCause'];",
+									"      ",
+									"        pm.test('Instance must have id, href and filtered attribute', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes)});",
+									"        pm.test('Instance has only id, href and filtered attribute', function () { pm.expect(requiredAttributes).to.include.members(Object.keys(instance))});",
+									"    });",
+									"",
+									"    ",
+									"}",
+									"else { ",
+									"  ",
+									"    pm.test('Array expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?fields=probableCause",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "probableCause"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm?probableCause={{PROBABLECAUSEAL01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?probableCause={{PROBABLECAUSEAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "probableCause",
+									"value": "{{PROBABLECAUSEAL01}}"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm?fields=sourceSystemId",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['id','href', 'sourceSystemId'];",
+									"      ",
+									"        pm.test('Instance must have id, href and filtered attribute', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes)});",
+									"        pm.test('Instance has only id, href and filtered attribute', function () { pm.expect(requiredAttributes).to.include.members(Object.keys(instance))});",
+									"    });",
+									"",
+									"    ",
+									"}",
+									"else { ",
+									"  ",
+									"    pm.test('Array expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?fields=sourceSystemId",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "sourceSystemId"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm?sourceSystemId={{SOURCESYSTEMIDAL01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?sourceSystemId={{SOURCESYSTEMIDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "sourceSystemId",
+									"value": "{{SOURCESYSTEMIDAL01}}"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm?fields=state",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['id','href', 'state'];",
+									"      ",
+									"        pm.test('Instance must have id, href and filtered attribute', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes)});",
+									"        pm.test('Instance has only id, href and filtered attribute', function () { pm.expect(requiredAttributes).to.include.members(Object.keys(instance))});",
+									"    });",
+									"",
+									"    ",
+									"}",
+									"else { ",
+									"  ",
+									"    pm.test('Array expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?fields=state",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "state"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm?state={{STATEAL01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 or 206\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 206])",
+									"});",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"            pm.test('alarmRaisedTime is ' + pm.globals.get(\"ALARMRAISEDTIMEAL01\"), function() {pm.expect(instance['alarmRaisedTime']) == pm.globals.get('ALARMRAISEDTIMEAL01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFAL01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFAL01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDAL01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDAL01');});",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"            pm.test('sourceSystemId is ' + pm.globals.get(\"SOURCESYSTEMIDAL01\"), function() {pm.expect(instance['sourceSystemId']) == pm.globals.get('SOURCESYSTEMIDAL01');});",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm?state={{STATEAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"query": [
+								{
+									"key": "state",
+									"value": "{{STATEAL01}}"
+								}
+							]
+						},
+						"description": "This operation filter a Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Alarm probableCause",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    pm.expect.fail(\"Array not expected as a Patch Reponse\")",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"    pm.globals.set('PROBABLECAUSEAL01', instance['probableCause']);",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"probableCause\": \"rectifierHighVoltage\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Alarm}}alarm/{{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"{{IDAL01}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm/{{IDAL01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"           ",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"           ",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"           ",
+									"            pm.test('probableCause is ' + pm.globals.get(\"PROBABLECAUSEAL01\"), function() {pm.expect(instance['probableCause']) == pm.globals.get('PROBABLECAUSEAL01');});",
+									"           ",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm/{{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"{{IDAL01}}"
+							]
+						},
+						"description": "This operation search for one of the created Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Alarm perceivedSeverity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    pm.expect.fail(\"Array not expected as a Patch Reponse\")",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"    pm.globals.set('PROBABLECAUSEAL01', instance['probableCause']);",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"perceivedSeverity\": \"major\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Alarm}}alarm/{{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"{{IDAL01}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm/{{IDAL01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"           ",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm/{{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"{{IDAL01}}"
+							]
+						},
+						"description": "This operation search for one of the created Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Alarm alarmType",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    pm.expect.fail(\"Array not expected as a Patch Reponse\")",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"alarmType\": \"physicalViolation\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Alarm}}alarm/{{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"{{IDAL01}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm/{{IDAL01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"           ",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm/{{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"{{IDAL01}}"
+							]
+						},
+						"description": "This operation search for one of the created Alarm"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Alarm state",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    pm.expect.fail(\"Array not expected as a Patch Reponse\")",
+									"}",
+									"else {",
+									"    var instance = pm.response.json();",
+									"    pm.globals.set('STATEAL01', instance['state']);",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"state\": \"updated\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Alarm}}alarm/{{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"{{IDAL01}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/Alarm/{{IDAL01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['alarmRaisedTime', 'alarmType', 'alarmedObject', 'href', 'id', 'perceivedSeverity', 'probableCause', 'sourceSystemId', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has alarmRaisedTime attribute', function() { pm.expect(instance[\"alarmRaisedTime\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has probableCause attribute', function() { pm.expect(instance[\"probableCause\"]).to.be.a('string'); });",
+									"        pm.test('Response has sourceSystemId attribute', function() { pm.expect(instance[\"sourceSystemId\"]).to.be.a('string'); });",
+									"        pm.test('Response has state attribute', function() { pm.expect(instance[\"state\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on alarmRaisedTime', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['alarmRaisedTime']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on probableCause', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['probableCause']);",
+									"        });",
+									"        pm.test('Body includes value held on sourceSystemId', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['sourceSystemId']);",
+									"        });",
+									"        pm.test('Body includes value held on state', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['state']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDAL01\")) {",
+									"",
+									"            pm.test('state is ' + pm.globals.get(\"STATEAL01\"), function() {pm.expect(instance['state']) == pm.globals.get('STATEAL01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDAL02\")) {",
+									"            pm.test('IDAL02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm/{{IDAL01}}",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"{{IDAL01}}"
+							]
+						},
+						"description": "This operation search for one of the created Alarm"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "E1",
+			"item": [
+				{
+					"name": "/Alarm/404ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Alarm}}alarm/3f1844df-a9a5-4da5-95cb-fcd94197d79b",
+							"host": [
+								"{{Alarm}}alarm"
+							],
+							"path": [
+								"3f1844df-a9a5-4da5-95cb-fcd94197d79b"
+							]
+						},
+						"description": "This operation search for one of the created Alarm"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

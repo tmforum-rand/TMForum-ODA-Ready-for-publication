@@ -1,0 +1,304 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF633
+      version: v4.0.0
+      name: service-catalog-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - serviceSpecification:
+        - GET
+        - GET /id
+    - id: TMF669
+      version: v4.0.0
+      name: party-role-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - PartyRole:
+        - GET
+        - GET /id
+    - id: TMF632
+      version: v4.0.0
+      name: party-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - Individual:
+        - GET
+        - GET /id
+      - Organisation:
+        - GET
+        - GET /id
+    - id: TMF651
+      version: v4.0.0
+      name: agreement-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - agreement:
+        - GET
+        - GET /id
+      - agreementSpecification:
+        - GET
+        - GET /id
+    - id: TMF673
+      version: v4.0.0
+      name: geographic-address-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - geographicAddress:
+        - GET
+        - GET /id
+    - id: TMF674
+      version: v4.0.0
+      name: geographic-site-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - geographicSite:
+        - GET
+        - GET /id
+    - id: TMF672
+      version: v4.0.0
+      name: user-role-permission-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - permission:
+        - GET
+        - GET /id
+    - id: TMF662
+      version: v4.0.0
+      name: entity-catalog-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - entitySpecification:
+        - GET
+        - GET /id
+      - associationSpecification:
+        - GET
+        - GET /id
+    - id: TMF620
+      version: v4.1.0
+      name: product-catalog-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+      port: 8080
+      resources:
+      - catalog:
+        - GET
+        - GET /id
+      - category:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - productOffering:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - ProductOfferingPrice:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - importJob:
+        - GET
+        - POST
+        - DELETE
+      - exportJob:
+        - GET
+        - POST
+        - DELETE
+    exposedAPIs:
+    - id: TMF620
+      version: v4.1.0
+      name: product-catalog-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+      port: 8080
+      resources:
+      - catalog:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - category:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - productSpecification:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - productOffering:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - productOfferingPrice:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - exportJob:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - importJob:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+    publishedEvents:
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productspecification/hub
+      implementation: /{{.Release.Name}}-ProductCatalogManagementEvent
+      name: ProductCatalogManagement
+      port: 80
+      resources:
+      - productSpecificationCreate
+      - productSpecificationDeleteEvent
+      - categoryCreateEvent
+      - categoryDeleteEvent
+      - productOfferingCreateEvent
+      - productOfferingAttributeValueChangeEvent
+      - productOfferingStateChangeEvent
+      - productOfferingDeleteEvent
+      - productOfferingPriceCreateEvent
+      - productOfferingPriceAttributeValueChangeEvent
+      - productOfferingPriceStateChangeEvent
+      - productOfferingPriceDeleteEvent
+      - catalogCreateEvent
+      - catalogDeleteEvent
+      - catalogBatchEvent
+      specification: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PromotionManagementEvent/hub
+      implementation: /{{.Release.Name}}-PromotionManagementEvent
+      name: PromotionManagement
+      port: 80
+      resources:
+      - promotionCreateEvent
+      - promotionDeleteEvent
+      - promotionAttributeValueChangeEvent
+      - promotionStateChangeEvent
+      - promotionInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF671_Promotion/blob/master/TMF671-Promotion-v4.1.0.swagger.json
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+    subscribedEvents:
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      implementation: /{{.Release.Name}}-ServiceCatalogManagement
+      name: ServiceCatalogManagement
+      port: 80
+      resources:
+      - serviceSpecificationStateChange
+      - serviceSpecificationAttributeValueChangeEvent
+      - serviceSpecificationCreateEvent
+      - serviceSpecificationDeleteEvent
+      - resourceSpecificationCreateEvent
+      - resourceSpecificationChangeEvent
+      - resourceSpecificationDeleteEvent
+      specification: https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      implementation: /{{.Release.Name}}-PartyRoleManagement
+      name: PartyRoleManagement
+      port: 80
+      resources:
+      - partyRoleDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      implementation: /{{.Release.Name}}-UserRolePermission
+      name: UserRolePermission
+      port: 80
+      resources:
+      - permissionDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF672_UserRolesPermissions/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      implementation: /{{.Release.Name}}-Party
+      name: Party
+      port: 80
+      resources:
+      - individualDeleteEvent
+      - organizationDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+  description: The Product Catalog Management ODA Component is responsible for organizing
+    the collection of Products and Product Offerings specifications that identify
+    and define all requirements of a product or a product offering that can be commercialized.
+  functionalBlock: CoreCommerce
+  id: TMFC001
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  name: ProductCatalogManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: 2023-08-18 00:00:00
+  status: specified
+  version: 1.2.1
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []

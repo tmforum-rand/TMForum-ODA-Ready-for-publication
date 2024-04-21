@@ -1,0 +1,224 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF632
+      name: party-management-api
+      port: 8080
+      required: false
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF666
+      name: account-management-api
+      port: 8080
+      required: false
+      resources:
+      - partyAccount:
+        - GET
+        - GET /id
+      - billingAccount:
+        - GET
+        - GET /id
+      - settlementAccount:
+        - GET
+        - GET /id
+      - financialAccount:
+        - GET
+        - GET /id
+      - billingCycleSpecification:
+        - GET
+        - GET /id
+      - billFormat:
+        - GET
+        - GET /id
+      - billPresentationMedia:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF673
+      name: geographic-address-management-api
+      port: 8080
+      required: false
+      resources:
+      - geographicAddressValidation:
+        - GET
+        - GET /id
+      - geographicAddress:
+        - GET
+        - GET /id
+      - geographicSubAddress:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF674
+      name: geographic-site-management-api
+      port: 8080
+      required: false
+      resources:
+      - geographicSite:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    exposedAPIs:
+    - id: TMF670
+      name: payment-method-management-api
+      port: 8080
+      required: true
+      resources:
+      - paymentMethod:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF670_Payment_Method/4.0.0/swagger/TMF670_Payment_Method_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    - id: TMF676
+      name: payment-management-api
+      port: 8080
+      required: true
+      resources:
+      - payment:
+        - GET
+        - GET /id
+        - POST
+      - refund:
+        - GET
+        - GET /id
+        - POST
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+    publishedEvents:
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentManagement/hub
+      implementation: /{{.Release.Name}}-PaymentManagement
+      name: PaymentManagement
+      port: 80
+      resources:
+      - PaymentAttributeValueChangeEvent
+      - PaymentCreateEvent
+      - PaymentDeleteEvent
+      - PaymentStatusChangeEvent
+      - RefundAttributeValueChangeEvent
+      - RefundCreateEvent
+      - RefundStatusChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF676_PaymentManagement/master/TMF676-Payment-v4.0.0.swagger.json
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentMethods/hub
+      implementation: /{{.Release.Name}}-PaymentMethods
+      name: PaymentMethods
+      port: 80
+      resources:
+      - PaymentMethodAttributeValueChangeEvent
+      - PaymentMethodCreateEvent
+      - PaymentMethodDeleteEvent
+      - PaymentMethodStatusChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF670_PaymentMethods/master/TMF670-PaymentMethod-v4.0.0.swagger.json
+    - apitype: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - ProcessFlowCreateEvent
+      - ProcessFlowStateChangeEvent
+      - ProcessFlowStateDeleteEvent
+      - ProcessFlowStateAttributeValueChangeEvent
+      - TaskFlowCreateEvent
+      - TaskFlowStateChangeEvent
+      - TaskFlowDeleteEvent
+      - TaskFlowAttributeValueChangeEvent
+      - TaskFlowInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+    subscribedEvents:
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      implementation: /{{.Release.Name}}-ResourceActivationAndConfiguration
+      name: ResourceActivationAndConfiguration
+      port: 80
+      resources:
+      - ResourceCreateEvent
+      - ResourceAttributeValueChangeEvent
+      - ResourceStateChangeEvent
+      - resourceDeleteEvent
+      - monitorCreateEvent
+      - monitorStatechangeEvent
+      - monitorAttributeValueChange
+      - monitorDeleteEvent
+      - MigrateCreateEvent
+      - MigrateAttributeValueChangeEvent
+      - MigrateStateChangeEvent
+      - MigratedeleteEvent
+      - HealCreateEvent
+      - HealAttributeValueChangeEvent
+      - HealStateChangeEvent
+      - HealDeleteEvent
+      - ScaleCreateEvent
+      - ScaleAttributeValueChangeEvent
+      - ScaleStateChangeEvent
+      - ScaleDeleteEvent
+      - ResourceFunctionCreateEvent
+      - ResourceFunctionAttributeValueChangeEvent
+      - ResourceFunctionStateChangeEvent
+      - ResourceFunctionDeleteEvent
+      specification: https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
+      implementation: /{{.Release.Name}}-ServiceCatalogManagement
+      name: ServiceCatalogManagement
+      port: 80
+      resources:
+      - serviceSpecificationStateChange
+      - serviceSpecificationAttributeValueChangeEvent
+      - serviceSpecificationCreateEvent
+      - serviceSpecificationDeleteEvent
+      - resourceSpecificationCreateEvent
+      - resourceSpecificationChangeEvent
+      - resourceSpecificationDeleteEvent
+      specification: https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json
+  description: Payment Management manages methods used by parties to make payments,
+    it also administers payment plan, handles payment, assigns payments against bills,
+    settlements, and other object requiring payments.
+  functionalBlock: PartyManagement
+  id: TMFC029
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      name: metrics
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  name: PaymentManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: 2023-08-18 00:00:00
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    dependentAPIs: []
+    exposedAPIs:
+    - id: TMF669
+      name: party-role-management-api
+      port: 8080
+      required: true
+      resources: []
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      version: v4.0.0
+  status: specified
+  version: 1.1.1

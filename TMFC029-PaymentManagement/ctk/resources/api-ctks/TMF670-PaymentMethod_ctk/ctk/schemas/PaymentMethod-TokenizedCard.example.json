@@ -1,0 +1,8 @@
+{
+    "name": "card",
+    "@type": "TokenizedCard",
+    "cardNumber": "1234 1234 1234 1234",
+    "brand": "Visa",
+    "expirationDate": "2021-11-12T17:42:04.317Z",
+    "lastFourDigits": "1234"
+}

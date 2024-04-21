@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "state": {
+            "type": "string"
+        },
+        "serviceSpecification": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "@referredType": {
+                    "type": "string"
+                }
+            },
+            "required": ["@referredType", "id"]
+        }
+    },
+    "required": ["serviceSpecification", "state"]
+}

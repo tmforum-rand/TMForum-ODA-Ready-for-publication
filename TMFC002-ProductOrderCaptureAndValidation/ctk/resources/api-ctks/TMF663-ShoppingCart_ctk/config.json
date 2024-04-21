@@ -1,0 +1,16 @@
+{
+  "url": "http://127.0.0.1:8663/tmf-api/shoppingCart/v4/",
+  "headers": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "payloads": {
+    "ShoppingCart": {
+      "POST": {
+        "payload": {
+          
+        }
+      }
+    }
+  }
+}

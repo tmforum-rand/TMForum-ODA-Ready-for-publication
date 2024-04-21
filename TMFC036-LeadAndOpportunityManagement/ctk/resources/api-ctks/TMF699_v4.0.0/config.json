@@ -1,0 +1,16 @@
+{
+    "url": "https://localhost:8699/tmf-api/sales/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "salesLead": {
+            "POST": {
+                "payload": {
+                    "name": "Campaign 17 salesLead 7852"
+                }
+            }
+        }
+    }
+}

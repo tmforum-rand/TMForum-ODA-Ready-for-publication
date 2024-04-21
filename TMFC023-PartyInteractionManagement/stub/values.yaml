@@ -1,0 +1,9 @@
+component:
+  id: tmfc023
+  name: tmfc023-partyinteractionmanagement
+  publicationDate: '2023-08-18T00:00:00.000Z'
+images:
+  tmf669: tmforumorg/tmfc023-tmf669-v4.0.0:latest
+  tmf683: tmforumorg/tmfc023-tmf683-v4.0.0:latest
+security:
+  controllerRole: admin

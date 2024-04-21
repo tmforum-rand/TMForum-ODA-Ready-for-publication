@@ -1,0 +1,65 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs: []
+    exposedAPIs: []
+    publishedEvents:
+    - apitype: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/call-back
+      implementation: /{{.Release.Name}}-EventManagement
+      name: EventManagement
+      port: 80
+      resources:
+      - topicCreateEvent
+      - TopicAttributeValueChangeEvent
+      - TopicStateChangeEvent
+      - TopicDeleteEvent
+      - HubCreateEvent
+      - HubAttributeValueChangeEvent
+      - HubStateChangeEvent
+      - HubDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF688-EventManagement/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
+    subscribedEvents: []
+  description: Event Management component is a messaging management component that
+    is responsible for processing events as they happen from components. Processing
+    of record of activities include modelling event messages, syntax validation and
+    formatting of event messages and sending/receiving messages between components
+    (consumer/producer). Event Management component supports different patterns of
+    usage, including Event notification (subscription), Event-sourcing (representational
+    state changes) and Event-carried state transfer (including data needed to perform
+    further processing). Event Management component should include functionality providing
+    a centralised CQRS queryStore for all components that implement event-sourcing
+    with event carrier state transfer.
+  functionalBlock: DecouplingAndIntegration
+  id: TMFC019
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  name: EventManagement
+  owners:
+  - email: koen.peeters@ciminko.lu
+    name: Loen Peeters
+  publicationDate: 2023-08-18 00:00:00
+  status: specified
+  version: 1.1.1
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apitype: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []

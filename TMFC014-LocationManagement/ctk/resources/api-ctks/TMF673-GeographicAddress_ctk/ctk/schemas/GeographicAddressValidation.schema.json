@@ -1,0 +1,55 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "provideAlternative": {
+            "type": "boolean"
+        },
+        "submittedGeographicAddress": {
+            "type": "object",
+            "properties": {
+                "streetNr": {
+                    "type": "string"
+                },
+                "streetName": {
+                    "type": "string"
+                },
+                "streetType": {
+                    "type": "string"
+                },
+                "postcode": {
+                    "type": "string"
+                },
+                "locality": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "stateOrProvince": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "geographicSubAddress": {
+                    "type": "array"
+                },
+                "geographicLocation":{
+                    "type": "object"
+                }
+            },
+            "oneOf": [
+                {"required": ["streetName", "streetType", "locality", "stateOrProvince", "country"]},
+                {"required": ["streetName", "streetType", "locality", "postcode", "country"]},
+                {"required": ["streetName", "streetType", "city","stateOrProvince", "country"]},
+                {"required": ["streetName", "streetType", "city", "country"]},
+                {"required": ["geographicLocation"]}
+            ]
+        }
+    },
+    "required": [
+        "provideAlternative",
+        "submittedGeographicAddress"
+    ]
+}

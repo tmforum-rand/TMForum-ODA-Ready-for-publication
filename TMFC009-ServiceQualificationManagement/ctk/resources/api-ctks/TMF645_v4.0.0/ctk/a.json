@@ -1,0 +1,1527 @@
+{
+	"info": {
+		"_postman_id": "f5cf38cc-c9aa-4f29-91fc-9e95bdc03d1b",
+		"name": "CTK-Service_Qualification-4.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "N1",
+			"item": [
+				{
+					"name": "/CheckServiceQualification",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ff097c77-5067-426c-a0f7-5fc1cdf99b0c",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"  ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+									"});",
+									"",
+									"if (pm.response.code == 201){",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['checkServiceQualificationDate', 'href', 'id', 'serviceQualificationItem', 'state'];",
+									"",
+									"    pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"",
+									"",
+									"",
+									"    pm.test('Response has checkServiceQualificationDate attribute', function() { pm.expect(instance[\"checkServiceQualificationDate\"]).to.be.a('string'); });",
+									"    pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"    pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"    pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"",
+									"    pm.globals.set('CHECKSERVICEQUALIFICATIONDATECSQ01', instance['checkServiceQualificationDate']);",
+									"    pm.globals.set('HREFCSQ01', instance['href']);",
+									"    pm.globals.set('IDCSQ01', instance['id']);",
+									"",
+									"    pm.test('Body includes value held on checkServiceQualificationDate', function () {",
+									"    pm.expect(pm.response.text()).to.include(instance['checkServiceQualificationDate']);",
+									"    });",
+									"    pm.test('Body includes value held on href', function () {",
+									"    pm.expect(pm.response.text()).to.include(instance['href']);",
+									"    });",
+									"    pm.test('Body includes value held on id', function () {",
+									"    pm.expect(pm.response.text()).to.include(instance['id']);",
+									"    });",
+									"}",
+									"",
+									"if (pm.response.code == 200){",
+									"    postman.setNextRequest(\"/CheckServiceQualification/404ID\")",
+									"}",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"serviceQualificationItem\": [\n    {}\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{Service_Qualification}}checkServiceQualification",
+							"host": [
+								"{{Service_Qualification}}checkServiceQualification"
+							]
+						},
+						"description": "This operation creates a CheckServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/CheckServiceQualification",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "296a0dc2-688f-4d0d-9812-5394e687a397",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['checkServiceQualificationDate', 'href', 'id', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has checkServiceQualificationDate attribute', function() { pm.expect(instance[\"checkServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on checkServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['checkServiceQualificationDate']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCSQ01\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ01\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCSQ02\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ02\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ02');});",
+									"        }  ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['checkServiceQualificationDate', 'href', 'id', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has checkServiceQualificationDate attribute', function() { pm.expect(instance[\"checkServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on checkServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['checkServiceQualificationDate']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCSQ01\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ01\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCSQ02\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ02\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ02');});",
+									"        }",
+									"   ",
+									"  }",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}checkServiceQualification",
+							"host": [
+								"{{Service_Qualification}}checkServiceQualification"
+							]
+						},
+						"description": "This operation search for the created CheckServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/CheckServiceQualification/{{IDCSQ01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b4323712-0c19-43ba-a487-a5d4745750d2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['checkServiceQualificationDate', 'href', 'id', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has checkServiceQualificationDate attribute', function() { pm.expect(instance[\"checkServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on checkServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['checkServiceQualificationDate']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCSQ01\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ01\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCSQ02\")) {",
+									"            pm.test('IDCSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['checkServiceQualificationDate', 'href', 'id', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has checkServiceQualificationDate attribute', function() { pm.expect(instance[\"checkServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on checkServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['checkServiceQualificationDate']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCSQ01\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ01\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCSQ02\")) {",
+									"            pm.test('IDCSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}checkServiceQualification/{{IDCSQ01}}",
+							"host": [
+								"{{Service_Qualification}}checkServiceQualification"
+							],
+							"path": [
+								"{{IDCSQ01}}"
+							]
+						},
+						"description": "This operation search for one of the created CheckServiceQualification"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "N2",
+			"item": [
+				{
+					"name": "/CheckServiceQualification?fields=checkServiceQualificationDate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "781f8919-d7cd-4cd6-a9e1-e5264af15fd6",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}checkServiceQualification?fields=checkServiceQualificationDate",
+							"host": [
+								"{{Service_Qualification}}checkServiceQualification"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "checkServiceQualificationDate"
+								}
+							]
+						},
+						"description": "This operation filter a CheckServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/CheckServiceQualification?checkServiceQualificationDate='{{CHECKSERVICEQUALIFICATIONDATECSQ01}}'",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "59faccd8-ae35-4302-bfc5-2877015121a3",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['checkServiceQualificationDate', 'href', 'id', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has checkServiceQualificationDate attribute', function() { pm.expect(instance[\"checkServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on checkServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['checkServiceQualificationDate']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCSQ01\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ01\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCSQ02\")) {",
+									"            pm.test('IDCSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['checkServiceQualificationDate', 'href', 'id', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has checkServiceQualificationDate attribute', function() { pm.expect(instance[\"checkServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on checkServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['checkServiceQualificationDate']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCSQ01\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ01\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCSQ02\")) {",
+									"            pm.test('IDCSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}checkServiceQualification?checkServiceQualificationDate='{{CHECKSERVICEQUALIFICATIONDATECSQ01}}'",
+							"host": [
+								"{{Service_Qualification}}checkServiceQualification"
+							],
+							"query": [
+								{
+									"key": "checkServiceQualificationDate",
+									"value": "'{{CHECKSERVICEQUALIFICATIONDATECSQ01}}'"
+								}
+							]
+						},
+						"description": "This operation filter a CheckServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/CheckServiceQualification?fields=href",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "19545437-d065-4b34-95c8-1e7288bedab5",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}checkServiceQualification?fields=href",
+							"host": [
+								"{{Service_Qualification}}checkServiceQualification"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "href"
+								}
+							]
+						},
+						"description": "This operation filter a CheckServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/CheckServiceQualification?fields=id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ae8c2c12-9bee-4ee9-b8c4-2c22c63649ba",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}checkServiceQualification?fields=id",
+							"host": [
+								"{{Service_Qualification}}checkServiceQualification"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "id"
+								}
+							]
+						},
+						"description": "This operation filter a CheckServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/CheckServiceQualification?id={{IDCSQ01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "504122f0-9ba2-4e42-b132-96510c0ee5c2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['checkServiceQualificationDate', 'href', 'id', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has checkServiceQualificationDate attribute', function() { pm.expect(instance[\"checkServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on checkServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['checkServiceQualificationDate']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCSQ01\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ01\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCSQ02\")) {",
+									"            pm.test('IDCSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['checkServiceQualificationDate', 'href', 'id', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has checkServiceQualificationDate attribute', function() { pm.expect(instance[\"checkServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on checkServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['checkServiceQualificationDate']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCSQ01\")) {",
+									"            pm.test('checkServiceQualificationDate is ' + pm.globals.get(\"CHECKSERVICEQUALIFICATIONDATECSQ01\"), function() {pm.expect(instance['checkServiceQualificationDate']) == pm.globals.get('CHECKSERVICEQUALIFICATIONDATECSQ01');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCSQ02\")) {",
+									"            pm.test('IDCSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}checkServiceQualification?id={{IDCSQ01}}",
+							"host": [
+								"{{Service_Qualification}}checkServiceQualification"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{IDCSQ01}}"
+								}
+							]
+						},
+						"description": "This operation filter a CheckServiceQualification"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "E1",
+			"item": [
+				{
+					"name": "/CheckServiceQualification/404ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "23d50ed3-3d79-493e-ba65-5de8219794c8",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}checkServiceQualification/475a0c22-74af-443c-8052-282e9e21fefa",
+							"host": [
+								"{{Service_Qualification}}checkServiceQualification"
+							],
+							"path": [
+								"475a0c22-74af-443c-8052-282e9e21fefa"
+							]
+						},
+						"description": "This operation search for one of the created CheckServiceQualification"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "N1",
+			"item": [
+				{
+					"name": "/QueryServiceQualification",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4ca68afd-f635-414c-947b-e8574efe50ce",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"  ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}",
+									"",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+									"});",
+									"if (pm.response.code == 201){",
+									"var instance = pm.response.json();",
+									"var requiredAttributes = ['href', 'id', 'queryServiceQualificationDate', 'searchCriteria', 'serviceQualificationItem', 'state'];",
+									"",
+									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"",
+									"",
+									"",
+									"pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"pm.test('Response has queryServiceQualificationDate attribute', function() { pm.expect(instance[\"queryServiceQualificationDate\"]).to.be.a('string'); });",
+									"pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"",
+									"pm.globals.set('HREFQSQ01', instance['href']);",
+									"pm.globals.set('IDQSQ01', instance['id']);",
+									"pm.globals.set('QUERYSERVICEQUALIFICATIONDATEQSQ01', instance['queryServiceQualificationDate']);",
+									"",
+									"pm.test('Body includes value held on href', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['href']);",
+									"});",
+									"pm.test('Body includes value held on id', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['id']);",
+									"});",
+									"pm.test('Body includes value held on queryServiceQualificationDate', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['queryServiceQualificationDate']);",
+									"});",
+									"}",
+									"if (pm.response.code == 200){",
+									"    postman.setNextRequest(\"/QueryServiceQualification/404ID\")",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"searchCriteria\": {}\n}"
+						},
+						"url": {
+							"raw": "{{Service_Qualification}}queryServiceQualification",
+							"host": [
+								"{{Service_Qualification}}queryServiceQualification"
+							]
+						},
+						"description": "This operation creates a QueryServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/QueryServiceQualification",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "18b4f9d2-efaf-4eb8-baca-9c16588776bb",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'queryServiceQualificationDate', 'searchCriteria', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has queryServiceQualificationDate attribute', function() { pm.expect(instance[\"queryServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on queryServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['queryServiceQualificationDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDQSQ01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ01');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ01\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDQSQ02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ02');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ02\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ02');});",
+									"        }  ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'queryServiceQualificationDate', 'searchCriteria', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has queryServiceQualificationDate attribute', function() { pm.expect(instance[\"queryServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on queryServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['queryServiceQualificationDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDQSQ01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ01');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ01\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDQSQ02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ02');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ02\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ02');});",
+									"        }",
+									"   ",
+									"  }",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}queryServiceQualification",
+							"host": [
+								"{{Service_Qualification}}queryServiceQualification"
+							]
+						},
+						"description": "This operation search for the created QueryServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/QueryServiceQualification/{{IDQSQ01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1fd68053-294f-4a03-b1f7-60c331405054",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'queryServiceQualificationDate', 'searchCriteria', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has queryServiceQualificationDate attribute', function() { pm.expect(instance[\"queryServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on queryServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['queryServiceQualificationDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDQSQ01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ01');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ01\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDQSQ02\")) {",
+									"            pm.test('IDQSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'queryServiceQualificationDate', 'searchCriteria', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has queryServiceQualificationDate attribute', function() { pm.expect(instance[\"queryServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on queryServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['queryServiceQualificationDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDQSQ01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ01');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ01\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDQSQ02\")) {",
+									"            pm.test('IDQSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}queryServiceQualification/{{IDQSQ01}}",
+							"host": [
+								"{{Service_Qualification}}queryServiceQualification"
+							],
+							"path": [
+								"{{IDQSQ01}}"
+							]
+						},
+						"description": "This operation search for one of the created QueryServiceQualification"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "N2",
+			"item": [
+				{
+					"name": "/QueryServiceQualification?fields=href",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "44b6ac68-92ea-44a9-8f0c-93953d9a305d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}queryServiceQualification?fields=href",
+							"host": [
+								"{{Service_Qualification}}queryServiceQualification"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "href"
+								}
+							]
+						},
+						"description": "This operation filter a QueryServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/QueryServiceQualification?fields=id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ec856c7d-02f0-42d6-a9ff-6bfb43d3e96d",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}queryServiceQualification?fields=id",
+							"host": [
+								"{{Service_Qualification}}queryServiceQualification"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "id"
+								}
+							]
+						},
+						"description": "This operation filter a QueryServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/QueryServiceQualification?id={{IDQSQ01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "03807e96-ebf2-43f3-84a7-7e1fb579bd8c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'queryServiceQualificationDate', 'searchCriteria', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has queryServiceQualificationDate attribute', function() { pm.expect(instance[\"queryServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on queryServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['queryServiceQualificationDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDQSQ01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ01');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ01\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDQSQ02\")) {",
+									"            pm.test('IDQSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'queryServiceQualificationDate', 'searchCriteria', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has queryServiceQualificationDate attribute', function() { pm.expect(instance[\"queryServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on queryServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['queryServiceQualificationDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDQSQ01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ01');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ01\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDQSQ02\")) {",
+									"            pm.test('IDQSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}queryServiceQualification?id={{IDQSQ01}}",
+							"host": [
+								"{{Service_Qualification}}queryServiceQualification"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{IDQSQ01}}"
+								}
+							]
+						},
+						"description": "This operation filter a QueryServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/QueryServiceQualification?fields=queryServiceQualificationDate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5858f79e-3d26-4ce3-afea-703c08504339",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}queryServiceQualification?fields=queryServiceQualificationDate",
+							"host": [
+								"{{Service_Qualification}}queryServiceQualification"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "queryServiceQualificationDate"
+								}
+							]
+						},
+						"description": "This operation filter a QueryServiceQualification"
+					},
+					"response": []
+				},
+				{
+					"name": "/QueryServiceQualification?queryServiceQualificationDate='{{QUERYSERVICEQUALIFICATIONDATEQSQ01}}'",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "08e5d15c-ac5b-431e-aff5-8614d050e07f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'queryServiceQualificationDate', 'searchCriteria', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has queryServiceQualificationDate attribute', function() { pm.expect(instance[\"queryServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on queryServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['queryServiceQualificationDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDQSQ01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ01');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ01\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDQSQ02\")) {",
+									"            pm.test('IDQSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'queryServiceQualificationDate', 'searchCriteria', 'serviceQualificationItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has queryServiceQualificationDate attribute', function() { pm.expect(instance[\"queryServiceQualificationDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has serviceQualificationItem attribute', function() { pm.expect(instance[\"serviceQualificationItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on queryServiceQualificationDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['queryServiceQualificationDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDQSQ01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFQSQ01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFQSQ01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDQSQ01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDQSQ01');});",
+									"            pm.test('queryServiceQualificationDate is ' + pm.globals.get(\"QUERYSERVICEQUALIFICATIONDATEQSQ01\"), function() {pm.expect(instance['queryServiceQualificationDate']) == pm.globals.get('QUERYSERVICEQUALIFICATIONDATEQSQ01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDQSQ02\")) {",
+									"            pm.test('IDQSQ02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}queryServiceQualification?queryServiceQualificationDate='{{QUERYSERVICEQUALIFICATIONDATEQSQ01}}'",
+							"host": [
+								"{{Service_Qualification}}queryServiceQualification"
+							],
+							"query": [
+								{
+									"key": "queryServiceQualificationDate",
+									"value": "'{{QUERYSERVICEQUALIFICATIONDATEQSQ01}}'"
+								}
+							]
+						},
+						"description": "This operation filter a QueryServiceQualification"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "E1",
+			"item": [
+				{
+					"name": "/QueryServiceQualification/404ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "da79c3e5-88de-424c-8c77-25430bd9049c",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Service_Qualification}}queryServiceQualification/85c71677-c0f0-497f-b3e7-54549a30f1e8",
+							"host": [
+								"{{Service_Qualification}}queryServiceQualification"
+							],
+							"path": [
+								"85c71677-c0f0-497f-b3e7-54549a30f1e8"
+							]
+						},
+						"description": "This operation search for one of the created QueryServiceQualification"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

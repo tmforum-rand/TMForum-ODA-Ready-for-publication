@@ -1,0 +1,72 @@
+{
+    "url": "https://api-account-v4-0-0.mybluemix.net/tmf-api/accountManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "BillFormat": {
+            "POST": {
+                "payload": {
+                    "name": "Monthly billing"
+                  }
+            }
+        },
+        "PartyAccount": {
+            "POST": {
+                "payload": {
+                    "name": "Travel account",
+                    "relatedParty": [
+                      {
+                        "@referredType": "Organization",
+                        "id": "4665",
+                        "name": "John Doe"
+                      }
+                    ]
+                  }
+            }
+        },
+        "BillingCycleSpecification": {
+            "POST": {
+                "payload": {
+                    "name": "Monthly billing"
+                  }
+            }
+        },
+        "FinancialAccount": {
+            "POST": {
+                "payload":{
+                    "name": "Administration account"
+                  }
+            }
+        },
+        "BillingAccount": {
+            "POST": {
+                "payload": {
+                    "name": "Home Account",
+                    "relatedParty": [
+                      {
+                        "@referredType": "Organization",
+                        "id": "6838",
+                        "name": "Richard Cole"
+                      }
+                    ]
+                  }
+            }
+        },
+        "SettlementAccount": {
+            "POST": {
+                "payload": {
+                    "name": "Per Usage Account",
+                    "relatedParty": [
+                      {
+                        "@referredType": "Organization",
+                        "id": "5965",
+                        "name": "Jimmy Doe"
+                      }
+                    ]
+                  }
+            }
+        }
+    }
+}
