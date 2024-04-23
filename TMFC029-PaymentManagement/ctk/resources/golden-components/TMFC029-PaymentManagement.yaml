@@ -143,52 +143,7 @@ spec:
       - TaskFlowAttributeValueChangeEvent
       - TaskFlowInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-    subscribedEvents:
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
-      implementation: /{{.Release.Name}}-ResourceActivationAndConfiguration
-      name: ResourceActivationAndConfiguration
-      port: 80
-      resources:
-      - ResourceCreateEvent
-      - ResourceAttributeValueChangeEvent
-      - ResourceStateChangeEvent
-      - resourceDeleteEvent
-      - monitorCreateEvent
-      - monitorStatechangeEvent
-      - monitorAttributeValueChange
-      - monitorDeleteEvent
-      - MigrateCreateEvent
-      - MigrateAttributeValueChangeEvent
-      - MigrateStateChangeEvent
-      - MigratedeleteEvent
-      - HealCreateEvent
-      - HealAttributeValueChangeEvent
-      - HealStateChangeEvent
-      - HealDeleteEvent
-      - ScaleCreateEvent
-      - ScaleAttributeValueChangeEvent
-      - ScaleStateChangeEvent
-      - ScaleDeleteEvent
-      - ResourceFunctionCreateEvent
-      - ResourceFunctionAttributeValueChangeEvent
-      - ResourceFunctionStateChangeEvent
-      - ResourceFunctionDeleteEvent
-      specification: https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
-      implementation: /{{.Release.Name}}-ServiceCatalogManagement
-      name: ServiceCatalogManagement
-      port: 80
-      resources:
-      - serviceSpecificationStateChange
-      - serviceSpecificationAttributeValueChangeEvent
-      - serviceSpecificationCreateEvent
-      - serviceSpecificationDeleteEvent
-      - resourceSpecificationCreateEvent
-      - resourceSpecificationChangeEvent
-      - resourceSpecificationDeleteEvent
-      specification: https://open-api.tmforum.org/TMF633-Servicecatalog-v4.0.0.swagger.json
+    subscribedEvents: []
   description: Payment Management manages methods used by parties to make payments,
     it also administers payment plan, handles payment, assigns payments against bills,
     settlements, and other object requiring payments.

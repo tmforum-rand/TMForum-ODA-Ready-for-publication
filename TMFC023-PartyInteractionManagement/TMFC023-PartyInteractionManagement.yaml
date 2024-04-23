@@ -67,6 +67,16 @@ spec:
       - document:
         - GET
         - GET /id
+    - id: TMF681
+      version: v4.0.0
+      name: communication-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+      port: 8080
+      resources:
+      - communicationMessage:
+        - GET
+        - GET /id
     exposedAPIs:
     - id: TMF683
       version: v4.0.0

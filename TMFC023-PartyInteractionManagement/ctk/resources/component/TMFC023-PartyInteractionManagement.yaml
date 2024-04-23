@@ -220,6 +220,9 @@ spec:
     - apitype: openapi
       name: document-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: communication-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
     exposedAPIs:
     - apitype: openapi
       implementation: 'release-name-party-interaction-management-api'

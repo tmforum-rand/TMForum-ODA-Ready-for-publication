@@ -44,7 +44,7 @@ spec:
     - id: TMF670
       name: payment-method-management-api
       port: 8080
-      required: true
+      required: false
       resources:
       - paymentMethod:
         - GET
@@ -54,7 +54,7 @@ spec:
     - id: TMF676
       name: payment-management-api
       port: 8080
-      required: true
+      required: false
       resources:
       - payment:
         - GET
@@ -136,8 +136,8 @@ spec:
   functionalBlock: PartyManagement
   id: TMFC024
   maintainers:
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
   managementFunction:
     exposedAPIs:
     - apitype: prometheus
@@ -147,9 +147,9 @@ spec:
       port: 4000
   name: BillingAccountManagement
   owners:
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
-  publicationDate: 2023-08-18 00:00:00
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: 2024-04-16 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
@@ -162,4 +162,4 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
       version: v4.0.0
   status: specified
-  version: 1.1.0
+  version: 2.0.0

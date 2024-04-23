@@ -20,7 +20,7 @@ spec:
       port: 8080
       required: false
       resources:
-      - PartyRole:
+      - partyRole:
         - GET
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
@@ -30,10 +30,10 @@ spec:
       port: 8080
       required: false
       resources:
-      - Individual:
+      - individual:
         - GET
         - GET /id
-      - Organisation:
+      - organisation:
         - GET
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
@@ -102,6 +102,9 @@ spec:
       - catalog:
         - GET
         - GET /id
+        - POST
+        - PATCH
+        - DELETE
       - category:
         - GET
         - GET /id
@@ -114,7 +117,13 @@ spec:
         - POST
         - PATCH
         - DELETE
-      - ProductOfferingPrice:
+      - productSpecification:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - productOfferingPrice:
         - GET
         - GET /id
         - POST
@@ -122,10 +131,12 @@ spec:
         - DELETE
       - importJob:
         - GET
+        - GET /id
         - POST
         - DELETE
       - exportJob:
         - GET
+        - GET /id
         - POST
         - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
@@ -288,7 +299,7 @@ spec:
   owners:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
-  publicationDate: 2023-08-18 00:00:00
+  publicationDate: 2023-04-23 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
@@ -301,4 +312,4 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
       version: v4.0.0
   status: specified
-  version: 1.2.1
+  version: 2.0.0
