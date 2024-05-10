@@ -34,14 +34,14 @@ kind: Service
 metadata:
   labels:
     oda.tmforum.org/componentName: 'release-name-tmfc008-serviceinventory'
-  name: 'release-name-party-role-management-api'
+  name: 'release-name-partyrole-management-api'
 spec:
   ports:
-  - name: tcp-release-name-party-r
+  - name: tcp-release-name-partyro
     port: 8080
-    targetPort: 'release-name-party-r'
+    targetPort: 'release-name-partyro'
   selector:
-    impl: 'release-name-party-role-management-api'
+    impl: 'release-name-partyrole-management-api'
 ---
 # Source: tmfc008-serviceinventory/templates/Service-2.yaml
 apiVersion: v1
@@ -112,17 +112,17 @@ kind: Deployment
 metadata:
   labels:
     oda.tmforum.org/componentName: 'release-name-tmfc008-serviceinventory'
-  name: 'release-name-party-role-management-api'
+  name: 'release-name-partyrole-management-api'
 spec:
   replicas: 1
   selector:
     matchLabels:
-      impl: 'release-name-party-role-management-api'
+      impl: 'release-name-partyrole-management-api'
   template:
     metadata:
       labels:
         app: 'release-name-tmfc008-serviceinventory'
-        impl: 'release-name-party-role-management-api'
+        impl: 'release-name-partyrole-management-api'
         version: v4.0.0
     spec:
       containers:
@@ -135,10 +135,10 @@ spec:
           value: 'release-name-tmfc008-serviceinventory'
         image: 'tmforumorg/tmfc008-tmf669-v4.0.0:latest'
         imagePullPolicy: Always
-        name: 'release-name-party-role-management-api'
+        name: 'release-name-partyrole-management-api'
         ports:
         - containerPort: 8080
-          name: 'release-name-party-r'
+          name: 'release-name-partyro'
         resources:
           limits:
             cpu: '0.5'
@@ -149,7 +149,7 @@ spec:
         startupProbe:
           failureThreshold: 30
           httpGet:
-            path: /release-name-tmfc008-serviceinventory/tmf-api/partyRoleManagement/v4/
+            path: /release-name-tmfc008-serviceinventory/tmf-api/partyRoleManagement/v4
             port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5
@@ -194,6 +194,33 @@ spec:
       - name: 'release-name-mongodb-pv-storage'
         persistentVolumeClaim:
           claimName: 'release-name-mongodb-pv-claim'
+---
+# Source: tmfc008-serviceinventory/templates/Job-0.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    oda.tmforum.org/componentName: 'release-name-tmfc008-serviceinventory'
+  name: 'release-name-roleinitialization'
+spec:
+  backoffLimit: 10
+  template:
+    metadata:
+      labels:
+        impl: 'release-name-roleinitialization'
+    spec:
+      containers:
+      - env:
+        - name: RELEASE_NAME
+          value: 'release-name'
+        - name: COMPONENT_NAME
+          value: 'tmfc008-serviceinventory'
+        - name: PARTY_ROLE_SVC_NAME
+          value: 'release-name-partyrole-management-api'
+        image: tmforumorg/partyroleinitializer:latest
+        imagePullPolicy: Always
+        name: roleinitialization
+      restartPolicy: OnFailure
 ---
 # Source: tmfc008-serviceinventory/templates/component-0.yaml
 apiVersion: oda.tmforum.org/v1beta2
@@ -249,13 +276,6 @@ spec:
   maintainers:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
-  managementFunction:
-    exposedAPIs:
-    - apitype: prometheus
-      implementation: 'release-name-tmfc008-serviceinventory-sm'
-      name: metrics
-      path: /release-name-tmfc008-serviceinventory/metrics
-      port: 4000
   name: ServiceInventory
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -265,9 +285,9 @@ spec:
     controllerRole: 'admin'
     exposedAPIs:
     - apitype: openapi
-      implementation: 'release-name-party-role-management-api'
-      name: party-role-management-api
-      path: /release-name-tmfc008-serviceinventory/tmf-api/partyRoleManagement/v4/
+      implementation: 'release-name-partyrole-management-api'
+      name: partyrole-management-api
+      path: /release-name-tmfc008-serviceinventory/tmf-api/partyRoleManagement/v4
       port: 8080
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
   status: specified

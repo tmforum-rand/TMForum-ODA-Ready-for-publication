@@ -87,7 +87,7 @@ describe("Step 1: Deployment component tests", function () {
         addContext(this, 'The security api must return at least one partyrole')
         let security_apis = deployment.body.items[0].status.securityAPIs
         let roleName = js_component.spec.securityFunction.controllerRole
-        let api_queries = security_apis.map(async api => await testPartyRole(api.url, roleName))
+        let api_queries = security_apis.map(async api => await testPartyRole(api.url + "/", roleName))
         let results = await Promise.all(api_queries)
         expect(results).to.include(true)
     })
@@ -263,6 +263,9 @@ function findApiUrl(apiPath, component_deployment){
         apis.forEach(api => {
             if (api.path === apiPath) {
                 api_url = api.url
+                if (f === "securityAPIs") {
+                    api_url += "/"
+                }
             }
         })
     })

@@ -38,6 +38,16 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
       version: v4.0.0
+    - id: TMF634
+      name: resource-catalog-management-api
+      port: 8080
+      required: false
+      resources:
+      - resourceSpecification:
+        - GET
+        - GET /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+      version: v4.1.0
     - id: TMF651
       name: agreement-management-api
       port: 8080
@@ -188,6 +198,19 @@ spec:
         - GET /id
         - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+      version: v4.1.0
+    - id: TMF671
+      name: promotion-management-api
+      port: 8080
+      required: false
+      resources:
+      - promotion:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF671_Promotion/4.1.0/swagger/TMF671_Promotion_Management_API_v4.1.0_swagger.json
       version: v4.1.0
     publishedEvents:
     - apitype: openapi

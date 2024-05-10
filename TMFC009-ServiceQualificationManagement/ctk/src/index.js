@@ -7,7 +7,6 @@ const mkdirp = require('mkdirp');
 const mustache = require('mustache');
 const config  = require('./ctkconfig.json')
 const YAML = require('yaml');
-const { get } = require('http')
 
 
 const GOLDEN_COMPONENT_PATH = config.goldenComponentFilePath
@@ -27,15 +26,20 @@ class Component {
       let apiRelease = api.id + "_" + api.version
       let apiOptionalText = api.optional ? "Optional" : "Mandatory"
       let jsonResultsPath = Path.join(resultsPath, "api-ctk-results", apiRelease + ".json")
-      let report = await fs.promises.readFile(jsonResultsPath, 'utf8')
-      report = JSON.parse(report)
-      let hasPassed = report.run.stats.tests.failed === 0
-      return {
-        apiName: api.id + " " + api.name.split('-').join(" ") + " - " + apiOptionalText,
-        htmlResultsPath: Path.join(resultsPath, "api-ctk-results", apiRelease + ".html"),
-        jsonResultsPath: jsonResultsPath,
-        htmlUrl: "../results/api-ctk-results/" + apiRelease + ".html",
-        hasPassed: hasPassed
+      try {
+        let report = await fs.promises.readFile(jsonResultsPath, 'utf8')
+        report = JSON.parse(report)
+        let hasPassed = report.run.stats.scripts.failed === 0
+        return {
+          apiName: api.id + " " + api.name.split('-').join(" ") + " - " + apiOptionalText,
+          htmlResultsPath: Path.join(resultsPath, "api-ctk-results", apiRelease + ".html"),
+          jsonResultsPath: jsonResultsPath,
+          htmlUrl: "../results/api-ctk-results/" + apiRelease + ".html",
+          hasPassed: hasPassed
+        }
+      }
+      catch (e) {
+        console.log("Error processing newman report ", e)
       }
     })
     return Promise.all(results)
@@ -47,15 +51,27 @@ class Component {
       let apiRelease = api.id + "_" + api.version
       let apiOptionalText = api.optional ? "Optional" : "Mandatory"
       let jsonResultsPath = Path.join(resultsPath, "api-ctk-results", apiRelease + ".json")
-      let report = await fs.promises.readFile(jsonResultsPath, 'utf8')
-      report = JSON.parse(report)
-      let hasPassed = report.run.stats.tests.failed === 0
-      return {
-        apiName: api.id + " " + api.name.split('-').join(" ") + " - " + apiOptionalText,
-        htmlResultsPath: Path.join(resultsPath, "api-ctk-results", apiRelease + ".html"),
-        jsonResultsPath: jsonResultsPath,
-        htmlUrl: "../results/api-ctk-results/" + apiRelease + ".html",
-        hasPassed: hasPassed
+      try {
+        let report = await fs.promises.readFile(jsonResultsPath, 'utf8')
+        report = JSON.parse(report)
+        let hasPassed = report.run.stats.scripts.failed === 0
+        return {
+          apiName: api.id + " " + api.name.split('-').join(" ") + " - " + apiOptionalText,
+          htmlResultsPath: Path.join(resultsPath, "api-ctk-results", apiRelease + ".html"),
+          jsonResultsPath: jsonResultsPath,
+          htmlUrl: "../results/api-ctk-results/" + apiRelease + ".html",
+          hasPassed: hasPassed
+        }
+      }
+      catch (e) {
+        console.log("Error processing newman report", e)
+        return {
+          apiName: api.id + " " + api.name.split('-').join(" ") + " - " + apiOptionalText,
+          htmlResultsPath: Path.join(resultsPath, "api-ctk-results", apiRelease + ".html"),
+          jsonResultsPath: jsonResultsPath,
+          htmlUrl: "../results/api-ctk-results/" + apiRelease + ".html",
+          hasPassed: false
+        }
       }
     })
     return Promise.all(results)
@@ -91,7 +107,7 @@ async function runSuit(suite){
     suite.run(function (failures) {
       if (failures) {
         console.log(failures)
-        reject(failures)
+        resolve(failures)
       } else {
         resolve()
       }
@@ -103,10 +119,11 @@ async function main(){
   try{
     let suits = configureMochaSuits().map(e => runSuit(e))
     let suitResults = await Promise.all(suits)
+    await generateReport()
 
   }
   catch(err){
-    //console.error(err)
+    console.error(err)
     await generateReport()
     return 1
   }
@@ -149,8 +166,8 @@ async function getNewmanSummary(apiResults){
     let jsonResultSummary = await fs.promises.readFile(api.jsonResultsPath, 'utf8')
     jsonResultSummary = JSON.parse(jsonResultSummary)
 
-    let totalFailed = jsonResultSummary.run.stats.tests.failed
-    let total = jsonResultSummary.run.stats.tests.total
+    let totalFailed = jsonResultSummary.run.stats.assertions.failed
+    let total = jsonResultSummary.run.stats.assertions.total
     let passed = total - totalFailed
     return {
       total: total,
@@ -186,7 +203,6 @@ function calculateCTKStatus(canvasData, summary){
     }
   })
   return ctkStatus && canvasData.canvasCTKPassed
-
 }
 
 async function generateReportData(resultsPath) {
@@ -199,15 +215,17 @@ async function generateReportData(resultsPath) {
   
   let configurationSummary = await getMochaSummary(Path.join(resultsPath, "baseline-ctk/Configuration-report.json"))
   let deploymentSummary = await getMochaSummary(Path.join(resultsPath, "baseline-ctk/deployment-report.json"))
-  
+  let coreFunctionSummary = await getNewmanSummary(coreFunctionResults)
+  let securityFunctionSummary = await getNewmanSummary(securityFunctionResults)
+
   const summaryTable = [
     {
       name: "coreFunction", 
-      ...(await getNewmanSummary(coreFunctionResults))
+      ...coreFunctionSummary
     },
     {
       name: "securityFunction",
-      ...(await getNewmanSummary(securityFunctionResults))
+      ...securityFunctionSummary
     },
     {
       name: "configuration",
@@ -225,12 +243,15 @@ async function generateReportData(resultsPath) {
     canvasCTKPassed: true
   }
 
+
   let reportData = {
     componentName: config.componentName,
     version: instance.getVersion(),
     componentUrl: config.componentUrl,
+    coreFunctionPassed: coreFunctionSummary.failed === 0,
     coreFunctionResults: coreFunctionResults,
     securityFunctionResults: securityFunctionResults,
+    securityFunctionPassed: securityFunctionSummary.failed === 0,
     configuration: {
       passed: configurationSummary.failed === 0,
       file: "../results/baseline-ctk/Configuration-report.html"
@@ -242,6 +263,7 @@ async function generateReportData(resultsPath) {
     summaryTable: summaryTable,
     company: config.companyName,
     productUrl: config.productUrl,
+    productName: config.productName,
     ctkPassed: calculateCTKStatus(canvasData, summaryTable),
     ...canvasData
     

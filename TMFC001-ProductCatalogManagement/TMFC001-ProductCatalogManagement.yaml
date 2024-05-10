@@ -38,6 +38,16 @@ spec:
       - organisation:
         - GET
         - GET /id
+    - id: TMF634
+      version: v4.1.0
+      name: resource-catalog-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+      port: 8080
+      resources:
+      - resourceSpecification:
+        - GET
+        - GET /id
     - id: TMF651
       version: v4.0.0
       name: agreement-management-api
@@ -188,6 +198,19 @@ spec:
         - POST
         - GET
         - GET /id
+        - DELETE
+    - id: TMF671
+      version: v4.1.0
+      name: promotion-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF671_Promotion/4.1.0/swagger/TMF671_Promotion_Management_API_v4.1.0_swagger.json
+      port: 8080
+      resources:
+      - promotion:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
         - DELETE
     publishedEvents:
     - apitype: openapi

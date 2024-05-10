@@ -1,0 +1,33 @@
+{
+    "url": " http://localhost:8657/tmf-api/serviceQualityManagement/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "ServiceLevelObjective": {
+            "POST": {
+                "payload": {
+                    "conformanceComparator": ">",
+                    "conformanceTarget": "32",
+                    "serviceLevelObjectiveParameter": {}
+                }
+            }
+        },
+        "ServiceLevelSpecification": {
+            "POST": {
+                "payload": {
+                    "name": "Access bandwidth",
+                    "relatedServiceLevelObjective": [
+                        {
+                            "id": "3112"
+                        },
+                        {
+                            "id": "3113"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

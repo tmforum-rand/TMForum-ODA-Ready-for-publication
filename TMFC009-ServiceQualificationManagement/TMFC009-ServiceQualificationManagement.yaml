@@ -71,6 +71,9 @@ spec:
       - geographicAddress:
         - GET
         - GET /id
+      - geographicSubAddress:
+        - GET
+        - GET /id
     - id: TMF674
       version: v4.0.0
       name: geographic-site-management-api

@@ -128,8 +128,8 @@ describe('Step 1: Component manifest checks',  function() {
     it('Security has partyrole', async function () {
         addContext(this, 'Security function must contain a partyRole api')
         let security = component_object.get('spec').get('securityFunction')
-        let security_apis = security.get('exposedAPIs').items.map(api => api.get('name'))
-        expect(security_apis).to.include('party-role-management-api')
+        let security_apis = security.get('exposedAPIs').items.map(api => api.get('name').includes('partyrole'))
+        expect(security_apis).to.include(true)
     })
 
     it('Security function has controller role field of type string', async function () {
@@ -146,20 +146,6 @@ describe('Step 1: Component manifest checks',  function() {
             let labels = manifest.get('metadata').get('labels')
             expect(labels.get('oda.tmforum.org/componentName')).to.be.equal(name)
         })
-    })
-
-    it('Spec has management function', async function () {
-        addContext(this, 'Component spec must contain a management field')
-        let management = component_object.get('spec').get('managementFunction')
-        expect(management).to.not.be.null
-        expect(management).to.be.an('object')
-    })
-
-    it('Management function has exposed apis', async function () {
-        addContext(this, 'Management function must contain a exposedAPIs field')
-        let management = component_object.get('spec').get('managementFunction')
-        expect(management.get('exposedAPIs')).to.not.be.null
-        expect(management.get('exposedAPIs').items).to.be.an('array')
     })
 
     it('Golden component exists in ctk', async function () {

@@ -17,6 +17,9 @@ spec:
       name: party-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
     - apitype: openapi
+      name: resource-catalog-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+    - apitype: openapi
       name: agreement-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
     - apitype: openapi
@@ -41,6 +44,12 @@ spec:
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v4/
       port: 8080
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-promotion-management-api'
+      name: promotion-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/promotionManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF671_Promotion/4.1.0/swagger/TMF671_Promotion_Management_API_v4.1.0_swagger.json
   description: The Product Catalog Management ODA Component is responsible for organizing
     the collection of Products and Product Offerings specifications that identify
     and define all requirements of a product or a product offering that can be commercialized.
@@ -49,13 +58,6 @@ spec:
   maintainers:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
-  managementFunction:
-    exposedAPIs:
-    - apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      name: metrics
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
   name: ProductCatalogManagement
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -65,9 +67,9 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
     - apitype: openapi
-      implementation: '{{.Release.Name}}-party-role-management-api'
-      name: party-role-management-api
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/
+      implementation: '{{.Release.Name}}-partyrole-management-api'
+      name: partyrole-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
   status: specified

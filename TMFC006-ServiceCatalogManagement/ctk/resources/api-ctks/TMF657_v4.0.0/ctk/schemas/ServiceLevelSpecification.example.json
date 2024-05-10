@@ -1,0 +1,11 @@
+{
+    "name": "Access bandwidth",
+    "relatedServiceLevelObjective": [
+        {
+            "id": "3112"
+        },
+        {
+            "id": "3113"
+        }
+    ]
+}

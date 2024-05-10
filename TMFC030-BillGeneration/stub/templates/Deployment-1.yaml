@@ -3,17 +3,17 @@ kind: Deployment
 metadata:
   labels:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
-  name: '{{.Release.Name}}-party-role-management-api'
+  name: '{{.Release.Name}}-partyrole-management-api'
 spec:
   replicas: 1
   selector:
     matchLabels:
-      impl: '{{.Release.Name}}-party-role-management-api'
+      impl: '{{.Release.Name}}-partyrole-management-api'
   template:
     metadata:
       labels:
         app: '{{.Release.Name}}-{{.Values.component.name}}'
-        impl: '{{.Release.Name}}-party-role-management-api'
+        impl: '{{.Release.Name}}-partyrole-management-api'
         version: v4.0.0
     spec:
       containers:
@@ -26,10 +26,10 @@ spec:
           value: '{{.Release.Name}}-{{.Values.component.name}}'
         image: '{{.Values.images.tmf669}}'
         imagePullPolicy: Always
-        name: '{{.Release.Name}}-party-role-management-api'
+        name: '{{.Release.Name}}-partyrole-management-api'
         ports:
         - containerPort: 8080
-          name: '{{.Release.Name}}-party-r'
+          name: '{{.Release.Name}}-partyro'
         resources:
           limits:
             cpu: '0.5'
@@ -40,7 +40,7 @@ spec:
         startupProbe:
           failureThreshold: 30
           httpGet:
-            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
             port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5

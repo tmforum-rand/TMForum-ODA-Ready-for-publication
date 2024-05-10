@@ -5,5 +5,6 @@ component:
 images:
   tmf620: tmforumorg/tmfc001-tmf620-v4.1.0:latest
   tmf669: tmforumorg/tmfc001-tmf669-v4.0.0:latest
+  tmf671: tmforumorg/tmfc001-tmf671-v4.1.0:latest
 security:
   controllerRole: admin

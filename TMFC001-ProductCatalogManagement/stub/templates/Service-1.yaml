@@ -3,11 +3,11 @@ kind: Service
 metadata:
   labels:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
-  name: '{{.Release.Name}}-party-role-management-api'
+  name: '{{.Release.Name}}-promotion-management-api'
 spec:
   ports:
-  - name: tcp-{{.Release.Name}}-party-r
+  - name: tcp-{{.Release.Name}}-promoti
     port: 8080
-    targetPort: '{{.Release.Name}}-party-r'
+    targetPort: '{{.Release.Name}}-promoti'
   selector:
-    impl: '{{.Release.Name}}-party-role-management-api'
+    impl: '{{.Release.Name}}-promotion-management-api'

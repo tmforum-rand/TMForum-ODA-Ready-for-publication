@@ -3,17 +3,17 @@ kind: Deployment
 metadata:
   labels:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
-  name: '{{.Release.Name}}-service-catalog-management-api'
+  name: '{{.Release.Name}}-service-quality-management-management-api'
 spec:
   replicas: 1
   selector:
     matchLabels:
-      impl: '{{.Release.Name}}-service-catalog-management-api'
+      impl: '{{.Release.Name}}-service-quality-management-management-api'
   template:
     metadata:
       labels:
         app: '{{.Release.Name}}-{{.Values.component.name}}'
-        impl: '{{.Release.Name}}-service-catalog-management-api'
+        impl: '{{.Release.Name}}-service-quality-management-management-api'
         version: v4.0.0
     spec:
       containers:
@@ -24,9 +24,9 @@ spec:
           value: '{{.Release.Name}}'
         - name: COMPONENT_NAME
           value: '{{.Release.Name}}-{{.Values.component.name}}'
-        image: '{{.Values.images.tmf633}}'
+        image: '{{.Values.images.tmf657}}'
         imagePullPolicy: Always
-        name: '{{.Release.Name}}-service-catalog-management-api'
+        name: '{{.Release.Name}}-service-quality-management-management-api'
         ports:
         - containerPort: 8080
           name: '{{.Release.Name}}-service'
@@ -40,7 +40,7 @@ spec:
         startupProbe:
           failureThreshold: 30
           httpGet:
-            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceCatalogManagement/v4/
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceQualityManagement/v4/
             port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5

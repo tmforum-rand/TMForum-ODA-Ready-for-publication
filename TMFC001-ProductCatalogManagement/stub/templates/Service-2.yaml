@@ -3,11 +3,11 @@ kind: Service
 metadata:
   labels:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
-  name: '{{.Release.Name}}-mongodb'
+  name: '{{.Release.Name}}-partyrole-management-api'
 spec:
   ports:
-  - name: tcp-{{.Release.Name}}-mongodb
-    port: 27017
-    targetPort: '{{.Release.Name}}-mongodb'
+  - name: tcp-{{.Release.Name}}-partyro
+    port: 8080
+    targetPort: '{{.Release.Name}}-partyro'
   selector:
-    impl: '{{.Release.Name}}-mongodb'
+    impl: '{{.Release.Name}}-partyrole-management-api'

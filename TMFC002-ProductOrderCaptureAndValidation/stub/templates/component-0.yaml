@@ -94,13 +94,6 @@ spec:
   maintainers:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
-  managementFunction:
-    exposedAPIs:
-    - apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      name: metrics
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
   name: ProductOrderCaptureAndValidation
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -110,9 +103,9 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
     - apitype: openapi
-      implementation: '{{.Release.Name}}-party-role-management-api'
-      name: party-role-management-api
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/
+      implementation: '{{.Release.Name}}-partyrole-management-api'
+      name: partyrole-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
   status: specified

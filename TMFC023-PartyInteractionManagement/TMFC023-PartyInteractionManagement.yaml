@@ -178,9 +178,9 @@ spec:
   owners:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
-  publicationDate: 2023-08-18 00:00:00
+  publicationDate: 2024-04-30 00:00:00
   status: specified
-  version: 1.1.1
+  version: 1.1.0
   managementFunction:
     exposedAPIs:
     - name: metrics

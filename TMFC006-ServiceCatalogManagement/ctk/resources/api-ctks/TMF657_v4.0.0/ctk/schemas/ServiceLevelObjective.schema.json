@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "conformanceComparator": {
+            "type": "string"
+        },
+        "conformanceTarget": {
+            "type": "string"
+        },
+        "serviceLevelObjectiveParameter": {
+            "type": "object"
+        }
+    },
+    "required": [
+        "conformanceComparator",
+        "conformanceTarget",
+        "serviceLevelObjectiveParameter"
+    ]
+}

@@ -33,7 +33,7 @@ spec:
       port: 8080
       required: false
       resources:
-      - 'entitySpecification:':
+      - entitySpecification:
         - GET
         - GET /id
       - associationSpecification:
@@ -93,10 +93,10 @@ spec:
         - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
       version: v4.0.0
-    - id: TMF633
-      name: service-catalog-management-api
+    - id: TMF657
+      name: service-quality-management-management-api
       port: 8080
-      required: true
+      required: false
       resources:
       - serviceLevelSpecification:
         - GET
@@ -116,7 +116,7 @@ spec:
         - POST
         - PATCH
         - DELETE
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF657_Service_Quality_Management/4.0.0/swagger/TMF657_Service_Quality_Management_Management_API_v4.0.0_swagger.json
       version: v4.0.0
     publishedEvents:
     - apitype: openapi

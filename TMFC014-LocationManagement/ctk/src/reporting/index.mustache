@@ -103,7 +103,7 @@
                                 <strong>Product Name:</strong>
                             </div>
                             <div class="col s6">
-                                <p>Product Inventory</p>
+                                <p>{{ productName }}</p>
                             </div>
                         </div>
 
@@ -234,21 +234,33 @@
                     <li>
                         <div class="collapsible-header">
                             <span>Core Functions</span>
+                            {{ #coreFunctionPassed }}
                             <span class="lozenge success">Passed</span>
+                            {{ /coreFunctionPassed }}
+                            {{ ^coreFunctionPassed }}
+                            <span class="lozenge failure">Failed</span>
+                            {{ /coreFunctionPassed }}
                         </div>
                         <div class="collapsible-body">
                             <ul class="collapsible">
                                 <li>
                                     <div class="collapsible-header">
                                         <span>Exposed</span>
+                                        {{ #coreFunctionPassed}}
                                         <span class="lozenge success">Passed</span>
+                                        {{ /coreFunctionPassed}}
+
+                                        {{^coreFunctionPassed}}
+                                        <span class="lozenge failure">Failed</span>
+                                        {{/coreFunctionPassed}}
+
                                     </div>
-                                    {{ #coreFunctionResults }}
                                     <div class="collapsible-body">
+                                    {{ #coreFunctionResults }}
                                         <h3>{{ apiName }}</h3>
                                         <iframe src="{{{ htmlUrl }}}" style="width: 100%; height: 50vh;"></iframe>
-                                    </div>
                                     {{ /coreFunctionResults }}
+                                    </div>
                                     
                                 </li>
                             </ul>
@@ -258,14 +270,21 @@
                     <li>
                         <div class="collapsible-header">
                             <span>Security</span>
+                            {{ #securityFunctionPassed }}
                             <span class="lozenge success">Passed</span>
+                            {{/securityFunctionPassed}}
+                            
+                            {{^securityFunctionPassed}}
+                            <span class="lozenge failure">Failed</span>
+                            {{ /securityFunctionPassed }}
+
                         </div>
-                        {{ #securityFunctionResults }}
                         <div class="collapsible-body">
+                        {{ #securityFunctionResults }}
                             <h3>{{ apiName }}</h3>
                             <iframe src="{{{ htmlUrl }}}" style="width: 100%; height: 50vh;"></iframe>
-                        </div>
                         {{ /securityFunctionResults }}
+                        </div>
                     </li>
                 </ul>
             </div>

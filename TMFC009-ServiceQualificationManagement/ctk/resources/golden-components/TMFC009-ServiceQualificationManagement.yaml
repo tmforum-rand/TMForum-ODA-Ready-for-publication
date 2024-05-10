@@ -69,6 +69,9 @@ spec:
       - geographicAddress:
         - GET
         - GET /id
+      - geographicSubAddress:
+        - GET
+        - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
       version: v4.0.0
     - id: TMF674

@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-roleinitialization'
+spec:
+  backoffLimit: 10
+  template:
+    metadata:
+      labels:
+        impl: '{{.Release.Name}}-roleinitialization'
+    spec:
+      containers:
+      - env:
+        - name: RELEASE_NAME
+          value: '{{.Release.Name}}'
+        - name: COMPONENT_NAME
+          value: '{{.Values.component.name}}'
+        - name: PARTY_ROLE_SVC_NAME
+          value: '{{.Release.Name}}-partyrole-management-api'
+        image: tmforumorg/partyroleinitializer:latest
+        imagePullPolicy: Always
+        name: roleinitialization
+      restartPolicy: OnFailure
