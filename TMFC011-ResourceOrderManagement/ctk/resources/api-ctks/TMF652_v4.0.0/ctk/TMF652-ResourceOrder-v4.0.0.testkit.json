@@ -1,0 +1,715 @@
+{
+	"info": {
+		"_postman_id": "d1e41f32-6cce-465b-9756-68e593da2cfa",
+		"name": "CTK-Resource_Order-4.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7503975",
+		"_collection_link": "https://cloudy-meadow-674386.postman.co/workspace/v4.0.0CTKs~c3a3165b-0479-4ccd-bebb-f737fd593b7f/collection/7503975-d1e41f32-6cce-465b-9756-68e593da2cfa?action=share&source=collection_link&creator=7503975"
+	},
+	"item": [
+		{
+			"name": "N1",
+			"item": [
+				{
+					"name": "/ResourceOrder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"  ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var instance = pm.response.json();",
+									"var requiredAttributes = ['href', 'id', 'orderDate', 'orderItem', 'state'];",
+									"",
+									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"",
+									"var orderItem = instance['orderItem'][0]",
+									"pm.test('OrderItem includes state attribute', function(){ pm.expect(orderItem['state']).to.be.a('string')})",
+									"",
+									"",
+									"pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"pm.test('Response has orderDate attribute', function() { pm.expect(instance[\"orderDate\"]).to.be.a('string'); });",
+									"pm.test('Response has orderItem attribute', function() { pm.expect(instance[\"orderItem\"]).to.be.a('array'); });",
+									"",
+									"pm.globals.set('HREFRO01', instance['href']);",
+									"pm.globals.set('IDRO01', instance['id']);",
+									"pm.globals.set('ORDERDATERO01', instance['orderDate']);",
+									"",
+									"pm.test('Body includes value held on href', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['href']);",
+									"});",
+									"pm.test('Body includes value held on id', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['id']);",
+									"});",
+									"pm.test('Body includes value held on orderDate', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['orderDate']);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"orderItem\": [\n      {\n          \"action\": \"add\",\n          \"resource\": {},\n          \"id\": \"abc-123\"\n      }\n  ]\n}"
+						},
+						"url": {
+							"raw": "{{Resource_Order}}resourceOrder",
+							"host": [
+								"{{Resource_Order}}resourceOrder"
+							]
+						},
+						"description": "This operation creates a ResourceOrder"
+					},
+					"response": []
+				},
+				{
+					"name": "/ResourceOrder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'orderDate', 'orderItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderDate attribute', function() { pm.expect(instance[\"orderDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderItem attribute', function() { pm.expect(instance[\"orderItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on orderDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['orderDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDRO01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO01');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO01\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDRO02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO02');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO02\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO02');});",
+									"        }  ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'orderDate', 'orderItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderDate attribute', function() { pm.expect(instance[\"orderDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderItem attribute', function() { pm.expect(instance[\"orderItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on orderDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['orderDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDRO01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO01');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO01\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDRO02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO02');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO02\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO02');});",
+									"        }",
+									"   ",
+									"  }",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Resource_Order}}resourceOrder",
+							"host": [
+								"{{Resource_Order}}resourceOrder"
+							]
+						},
+						"description": "This operation search for the created ResourceOrder"
+					},
+					"response": []
+				},
+				{
+					"name": "/ResourceOrder/{{IDRO01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'orderDate', 'orderItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"        var orderItem = instance['orderItem'][0]",
+									"        pm.test('OrderItem includes state attribute', function(){ pm.expect(orderItem['state']).to.be.a('string')})",
+									"",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderDate attribute', function() { pm.expect(instance[\"orderDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderItem attribute', function() { pm.expect(instance[\"orderItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on orderDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['orderDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDRO01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO01');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO01\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDRO02\")) {",
+									"            pm.test('IDRO02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'orderDate', 'orderItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderDate attribute', function() { pm.expect(instance[\"orderDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderItem attribute', function() { pm.expect(instance[\"orderItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on orderDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['orderDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDRO01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO01');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO01\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDRO02\")) {",
+									"            pm.test('IDRO02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Resource_Order}}resourceOrder/{{IDRO01}}",
+							"host": [
+								"{{Resource_Order}}resourceOrder"
+							],
+							"path": [
+								"{{IDRO01}}"
+							]
+						},
+						"description": "This operation search for one of the created ResourceOrder"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "N2",
+			"item": [
+				{
+					"name": "/ResourceOrder?fields=id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Resource_Order}}resourceOrder?fields=id",
+							"host": [
+								"{{Resource_Order}}resourceOrder"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "id"
+								}
+							]
+						},
+						"description": "This operation filter a ResourceOrder"
+					},
+					"response": []
+				},
+				{
+					"name": "/ResourceOrder?id={{IDRO01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'orderDate', 'orderItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderDate attribute', function() { pm.expect(instance[\"orderDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderItem attribute', function() { pm.expect(instance[\"orderItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on orderDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['orderDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDRO01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO01');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO01\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDRO02\")) {",
+									"            pm.test('IDRO02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'orderDate', 'orderItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderDate attribute', function() { pm.expect(instance[\"orderDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderItem attribute', function() { pm.expect(instance[\"orderItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on orderDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['orderDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDRO01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO01');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO01\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDRO02\")) {",
+									"            pm.test('IDRO02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Resource_Order}}resourceOrder?id={{IDRO01}}",
+							"host": [
+								"{{Resource_Order}}resourceOrder"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{IDRO01}}"
+								}
+							]
+						},
+						"description": "This operation filter a ResourceOrder"
+					},
+					"response": []
+				},
+				{
+					"name": "/ResourceOrder?fields=orderDate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Resource_Order}}resourceOrder?fields=orderDate",
+							"host": [
+								"{{Resource_Order}}resourceOrder"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "orderDate"
+								}
+							]
+						},
+						"description": "This operation filter a ResourceOrder"
+					},
+					"response": []
+				},
+				{
+					"name": "/ResourceOrder?orderDate={{ORDERDATERO01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'orderDate', 'orderItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderDate attribute', function() { pm.expect(instance[\"orderDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderItem attribute', function() { pm.expect(instance[\"orderItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on orderDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['orderDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDRO01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO01');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO01\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDRO02\")) {",
+									"            pm.test('IDRO02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'orderDate', 'orderItem', 'state'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderDate attribute', function() { pm.expect(instance[\"orderDate\"]).to.be.a('string'); });",
+									"        pm.test('Response has orderItem attribute', function() { pm.expect(instance[\"orderItem\"]).to.be.a('array'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on orderDate', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['orderDate']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDRO01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFRO01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFRO01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDRO01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDRO01');});",
+									"            pm.test('orderDate is ' + pm.globals.get(\"ORDERDATERO01\"), function() {pm.expect(instance['orderDate']) == pm.globals.get('ORDERDATERO01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDRO02\")) {",
+									"            pm.test('IDRO02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Resource_Order}}resourceOrder?orderDate=\"{{ORDERDATERO01}}\"",
+							"host": [
+								"{{Resource_Order}}resourceOrder"
+							],
+							"query": [
+								{
+									"key": "orderDate",
+									"value": "\"{{ORDERDATERO01}}\""
+								}
+							]
+						},
+						"description": "This operation filter a ResourceOrder"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "E1",
+			"item": [
+				{
+					"name": "/ResourceOrder/404ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Resource_Order}}resourceOrder/a9c27767-d78b-4a1a-b448-6c65472fdf1d",
+							"host": [
+								"{{Resource_Order}}resourceOrder"
+							],
+							"path": [
+								"a9c27767-d78b-4a1a-b448-6c65472fdf1d"
+							]
+						},
+						"description": "This operation search for one of the created ResourceOrder"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

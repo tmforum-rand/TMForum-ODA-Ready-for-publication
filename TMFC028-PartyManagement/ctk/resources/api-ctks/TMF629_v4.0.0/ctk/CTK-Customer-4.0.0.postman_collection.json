@@ -1,0 +1,878 @@
+{
+	"info": {
+		"_postman_id": "0edb340b-801a-4738-a376-a0bb42e1cce4",
+		"name": "CTK-Customer-4.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7503975",
+		"_collection_link": "https://cloudy-meadow-674386.postman.co/workspace/v4.0.0CTKs~c3a3165b-0479-4ccd-bebb-f737fd593b7f/collection/7503975-0edb340b-801a-4738-a376-a0bb42e1cce4?action=share&source=collection_link&creator=7503975"
+	},
+	"item": [
+		{
+			"name": "N1",
+			"item": [
+				{
+					"name": "/Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"  ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var instance = pm.response.json();",
+									"var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"",
+									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"",
+									"",
+									"",
+									"pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"",
+									"pm.globals.set('HREFCU01', instance['href']);",
+									"pm.globals.set('IDCU01', instance['id']);",
+									"pm.globals.set('NAMECU01', instance['name']);",
+									"",
+									"pm.test('Body includes value held on href', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['href']);",
+									"});",
+									"pm.test('Body includes value held on id', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['id']);",
+									"});",
+									"pm.test('Body includes value held on name', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['name']);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Moon Football Club\",\n    \"engagedParty\": {\n        \"@referredType\": \"Organization\",\n        \"id\": \"500\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{Customer}}customer",
+							"host": [
+								"{{Customer}}customer"
+							]
+						},
+						"description": "This operation creates a Customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU02');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU02\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU02');});",
+									"        }  ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU02');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU02\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU02');});",
+									"        }",
+									"   ",
+									"  }",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Customer}}customer",
+							"host": [
+								"{{Customer}}customer"
+							]
+						},
+						"description": "This operation search for the created Customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/Customer/{{IDCU01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('IDCU02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('IDCU02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Customer}}customer/{{IDCU01}}",
+							"host": [
+								"{{Customer}}customer"
+							],
+							"path": [
+								"{{IDCU01}}"
+							]
+						},
+						"description": "This operation search for one of the created Customer"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "N2",
+			"item": [
+				{
+					"name": "/Customer?fields=href",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Customer}}customer?fields=href",
+							"host": [
+								"{{Customer}}customer"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "href"
+								}
+							]
+						},
+						"description": "This operation filter a Customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/Customer?fields=id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Customer}}customer?fields=id",
+							"host": [
+								"{{Customer}}customer"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "id"
+								}
+							]
+						},
+						"description": "This operation filter a Customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/Customer?id={{IDCU01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('IDCU02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('IDCU02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Customer}}customer?id={{IDCU01}}",
+							"host": [
+								"{{Customer}}customer"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{IDCU01}}"
+								}
+							]
+						},
+						"description": "This operation filter a Customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/Customer?fields=name",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Customer}}customer?fields=name",
+							"host": [
+								"{{Customer}}customer"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "name"
+								}
+							]
+						},
+						"description": "This operation filter a Customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/Customer?name={{NAMECU01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('IDCU02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"            pm.test('name is ' + pm.globals.get(\"NAMECU01\"), function() {pm.expect(instance['name']) == pm.globals.get('NAMECU01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('IDCU02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Customer}}customer?name={{NAMECU01}}",
+							"host": [
+								"{{Customer}}customer"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{NAMECU01}}"
+								}
+							]
+						},
+						"description": "This operation filter a Customer"
+					},
+					"response": []
+				},
+				{
+					"name": "/Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has name attribute', function() { pm.expect(instance[\"name\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU02');});",
+									"",
+									"        }  ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['engagedParty', '@type', 'engagedParty', 'href', 'id', 'name'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has @type attribute', function() { pm.expect(instance[\"@type\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on name', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['name']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDCU01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU01');});",
+									"            ",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDCU02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFCU02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFCU02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDCU02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDCU02');});",
+									"            ",
+									"        }",
+									"   ",
+									"  }",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"engagedParty\": {\n        \"@referredType\": \"Organization\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{Customer}}customer/{{IDCU01}}",
+							"host": [
+								"{{Customer}}customer"
+							],
+							"path": [
+								"{{IDCU01}}"
+							]
+						},
+						"description": "This operation creates a Customer"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "E1",
+			"item": [
+				{
+					"name": "/Customer/404ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Customer}}customer/c2df1950-c17c-4576-9c22-e59073a4a86a",
+							"host": [
+								"{{Customer}}customer"
+							],
+							"path": [
+								"c2df1950-c17c-4576-9c22-e59073a4a86a"
+							]
+						},
+						"description": "This operation search for one of the created Customer"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

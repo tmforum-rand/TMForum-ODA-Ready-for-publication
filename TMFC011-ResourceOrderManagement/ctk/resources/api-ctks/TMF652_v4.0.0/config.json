@@ -1,0 +1,22 @@
+{
+  "url": "http://localhost:8652/tmf-api/resourceOrdering/v4/",
+  "headers": {
+    "Accept": "application/json",
+    "Content-Type": "application/json"
+  },
+  "payloads": {
+    "ResourceOrder": {
+      "POST": {
+        "payload": {
+          "orderItem": [
+            {
+              "action": "add",
+              "resource": {},
+              "id": "abc-123"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

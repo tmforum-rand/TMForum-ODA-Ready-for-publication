@@ -1,0 +1,344 @@
+{
+	"info": {
+		"_postman_id": "79b99cec-2f94-4ca3-af19-45d3e245b4ba",
+		"name": "CTK-Shopping_Cart-4.0.0",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7503975",
+		"_collection_link": "https://cloudy-meadow-674386.postman.co/workspace/v4.0.0CTKs~c3a3165b-0479-4ccd-bebb-f737fd593b7f/collection/7503975-79b99cec-2f94-4ca3-af19-45d3e245b4ba?action=share&source=collection_link&creator=7503975"
+	},
+	"item": [
+		{
+			"name": "N1",
+			"item": [
+				{
+					"name": "/ShoppingCart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"  ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var instance = pm.response.json();",
+									"var requiredAttributes = ['href', 'id'];",
+									"",
+									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"",
+									"",
+									"",
+									"pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"",
+									"pm.globals.set('HREFSC01', instance['href']);",
+									"pm.globals.set('IDSC01', instance['id']);",
+									"",
+									"pm.test('Body includes value held on href', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['href']);",
+									"});",
+									"pm.test('Body includes value held on id', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['id']);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "{{Shopping_Cart}}shoppingCart",
+							"host": [
+								"{{Shopping_Cart}}shoppingCart"
+							]
+						},
+						"description": "This operation creates a ShoppingCart"
+					},
+					"response": []
+				},
+				{
+					"name": "/ShoppingCart",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDSC01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFSC01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFSC01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDSC01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDSC01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDSC02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFSC02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFSC02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDSC02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDSC02');});",
+									"        }  ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDSC01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFSC01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFSC01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDSC01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDSC01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDSC02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFSC02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFSC02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDSC02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDSC02');});",
+									"        }",
+									"   ",
+									"  }",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Shopping_Cart}}shoppingCart",
+							"host": [
+								"{{Shopping_Cart}}shoppingCart"
+							]
+						},
+						"description": "This operation search for the created ShoppingCart"
+					},
+					"response": []
+				},
+				{
+					"name": "/ShoppingCart/{{IDSC01}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDSC01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFSC01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFSC01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDSC01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDSC01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDSC02\")) {",
+									"            pm.test('IDSC02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDSC01\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFSC01\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFSC01');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDSC01\"), function() {pm.expect(instance['id']) == pm.globals.get('IDSC01');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDSC02\")) {",
+									"            pm.test('IDSC02 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Shopping_Cart}}shoppingCart/{{IDSC01}}",
+							"host": [
+								"{{Shopping_Cart}}shoppingCart"
+							],
+							"path": [
+								"{{IDSC01}}"
+							]
+						},
+						"description": "This operation search for one of the created ShoppingCart"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "E1",
+			"item": [
+				{
+					"name": "/ShoppingCart/404ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Shopping_Cart}}shoppingCart/894a108c-9fc9-45d8-a63b-13dcfd3a6bc3",
+							"host": [
+								"{{Shopping_Cart}}shoppingCart"
+							],
+							"path": [
+								"894a108c-9fc9-45d8-a63b-13dcfd3a6bc3"
+							]
+						},
+						"description": "This operation search for one of the created ShoppingCart"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

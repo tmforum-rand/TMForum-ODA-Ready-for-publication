@@ -1,0 +1,91 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "credential": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "@type",
+                    "id"
+                ]
+            }
+        },
+        "individualIdentified": {
+            "type": "object",
+            "properties": {
+                "@referredType": {
+                    "type": "string"
+                },
+                "@type": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@referredType",
+                "@type",
+                "id"
+            ]
+        },
+        "partyRoleIdentified": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "@referredType": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "@referredType",
+                    "id"
+                ],
+                "if": {
+                    "properties": {
+                        "@referredType": { "const": "Party"} 
+                    }
+                },
+                "then": {
+                    "required": ["role"]
+                }
+            }
+        },
+        "resourceIdentified": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
+            ]
+        }
+    },
+    "required": [
+        "credential"
+    ],
+    "oneOf": [
+        {"required": ["resourceIdentified"]},
+        {"required": ["partyRoleIdentified"]},
+        {"required": ["individualIdentified"]}
+    ]
+}

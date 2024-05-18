@@ -1,0 +1,7 @@
+{
+    "state": "active",
+    "serviceSpecification": {
+      "id": "1212",
+      "@referredType": "ServiceSpecification"
+    }
+  }

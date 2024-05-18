@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "type": "object",
+  "properties": {
+    "href": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string"
+    },
+    "lastUpdate": {
+      "type": "string"
+    },
+    "lifecycleStatus": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

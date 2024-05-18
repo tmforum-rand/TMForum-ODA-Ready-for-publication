@@ -1,0 +1,10 @@
+{
+    "name": "voucher",
+    "@type": "Voucher",
+    "code": "1234 1234",
+    "value": {
+        "amount": 1,
+        "units": "units"
+    },
+    "expirationDate": "2021-11-12T17:42:04.317Z"
+}

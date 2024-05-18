@@ -1,0 +1,7 @@
+{
+    "name": "HSV",
+    "@type": "BankAccountDebit",
+    "accountNumber" :"KW81CBKU0000000000001234560101",
+    "owner": "HSV",
+    "bank": "AIB"
+}

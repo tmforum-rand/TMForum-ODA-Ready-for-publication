@@ -1,0 +1,19 @@
+{
+    "credential": [{
+        "id": "caf79e81-c3c2-48bd-94f4-62028fa22a1f",
+        "@type": "Credential"
+    }],
+    "individualIdentified": {
+        "@referredType": "Individual",
+        "@type": "IndividualIdentified",
+        "id": "1f197c10-6a6a-452e-9a05-fe0ccb2c0d79"
+    },
+    "partyRoleIdentified": [{
+        "@referredType": "Party",
+        "id": "2ff80fb3-742f-4acf-ba80-ea787ebb4a05",
+        "role": "individual"
+    }],
+    "resourceIdentified": {
+        "id": "d09b984f-4033-4ccd-b2d7-6ecf83341107"
+    }
+}

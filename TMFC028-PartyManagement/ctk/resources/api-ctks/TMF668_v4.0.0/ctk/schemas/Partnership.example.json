@@ -1,0 +1,8 @@
+{
+    "name": "Dream Partnership",
+    "specification": {
+        "id": "9047",
+        "href": "https://host:port/tmf-api/partnershipManagement/v4/partnershipSpecification/9047",
+        "name": "Dream Partnership template"
+    }
+    }
