@@ -2,8 +2,8 @@
     "componentFilePath": "../resources/component/TMFC002-ProductOrderCaptureAndValidation.yaml",
     "companyName": "TMForum",
     "componentName": "TMFC002-ProductOrderCaptureAndValidation",
-    "productName": "Product Catalog",
-    "componentUrl": "https://oda-directory.labs.tmforum.org/component-map/Core%20Commerce%20Management/TMFC001",
+    "productName": "Product Order Capture and Validation",
+    "componentUrl": "https://www.tmforum.org/oda/directory/components-map/core-commerce-management/TMFC002",
     "productUrl": "https://oda-directory.labs.tmforum.org/component-map/Core%20Commerce%20Management",
     "ctkConfig": {},
     "headers": {

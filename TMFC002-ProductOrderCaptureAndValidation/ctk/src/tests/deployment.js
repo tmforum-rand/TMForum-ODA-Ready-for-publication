@@ -104,7 +104,7 @@ describe("Step 1: Deployment component tests", function () {
             edges.forEach(e => {
                 let gc_apis = parsed_component.spec[f][e] || []
                 let apis = js_component.spec[f][e] || []
-                gc_apis.forEach(api => {
+                gc_apis.filter(api => api.required == true).forEach(api => {
                     console.log(`Configuring CTK for ${api.name}`)
                     api_ref = api.id + "_" + api.version
                     ctk_location = Path.join("../resources/api-ctks", api_ref)
