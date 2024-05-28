@@ -1,0 +1,58 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: Component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-{{.Values.component.name}}'
+spec:
+  coreFunction:
+    dependentAPIs:
+    - apitype: openapi
+      name: party-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: party-role-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: product-catalog-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+    - apitype: openapi
+      name: agreement-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: quote-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF648_Quote/4.0.0/swagger/TMF648_Quote_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: product-ordering-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-sales-management-api'
+      name: sales-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/sales/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF699_Sales/4.0.0/swagger/TMF699_Sales_Management_API_v4.0.0_swagger.json
+  description: 'Lead and Opportunity Management provides the necessary functionality
+    during pre-sales stage in terms of: lead and opportunity capture, qualification,
+    reporting, support.'
+  functionalBlock: PartyManagement
+  id: TMFC036
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  name: LeadAndOpportunityManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: '{{.Values.component.publicationDate}}'
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-partyrole-management-api'
+      name: partyrole-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  status: specified
+  version: 1.1.0

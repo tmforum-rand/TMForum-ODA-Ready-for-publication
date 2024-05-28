@@ -1,0 +1,50 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: Component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-{{.Values.component.name}}'
+spec:
+  coreFunction:
+    dependentAPIs:
+    - apitype: openapi
+      name: party-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-user-role-permission-management-api'
+      name: user-role-permission-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/rolesAndPermissions/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-party-role-management-api'
+      name: party-role-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  description: 'Party Roles & Permissions Management component aims to manage and
+    expose, roles and related permissions. Permissions Management component allows
+    to: create, modify and delete permissions. delegate permissions. When a specific
+    role is assigned, a set of permissions is inherited.'
+  functionalBlock: PartyManagement
+  id: TMFC035
+  maintainers:
+  - email: matteo.destino@accenture.com
+    name: Matteo Destino
+  name: PermissionsManagement
+  owners:
+  - email: matteo.destino@accenture.com
+    name: Matteo Destino
+  publicationDate: '{{.Values.component.publicationDate}}'
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-partyrole-management-api'
+      name: partyrole-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  status: specified
+  version: 1.1.1

@@ -1,0 +1,61 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: Component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-{{.Values.component.name}}'
+spec:
+  coreFunction:
+    dependentAPIs:
+    - apitype: openapi
+      name: party-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: party-role-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: user-role-permission-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: entity-catalog-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: document-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: communication-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-party-interaction-management-api'
+      name: party-interaction-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyInteraction/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/4.0.0/swagger/TMF683_Party_Interaction_Management_API_v4.0.0_swagger.json
+  description: Party Interaction deals with the initial greeting and welcoming of
+    a new contact. This will typically be the first component in a customer experience
+    journey, shared by unassisted (self-service, retail kiosk) or assisted (call center,
+    retail store) channels. It will identify known parties or new parties and react
+    appropriately to propose available actions. It records all the interactions for
+    the parties from all channels.
+  functionalBlock: PartyManagement
+  id: TMFC023
+  maintainers:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  name: PartyInteractionManagement
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  publicationDate: '{{.Values.component.publicationDate}}'
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-partyrole-management-api'
+      name: partyrole-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  status: specified
+  version: 1.1.0

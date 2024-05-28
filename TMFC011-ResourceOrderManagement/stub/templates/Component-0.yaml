@@ -1,0 +1,66 @@
+apiVersion: oda.tmforum.org/v1beta2
+kind: Component
+metadata:
+  labels:
+    oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
+  name: '{{.Release.Name}}-{{.Values.component.name}}'
+spec:
+  coreFunction:
+    dependentAPIs:
+    - apitype: openapi
+      name: resource-activation-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF702_Resource_Activation/4.0.0/swagger/TMF702_Resource_Activation_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: resource-catalog-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+    - apitype: openapi
+      name: resource-inventory-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: resource-function-activation-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF664_Resource_Function_Activation/4.0.0/swagger/TMF664_Resource_Function_Activation_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: party-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: appointment-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: geographic-address-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+    - apitype: openapi
+      name: geographic-site-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-resource-order-management-api'
+      name: resource-order-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/resourceOrderingManagement/v4/
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF652_Resource_Order/4.0.0/swagger/TMF652_Resource_Order_Management_API_v4.0.0_swagger.json
+  description: Resource Order Management Component manages the end-to-end lifecycle
+    of a resource  order request. This includes validating resource availability as
+    well as the  resource order request. Other functionality includes resource order
+    assurance,  resource order decomposition and resource order tracking, along with
+    orchestrating  the activation and the test and turn-up processes.
+  functionalBlock: Production
+  id: TMFC011
+  maintainers:
+  - email: hvaughan@tmforum.org
+    name: Hugo Vaughan
+  name: ResourceOrderManagement
+  owners:
+  - email: anastasios.sarantis@cityfibre.com
+    name: Tassos Sarantis
+  publicationDate: '{{.Values.component.publicationDate}}'
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    exposedAPIs:
+    - apitype: openapi
+      implementation: '{{.Release.Name}}-partyrole-management-api'
+      name: partyrole-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      port: 8080
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+  status: Pre-production
+  version: 1.0.0
