@@ -11,5 +11,25 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC012-ResourceInventory.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC012-ResourceInventory.yaml",
+    "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
+        "TMF639_v4.0.0": {
+            "Resource": {
+                "POST": {
+                    "payload": {
+                        "name": "RouterXX"
+                    }
+                }
+            }
+        }
+    }
 }

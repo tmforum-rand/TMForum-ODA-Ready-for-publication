@@ -11,5 +11,62 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC022-PartyPrivacyManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC022-PartyPrivacyManagement.yaml",
+    "payloads": {
+        "TMF644_v4.0.0": {
+            "PartyPrivacyProfileSpecification": {
+                "POST": {
+                    "payload": {
+                        "serviceQualificationItem": [
+                            {}
+                        ]
+                    }
+                }
+            },
+            "PartyPrivacyProfile": {
+                "POST": {
+                    "payload": {
+                        "agreedByParty": {
+                            "id": "9176",
+                            "href": "https://mycsp.com:8080/tmf-api/partyManagement/v4/individual/9176",
+                            "name": "Sandy Smith",
+                            "role": "owner",
+                            "@referredType": "Individual"
+                        },
+                        "partyPrivacyProfileCharacteristic": [
+                            {
+                                "id": "43",
+                                "name": "EmailAddress",
+                                "privacyUsagePurpose": "INFORMATION",
+                                "valueType": "boolean",
+                                "value": "No",
+                                "relatedParty": [
+                                    {
+                                        "id": "8632",
+                                        "href": "https://mycsp.com:8080/tmf-api/partyManagement/v4/individual/8632",
+                                        "name": "John Doe",
+                                        "role": "Vendor",
+                                        "@referredType": "Individual"
+                                    }
+                                ]
+                            }
+                        ],
+                        "partyPrivacyProfileSpecification": {
+                            "id": "PartyPrivacySpec_156bjhbjkbk57434",
+                            "name": "Individual Privacy Spec"
+                        }
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

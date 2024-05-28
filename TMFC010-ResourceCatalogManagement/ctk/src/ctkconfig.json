@@ -11,5 +11,31 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC010-ResourceCatalogManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC010-ResourceCatalogManagement.yaml",
+    "payloads": {
+        "TMF634_v4.1.0": {
+            "ResourceSpecification": {
+                "POST": {
+                    "payload": {
+                        "name": "Virtual Storage Medium"
+                    }
+                },
+                "PATCH": {
+                    "payload": {
+                        "name": "Virtual Storage Medium 2",
+                        "lifecycleStatus": "In progress"
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

@@ -11,5 +11,52 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC006-ServiceCatalogManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC006-ServiceCatalogManagement.yaml",
+    "payloads": {
+        "TMF633_v4.0.0": {
+            "ServiceSpecification": {
+                "POST": {
+                    "payload": {
+                        "@type": "ResourceFacingServiceSpecification",
+                        "name": "Firewall Service"
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
+        "TMF657_v4.0.0": {
+            "ServiceLevelObjective": {
+                "POST": {
+                    "payload": {
+                        "conformanceComparator": ">",
+                        "conformanceTarget": "32",
+                        "serviceLevelObjectiveParameter": {}
+                    }
+                }
+            },
+            "ServiceLevelSpecification": {
+                "POST": {
+                    "payload": {
+                        "name": "Access bandwidth",
+                        "relatedServiceLevelObjective": [
+                            {
+                                "id": "3112"
+                            },
+                            {
+                                "id": "3113"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
 }

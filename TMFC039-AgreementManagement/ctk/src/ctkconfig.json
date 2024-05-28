@@ -11,5 +11,62 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC039-AgreementManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC039-AgreementManagement.yaml",
+    "payloads": {
+        "TMF651_v4.0.0": {
+            "AgreementSpecification": {
+                "POST": {
+                    "payload": {
+                        "name": "Moon Agreement Template",
+                        "attachment": [
+                            {
+                                "id": "44",
+                                "attachmentType": "Video",
+                                "url": "http://example.com"
+                            }
+                        ]
+                    }
+                }
+            },
+            "Agreement": {
+                "POST": {
+                    "payload": {
+                        "name": "Summer Contract Agreement",
+                        "agreementType": "commercial",
+                        "agreementItem": [
+                            {
+                                "termOrCondition": [
+                                    {
+                                        "description": "This  agreement term or condition ...",
+                                        "id": "5890",
+                                        "validFor": {
+                                            "startDateTime": "2018-04-25T00:00:00.000Z",
+                                            "endDateTime": "2018-11-20T00:00:00.000Z"
+                                        }
+                                    }
+                                ]
+                            }
+                        ],
+                        "engagedParty": [
+                            {
+                                "@referredType": "Organization",
+                                "id": "330",
+                                "role": "Supplier",
+                                "name": "Magic Tools Company"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

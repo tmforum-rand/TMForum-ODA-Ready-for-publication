@@ -11,5 +11,64 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC035-PermissionsManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC035-PermissionsManagement.yaml",
+    "payloads": {
+        "TMF672_v4.0.0": {
+            "UserRole": {
+                "POST": {
+                    "payload": {
+                        "involvementRole": "product",
+                        "entitlement": [
+                            {
+                                "action": "1",
+                                "function": "f",
+                                "id": "123"
+                            }
+                        ]
+                    }
+                }
+            },
+            "Permission": {
+                "POST": {
+                    "payload": {
+                        "user": {
+                            "id": "cust-745712-A",
+                            "@referredType": "Individual"
+                        },
+                        "validFor": {
+                            "endDateTime": "2021-08-10T14:58:55Z",
+                            "startDateTime": "2021-08-10T14:58:55Z"
+                        },
+                        "privilege": [
+                            {
+                                "action": "1",
+                                "function": "f",
+                                "manageableAsset": {
+                                    "id": "123123"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "TMF669-PartyRole": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

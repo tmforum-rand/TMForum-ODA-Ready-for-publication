@@ -11,5 +11,34 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC009-ServiceQualificationManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC009-ServiceQualificationManagement.yaml",
+    "payloads": {
+        "TMF645_v4.0.0": {
+            "CheckServiceQualification": {
+                "POST": {
+                    "payload": {
+                        "serviceQualificationItem": [
+                            {}
+                        ]
+                    }
+                }
+            },
+            "QueryServiceQualification": {
+                "POST": {
+                    "payload": {
+                        "searchCriteria": {}
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

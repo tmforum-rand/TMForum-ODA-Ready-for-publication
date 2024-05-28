@@ -1,7 +1,7 @@
 {
-    "componentFilePath": "../resources/component/TMFC040-ProductUsageManagement.yaml",
+    "componentFilePath": "",
     "companyName": "TMForum",
-    "componentName": "TMFC040-ProductUsageManagement",
+    "componentName": "TMFC001 Product Catalog Management",
     "productName": "Product Catalog",
     "componentUrl": "https://oda-directory.labs.tmforum.org/component-map/Core%20Commerce%20Management/TMFC001",
     "productUrl": "https://oda-directory.labs.tmforum.org/component-map/Core%20Commerce%20Management",
@@ -10,6 +10,5 @@
         "Authorization": "Bearer 1234567890bbbb",
         "Accept": "application/json",
         "Content-Type": "application/json"
-    },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC040-ProductUsageManagement.yaml"
+    }
 }

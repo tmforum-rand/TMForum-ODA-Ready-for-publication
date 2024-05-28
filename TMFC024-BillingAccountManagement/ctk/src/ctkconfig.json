@@ -11,5 +11,81 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC024-BillingAccountManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC024-BillingAccountManagement.yaml",
+    "payloads": {
+        "TMF666_v4.0.0": {
+            "BillFormat": {
+                "POST": {
+                    "payload": {
+                        "name": "Monthly billing"
+                    }
+                }
+            },
+            "PartyAccount": {
+                "POST": {
+                    "payload": {
+                        "name": "Travel account",
+                        "relatedParty": [
+                            {
+                                "@referredType": "Organization",
+                                "id": "4665",
+                                "name": "John Doe"
+                            }
+                        ]
+                    }
+                }
+            },
+            "BillingCycleSpecification": {
+                "POST": {
+                    "payload": {
+                        "name": "Monthly billing"
+                    }
+                }
+            },
+            "FinancialAccount": {
+                "POST": {
+                    "payload": {
+                        "name": "Administration account"
+                    }
+                }
+            },
+            "BillingAccount": {
+                "POST": {
+                    "payload": {
+                        "name": "Home Account",
+                        "relatedParty": [
+                            {
+                                "@referredType": "Organization",
+                                "id": "6838",
+                                "name": "Richard Cole"
+                            }
+                        ]
+                    }
+                }
+            },
+            "SettlementAccount": {
+                "POST": {
+                    "payload": {
+                        "name": "Per Usage Account",
+                        "relatedParty": [
+                            {
+                                "@referredType": "Organization",
+                                "id": "5965",
+                                "name": "Jimmy Doe"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

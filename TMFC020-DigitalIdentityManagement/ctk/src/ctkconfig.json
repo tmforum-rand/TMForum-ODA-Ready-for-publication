@@ -11,5 +11,36 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC020-DigitalIdentityManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC020-DigitalIdentityManagement.yaml",
+    "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
+        "TMF720_v4.0.0": {
+            "DigitalIdentity": {
+                "POST": {
+                    "payload": {
+                        "credential": [
+                            {
+                                "id": "ea8cd579-0553-4fd2-9c0e-cacaef3dfe1d",
+                                "@type": "Credential"
+                            }
+                        ],
+                        "partyRoleIdentified": [
+                            {
+                                "@referredType": "PartyRole",
+                                "id": "2ff80fb3-742f-4acf-ba80-ea787ebb4a05"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
 }

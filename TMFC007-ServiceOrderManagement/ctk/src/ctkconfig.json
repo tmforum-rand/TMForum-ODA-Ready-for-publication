@@ -11,5 +11,31 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC007-ServiceOrderManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC007-ServiceOrderManagement.yaml",
+    "payloads": {
+        "TMF641_v4.1.0": {
+            "ServiceOrder": {
+                "POST": {
+                    "payload": {
+                        "serviceOrderItem": [
+                            {
+                                "id": "1",
+                                "action": "add",
+                                "service": {}
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

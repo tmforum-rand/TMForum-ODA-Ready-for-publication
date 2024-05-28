@@ -11,5 +11,31 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC011-ResourceOrderManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC011-ResourceOrderManagement.yaml",
+    "payloads": {
+        "TMF652_v4.0.0": {
+            "ResourceOrder": {
+                "POST": {
+                    "payload": {
+                        "orderItem": [
+                            {
+                                "action": "add",
+                                "resource": {},
+                                "id": "abc-123"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

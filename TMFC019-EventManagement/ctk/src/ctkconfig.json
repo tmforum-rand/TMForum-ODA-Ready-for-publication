@@ -11,5 +11,16 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC019-EventManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC019-EventManagement.yaml",
+    "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

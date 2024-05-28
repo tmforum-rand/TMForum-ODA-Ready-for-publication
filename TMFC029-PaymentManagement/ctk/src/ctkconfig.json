@@ -11,5 +11,83 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC029-PaymentManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC029-PaymentManagement.yaml",
+    "payloads": {
+        "TMF676_v4.0.0": {
+            "Payment": {
+                "POST": {
+                    "payload": {
+                        "account": {
+                            "id": "15463151"
+                        },
+                        "paymentMethod": {
+                            "id": "15492MIFB865654",
+                            "href": "https://host:port/paymentMethodManagement/v4/voucher/15492MIFB865654",
+                            "@referredType": "Voucher",
+                            "@type": "PaymentMethodRef"
+                        },
+                        "totalAmount": {
+                            "unit": "EUR",
+                            "value": 11.6
+                        }
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
+        "TMF670_v4.0.0": {
+            "PaymentMethod": {
+                "POST": {
+                    "payload": [
+                        {
+                            "name": "HSV",
+                            "@type": "BankAccountDebit",
+                            "accountNumber": "KW81CBKU0000000000001234560101",
+                            "owner": "HSV",
+                            "bank": "AIB"
+                        },
+                        {
+                            "name": "transfer",
+                            "@type": "BankAccountTransfer",
+                            "accountNumber": "AL47 2121 1009 0000 0002 3569 87411",
+                            "owner": "HSV",
+                            "bank": "HSBC"
+                        },
+                        {
+                            "name": "Card",
+                            "@type": "BankCard",
+                            "cardNumber": "1234 1234 1234 1234",
+                            "brand": "Visa",
+                            "expirationDate": "2021-11-12T17:42:04.317Z",
+                            "nameOnCard": "HSV"
+                        },
+                        {
+                            "name": "check",
+                            "@type": "Check",
+                            "checkId": "123",
+                            "drawer": "Entity",
+                            "payee": "Entity",
+                            "signedDate": "2021-11-12T17:42:04.317Z",
+                            "bank": "HSBC"
+                        },
+                        {
+                            "name": "Wallet",
+                            "@type": "DigitalWallet",
+                            "service": "Bitcoin",
+                            "walletId": "123123",
+                            "walletUrl": "{rooturl}"
+                        }
+                    ]
+                }
+            }
+        }
+    }
 }

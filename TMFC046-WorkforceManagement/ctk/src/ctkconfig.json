@@ -11,5 +11,28 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC046-WorkforceManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC046-WorkforceManagement.yaml",
+    "payloads": {
+        "TMF646_v4.0.0": {
+            "Appointment": {
+                "POST": {
+                    "payload": {
+                        "validFor": {
+                            "startDateTime": "2018-02-15T14:00:00.000Z",
+                            "endDateTime": "2018-02-15T16:00:00.000Z"
+                        }
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

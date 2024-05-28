@@ -11,5 +11,57 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC002-ProductOrderCaptureAndValidation.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC002-ProductOrderCaptureAndValidation.yaml",
+    "payloads": {
+        "TMF648_v4.0.0": {
+            "Quote": {
+                "POST": {
+                    "payload": {
+                        "quoteItem": [
+                            {
+                                "id": "1",
+                                "action": "add"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "TMF622_v4.0.0": {
+            "ProductOrder": {
+                "POST": {
+                    "payload": {
+                        "productOrderItem": [
+                            {
+                                "id": "123",
+                                "action": "add"
+                            }
+                        ],
+                        "relatedParty": [
+                            {
+                                "id": "456-dd-df45",
+                                "@referredType": "Individual"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "TMF663_v4.0.0": {
+            "ShoppingCart": {
+                "POST": {
+                    "payload": {}
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

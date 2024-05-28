@@ -11,5 +11,57 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC001-ProductCatalogManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC001-ProductCatalogManagement.yaml",
+    "payloads": {
+        "TMF671_v4.1.0": {
+            "Promotion": {
+                "POST": {
+                    "payload": {
+                        "name": "3months of free Netflix when retention for more 24 months"
+                    }
+                }
+            }
+        },
+        "TMF620_v4.1.0": {
+            "ProductSpecification": {
+                "POST": {
+                    "payload": {
+                        "name": "Cisco Firepower NGFW"
+                    }
+                }
+            },
+            "ProductOffering": {
+                "POST": {
+                    "payload": {
+                        "name": "aProductOffering",
+                        "productSpecification": {
+                            "id": "9881",
+                            "href": "https://mycsp.com:8080/tmf-api/productCatalogManagement/v4/productSpecification/9881",
+                            "version": "1.1",
+                            "name": "Robotics999",
+                            "@referredType": "DeviceSpecification"
+                        }
+                    }
+                }
+            },
+            "ProductOfferingPrice": {
+                "POST": {
+                    "payload": {
+                        "name": "Recurring Charge for Business Firewall",
+                        "isBundle": false,
+                        "priceType": "recurring"
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }

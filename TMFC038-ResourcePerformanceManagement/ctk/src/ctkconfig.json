@@ -11,5 +11,33 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC038-ResourcePerformanceManagement.yaml"
+    "goldenComponentFilePath": "../resources/golden-components/TMFC038-ResourcePerformanceManagement.yaml",
+    "payloads": {
+        "TMF642_v4.0.0": {
+            "Alarm": {
+                "POST": {
+                    "payload": {
+                        "alarmRaisedTime": "2019-07-03T03:32:17.235Z",
+                        "alarmType": "environmentalAlarm",
+                        "alarmedObject": {
+                            "id": "93051825"
+                        },
+                        "perceivedSeverity": "minor",
+                        "probableCause": "rectifierLowVoltage",
+                        "sourceSystemId": "ems-1",
+                        "state": "raised"
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
 }
