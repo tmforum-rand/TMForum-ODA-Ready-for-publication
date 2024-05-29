@@ -9,17 +9,17 @@ spec:
     dependentAPIs:
     - apitype: openapi
       name: party-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
     - apitype: openapi
       name: party-role-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
     exposedAPIs:
     - apitype: openapi
       implementation: '{{.Release.Name}}-digital-identity-management-api'
       name: digital-identity-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/digitalIdentityManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF720_Digital_Identity/4.0.0/swagger/TMF720_Digital_Identity_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF720_v4.0.0.swagger.json
   description: The Digital Identity Management is responsible for the parties (customers,
     employees, partners) and resources authentication.
   functionalBlock: PartyManagement
@@ -39,6 +39,6 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
   version: 1.1.1

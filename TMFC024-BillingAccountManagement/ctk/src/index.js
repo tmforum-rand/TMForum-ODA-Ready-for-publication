@@ -22,7 +22,7 @@ class Component {
 
   async getCoreFunctionResults(resultsPath){
     let coreExposedApis = this.instance.spec.coreFunction.exposedAPIs
-    let results = coreExposedApis.map(async api => {
+    let results = coreExposedApis.filter(api => api.required).map(async api => {
       let apiRelease = api.id + "_" + api.version
       let apiOptionalText = api.optional ? "Optional" : "Mandatory"
       let jsonResultsPath = Path.join(resultsPath, "api-ctk-results", apiRelease + ".json")
@@ -115,8 +115,31 @@ async function runSuit(suite){
   })
 }
 
+async function configureAPICTKS(){
+  let componentCtkConfig = config.payloads
+  let ctks = Path.join("../resources/api-ctks")
+
+  for (let apiRef of Object.keys(componentCtkConfig)){
+    let ctk_config = Path.join(ctks, apiRef, "config.json")
+    try {
+      let config_data = await fs.promises.readFile(ctk_config)
+      config_data = JSON.parse(config_data)
+      config_data.payloads = {
+        ...config_data.payloads,
+        ...componentCtkConfig[apiRef],
+      }
+
+      await fs.promises.writeFile(ctk_config, JSON.stringify(config_data, null, 2))
+    }
+    catch (e){
+      console.log("Could not open api ctk config: ", e)
+    }
+  }
+}
+
 async function main(){
   try{
+    await configureAPICTKS()
     let suits = configureMochaSuits().map(e => runSuit(e))
     let suitResults = await Promise.all(suits)
     await generateReport()

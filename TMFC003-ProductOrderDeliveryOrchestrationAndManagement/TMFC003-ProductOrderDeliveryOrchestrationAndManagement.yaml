@@ -9,7 +9,7 @@ spec:
       version: v4.1.0
       name: product-catalog-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
       port: 8080
       resources:
       - productSpecification:
@@ -19,7 +19,7 @@ spec:
       version: v4.0.0
       name: product-ordering-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF622_v4.0.0.swagger.json
       port: 8080
       resources:
       - productOrder:
@@ -29,7 +29,7 @@ spec:
       version: v4.0.0
       name: product-inventory-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json
       port: 8080
       resources:
       - product:
@@ -40,7 +40,7 @@ spec:
       version: v4.1.0
       name: service-ordering-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
       port: 8080
       resources:
       - serviceOrder:
@@ -57,7 +57,7 @@ spec:
       version: v4.0.0
       name: service-catalog-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
       port: 8080
       resources:
       - serviceSpecification:
@@ -67,7 +67,7 @@ spec:
       version: v4.1.0
       name: resource-catalog-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
       port: 8080
       resources:
       - resourceSpecification:
@@ -77,7 +77,7 @@ spec:
       version: v4.1.0
       name: service-ordering-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
       port: 8080
       resources:
       - serviceOrder:
@@ -87,7 +87,7 @@ spec:
       version: v4.0.0
       name: service-inventory-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
       port: 8080
       resources:
       - service:
@@ -97,7 +97,7 @@ spec:
       version: v4.0.0
       name: resource-inventory-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
       port: 8080
       resources:
       - resource:
@@ -107,7 +107,7 @@ spec:
       version: v4.0.0
       name: resource-order-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF652_Resource_Order/4.0.0/swagger/TMF652_Resource_Order_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF652_v4.0.0.swagger.json
       port: 8080
       resources:
       - resourceOrder:
@@ -206,7 +206,7 @@ spec:
       version: v4.0.0
       name: party-role-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       port: 8080
       resources: []
     dependentAPIs: []

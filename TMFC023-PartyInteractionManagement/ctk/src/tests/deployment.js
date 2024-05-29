@@ -11,7 +11,7 @@ const https = require('https')
 const http = require('http')
 const mkdirp = require('mkdirp');
 const k8s = require('@kubernetes/client-node');
-const { hostname } = require('os');
+const { exec } = require('child_process');
 
 chai.use(chaiHttp)
 
@@ -99,18 +99,43 @@ describe("Step 1: Deployment component tests", function () {
         let edges = ["exposedAPIs"]
         let parsed_component = gc_manifest.toJSON()
         let api_configs = []
+        
+
+        let ref_to_url = {}
+        let body_apis = deployment.body.items[0].spec.coreFunction.exposedAPIs
+        body_apis = body_apis.concat(deployment.body.items[0].spec.securityFunction.exposedAPIs)
+
+        let status_apis = deployment.body.items[0].status["coreAPIs"] || []
+        status_apis = status_apis.concat(deployment.body.items[0].status["securityAPIs"] || [])
+        for (api of status_apis) {
+            let impl = api.implementation
+            let url = api.url
+            if (url[url.length - 1] !== "/"){
+                url = url + "/"
+            }
+            for (body_api of body_apis) {
+                if (body_api.implementation === impl) {
+                    let swagger = await loadYamlFromUrl(body_api.specification)
+                    let api_ref = swagger.info["x-api-id"] + "_v" + swagger.info.version
+                    ref_to_url[api_ref] = url
+                }
+            }
+        }
+
+        //console.log(ref_to_url)
 
         functions.forEach(f => {
             edges.forEach(e => {
                 let gc_apis = parsed_component.spec[f][e] || []
-                let apis = js_component.spec[f][e] || []
-                gc_apis.forEach(api => {
+                //let apis = js_component.spec[f][e] || []
+                
+                gc_apis.filter(api => api.required).forEach(api => {
                     console.log(`Configuring CTK for ${api.name}`)
                     api_ref = api.id + "_" + api.version
                     ctk_location = Path.join("../resources/api-ctks", api_ref)
                     api_configs.push({
                         path: ctk_location,
-                        url: findApiUrl(findApiDeploymentPath(api.specification, apis), deployment),
+                        url: ref_to_url[api_ref],
                         api_ref: api_ref
                     })
                 })
@@ -126,7 +151,7 @@ describe("Step 1: Deployment component tests", function () {
                 let ctk_config_path = Path.join(api.path, "config.json")
                 let ctk_config = JSON.parse(await loadFile(ctk_config_path))
                 ctk_config.url = api.url
-                console.log("Configuring headers", config.headers)
+                //console.log("Configuring headers", config.headers)
                 ctk_config.headers = config.headers
                 let config_data = JSON.stringify(ctk_config, null, 2)
                 await writeToFile(ctk_config_path, config_data)
@@ -191,7 +216,6 @@ function runAPICTK(apiData) {
     let command_options = {
         cwd: Path.join(ctkPath, "ctk")
     }
-    const { exec } = require('child_process');
 
     return new Promise((resolve, reject) => {
         exec(command, command_options,(error, stdout, stderr) => {
@@ -213,11 +237,7 @@ function runAPICTK(apiData) {
     })
 }
 
-function findApiDeploymentPath(apiSpec, apis) {
-    let api = apis.find(api => api.specification === apiSpec)
-    return api ? api.path : ""
 
-}
 
 function writeToFile(filePath, data) {
     return new Promise((resolve, reject) => {
@@ -341,6 +361,30 @@ function getUrl(url) {
     })
 }
 
+
+function loadYamlFromUrl(url) {
+    return new Promise((resolve, reject) => {
+      https.get(url, (response) => {
+        let data = '';
+  
+        response.on('data', (chunk) => {
+          data += chunk;
+        });
+  
+        response.on('end', () => {
+          try {
+            const parsedData = YAML.parseDocument(data).toJSON();
+            resolve(parsedData);
+          } catch (error) {
+            reject(error);
+          }
+        });
+      }).on('error', (error) => {
+        reject(error);
+      });
+    });
+  }
+  
 
 function getComponentDocument (inDocumentArray) {
     return inDocumentArray.find(doc => {

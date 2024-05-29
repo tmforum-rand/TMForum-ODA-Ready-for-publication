@@ -9,7 +9,7 @@ spec:
       version: v4.0.0
       name: party-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
       port: 8080
       resources:
       - individual:
@@ -22,7 +22,7 @@ spec:
       version: v4.0.0
       name: account-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json
       port: 8080
       resources:
       - partyAccount:
@@ -50,7 +50,7 @@ spec:
       version: v4.0.0
       name: geographic-address-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
       port: 8080
       resources:
       - geographicAddressValidation:
@@ -66,7 +66,7 @@ spec:
       version: v4.0.0
       name: geographic-site-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
       port: 8080
       resources:
       - geographicSite:
@@ -77,7 +77,7 @@ spec:
       version: v4.0.0
       name: payment-method-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF670_Payment_Method/4.0.0/swagger/TMF670_Payment_Method_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF670_v4.0.0.swagger.json
       port: 8080
       resources:
       - paymentMethod:
@@ -90,7 +90,7 @@ spec:
       version: v4.0.0
       name: payment-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF676_v4.0.0.swagger.json
       port: 8080
       resources:
       - payment:
@@ -173,7 +173,7 @@ spec:
       version: v4.0.0
       name: party-role-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       port: 8080
       resources: []
     dependentAPIs: []

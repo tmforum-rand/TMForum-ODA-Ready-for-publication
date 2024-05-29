@@ -9,7 +9,7 @@ spec:
       version: v4.0.0
       name: party-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
       port: 8080
       resources:
       - individual:
@@ -22,7 +22,7 @@ spec:
       version: v4.0.0
       name: party-role-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       port: 8080
       resources:
       - PartyRoleManagement:
@@ -32,7 +32,7 @@ spec:
       version: v4.0.0
       name: user-role-permission-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
       port: 8080
       resources:
       - permission:
@@ -42,7 +42,7 @@ spec:
       version: v4.0.0
       name: entity-catalog-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF662_v4.0.0.swagger.json
       port: 8080
       resources:
       - entitySpecification:
@@ -61,7 +61,7 @@ spec:
       version: v4.0.0
       name: document-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF667_v4.0.0.swagger.json
       port: 8080
       resources:
       - document:
@@ -71,7 +71,7 @@ spec:
       version: v4.0.0
       name: communication-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF681_v4.0.0.swagger.json
       port: 8080
       resources:
       - communicationMessage:
@@ -82,7 +82,7 @@ spec:
       version: v4.0.0
       name: party-interaction-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/4.0.0/swagger/TMF683_Party_Interaction_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF683_v4.0.0.swagger.json
       port: 8080
       resources:
       - PartyInteraction:
@@ -195,7 +195,7 @@ spec:
       version: v4.0.0
       name: party-role-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       port: 8080
       resources: []
     dependentAPIs: []

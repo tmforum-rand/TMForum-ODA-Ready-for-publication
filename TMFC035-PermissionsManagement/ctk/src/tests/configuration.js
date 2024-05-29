@@ -166,7 +166,7 @@ describe('Step 1: Component manifest checks',  function() {
         })
     })
 
-    it('All swagger urls must be valid and accessible', async function () {
+    it('All swagger urls must be valid and accessible and contain valid x-api-id and version fields ', async function () {
         addContext(this, 'All swagger urls must be valid and accessible')
         let functions = ["coreFunction", "securityFunction"]
         let edges = ["exposedAPIs", "dependentAPIs"]
@@ -207,7 +207,11 @@ function testApiSpecLink(url) {
 
             response.on('end', () => {
                 try {
-                    document = YAML.parseAllDocuments(data)
+                    document = YAML.parseDocument(data).toJSON()
+                    //console.log(document)
+                    expect(document.info.version).to.not.be.undefined
+                    expect(document.info["x-api-id"]).to.not.be.undefined
+
                     resolve(true)
                 }
                 catch (e) {
