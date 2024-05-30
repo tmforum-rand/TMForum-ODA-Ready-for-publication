@@ -21,7 +21,7 @@ const COMPONENTS = 'components'
 const NAMESPACE = "components"
 const HEADER = process.env.HEADER
 const TMFORUM_ODA_API_GROUP = 'oda.tmforum.org'
-const TMFORUM_ODA_API_VERSION = 'v1beta2'
+const TMFORUM_ODA_API_VERSION = 'v1beta3'
 const kc = new k8s.KubeConfig()
 kc.loadFromDefault()
 
@@ -48,10 +48,14 @@ describe("Step 1: Deployment component tests", function () {
         component_object = getComponentDocument(component_manifests)
         js_component = component_object.toJSON()
 
+        let componentApiVersion = js_component.apiVersion
+        //let apiGroup = componentApiVersion.split("/")[0]
+        let apiVersion = componentApiVersion.split("/")[1]
+
         componentName = js_component.metadata.name
         deployment = await k8sCustomApi.listNamespacedCustomObject(
             TMFORUM_ODA_API_GROUP,
-            TMFORUM_ODA_API_VERSION,
+            apiVersion,
             NAMESPACE,
             COMPONENTS,
             undefined,
@@ -64,7 +68,7 @@ describe("Step 1: Deployment component tests", function () {
         })
     })
 
-    it('Component can be found in namespace:' + COMPONENTS, async function() {
+    it('Component can be found in namespace: ' + COMPONENTS, async function() {
         addContext(this, 'The component must be found in the established namespace for components')
         expect(deployment).to.be.a('object')
     })
@@ -115,7 +119,11 @@ describe("Step 1: Deployment component tests", function () {
             }
             for (body_api of body_apis) {
                 if (body_api.implementation === impl) {
-                    let swagger = await loadYamlFromUrl(body_api.specification)
+                    let spec = body_api.specification
+                    if (typeof spec !== "string"){
+                        spec = spec[0]
+                    }
+                    let swagger = await loadYamlFromUrl(spec)
                     let api_ref = swagger.info["x-api-id"] + "_v" + swagger.info.version
                     ref_to_url[api_ref] = url
                 }

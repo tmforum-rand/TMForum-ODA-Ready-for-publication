@@ -96,7 +96,7 @@ spec:
     - id: TMF657
       name: service-quality-management-management-api
       port: 8080
-      required: false
+      required: true
       resources:
       - serviceLevelSpecification:
         - GET

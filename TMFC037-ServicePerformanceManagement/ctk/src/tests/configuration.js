@@ -157,7 +157,7 @@ describe('Step 1: Component manifest checks',  function() {
         addContext(this, 'All APIs defined in the golden component must be specified in the component manifest')
         let gc_apis = gc_manifest.get("spec").get("coreFunction").get("exposedAPIs").items
         let comp_api = component_object.get("spec").get("coreFunction").get("exposedAPIs").items
-        let gc_api_names = gc_apis.map(api => api.get("name"))
+        let gc_api_names = gc_apis.filter(api => api.get("required")).map(api => api.get("name"))
         let comp_api_names = comp_api.map(api => api.get("name"))
 
 
@@ -181,6 +181,9 @@ describe('Step 1: Component manifest checks',  function() {
                     if (!spec) {
                         console.log(`No specification found for ${api.name}`)
                     }
+                    if (typeof spec !== "string"){
+                        spec = spec[0] || ""
+                    }
                     return await testApiSpecLink(spec)
                 })
 
@@ -198,6 +201,9 @@ describe('Step 1: Component manifest checks',  function() {
 
 function testApiSpecLink(url) {
     return new Promise((resolve, reject) => {
+        if (!url) {
+            reject("No url provided in specification field")
+        }
         const client = url.startsWith('https') ? https : http
         client.get(url, (response) => {
             let data = ''
