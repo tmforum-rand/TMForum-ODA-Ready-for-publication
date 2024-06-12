@@ -1,13 +1,12 @@
 {
     "componentFilePath": "../resources/component/TMFC008-ServiceInventory.yaml",
-    "companyName": "TMForum",
+    "companyName": "",
     "componentName": "TMFC008-ServiceInventory",
-    "productName": "Product Catalog",
-    "componentUrl": "https://oda-directory.labs.tmforum.org/component-map/Core%20Commerce%20Management/TMFC001",
-    "productUrl": "https://oda-directory.labs.tmforum.org/component-map/Core%20Commerce%20Management",
+    "productName": "",
+    "componentUrl": "",
+    "productUrl": "",
     "ctkConfig": {},
     "headers": {
-        "Authorization": "Bearer 1234567890bbbb",
         "Accept": "application/json",
         "Content-Type": "application/json"
     },

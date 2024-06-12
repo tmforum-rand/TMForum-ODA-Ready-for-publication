@@ -59,7 +59,7 @@
                         
                         <div class="row ">
                             <div class="col s6">
-                                <strong>Component url:</strong>
+                                <strong>Component URL:</strong>
 
                             </div>
                             <div class="col s6">
@@ -109,7 +109,7 @@
 
                         <div class="row ">
                             <div class="col s6">
-                                <strong>Product url:</strong>
+                                <strong>Product URL:</strong>
                             </div>
                             <div class="col s6">
                                 <p><a href="{{ productUrl }}">link</a></p>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="row ">
                             <div class="col s6">
-                                <strong>Kubernetes core apis:</strong>
+                                <strong>Kubernetes core APIs:</strong>
 
                             </div>
                             <div class="col s6">
@@ -198,40 +198,6 @@
             <div class="col s12">
                 <ul class="collapsible">
                     <li>
-                        {{#configuration}}
-                        <div class="collapsible-header">
-                            <span>Configuration</span>
-                            {{ #passed }}
-                            <span class="lozenge success">Passed</span>
-                            {{ /passed }}
-                            {{ ^passed }}
-                            <span class="lozenge failure">Failed</span>
-                            {{ /passed }}
-                        </div>
-                        <div class="collapsible-body">
-                            <iframe src="{{ file }}" style="width: 100%; height: 50vh;"></iframe>
-
-                        </div>
-                        {{/configuration}}
-                    </li>
-                    <li> 
-                        {{ #deployment}}
-                        <div class="collapsible-header">
-                            <span>Deployment</span>
-                            {{ #passed }}
-                            <span class="lozenge success">Passed</span>
-                            {{ /passed }}
-                            {{ ^passed }}
-                            <span class="lozenge failure">Failed</span>
-                            {{ /passed }}
-                        </div>
-                        <div class="collapsible-body">
-                            <iframe src="{{ file }}" style="width: 100%; height: 50vh;"></iframe>
-                        </div>
-                        {{/deployment}}
-                    </li>
-
-                    <li>
                         <div class="collapsible-header">
                             <span>Core Functions</span>
                             {{ #coreFunctionPassed }}
@@ -266,7 +232,6 @@
                             </ul>
                         </div>
                     </li>
-
                     <li>
                         <div class="collapsible-header">
                             <span>Security</span>
@@ -285,6 +250,56 @@
                             <iframe src="{{{ htmlUrl }}}" style="width: 100%; height: 50vh;"></iframe>
                         {{ /securityFunctionResults }}
                         </div>
+                    </li>
+                    <li>
+                        {{ #bdd }}
+                        <div class="collapsible-header">
+                            <span>BDD Tests</span>
+                            {{ #passed }}
+                            <span class="lozenge success">Passed</span>
+                            {{/passed}}
+                            
+                            {{^passed}}
+                            <span class="lozenge failure">Failed</span>
+                            {{ /passed }}
+
+                        </div>
+                        <div class="collapsible-body">
+                            <iframe src="{{{ file }}}" style="width: 100%; height: 50vh;"></iframe>
+                        </div>
+                        {{ /bdd }}
+                    </li>
+                    <li>
+                        {{#configuration}}
+                        <div class="collapsible-header">
+                            <span>Configuration</span>
+                            {{ #passed }}
+                            <span class="lozenge success">Passed</span>
+                            {{ /passed }}
+                            {{ ^passed }}
+                            <span class="lozenge failure">Failed</span>
+                            {{ /passed }}
+                        </div>
+                        <div class="collapsible-body">
+                            <iframe src="{{ file }}" style="width: 100%; height: 50vh;"></iframe>
+                        </div>
+                        {{/configuration}}
+                    </li>
+                    <li> 
+                        {{ #deployment}}
+                        <div class="collapsible-header">
+                            <span>Deployment</span>
+                            {{ #passed }}
+                            <span class="lozenge success">Passed</span>
+                            {{ /passed }}
+                            {{ ^passed }}
+                            <span class="lozenge failure">Failed</span>
+                            {{ /passed }}
+                        </div>
+                        <div class="collapsible-body">
+                            <iframe src="{{ file }}" style="width: 100%; height: 50vh;"></iframe>
+                        </div>
+                        {{/deployment}}
                     </li>
                 </ul>
             </div>

@@ -1,6 +1,9 @@
 const Mocha = require('mocha')
+const { loadConfiguration, runCucumber } = require('@cucumber/cucumber/api')
+const CucuReporter = require('cucumber-html-reporter');
 const process = require('process')
 const fs = require('fs')
+const path = require("path")
 const mochaOptions = require('./.mocharc.json')
 const Path = require('path')
 const mkdirp = require('mkdirp');
@@ -137,11 +140,45 @@ async function configureAPICTKS(){
   }
 }
 
+
+async function runCucumberBDD() {
+  const { runConfiguration } = await loadConfiguration()
+  let jsonResultsPath = path.normalize("../resources/results/cucumber-bdd/results.json")
+  let htmlResultsPath = path.normalize("../resources/results/cucumber-bdd/results.html")
+
+  let temp = path.normalize("../resources/results/cucumber-bdd/results.json")
+  console.log(temp, typeof temp)
+  
+
+
+
+  runConfiguration.formats.files[temp] = "json"
+
+  console.log("Running BDD")
+  const { success } = await runCucumber(runConfiguration)
+
+  var options = {
+    theme: 'bootstrap',
+    jsonFile: jsonResultsPath,
+    output: htmlResultsPath,
+    reportSuiteAsScenarios: true,
+    scenarioTimestamp: true,
+    failedSummaryReport: true,
+  };
+  CucuReporter.generate(options);
+
+  return success
+}
+
+
+
 async function main(){
   try{
     await configureAPICTKS()
     let suits = configureMochaSuits().map(e => runSuit(e))
     let suitResults = await Promise.all(suits)
+
+    let cucumberTests = await runCucumberBDD()
     await generateReport()
 
   }
@@ -218,6 +255,39 @@ async function getMochaSummary(mochaFile) {
   }
 }
 
+async function getBddResultsSumary(bddResults){
+  let report = {
+    total: 0,
+    failed: 0,
+    passed: 0,
+    skipped: 0
+  }
+
+  let bddJsonResults = await fs.promises.readFile(bddResults)
+  bddJsonResults = JSON.parse(bddJsonResults)
+
+  for (let feature of bddJsonResults){
+    for (let element of feature.elements){
+      for (let step of element.steps) {
+        if (step.result.status === "passed"){
+          report.passed += 1
+        }
+        else {
+          report.failed += 1
+        }
+
+        if (step.result.status === "skipped"){
+          report.skipped += 1
+        }
+        report.total += 1
+      } 
+    }
+  }
+
+
+  return report
+}
+
 function calculateCTKStatus(canvasData, summary){
   let ctkStatus = true
   summary.forEach(s => {
@@ -240,28 +310,33 @@ async function generateReportData(resultsPath) {
   let deploymentSummary = await getMochaSummary(Path.join(resultsPath, "baseline-ctk/deployment-report.json"))
   let coreFunctionSummary = await getNewmanSummary(coreFunctionResults)
   let securityFunctionSummary = await getNewmanSummary(securityFunctionResults)
+  let bddResults = await getBddResultsSumary(Path.join(resultsPath, "cucumber-bdd/results.json"))
 
   const summaryTable = [
     {
-      name: "coreFunction", 
+      name: "CoreFunction", 
       ...coreFunctionSummary
     },
     {
-      name: "securityFunction",
+      name: "SecurityFunction",
       ...securityFunctionSummary
     },
     {
-      name: "configuration",
+      name: "BDD Tests",
+      ...bddResults
+    },
+    {
+      name: "Configuration",
       ...configurationSummary
     },
     {
-      name: "deployment",
+      name: "Deployment",
       ...deploymentSummary
     }
   ]
 
   const canvasData = {
-    canvasVersion: "v1beta2",
+    canvasVersion: "v1beta3",
     kubernetes: "v1",
     canvasCTKPassed: true
   }
@@ -275,6 +350,7 @@ async function generateReportData(resultsPath) {
     coreFunctionResults: coreFunctionResults,
     securityFunctionResults: securityFunctionResults,
     securityFunctionPassed: securityFunctionSummary.failed === 0,
+    bddPassed: bddResults.failed === 0,
     configuration: {
       passed: configurationSummary.failed === 0,
       file: "../results/baseline-ctk/Configuration-report.html"
@@ -283,13 +359,16 @@ async function generateReportData(resultsPath) {
       passed: deploymentSummary.failed === 0,
       file: "../results/baseline-ctk/deployment-report.html"
     },
+    bdd: {
+      passed: bddResults.failed === 0,
+      file: "../results/cucumber-bdd/results.html"
+    },
     summaryTable: summaryTable,
     company: config.companyName,
     productUrl: config.productUrl,
     productName: config.productName,
     ctkPassed: calculateCTKStatus(canvasData, summaryTable),
     ...canvasData
-    
   }
   await fs.promises.writeFile(Path.join(resultsPath, "reportData.json"), JSON.stringify(reportData, null , 4))
 
