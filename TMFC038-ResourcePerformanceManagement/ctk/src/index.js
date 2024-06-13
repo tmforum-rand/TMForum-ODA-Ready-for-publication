@@ -177,7 +177,6 @@ async function main(){
     await configureAPICTKS()
     let suits = configureMochaSuits().map(e => runSuit(e))
     let suitResults = await Promise.all(suits)
-
     let cucumberTests = await runCucumberBDD()
     await generateReport()
 
@@ -226,22 +225,36 @@ async function getNewmanSummary(apiResults){
     let jsonResultSummary = await fs.promises.readFile(api.jsonResultsPath, 'utf8')
     jsonResultSummary = JSON.parse(jsonResultSummary)
 
-    let totalFailed = jsonResultSummary.run.stats.assertions.failed
-    let total = jsonResultSummary.run.stats.assertions.total
+    let totalFailed = jsonResultSummary.run.stats.scripts.failed
+    let total = jsonResultSummary.run.stats.scripts.total
     let passed = total - totalFailed
     return {
       total: total,
       failed: totalFailed,
       passed: passed,
-      skipped: (totalFailed + passed) - total,
+      name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + api.apiName
     }
   })
-  return (await Promise.all(entries)).reduce((acc, curr) => {
-    acc.totalTests += curr.totalTests
-    acc.failedTests += curr.failedTests
-    acc.errors += curr.errors
-    return acc
-  })
+  let apiEntries = await Promise.all(entries)
+  let cfSummary = apiEntries
+    .map(e => {
+      return {
+        total: e.total,
+        failed: e.failed,
+        passed: e.passed
+      }
+    })
+    .reduce((acc, curr) => {
+      acc.total += curr.total
+      acc.failed += curr.failed
+      acc.passed += curr.passed
+      return acc
+    })
+
+  return {
+    cfSummary: cfSummary,
+    apiEntries: apiEntries
+  }
 }
 
 async function getMochaSummary(mochaFile) {
@@ -311,20 +324,34 @@ async function generateReportData(resultsPath) {
   let coreFunctionSummary = await getNewmanSummary(coreFunctionResults)
   let securityFunctionSummary = await getNewmanSummary(securityFunctionResults)
   let bddResults = await getBddResultsSumary(Path.join(resultsPath, "cucumber-bdd/results.json"))
+  coreFunctionSummary.cfSummary.passed += bddResults.passed
+  coreFunctionSummary.cfSummary.failed += bddResults.failed
+
 
   const summaryTable = [
     {
-      name: "CoreFunction", 
-      ...coreFunctionSummary
+      name: "Core Function", 
+      ...coreFunctionSummary.cfSummary
+    },
+    {
+      name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exposed APIs"
+    },
+    ...coreFunctionSummary.apiEntries,
+    {
+      name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dependent APIs"
+    },
+    {
+      name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BDD Tests",
+      ...bddResults
     },
     {
       name: "SecurityFunction",
-      ...securityFunctionSummary
+      ...securityFunctionSummary.cfSummary
     },
     {
-      name: "BDD Tests",
-      ...bddResults
+      name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Exposed APIs"
     },
+    ...securityFunctionSummary.apiEntries,
     {
       name: "Configuration",
       ...configurationSummary
@@ -346,10 +373,10 @@ async function generateReportData(resultsPath) {
     componentName: config.componentName,
     version: instance.getVersion(),
     componentUrl: config.componentUrl,
-    coreFunctionPassed: coreFunctionSummary.failed === 0,
+    coreFunctionPassed: coreFunctionSummary.cfSummary.failed === 0,
     coreFunctionResults: coreFunctionResults,
     securityFunctionResults: securityFunctionResults,
-    securityFunctionPassed: securityFunctionSummary.failed === 0,
+    securityFunctionPassed: securityFunctionSummary.cfSummary.failed === 0,
     bddPassed: bddResults.failed === 0,
     configuration: {
       passed: configurationSummary.failed === 0,
