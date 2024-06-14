@@ -338,13 +338,6 @@ async function generateReportData(resultsPath) {
     },
     ...coreFunctionSummary.apiEntries,
     {
-      name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dependent APIs"
-    },
-    {
-      name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BDD Tests",
-      ...bddResults
-    },
-    {
       name: "SecurityFunction",
       ...securityFunctionSummary.cfSummary
     },

@@ -227,24 +227,7 @@
                                     </div>
                                     
                                 </li>
-                                <li>
-                                    {{ #bdd }}
-                                        <div class="collapsible-header">
-                                            <span>Dependent</span>
-                                            {{ #passed }}
-                                            <span class="lozenge success">Passed</span>
-                                            {{/passed}}
-                                            
-                                            {{^passed}}
-                                            <span class="lozenge failure">Failed</span>
-                                            {{ /passed }}
-
-                                        </div>
-                                        <div class="collapsible-body">
-                                            <iframe src="{{{ file }}}" style="width: 100%; height: 100vh;"></iframe>
-                                        </div>
-                                    {{ /bdd }}
-                                </li>
+                                
                             </ul>
                         </div>
                     </li>
