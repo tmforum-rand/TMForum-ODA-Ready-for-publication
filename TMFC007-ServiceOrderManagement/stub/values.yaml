@@ -3,7 +3,6 @@ component:
   name: tmfc007-serviceordermanagement
   publicationDate: '2023-08-18T00:00:00.000Z'
 images:
-  tmf641: tmforumorg/tmfc007-tmf641-v4.1.0:latest
   tmf669: tmforumorg/tmfc007-tmf669-v4.0.0:latest
 security:
   controllerRole: admin

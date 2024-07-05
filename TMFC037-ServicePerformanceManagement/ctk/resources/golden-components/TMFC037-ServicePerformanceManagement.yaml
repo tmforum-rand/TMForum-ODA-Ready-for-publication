@@ -49,7 +49,7 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
       version: v4.0.0
     - id: TMF657
-      name: service-quality-management-management-api
+      name: service-quality-management-api
       port: 8080
       required: false
       resources:

@@ -3,17 +3,17 @@ kind: Deployment
 metadata:
   labels:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
-  name: '{{.Release.Name}}-service-quality-management-management-api'
+  name: '{{.Release.Name}}-service-quality-management-api'
 spec:
   replicas: 1
   selector:
     matchLabels:
-      impl: '{{.Release.Name}}-service-quality-management-management-api'
+      impl: '{{.Release.Name}}-service-quality-management-api'
   template:
     metadata:
       labels:
         app: '{{.Release.Name}}-{{.Values.component.name}}'
-        impl: '{{.Release.Name}}-service-quality-management-management-api'
+        impl: '{{.Release.Name}}-service-quality-management-api'
         version: v4.0.0
     spec:
       containers:
@@ -26,7 +26,7 @@ spec:
           value: '{{.Release.Name}}-{{.Values.component.name}}'
         image: '{{.Values.images.tmf657}}'
         imagePullPolicy: Always
-        name: '{{.Release.Name}}-service-quality-management-management-api'
+        name: '{{.Release.Name}}-service-quality-management-api'
         ports:
         - containerPort: 8080
           name: '{{.Release.Name}}-service'

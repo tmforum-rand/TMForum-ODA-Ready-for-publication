@@ -12,15 +12,6 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC031-BillCalculation.yaml",
     "payloads": {
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
-                    }
-                }
-            }
-        },
         "TMF678_v4.0.0": {
             "CustomerBillOnDemand": {
                 "POST": {
@@ -28,6 +19,15 @@
                         "billingAccount": {
                             "id": "A0815"
                         }
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
                     }
                 }
             }

@@ -5,16 +5,6 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF620
-      version: v4.1.0
-      name: product-catalog-management-api
-      required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
-      port: 8080
-      resources:
-      - productSpecification:
-        - GET
-        - GET /id
     - id: TMF622
       version: v4.0.0
       name: product-ordering-management-api
@@ -36,23 +26,6 @@ spec:
         - GET
         - GET /id
         - PATCH
-    - id: TMF641
-      version: v4.1.0
-      name: service-ordering-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
-      port: 8080
-      resources:
-      - serviceOrder:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      - cancelServiceOrder:
-        - GET
-        - GET /id
-        - POST
     - id: TMF633
       version: v4.0.0
       name: service-catalog-management-api
@@ -63,26 +36,6 @@ spec:
       - serviceSpecification:
         - GET
         - GET /id
-    - id: TMF634
-      version: v4.1.0
-      name: resource-catalog-management-api
-      required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
-      port: 8080
-      resources:
-      - resourceSpecification:
-        - GET
-        - GET /id
-    - id: TMF641
-      version: v4.1.0
-      name: service-ordering-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
-      port: 8080
-      resources:
-      - serviceOrder:
-        - GET /id
-        - POST
     - id: TMF638
       version: v4.0.0
       name: service-inventory-management-api

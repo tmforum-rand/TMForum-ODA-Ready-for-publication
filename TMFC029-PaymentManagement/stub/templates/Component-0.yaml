@@ -25,13 +25,15 @@ spec:
       name: payment-method-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/paymentMethod/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF670_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF670_v4.0.0.swagger.json
     - apitype: openapi
       implementation: '{{.Release.Name}}-payment-management-api'
       name: payment-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/payment/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF676_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF676_v4.0.0.swagger.json
   description: Payment Management manages methods used by parties to make payments,
     it also administers payment plan, handles payment, assigns payments against bills,
     settlements, and other object requiring payments.
@@ -53,6 +55,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
   version: 1.1.1

@@ -12,20 +12,20 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC036-LeadAndOpportunityManagement.yaml",
     "payloads": {
-        "TMF699_v4.0.0": {
-            "salesLead": {
-                "POST": {
-                    "payload": {
-                        "name": "Campaign 17 salesLead 7852"
-                    }
-                }
-            }
-        },
         "TMF669_v4.0.0": {
             "PartyRole": {
                 "POST": {
                     "payload": {
                         "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
+        "TMF699_v4.0.0": {
+            "salesLead": {
+                "POST": {
+                    "payload": {
+                        "name": "Campaign 17 salesLead 7852"
                     }
                 }
             }

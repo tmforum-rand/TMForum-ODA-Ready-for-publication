@@ -37,7 +37,8 @@ spec:
       name: service-inventory-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
   description: Service Inventory component is responsible for storage and exposure
     of CFS (Customer Facing Service) that are associated to Product Inventory items.
     It is also responsible for RFS (Resource Facing Service) definition, mapping between
@@ -64,6 +65,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
   version: 1.1.0

@@ -12,6 +12,15 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC010-ResourceCatalogManagement.yaml",
     "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
         "TMF634_v4.1.0": {
             "ResourceSpecification": {
                 "POST": {
@@ -23,15 +32,6 @@
                     "payload": {
                         "name": "Virtual Storage Medium 2",
                         "lifecycleStatus": "In progress"
-                    }
-                }
-            }
-        },
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
                     }
                 }
             }

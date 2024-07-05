@@ -31,7 +31,8 @@ spec:
       name: agreement-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/agreementManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF651_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF651_v4.0.0.swagger.json
   description: Agreement Management component is responsible for creating, storing,
     editing, and tracking agreed  arrangements with related terms and conditions over
     a lifecycle. The component manages offers, records acceptance, and associated
@@ -59,6 +60,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
   version: 1.1.0

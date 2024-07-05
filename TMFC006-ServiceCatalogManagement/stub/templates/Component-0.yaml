@@ -25,13 +25,15 @@ spec:
       name: service-catalog-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceCatalogManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
     - apitype: openapi
-      implementation: '{{.Release.Name}}-service-quality-management-management-api'
-      name: service-quality-management-management-api
+      implementation: '{{.Release.Name}}-service-quality-management-api'
+      name: service-quality-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceQualityManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF657_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF657_v4.0.0.swagger.json
   description: "\tService Catalog Management component is responsible for organizing\
     \ the collection of service specifications that identify and define all requirements\
     \ of a service that can be performed. Service Catalog Management component has\
@@ -63,6 +65,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
   version: 1.1.1

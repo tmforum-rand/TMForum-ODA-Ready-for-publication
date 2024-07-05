@@ -32,9 +32,6 @@ spec:
       name: resource-order-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF652_v4.0.0.swagger.json
     - apitype: openapi
-      name: user-role-permission-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-    - apitype: openapi
       name: party-role-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
     - apitype: openapi
@@ -46,13 +43,6 @@ spec:
     - apitype: openapi
       name: communication-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF681_v4.0.0.swagger.json
-    exposedAPIs:
-    - apitype: openapi
-      implementation: '{{.Release.Name}}-service-ordering-management-api'
-      name: service-ordering-management-api
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceOrdering/v4
-      port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
   description: The SOM is the entry point of the Production Domain. It oversees Customer-Facing-Service
     (CFS) delivery of resources (network and service platforms equipment). The SOM
     exposes in particular the API ServiceOrder. It is triggered when the Product Order
@@ -84,6 +74,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
-  version: 1.1.1
+  version: 2.0.0

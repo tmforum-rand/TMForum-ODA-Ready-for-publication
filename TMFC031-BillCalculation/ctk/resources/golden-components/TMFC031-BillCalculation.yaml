@@ -52,7 +52,7 @@ spec:
     - id: TMF637
       name: product-inventory-management-api
       port: 8080
-      required: false
+      required: true
       resources:
       - product:
         - GET
@@ -62,7 +62,7 @@ spec:
     - id: TMF669
       name: party-role-management-api
       port: 8080
-      required: true
+      required: false
       resources:
       - PartyRole:
         - GET
@@ -72,7 +72,7 @@ spec:
     - id: TMF672
       name: user-role-permission-management-api
       port: 8080
-      required: true
+      required: false
       resources:
       - permission:
         - GET
@@ -85,7 +85,7 @@ spec:
     - id: TMF635
       name: usage-management-api
       port: 8080
-      required: true
+      required: false
       resources:
       - usage:
         - GET
@@ -159,7 +159,7 @@ spec:
   owners:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
-  publicationDate: 2023-11-21
+  publicationDate: 2023-06-25
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
@@ -172,4 +172,4 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
   status: specified
-  version: 1.0.0
+  version: 2.0.0

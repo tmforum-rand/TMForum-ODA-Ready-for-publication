@@ -84,16 +84,6 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF672
-      name: user-role-permission-management-api
-      port: 8080
-      required: false
-      resources:
-      - permission:
-        - GET
-        - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-      version: v4.0.0
     exposedAPIs:
     - id: TMF645
       name: service-qualification-management-api
@@ -175,4 +165,4 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
   status: specified
-  version: 1.1.1
+  version: 1.1.0

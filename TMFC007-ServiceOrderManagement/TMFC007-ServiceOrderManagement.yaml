@@ -114,16 +114,6 @@ spec:
         - POST
         - PATCH
         - DELETE
-    - id: TMF672
-      version: v4.0.0
-      name: user-role-permission-management-api
-      required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-      port: 8080
-      resources:
-      - permission:
-        - GET
-        - GET /id
     - id: TMF669
       version: v4.0.0
       name: party-role-management-api
@@ -131,7 +121,7 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       port: 8080
       resources:
-      - PartyRole:
+      - partyRole:
         - GET
         - GET /id
     - id: TMF673
@@ -171,24 +161,7 @@ spec:
       - communicationMessage:
         - GET
         - GET /id
-    exposedAPIs:
-    - id: TMF641
-      version: v4.1.0
-      name: service-ordering-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
-      port: 8080
-      resources:
-      - serviceOrder:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      - cancelServiceOrder:
-        - GET
-        - GET /id
-        - POST
+    exposedAPIs: []
     publishedEvents:
     - apitype: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceOrdeManagement/hub
@@ -242,13 +215,6 @@ spec:
       - queryServiceQualificationStateChangeEvent
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
     - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourcePoolManagement/hub
-      name: ResourcePoolManagement
-      port: 80
-      resources:
-      - reservationStateChangeNotification
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/3.0.0/swagger/TMF685-ResourcePool-v3.0.0.admin.swagger.json
-    - apitype: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Communication/hub
       name: Communication
       port: 80
@@ -286,7 +252,7 @@ spec:
     name: Sylvie Demarest
   publicationDate: 2024-02-23
   status: specified
-  version: 1.1.1
+  version: 2.0.0
   managementFunction:
     exposedAPIs:
     - name: metrics

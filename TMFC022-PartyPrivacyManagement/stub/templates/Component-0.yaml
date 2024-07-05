@@ -28,7 +28,8 @@ spec:
       name: privacy-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/privacyManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF644_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF644_v4.0.0.swagger.json
   description: 'The Party Privacy Management component aims to: define the Privacy
     Policy rules established by the CSP, according to applicable regulations, such
     as GDPR in Europe, apply these rules to each Party interacting with the CSP and
@@ -53,6 +54,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
   version: 1.0.0

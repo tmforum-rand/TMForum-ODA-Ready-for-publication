@@ -19,13 +19,15 @@ spec:
       name: geographic-address-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/geographicAddressManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
     - apitype: openapi
       implementation: '{{.Release.Name}}-geographic-site-management-api'
       name: geographic-site-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/geographicSiteManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
   description: "The Location Management Component  allows easy reference to geographic\
     \ places important to other entities, where a geographic place is an entity that\
     \ can answer the question \u201Cwhere?\u201D . This component could  be a facade\
@@ -52,6 +54,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
   version: 1.1.1

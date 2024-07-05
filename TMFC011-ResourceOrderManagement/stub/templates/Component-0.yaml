@@ -37,7 +37,8 @@ spec:
       name: resource-order-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/resourceOrderingManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF652_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF652_v4.0.0.swagger.json
   description: Resource Order Management Component manages the end-to-end lifecycle
     of a resource  order request. This includes validating resource availability as
     well as the  resource order request. Other functionality includes resource order
@@ -61,6 +62,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: Pre-production
   version: 1.0.0

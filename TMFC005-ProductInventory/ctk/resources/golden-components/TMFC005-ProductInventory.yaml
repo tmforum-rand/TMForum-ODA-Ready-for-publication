@@ -5,22 +5,6 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF620
-      name: product-catalog-management-api
-      port: 8080
-      required: true
-      resources:
-      - productSpecification:
-        - GET
-        - GET /id
-      - productOffering:
-        - GET
-        - GET /id
-      - productOfferingPrice:
-        - GET
-        - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
-      version: v4.1.0
     - id: TMF669
       name: party-role-management-api
       port: 8080
@@ -73,16 +57,6 @@ spec:
         - GET
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
-      version: v4.0.0
-    - id: TMF672
-      name: user-role-permission-management-api
-      port: 8080
-      required: false
-      resources:
-      - permission:
-        - GET
-        - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
       version: v4.0.0
     - id: TMF666
       name: account-management-api
@@ -308,7 +282,7 @@ spec:
   owners:
   - email: gaetano.biancardi@accenture.com
     name: Gaetano Biancardi
-  publicationDate: 2023-08-18 00:00:00
+  publicationDate: 2024-06-27 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
@@ -321,4 +295,4 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
   status: specified
-  version: 1.1.1
+  version: 1.2.0

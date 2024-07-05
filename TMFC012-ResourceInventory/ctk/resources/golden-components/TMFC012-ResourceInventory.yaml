@@ -10,35 +10,9 @@ spec:
       port: 8080
       required: true
       resources:
-      - resourceCatalog:
-        - GET
-        - GET /id
-      - resourceCategory:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
       - resourceSpecification:
         - GET
         - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      - resourceCandidate:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      - exportJob:
-        - GET
-        - POST
-        - DELETE
-      - importJob:
-        - GET
-        - POST
-        - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
       version: v4.1.0
     - id: TMF669
@@ -86,16 +60,6 @@ spec:
         - GET
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
-      version: v4.0.0
-    - id: TMF672
-      name: user-role-permission-management-api
-      port: 8080
-      required: true
-      resources:
-      - permission:
-        - GET
-        - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
       version: v4.0.0
     - id: TMF639
       name: resource-inventory-management-api
@@ -201,13 +165,6 @@ spec:
       - PartyRoleStateChangeEvent
       - PartyRoleDeleteEvent
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
-    - apitype: openapi
-      name: UserRolesandPermissions
-      port: 80
-      resources:
-      - UserRoleCreationNotification
-      - UserRoleChangeNotification
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesandPermissions/master/TMF672-UserRolesandPermissions-v4.0.0.swagger.json
     - apitype: openapi
       call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
       implementation: /{{.Release.Name}}-GeographicSiteManagement

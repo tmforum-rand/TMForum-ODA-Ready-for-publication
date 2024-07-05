@@ -12,15 +12,6 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC023-PartyInteractionManagement.yaml",
     "payloads": {
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
-                    }
-                }
-            }
-        },
         "TMF683_v4.0.0": {
             "PartyInteraction": {
                 "POST": {
@@ -32,6 +23,15 @@
                         ],
                         "direction": "inbounds",
                         "reason": "The user wanted to buy TV and internet plan"
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
                     }
                 }
             }

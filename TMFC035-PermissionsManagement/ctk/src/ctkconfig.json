@@ -12,6 +12,24 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC035-PermissionsManagement.yaml",
     "payloads": {
+        "TMF669-PartyRole": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
         "TMF672_v4.0.0": {
             "UserRole": {
                 "POST": {
@@ -47,24 +65,6 @@
                                 }
                             }
                         ]
-                    }
-                }
-            }
-        },
-        "TMF669-PartyRole": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
-                    }
-                }
-            }
-        },
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
                     }
                 }
             }

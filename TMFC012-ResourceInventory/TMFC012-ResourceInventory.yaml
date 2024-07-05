@@ -12,35 +12,9 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
       port: 8080
       resources:
-      - resourceCatalog:
-        - GET
-        - GET /id
-      - resourceCategory:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
       - resourceSpecification:
         - GET
         - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      - resourceCandidate:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      - exportJob:
-        - GET
-        - POST
-        - DELETE
-      - importJob:
-        - GET
-        - POST
-        - DELETE
     - id: TMF669
       version: v4.0.0
       name: party-role-management-api
@@ -85,16 +59,6 @@ spec:
       port: 8080
       resources:
       - geographicSite:
-        - GET
-        - GET /id
-    - id: TMF672
-      version: v4.0.0
-      name: user-role-permission-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-      port: 8080
-      resources:
-      - permission:
         - GET
         - GET /id
     - id: TMF639
@@ -201,13 +165,6 @@ spec:
       - PartyRoleStateChangeEvent
       - PartyRoleDeleteEvent
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
-    - apitype: openapi
-      name: UserRolesandPermissions
-      port: 80
-      resources:
-      - UserRoleCreationNotification
-      - UserRoleChangeNotification
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesandPermissions/master/TMF672-UserRolesandPermissions-v4.0.0.swagger.json
     - apitype: openapi
       call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
       implementation: /{{.Release.Name}}-GeographicSiteManagement

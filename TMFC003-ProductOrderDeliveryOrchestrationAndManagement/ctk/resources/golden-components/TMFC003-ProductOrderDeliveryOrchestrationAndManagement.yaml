@@ -5,16 +5,6 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF620
-      name: product-catalog-management-api
-      port: 8080
-      required: false
-      resources:
-      - productSpecification:
-        - GET
-        - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
-      version: v4.1.0
     - id: TMF622
       name: product-ordering-management-api
       port: 8080
@@ -36,23 +26,6 @@ spec:
         - PATCH
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF641
-      name: service-ordering-management-api
-      port: 8080
-      required: true
-      resources:
-      - serviceOrder:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-      - cancelServiceOrder:
-        - GET
-        - GET /id
-        - POST
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
-      version: v4.1.0
     - id: TMF633
       name: service-catalog-management-api
       port: 8080
@@ -63,26 +36,6 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF634
-      name: resource-catalog-management-api
-      port: 8080
-      required: false
-      resources:
-      - resourceSpecification:
-        - GET
-        - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
-      version: v4.1.0
-    - id: TMF641
-      name: service-ordering-management-api
-      port: 8080
-      required: true
-      resources:
-      - serviceOrder:
-        - GET /id
-        - POST
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
-      version: v4.1.0
     - id: TMF638
       name: service-inventory-management-api
       port: 8080

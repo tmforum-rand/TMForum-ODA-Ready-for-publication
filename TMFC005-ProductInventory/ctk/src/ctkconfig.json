@@ -12,7 +12,6 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC005-ProductInventory.yaml",
     "payloads": {
-        "TMF637_v4.0.0": {},
         "TMF669_v4.0.0": {
             "PartyRole": {
                 "POST": {
@@ -21,6 +20,7 @@
                     }
                 }
             }
-        }
+        },
+        "TMF637_v4.0.0": {}
     }
 }

@@ -10,30 +10,18 @@ spec:
       port: 8080
       required: true
       resources:
-      - BillingAccount:
+      - billingAccount:
         - GET
         - GET /id
-        - POST
-        - PATCH /id
-        - DELETE /id
-      - BillingCycleSpecification:
+      - billingCycleSpecification:
         - GET
         - GET /id
-        - POST
-        - PATCH /id
-        - DELETE /id
-      - BillFormat:
+      - billFormat:
         - GET
         - GET /id
-        - POST
-        - PATCH /id
-        - DELETE /id
-      - BillPresentationMedia:
+      - billPresentationMedia:
         - GET
         - GET /id
-        - POST
-        - PATCH /id
-        - DELETE /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json
       version: v4.0.0
     - id: TMF632
@@ -98,7 +86,7 @@ spec:
     - id: TMF672
       name: user-role-permission-management-api
       port: 8080
-      required: true
+      required: false
       resources:
       - permission:
         - GET

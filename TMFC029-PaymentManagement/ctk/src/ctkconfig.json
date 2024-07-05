@@ -33,15 +33,6 @@
                 }
             }
         },
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
-                    }
-                }
-            }
-        },
         "TMF670_v4.0.0": {
             "PaymentMethod": {
                 "POST": {
@@ -85,6 +76,15 @@
                             "walletUrl": "{rooturl}"
                         }
                     ]
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
                 }
             }
         }

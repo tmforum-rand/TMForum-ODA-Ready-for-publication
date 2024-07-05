@@ -20,7 +20,7 @@ spec:
       name: geographic-site-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
     - apitype: openapi
-      name: service-quality-management-management-api
+      name: service-quality-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF657_v4.0.0.swagger.json
     exposedAPIs:
     - apitype: openapi
@@ -28,7 +28,8 @@ spec:
       name: alarm-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/alarm/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
   description: Service Performance Management will monitor, analyze, and report on
     the end-end service performance. This can include a real-time, end-to-end view
     to ensure that each service is functioning correctly as well as a historical view.
@@ -53,6 +54,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
   version: 1.1.0

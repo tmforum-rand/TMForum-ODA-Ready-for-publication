@@ -3,11 +3,11 @@ kind: Service
 metadata:
   labels:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
-  name: '{{.Release.Name}}-service-quality-management-management-api'
+  name: '{{.Release.Name}}-service-quality-management-api'
 spec:
   ports:
   - name: tcp-{{.Release.Name}}-service
     port: 8080
     targetPort: '{{.Release.Name}}-service'
   selector:
-    impl: '{{.Release.Name}}-service-quality-management-management-api'
+    impl: '{{.Release.Name}}-service-quality-management-api'

@@ -12,19 +12,19 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC014-LocationManagement.yaml",
     "payloads": {
-        "TMF674_v4.0.0": {
-            "GeographicSite": {
-                "POST": {
-                    "payload": {}
-                }
-            }
-        },
         "TMF669_v4.0.0": {
             "PartyRole": {
                 "POST": {
                     "payload": {
                         "name": "qqymucymyd"
                     }
+                }
+            }
+        },
+        "TMF674_v4.0.0": {
+            "GeographicSite": {
+                "POST": {
+                    "payload": {}
                 }
             }
         },

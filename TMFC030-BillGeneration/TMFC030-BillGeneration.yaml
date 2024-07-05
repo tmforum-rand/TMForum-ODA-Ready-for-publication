@@ -12,30 +12,18 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json
       port: 8080
       resources:
-      - BillingAccount:
+      - billingAccount:
         - GET
         - GET /id
-        - POST
-        - PATCH /id
-        - DELETE /id
-      - BillingCycleSpecification:
+      - billingCycleSpecification:
         - GET
         - GET /id
-        - POST
-        - PATCH /id
-        - DELETE /id
-      - BillFormat:
+      - billFormat:
         - GET
         - GET /id
-        - POST
-        - PATCH /id
-        - DELETE /id
-      - BillPresentationMedia:
+      - billPresentationMedia:
         - GET
         - GET /id
-        - POST
-        - PATCH /id
-        - DELETE /id
     - id: TMF632
       version: v4.0.0
       name: party-management-api
@@ -98,7 +86,7 @@ spec:
     - id: TMF672
       version: v4.0.0
       name: user-role-permission-management-api
-      required: true
+      required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
       port: 8080
       resources:

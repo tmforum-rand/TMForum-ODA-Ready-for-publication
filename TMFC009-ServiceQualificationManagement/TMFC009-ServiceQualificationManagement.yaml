@@ -84,16 +84,6 @@ spec:
       - geographicSite:
         - GET
         - GET /id
-    - id: TMF672
-      version: v4.0.0
-      name: user-role-permission-management-api
-      required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-      port: 8080
-      resources:
-      - permission:
-        - GET
-        - GET /id
     exposedAPIs:
     - id: TMF645
       version: v4.0.0
@@ -157,7 +147,7 @@ spec:
     name: Tassos Sarantis
   publicationDate: 2023-08-18 00:00:00
   status: specified
-  version: 1.1.1
+  version: 1.1.0
   managementFunction:
     exposedAPIs:
     - name: metrics

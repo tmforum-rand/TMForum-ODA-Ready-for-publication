@@ -64,19 +64,22 @@ spec:
       name: product-ordering-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productOrderingManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF622_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF622_v4.0.0.swagger.json
     - apitype: openapi
       implementation: '{{.Release.Name}}-quote-management-api'
       name: quote-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/quoteManagement/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF648_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF648_v4.0.0.swagger.json
     - apitype: openapi
       implementation: '{{.Release.Name}}-shopping-cart-management-api'
       name: shopping-cart-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/shoppingCart/v4/
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF663_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF663_v4.0.0.swagger.json
   description: Addresses the means of capturing what a customer wants to order, based
     on the CSP Product Catalog. This component permits to choose the configuration
     of the product offerings and products desired, to provide a quote, to check the
@@ -107,6 +110,7 @@ spec:
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
   status: specified
   version: 1.1.1
