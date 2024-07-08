@@ -8,7 +8,7 @@ const MANIFESTS = config.componentFilePath
 
 setDefaultTimeout(20 * 1000);
 
-Given("a successfull installed component", async function () {
+Given("the ctk target component has been installed successfully", async function () {
     assert.ok(true, "installed");
 });
 

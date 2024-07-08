@@ -175,8 +175,8 @@ async function runCucumberBDD() {
 async function main(){
   try{
     await configureAPICTKS()
-    let suits = configureMochaSuits().map(e => runSuit(e))
-    let suitResults = await Promise.all(suits)
+    //let suits = configureMochaSuits().map(e => runSuit(e))
+    //let suitResults = await Promise.all(suits)
     let cucumberTests = await runCucumberBDD()
     await generateReport()
 
