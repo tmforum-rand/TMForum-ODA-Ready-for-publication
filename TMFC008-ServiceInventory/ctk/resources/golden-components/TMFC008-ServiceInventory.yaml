@@ -241,6 +241,9 @@ spec:
       specification: https://open-api.tmforum.org20-ServiceOrdering-v4.0.0.swagger.json
   functionalBlock: Production
   id: TMFC008
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -250,8 +253,8 @@ spec:
       port: 4000
   name: ServiceInventory
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: 2023-08-18 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

@@ -157,10 +157,13 @@ spec:
       specification: https://open-api.tmforum.org20-ServiceOrdering-v4.0.0.swagger.json
   functionalBlock: Production
   id: TMFC008
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: ServiceInventory
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

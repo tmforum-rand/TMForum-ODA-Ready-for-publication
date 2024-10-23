@@ -105,6 +105,9 @@ spec:
     subscribedEvents: []
   functionalBlock: Production
   id: TMFC014
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -114,10 +117,8 @@ spec:
       port: 4000
   name: LocationManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
+  - email: Redacted
+    name: Redacted
   publicationDate: 2023-08-18 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
