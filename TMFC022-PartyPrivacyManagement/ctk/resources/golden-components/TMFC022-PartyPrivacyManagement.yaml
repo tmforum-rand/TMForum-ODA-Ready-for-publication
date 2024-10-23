@@ -81,8 +81,8 @@ spec:
   functionalBlock: PartyManagement
   id: TMFC022
   maintainers:
-  - email: sylvie.demarest@orange.com
-    name: sylvie Demarest
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -92,8 +92,8 @@ spec:
       port: 4000
   name: PartyPrivacyManagement
   owners:
-  - email: sylvie.demarest@orange.com
-    name: sylvie Demarest
+  - email: Redacted
+    name: Redacted
   publicationDate: 2024-08-08
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

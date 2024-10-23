@@ -118,6 +118,9 @@ spec:
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
   functionalBlock: CoreCommerce
   id: TMFC040
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -127,10 +130,8 @@ spec:
       port: 4000
   name: ProductUsageManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  - email: elisabeth.andersson@matrixx.com
-    name: Elisabeth Andersson
+  - email: Redacted
+    name: Redacted
   publicationDate: 2024-10-22
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

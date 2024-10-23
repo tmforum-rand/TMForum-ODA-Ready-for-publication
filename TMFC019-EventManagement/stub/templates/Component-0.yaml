@@ -35,10 +35,13 @@ spec:
       specification: https://github.com/tmforum-apis/TMF688-EventManagement/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
   functionalBlock: DecouplingAndIntegration
   id: TMFC019
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: EventManagement
   owners:
-  - email: koen.peeters@ciminko.lu
-    name: Loen Peeters
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

@@ -48,10 +48,13 @@ spec:
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC028
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: PartyManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

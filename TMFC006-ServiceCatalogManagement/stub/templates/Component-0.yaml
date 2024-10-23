@@ -127,10 +127,13 @@ spec:
       specification: https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/master/TMF662-EntityCatalog-v4.0.0.swagger.json
   functionalBlock: Production
   id: TMFC006
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: ServiceCatalogManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

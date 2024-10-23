@@ -47,7 +47,13 @@ spec:
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC020
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: DigitalIdentityManagement
+  owners:
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

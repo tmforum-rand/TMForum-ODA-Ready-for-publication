@@ -94,8 +94,11 @@ spec:
         - PATCH /id
         - DELETE /id
   owners:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
+  - email: Redacted
+    name: Redacted
+  maintainers:
+  - name: Redacted
+    email: components@tmforum.org
   managementFunction:
     exposedAPIs:
     - name: metrics

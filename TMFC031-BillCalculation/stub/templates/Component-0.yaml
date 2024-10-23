@@ -45,10 +45,13 @@ spec:
       specification: https://github.com/tmforum-apis/TMF635_UsageManagement/blob/master/TMF635-UsageManagement-v4.0.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC031
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: BillCalculation
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

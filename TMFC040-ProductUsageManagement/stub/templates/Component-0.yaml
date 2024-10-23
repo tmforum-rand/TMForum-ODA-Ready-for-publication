@@ -82,12 +82,13 @@ spec:
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
   functionalBlock: CoreCommerce
   id: TMFC040
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: ProductUsageManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  - email: elisabeth.andersson@matrixx.com
-    name: Elisabeth Andersson
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

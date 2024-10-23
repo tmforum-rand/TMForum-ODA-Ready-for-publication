@@ -185,6 +185,9 @@ spec:
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC023
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -194,8 +197,8 @@ spec:
       port: 4000
   name: PartyInteractionManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: 2024-04-30 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

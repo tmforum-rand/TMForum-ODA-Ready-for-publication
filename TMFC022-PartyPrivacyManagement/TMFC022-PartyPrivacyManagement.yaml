@@ -82,11 +82,11 @@ spec:
         - PATCH /id
         - DELETE
   owners:
-  - email: sylvie.demarest@orange.com
-    name: sylvie Demarest
+  - email: Redacted
+    name: Redacted
   maintainers:
-  - email: sylvie.demarest@orange.com
-    name: sylvie Demarest
+  - name: Redacted
+    email: components@tmforum.org
   managementFunction:
     exposedAPIs:
     - name: metrics

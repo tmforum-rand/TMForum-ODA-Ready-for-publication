@@ -84,10 +84,13 @@ spec:
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC035
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: PermissionsManagement
   owners:
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

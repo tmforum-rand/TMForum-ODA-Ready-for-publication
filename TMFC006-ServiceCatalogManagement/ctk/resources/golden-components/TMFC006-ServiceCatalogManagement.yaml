@@ -217,6 +217,9 @@ spec:
       specification: https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/master/TMF662-EntityCatalog-v4.0.0.swagger.json
   functionalBlock: Production
   id: TMFC006
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -226,8 +229,8 @@ spec:
       port: 4000
   name: ServiceCatalogManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: 2023-08-18 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

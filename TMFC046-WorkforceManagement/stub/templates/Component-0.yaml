@@ -88,10 +88,13 @@ spec:
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
   functionalBlock: Production
   id: TMFC046
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: WorkforceManagement
   owners:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

@@ -190,10 +190,11 @@ spec:
         - GET /id
     exposedAPIs: []
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  - email: sylvie.demarest@orange.com
-    name: Sylvie Demarest
+  - email: Redacted
+    name: Redacted
+  maintainers:
+  - name: Redacted
+    email: components@tmforum.org
   managementFunction:
     exposedAPIs:
     - name: metrics

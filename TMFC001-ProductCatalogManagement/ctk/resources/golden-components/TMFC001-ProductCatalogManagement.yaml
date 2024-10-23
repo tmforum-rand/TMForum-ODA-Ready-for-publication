@@ -328,6 +328,9 @@ spec:
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
   functionalBlock: CoreCommerce
   id: TMFC001
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -337,8 +340,8 @@ spec:
       port: 4000
   name: ProductCatalogManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: 2023-04-23 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

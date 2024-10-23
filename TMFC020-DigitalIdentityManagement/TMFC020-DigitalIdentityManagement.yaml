@@ -58,7 +58,12 @@ spec:
         - POST
         - PATCH/id
         - DELETE/id
-  owners: []
+  owners:
+  - email: Redacted
+    name: Redacted
+  maintainers:
+  - name: Redacted
+    email: components@tmforum.org
   managementFunction:
     exposedAPIs:
     - name: metrics

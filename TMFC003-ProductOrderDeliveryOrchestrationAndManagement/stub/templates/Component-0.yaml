@@ -98,10 +98,13 @@ spec:
       specification: https://github.com/tmforum-apis/TMF652_ResourceOrderManagement/blob/master/TMF652-ResourceOrder-v4.0.0.swagger.json
   functionalBlock: CoreCommerce
   id: TMFC003
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: ProductOrderDeliveryOrchestrationAndManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

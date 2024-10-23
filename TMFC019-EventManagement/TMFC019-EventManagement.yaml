@@ -23,8 +23,11 @@ spec:
     dependentAPIs: []
     exposedAPIs: []
   owners:
-  - email: koen.peeters@ciminko.lu
-    name: Loen Peeters
+  - email: Redacted
+    name: Redacted
+  maintainers:
+  - name: Redacted
+    email: components@tmforum.org
   managementFunction:
     exposedAPIs:
     - name: metrics

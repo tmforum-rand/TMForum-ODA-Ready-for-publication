@@ -194,6 +194,9 @@ spec:
       specification: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
   functionalBlock: IntelligenceManagement
   id: TMFC037
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -203,8 +206,8 @@ spec:
       port: 4000
   name: ServicePerformanceManagement
   owners:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
+  - email: Redacted
+    name: Redacted
   publicationDate: 2023-08-18 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

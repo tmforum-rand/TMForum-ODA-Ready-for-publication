@@ -240,6 +240,9 @@ spec:
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC036
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -249,8 +252,8 @@ spec:
       port: 4000
   name: LeadAndOpportunityManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: 2024-08-05 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

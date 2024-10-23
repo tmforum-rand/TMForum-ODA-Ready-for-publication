@@ -228,6 +228,9 @@ spec:
       version: 4
   functionalBlock: Production
   id: TMFC010
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -237,8 +240,8 @@ spec:
       port: 4000
   name: ResourceCatalogManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: 2024-04-30 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

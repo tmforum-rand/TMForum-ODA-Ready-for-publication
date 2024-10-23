@@ -33,12 +33,12 @@ spec:
   functionalBlock: PartyManagement
   id: TMFC022
   maintainers:
-  - email: sylvie.demarest@orange.com
-    name: sylvie Demarest
+  - email: components@tmforum.org
+    name: Redacted
   name: PartyPrivacyManagement
   owners:
-  - email: sylvie.demarest@orange.com
-    name: sylvie Demarest
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

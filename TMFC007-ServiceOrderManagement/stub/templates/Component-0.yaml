@@ -127,12 +127,13 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/4.0.0/swagger/TMF697_Work_Order_Management_API_v4.0.0_swagger.json
   functionalBlock: Production
   id: TMFC007
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: ServiceOrderManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  - email: sylvie.demarest@orange.com
-    name: Sylvie Demarest
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

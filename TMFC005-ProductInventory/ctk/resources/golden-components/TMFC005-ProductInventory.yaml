@@ -294,6 +294,9 @@ spec:
       specification: https://open-api.tmforum.org20-ProductInventory-v4.0.0.swagger.json
   functionalBlock: CoreCommerceManagement
   id: TMFC005
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -303,8 +306,8 @@ spec:
       port: 4000
   name: ProductInventory
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: 2024-06-27 00:00:00
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

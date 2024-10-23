@@ -89,6 +89,9 @@ spec:
       specification: https://github.com/tmforum-apis/TMF635_UsageManagement/blob/master/TMF635-UsageManagement-v4.0.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC031
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   managementFunction:
     exposedAPIs:
     - apiType: prometheus
@@ -98,8 +101,8 @@ spec:
       port: 4000
   name: BillCalculation
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: 2023-06-25
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

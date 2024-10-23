@@ -76,10 +76,13 @@ spec:
       specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC024
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: BillingAccountManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

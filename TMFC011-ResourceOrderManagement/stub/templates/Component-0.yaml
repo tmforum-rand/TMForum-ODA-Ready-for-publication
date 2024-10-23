@@ -113,10 +113,13 @@ spec:
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF702_ResourceActivation/master/TMF702-ResourceActivation-v4.0.0.swagger.json
   functionalBlock: Production
   id: TMFC011
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: ResourceOrderManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

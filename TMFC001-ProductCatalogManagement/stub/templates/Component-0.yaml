@@ -156,10 +156,13 @@ spec:
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
   functionalBlock: CoreCommerce
   id: TMFC001
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: ProductCatalogManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'

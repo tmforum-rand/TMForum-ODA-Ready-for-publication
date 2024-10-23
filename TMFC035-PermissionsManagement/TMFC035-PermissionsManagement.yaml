@@ -65,8 +65,11 @@ spec:
         - PATCH/id
         - DELETE/id
   owners:
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
+  - email: Redacted
+    name: Redacted
+  maintainers:
+  - name: Redacted
+    email: components@tmforum.org
   managementFunction:
     exposedAPIs:
     - name: metrics

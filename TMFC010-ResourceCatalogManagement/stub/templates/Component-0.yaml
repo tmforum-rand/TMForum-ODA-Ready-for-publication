@@ -123,10 +123,13 @@ spec:
       version: 4
   functionalBlock: Production
   id: TMFC010
+  maintainers:
+  - email: components@tmforum.org
+    name: Redacted
   name: ResourceCatalogManagement
   owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
+  - email: Redacted
+    name: Redacted
   publicationDate: '{{.Values.component.publicationDate}}'
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
