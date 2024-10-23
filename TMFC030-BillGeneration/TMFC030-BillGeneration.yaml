@@ -1,12 +1,21 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: BillGeneration
+  id: TMFC030
+  functionalBlock: PartyManagement
+  description: Bill generation mgmt. manage the party invoice management. It addresses
+    the invoice formatting, presentation and dispatching to the proper means of communication.
+  publicationDate: 2023-12-18
+  status: specified
+  version: 2.0.0
   coreFunction:
     dependentAPIs:
     - id: TMF666
       version: v4.0.0
+      apiType: openapi
       name: account-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json
@@ -26,6 +35,7 @@ spec:
         - GET /id
     - id: TMF632
       version: v4.0.0
+      apiType: openapi
       name: party-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
@@ -39,6 +49,7 @@ spec:
         - GET /id
     - id: TMF676
       version: v4.0.0
+      apiType: openapi
       name: payment-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF676_v4.0.0.swagger.json
@@ -54,6 +65,7 @@ spec:
         - POST
     - id: TMF667
       version: v4.0.0
+      apiType: openapi
       name: document-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF667_v4.0.0.swagger.json
@@ -65,6 +77,7 @@ spec:
         - POST
     - id: TMF637
       version: v4.0.0
+      apiType: openapi
       name: product-inventory-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json
@@ -75,6 +88,7 @@ spec:
         - GET /id
     - id: TMF669
       version: v4.0.0
+      apiType: openapi
       name: party-role-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
@@ -85,6 +99,7 @@ spec:
         - GET /id
     - id: TMF672
       version: v4.0.0
+      apiType: openapi
       name: user-role-permission-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
@@ -99,6 +114,7 @@ spec:
     exposedAPIs:
     - id: TMF678
       version: v4.0.0
+      apiType: openapi
       name: customer-bill-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF678_v4.0.0.swagger.json
@@ -110,21 +126,52 @@ spec:
         - GET /id
       - customerBill:
         - GET
-        - GET /id
+        - GET / id
+        - POST
         - PATCH /id
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents: []
     subscribedEvents:
-    - apitype: openapi
-      name: partyRoleManagement
+    - name: partyRoleManagement
       port: 80
       resources:
-      - partyRoleCreateEvent
       - partyRoleAttributeValueChangeEvent
       - partyRoleStateChangeEvent
       - partyRoleDeleteEvent
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
-    - apitype: openapi
-      name: userRolePermissionManagement
+      apiType: openapi
+      id: TMF669
+    - name: userRolePermissionManagement
       port: 80
       resources:
       - permissionCreateEvent
@@ -136,35 +183,5 @@ spec:
       - userRoleStateChangeEvent
       - userRoleDeleteEvent
       specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRoleandPermission-v4.0.0.swagger.json
-  description: Bill generation mgmt. manage the party invoice management. It addresses
-    the invoice formatting, presentation and dispatching to the proper means of communication.
-  functionalBlock: PartyManagement
-  id: TMFC030
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  name: BillGeneration
-  owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  publicationDate: 2023-12-18
-  status: specified
-  version: 2.0.0
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      apiType: openapi
+      id: TMF672

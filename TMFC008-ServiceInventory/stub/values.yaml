@@ -1,9 +1,14 @@
 component:
   id: tmfc008
   name: tmfc008-serviceinventory
-  publicationDate: '2023-08-18T00:00:00.000Z'
+  publicationDate: '2024-10-17T00:00:00.000Z'
 images:
   tmf638: tmforumorg/tmfc008-tmf638-v4.0.0:latest
   tmf669: tmforumorg/tmfc008-tmf669-v4.0.0:latest
+secretsManagement:
+  podSelector:
+    name: '{{.Release.Name}}-{{.Values.component.name}}'
+    namespace: default
+    serviceaccount: default
 security:
   controllerRole: admin

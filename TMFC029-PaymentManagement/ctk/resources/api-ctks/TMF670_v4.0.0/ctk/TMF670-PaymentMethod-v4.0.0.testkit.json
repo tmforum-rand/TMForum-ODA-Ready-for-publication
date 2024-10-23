@@ -74,20 +74,18 @@
 									"});",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"let payloads = JSON.parse(pm.environment.get(\"payloads\")) || []\r",
-									"let index = parseInt(pm.environment.get(\"test_index\")) || 0\r",
-									"\r",
-									"let body = payloads[index]\r",
-									"pm.globals.set(\"PaymentBody\", JSON.stringify(body))"
+									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -105,7 +103,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{{PaymentBody}}"
+							"raw": "{\n    \"name\": \"HSV\",\n    \"@type\": \"BankAccountDebit\",\n    \"accountNumber\" :\"KW81CBKU0000000000001234560101\",\n    \"owner\": \"HSV\",\n    \"bank\": \"AIB\"\n}"
 						},
 						"url": {
 							"raw": "{{PaymentMethod}}paymentMethod",
@@ -1035,24 +1033,11 @@
 									"    pm.response.to.have.status(404);",
 									"});",
 									"",
-									"let payloads = JSON.parse(pm.environment.get(\"payloads\"))",
-									"pm.environment.set(\"test_index\", parseInt(pm.environment.get(\"test_index\")) + 1)",
-									"let index = parseInt(pm.environment.get(\"test_index\"))",
-									"",
-									"console.log(\"Index ==========>\", index)",
-									"if (index >= payloads.length) {",
-									"    postman.setNextRequest(null)",
-									"    pm.environment.set(\"test_index\", 0)",
-									"}",
-									"else {",
-									"    postman.setNextRequest(\"/PostPaymentMethod\")",
-									"    ",
-									"}",
-									"",
 									"",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],

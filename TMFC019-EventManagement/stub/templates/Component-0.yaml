@@ -15,11 +15,26 @@ spec:
     further processing). Event Management component should include functionality providing
     a centralised CQRS queryStore for all components that implement event-sourcing
     with event carrier state transfer.
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/call-back
+      id: TMF688
+      implementation: /{{.Release.Name}}-EventManagement
+      name: EventManagement
+      port: 80
+      resources:
+      - topicCreateEvent
+      - TopicAttributeValueChangeEvent
+      - TopicStateChangeEvent
+      - TopicDeleteEvent
+      - HubCreateEvent
+      - HubAttributeValueChangeEvent
+      - HubStateChangeEvent
+      - HubDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF688-EventManagement/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
   functionalBlock: DecouplingAndIntegration
   id: TMFC019
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
   name: EventManagement
   owners:
   - email: koen.peeters@ciminko.lu
@@ -28,12 +43,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.1

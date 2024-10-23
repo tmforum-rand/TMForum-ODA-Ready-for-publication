@@ -1,9 +1,14 @@
 component:
   id: tmfc024
   name: tmfc024-billingaccountmanagement
-  publicationDate: '2023-08-18T00:00:00.000Z'
+  publicationDate: '2024-10-17T00:00:00.000Z'
 images:
   tmf666: tmforumorg/tmfc024-tmf666-v4.0.0:latest
   tmf669: tmforumorg/tmfc024-tmf669-v4.0.0:latest
+secretsManagement:
+  podSelector:
+    name: '{{.Release.Name}}-{{.Values.component.name}}'
+    namespace: default
+    serviceaccount: default
 security:
   controllerRole: admin

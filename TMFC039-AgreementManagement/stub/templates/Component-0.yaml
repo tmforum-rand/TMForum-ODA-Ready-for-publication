@@ -7,26 +7,20 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: party-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
-    - apitype: openapi
-      name: user-role-permission-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: party-role-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-    - apitype: openapi
-      name: product-catalog-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: product-inventory-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: document-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF667_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-agreement-management-api'
       name: agreement-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/agreementManagement/v4/
@@ -42,11 +36,32 @@ spec:
     specificities related to translate  agreements into contracts, when it is required.
     It provides a secure storage, version control, compliance management, and renewal
     notifications for agreements.
-  functionalBlock: CoreCommerce
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      id: TMF651
+      implementation: /{{.Release.Name}}-agreemngtapi
+      name: userRole
+      port: 80
+      resources:
+      - agreementCreateEvent
+      - agreementAttributeValueChangeEvent
+      - agreementStateChangeEvent
+      - agreementSpecificationCreateEvent
+      - agreementSpecificationAttributeValueChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
+    subscribedEvents:
+    - apiType: openapi
+      id: TMF632
+      implementation: /{{.Release.Name}}-PartyManagement
+      name: PartyManagement
+      port: 80
+      resources:
+      - individualDeleteEvent
+      - organizationDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+  functionalBlock: Party Management
   id: TMFC039
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
   name: AgreementManagement
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -55,12 +70,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.0

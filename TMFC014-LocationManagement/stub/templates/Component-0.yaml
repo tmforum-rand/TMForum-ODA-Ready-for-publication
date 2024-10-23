@@ -7,21 +7,21 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: party-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: geographic-site-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-geographic-address-management-api'
       name: geographic-address-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/geographicAddressManagement/v4/
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-geographic-site-management-api'
       name: geographic-site-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/geographicSiteManagement/v4/
@@ -32,13 +32,42 @@ spec:
     \ places important to other entities, where a geographic place is an entity that\
     \ can answer the question \u201Cwhere?\u201D . This component could  be a facade\
     \ tool into GIS systems (e.g. Google Maps)"
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      hub: /{{.Release.Name}}-GeographicAddressManagement/hub
+      id: TMF673
+      implementation: /{{.Release.Name}}-GeographicAddressManagement
+      name: GeographicAddressManagement
+      port: 8080
+      resources:
+      - geographicAddressValidationStateChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/hub
+      id: TMF674
+      implementation: /{{.Release.Name}}-GeographicSiteManagementEvent
+      name: GeographicSiteManagement
+      port: 8080
+      resources:
+      - geographicSiteAttributeValueChangeEvent
+      - geographicSiteCreateEvent
+      - geographicSiteDeleteEvent
+      - geographicSiteStatusChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/hub
+      id: TMF675
+      implementation: /{{.Release.Name}}-GeographicLocationEvent
+      name: GeographicLocation
+      port: 80
+      resources:
+      - geographicLocationAttributeValueChangeEvent
+      - geographicLocationCreateEvent
+      - geographicLocationDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
   functionalBlock: Production
   id: TMFC014
-  maintainers:
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
-  - email: adam.tlemsani@cityfibre.com
-    name: Adam Tlemsani
   name: LocationManagement
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -49,12 +78,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.1

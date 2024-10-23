@@ -12,6 +12,15 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC039-AgreementManagement.yaml",
     "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
         "TMF651_v4.0.0": {
             "AgreementSpecification": {
                 "POST": {
@@ -54,15 +63,6 @@
                                 "name": "Magic Tools Company"
                             }
                         ]
-                    }
-                }
-            }
-        },
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
                     }
                 }
             }

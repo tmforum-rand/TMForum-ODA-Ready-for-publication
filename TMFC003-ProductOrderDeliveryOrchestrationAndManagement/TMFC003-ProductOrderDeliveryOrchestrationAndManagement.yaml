@@ -1,12 +1,30 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: ProductOrderDeliveryOrchestrationAndManagement
+  id: TMFC003
+  functionalBlock: CoreCommerce
+  description: 'This component is in charge of the orchestration of the delivery of
+    Product Orders (status accepted). Based on the Product specification level of
+    information available in the Product Catalog (ex: prerequisite links between product
+    specifications, links between product and CFS specifications, ...): it determines
+    in which order the product specification level order items need to be delivered,
+    and to which CFS (or Resource) specification each ordered product corresponds,
+    and prepares and addresses each related service (or resource) order to the production
+    system in charge. During the delivery process execution, this component is in
+    charge of the evolution of the status of the product specification level order
+    items, and of the related product items . So, it triggers the updates of the related
+    inventories.'
+  publicationDate: 2023-08-18 00:00:00
+  status: specified
+  version: 1.1.1
   coreFunction:
     dependentAPIs:
     - id: TMF622
       version: v4.0.0
+      apiType: openapi
       name: product-ordering-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF622_v4.0.0.swagger.json
@@ -17,8 +35,9 @@ spec:
         - PATCH
     - id: TMF637
       version: v4.0.0
+      apiType: openapi
       name: product-inventory-management-api
-      required: false
+      required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json
       port: 8080
       resources:
@@ -28,6 +47,7 @@ spec:
         - PATCH
     - id: TMF633
       version: v4.0.0
+      apiType: openapi
       name: service-catalog-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
@@ -38,6 +58,7 @@ spec:
         - GET /id
     - id: TMF638
       version: v4.0.0
+      apiType: openapi
       name: service-inventory-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
@@ -48,6 +69,7 @@ spec:
         - GET
     - id: TMF639
       version: v4.0.0
+      apiType: openapi
       name: resource-inventory-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
@@ -58,6 +80,7 @@ spec:
         - GET /id
     - id: TMF652
       version: v4.0.0
+      apiType: openapi
       name: resource-order-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF652_v4.0.0.swagger.json
@@ -67,9 +90,39 @@ spec:
         - GET /id
         - POST
     exposedAPIs: []
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
       port: 80
@@ -84,9 +137,10 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      apiType: openapi
+      id: TMF701
     subscribedEvents:
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOrder/call-back
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOrder/call-back
       implementation: /{{.Release.Name}}-ProductOrderEvent
       name: ProductOrder
       port: 80
@@ -94,9 +148,10 @@ spec:
       - productOrderStateChangeEvent
       - cancelProductOrderStateChangeEvent
       specification: https://github.com/tmforum-apis/TMF622_ProductOrder/blob/master/TMF622-ProductOrder-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/call-back
-      developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/serviceOrderingManagement/v4/docs
+      apiType: openapi
+      id: TMF622
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceOrderingManagement/call-back
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceOrderingManagement/v4/docs
       implementation: /{{.Release.Name}}-serviceOrderingManagementEvent
       name: ServiceOrder
       port: 80
@@ -109,9 +164,10 @@ spec:
       - cancelServiceOrderStateChangeEvent
       - cancelServiceOrderInformationRequiredEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF641_ServiceOrdering/master/TMF641-ServiceOrdering-v4.1.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ResourceOrder/call-back
-      developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ResourceOrder/v4/docs
+      apiType: openapi
+      id: TMF641
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrder/call-back
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrder/v4/docs
       implementation: /{{.Release.Name}}-ResourceOrder
       name: ResourceOrder
       port: 80
@@ -122,44 +178,5 @@ spec:
       - cancelResourceOrderStateChange
       - cancelResourceOrderInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF652_ResourceOrderManagement/blob/master/TMF652-ResourceOrder-v4.0.0.swagger.json
-  description: 'This component is in charge of the orchestration of the delivery of
-    Product Orders (status accepted). Based on the Product specification level of
-    information available in the Product Catalog (ex: prerequisite links between product
-    specifications, links between product and CFS specifications, ...): it determines
-    in which order the product specification level order items need to be delivered,
-    and to which CFS (or Resource) specification each ordered product corresponds,
-    and prepares and addresses each related service (or resource) order to the production
-    system in charge. During the delivery process execution, this component is in
-    charge of the evolution of the status of the product specification level order
-    items, and of the related product items . So, it triggers the updates of the related
-    inventories.'
-  functionalBlock: CoreCommerce
-  id: TMFC003
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  name: ProductOrderDeliveryOrchestrationAndManagement
-  owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  publicationDate: 2023-08-18 00:00:00
-  status: specified
-  version: 1.1.1
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      apiType: openapi
+      id: TMF652

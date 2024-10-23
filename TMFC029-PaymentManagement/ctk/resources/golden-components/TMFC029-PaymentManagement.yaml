@@ -1,11 +1,12 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF632
+    - apiType: openapi
+      id: TMF632
       name: party-management-api
       port: 8080
       required: false
@@ -18,7 +19,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF666
+    - apiType: openapi
+      id: TMF666
       name: account-management-api
       port: 8080
       required: false
@@ -46,7 +48,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF673
+    - apiType: openapi
+      id: TMF673
       name: geographic-address-management-api
       port: 8080
       required: false
@@ -62,7 +65,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF674
+    - apiType: openapi
+      id: TMF674
       name: geographic-site-management-api
       port: 8080
       required: false
@@ -73,7 +77,8 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
       version: v4.0.0
     exposedAPIs:
-    - id: TMF670
+    - apiType: openapi
+      id: TMF670
       name: payment-method-management-api
       port: 8080
       required: true
@@ -86,7 +91,8 @@ spec:
         - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF670_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF676
+    - apiType: openapi
+      id: TMF676
       name: payment-management-api
       port: 8080
       required: true
@@ -101,9 +107,14 @@ spec:
         - POST
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF676_v4.0.0.swagger.json
       version: v4.0.0
+  description: Payment Management manages methods used by parties to make payments,
+    it also administers payment plan, handles payment, assigns payments against bills,
+    settlements, and other object requiring payments.
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentManagement/hub
+      id: TMF676
       implementation: /{{.Release.Name}}-PaymentManagement
       name: PaymentManagement
       port: 80
@@ -116,8 +127,9 @@ spec:
       - RefundCreateEvent
       - RefundStatusChangeEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF676_PaymentManagement/master/TMF676-Payment-v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentMethods/hub
+      id: TMF670
       implementation: /{{.Release.Name}}-PaymentMethods
       name: PaymentMethods
       port: 80
@@ -127,8 +139,9 @@ spec:
       - PaymentMethodDeleteEvent
       - PaymentMethodStatusChangeEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF670_PaymentMethods/master/TMF670-PaymentMethod-v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
       port: 80
@@ -144,17 +157,11 @@ spec:
       - TaskFlowInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
     subscribedEvents: []
-  description: Payment Management manages methods used by parties to make payments,
-    it also administers payment plan, handles payment, assigns payments against bills,
-    settlements, and other object requiring payments.
   functionalBlock: PartyManagement
   id: TMFC029
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
   managementFunction:
     exposedAPIs:
-    - apitype: prometheus
+    - apiType: prometheus
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
@@ -168,12 +175,21 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
       resources: []
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.1

@@ -7,29 +7,29 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: service-catalog-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: service-inventory-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: resource-inventory-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: party-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: party-role-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: geographic-address-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: geographic-site-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-service-qualification-management-api'
       name: service-qualification-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceQualificationManagement/v4
@@ -48,11 +48,27 @@ spec:
     calculation of the technical solution identified, when it cannot be determined
     at catalog design time (complex B2B services). This information will be used as
     an input to price calculation.
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/v4/docs
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/hub
+      id: TMF645
+      implementation: /{{.Release.Name}}-ServiceQualification
+      name: ServiceQualification
+      port: 80
+      resources:
+      - checkServiceQualificationCreateEvent
+      - checkServiceQualificationStateChangeEvent
+      - checkServiceQualificationInformationRequiredEvent
+      - checkServiceQualificationAttributeValueChangeEvent
+      - checkServiceQualificationDeleteEvent
+      - queryServiceQualificationStateChangeEvent
+      - queryServiceQualificationCreateEvent
+      - queryServiceQualificationDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
   functionalBlock: Production
   id: TMFC009
-  maintainers:
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
   name: ServiceQualificationManagement
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -63,12 +79,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.0

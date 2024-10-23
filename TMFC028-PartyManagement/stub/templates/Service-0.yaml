@@ -3,11 +3,11 @@ kind: Service
 metadata:
   labels:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
-  name: '{{.Release.Name}}-partnership-type-management-api'
+  name: '{{.Release.Name}}-party-management-api'
 spec:
   ports:
-  - name: tcp-{{.Release.Name}}-partner
+  - name: tcp-{{.Release.Name}}-party-m
     port: 8080
-    targetPort: '{{.Release.Name}}-partner'
+    targetPort: '{{.Release.Name}}-party-m'
   selector:
-    impl: '{{.Release.Name}}-partnership-type-management-api'
+    impl: '{{.Release.Name}}-party-management-api'

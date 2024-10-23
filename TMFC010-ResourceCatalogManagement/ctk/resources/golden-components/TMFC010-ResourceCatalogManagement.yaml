@@ -1,11 +1,12 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF634
+    - apiType: openapi
+      id: TMF634
       name: resource-catalog-management-api
       port: 8080
       required: false
@@ -41,7 +42,8 @@ spec:
         - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
       version: v4.1.0
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: false
@@ -51,7 +53,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF632
+    - apiType: openapi
+      id: TMF632
       name: party-management-api
       port: 8080
       required: false
@@ -64,7 +67,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF662
+    - apiType: openapi
+      id: TMF662
       name: entity-catalog-management-api
       port: 8080
       required: false
@@ -77,7 +81,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF662_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF672
+    - apiType: openapi
+      id: TMF672
       name: user-role-permission-management-api
       port: 8080
       required: false
@@ -88,7 +93,8 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
       version: v4.0.0
     exposedAPIs:
-    - id: TMF634
+    - apiType: openapi
+      id: TMF634
       name: resource-catalog-management-api
       port: 8080
       required: true
@@ -129,8 +135,21 @@ spec:
         - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
       version: v4.1.0
+  description: Resource Catalog Management component is responsible for organizing
+    the collection resource specifications that identify and define all requirements
+    for a resource. Resource Catalog Management component has the functionality that
+    enable presenting a customer-facing view, so users are able to browse and select
+    resource they need, as well as a technical view to enable define and setup resources
+    contained in the resource catalog. Additional functionalities include capturing
+    specifications of new resource specifications, managing resources (registering
+    assets and components and identifying and mapping connections/relationships),
+    administering the lifecycle of resources, describing relationships between resources,
+    reporting on resources and changes to their attributes, and facilitating easy
+    access to identify and assign resources.
+  eventNotification:
     publishedEvents:
     - hub: /{{.Release.Name}}-ResourceCatalog/hub
+      id: TMF634
       implementation: /{{.Release.Name}}-ResourceCatalogEvent
       name: ResourceCatalogManagement
       port: 80
@@ -152,8 +171,9 @@ spec:
       - exportJobStateChangeEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF634_resourceCatalog/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
       version: 4.1
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
       port: 80
@@ -171,7 +191,7 @@ spec:
       version: 4
     subscribedEvents:
     - call-back: /{{.Release.Name}}-EntityCatalog/call-back
-      id: TMF632
+      id: TMF662
       name: EntityCatalogManagement
       port: 80
       resources:
@@ -206,25 +226,11 @@ spec:
       - organizationDeleteEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
       version: 4
-  description: Resource Catalog Management component is responsible for organizing
-    the collection resource specifications that identify and define all requirements
-    for a resource. Resource Catalog Management component has the functionality that
-    enable presenting a customer-facing view, so users are able to browse and select
-    resource they need, as well as a technical view to enable define and setup resources
-    contained in the resource catalog. Additional functionalities include capturing
-    specifications of new resource specifications, managing resources (registering
-    assets and components and identifying and mapping connections/relationships),
-    administering the lifecycle of resources, describing relationships between resources,
-    reporting on resources and changes to their attributes, and facilitating easy
-    access to identify and assign resources.
   functionalBlock: Production
   id: TMFC010
-  maintainers:
-  - email: elisabeth.andersson@matrixx.com
-    name: Elisabeth Andersson
   managementFunction:
     exposedAPIs:
-    - apitype: prometheus
+    - apiType: prometheus
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
@@ -238,12 +244,21 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
       resources: []
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.2.0

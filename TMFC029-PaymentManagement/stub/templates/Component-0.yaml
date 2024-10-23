@@ -7,27 +7,27 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: party-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: account-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: geographic-address-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: geographic-site-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-payment-method-management-api'
       name: payment-method-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/paymentMethod/v4/
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF670_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-payment-management-api'
       name: payment-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/payment/v4/
@@ -37,11 +37,54 @@ spec:
   description: Payment Management manages methods used by parties to make payments,
     it also administers payment plan, handles payment, assigns payments against bills,
     settlements, and other object requiring payments.
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentManagement/hub
+      id: TMF676
+      implementation: /{{.Release.Name}}-PaymentManagement
+      name: PaymentManagement
+      port: 80
+      resources:
+      - PaymentAttributeValueChangeEvent
+      - PaymentCreateEvent
+      - PaymentDeleteEvent
+      - PaymentStatusChangeEvent
+      - RefundAttributeValueChangeEvent
+      - RefundCreateEvent
+      - RefundStatusChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF676_PaymentManagement/master/TMF676-Payment-v4.0.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentMethods/hub
+      id: TMF670
+      implementation: /{{.Release.Name}}-PaymentMethods
+      name: PaymentMethods
+      port: 80
+      resources:
+      - PaymentMethodAttributeValueChangeEvent
+      - PaymentMethodCreateEvent
+      - PaymentMethodDeleteEvent
+      - PaymentMethodStatusChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF670_PaymentMethods/master/TMF670-PaymentMethod-v4.0.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - ProcessFlowCreateEvent
+      - ProcessFlowStateChangeEvent
+      - ProcessFlowStateDeleteEvent
+      - ProcessFlowStateAttributeValueChangeEvent
+      - TaskFlowCreateEvent
+      - TaskFlowStateChangeEvent
+      - TaskFlowDeleteEvent
+      - TaskFlowAttributeValueChangeEvent
+      - TaskFlowInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC029
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
   name: PaymentManagement
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -50,12 +93,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.1

@@ -1,12 +1,28 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: AgreementManagement
+  id: TMFC039
+  functionalBlock: Party Management
+  description: Agreement Management component is responsible for creating, storing,
+    editing, and tracking agreed  arrangements with related terms and conditions over
+    a lifecycle. The component manages offers, records acceptance, and associated
+    considerations and intentions to establish agreements as legally binding. As well
+    this components provides workfows and templates that facilitates collaboration,
+    communication and negotiation of agreements between parties, and administers the
+    specificities related to translate  agreements into contracts, when it is required.
+    It provides a secure storage, version control, compliance management, and renewal
+    notifications for agreements.
+  publicationDate: 2024-08-19 00:00:00
+  status: specified
+  version: 1.1.0
   coreFunction:
     dependentAPIs:
     - id: TMF632
       version: v4.0.0
+      apiType: openapi
       name: party-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
@@ -18,21 +34,9 @@ spec:
       - organization:
         - GET
         - GET/id
-    - id: TMF672
-      version: v4.0.0
-      name: user-role-permission-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-      port: 8080
-      resources:
-      - permission:
-        - GET
-        - GET/id
-      - userRole:
-        - GET
-        - GET/id
     - id: TMF669
       version: v4.0.0
+      apiType: openapi
       name: party-role-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
@@ -41,21 +45,9 @@ spec:
       - partyRole:
         - GET
         - GET/id
-    - id: TMF620
-      version: v4.1.0
-      name: product-catalog-management-api
-      required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
-      port: 8080
-      resources:
-      - productOffering:
-        - GET
-        - GET/id
-      - productOfferingPrice:
-        - GET
-        - GET/id
     - id: TMF637
       version: v4.0.0
+      apiType: openapi
       name: product-inventory-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json
@@ -66,6 +58,7 @@ spec:
         - GET/id
     - id: TMF667
       version: v4.0.0
+      apiType: openapi
       name: document-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF667_v4.0.0.swagger.json
@@ -77,6 +70,7 @@ spec:
     exposedAPIs:
     - id: TMF651
       version: v4.0.0
+      apiType: openapi
       name: agreement-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF651_v4.0.0.swagger.json
@@ -94,9 +88,39 @@ spec:
         - POST
         - PATCH/id
         - DELETE/id
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      implementation: /{{.Release.Name}}-agreemngtapi
+    - implementation: /{{.Release.Name}}-agreemngtapi
       name: userRole
       port: 80
       resources:
@@ -106,51 +130,15 @@ spec:
       - agreementSpecificationCreateEvent
       - agreementSpecificationAttributeValueChangeEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
+      apiType: openapi
+      id: TMF651
     subscribedEvents:
-    - apitype: openapi
-      implementation: /{{.Release.Name}}-PartyManagement
+    - implementation: /{{.Release.Name}}-PartyManagement
       name: PartyManagement
       port: 80
       resources:
       - individualDeleteEvent
       - organizationDeleteEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
-  description: Agreement Management component is responsible for creating, storing,
-    editing, and tracking agreed  arrangements with related terms and conditions over
-    a lifecycle. The component manages offers, records acceptance, and associated
-    considerations and intentions to establish agreements as legally binding. As well
-    this components provides workfows and templates that facilitates collaboration,
-    communication and negotiation of agreements between parties, and administers the
-    specificities related to translate  agreements into contracts, when it is required.
-    It provides a secure storage, version control, compliance management, and renewal
-    notifications for agreements.
-  functionalBlock: CoreCommerce
-  id: TMFC039
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  name: AgreementManagement
-  owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  publicationDate: 2023-08-18 00:00:00
-  status: specified
-  version: 1.1.0
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      apiType: openapi
+      id: TMF632

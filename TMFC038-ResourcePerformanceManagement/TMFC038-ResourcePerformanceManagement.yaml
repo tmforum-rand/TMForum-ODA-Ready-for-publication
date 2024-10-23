@@ -1,12 +1,21 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: ResourcePerformanceManagement
+  id: TMFC038
+  functionalBlock: IntelligenceManagement
+  description: Resource Performance Management will monitor, analyze, and report on
+    the performance of the service provider's resources.
+  publicationDate: 2023-08-18 00:00:00
+  status: specified
+  version: 1.1.0
   coreFunction:
     dependentAPIs:
     - id: TMF639
       version: v4.0.0
+      apiType: openapi
       name: resource-inventory-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
@@ -17,6 +26,7 @@ spec:
         - GET /id
     - id: TMF673
       version: v4.0.0
+      apiType: openapi
       name: geographic-address-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
@@ -30,6 +40,7 @@ spec:
         - GET /id
     - id: TMF674
       version: v4.0.0
+      apiType: openapi
       name: geographic-site-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
@@ -41,6 +52,7 @@ spec:
     exposedAPIs:
     - id: TMF642
       version: v4.0.0
+      apiType: openapi
       name: alarm-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
@@ -52,9 +64,39 @@ spec:
         - GET /id
         - PATCH /id
         - DELETE /id
+  owners:
+  - email: milind.2.bhagwat@bt.com
+    name: Milind Bhagwat
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
       port: 80
@@ -69,8 +111,9 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Alarm/hub
+      apiType: openapi
+      id: TMF701
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Alarm/hub
       implementation: /{{.Release.Name}}-Alarm
       name: AlarmManagement
       port: 80
@@ -80,8 +123,9 @@ spec:
       - alarmClearEvent**
       - alarmAckEvent**
       specification: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Performance/hub
+      apiType: openapi
+      id: TMF642
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Performance/hub
       implementation: /{{.Release.Name}}-Performance
       name: PerformanceManagement
       port: 80
@@ -99,8 +143,9 @@ spec:
       - onDemandCollectionFilesReadyEvent
       - onDemandCollectionFilesPreparationErrorEvent
       specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThreshold/hub
+      apiType: openapi
+      id: TMF628
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThreshold/hub
       implementation: /{{.Release.Name}}-PerformanceThreshold
       name: PerformanceThresholdManagement
       port: 80
@@ -114,17 +159,19 @@ spec:
       - thresholdJobSuspendedNotification
       - thresholdJobResumedNotification
       specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF649-PerformanceThreshold-v4.0.0.swagger.json
+      apiType: openapi
+      id: TMF628
     subscribedEvents:
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/hub
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/hub
       implementation: /{{.Release.Name}}-ResourceCatalog
       name: ResourceCatalogManagement
       port: 80
       resources:
       - ResourceSpecificationChangeEvent
       specification: https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/hub
+      apiType: openapi
+      id: TMF634
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/hub
       implementation: /{{.Release.Name}}-ResourceInventory
       name: ResourceInventoryManagement
       port: 80
@@ -134,16 +181,18 @@ spec:
       - ResourceStateChangeEvent
       - ResourceDeleteEvent
       specification: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/hub
+      apiType: openapi
+      id: TMF639
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/hub
       implementation: /{{.Release.Name}}-GeographicAddressManagement
       name: GeographicAddressManagement
       port: 80
       resources:
       - geographicAddressValidationStateChange
       specification: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      apiType: openapi
+      id: TMF673
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
       port: 80
@@ -157,35 +206,5 @@ spec:
       - taskFlowDeleteEvent
       - taskFlowAttributeValueChangeEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-  description: Resource Performance Management will monitor, analyze, and report on
-    the performance of the service provider's resources.
-  functionalBlock: IntelligenceManagement
-  id: TMFC038
-  maintainers:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
-  name: ResourcePerformanceManagement
-  owners:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
-  publicationDate: 2023-08-18 00:00:00
-  status: specified
-  version: 1.1.0
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      apiType: openapi
+      id: TMF701

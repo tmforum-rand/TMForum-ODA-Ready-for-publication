@@ -7,23 +7,23 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: resource-catalog-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: party-role-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: party-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: entity-catalog-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF662_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: user-role-permission-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-resource-catalog-management-api'
       name: resource-catalog-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/resourceCatalog/v4/
@@ -41,11 +41,88 @@ spec:
     administering the lifecycle of resources, describing relationships between resources,
     reporting on resources and changes to their attributes, and facilitating easy
     access to identify and assign resources.
+  eventNotification:
+    publishedEvents:
+    - hub: /{{.Release.Name}}-ResourceCatalog/hub
+      id: TMF634
+      implementation: /{{.Release.Name}}-ResourceCatalogEvent
+      name: ResourceCatalogManagement
+      port: 80
+      resources:
+      - resourceCatalogCreateEvent
+      - resourceCatalogChangeEvent
+      - resourceCatalogDeleteEvent
+      - resourceCategoryCreateEvent
+      - resourceCategoryChangeEvent
+      - resourceCategoryDeleteEvent
+      - resourceCandidateCreateEvent
+      - resourceCandidateChangeEvent
+      - resourceCandidateDeleteEvent
+      - resourceSpecificationCreateEvent
+      - resourceSpecificationChangeEvent
+      - resourceSpecificationDeleteEvent
+      - importJobCreateEvent
+      - exportJobCreateEvent
+      - exportJobStateChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF634_resourceCatalog/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
+      version: 4.1
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      version: 4
+    subscribedEvents:
+    - call-back: /{{.Release.Name}}-EntityCatalog/call-back
+      id: TMF662
+      name: EntityCatalogManagement
+      port: 80
+      resources:
+      - entitySpecificationCreateEvent
+      - entitySpecificationAttributeValueChangeEvent
+      - entitySpecificationStateChangeEvent
+      - entitySpecificationDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF662_EntityCatalog/master/TMF662-EntityCatalog-v4.0.0.swagger.json
+      version: 4
+    - call-back: /{{.Release.Name}}-EntityCatalog/call-back
+      id: TMF669
+      name: PartyRoleManagement
+      port: 80
+      resources:
+      - partyRoleDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.swagger.json
+      version: 4
+    - call-back: /{{.Release.Name}}-EntityCatalog/call-back
+      id: TMF672
+      name: UserRolePermission
+      port: 80
+      resources:
+      - permissionDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF672-UserRolePermission/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+      version: 4
+    - call-back: /{{.Release.Name}}-EntityCatalog/call-back
+      id: TMF632
+      name: Party
+      port: 80
+      resources:
+      - individualDeleteEvent
+      - organizationDeleteEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+      version: 4
   functionalBlock: Production
   id: TMFC010
-  maintainers:
-  - email: elisabeth.andersson@matrixx.com
-    name: Elisabeth Andersson
   name: ResourceCatalogManagement
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -54,12 +131,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.2.0

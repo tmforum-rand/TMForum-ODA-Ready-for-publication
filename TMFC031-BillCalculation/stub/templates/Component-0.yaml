@@ -7,26 +7,20 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: account-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: party-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: product-inventory-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json
-    - apitype: openapi
-      name: party-role-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-    - apitype: openapi
-      name: user-role-permission-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: usage-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF635_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-customer-bill-management-api'
       name: customer-bill-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/customerBillManagement/v4/
@@ -35,11 +29,22 @@ spec:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF678_v4.0.0.swagger.json
   description: Bill generation mgmt. manage the party invoice management. It addresses
     the invoice formatting, presentation and dispatching to the proper means of communication.
+  eventNotification:
+    subscribedEvents:
+    - id: TMF635
+      name: usageManagement
+      port: 80
+      resources:
+      - UsageCreateEvent
+      - UsageAttributeValueChangeEvent
+      - UsageDeleteEvent
+      - UsageStateChangeEvent
+      - UsageSpecificationCreateEvent
+      - UsageSpecificationAttributeValueChangeEvent
+      - UsageSpecificationDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF635_UsageManagement/blob/master/TMF635-UsageManagement-v4.0.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC031
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
   name: BillCalculation
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -48,12 +53,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 2.0.0

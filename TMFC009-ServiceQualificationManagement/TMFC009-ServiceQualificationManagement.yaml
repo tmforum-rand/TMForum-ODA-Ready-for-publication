@@ -1,12 +1,31 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: ServiceQualificationManagement
+  id: TMFC009
+  functionalBlock: Production
+  description: Service Qualification component is responsible for checking and validating
+    the availability of a service according to specified and configured business rules.
+    It must identify at least one technical solution (RFSspec) available to deliver
+    the service (CFSspec) and check the availability of all the resources types involved
+    in this technical solution. No resources are allocated during Service Qualification.
+    Service Qualification component has functionality that include checking service
+    feasibility status and publishing or reporting service qualification result, but
+    also calculated service delivery due date and identified need of an appointment
+    at the customer site. Service Qualification can also be in charge of the cost
+    calculation of the technical solution identified, when it cannot be determined
+    at catalog design time (complex B2B services). This information will be used as
+    an input to price calculation.
+  publicationDate: 2023-08-18 00:00:00
+  status: specified
+  version: 1.1.0
   coreFunction:
     dependentAPIs:
     - id: TMF633
       version: v4.0.0
+      apiType: openapi
       name: service-catalog-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
@@ -20,6 +39,7 @@ spec:
         - GET /id
     - id: TMF638
       version: v4.0.0
+      apiType: openapi
       name: service-inventory-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
@@ -30,6 +50,7 @@ spec:
         - GET /id
     - id: TMF639
       version: v4.0.0
+      apiType: openapi
       name: resource-inventory-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
@@ -40,6 +61,7 @@ spec:
         - GET /id
     - id: TMF632
       version: v4.0.0
+      apiType: openapi
       name: party-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
@@ -53,6 +75,7 @@ spec:
         - GET /id
     - id: TMF669
       version: v4.0.0
+      apiType: openapi
       name: party-role-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
@@ -63,6 +86,7 @@ spec:
         - GET /id
     - id: TMF673
       version: v4.0.0
+      apiType: openapi
       name: geographic-address-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
@@ -76,6 +100,7 @@ spec:
         - GET /id
     - id: TMF674
       version: v4.0.0
+      apiType: openapi
       name: geographic-site-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
@@ -87,6 +112,7 @@ spec:
     exposedAPIs:
     - id: TMF645
       version: v4.0.0
+      apiType: openapi
       name: service-qualification-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF645_v4.0.0.swagger.json
@@ -104,10 +130,42 @@ spec:
         - POST
         - PATCH
         - DELETE
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  - email: Anastasios.sarantis@cityfibre.com
+    name: Tassos Sarantis
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualification/v4/docs
-      hub: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualification/hub
+    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/v4/docs
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/hub
       implementation: /{{.Release.Name}}-ServiceQualification
       name: ServiceQualification
       port: 80
@@ -121,48 +179,6 @@ spec:
       - queryServiceQualificationCreateEvent
       - queryServiceQualificationDeleteEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+      apiType: openapi
+      id: TMF645
     subscribedEvents: []
-  description: Service Qualification component is responsible for checking and validating
-    the availability of a service according to specified and configured business rules.
-    It must identify at least one technical solution (RFSspec) available to deliver
-    the service (CFSspec) and check the availability of all the resources types involved
-    in this technical solution. No resources are allocated during Service Qualification.
-    Service Qualification component has functionality that include checking service
-    feasibility status and publishing or reporting service qualification result, but
-    also calculated service delivery due date and identified need of an appointment
-    at the customer site. Service Qualification can also be in charge of the cost
-    calculation of the technical solution identified, when it cannot be determined
-    at catalog design time (complex B2B services). This information will be used as
-    an input to price calculation.
-  functionalBlock: Production
-  id: TMFC009
-  maintainers:
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
-  name: ServiceQualificationManagement
-  owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
-  publicationDate: 2023-08-18 00:00:00
-  status: specified
-  version: 1.1.0
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []

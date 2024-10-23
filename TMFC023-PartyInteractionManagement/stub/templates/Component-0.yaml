@@ -7,26 +7,26 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: party-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: party-role-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: user-role-permission-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: entity-catalog-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF662_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: document-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF667_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: communication-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF681_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-party-interaction-management-api'
       name: party-interaction-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyInteraction/v4/
@@ -39,11 +39,87 @@ spec:
     retail store) channels. It will identify known parties or new parties and react
     appropriately to propose available actions. It records all the interactions for
     the parties from all channels.
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyInteractionManagement/hub
+      id: TMF683
+      implementation: /{{.Release.Name}}-PartyInteractionManagementEvent
+      name: PartyInteractionManagement
+      port: 80
+      resources:
+      - partyInteractionCreateEvent
+      - partyInteractionAttributeValueChangeEvent
+      - partyInteractionDeleteEvent
+      - partyInteractionStatusChangeEvent
+      specification: https://github.com/tmforum-apis/TMF683_PartyInteraction/blob/master/partyInteractionManagement_TMF_v1.0.0Review2.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+    subscribedEvents:
+    - apiType: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
+      id: TMF632
+      implementation: /{{.Release.Name}}-PartyManagement
+      name: PartyManagement
+      port: 80
+      resources:
+      - IndividualCreateEvent
+      - IndividualAttributeValueChangeEvent
+      - IndividualStateChangeEvent
+      - IndividualDeleteEvent
+      - OrganizationCreateEvent
+      - OrganizationAttributeValueChangeEvent
+      - OrganizationStateChangeEvent
+      - OrganizationDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+    - apiType: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
+      id: TMF701
+      implementation: /{{.Release.Name}}-PartyRoleManagement
+      name: PartyRoleManagement
+      port: 80
+      resources:
+      - PartyRoleCreateEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+    - apiType: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
+      id: TMF667
+      implementation: /{{.Release.Name}}-DocumentgManagementEvent
+      name: documentManagement
+      port: 80
+      resources:
+      - documentChangeEvent
+      - documentSpecificationAttributeValueChangeEvent
+      specification: https://github.com/tmforum-apis/TMF667_Document/blob/master/TMF667-Document-v4.0.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC023
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
   name: PartyInteractionManagement
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -52,12 +128,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.0

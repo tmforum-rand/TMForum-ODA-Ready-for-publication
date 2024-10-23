@@ -12,6 +12,15 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC037-ServicePerformanceManagement.yaml",
     "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
         "TMF642_v4.0.0": {
             "Alarm": {
                 "POST": {
@@ -25,15 +34,6 @@
                         "probableCause": "rectifierLowVoltage",
                         "sourceSystemId": "ems-1",
                         "state": "raised"
-                    }
-                }
-            }
-        },
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
                     }
                 }
             }

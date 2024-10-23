@@ -1,11 +1,12 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF639
+    - apiType: openapi
+      id: TMF639
       name: resource-inventory-management-api
       port: 8080
       required: false
@@ -15,7 +16,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF638
+    - apiType: openapi
+      id: TMF638
       name: service-inventory-management-api
       port: 8080
       required: false
@@ -25,7 +27,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF673
+    - apiType: openapi
+      id: TMF673
       name: geographic-address-management-api
       port: 8080
       required: false
@@ -38,7 +41,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF674
+    - apiType: openapi
+      id: TMF674
       name: geographic-site-management-api
       port: 8080
       required: false
@@ -48,7 +52,8 @@ spec:
         - GET/id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF657
+    - apiType: openapi
+      id: TMF657
       name: service-quality-management-api
       port: 8080
       required: false
@@ -62,7 +67,8 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF657_v4.0.0.swagger.json
       version: v4.0.0
     exposedAPIs:
-    - id: TMF642
+    - apiType: openapi
+      id: TMF642
       name: alarm-management-api
       port: 8080
       required: false
@@ -75,9 +81,17 @@ spec:
         - DELETE /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
       version: v4.0.0
+  description: Service Performance Management will monitor, analyze, and report on
+    the end-end service performance. This can include a real-time, end-to-end view
+    to ensure that each service is functioning correctly as well as a historical view.
+    These functions build on the Resource Performance data and active end-end service
+    performance test data to provide a view of a service. The component provides a
+    key input to determine the Quality of Service.
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
       implementation: /{{.Release.Name}}-processFlowEvent
       name: ProcessFlowManagement
       port: 80
@@ -92,8 +106,9 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/hub
+      id: TMF642
       implementation: /{{.Release.Name}}-AlarmManagement
       name: AlarmManagement
       port: 80
@@ -103,8 +118,9 @@ spec:
       - alarmClearEvent**
       - alarmAckEvent**
       specification: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/hub
+      id: TMF628
       implementation: /{{.Release.Name}}-PerformanceManagement
       name: PerformanceManagement
       port: 80
@@ -131,16 +147,18 @@ spec:
       - thresholdJobResumeNotification
       specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.1.0.swagger.json
     subscribedEvents:
-    - apitype: openapi
+    - apiType: openapi
       call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
+      id: TMF633
       implementation: /{{.Release.Name}}-ServiceCatalogManagement
       name: ServiceCatalogManagement
       port: 80
       resources:
       - serviceSpecificationChangeEvent
       specification: https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
+      id: TMF638
       implementation: /{{.Release.Name}}-ServiceInventoryManagement
       name: ServiceInventoryManagement
       port: 80
@@ -150,8 +168,9 @@ spec:
       - serviceStateChangeEvent
       - serviceDeleteEvent
       specification: https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/master/TMF638-ServiceInventory-v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/call-back
+      id: TMF639
       implementation: /{{.Release.Name}}-ResourceInventory
       name: ResourceInventoryManagement
       port: 80
@@ -161,8 +180,9 @@ spec:
       - resourceStateChangeEvent
       - resourceDeleteEvent
       specification: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/call-back
+      id: TMF701
       implementation: /{{.Release.Name}}-ProcessFlowManagement
       name: ProcessFlowManagement
       port: 80
@@ -172,20 +192,11 @@ spec:
       - taskFlowCreateEvent
       - taskFlowStateChangeEvent
       specification: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
-  description: Service Performance Management will monitor, analyze, and report on
-    the end-end service performance. This can include a real-time, end-to-end view
-    to ensure that each service is functioning correctly as well as a historical view.
-    These functions build on the Resource Performance data and active end-end service
-    performance test data to provide a view of a service. The component provides a
-    key input to determine the Quality of Service.
   functionalBlock: IntelligenceManagement
   id: TMFC037
-  maintainers:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
   managementFunction:
     exposedAPIs:
-    - apitype: prometheus
+    - apiType: prometheus
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
@@ -199,12 +210,21 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
       resources: []
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.0

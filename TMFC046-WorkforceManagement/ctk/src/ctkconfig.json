@@ -12,6 +12,15 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC046-WorkforceManagement.yaml",
     "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
         "TMF646_v4.0.0": {
             "Appointment": {
                 "POST": {
@@ -20,15 +29,6 @@
                             "startDateTime": "2018-02-15T14:00:00.000Z",
                             "endDateTime": "2018-02-15T16:00:00.000Z"
                         }
-                    }
-                }
-            }
-        },
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
                     }
                 }
             }

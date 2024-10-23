@@ -12,16 +12,6 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC006-ServiceCatalogManagement.yaml",
     "payloads": {
-        "TMF633_v4.0.0": {
-            "ServiceSpecification": {
-                "POST": {
-                    "payload": {
-                        "@type": "ResourceFacingServiceSpecification",
-                        "name": "Firewall Service"
-                    }
-                }
-            }
-        },
         "TMF669_v4.0.0": {
             "PartyRole": {
                 "POST": {
@@ -53,6 +43,16 @@
                                 "id": "3113"
                             }
                         ]
+                    }
+                }
+            }
+        },
+        "TMF633_v4.0.0": {
+            "ServiceSpecification": {
+                "POST": {
+                    "payload": {
+                        "@type": "ResourceFacingServiceSpecification",
+                        "name": "Firewall Service"
                     }
                 }
             }

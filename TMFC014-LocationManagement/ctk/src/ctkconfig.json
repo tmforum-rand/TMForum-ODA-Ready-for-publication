@@ -21,13 +21,6 @@
                 }
             }
         },
-        "TMF674_v4.0.0": {
-            "GeographicSite": {
-                "POST": {
-                    "payload": {}
-                }
-            }
-        },
         "TMF673_v4.0.0": {
             "GeographicAddressValidation": {
                 "POST": {
@@ -41,6 +34,13 @@
                             "country": "Australia"
                         }
                     }
+                }
+            }
+        },
+        "TMF674_v4.0.0": {
+            "GeographicSite": {
+                "POST": {
+                    "payload": {}
                 }
             }
         }

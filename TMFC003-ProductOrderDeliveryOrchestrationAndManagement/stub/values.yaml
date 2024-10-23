@@ -1,8 +1,13 @@
 component:
   id: tmfc003
   name: tmfc003-productorderdeliveryorchestrationandmanagement
-  publicationDate: '2023-08-18T00:00:00.000Z'
+  publicationDate: '2024-10-17T00:00:00.000Z'
 images:
   tmf669: tmforumorg/tmfc003-tmf669-v4.0.0:latest
+secretsManagement:
+  podSelector:
+    name: '{{.Release.Name}}-{{.Values.component.name}}'
+    namespace: default
+    serviceaccount: default
 security:
   controllerRole: admin

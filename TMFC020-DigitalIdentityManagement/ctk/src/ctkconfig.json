@@ -12,6 +12,15 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC020-DigitalIdentityManagement.yaml",
     "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
         "TMF720_v4.0.0": {
             "DigitalIdentity": {
                 "POST": {
@@ -28,15 +37,6 @@
                                 "id": "2ff80fb3-742f-4acf-ba80-ea787ebb4a05"
                             }
                         ]
-                    }
-                }
-            }
-        },
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
                     }
                 }
             }

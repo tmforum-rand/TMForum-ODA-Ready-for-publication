@@ -7,23 +7,23 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: party-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: party-role-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: user-role-permission-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: payment-method-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF670_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: payment-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF676_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-account-management-api'
       name: account-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/accountManagement/v4/
@@ -38,11 +38,44 @@ spec:
     associations. Provide account balance details. Set-up Billing contacts. Set-up
     Billing preferences (e.g., bill cycle frequency, invoice media type, invoice template
     option, etc.)
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      id: TMF666
+      implementation: /{{.Release.Name}}-accmngt
+      name: AccountManagement
+      port: 80
+      resources:
+      - billingAccountAttributeValueChangeEvent
+      - billingAccountStateChangeEvent
+      specification: https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/TMF666-AccountManagement-v4.0.0.swagger.json
+    subscribedEvents:
+    - apiType: openapi
+      id: TMF669
+      name: PartyRoleManagement
+      port: 80
+      resources:
+      - partyRoleCreateEvent
+      - partyRoleAttributeValueChangeEvent
+      - partyRoleStateChangeEvent
+      - partyRoleDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+    - apiType: openapi
+      id: TMF672
+      name: UserRolePermissionManagement
+      port: 80
+      resources:
+      - permissionCreateEvent
+      - permissionAttributeValueChangeEvent
+      - permissionStateChangeEvent
+      - permissionDeleteEvent
+      - userRoleCreateEvent
+      - userRoleAttributeValueChangeEvent
+      - userRoleStateChangeEvent
+      - userRoleDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
   functionalBlock: PartyManagement
   id: TMFC024
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
   name: BillingAccountManagement
   owners:
   - email: gaetano.biancardi@accenture.com
@@ -51,12 +84,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 2.0.0

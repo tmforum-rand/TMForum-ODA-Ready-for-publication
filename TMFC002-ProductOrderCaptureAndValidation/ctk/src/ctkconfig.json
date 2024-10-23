@@ -32,20 +32,6 @@
                 }
             }
         },
-        "TMF648_v4.0.0": {
-            "Quote": {
-                "POST": {
-                    "payload": {
-                        "quoteItem": [
-                            {
-                                "id": "1",
-                                "action": "add"
-                            }
-                        ]
-                    }
-                }
-            }
-        },
         "TMF669_v4.0.0": {
             "PartyRole": {
                 "POST": {
@@ -59,6 +45,20 @@
             "ShoppingCart": {
                 "POST": {
                     "payload": {}
+                }
+            }
+        },
+        "TMF648_v4.0.0": {
+            "Quote": {
+                "POST": {
+                    "payload": {
+                        "quoteItem": [
+                            {
+                                "id": "1",
+                                "action": "add"
+                            }
+                        ]
+                    }
                 }
             }
         }

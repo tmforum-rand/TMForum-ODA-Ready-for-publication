@@ -1,4 +1,4 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
@@ -6,9 +6,21 @@ spec:
   coreFunction:
     dependentAPIs: []
     exposedAPIs: []
+  description: Event Management component is a messaging management component that
+    is responsible for processing events as they happen from components. Processing
+    of record of activities include modelling event messages, syntax validation and
+    formatting of event messages and sending/receiving messages between components
+    (consumer/producer). Event Management component supports different patterns of
+    usage, including Event notification (subscription), Event-sourcing (representational
+    state changes) and Event-carried state transfer (including data needed to perform
+    further processing). Event Management component should include functionality providing
+    a centralised CQRS queryStore for all components that implement event-sourcing
+    with event carrier state transfer.
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
+    - apiType: openapi
       call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/call-back
+      id: TMF688
       implementation: /{{.Release.Name}}-EventManagement
       name: EventManagement
       port: 80
@@ -23,24 +35,11 @@ spec:
       - HubDeleteEvent
       specification: https://github.com/tmforum-apis/TMF688-EventManagement/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
     subscribedEvents: []
-  description: Event Management component is a messaging management component that
-    is responsible for processing events as they happen from components. Processing
-    of record of activities include modelling event messages, syntax validation and
-    formatting of event messages and sending/receiving messages between components
-    (consumer/producer). Event Management component supports different patterns of
-    usage, including Event notification (subscription), Event-sourcing (representational
-    state changes) and Event-carried state transfer (including data needed to perform
-    further processing). Event Management component should include functionality providing
-    a centralised CQRS queryStore for all components that implement event-sourcing
-    with event carrier state transfer.
   functionalBlock: DecouplingAndIntegration
   id: TMFC019
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
   managementFunction:
     exposedAPIs:
-    - apitype: prometheus
+    - apiType: prometheus
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
@@ -54,12 +53,21 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
       resources: []
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.1

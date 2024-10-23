@@ -12,6 +12,15 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC022-PartyPrivacyManagement.yaml",
     "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
         "TMF644_v4.0.0": {
             "PartyPrivacyProfileSpecification": {
                 "POST": {
@@ -54,15 +63,6 @@
                             "id": "PartyPrivacySpec_156bjhbjkbk57434",
                             "name": "Individual Privacy Spec"
                         }
-                    }
-                }
-            }
-        },
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
                     }
                 }
             }

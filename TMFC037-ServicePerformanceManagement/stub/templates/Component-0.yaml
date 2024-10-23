@@ -7,23 +7,23 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: resource-inventory-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: service-inventory-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: geographic-address-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: geographic-site-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: service-quality-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF657_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-alarm-management-api'
       name: alarm-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/alarm/v4/
@@ -36,11 +36,113 @@ spec:
     These functions build on the Resource Performance data and active end-end service
     performance test data to provide a view of a service. The component provides a
     key input to determine the Quality of Service.
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
+      implementation: /{{.Release.Name}}-processFlowEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/hub
+      id: TMF642
+      implementation: /{{.Release.Name}}-AlarmManagement
+      name: AlarmManagement
+      port: 80
+      resources:
+      - alarmStateChange**
+      - alarmCreateEvent**
+      - alarmClearEvent**
+      - alarmAckEvent**
+      specification: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/hub
+      id: TMF628
+      implementation: /{{.Release.Name}}-PerformanceManagement
+      name: PerformanceManagement
+      port: 80
+      resources:
+      - measurementCollectionJobCreateEvent
+      - measurementCollectionJobExecutionStateChangeEvent
+      - measurementCollectionJobDeleteEvent
+      - measurementCollectionJobAttributeValueChangeEvent
+      - measurementCollectionJobFilesReadyEvent
+      - measurementCollectionJobFilesPreparationErrorEvent
+      - onDemandCollectionCreateEvent
+      - onDemandCollectionExecutionStateChangeEvent
+      - onDemandCollectionDeleteEvent
+      - onDemandCollectionAttributeValueChangeEvent
+      - onDemandCollectionFilesReadyEvent
+      - onDemandCollectionFilesPreparationErrorEvent
+      - thresholdCreateNotification
+      - thresholdChangeNotification
+      - thresholdRuleCreateNotification
+      - thresholdRuleChangedNotification
+      - thresholdJobCreateNotification
+      - thresholdJobChangedNotification
+      - thresholdJobSuspendNotification
+      - thresholdJobResumeNotification
+      specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.1.0.swagger.json
+    subscribedEvents:
+    - apiType: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
+      id: TMF633
+      implementation: /{{.Release.Name}}-ServiceCatalogManagement
+      name: ServiceCatalogManagement
+      port: 80
+      resources:
+      - serviceSpecificationChangeEvent
+      specification: https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+    - apiType: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
+      id: TMF638
+      implementation: /{{.Release.Name}}-ServiceInventoryManagement
+      name: ServiceInventoryManagement
+      port: 80
+      resources:
+      - serviceCreateEvent
+      - serviceAttributeValueChangeEvent
+      - serviceStateChangeEvent
+      - serviceDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/master/TMF638-ServiceInventory-v4.0.0.swagger.json
+    - apiType: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/call-back
+      id: TMF639
+      implementation: /{{.Release.Name}}-ResourceInventory
+      name: ResourceInventoryManagement
+      port: 80
+      resources:
+      - resourceCreateEvent
+      - resourceAttributeValueChangeEvent
+      - resourceStateChangeEvent
+      - resourceDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+    - apiType: openapi
+      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/call-back
+      id: TMF701
+      implementation: /{{.Release.Name}}-ProcessFlowManagement
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      specification: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
   functionalBlock: IntelligenceManagement
   id: TMFC037
-  maintainers:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
   name: ServicePerformanceManagement
   owners:
   - email: milind.2.bhagwat@bt.com
@@ -49,12 +151,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.0

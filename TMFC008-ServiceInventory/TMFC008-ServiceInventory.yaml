@@ -1,12 +1,27 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: ServiceInventory
+  id: TMFC008
+  functionalBlock: Production
+  description: Service Inventory component is responsible for storage and exposure
+    of CFS (Customer Facing Service) that are associated to Product Inventory items.
+    It is also responsible for RFS (Resource Facing Service) definition, mapping between
+    CFS and RFS and mapping with infrastructure/network resources. Service Inventory
+    component has functionality that enables inventory items creation, inventory organization,
+    inventory search or filter, inventory monitoring and tracking, inventory control
+    and inventory auditing.The minimum check to be performed at inventory items creation
+    or update is the global consistency with related Service Catalog information.
+  publicationDate: 2023-08-18 00:00:00
+  status: specified
+  version: 1.1.0
   coreFunction:
     dependentAPIs:
     - id: TMF633
       version: v4.0.0
+      apiType: openapi
       name: service-catalog-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
@@ -17,6 +32,7 @@ spec:
         - GET /id
     - id: TMF669
       version: v4.0.0
+      apiType: openapi
       name: party-role-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
@@ -27,6 +43,7 @@ spec:
         - GET /id
     - id: TMF639
       version: v4.0.0
+      apiType: openapi
       name: resource-inventory-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
@@ -37,6 +54,7 @@ spec:
         - GET /id
     - id: TMF638
       version: v4.0.0
+      apiType: openapi
       name: service-inventory-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
@@ -47,6 +65,7 @@ spec:
         - GET /id
     - id: TMF673
       version: v4.0.0
+      apiType: openapi
       name: geographic-address-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
@@ -60,6 +79,7 @@ spec:
         - GET /id
     - id: TMF674
       version: v4.0.0
+      apiType: openapi
       name: geographic-site-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
@@ -70,6 +90,7 @@ spec:
         - GET /id
     - id: TMF672
       version: v4.0.0
+      apiType: openapi
       name: user-role-permission-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
@@ -80,6 +101,7 @@ spec:
         - GET /id
     - id: TMF632
       version: v4.0.0
+      apiType: openapi
       name: party-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
@@ -94,6 +116,7 @@ spec:
     exposedAPIs:
     - id: TMF638
       version: v4.0.0
+      apiType: openapi
       name: service-inventory-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
@@ -105,9 +128,39 @@ spec:
         - POST
         - PATCH
         - DELETE
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceInventory/hub
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceInventory/hub
       implementation: /{{.Release.Name}}-serviceInventoryEvent
       name: ServiceInventoryManagement
       port: 80
@@ -117,8 +170,9 @@ spec:
       - serviceStateChangeEvent
       - serviceDeleteEvent
       specification: https://github.com/tmforum-apis/TMF638_ServiceInventoryManagement/blob/master/TMF638_ServiceInventoryManagement-v4.0.0.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      apiType: openapi
+      id: TMF638
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
       port: 80
@@ -133,17 +187,19 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      apiType: openapi
+      id: TMF701
     subscribedEvents:
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Resource/call-back
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Resource/call-back
       implementation: /{{.Release.Name}}-ResourceInventoryManagement
       name: ResourceInventoryManagement
       port: 80
       resources:
       - resourceDeleteEvent
       specification: https://open-api.tmforum.org20-ResourceInventory-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
+      apiType: openapi
+      id: null
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
       implementation: /{{.Release.Name}}-ServiceInventoryManagement
       name: ServiceInventoryManagement
       port: 80
@@ -153,48 +209,54 @@ spec:
       - serviceStateChangeEvent
       - serviceDeleteEvent
       specification: https://open-api.tmforum.org20-ServiceInventory-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
+      apiType: openapi
+      id: null
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
       implementation: /{{.Release.Name}}-ServiceCatalogManagement
       name: ServiceCatalogManagement
       port: 80
       resources:
       - serviceSpecificationDeleteEvent
       specification: https://open-api.tmforum.org20-ServiceCatalog-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRole/call-back
+      apiType: openapi
+      id: null
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRole/call-back
       implementation: /{{.Release.Name}}-PartyRoleManagement
       name: PartyRoleManagement
       port: 80
       resources:
       - partyRoleDeleteEvent
       specification: https://open-api.tmforum.org20-PartyRole-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolePermission/call-back
+      apiType: openapi
+      id: null
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolePermission/call-back
       implementation: /{{.Release.Name}}-UserRolePermissionManagement
       name: UserRolePermissionManagement
       port: 80
       resources:
       - permissionDeleteEvent
       specification: https://open-api.tmforum.org20-UserRolePermission-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
+      apiType: openapi
+      id: null
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
       implementation: /{{.Release.Name}}-GeographicSiteManagement
       name: GeographicSiteManagement
       port: 80
       resources:
       - geographicSiteDeleteEvent
       specification: https://open-api.tmforum.org20-GeographicSite-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/call-back
+      apiType: openapi
+      id: null
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/call-back
       implementation: /{{.Release.Name}}-GeographicLocation
       name: GeographicLocation
       port: 80
       resources:
       - geographicLocationDeleteEvent
       specification: https://open-api.tmforum.org20-GeographicLocatin-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/call-back
+      apiType: openapi
+      id: null
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/call-back
       implementation: /{{.Release.Name}}-PartyManagement
       name: PartyManagement
       port: 80
@@ -202,49 +264,14 @@ spec:
       - individualDeleteEvent
       - organizationDeleteEvent
       specification: https://open-api.tmforum.org20-Party-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceOrdering/call-back
+      apiType: openapi
+      id: null
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceOrdering/call-back
       implementation: /{{.Release.Name}}-ServiceOrderingManagement
       name: ServiceOrderingManagement
       port: 80
       resources:
       - serviceOrderDeleteEvent
       specification: https://open-api.tmforum.org20-ServiceOrdering-v4.0.0.swagger.json
-  description: Service Inventory component is responsible for storage and exposure
-    of CFS (Customer Facing Service) that are associated to Product Inventory items.
-    It is also responsible for RFS (Resource Facing Service) definition, mapping between
-    CFS and RFS and mapping with infrastructure/network resources. Service Inventory
-    component has functionality that enables inventory items creation, inventory organization,
-    inventory search or filter, inventory monitoring and tracking, inventory control
-    and inventory auditing.The minimum check to be performed at inventory items creation
-    or update is the global consistency with related Service Catalog information.
-  functionalBlock: Production
-  id: TMFC008
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  name: ServiceInventory
-  owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  publicationDate: 2023-08-18 00:00:00
-  status: specified
-  version: 1.1.0
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      apiType: openapi
+      id: null

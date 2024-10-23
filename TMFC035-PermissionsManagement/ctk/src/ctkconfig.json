@@ -12,7 +12,7 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC035-PermissionsManagement.yaml",
     "payloads": {
-        "TMF669-PartyRole": {
+        "TMF669_v4.0.0": {
             "PartyRole": {
                 "POST": {
                     "payload": {
@@ -21,7 +21,7 @@
                 }
             }
         },
-        "TMF669_v4.0.0": {
+        "TMF669-PartyRole": {
             "PartyRole": {
                 "POST": {
                     "payload": {

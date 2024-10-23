@@ -1,11 +1,12 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF632
+    - apiType: openapi
+      id: TMF632
       name: party-management-api
       port: 8080
       required: false
@@ -18,7 +19,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF633
+    - apiType: openapi
+      id: TMF633
       name: service-catalog-management-api
       port: 8080
       required: true
@@ -28,7 +30,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF638
+    - apiType: openapi
+      id: TMF638
       name: service-inventory-management-api
       port: 8080
       required: true
@@ -41,7 +44,8 @@ spec:
         - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF639
+    - apiType: openapi
+      id: TMF639
       name: resource-inventory-management-api
       port: 8080
       required: false
@@ -51,7 +55,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF640
+    - apiType: openapi
+      id: TMF640
       name: service-activation-management-api
       port: 8080
       required: false
@@ -61,7 +66,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF640_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF645
+    - apiType: openapi
+      id: TMF645
       name: service-qualification-management-api
       port: 8080
       required: false
@@ -78,7 +84,8 @@ spec:
         - PATCH
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF645_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF646
+    - apiType: openapi
+      id: TMF646
       name: appointment-management-api
       port: 8080
       required: false
@@ -95,7 +102,8 @@ spec:
         - PATCH
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF646_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF652
+    - apiType: openapi
+      id: TMF652
       name: resource-order-management-api
       port: 8080
       required: false
@@ -114,7 +122,8 @@ spec:
         - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF652_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: false
@@ -124,7 +133,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF673
+    - apiType: openapi
+      id: TMF673
       name: geographic-address-management-api
       port: 8080
       required: false
@@ -141,7 +151,8 @@ spec:
         - POST
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF674
+    - apiType: openapi
+      id: TMF674
       name: geographic-site-management-api
       port: 8080
       required: false
@@ -151,7 +162,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF681
+    - apiType: openapi
+      id: TMF681
       name: communication-management-api
       port: 8080
       required: false
@@ -162,9 +174,20 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF681_v4.0.0.swagger.json
       version: v4.0.0
     exposedAPIs: []
+  description: The SOM is the entry point of the Production Domain. It oversees Customer-Facing-Service
+    (CFS) delivery of resources (network and service platforms equipment). The SOM
+    exposes in particular the API ServiceOrder. It is triggered when the Product Order
+    Orchestration Management component calls this API to request CFS delivery. To
+    achieve delivery of a CFS, the SOM orchestrates the CFS delivery process which.
+    Identifies possible RFS and chooses one, using the catalog and technical inventory.
+    Selects the resources (servers, equipment, etc.) and their instances. Requests
+    the ROM to update selected resource instances to deliver CFS. Request sent to
+    the ROM contain the CFS and the list of configured resource instances to update.
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceOrdeManagement/hub
+      id: TMF641
       name: TMF641 Service Ordering Management API
       port: 80
       resources:
@@ -179,8 +202,9 @@ spec:
       - cancelServiceOrderStateChangeEvent
       - cancelServiceOrderInformationRequiredEvent
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
       name: ProcessFlowManagement
       port: 80
       resources:
@@ -195,8 +219,9 @@ spec:
       - taskFlowInformationRequiredEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
     subscribedEvents:
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrderManagement/hub
+      id: TMF634
       name: ResourceOrderManagement
       port: 80
       resources:
@@ -206,47 +231,36 @@ spec:
       - cancelResourceOrderStateChange
       - cancelResourceOrderInformationRequiredEvent
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/hub
+      id: TMF645
       name: ServiceQualification
       port: 80
       resources:
       - checkServiceQualificationStateChangeEvent
       - queryServiceQualificationStateChangeEvent
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Communication/hub
+      id: TMF681
       name: Communication
       port: 80
       resources:
       - communicationMessageStateChangeEvent
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
-    - apitype: openapi
+    - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/WorkOrder/hub
+      id: TMF697
       name: WorkOrder
       port: 80
       resources:
       - workOrderStateChange
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/4.0.0/swagger/TMF697_Work_Order_Management_API_v4.0.0_swagger.json
-  description: The SOM is the entry point of the Production Domain. It oversees Customer-Facing-Service
-    (CFS) delivery of resources (network and service platforms equipment). The SOM
-    exposes in particular the API ServiceOrder. It is triggered when the Product Order
-    Orchestration Management component calls this API to request CFS delivery. To
-    achieve delivery of a CFS, the SOM orchestrates the CFS delivery process which.
-    Identifies possible RFS and chooses one, using the catalog and technical inventory.
-    Selects the resources (servers, equipment, etc.) and their instances. Requests
-    the ROM to update selected resource instances to deliver CFS. Request sent to
-    the ROM contain the CFS and the list of configured resource instances to update.
   functionalBlock: Production
   id: TMFC007
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  - email: sylvie.demarest@orange.com
-    name: Sylvie Demarest
   managementFunction:
     exposedAPIs:
-    - apitype: prometheus
+    - apiType: prometheus
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
@@ -262,12 +276,21 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
       resources: []
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 2.0.0

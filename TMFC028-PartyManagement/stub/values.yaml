@@ -1,11 +1,14 @@
 component:
   id: tmfc028
   name: tmfc028-partymanagement
-  publicationDate: '2023-08-18T00:00:00.000Z'
+  publicationDate: '2024-10-17T00:00:00.000Z'
 images:
-  tmf629: tmforumorg/tmfc028-tmf629-v4.0.0:latest
   tmf632: tmforumorg/tmfc028-tmf632-v4.0.0:latest
-  tmf668: tmforumorg/tmfc028-tmf668-v4.0.0:latest
   tmf669: tmforumorg/tmfc028-tmf669-v4.0.0:latest
+secretsManagement:
+  podSelector:
+    name: '{{.Release.Name}}-{{.Values.component.name}}'
+    namespace: default
+    serviceaccount: default
 security:
   controllerRole: admin

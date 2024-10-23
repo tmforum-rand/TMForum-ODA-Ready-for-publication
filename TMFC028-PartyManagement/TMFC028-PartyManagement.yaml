@@ -1,25 +1,24 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: PartyManagement
+  id: TMFC028
+  functionalBlock: PartyManagement
+  description: 'Party Management component is responsible for the capture, validation
+    and management of Parties and their Roles. A Party may be an individual or organization
+    that has a relationship with an enterprise. In this context it is responsible
+    for the e2e life cycle of: Individual, Organization. and its related sub-entities:Contact
+    Medium, Currency and tax exemption certificates, Identification, Community'
+  publicationDate: 2024-10-14 00:00:00
+  status: specified
+  version: 2.1.0
   coreFunction:
     dependentAPIs:
-    - id: TMF672
-      version: v4.0.0
-      name: user-role-permission-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
-      port: 8080
-      resources:
-      - permission:
-        - GET
-        - GET/id
-      - role:
-        - GET
-        - GET/id
     - id: TMF669
       version: v4.0.0
+      apiType: openapi
       name: party-role-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
@@ -30,50 +29,30 @@ spec:
         - GET /id
     - id: TMF673
       version: v4.0.0
+      apiType: openapi
       name: geographic-address-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
       port: 8080
       resources:
-      - GeographicAddress:
+      - geographicAddress:
         - GET
         - GET /id
-      - apitype: openapi
-        id: TMF674
-        isRequired: 'no'
-        name: GeographicSiteManagement
-        resources: null
-        specification: https://github.com/tmforum-apis/TMF674-GeographicSiteManagement/blob/master/TMF674-GeographicSiteManagement-v4.0.0.swagger.json
-        version: 4
-      - GeographicSite:
-        - GET
-        - GET /id
-      - apitype: openapi
-        id: TMF675
-        isRequired: 'no'
-        name: GeographicLocationManagement
-        resources: null
-        specification: https://github.com/tmforum-apis/TMF675-GeographicLocationManagement/blob/master/TMF675-GeographicLocationManagement-v4.0.0.swagger.json
-        version: 4
-      - GeographicLocation:
+    - id: TMF674
+      version: v4.0.0
+      apiType: openapi
+      name: geographic-site-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
+      port: 8080
+      resources:
+      - geographicSite:
         - GET
         - GET /id
     exposedAPIs:
-    - id: TMF668
-      version: v4.0.0
-      name: partnership-type-management-api
-      required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF668_v4.0.0.swagger.json
-      port: 8080
-      resources:
-      - partnershipSpecification:
-        - GET
-        - GET/id
-        - POST
-        - PATCH/id
-        - DELETE/id
     - id: TMF632
       version: v4.0.0
+      apiType: openapi
       name: party-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
@@ -91,35 +70,41 @@ spec:
         - POST
         - PATCH/id
         - DELETE/id
-    - id: TMF629
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
       version: v4.0.0
-      name: customer-management-api
-      required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF629_v4.0.0.swagger.json
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       port: 8080
-      resources:
-      - customer:
-        - GET
-        - GET/id
-        - POST
-        - PATCH/id
-        - DELETE/id
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      implementation: /{{.Release.Name}}-partnermngtapi
-      name: PartnershipTypeMaagement
-      port: 80
-      resources:
-      - PartnershipCreateEvent
-      - PartnershipChangeEvent
-      - PartnershipDeleteEvent
-      - PartnershipSpecificationCreateEvent
-      - PartnershipSpecificationChangeEvent
-      - PartnershipSpecificationDeleteEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF668_PartnershipTypeManagement/master/TMF668-PartnershipTypeManagement-v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       implementation: /{{.Release.Name}}-partymngtapi
-      name: partyManagement
+      name: Party Management API
       port: 80
       resources:
       - IndividualCreateEvent
@@ -131,65 +116,5 @@ spec:
       - OrganizationStateChangeEvent
       - OrganizationDeleteEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
-    - apitype: openapi
-      implementation: /{{.Release.Name}}-custmngtapi
-      name: CustomerManagement
-      port: 80
-      resources:
-      - CustomerCreateEvent
-      - CustomerAttributeValueChangeEvent
-      - CustomerStateChangeEvent
-      - CustomerDeleteEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF629_CustomerManagement/master/TMF629-CustomerManagement-v4.0.0.swagger.json
-    subscribedEvents:
-    - apitype: openapi
-      name: UserRolesandPermissions
-      port: 80
-      resources:
-      - UserRoleCreationNotification
-      - UserRoleChangeNotification
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRolesandPermissions/master/TMF672-UserRolesandPermissions-v4.0.0.swagger.json
-    - apitype: openapi
-      name: PartyRoleManagement
-      port: 80
-      resources:
-      - PartyRoleCreateEvent
-      - PartyRoleAttributeValueChangeEvent
-      - PartyRoleStateChangeEvent
-      - PartyRoleDeleteEvent
-      specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
-  description: 'Party Management component is responsible for the capture, validation
-    and management of Parties and their Roles. A Party may be an individual or organization
-    that has a relationship with an enterprise. In this context it is responsible
-    for the e2e life cycle of: Individual, Organization. and its related sub-entities:Contact
-    Medium, Currency and tax exemption certificates, Identification, Community'
-  functionalBlock: PartyManagement
-  id: TMFC028
-  maintainers:
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
-  name: PartyManagement
-  owners:
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
-  publicationDate: 2023-08-18 00:00:00
-  status: specified
-  version: 1.3.1
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      id: TMF632
+    subscribedEvents: []

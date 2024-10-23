@@ -1,11 +1,12 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF632
+    - apiType: openapi
+      id: TMF632
       name: party-management-api
       port: 8080
       required: true
@@ -18,7 +19,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
@@ -28,7 +30,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF672
+    - apiType: openapi
+      id: TMF672
       name: user-role-permission-management-api
       port: 8080
       required: true
@@ -41,7 +44,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF670
+    - apiType: openapi
+      id: TMF670
       name: payment-method-management-api
       port: 8080
       required: false
@@ -51,7 +55,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF670_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF676
+    - apiType: openapi
+      id: TMF676
       name: payment-management-api
       port: 8080
       required: false
@@ -62,7 +67,8 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF676_v4.0.0.swagger.json
       version: v4.0.0
     exposedAPIs:
-    - id: TMF666
+    - apiType: openapi
+      id: TMF666
       name: account-management-api
       port: 8080
       required: true
@@ -93,8 +99,18 @@ spec:
         - DELETE /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json
       version: v4.0.0
+  description: The billing account management component aims to provide all the needed
+    functionalities to create, configure and modify billing accounts. BAM component
+    has the goal to support and handle the following capabilities/ functionalities.
+    Set-up/ creation of Billing account. Associate payment plan(s). Associate payment
+    method(s) - optional. Account taxes/ fees exception management. Define account
+    associations. Provide account balance details. Set-up Billing contacts. Set-up
+    Billing preferences (e.g., bill cycle frequency, invoice media type, invoice template
+    option, etc.)
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
+    - apiType: openapi
+      id: TMF666
       implementation: /{{.Release.Name}}-accmngt
       name: AccountManagement
       port: 80
@@ -103,7 +119,8 @@ spec:
       - billingAccountStateChangeEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/TMF666-AccountManagement-v4.0.0.swagger.json
     subscribedEvents:
-    - apitype: openapi
+    - apiType: openapi
+      id: TMF669
       name: PartyRoleManagement
       port: 80
       resources:
@@ -112,7 +129,8 @@ spec:
       - partyRoleStateChangeEvent
       - partyRoleDeleteEvent
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
+      id: TMF672
       name: UserRolePermissionManagement
       port: 80
       resources:
@@ -125,22 +143,11 @@ spec:
       - userRoleStateChangeEvent
       - userRoleDeleteEvent
       specification: https://github.com/tmforum-apis/TMF672-UserRolePermission/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
-  description: The billing account management component aims to provide all the needed
-    functionalities to create, configure and modify billing accounts. BAM component
-    has the goal to support and handle the following capabilities/ functionalities.
-    Set-up/ creation of Billing account. Associate payment plan(s). Associate payment
-    method(s) - optional. Account taxes/ fees exception management. Define account
-    associations. Provide account balance details. Set-up Billing contacts. Set-up
-    Billing preferences (e.g., bill cycle frequency, invoice media type, invoice template
-    option, etc.)
   functionalBlock: PartyManagement
   id: TMFC024
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
   managementFunction:
     exposedAPIs:
-    - apitype: prometheus
+    - apiType: prometheus
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
@@ -154,12 +161,21 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
       resources: []
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 2.0.0

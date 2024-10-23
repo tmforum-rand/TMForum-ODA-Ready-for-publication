@@ -1,0 +1,612 @@
+{
+  "response": {
+    "statusCode": 200,
+    "body": {
+      "apiVersion": "oda.tmforum.org/v1beta3",
+      "items": [
+        {
+          "apiVersion": "oda.tmforum.org/v1beta3",
+          "kind": "Component",
+          "metadata": {
+            "annotations": {
+              "kopf.zalando.org/last-handled-configuration": "{\"spec\":{\"coreFunction\":{\"dependentAPIs\":[{\"apitype\":\"openapi\",\"name\":\"product-catalog-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"party-role-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"resource-inventory-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"agreement-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF651_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"geographic-address-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"geographic-site-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"user-role-permission-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"account-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"party-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"product-inventory-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"service-inventory-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"product-ordering-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF622_v4.0.0.swagger.json\"}],\"exposedAPIs\":[{\"apitype\":\"openapi\",\"implementation\":\"r1-product-inventory-management-api\",\"name\":\"product-inventory-management-api\",\"path\":\"/r1-tmfc005-productinventory/tmf-api/productInventory/v4/\",\"port\":8080,\"specification\":[\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json\"]}]},\"description\":\"Product  Inventory component is responsible for storage and exposure of products that are assigned to and used by Parties. Product Inventory component has functionality that enables inventory items creation, inventory organization, inventory search or filter, inventory monitoring and tracking, inventory control and inventory auditing. The minimum check to be performed at inventory items creation or update is the global consistency with related Product Catalog information.\",\"functionalBlock\":\"CoreCommerceManagement\",\"id\":\"TMFC005\",\"maintainers\":[{\"email\":\"gaetano.biancardi@accenture.com\",\"name\":\"Gaetano Biancardi\"}],\"name\":\"ProductInventory\",\"owners\":[{\"email\":\"gaetano.biancardi@accenture.com\",\"name\":\"Gaetano Biancardi\"}],\"publicationDate\":\"2023-08-18T00:00:00.000Z\",\"securityFunction\":{\"controllerRole\":\"admin\",\"exposedAPIs\":[{\"apitype\":\"openapi\",\"implementation\":\"r1-partyrole-management-api\",\"name\":\"partyrole-management-api\",\"path\":\"/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4\",\"port\":8080,\"specification\":[\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json\"]}]},\"status\":\"specified\",\"version\":\"1.1.1\"},\"metadata\":{\"labels\":{\"app.kubernetes.io/managed-by\":\"Helm\",\"oda.tmforum.org/componentName\":\"r1-tmfc005-productinventory\"},\"annotations\":{\"meta.helm.sh/release-name\":\"r1\",\"meta.helm.sh/release-namespace\":\"components\"}},\"status\":{\"coreAPIs\":[{\"implementation\":\"r1-product-inventory-management-api\",\"ip\":\"a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com\",\"name\":\"r1-tmfc005-productinventory-product-inventory-management-api\",\"path\":\"/r1-tmfc005-productinventory/tmf-api/productInventory/v4/\",\"port\":8080,\"ready\":true,\"uid\":\"ee200bb6-d22b-45cc-8fc7-633b6698cb32\",\"url\":\"http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/productInventory/v4/\"}],\"managementAPIs\":[],\"publishedEvents\":[],\"securityAPIs\":[{\"implementation\":\"r1-partyrole-management-api\",\"ip\":\"a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com\",\"name\":\"r1-tmfc005-productinventory-partyrole-management-api\",\"path\":\"/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4\",\"port\":8080,\"ready\":true,\"uid\":\"95f019d3-d436-4cf3-86c8-c285aa932e25\",\"url\":\"http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4\"}],\"security_client_add/status.summary/status.deployment_status\":{\"identityProvider\":\"Keycloak\",\"listenerRegistered\":true},\"subscribedEvents\":[],\"summary/status\":{\"coreAPIsummary\":\"http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/productInventory/v4/ \",\"deployment_status\":\"Complete\",\"developerUIsummary\":\"\",\"managementAPIsummary\":\"\",\"securityAPIsummary\":\"http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4 \"}}}\n",
+              "meta.helm.sh/release-name": "r1",
+              "meta.helm.sh/release-namespace": "components"
+            },
+            "creationTimestamp": "2024-07-05T10:44:48Z",
+            "finalizers": [
+              "kopf.zalando.org/KopfFinalizerMarker"
+            ],
+            "generation": 49,
+            "labels": {
+              "app.kubernetes.io/managed-by": "Helm",
+              "oda.tmforum.org/componentName": "r1-tmfc005-productinventory"
+            },
+            "managedFields": [
+              {
+                "apiVersion": "oda.tmforum.org/v1beta3",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                  "f:metadata": {
+                    "f:annotations": {
+                      ".": {},
+                      "f:meta.helm.sh/release-name": {},
+                      "f:meta.helm.sh/release-namespace": {}
+                    },
+                    "f:labels": {
+                      ".": {},
+                      "f:app.kubernetes.io/managed-by": {},
+                      "f:oda.tmforum.org/componentName": {}
+                    }
+                  },
+                  "f:spec": {
+                    ".": {},
+                    "f:coreFunction": {
+                      ".": {},
+                      "f:dependentAPIs": {},
+                      "f:exposedAPIs": {}
+                    },
+                    "f:description": {},
+                    "f:functionalBlock": {},
+                    "f:id": {},
+                    "f:maintainers": {},
+                    "f:name": {},
+                    "f:owners": {},
+                    "f:publicationDate": {},
+                    "f:securityFunction": {
+                      ".": {},
+                      "f:controllerRole": {},
+                      "f:exposedAPIs": {}
+                    },
+                    "f:status": {},
+                    "f:version": {}
+                  }
+                },
+                "manager": "helm",
+                "operation": "Update",
+                "time": "2024-07-05T10:44:48Z"
+              },
+              {
+                "apiVersion": "oda.tmforum.org/v1beta3",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                  "f:status": {
+                    "f:coreAPIs": {},
+                    "f:securityAPIs": {}
+                  }
+                },
+                "manager": "OpenAPI-Generator",
+                "operation": "Update",
+                "time": "2024-07-05T10:45:29Z"
+              },
+              {
+                "apiVersion": "oda.tmforum.org/v1beta3",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                  "f:metadata": {
+                    "f:annotations": {
+                      "f:kopf.zalando.org/last-handled-configuration": {}
+                    },
+                    "f:finalizers": {
+                      ".": {},
+                      "v:\"kopf.zalando.org/KopfFinalizerMarker\"": {}
+                    }
+                  },
+                  "f:status": {
+                    ".": {},
+                    "f:kopf": {
+                      ".": {},
+                      "f:progress": {}
+                    },
+                    "f:managementAPIs": {},
+                    "f:publishedEvents": {},
+                    "f:security_client_add/status.summary/status.deployment_status": {
+                      ".": {},
+                      "f:identityProvider": {},
+                      "f:listenerRegistered": {}
+                    },
+                    "f:subscribedEvents": {},
+                    "f:summary/status": {
+                      ".": {},
+                      "f:coreAPIsummary": {},
+                      "f:deployment_status": {},
+                      "f:developerUIsummary": {},
+                      "f:managementAPIsummary": {},
+                      "f:securityAPIsummary": {}
+                    }
+                  }
+                },
+                "manager": "kopf",
+                "operation": "Update",
+                "time": "2024-07-05T10:45:34Z"
+              }
+            ],
+            "name": "r1-tmfc005-productinventory",
+            "namespace": "components",
+            "resourceVersion": "28376156",
+            "uid": "d6b854f1-76a6-4a26-a8f3-1dc7ffbd1b9c"
+          },
+          "spec": {
+            "coreFunction": {
+              "dependentAPIs": [
+                {
+                  "apitype": "openapi",
+                  "name": "product-catalog-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "party-role-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "resource-inventory-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "agreement-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF651_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "geographic-address-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "geographic-site-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "user-role-permission-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "account-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "party-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "product-inventory-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "service-inventory-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json"
+                },
+                {
+                  "apitype": "openapi",
+                  "name": "product-ordering-management-api",
+                  "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF622_v4.0.0.swagger.json"
+                }
+              ],
+              "exposedAPIs": [
+                {
+                  "apitype": "openapi",
+                  "implementation": "r1-product-inventory-management-api",
+                  "name": "product-inventory-management-api",
+                  "path": "/r1-tmfc005-productinventory/tmf-api/productInventory/v4/",
+                  "port": 8080,
+                  "specification": [
+                    "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json"
+                  ]
+                }
+              ]
+            },
+            "description": "Product  Inventory component is responsible for storage and exposure of products that are assigned to and used by Parties. Product Inventory component has functionality that enables inventory items creation, inventory organization, inventory search or filter, inventory monitoring and tracking, inventory control and inventory auditing. The minimum check to be performed at inventory items creation or update is the global consistency with related Product Catalog information.",
+            "functionalBlock": "CoreCommerceManagement",
+            "id": "TMFC005",
+            "maintainers": [
+              {
+                "email": "gaetano.biancardi@accenture.com",
+                "name": "Gaetano Biancardi"
+              }
+            ],
+            "name": "ProductInventory",
+            "owners": [
+              {
+                "email": "gaetano.biancardi@accenture.com",
+                "name": "Gaetano Biancardi"
+              }
+            ],
+            "publicationDate": "2023-08-18T00:00:00.000Z",
+            "securityFunction": {
+              "controllerRole": "admin",
+              "exposedAPIs": [
+                {
+                  "apitype": "openapi",
+                  "implementation": "r1-partyrole-management-api",
+                  "name": "partyrole-management-api",
+                  "path": "/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4",
+                  "port": 8080,
+                  "specification": [
+                    "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json"
+                  ]
+                }
+              ]
+            },
+            "status": "specified",
+            "version": "1.1.1"
+          },
+          "status": {
+            "coreAPIs": [
+              {
+                "implementation": "r1-product-inventory-management-api",
+                "ip": "a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com",
+                "name": "r1-tmfc005-productinventory-product-inventory-management-api",
+                "path": "/r1-tmfc005-productinventory/tmf-api/productInventory/v4/",
+                "port": 8080,
+                "ready": true,
+                "uid": "ee200bb6-d22b-45cc-8fc7-633b6698cb32",
+                "url": "http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/productInventory/v4/"
+              }
+            ],
+            "kopf": {
+              "progress": {}
+            },
+            "managementAPIs": [],
+            "publishedEvents": [],
+            "securityAPIs": [
+              {
+                "implementation": "r1-partyrole-management-api",
+                "ip": "a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com",
+                "name": "r1-tmfc005-productinventory-partyrole-management-api",
+                "path": "/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4",
+                "port": 8080,
+                "ready": true,
+                "uid": "95f019d3-d436-4cf3-86c8-c285aa932e25",
+                "url": "http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4"
+              }
+            ],
+            "security_client_add/status.summary/status.deployment_status": {
+              "identityProvider": "Keycloak",
+              "listenerRegistered": true
+            },
+            "subscribedEvents": [],
+            "summary/status": {
+              "coreAPIsummary": "http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/productInventory/v4/ ",
+              "deployment_status": "Complete",
+              "developerUIsummary": "",
+              "managementAPIsummary": "",
+              "securityAPIsummary": "http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4 "
+            }
+          }
+        }
+      ],
+      "kind": "ComponentList",
+      "metadata": {
+        "continue": "",
+        "resourceVersion": "28377771"
+      }
+    },
+    "headers": {
+      "audit-id": "6b65642e-44d2-4bac-bbd4-59bcee8fd9c1",
+      "cache-control": "no-cache, private",
+      "content-type": "application/json",
+      "x-kubernetes-pf-flowschema-uid": "30b15b5a-1db5-475c-bfec-e4087aa7be90",
+      "x-kubernetes-pf-prioritylevel-uid": "01b212dd-7eb2-4533-8bb7-f5fc90e07e69",
+      "date": "Fri, 05 Jul 2024 10:49:41 GMT",
+      "connection": "close",
+      "transfer-encoding": "chunked"
+    },
+    "request": {
+      "uri": {
+        "protocol": "https:",
+        "slashes": true,
+        "auth": null,
+        "host": "4a1b6abb52a863b38c4cb8d1f08c4744.gr7.eu-west-2.eks.amazonaws.com",
+        "port": null,
+        "hostname": "4a1b6abb52a863b38c4cb8d1f08c4744.gr7.eu-west-2.eks.amazonaws.com",
+        "hash": null,
+        "search": "?fieldSelector=metadata.name%3Dr1-tmfc005-productinventory",
+        "query": "fieldSelector=metadata.name%3Dr1-tmfc005-productinventory",
+        "pathname": "/apis/oda.tmforum.org/v1beta3/namespaces/components/components",
+        "path": "/apis/oda.tmforum.org/v1beta3/namespaces/components/components?fieldSelector=metadata.name%3Dr1-tmfc005-productinventory",
+        "href": "https://4a1b6abb52a863b38c4cb8d1f08c4744.gr7.eu-west-2.eks.amazonaws.com/apis/oda.tmforum.org/v1beta3/namespaces/components/components?fieldSelector=metadata.name%3Dr1-tmfc005-productinventory"
+      },
+      "method": "GET",
+      "headers": {
+        "Accept": "application/json",
+        "Authorization": "Bearer k8s-aws-v1.aHR0cHM6Ly9zdHMuZXUtd2VzdC0yLmFtYXpvbmF3cy5jb20vP0FjdGlvbj1HZXRDYWxsZXJJZGVudGl0eSZWZXJzaW9uPTIwMTEtMDYtMTUmWC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBNEhNM01KVDZNQUlKUU5FUiUyRjIwMjQwNzA1JTJGZXUtd2VzdC0yJTJGc3RzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNDA3MDVUMTA0OTQwWiZYLUFtei1FeHBpcmVzPTYwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCUzQngtazhzLWF3cy1pZCZYLUFtei1TaWduYXR1cmU9NzRmYWI4MjI1NWRlNjM2YzZhOTFlMjgwNTRmMDIwNThlMGU4YzhjNDQwNzhkYzc1YTZhYTM0OGMzNzQ1N2VkMQ"
+      }
+    }
+  },
+  "body": {
+    "apiVersion": "oda.tmforum.org/v1beta3",
+    "items": [
+      {
+        "apiVersion": "oda.tmforum.org/v1beta3",
+        "kind": "Component",
+        "metadata": {
+          "annotations": {
+            "kopf.zalando.org/last-handled-configuration": "{\"spec\":{\"coreFunction\":{\"dependentAPIs\":[{\"apitype\":\"openapi\",\"name\":\"product-catalog-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"party-role-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"resource-inventory-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"agreement-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF651_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"geographic-address-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"geographic-site-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"user-role-permission-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"account-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"party-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"product-inventory-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"service-inventory-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json\"},{\"apitype\":\"openapi\",\"name\":\"product-ordering-management-api\",\"specification\":\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF622_v4.0.0.swagger.json\"}],\"exposedAPIs\":[{\"apitype\":\"openapi\",\"implementation\":\"r1-product-inventory-management-api\",\"name\":\"product-inventory-management-api\",\"path\":\"/r1-tmfc005-productinventory/tmf-api/productInventory/v4/\",\"port\":8080,\"specification\":[\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json\"]}]},\"description\":\"Product  Inventory component is responsible for storage and exposure of products that are assigned to and used by Parties. Product Inventory component has functionality that enables inventory items creation, inventory organization, inventory search or filter, inventory monitoring and tracking, inventory control and inventory auditing. The minimum check to be performed at inventory items creation or update is the global consistency with related Product Catalog information.\",\"functionalBlock\":\"CoreCommerceManagement\",\"id\":\"TMFC005\",\"maintainers\":[{\"email\":\"gaetano.biancardi@accenture.com\",\"name\":\"Gaetano Biancardi\"}],\"name\":\"ProductInventory\",\"owners\":[{\"email\":\"gaetano.biancardi@accenture.com\",\"name\":\"Gaetano Biancardi\"}],\"publicationDate\":\"2023-08-18T00:00:00.000Z\",\"securityFunction\":{\"controllerRole\":\"admin\",\"exposedAPIs\":[{\"apitype\":\"openapi\",\"implementation\":\"r1-partyrole-management-api\",\"name\":\"partyrole-management-api\",\"path\":\"/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4\",\"port\":8080,\"specification\":[\"https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json\"]}]},\"status\":\"specified\",\"version\":\"1.1.1\"},\"metadata\":{\"labels\":{\"app.kubernetes.io/managed-by\":\"Helm\",\"oda.tmforum.org/componentName\":\"r1-tmfc005-productinventory\"},\"annotations\":{\"meta.helm.sh/release-name\":\"r1\",\"meta.helm.sh/release-namespace\":\"components\"}},\"status\":{\"coreAPIs\":[{\"implementation\":\"r1-product-inventory-management-api\",\"ip\":\"a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com\",\"name\":\"r1-tmfc005-productinventory-product-inventory-management-api\",\"path\":\"/r1-tmfc005-productinventory/tmf-api/productInventory/v4/\",\"port\":8080,\"ready\":true,\"uid\":\"ee200bb6-d22b-45cc-8fc7-633b6698cb32\",\"url\":\"http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/productInventory/v4/\"}],\"managementAPIs\":[],\"publishedEvents\":[],\"securityAPIs\":[{\"implementation\":\"r1-partyrole-management-api\",\"ip\":\"a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com\",\"name\":\"r1-tmfc005-productinventory-partyrole-management-api\",\"path\":\"/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4\",\"port\":8080,\"ready\":true,\"uid\":\"95f019d3-d436-4cf3-86c8-c285aa932e25\",\"url\":\"http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4\"}],\"security_client_add/status.summary/status.deployment_status\":{\"identityProvider\":\"Keycloak\",\"listenerRegistered\":true},\"subscribedEvents\":[],\"summary/status\":{\"coreAPIsummary\":\"http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/productInventory/v4/ \",\"deployment_status\":\"Complete\",\"developerUIsummary\":\"\",\"managementAPIsummary\":\"\",\"securityAPIsummary\":\"http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4 \"}}}\n",
+            "meta.helm.sh/release-name": "r1",
+            "meta.helm.sh/release-namespace": "components"
+          },
+          "creationTimestamp": "2024-07-05T10:44:48Z",
+          "finalizers": [
+            "kopf.zalando.org/KopfFinalizerMarker"
+          ],
+          "generation": 49,
+          "labels": {
+            "app.kubernetes.io/managed-by": "Helm",
+            "oda.tmforum.org/componentName": "r1-tmfc005-productinventory"
+          },
+          "managedFields": [
+            {
+              "apiVersion": "oda.tmforum.org/v1beta3",
+              "fieldsType": "FieldsV1",
+              "fieldsV1": {
+                "f:metadata": {
+                  "f:annotations": {
+                    ".": {},
+                    "f:meta.helm.sh/release-name": {},
+                    "f:meta.helm.sh/release-namespace": {}
+                  },
+                  "f:labels": {
+                    ".": {},
+                    "f:app.kubernetes.io/managed-by": {},
+                    "f:oda.tmforum.org/componentName": {}
+                  }
+                },
+                "f:spec": {
+                  ".": {},
+                  "f:coreFunction": {
+                    ".": {},
+                    "f:dependentAPIs": {},
+                    "f:exposedAPIs": {}
+                  },
+                  "f:description": {},
+                  "f:functionalBlock": {},
+                  "f:id": {},
+                  "f:maintainers": {},
+                  "f:name": {},
+                  "f:owners": {},
+                  "f:publicationDate": {},
+                  "f:securityFunction": {
+                    ".": {},
+                    "f:controllerRole": {},
+                    "f:exposedAPIs": {}
+                  },
+                  "f:status": {},
+                  "f:version": {}
+                }
+              },
+              "manager": "helm",
+              "operation": "Update",
+              "time": "2024-07-05T10:44:48Z"
+            },
+            {
+              "apiVersion": "oda.tmforum.org/v1beta3",
+              "fieldsType": "FieldsV1",
+              "fieldsV1": {
+                "f:status": {
+                  "f:coreAPIs": {},
+                  "f:securityAPIs": {}
+                }
+              },
+              "manager": "OpenAPI-Generator",
+              "operation": "Update",
+              "time": "2024-07-05T10:45:29Z"
+            },
+            {
+              "apiVersion": "oda.tmforum.org/v1beta3",
+              "fieldsType": "FieldsV1",
+              "fieldsV1": {
+                "f:metadata": {
+                  "f:annotations": {
+                    "f:kopf.zalando.org/last-handled-configuration": {}
+                  },
+                  "f:finalizers": {
+                    ".": {},
+                    "v:\"kopf.zalando.org/KopfFinalizerMarker\"": {}
+                  }
+                },
+                "f:status": {
+                  ".": {},
+                  "f:kopf": {
+                    ".": {},
+                    "f:progress": {}
+                  },
+                  "f:managementAPIs": {},
+                  "f:publishedEvents": {},
+                  "f:security_client_add/status.summary/status.deployment_status": {
+                    ".": {},
+                    "f:identityProvider": {},
+                    "f:listenerRegistered": {}
+                  },
+                  "f:subscribedEvents": {},
+                  "f:summary/status": {
+                    ".": {},
+                    "f:coreAPIsummary": {},
+                    "f:deployment_status": {},
+                    "f:developerUIsummary": {},
+                    "f:managementAPIsummary": {},
+                    "f:securityAPIsummary": {}
+                  }
+                }
+              },
+              "manager": "kopf",
+              "operation": "Update",
+              "time": "2024-07-05T10:45:34Z"
+            }
+          ],
+          "name": "r1-tmfc005-productinventory",
+          "namespace": "components",
+          "resourceVersion": "28376156",
+          "uid": "d6b854f1-76a6-4a26-a8f3-1dc7ffbd1b9c"
+        },
+        "spec": {
+          "coreFunction": {
+            "dependentAPIs": [
+              {
+                "apitype": "openapi",
+                "name": "product-catalog-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "party-role-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "resource-inventory-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "agreement-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF651_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "geographic-address-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "geographic-site-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "user-role-permission-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "account-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "party-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "product-inventory-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "service-inventory-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json"
+              },
+              {
+                "apitype": "openapi",
+                "name": "product-ordering-management-api",
+                "specification": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF622_v4.0.0.swagger.json"
+              }
+            ],
+            "exposedAPIs": [
+              {
+                "apitype": "openapi",
+                "implementation": "r1-product-inventory-management-api",
+                "name": "product-inventory-management-api",
+                "path": "/r1-tmfc005-productinventory/tmf-api/productInventory/v4/",
+                "port": 8080,
+                "specification": [
+                  "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF637_v4.0.0.swagger.json"
+                ]
+              }
+            ]
+          },
+          "description": "Product  Inventory component is responsible for storage and exposure of products that are assigned to and used by Parties. Product Inventory component has functionality that enables inventory items creation, inventory organization, inventory search or filter, inventory monitoring and tracking, inventory control and inventory auditing. The minimum check to be performed at inventory items creation or update is the global consistency with related Product Catalog information.",
+          "functionalBlock": "CoreCommerceManagement",
+          "id": "TMFC005",
+          "maintainers": [
+            {
+              "email": "gaetano.biancardi@accenture.com",
+              "name": "Gaetano Biancardi"
+            }
+          ],
+          "name": "ProductInventory",
+          "owners": [
+            {
+              "email": "gaetano.biancardi@accenture.com",
+              "name": "Gaetano Biancardi"
+            }
+          ],
+          "publicationDate": "2023-08-18T00:00:00.000Z",
+          "securityFunction": {
+            "controllerRole": "admin",
+            "exposedAPIs": [
+              {
+                "apitype": "openapi",
+                "implementation": "r1-partyrole-management-api",
+                "name": "partyrole-management-api",
+                "path": "/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4",
+                "port": 8080,
+                "specification": [
+                  "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json"
+                ]
+              }
+            ]
+          },
+          "status": "specified",
+          "version": "1.1.1"
+        },
+        "status": {
+          "coreAPIs": [
+            {
+              "implementation": "r1-product-inventory-management-api",
+              "ip": "a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com",
+              "name": "r1-tmfc005-productinventory-product-inventory-management-api",
+              "path": "/r1-tmfc005-productinventory/tmf-api/productInventory/v4/",
+              "port": 8080,
+              "ready": true,
+              "uid": "ee200bb6-d22b-45cc-8fc7-633b6698cb32",
+              "url": "http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/productInventory/v4/"
+            }
+          ],
+          "kopf": {
+            "progress": {}
+          },
+          "managementAPIs": [],
+          "publishedEvents": [],
+          "securityAPIs": [
+            {
+              "implementation": "r1-partyrole-management-api",
+              "ip": "a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com",
+              "name": "r1-tmfc005-productinventory-partyrole-management-api",
+              "path": "/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4",
+              "port": 8080,
+              "ready": true,
+              "uid": "95f019d3-d436-4cf3-86c8-c285aa932e25",
+              "url": "http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4"
+            }
+          ],
+          "security_client_add/status.summary/status.deployment_status": {
+            "identityProvider": "Keycloak",
+            "listenerRegistered": true
+          },
+          "subscribedEvents": [],
+          "summary/status": {
+            "coreAPIsummary": "http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/productInventory/v4/ ",
+            "deployment_status": "Complete",
+            "developerUIsummary": "",
+            "managementAPIsummary": "",
+            "securityAPIsummary": "http://a367728b70562463093c5d7fdd67079b-155439152.eu-west-2.elb.amazonaws.com/r1-tmfc005-productinventory/tmf-api/partyRoleManagement/v4 "
+          }
+        }
+      }
+    ],
+    "kind": "ComponentList",
+    "metadata": {
+      "continue": "",
+      "resourceVersion": "28377771"
+    }
+  }
+}

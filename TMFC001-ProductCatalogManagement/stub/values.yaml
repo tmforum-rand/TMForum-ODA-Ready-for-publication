@@ -1,10 +1,15 @@
 component:
   id: tmfc001
   name: tmfc001-productcatalogmanagement
-  publicationDate: '2023-08-18T00:00:00.000Z'
+  publicationDate: '2024-10-17T00:00:00.000Z'
 images:
   tmf620: tmforumorg/tmfc001-tmf620-v4.1.0:latest
   tmf669: tmforumorg/tmfc001-tmf669-v4.0.0:latest
   tmf671: tmforumorg/tmfc001-tmf671-v4.1.0:latest
+secretsManagement:
+  podSelector:
+    name: '{{.Release.Name}}-{{.Values.component.name}}'
+    namespace: default
+    serviceaccount: default
 security:
   controllerRole: admin

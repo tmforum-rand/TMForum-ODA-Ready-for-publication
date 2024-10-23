@@ -1,12 +1,25 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: PartyInteractionManagement
+  id: TMFC023
+  functionalBlock: PartyManagement
+  description: Party Interaction deals with the initial greeting and welcoming of
+    a new contact. This will typically be the first component in a customer experience
+    journey, shared by unassisted (self-service, retail kiosk) or assisted (call center,
+    retail store) channels. It will identify known parties or new parties and react
+    appropriately to propose available actions. It records all the interactions for
+    the parties from all channels.
+  publicationDate: 2024-04-30 00:00:00
+  status: specified
+  version: 1.1.0
   coreFunction:
     dependentAPIs:
     - id: TMF632
       version: v4.0.0
+      apiType: openapi
       name: party-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
@@ -20,6 +33,7 @@ spec:
         - GET /id
     - id: TMF669
       version: v4.0.0
+      apiType: openapi
       name: party-role-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
@@ -30,6 +44,7 @@ spec:
         - GET /id
     - id: TMF672
       version: v4.0.0
+      apiType: openapi
       name: user-role-permission-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
@@ -40,6 +55,7 @@ spec:
         - GET /id
     - id: TMF662
       version: v4.0.0
+      apiType: openapi
       name: entity-catalog-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF662_v4.0.0.swagger.json
@@ -59,6 +75,7 @@ spec:
         - GET /id
     - id: TMF667
       version: v4.0.0
+      apiType: openapi
       name: document-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF667_v4.0.0.swagger.json
@@ -69,6 +86,7 @@ spec:
         - GET /id
     - id: TMF681
       version: v4.0.0
+      apiType: openapi
       name: communication-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF681_v4.0.0.swagger.json
@@ -80,6 +98,7 @@ spec:
     exposedAPIs:
     - id: TMF683
       version: v4.0.0
+      apiType: openapi
       name: party-interaction-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF683_v4.0.0.swagger.json
@@ -91,9 +110,39 @@ spec:
         - POST
         - PATCH
         - DELETE
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyInteractionManagement/hub
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyInteractionManagement/hub
       implementation: /{{.Release.Name}}-PartyInteractionManagementEvent
       name: PartyInteractionManagement
       port: 80
@@ -103,8 +152,9 @@ spec:
       - partyInteractionDeleteEvent
       - partyInteractionStatusChangeEvent
       specification: https://github.com/tmforum-apis/TMF683_PartyInteraction/blob/master/partyInteractionManagement_TMF_v1.0.0Review2.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      apiType: openapi
+      id: TMF683
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
       port: 80
@@ -119,9 +169,10 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      apiType: openapi
+      id: TMF701
     subscribedEvents:
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
       implementation: /{{.Release.Name}}-PartyManagement
       name: PartyManagement
       port: 80
@@ -135,16 +186,18 @@ spec:
       - OrganizationStateChangeEvent
       - OrganizationDeleteEvent
       specification: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
+      apiType: openapi
+      id: TMF632
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
       implementation: /{{.Release.Name}}-PartyRoleManagement
       name: PartyRoleManagement
       port: 80
       resources:
       - PartyRoleCreateEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
+      apiType: openapi
+      id: TMF701
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
       implementation: /{{.Release.Name}}-DocumentgManagementEvent
       name: documentManagement
       port: 80
@@ -152,8 +205,9 @@ spec:
       - documentChangeEvent
       - documentSpecificationAttributeValueChangeEvent
       specification: https://github.com/tmforum-apis/TMF667_Document/blob/master/TMF667-Document-v4.0.0.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      apiType: openapi
+      id: TMF667
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
       port: 80
@@ -163,39 +217,5 @@ spec:
       - taskFlowCreateEvent
       - taskFlowStateChangeEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-  description: Party Interaction deals with the initial greeting and welcoming of
-    a new contact. This will typically be the first component in a customer experience
-    journey, shared by unassisted (self-service, retail kiosk) or assisted (call center,
-    retail store) channels. It will identify known parties or new parties and react
-    appropriately to propose available actions. It records all the interactions for
-    the parties from all channels.
-  functionalBlock: PartyManagement
-  id: TMFC023
-  maintainers:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  name: PartyInteractionManagement
-  owners:
-  - email: gaetano.biancardi@accenture.com
-    name: Gaetano Biancardi
-  publicationDate: 2024-04-30 00:00:00
-  status: specified
-  version: 1.1.0
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      apiType: openapi
+      id: TMF701

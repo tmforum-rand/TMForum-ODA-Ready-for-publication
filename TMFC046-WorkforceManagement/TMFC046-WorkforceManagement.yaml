@@ -1,12 +1,24 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: WorkforceManagement
+  id: TMFC046
+  functionalBlock: Production
+  description: Workforce Management provides capabilities to describe teams, organizations,
+    skills and availability of sales / technical experts. It provides the ability
+    in reserving time slots to carry out assigned task (internal or customer facing).
+    It allows the reservation (and their updates / reschedule) of appointments and
+    interventions. option, etc.)
+  publicationDate: 2024-04-18 00:00:00
+  status: specified
+  version: 1.0.0
   coreFunction:
     dependentAPIs:
     - id: TMF632
       version: v4.0.0
+      apiType: openapi
       name: party-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
@@ -20,6 +32,7 @@ spec:
         - GET /id
     - id: TMF669
       version: v4.0.0
+      apiType: openapi
       name: party-role-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
@@ -30,6 +43,7 @@ spec:
         - GET /id
     - id: TMF672
       version: v4.0.0
+      apiType: openapi
       name: user-role-permission-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
@@ -44,6 +58,7 @@ spec:
     exposedAPIs:
     - id: TMF646
       version: v4.0.0
+      apiType: openapi
       name: appointment-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF646_v4.0.0.swagger.json
@@ -61,9 +76,39 @@ spec:
         - POST
         - PATCH /id
         - DELETE /id
+  owners:
+  - email: milind.2.bhagwat@bt.com
+    name: Milind Bhagwat
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      implementation: /{{.Release.Name}}-appointmentManagement
+    - implementation: /{{.Release.Name}}-appointmentManagement
       name: appointmentManagement
       port: 80
       resources:
@@ -76,9 +121,10 @@ spec:
       - searchTimeSlotStateChangeEvent
       - searchTimeSlotDeleteEvent
       specification: https://github.com/tmforum-apis/TMF646_AppointmentManagement/blob/master/TMF646-Appointment-v4.0.0.swagger.json
+      apiType: openapi
+      id: TMF646
     subscribedEvents:
-    - apitype: openapi
-      name: PartyRoleManagement
+    - name: PartyRoleManagement
       port: 80
       resources:
       - partyRoleCreateEvent
@@ -86,8 +132,9 @@ spec:
       - partyRoleStateChangeEvent
       - partyRoleDeleteEvent
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
-    - apitype: openapi
-      name: UserRolePermissionManagement
+      apiType: openapi
+      id: TMF669
+    - name: UserRolePermissionManagement
       port: 80
       resources:
       - permissionCreateEvent
@@ -99,8 +146,9 @@ spec:
       - userRoleStateChangeEvent
       - userRoleDeleteEvent
       specification: https://github.com/tmforum-apis/TMF672_UserRolesPermissions/blob/master/TMF672-UserRolePermission-v4.0.0.swagger.json
-    - apitype: openapi
-      name: ProcessFlowManagement
+      apiType: openapi
+      id: TMF672
+    - name: ProcessFlowManagement
       port: 80
       resources:
       - processFlowCreateEvent
@@ -113,38 +161,5 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
-  description: Workforce Management provides capabilities to describe teams, organizations,
-    skills and availability of sales / technical experts. It provides the ability
-    in reserving time slots to carry out assigned task (internal or customer facing).
-    It allows the reservation (and their updates / reschedule) of appointments and
-    interventions. option, etc.)
-  functionalBlock: Production
-  id: TMFC046
-  maintainers:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
-  name: WorkforceManagement
-  owners:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
-  publicationDate: 2024-04-18 00:00:00
-  status: specified
-  version: 1.0.0
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      apiType: openapi
+      id: TMF701

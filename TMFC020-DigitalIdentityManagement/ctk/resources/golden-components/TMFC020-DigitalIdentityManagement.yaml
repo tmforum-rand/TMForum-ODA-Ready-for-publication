@@ -1,11 +1,12 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF632
+    - apiType: openapi
+      id: TMF632
       name: party-management-api
       port: 8080
       required: true
@@ -18,7 +19,8 @@ spec:
         - GET/id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
@@ -28,7 +30,8 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
     exposedAPIs:
-    - id: TMF720
+    - apiType: openapi
+      id: TMF720
       name: digital-identity-management-api
       port: 8080
       required: true
@@ -47,8 +50,12 @@ spec:
         - DELETE/id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF720_v4.0.0.swagger.json
       version: v4.0.0
+  description: The Digital Identity Management is responsible for the parties (customers,
+    employees, partners) and resources authentication.
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
+    - apiType: openapi
+      id: TMF720
       implementation: /{{.Release.Name}}-digidemngt
       name: digitalIdentity
       port: 80
@@ -59,25 +66,19 @@ spec:
       - DigitalIdentityAttributeValueChangeEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF720_DigitalIdentityManagement/master/TMF720-DigitalIdentityManagement-v4.0.0.swagger.json
     subscribedEvents:
-    - apitype: openapi
+    - apiType: openapi
+      id: TMF669
       name: PartyRoleManagement
       port: 80
       resources:
       - UserRoleCreationNotification
       - UserRoleChangeNotification
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
-  description: The Digital Identity Management is responsible for the parties (customers,
-    employees, partners) and resources authentication.
   functionalBlock: PartyManagement
   id: TMFC020
-  maintainers:
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
   managementFunction:
     exposedAPIs:
-    - apitype: prometheus
+    - apiType: prometheus
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
@@ -89,12 +90,21 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
       resources: []
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.0

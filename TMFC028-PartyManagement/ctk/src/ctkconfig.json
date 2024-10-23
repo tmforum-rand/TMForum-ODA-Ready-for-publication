@@ -12,6 +12,15 @@
     },
     "goldenComponentFilePath": "../resources/golden-components/TMFC028-PartyManagement.yaml",
     "payloads": {
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        },
         "TMF632_v4.0.0": {
             "Individual": {
                 "POST": {
@@ -25,57 +34,6 @@
                 "POST": {
                     "payload": {
                         "tradingName": "Coffee Do Brazil Fair Trade"
-                    }
-                }
-            }
-        },
-        "TMF629_v4.0.0": {
-            "Customer": {
-                "POST": {
-                    "payload": {
-                        "name": "Moon Football Club",
-                        "engagedParty": {
-                            "@referredType": "Organization",
-                            "id": "500"
-                        }
-                    }
-                },
-                "PATCH": {
-                    "payload": {
-                        "engagedParty": {
-                            "@referredType": "Organization",
-                            "id": "500"
-                        }
-                    }
-                }
-            }
-        },
-        "TMF669_v4.0.0": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
-                    }
-                }
-            }
-        },
-        "TMF668_v4.0.0": {
-            "PartnershipSpecification": {
-                "POST": {
-                    "payload": {
-                        "name": "Dream Partnership template"
-                    }
-                }
-            },
-            "Partnership": {
-                "POST": {
-                    "payload": {
-                        "name": "Dream Partnership",
-                        "specification": {
-                            "id": "9047",
-                            "href": "https://host:port/tmf-api/partnershipManagement/v4/partnershipSpecification/9047",
-                            "name": "Dream Partnership template"
-                        }
                     }
                 }
             }

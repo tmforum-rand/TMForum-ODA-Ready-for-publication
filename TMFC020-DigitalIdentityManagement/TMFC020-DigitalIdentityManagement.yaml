@@ -1,12 +1,21 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: DigitalIdentityManagement
+  id: TMFC020
+  functionalBlock: PartyManagement
+  description: The Digital Identity Management is responsible for the parties (customers,
+    employees, partners) and resources authentication.
+  publicationDate: 2023-08-18 00:00:00
+  status: specified
+  version: 1.1.0
   coreFunction:
     dependentAPIs:
     - id: TMF632
       version: v4.0.0
+      apiType: openapi
       name: party-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
@@ -20,6 +29,7 @@ spec:
         - GET/id
     - id: TMF669
       version: v4.0.0
+      apiType: openapi
       name: party-role-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
@@ -30,6 +40,7 @@ spec:
     exposedAPIs:
     - id: TMF720
       version: v4.0.0
+      apiType: openapi
       name: digital-identity-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF720_v4.0.0.swagger.json
@@ -47,9 +58,37 @@ spec:
         - POST
         - PATCH/id
         - DELETE/id
+  owners: []
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      implementation: /{{.Release.Name}}-digidemngt
+    - implementation: /{{.Release.Name}}-digidemngt
       name: digitalIdentity
       port: 80
       resources:
@@ -58,43 +97,14 @@ spec:
       - DigitalIdentityDeleteEvent
       - DigitalIdentityAttributeValueChangeEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF720_DigitalIdentityManagement/master/TMF720-DigitalIdentityManagement-v4.0.0.swagger.json
+      apiType: openapi
+      id: TMF720
     subscribedEvents:
-    - apitype: openapi
-      name: PartyRoleManagement
+    - name: PartyRoleManagement
       port: 80
       resources:
       - UserRoleCreationNotification
       - UserRoleChangeNotification
       specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
-  description: The Digital Identity Management is responsible for the parties (customers,
-    employees, partners) and resources authentication.
-  functionalBlock: PartyManagement
-  id: TMFC020
-  maintainers:
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
-  - email: matteo.destino@accenture.com
-    name: Matteo Destino
-  name: DigitalIdentityManagement
-  owners: []
-  publicationDate: 2023-08-18 00:00:00
-  status: specified
-  version: 1.1.0
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      apiType: openapi
+      id: TMF669

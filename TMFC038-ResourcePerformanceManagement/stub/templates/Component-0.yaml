@@ -7,17 +7,17 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - apitype: openapi
+    - apiType: openapi
       name: resource-inventory-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: geographic-address-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
-    - apitype: openapi
+    - apiType: openapi
       name: geographic-site-management-api
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-alarm-management-api'
       name: alarm-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/alarm/v4/
@@ -26,11 +26,122 @@ spec:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
   description: Resource Performance Management will monitor, analyze, and report on
     the performance of the service provider's resources.
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Alarm/hub
+      id: TMF642
+      implementation: /{{.Release.Name}}-Alarm
+      name: AlarmManagement
+      port: 80
+      resources:
+      - alarmStateChange**
+      - alarmCreateEvent**
+      - alarmClearEvent**
+      - alarmAckEvent**
+      specification: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Performance/hub
+      id: TMF628
+      implementation: /{{.Release.Name}}-Performance
+      name: PerformanceManagement
+      port: 80
+      resources:
+      - measurementCollectionJobCreateEvent
+      - measurementCollectionJobExecutionStateChangeEvent
+      - measurementCollectionJobDeleteEvent
+      - measurementCollectionJobAttributeValueChangeEvent
+      - measurementCollectionJobFilesReadyEvent
+      - measurementCollectionJobFilesPreparationErrorEvent
+      - onDemandCollectionCreateEvent
+      - onDemandCollectionExecutionStateChangeEvent
+      - onDemandCollectionDeleteEvent
+      - onDemandCollectionAttributeValueChangeEvent
+      - onDemandCollectionFilesReadyEvent
+      - onDemandCollectionFilesPreparationErrorEvent
+      specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThreshold/hub
+      id: TMF628
+      implementation: /{{.Release.Name}}-PerformanceThreshold
+      name: PerformanceThresholdManagement
+      port: 80
+      resources:
+      - thresholdCreateNotification
+      - thresholdChangeNotification
+      - thresholdRuleCreateNotification
+      - thresholdRuleChangeNotification
+      - thresholdJobCreateNotification
+      - thresholdJobChangedNotification
+      - thresholdJobSuspendedNotification
+      - thresholdJobResumedNotification
+      specification: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF649-PerformanceThreshold-v4.0.0.swagger.json
+    subscribedEvents:
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/hub
+      id: TMF634
+      implementation: /{{.Release.Name}}-ResourceCatalog
+      name: ResourceCatalogManagement
+      port: 80
+      resources:
+      - ResourceSpecificationChangeEvent
+      specification: https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/hub
+      id: TMF639
+      implementation: /{{.Release.Name}}-ResourceInventory
+      name: ResourceInventoryManagement
+      port: 80
+      resources:
+      - ResourceCreateEvent
+      - ResourceAttributeValueChangeEvent
+      - ResourceStateChangeEvent
+      - ResourceDeleteEvent
+      specification: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/hub
+      id: TMF673
+      implementation: /{{.Release.Name}}-GeographicAddressManagement
+      name: GeographicAddressManagement
+      port: 80
+      resources:
+      - geographicAddressValidationStateChange
+      specification: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+    - apiType: openapi
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      id: TMF701
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
   functionalBlock: IntelligenceManagement
   id: TMFC038
-  maintainers:
-  - email: milind.2.bhagwat@bt.com
-    name: Milind Bhagwat
   name: ResourcePerformanceManagement
   owners:
   - email: milind.2.bhagwat@bt.com
@@ -39,12 +150,20 @@ spec:
   securityFunction:
     controllerRole: '{{ .Values.security.controllerRole }}'
     exposedAPIs:
-    - apitype: openapi
+    - apiType: openapi
       implementation: '{{.Release.Name}}-partyrole-management-api'
       name: partyrole-management-api
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
       - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.0

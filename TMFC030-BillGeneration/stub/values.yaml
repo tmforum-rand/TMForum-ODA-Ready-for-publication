@@ -1,9 +1,14 @@
 component:
   id: tmfc030
   name: tmfc030-billgeneration
-  publicationDate: '2023-08-18T00:00:00.000Z'
+  publicationDate: '2024-10-17T00:00:00.000Z'
 images:
   tmf669: tmforumorg/tmfc030-tmf669-v4.0.0:latest
   tmf678: tmforumorg/tmfc030-tmf678-v4.0.0:latest
+secretsManagement:
+  podSelector:
+    name: '{{.Release.Name}}-{{.Values.component.name}}'
+    namespace: default
+    serviceaccount: default
 security:
   controllerRole: admin

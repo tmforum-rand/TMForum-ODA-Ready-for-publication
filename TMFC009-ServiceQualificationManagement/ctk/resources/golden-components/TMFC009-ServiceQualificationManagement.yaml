@@ -1,11 +1,12 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF633
+    - apiType: openapi
+      id: TMF633
       name: service-catalog-management-api
       port: 8080
       required: true
@@ -18,7 +19,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF638
+    - apiType: openapi
+      id: TMF638
       name: service-inventory-management-api
       port: 8080
       required: false
@@ -28,7 +30,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF639
+    - apiType: openapi
+      id: TMF639
       name: resource-inventory-management-api
       port: 8080
       required: false
@@ -38,7 +41,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF632
+    - apiType: openapi
+      id: TMF632
       name: party-management-api
       port: 8080
       required: false
@@ -51,7 +55,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: false
@@ -61,7 +66,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF673
+    - apiType: openapi
+      id: TMF673
       name: geographic-address-management-api
       port: 8080
       required: false
@@ -74,7 +80,8 @@ spec:
         - GET /id
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
       version: v4.0.0
-    - id: TMF674
+    - apiType: openapi
+      id: TMF674
       name: geographic-site-management-api
       port: 8080
       required: false
@@ -85,7 +92,8 @@ spec:
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
       version: v4.0.0
     exposedAPIs:
-    - id: TMF645
+    - apiType: openapi
+      id: TMF645
       name: service-qualification-management-api
       port: 8080
       required: true
@@ -104,10 +112,24 @@ spec:
         - DELETE
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF645_v4.0.0.swagger.json
       version: v4.0.0
+  description: Service Qualification component is responsible for checking and validating
+    the availability of a service according to specified and configured business rules.
+    It must identify at least one technical solution (RFSspec) available to deliver
+    the service (CFSspec) and check the availability of all the resources types involved
+    in this technical solution. No resources are allocated during Service Qualification.
+    Service Qualification component has functionality that include checking service
+    feasibility status and publishing or reporting service qualification result, but
+    also calculated service delivery due date and identified need of an appointment
+    at the customer site. Service Qualification can also be in charge of the cost
+    calculation of the technical solution identified, when it cannot be determined
+    at catalog design time (complex B2B services). This information will be used as
+    an input to price calculation.
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      developerUI: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualification/v4/docs
-      hub: /{{.Release.Name}}-{{.Values.oda.component.type}}/tmf-api/ServiceQualification/hub
+    - apiType: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/v4/docs
+      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/hub
+      id: TMF645
       implementation: /{{.Release.Name}}-ServiceQualification
       name: ServiceQualification
       port: 80
@@ -122,26 +144,11 @@ spec:
       - queryServiceQualificationDeleteEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
     subscribedEvents: []
-  description: Service Qualification component is responsible for checking and validating
-    the availability of a service according to specified and configured business rules.
-    It must identify at least one technical solution (RFSspec) available to deliver
-    the service (CFSspec) and check the availability of all the resources types involved
-    in this technical solution. No resources are allocated during Service Qualification.
-    Service Qualification component has functionality that include checking service
-    feasibility status and publishing or reporting service qualification result, but
-    also calculated service delivery due date and identified need of an appointment
-    at the customer site. Service Qualification can also be in charge of the cost
-    calculation of the technical solution identified, when it cannot be determined
-    at catalog design time (complex B2B services). This information will be used as
-    an input to price calculation.
   functionalBlock: Production
   id: TMFC009
-  maintainers:
-  - email: Anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
   managementFunction:
     exposedAPIs:
-    - apitype: prometheus
+    - apiType: prometheus
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
@@ -157,12 +164,21 @@ spec:
     controllerRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
-    - id: TMF669
+    - apiType: openapi
+      id: TMF669
       name: party-role-management-api
       port: 8080
       required: true
       resources: []
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
       version: v4.0.0
+    secretsManagement:
+      podSelector:
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+      sideCar:
+        port: 8080
+      type: sideCar
   status: specified
   version: 1.1.0

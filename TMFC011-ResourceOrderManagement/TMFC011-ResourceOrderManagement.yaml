@@ -1,12 +1,24 @@
-apiVersion: oda.tmforum.org/v1beta2
+apiVersion: oda.tmforum.org/v1beta3
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  name: ResourceOrderManagement
+  id: TMFC011
+  functionalBlock: Production
+  description: Resource Order Management Component manages the end-to-end lifecycle
+    of a resource  order request. This includes validating resource availability as
+    well as the  resource order request. Other functionality includes resource order
+    assurance,  resource order decomposition and resource order tracking, along with
+    orchestrating  the activation and the test and turn-up processes.
+  publicationDate: null
+  status: Pre-production
+  version: 1.1.0
   coreFunction:
     dependentAPIs:
     - id: TMF702
       version: v4.0.0
+      apiType: openapi
       name: resource-activation-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF702_v4.0.0.swagger.json
@@ -23,6 +35,7 @@ spec:
         - GET /id
     - id: TMF634
       version: v4.1.0
+      apiType: openapi
       name: resource-catalog-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
@@ -36,6 +49,7 @@ spec:
         - DELETE
     - id: TMF639
       version: v4.0.0
+      apiType: openapi
       name: resource-inventory-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
@@ -49,6 +63,7 @@ spec:
         - DELETE
     - id: TMF664
       version: v4.0.0
+      apiType: openapi
       name: resource-function-activation-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF664_v4.0.0.swagger.json
@@ -62,6 +77,7 @@ spec:
         - DELETE
     - id: TMF632
       version: v4.0.0
+      apiType: openapi
       name: party-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
@@ -75,6 +91,7 @@ spec:
         - GET /id
     - id: TMF646
       version: v4.0.0
+      apiType: openapi
       name: appointment-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF646_v4.0.0.swagger.json
@@ -83,11 +100,9 @@ spec:
       - workOrder:
         - GET
         - GET /id
-      - organization:
-        - GET
-        - GET /id
     - id: TMF673
       version: v4.0.0
+      apiType: openapi
       name: geographic-address-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
@@ -98,6 +113,7 @@ spec:
         - GET /id
     - id: TMF674
       version: v4.0.0
+      apiType: openapi
       name: geographic-site-management-api
       required: false
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
@@ -109,6 +125,7 @@ spec:
     exposedAPIs:
     - id: TMF652
       version: v4.0.0
+      apiType: openapi
       name: resource-order-management-api
       required: true
       specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF652_v4.0.0.swagger.json
@@ -124,9 +141,39 @@ spec:
         - GET
         - GET /id
         - POST
+  owners:
+  - email: gaetano.biancardi@accenture.com
+    name: Gaetano Biancardi
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+  securityFunction:
+    controllerRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      version: v4.0.0
+      apiType: openapi
+      name: party-role-management-api
+      required: true
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
     publishedEvents:
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/resourceOrderingManagement/hub
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/resourceOrderingManagement/hub
       implementation: /{{.Release.Name}}-ResourceOrderingManagementEvent
       name: ResourceOrderingManagement
       port: 80
@@ -146,8 +193,9 @@ spec:
       - ResourceOrderStateChangeEvent
       - ResourceOrderStateChangeEventPayload
       specification: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF652-ResourceOrder-v4.0.0.swagger.json
-    - apitype: openapi
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      apiType: openapi
+      id: TMF652
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
       port: 80
@@ -162,9 +210,10 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      apiType: openapi
+      id: TMF701
     subscribedEvents:
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceFunctionActivationConfiguration/call-back
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceFunctionActivationConfiguration/call-back
       implementation: /{{.Release.Name}}-ResourceFunctionActivationConfiguration
       name: ResourceFunctionActivationConfiguration
       port: 80
@@ -176,8 +225,9 @@ spec:
       - scaleStatechangeEvent
       - migrateStatechangeEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF664_ResourceFunctionActivationConfiguration/master/TMF664-ResourceFunctionActivationConfiguration-v4.0.0.swagger.json
-    - apitype: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceActivationAndConfiguration/call-back
+      apiType: openapi
+      id: TMF664
+    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceActivationAndConfiguration/call-back
       implementation: /{{.Release.Name}}-ResourceActivationAndConfiguration
       name: ResourceActivationAndConfiguration
       port: 80
@@ -186,38 +236,5 @@ spec:
       - monitorCreateEvent
       - monitorStatechangeEvent
       specification: https://raw.githubusercontent.com/tmforum-apis/TMF702_ResourceActivation/master/TMF702-ResourceActivation-v4.0.0.swagger.json
-  description: Resource Order Management Component manages the end-to-end lifecycle
-    of a resource  order request. This includes validating resource availability as
-    well as the  resource order request. Other functionality includes resource order
-    assurance,  resource order decomposition and resource order tracking, along with
-    orchestrating  the activation and the test and turn-up processes.
-  functionalBlock: Production
-  id: TMFC011
-  maintainers:
-  - email: hvaughan@tmforum.org
-    name: Hugo Vaughan
-  name: ResourceOrderManagement
-  owners:
-  - email: anastasios.sarantis@cityfibre.com
-    name: Tassos Sarantis
-  publicationDate: null
-  status: Pre-production
-  version: 1.0.0
-  managementFunction:
-    exposedAPIs:
-    - name: metrics
-      apitype: prometheus
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
-  securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
-    exposedAPIs:
-    - id: TMF669
-      version: v4.0.0
-      name: party-role-management-api
-      required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
-      port: 8080
-      resources: []
-    dependentAPIs: []
+      apiType: openapi
+      id: TMF702
