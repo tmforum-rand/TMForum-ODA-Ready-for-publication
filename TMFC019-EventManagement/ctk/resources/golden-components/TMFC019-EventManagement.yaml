@@ -4,8 +4,57 @@ metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
-    dependentAPIs: []
-    exposedAPIs: []
+    dependentAPIs:
+    - apiType: openapi
+      id: TMF688
+      name: event-management-api
+      port: 8080
+      required: false
+      resources:
+      - hub:
+        - GET
+        - POST
+        - GET /id
+        - DELETE /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+      version: v4.0.0
+    exposedAPIs:
+    - apiType: openapi
+      id: TMF688
+      name: event-management-api
+      port: 8080
+      required: true
+      resources:
+      - topic:
+        - GET
+        - POST
+        - GET /id
+        - PATCH /id
+        - DELETE /id
+      - topic/id/event:
+        - POST
+      - topic/id/queryStore:
+        - GET
+      - topic/id/hub:
+        - GET
+        - POST
+        - GET /id
+        - PATCH /id
+        - DELETE /id
+      - topic/id/importJob:
+        - GET
+        - POST
+        - GET /id
+        - PATCH /id
+        - DELETE /id
+      - topic/id/exportJob:
+        - GET
+        - POST
+        - GET /id
+        - PATCH /id
+        - DELETE /id
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+      version: v4.0.0
   description: Event Management component is a messaging management component that
     is responsible for processing events as they happen from components. Processing
     of record of activities include modelling event messages, syntax validation and
@@ -62,7 +111,7 @@ spec:
       port: 8080
       required: true
       resources: []
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
       version: v4.0.0
     secretsManagement:
       podSelector:

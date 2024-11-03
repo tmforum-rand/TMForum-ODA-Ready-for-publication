@@ -5,6 +5,7 @@ component:
 images:
   tmf637: tmforumorg/tmfc005-tmf637-v4.0.0:latest
   tmf669: tmforumorg/tmfc005-tmf669-v4.0.0:latest
+  tmf701: tmforumorg/tmfc005-tmf701-v4.0.0:latest
 secretsManagement:
   podSelector:
     name: '{{.Release.Name}}-{{.Values.component.name}}'

@@ -5,6 +5,19 @@ metadata:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
   name: '{{.Release.Name}}-{{.Values.component.name}}'
 spec:
+  coreFunction:
+    dependentAPIs:
+    - apiType: openapi
+      name: event-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+    exposedAPIs:
+    - apiType: openapi
+      implementation: '{{.Release.Name}}-event-management-api'
+      name: event-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/event/v4/
+      port: 8080
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
   description: Event Management component is a messaging management component that
     is responsible for processing events as they happen from components. Processing
     of record of activities include modelling event messages, syntax validation and
@@ -52,7 +65,7 @@ spec:
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
-      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
     secretsManagement:
       podSelector:
         name: '{{ .Values.secretsManagement.podSelector.name }}'

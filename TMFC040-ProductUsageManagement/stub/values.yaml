@@ -6,6 +6,7 @@ images:
   tmf635: tmforumorg/tmfc040-tmf635-v4.0.0:latest
   tmf669: tmforumorg/tmfc040-tmf669-v4.0.0:latest
   tmf677: tmforumorg/tmfc040-tmf677-v4.0.0:latest
+  tmf701: tmforumorg/tmfc040-tmf701-v4.0.0:latest
 secretsManagement:
   podSelector:
     name: '{{.Release.Name}}-{{.Values.component.name}}'

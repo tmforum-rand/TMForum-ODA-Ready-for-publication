@@ -18,7 +18,7 @@ spec:
       apiType: openapi
       name: party-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
       port: 8080
       resources:
       - individual:
@@ -32,18 +32,35 @@ spec:
       apiType: openapi
       name: party-role-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
       port: 8080
       resources:
       - partyRole:
         - POST
+    - id: TMF701
+      version: v4.0.0
+      apiType: openapi
+      name: process-flow-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+      port: 8080
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
     exposedAPIs:
     - id: TMF720
       version: v4.0.0
       apiType: openapi
       name: digital-identity-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF720_v4.0.0.swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF720_Digital_Identity/4.0.0/swagger/TMF720_Digital_Identity_Management_API_v4.0.0_swagger.json
       port: 8080
       resources:
       - digitalIdentity:
@@ -58,6 +75,23 @@ spec:
         - POST
         - PATCH/id
         - DELETE/id
+    - id: TMF701
+      version: v4.0.0
+      apiType: openapi
+      name: process-flow-management-api
+      required: false
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+      port: 8080
+      resources:
+      - processFlow:
+        - GET
+        - GET/id
+        - POST
+        - DELETE/id
+      - taskFlow:
+        - GET
+        - GET/id
+        - PATCH/id
   owners:
   - email: Redacted
     name: Redacted
@@ -87,7 +121,7 @@ spec:
       apiType: openapi
       name: party-role-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
       port: 8080
       resources: []
     dependentAPIs: []

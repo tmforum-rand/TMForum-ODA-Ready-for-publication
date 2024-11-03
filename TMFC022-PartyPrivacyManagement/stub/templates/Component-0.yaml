@@ -9,13 +9,16 @@ spec:
     dependentAPIs:
     - apiType: openapi
       name: party-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
     - apiType: openapi
       name: party-role-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
     - apiType: openapi
       name: document-management-api
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF667_v4.0.0.swagger.json
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+    - apiType: openapi
+      name: product-catalog-management-api
+      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
     exposedAPIs:
     - apiType: openapi
       implementation: '{{.Release.Name}}-privacy-management-api'
@@ -23,7 +26,28 @@ spec:
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/privacyManagement/v4/
       port: 8080
       specification:
-      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF644_v4.0.0.swagger.json
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF644_Privacy/4.0.0/swagger/TMF644_Privacy_Management_API_v4.0.0_swagger.json
+    - apiType: openapi
+      implementation: '{{.Release.Name}}-process-flow-management-api'
+      name: process-flow-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/processFlowManagement/v4/
+      port: 8080
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+    - apiType: openapi
+      implementation: '{{.Release.Name}}-event-management-api'
+      name: event-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/event/v4/
+      port: 8080
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+    - apiType: openapi
+      implementation: '{{.Release.Name}}-product-catalog-management-api'
+      name: product-catalog-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v4/
+      port: 8080
+      specification:
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
   description: 'The Party Privacy Management component aims to: define the Privacy
     Policy rules established by the CSP, according to applicable regulations, such
     as GDPR in Europe, apply these rules to each Party interacting with the CSP and
@@ -49,7 +73,7 @@ spec:
       path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       specification:
-      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+      - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
     secretsManagement:
       podSelector:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
