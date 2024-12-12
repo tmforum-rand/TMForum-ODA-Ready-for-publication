@@ -1,0 +1,4 @@
+apiVersion: v2
+appVersion: v1beta4
+name: tmfc050-productofferingrecommendation
+version: 0.1.0

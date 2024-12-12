@@ -20,21 +20,6 @@
                     }
                 }
             }
-        },
-        "TMF634_v4.1.0": {
-            "ResourceSpecification": {
-                "POST": {
-                    "payload": {
-                        "name": "Virtual Storage Medium"
-                    }
-                },
-                "PATCH": {
-                    "payload": {
-                        "name": "Virtual Storage Medium 2",
-                        "lifecycleStatus": "In progress"
-                    }
-                }
-            }
         }
     }
 }

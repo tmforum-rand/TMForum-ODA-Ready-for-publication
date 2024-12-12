@@ -21,15 +21,6 @@
                 }
             }
         },
-        "TMF669-PartyRole": {
-            "PartyRole": {
-                "POST": {
-                    "payload": {
-                        "name": "qqymucymyd"
-                    }
-                }
-            }
-        },
         "TMF672_v4.0.0": {
             "UserRole": {
                 "POST": {

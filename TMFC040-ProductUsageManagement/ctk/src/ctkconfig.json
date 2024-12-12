@@ -21,6 +21,24 @@
                 }
             }
         },
+        "TMF635_v4.0.0": {
+            "Usage": {
+                "POST": {
+                    "payload": {
+                        "usageSpecification": {
+                            "id": "af59-b504c742900e"
+                        }
+                    }
+                }
+            },
+            "UsageSpecification": {
+                "POST": {
+                    "payload": {
+                        "name": "Voice-Usage-Specification"
+                    }
+                }
+            }
+        },
         "TMF677_v4.0.0": {
             "QueryUsageConsumption": {
                 "POST": {

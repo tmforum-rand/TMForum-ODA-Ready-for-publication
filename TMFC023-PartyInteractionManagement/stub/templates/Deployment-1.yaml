@@ -3,18 +3,17 @@ kind: Deployment
 metadata:
   labels:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
-  name: '{{.Release.Name}}-process-flow-management-api'
+  name: '{{.Release.Name}}-party-interaction-management-api'
 spec:
   replicas: 1
   selector:
     matchLabels:
-      impl: '{{.Release.Name}}-process-flow-management-api'
+      impl: '{{.Release.Name}}-party-interaction-management-api'
   template:
     metadata:
       labels:
         app: '{{.Release.Name}}-{{.Values.component.name}}'
-        impl: '{{.Release.Name}}-process-flow-management-api'
-        version: v4.0.0
+        impl: '{{.Release.Name}}-party-interaction-management-api'
     spec:
       containers:
       - env:
@@ -24,12 +23,12 @@ spec:
           value: '{{.Release.Name}}'
         - name: COMPONENT_NAME
           value: '{{.Release.Name}}-{{.Values.component.name}}'
-        image: '{{.Values.images.tmf701}}'
+        image: '{{.Values.images.tmf683}}'
         imagePullPolicy: Always
-        name: '{{.Release.Name}}-process-flow-management-api'
+        name: '{{.Release.Name}}-party-interaction-management-api'
         ports:
         - containerPort: 8080
-          name: '{{.Release.Name}}-process'
+          name: '{{.Release.Name}}-party-i'
         resources:
           limits:
             cpu: '0.5'
@@ -40,7 +39,7 @@ spec:
         startupProbe:
           failureThreshold: 30
           httpGet:
-            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/processFlowManagement/v4/
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyInteraction/v4/
             port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5

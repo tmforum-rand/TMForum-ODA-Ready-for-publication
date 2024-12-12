@@ -1,0 +1,50 @@
+{
+    "componentFilePath": "../resources/component/TMFC050-ProductOfferingRecommendation.yaml",
+    "companyName": "",
+    "componentName": "TMFC050-ProductOfferingRecommendation",
+    "productName": "",
+    "componentUrl": "",
+    "productUrl": "",
+    "ctkConfig": {},
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "goldenComponentFilePath": "../resources/golden-components/TMFC050-ProductOfferingRecommendation.yaml",
+    "payloads": {
+        "TMF680_v4.0.0": {
+            "QueryProductRecommendation": {
+                "POST": {
+                    "payload": {
+                        "productOrderItem": [
+                            {
+                                "itemId": "8abe7948-f509-4ab4-9727-2c2e06868944",
+                                "entityId": "c5a32c74-6203-4391-ad36-7b2681205fc8"
+                            }
+                        ],
+                        "category": [
+                            {
+                                "id": "a57cc168-f565-4d90-bd0e-10f75c41b0b5"
+                            }
+                        ],
+                        "shoppingCartItem": [
+                            {
+                                "itemId": "90a1bab2-03c7-4c3a-99be-cf89d194d2f9",
+                                "entityId": "8c2dd6e8-d722-43cf-9748-ddfc97c42719"
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "TMF669_v4.0.0": {
+            "PartyRole": {
+                "POST": {
+                    "payload": {
+                        "name": "qqymucymyd"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,14 +1,41 @@
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1beta4
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  componentMetadata:
+    description: 'The Party Privacy Management component aims to: define the Privacy
+      Policy rules established by the CSP, according to applicable regulations, such
+      as GDPR in Europe, apply these rules to each Party interacting with the CSP
+      and to all of their personnal information and personally identifiable information
+      (PII); register explicit opt-in and opt-out given by Parties regarding the usage
+      of some of their personal information for dedicated purpose, such as marketing.'
+    functionalBlock: PartyManagement
+    id: TMFC022
+    name: PartyPrivacyManagement
+    owners:
+    - email: components@tmforum.org
+      name: Redacted
+      url: Redacted
+    publicationDate: 2024-08-08
+    status: specified
+    version: 1.1.0
   coreFunction:
     dependentAPIs:
     - apiType: openapi
+      id: TMF620
+      name: product-catalog-management-api
+      required: false
+      resources:
+      - productOffering:
+        - GET
+        - GET /id
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
+    - apiType: openapi
       id: TMF632
       name: party-management-api
-      port: 8080
       required: true
       resources:
       - individual:
@@ -17,46 +44,39 @@ spec:
       - organization:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
-    - apiType: openapi
-      id: TMF669
-      name: party-role-management-api
-      port: 8080
-      required: true
-      resources:
-      - partyRole:
-        - GET
-        - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF667
       name: document-management-api
-      port: 8080
       required: false
       resources:
       - document:
         - GET
         - GET /id
         - POST
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
-      id: TMF620
-      name: product-catalog-management-api
-      port: 8080
-      required: false
+      id: TMF669
+      name: party-role-management-api
+      required: true
       resources:
-      - productOffering:
+      - partyRole:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     exposedAPIs:
     - apiType: openapi
+      developerUI: not_defined
       id: TMF644
+      implementation: not_defined
       name: privacy-management-api
+      path: not_defined
       port: 8080
       required: true
       resources:
@@ -78,11 +98,15 @@ spec:
         - POST
         - PATCH /id
         - DELETE
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF644_Privacy/4.0.0/swagger/TMF644_Privacy_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF644_Privacy/4.0.0/swagger/TMF644_Privacy_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
+      developerUI: not_defined
       id: TMF701
+      implementation: not_defined
       name: process-flow-management-api
+      path: not_defined
       port: 8080
       required: false
       resources:
@@ -95,68 +119,53 @@ spec:
         - GET
         - GET /id
         - PATCH /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-      version: v4.0.0
-    - apiType: openapi
-      id: TMF688
-      name: event-management-api
-      port: 8080
-      required: false
-      resources:
-      - listener:
-        - POST
-      - hub:
-        - POST
-        - DELETE /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
-      version: v4.0.0
-    - apiType: openapi
-      id: TMF620
-      name: product-catalog-management-api
-      port: 8080
-      required: false
-      resources:
-      - ProductOfferingDeleteEvent: {}
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
-      version: v4.0.0
-  description: 'The Party Privacy Management component aims to: define the Privacy
-    Policy rules established by the CSP, according to applicable regulations, such
-    as GDPR in Europe, apply these rules to each Party interacting with the CSP and
-    to all of their personnal information and personally identifiable information
-    (PII); register explicit opt-in and opt-out given by Parties regarding the usage
-    of some of their personal information for dedicated purpose, such as marketing.'
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
-  functionalBlock: PartyManagement
-  id: TMFC022
-  maintainers:
-  - email: components@tmforum.org
-    name: Redacted
   managementFunction:
+    dependentAPIs:
+    - apiType: dependentAPI_apiType
+      id: dependentAPI_id
+      name: dependentAPI_name
+      required: false
+      resources: []
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      version: dependentAPI_version
     exposedAPIs:
     - apiType: prometheus
+      developerUI: exposedAPI_developerUI
+      id: exposedAPI_id
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
-  name: PartyPrivacyManagement
-  owners:
-  - email: Redacted
-    name: Redacted
-  publicationDate: 2024-08-08
+      required: false
+      resources: []
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      version: exposedAPI_version
   securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
     - apiType: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
       id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
       name: party-role-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       required: true
       resources: []
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     secretsManagement:
       podSelector:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
@@ -165,5 +174,3 @@ spec:
       sideCar:
         port: 8080
       type: sideCar
-  status: specified
-  version: 1.1.0

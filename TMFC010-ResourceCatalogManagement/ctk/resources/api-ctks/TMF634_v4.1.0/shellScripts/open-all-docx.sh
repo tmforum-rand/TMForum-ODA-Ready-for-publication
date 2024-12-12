@@ -1,1 +1,0 @@
-for d in ../out/*/conformance/; do     ( cd "$d" && sh ./Mac-Linux-RUNCTK.sh && firefox htmlResults.html ); done

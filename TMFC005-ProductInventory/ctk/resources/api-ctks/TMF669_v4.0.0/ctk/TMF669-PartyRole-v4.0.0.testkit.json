@@ -1,8 +1,10 @@
 {
 	"info": {
-		"_postman_id": "e39e338d-0fc5-45b5-94af-8c5ad4d815a8",
+		"_postman_id": "c10cbc56-3a5c-452a-a74b-2ae78d64ec7d",
 		"name": "CTK-Party_Role-4.0.0",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7503975",
+		"_collection_link": "https://cloudy-meadow-674386.postman.co/workspace/v4.0.0CTKs~c3a3165b-0479-4ccd-bebb-f737fd593b7f/collection/7503975-c10cbc56-3a5c-452a-a74b-2ae78d64ec7d?action=share&creator=7503975&source=collection_link"
 	},
 	"item": [
 		{
@@ -14,7 +16,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "deed4c90-31bf-41be-81ed-f24f61ab5bfb",
 								"exec": [
 									"var jsonData = pm.response.json();",
 									"",
@@ -30,7 +31,7 @@
 									"});",
 									"",
 									"var instance = pm.response.json();",
-									"var requiredAttributes = ['name', 'href', 'id', 'name'];",
+									"var requiredAttributes = ['name', 'href', 'id'];",
 									"",
 									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
 									"",
@@ -77,7 +78,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"qqymucymyd\",\n  \"roleType\": {}\n}"
+							"raw": "{\n  \"name\": \"qqymucymyd\"\n}"
 						},
 						"url": {
 							"raw": "{{Party_Role}}partyRole",
@@ -95,7 +96,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "15ceb748-f31d-4b8b-9748-d4c0c4a265f9",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -217,7 +217,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "92a67d99-9ef8-45cc-a4db-d617a6e5c4b6",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -339,8 +338,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "N2",
@@ -351,7 +349,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c684b549-47d7-4668-8711-8825e2d7099c",
 								"exec": [
 									""
 								],
@@ -393,7 +390,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "476e2ac2-c930-4cf2-9597-aa5d758ab26b",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -519,54 +515,11 @@
 					"response": []
 				},
 				{
-					"name": "/PartyRole?fields=href",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "3a5d435d-5f97-4725-859f-3a9804016614",
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{Party_Role}}partyRole?fields=href",
-							"host": [
-								"{{Party_Role}}partyRole"
-							],
-							"query": [
-								{
-									"key": "fields",
-									"value": "href"
-								}
-							]
-						},
-						"description": "This operation filter a PartyRole"
-					},
-					"response": []
-				},
-				{
 					"name": "/PartyRole?fields=id",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "3b7a68fa-23fe-4cec-84de-ea06e71a075d",
 								"exec": [
 									""
 								],
@@ -608,7 +561,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fa0a7463-ba58-4879-a9bb-92a7bda1ef1a",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -739,7 +691,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "815161b1-ef40-4de2-80de-dc4b15379a0e",
 								"exec": [
 									""
 								],
@@ -781,7 +732,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4f02869d-12d6-4c2a-821e-d98a6d32f59f",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -912,7 +862,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f653783a-0aea-44d0-a163-6934b140c585",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -936,7 +885,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"new name\",\r\n    \"roleType\":{\r\n        \r\n    }\r\n}"
+							"raw": "{\r\n    \"name\": \"new name\"\r\n}"
 						},
 						"url": {
 							"raw": "{{Party_Role}}partyRole/{{IDPR01}}",
@@ -957,7 +906,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ad07bbaf-3aa2-43e7-974d-ba471163583f",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1083,7 +1031,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "396d389e-c29c-4f93-a7b4-41e2c728886b",
 								"exec": [
 									"pm.test(\"Status code is 204\", function () {",
 									"    pm.response.to.have.status(204);",
@@ -1126,7 +1073,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e64e67e4-fb6d-4a0f-bab1-d0810abf061d",
 								"exec": [
 									"pm.test(\"Status code is 404\", function () {",
 									"    pm.response.to.have.status(404);",
@@ -1163,8 +1109,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "E1",
@@ -1175,7 +1120,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "31e73c55-4701-4c8d-b7ad-bcdaf4118421",
 								"exec": [
 									"pm.test(\"Status code is 404\", function () {",
 									"    pm.response.to.have.status(404);",
@@ -1212,9 +1156,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

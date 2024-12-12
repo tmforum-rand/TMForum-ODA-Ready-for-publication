@@ -1,27 +1,17 @@
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1beta4
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
-  name: LocationManagement
-  id: TMFC014
-  functionalBlock: Production
-  description: "The Location Management Component  allows easy reference to geographic\
-    \ places important to other entities, where a geographic place is an entity that\
-    \ can answer the question \u201Cwhere?\u201D . This component could  be a facade\
-    \ tool into GIS systems (e.g. Google Maps)"
-  publicationDate: 2023-08-18 00:00:00
-  status: specified
-  version: 1.1.1
   coreFunction:
     dependentAPIs:
     - id: TMF632
-      version: v4.0.0
       apiType: openapi
       name: party-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - individual:
         - GET
@@ -30,23 +20,27 @@ spec:
         - GET
         - GET /id
     - id: TMF674
-      version: v4.0.0
       apiType: openapi
       name: geographic-site-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - geographicSite:
         - GET
         - GET /id
     exposedAPIs:
     - id: TMF673
-      version: v4.0.0
       apiType: openapi
       name: geographic-address-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
       port: 8080
       resources:
       - geographicAddressValidation:
@@ -61,11 +55,15 @@ spec:
         - GET
         - GET /id
     - id: TMF674
-      version: v4.0.0
       apiType: openapi
       name: geographic-site-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
       port: 8080
       resources:
       - geographicSite:
@@ -75,11 +73,15 @@ spec:
         - PATCH
         - DELETE
     - id: TMF675
-      version: v4.0.0
       apiType: openapi
       name: geographic-location-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
       port: 8080
       resources:
       - geographicLocation:
@@ -89,11 +91,15 @@ spec:
         - PATCH
         - DELETE
     - id: TMF701
-      version: v4.0.0
       apiType: openapi
       name: process-flow-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
       port: 8080
       resources:
       - processFlow:
@@ -105,21 +111,33 @@ spec:
         - PATCH
         - GET
         - GET /id
-  owners:
-  - email: Redacted
-    name: Redacted
-  maintainers:
-  - name: Redacted
-    email: components@tmforum.org
   managementFunction:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
   securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
     secretsManagement:
       type: sideCar
       sideCar:
@@ -130,11 +148,15 @@ spec:
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
     - id: TMF669
-      version: v4.0.0
       apiType: openapi
       name: party-role-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
       port: 8080
       resources: []
     dependentAPIs: []
@@ -147,7 +169,9 @@ spec:
       port: 8080
       resources:
       - geographicAddressValidationStateChangeEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+        version: v4.0.0
       apiType: openapi
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/hub
       implementation: /{{.Release.Name}}-GeographicSiteManagementEvent
@@ -158,7 +182,9 @@ spec:
       - geographicSiteCreateEvent
       - geographicSiteDeleteEvent
       - geographicSiteStatusChangeEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF674_GeographicSite/master/TMF674-GeographicSite-v4.0.0.swagger.json
+        version: v4.0.0
       apiType: openapi
       id: TMF674
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/hub
@@ -169,7 +195,27 @@ spec:
       - geographicLocationAttributeValueChangeEvent
       - geographicLocationCreateEvent
       - geographicLocationDeleteEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF675_GeographicLocation/master/TMF675-GeographicLocation-v4.0.0.swagger.json
+        version: v4.0.0
       apiType: openapi
       id: TMF675
     subscribedEvents: []
+  componentMetadata:
+    id: TMFC014
+    name: LocationManagement
+    version: 1.1.1
+    description: "The Location Management Component  allows easy reference to geographic\
+      \ places important to other entities, where a geographic place is an entity\
+      \ that can answer the question \u201Cwhere?\u201D . This component could  be\
+      \ a facade tool into GIS systems (e.g. Google Maps)"
+    publicationDate: 2023-08-18 00:00:00
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions:
+    - 429_"Location_Change_History_Management_vNA

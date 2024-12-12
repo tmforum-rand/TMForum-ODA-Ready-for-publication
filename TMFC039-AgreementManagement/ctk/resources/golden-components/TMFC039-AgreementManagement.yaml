@@ -1,14 +1,56 @@
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1beta4
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  componentMetadata:
+    description: Agreement Management component is responsible for creating, storing,
+      editing, and tracking agreed  arrangements with related terms and conditions
+      over a lifecycle. The component manages offers, records acceptance, and associated
+      considerations and intentions to establish agreements as legally binding. As
+      well this components provides workfows and templates that facilitates collaboration,
+      communication and negotiation of agreements between parties, and administers
+      the specificities related to translate  agreements into contracts, when it is
+      required. It provides a secure storage, version control, compliance management,
+      and renewal notifications for agreements.
+    eTOMs:
+    - 1.6.5_Party_Agreement_Management_v23.0
+    - 1.7.14_Enterprise_Governance_v23.0
+    - 1.7.14.5_Manage_Contract_v23.0
+    functionalBlock: Party Management
+    functionalFrameworkFunctions:
+    - 1026_Partner_Collaboration_Constraints_Collection_v23.0
+    - 1045_Partner_Agreement_Tracking_v23.0
+    - 1043_Partner_Agreement_Storage_and_Searching_v23.0
+    - 1044_Partner_Agreement_Implementation_v23.0
+    - 1042_Partner_Agreement_Creation_v23.0
+    - 1180_Customer_Framework_Agreement_Approval_v23.0
+    - 1179_Customer_Framework_Agreement_Definition_v23.0
+    - 363_Product_Agreement_Storage_v23.0
+    - 361_Product_Agreement_Implementation_v23.0
+    - 653_Contract_Management_v23.0
+    - 1042_Partner_Agreement_Creation_v23.0
+    - 1043_Partner_Agreement_Storage_and_Searching_v23.0
+    - 1044_Partner_Agreement_Implementation_v23.0
+    - 1045_Partner_Agreement_Tracking_v23.0
+    id: TMFC039
+    maintainers:
+    - email: components@tmforum.org
+      name: Redacted
+      url: Redacted
+    name: AgreementManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    publicationDate: 2024-08-19 00:00:00
+    status: specified
+    version: 1.1.0
   coreFunction:
     dependentAPIs:
     - apiType: openapi
       id: TMF632
       name: party-management-api
-      port: 8080
       required: true
       resources:
       - individual:
@@ -17,23 +59,23 @@ spec:
       - organization:
         - GET
         - GET/id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF669
       name: party-role-management-api
-      port: 8080
       required: false
       resources:
       - partyRole:
         - GET
         - GET/id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF620
       name: product-catalog-management-api
-      port: 8080
       required: false
       resources:
       - productOffering:
@@ -42,34 +84,34 @@ spec:
       - productOfferingPrice:
         - GET
         - GET/id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF637
       name: product-inventory-management-api
-      port: 8080
       required: false
       resources:
       - product:
         - GET
         - GET/id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF667
       name: document-management-api
-      port: 8080
       required: false
       resources:
       - document:
         - GET
         - GET/id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF701
       name: process-flow-management-api
-      port: 8080
       required: false
       resources:
       - processFlow:
@@ -81,12 +123,16 @@ spec:
         - PATCH
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
     exposedAPIs:
     - apiType: openapi
+      developerUI: not_defined
       id: TMF651
+      implementation: not_defined
       name: agreement-management-api
+      path: not_defined
       port: 8080
       required: true
       resources:
@@ -102,11 +148,15 @@ spec:
         - POST
         - PATCH/id
         - DELETE/id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
+      developerUI: not_defined
       id: TMF701
+      implementation: not_defined
       name: process-flow-management-api
+      path: not_defined
       port: 8080
       required: false
       resources:
@@ -119,17 +169,9 @@ spec:
         - PATCH
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-      version: v4.0.0
-  description: Agreement Management component is responsible for creating, storing,
-    editing, and tracking agreed  arrangements with related terms and conditions over
-    a lifecycle. The component manages offers, records acceptance, and associated
-    considerations and intentions to establish agreements as legally binding. As well
-    this components provides workfows and templates that facilitates collaboration,
-    communication and negotiation of agreements between parties, and administers the
-    specificities related to translate  agreements into contracts, when it is required.
-    It provides a secure storage, version control, compliance management, and renewal
-    notifications for agreements.
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
   eventNotification:
     publishedEvents:
     - apiType: openapi
@@ -143,7 +185,9 @@ spec:
       - agreementStateChangeEvent
       - agreementSpecificationCreateEvent
       - agreementSpecificationAttributeValueChangeEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
+        version: v4.0.0
     subscribedEvents:
     - apiType: openapi
       id: TMF632
@@ -153,36 +197,50 @@ spec:
       resources:
       - individualDeleteEvent
       - organizationDeleteEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
-  functionalBlock: Party Management
-  id: TMFC039
-  maintainers:
-  - email: components@tmforum.org
-    name: Redacted
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+        version: v4.0.0
   managementFunction:
+    dependentAPIs:
+    - apiType: dependentAPI_apiType
+      id: dependentAPI_id
+      name: dependentAPI_name
+      required: false
+      resources: []
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      version: dependentAPI_version
     exposedAPIs:
     - apiType: prometheus
+      developerUI: exposedAPI_developerUI
+      id: exposedAPI_id
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
-  name: AgreementManagement
-  owners:
-  - email: Redacted
-    name: Redacted
-  publicationDate: 2024-08-19 00:00:00
+      required: false
+      resources: []
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      version: exposedAPI_version
   securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
     - apiType: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
       id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
       name: party-role-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       required: true
       resources: []
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     secretsManagement:
       podSelector:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
@@ -191,5 +249,3 @@ spec:
       sideCar:
         port: 8080
       type: sideCar
-  status: specified
-  version: 1.1.0

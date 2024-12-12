@@ -1,14 +1,97 @@
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1beta4
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  componentMetadata:
+    description: Addresses the means of capturing what a customer wants to order,
+      based on the CSP Product Catalog. This component permits to choose the configuration
+      of the product offerings and products desired, to provide a quote, to check
+      the eligibility of the customer order, and to complete it with information needed
+      such as the related parties or associated the billing account and the delivery
+      appointment if needed. This component is globally in charge of these quote management,
+      order capture and validation steps, using dedicated components (e.g., Offering
+      Configurator, Service Qualification, Party Mgt) when needed. After the delivery
+      of the customer product order items, this component is also in charge of the
+      commercial closure of the order. It includes update of the Product Inventory
+      (status and starting/end date of tariffs and discounts) and potential commercial
+      rules control (e.g. receipt of the contract document signed by the customer)
+    eTOMs:
+    - 1.1.9_Selling_v23.0
+    - 1.1.9.2_Develop_Sales_Proposal_v23.0
+    - 1.1.9.5_Negotiate_Sales/Contract_v23.0
+    - 1.2.9_Product_Offering_Purchasing_v23.0
+    - 1.3.3_Customer_Order_Handling_v23.0
+    - 1.3.3.1_Determine_Customer_Order_Feasibility_v23.0
+    - 1.3.3.2_Authorize_Credit_v23.0
+    - 1.3.3.4_Complete_Customer_Order_v23.0
+    - 1.3.3.5_Issue_Customer_Orders_v23.0
+    - 1.3.3.6_Report_Customer_Order_Handling_v23.0
+    - 1.3.3.7_Close_Customer_Order_v23.0
+    - 1.3.3.8_Manage_Order_Fallout_v23.0
+    functionalBlock: CoreCommerce
+    functionalFrameworkFunctions:
+    - 16_Fallout_Automated_Correction_v23.0
+    - 17_Fallout_Correction_Information_Collection_v23.0
+    - 18_Fallout_Management_to_Fulfillment_Application_Accessing_v23.0
+    - 19_Fallout_Manual_Correction_Queuing_v23.0
+    - 20_Fallout_Notification_v23.0
+    - 21_Fallout_Orchestration_v23.0
+    - 22_Fallout_Reporting_v23.0
+    - 23_Fallout_Dashboard_System_Log-in_Accessing_v23.0
+    - 24_Pre-populated_Fallout_Information_Presentation_v23.0
+    - 120_Customer_Order_Capturing_v23.0
+    - 172_Customer_Order_Reporting_v23.0
+    - 174_Customer_Order_Error_Resolution_Support_v23.0
+    - 176_Customer_Order_Capturing_Access_v23.0
+    - 177_Customer_Order_Take-over_Management_v23.0
+    - 178_Customer_Order_Administration_v23.0
+    - 181_Product_Order_Data_Collection_v23.0
+    - 204_Customer_Order_Completion_v23.0
+    - 205_Customer_Order_Eligibility_Validation_v23.0
+    - 208_Customer_Order_Change_Management_v23.0
+    - 209_Customer_Order_Cancellation_v23.0
+    - 211_Customer_Order_Activity_Supervision_v23.0
+    - 212_Customer_Order_Versioning_v23.0
+    - 213_Pending_Customer_Orders_Maintenance_v23.0
+    - 217_Customer_Order_Establishment_Tracking_v23.0
+    - 236_Customer_Loyalty_Subscription_Management_v23.0
+    - 259_External_Call_Center_Access_v23.0
+    - 272_Order_Status_Viewing_v23.0
+    - 277_Shopping_Cart_Purchasing_Access_v23.0
+    - 317_Product_Availability_Area_Checking_v23.0
+    - 343_Mass_Transaction_Ordering_v23.0
+    - 359_Contract_and_SLA_creation_v23.0
+    - 366_Customer_Order_Management_v23.0
+    - 379_Product_Customization_Offering_Management_v23.0
+    - 387_Sales_Metrics_Calculation_v23.0
+    - 388_Sales_Order_Reporting_v23.0
+    - 716_Order_Data_Enrichment_v23.0
+    - 717_Calculated_Order_Data_Enrichment_v23.0
+    - 718_Customer_Order_Validation_v23.0
+    - 719_Customer_Order_Storage_v23.0
+    - 720_Customer_Order_Searching_v23.0
+    - 756_Fallout_Rule_Based_Error_Correction_v23.0
+    - 934_Sales_Negotiation_Support_v23.0
+    - 1063_Sales_Quote_Management_v23.0
+    id: TMFC002
+    maintainers:
+    - email: components@tmforum.org
+      name: Redacted
+      url: Redacted
+    name: ProductOrderCaptureAndValidation
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    publicationDate: 2024-11-12 00:00:00
+    status: specified
+    version: 2.1.0
   coreFunction:
     dependentAPIs:
     - apiType: openapi
       id: TMF620
       name: product-catalog-management-api
-      port: 8080
       required: true
       resources:
       - productCategory:
@@ -23,12 +106,12 @@ spec:
       - productSpecification:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
-      version: v4.1.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF637
       name: product-inventory-management-api
-      port: 8080
       required: true
       resources:
       - product:
@@ -36,12 +119,12 @@ spec:
         - GET /id
         - POST
         - PATCH
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF679
       name: product-offering-qualification-management-api
-      port: 8080
       required: false
       resources:
       - productOfferingQualification:
@@ -49,12 +132,12 @@ spec:
         - GET /id
         - POST
         - PATCH
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF679_Product_Offering_Qualification/4.0.0/swagger/TMF679_Product_Offering_Qualification_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF679_Product_Offering_Qualification/4.0.0/swagger/TMF679_Product_Offering_Qualification_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF645
       name: service-qualification-management-api
-      port: 8080
       required: false
       resources:
       - checkServiceQualification:
@@ -67,12 +150,12 @@ spec:
         - GET /id
         - POST
         - PATCH
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF646
       name: appointment-management-api
-      port: 8080
       required: false
       resources:
       - appointment:
@@ -87,12 +170,12 @@ spec:
         - POST
         - PATCH
         - DELETE
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF673
       name: geographic-address-management-api
-      port: 8080
       required: false
       resources:
       - geographicAddress:
@@ -106,23 +189,23 @@ spec:
         - GET /id
         - POST
         - PATCH
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF674
       name: geographic-site-management-api
-      port: 8080
       required: false
       resources:
       - geographicSite:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF687
       name: stock-management-api
-      port: 8080
       required: false
       resources:
       - checkProductStock:
@@ -146,12 +229,12 @@ spec:
       - productStock:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF687_Stock/4.0.0/swagger/TMF687_Stock_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF687_Stock/4.0.0/swagger/TMF687_Stock_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF632
       name: party-management-api
-      port: 8080
       required: false
       resources:
       - individual:
@@ -160,78 +243,80 @@ spec:
       - organization:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF669
       name: party-role-management-api
-      port: 8080
       required: false
       resources:
       - partyRole:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF666
       name: account-management-api
-      port: 8080
       required: false
       resources:
       - billingAccount:
         - GET /id
         - GET
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF676
       name: payment-management-api
-      port: 8080
       required: false
       resources:
       - payment:
         - GET / id
         - GET
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF683
       name: party-interaction-management-api
-      port: 8080
       required: false
       resources:
       - partyInteraction:
         - GET / id
         - GET
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json
+        version: null
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/4.0.0/swagger/TMF683_Party_Interaction_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF638
       name: service-inventory-management-api
-      port: 8080
       required: false
       resources:
       - service:
         - GET / id
         - GET
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF639
       name: resource-inventory-management-api
-      port: 8080
       required: false
       resources:
       - resource:
         - GET / id
         - GET
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF701
       name: process-flow-management-api
-      port: 8080
       required: false
       resources:
       - processFlow:
@@ -244,12 +329,12 @@ spec:
         - PATCH
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF760
       name: product-configuration-management-api
-      port: 8080
       required: false
       resources:
       - checkProductConfiguration:
@@ -260,23 +345,27 @@ spec:
         - GET
         - GET /id
         - POST
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF760_Product_Configuration/5.0.0/swagger/TMF760-ProductConfiguration-v5.0.0.oas.yaml
-      version: v5.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF760_Product_Configuration/5.0.0/swagger/TMF760-ProductConfiguration-v5.0.0.oas.yaml
+        version: null
     - apiType: openapi
       id: TMF651
       name: agreement-management-api
-      port: 8080
       required: false
       resources:
       - agreement:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     exposedAPIs:
     - apiType: openapi
+      developerUI: not_defined
       id: TMF622
+      implementation: not_defined
       name: product-ordering-management-api
+      path: not_defined
       port: 8080
       required: true
       resources:
@@ -290,11 +379,15 @@ spec:
         - POST
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
+      developerUI: not_defined
       id: TMF648
+      implementation: not_defined
       name: quote-management-api
+      path: not_defined
       port: 8080
       required: false
       resources:
@@ -304,11 +397,15 @@ spec:
         - GET /id
         - PATCH
         - DELETE
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF648_Quote/4.0.0/swagger/TMF648_Quote_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF648_Quote/4.0.0/swagger/TMF648_Quote_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
+      developerUI: not_defined
       id: TMF663
+      implementation: not_defined
       name: shopping-cart-management-api
+      path: not_defined
       port: 8080
       required: false
       resources:
@@ -318,11 +415,15 @@ spec:
         - GET /id
         - PATCH
         - DELETE
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF663_Shopping_Cart/4.0.0/swagger/TMF663_Shopping_Cart_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF663_Shopping_Cart/4.0.0/swagger/TMF663_Shopping_Cart_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
+      developerUI: not_defined
       id: TMF701
+      implementation: not_defined
       name: process-flow-management-api
+      path: not_defined
       port: 8080
       required: false
       resources:
@@ -335,20 +436,9 @@ spec:
         - PATCH
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-      version: v4.0.0
-  description: Addresses the means of capturing what a customer wants to order, based
-    on the CSP Product Catalog. This component permits to choose the configuration
-    of the product offerings and products desired, to provide a quote, to check the
-    eligibility of the customer order, and to complete it with information needed
-    such as the related parties or associated the billing account and the delivery
-    appointment if needed. This component is globally in charge of these quote management,
-    order capture and validation steps, using dedicated components (e.g., Offering
-    Configurator, Service Qualification, Party Mgt) when needed. After the delivery
-    of the customer product order items, this component is also in charge of the commercial
-    closure of the order. It includes update of the Product Inventory (status and
-    starting/end date of tariffs and discounts) and potential commercial rules control
-    (e.g. receipt of the contract document signed by the customer)
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
   eventNotification:
     publishedEvents:
     - apiType: openapi
@@ -366,7 +456,9 @@ spec:
       - cancelProductOrderCreateEvent
       - cancelProductOrderStateChange
       - cancelProductOrderInformationRequired
-      specification: https://github.com/tmforum-apis/TMF622_ProductOrder/blob/master/TMF622-ProductOrder-v4.0.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF622_ProductOrder/blob/master/TMF622-ProductOrder-v4.0.0.swagger.json
+        version: v4.0.0
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Quote/hub
       id: TMF648
@@ -379,7 +471,9 @@ spec:
       - quoteAttributeValueChange
       - quoteDelete
       - quoteInformationRequired
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
+        version: v4.0.0
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ShoppingCart/hub
       id: TMF663
@@ -390,7 +484,9 @@ spec:
       - shoppingCartCreateEvent
       - shoppingCartAttributeValueChange
       - shoppingCartDelete
-      specification: https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v4.0.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v4.0.0.swagger.json
+        version: v4.0.0
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       id: TMF701
@@ -407,19 +503,23 @@ spec:
       - taskFlowDeleteEvent
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
-      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
     subscribedEvents:
     - apiType: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOfferingQualification/call-back
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOfferingQualification/call-back
       id: TMF679
       implementation: /{{.Release.Name}}-ProductOfferingQualificationEvent
       name: ProductOfferingQualification
       port: 80
       resources:
       - productOfferingQualificationStateChangeEvent
-      specification: https://github.com/tmforum-apis/TMF679_ProductOfferingQualification/blob/master/TMF679-ProductOfferingQualification-v4.0.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF679_ProductOfferingQualification/blob/master/TMF679-ProductOfferingQualification-v4.0.0.swagger.json
+        version: v4.0.0
     - apiType: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/call-back
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/call-back
       id: TMF645
       implementation: /{{.Release.Name}}-ServiceQualificationEvent
       name: ServiceQualification
@@ -427,18 +527,22 @@ spec:
       resources:
       - checkServiceQualificationStateChangeEvent
       - queryServiceQualificationStateChangeEvent
-      specification: https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+        version: v4.0.0
     - apiType: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/call-back
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/call-back
       id: TMF673
       implementation: /{{.Release.Name}}-GeographicAddressManagementEvent
       name: GeographicAddressManagement
       port: 80
       resources:
       - geographicAddressValidationStateChange
-      specification: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+        version: v4.0.0
     - apiType: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentManagementEvent/call-back
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentManagementEvent/call-back
       id: TMF676
       implementation: /{{.Release.Name}}-PaymentManagementEvent
       name: PaymentManagement
@@ -446,9 +550,11 @@ spec:
       resources:
       - paymentCreate
       - paymentStateChange
-      specification: https://github.com/tmforum-apis/TMF676_PaymentManagement/blob/master/TMF676-Payment-v4.0.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF676_PaymentManagement/blob/master/TMF676-Payment-v4.0.0.swagger.json
+        version: v4.0.0
     - apiType: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceReservationEvent/call-back
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceReservationEvent/call-back
       id: TMF716
       implementation: /{{.Release.Name}}-ResourceReservationEvent
       name: ResourceReservation
@@ -462,36 +568,50 @@ spec:
       - cancelResourceReservationCreateEvent
       - cancelResourceReservationStateChangeEvent
       - cancelResourceReservationInformationRequiredEvent
-      specification: https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/master/TMF716-ResourceReservation-v4.1.0.swagger.json
-  functionalBlock: CoreCommerce
-  id: TMFC002
-  maintainers:
-  - email: components@tmforum.org
-    name: Redacted
+      specification:
+      - url: https://github.com/tmforum-apis/TMF716_ResourceReservation/blob/master/TMF716-ResourceReservation-v4.1.0.swagger.json
+        version: v4.0.0
   managementFunction:
+    dependentAPIs:
+    - apiType: dependentAPI_apiType
+      id: dependentAPI_id
+      name: dependentAPI_name
+      required: false
+      resources: []
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      version: dependentAPI_version
     exposedAPIs:
     - apiType: prometheus
+      developerUI: exposedAPI_developerUI
+      id: exposedAPI_id
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
-  name: ProductOrderCaptureAndValidation
-  owners:
-  - email: Redacted
-    name: Redacted
-  publicationDate: 2024-09-05 00:00:00
+      required: false
+      resources: []
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      version: exposedAPI_version
   securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
     - apiType: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
       id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
       name: party-role-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       required: true
       resources: []
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     secretsManagement:
       podSelector:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
@@ -500,5 +620,3 @@ spec:
       sideCar:
         port: 8080
       type: sideCar
-  status: specified
-  version: 2.0.1

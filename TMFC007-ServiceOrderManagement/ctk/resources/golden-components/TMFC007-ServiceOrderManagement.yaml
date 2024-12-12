@@ -1,14 +1,76 @@
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1beta4
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  componentMetadata:
+    description: The SOM is the entry point of the Production Domain. It oversees
+      Customer-Facing-Service (CFS) delivery of resources (network and service platforms
+      equipment). The SOM exposes in particular the API ServiceOrder. It is triggered
+      when the Product Order Orchestration Management component calls this API to
+      request CFS delivery. To achieve delivery of a CFS, the SOM orchestrates the
+      CFS delivery process which. Identifies possible RFS and chooses one, using the
+      catalog and technical inventory. Selects the resources (servers, equipment,
+      etc.) and their instances. Requests the ROM to update selected resource instances
+      to deliver CFS. Request sent to the ROM contain the CFS and the list of configured
+      resource instances to update.
+    eTOMs:
+    - 1.4.5_Service_Configuration_&_Activation_v21.5
+    - 1.4.5.1_Design_Solution_v21.5
+    - 1.4.5.2_"Allocate_Specific_Service_Parameters_to_Services_v21.5
+    - 1.4.5.3_Track_&_Manage_Service_Provisioning_v21.5
+    - 1.4.5.4_Implement,_configure_&_activate_service_v21.5
+    - 1.4.5.6_"Issue_Service_Order_v21.5
+    - 1.4.5.7_Report_service_provisioning_v21.5
+    - 1.4.5.8_Close_Service_Order_v21.5
+    - 1.5.6_Resource_Provisioning_v21.5
+    - 1.5.6.7_"Issue_Resource_Order_v21.5
+    functionalBlock: Production
+    functionalFrameworkFunctions:
+    - 584_Service_Activation_Planning_v21.5
+    - 588_Service_Orchestration_Configuration_v21.5
+    - 591_Service_Parameters_Allocation_v21.5
+    - 596_Service_Order_Transfer_Supervision_v21.5
+    - 598_Service_Order_Orchestration_v21.5
+    - 733_Service_Order_Decomposition_v21.5
+    - 734_Service_Data_Collection_v21.5
+    - 963_Service_Task_Item_Decomposition_v21.5
+    - 968_Service_Work_Item_Sequence_Execution_v21.5
+    - 969_Service_Work_Item_Sequence_Execution_Configuration_v21.5
+    - 571_Service_Delivery_Due_Date_Calculation_v21.5
+    - 1061_Service_Order_Initiation_v21.5
+    - 595_Service_Order_Completion_v21.5
+    - 600_Service_Order_Validation_v21.5
+    - 583_Activation_Notification_v21.5
+    - 594_Service_Order_Storage_v21.5
+    - 597_Service_Order_Exposure_v21.5
+    - 599_Service_Order_Tracking_v21.5
+    - 735_Access_Provider_Selection_v21.5
+    - 341_Service_Activation_v21.5
+    - 342_Mass_Service_Pre-activation_v21.5
+    - 570_Solution_Services_Design_Management_v21.5
+    - 589_Cross_Services_Dependencies_Configuration_v21.5
+    - 590_Service_Configuration_v21.5
+    - 585_Service_Configuration_Activation_v21.5
+    - 592_Service_Parameters_Reservation_v21.5
+    id: TMFC007
+    maintainers:
+    - email: components@tmforum.org
+      name: Redacted
+      url: Redacted
+    name: ServiceOrderManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    publicationDate: 2024-02-23
+    status: specified
+    version: 2.0.0
   coreFunction:
     dependentAPIs:
     - apiType: openapi
       id: TMF632
       name: party-management-api
-      port: 8080
       required: false
       resources:
       - individual:
@@ -17,34 +79,34 @@ spec:
       - organization:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF633
       name: service-catalog-management-api
-      port: 8080
       required: true
       resources:
       - serviceSpecification:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF634
       name: resource-catalog-management-api
-      port: 8080
       required: false
       resources:
       - resourceSpecification:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF638
       name: service-inventory-management-api
-      port: 8080
       required: true
       resources:
       - service:
@@ -53,34 +115,34 @@ spec:
         - POST
         - PATCH
         - DELETE
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF639
       name: resource-inventory-management-api
-      port: 8080
       required: false
       resources:
       - resource:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF640
       name: service-activation-management-api
-      port: 8080
       required: false
       resources:
       - monitor:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF640_Service_Activation/4.0.0/swagger/TMF640_Service_Activation_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF640_Service_Activation/4.0.0/swagger/TMF640_Service_Activation_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF641
       name: service-ordering-management-api
-      port: 8080
       required: false
       resources:
       - serviceOrder:
@@ -93,12 +155,12 @@ spec:
         - GET
         - GET /id
         - POST
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF645
       name: service-qualification-management-api
-      port: 8080
       required: false
       resources:
       - checkServiceQualification:
@@ -111,12 +173,12 @@ spec:
         - GET /id
         - POST
         - PATCH
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF646
       name: appointment-management-api
-      port: 8080
       required: false
       resources:
       - appointment:
@@ -129,12 +191,12 @@ spec:
         - GET /id
         - POST
         - PATCH
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF652
       name: resource-order-management-api
-      port: 8080
       required: false
       resources:
       - resourceOrder:
@@ -149,12 +211,12 @@ spec:
         - POST
         - PATCH
         - DELETE
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF652_Resource_Order/4.0.0/swagger/TMF652_Resource_Order_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF652_Resource_Order/4.0.0/swagger/TMF652_Resource_Order_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF653
       name: service-test-management-api
-      port: 8080
       required: false
       resources:
       - serviceTest:
@@ -163,23 +225,23 @@ spec:
       - serviceTestSpecification:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF653_Service_Test/4.2.0/swagger/TMF653_Service_Test_Management_API_v4.2.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF653_Service_Test/4.2.0/swagger/TMF653_Service_Test_Management_API_v4.2.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF669
       name: party-role-management-api
-      port: 8080
       required: false
       resources:
       - partyRole:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF673
       name: geographic-address-management-api
-      port: 8080
       required: false
       resources:
       - geographicAddress:
@@ -192,56 +254,56 @@ spec:
         - GET
         - GET /id
         - POST
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF674
       name: geographic-site-management-api
-      port: 8080
       required: false
       resources:
       - geographicLocation:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF675
       name: geographic-location-management-api
-      port: 8080
       required: false
       resources:
       - geographicSite:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF681
       name: communication-management-api
-      port: 8080
       required: false
       resources:
       - communicationMessage:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF697
       name: work-order-management-api
-      port: 8080
       required: false
       resources:
       - workOrder:
         - GET
         - GET /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF697_Work_Order/4.0.0/swagger/TMF697_Work_Order_Management_API_v4.0.0_beta_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF697_Work_Order/4.0.0/swagger/TMF697_Work_Order_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
     - apiType: openapi
       id: TMF701
       name: process-flow-management-api
-      port: 8080
       required: false
       resources:
       - processFlow:
@@ -249,12 +311,16 @@ spec:
         - GET
         - GET /id
         - PATCH
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
     exposedAPIs:
     - apiType: openapi
+      developerUI: not_defined
       id: TMF641
+      implementation: not_defined
       name: service-ordering-management-api
+      path: not_defined
       port: 8080
       required: true
       resources:
@@ -268,11 +334,15 @@ spec:
         - GET
         - GET /id
         - POST
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
+      developerUI: not_defined
       id: TMF701
+      implementation: not_defined
       name: process-flow-management-api
+      path: not_defined
       port: 8080
       required: false
       resources:
@@ -285,17 +355,9 @@ spec:
         - GET
         - GET /id
         - PATCH /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-      version: v4.0.0
-  description: The SOM is the entry point of the Production Domain. It oversees Customer-Facing-Service
-    (CFS) delivery of resources (network and service platforms equipment). The SOM
-    exposes in particular the API ServiceOrder. It is triggered when the Product Order
-    Orchestration Management component calls this API to request CFS delivery. To
-    achieve delivery of a CFS, the SOM orchestrates the CFS delivery process which.
-    Identifies possible RFS and chooses one, using the catalog and technical inventory.
-    Selects the resources (servers, equipment, etc.) and their instances. Requests
-    the ROM to update selected resource instances to deliver CFS. Request sent to
-    the ROM contain the CFS and the list of configured resource instances to update.
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
   eventNotification:
     publishedEvents:
     - apiType: openapi
@@ -314,7 +376,9 @@ spec:
       - cancelServiceOrderCreateEvent
       - cancelServiceOrderStateChangeEvent
       - cancelServiceOrderInformationRequiredEvent
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       id: TMF701
@@ -330,7 +394,9 @@ spec:
       - taskFlowDeleteEvent
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
+        version: v4.0.0
     subscribedEvents:
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrderManagement/hub
@@ -343,7 +409,9 @@ spec:
       - resourceOrderInformationRequiredEvent
       - cancelResourceOrderStateChange
       - cancelResourceOrderInformationRequiredEvent
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/hub
       id: TMF645
@@ -352,7 +420,9 @@ spec:
       resources:
       - checkServiceQualificationStateChangeEvent
       - queryServiceQualificationStateChangeEvent
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Communication/hub
       id: TMF681
@@ -360,7 +430,9 @@ spec:
       port: 80
       resources:
       - communicationMessageStateChangeEvent
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/WorkOrder/hub
       id: TMF697
@@ -368,36 +440,50 @@ spec:
       port: 80
       resources:
       - workOrderStateChange
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/4.0.0/swagger/TMF697_Work_Order_Management_API_v4.0.0_swagger.json
-  functionalBlock: Production
-  id: TMFC007
-  maintainers:
-  - email: components@tmforum.org
-    name: Redacted
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/4.0.0/swagger/TMF697_Work_Order_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
   managementFunction:
+    dependentAPIs:
+    - apiType: dependentAPI_apiType
+      id: dependentAPI_id
+      name: dependentAPI_name
+      required: false
+      resources: []
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      version: dependentAPI_version
     exposedAPIs:
     - apiType: prometheus
+      developerUI: exposedAPI_developerUI
+      id: exposedAPI_id
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
-  name: ServiceOrderManagement
-  owners:
-  - email: Redacted
-    name: Redacted
-  publicationDate: 2024-02-23
+      required: false
+      resources: []
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      version: exposedAPI_version
   securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
     - apiType: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
       id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
       name: party-role-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       required: true
       resources: []
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     secretsManagement:
       podSelector:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
@@ -406,5 +492,3 @@ spec:
       sideCar:
         port: 8080
       type: sideCar
-  status: specified
-  version: 2.0.0

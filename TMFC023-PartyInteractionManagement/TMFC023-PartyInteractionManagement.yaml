@@ -1,29 +1,17 @@
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1beta4
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
-  name: PartyInteractionManagement
-  id: TMFC023
-  functionalBlock: PartyManagement
-  description: Party Interaction deals with the initial greeting and welcoming of
-    a new contact. This will typically be the first component in a customer experience
-    journey, shared by unassisted (self-service, retail kiosk) or assisted (call center,
-    retail store) channels. It will identify known parties or new parties and react
-    appropriately to propose available actions. It records all the interactions for
-    the parties from all channels.
-  publicationDate: 2024-04-30 00:00:00
-  status: specified
-  version: 1.1.0
   coreFunction:
     dependentAPIs:
     - id: TMF632
-      version: v4.0.0
       apiType: openapi
       name: party-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - individual:
         - GET
@@ -32,34 +20,34 @@ spec:
         - GET
         - GET /id
     - id: TMF669
-      version: v4.0.0
       apiType: openapi
       name: party-role-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - PartyRoleManagement:
         - GET
         - GET /id
     - id: TMF672
-      version: v4.0.0
       apiType: openapi
       name: user-role-permission-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - permission:
         - GET
         - GET /id
     - id: TMF662
-      version: v4.0.0
       apiType: openapi
       name: entity-catalog-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - entitySpecification:
         - GET
@@ -74,45 +62,45 @@ spec:
         - GET
         - GET /id
     - id: TMF667
-      version: v4.0.0
       apiType: openapi
       name: document-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - document:
         - GET
         - GET /id
     - id: TMF688
-      version: v4.0.0
       apiType: openapi
       name: event-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
       resources:
       - event:
         - GET
         - GET /id
     - id: TMF681
-      version: v4.0.0
       apiType: openapi
       name: communication-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - communicationMessage:
         - GET
         - GET /id
     - id: TMF701
-      version: v4.0.0
       apiType: openapi
       name: process-flow-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
       resources:
       - processFlow:
         - POST
@@ -121,11 +109,17 @@ spec:
         - PATCH
     exposedAPIs:
     - id: TMF683
-      version: v4.0.0
       apiType: openapi
       name: party-interaction-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json
+        version: null
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/4.0.0/swagger/TMF683_Party_Interaction_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
       port: 8080
       resources:
       - PartyInteraction:
@@ -135,11 +129,15 @@ spec:
         - PATCH
         - DELETE
     - id: TMF701
-      version: v4.0.0
       apiType: openapi
       name: process-flow-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
       port: 8080
       resources:
       - processFlow:
@@ -152,11 +150,15 @@ spec:
         - GET
         - GET /id
     - id: TMF688
-      version: v4.0.0
       apiType: openapi
       name: event-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
       port: 8080
       resources:
       - listener:
@@ -164,21 +166,33 @@ spec:
       - hub:
         - POST
         - DELETE
-  owners:
-  - email: Redacted
-    name: Redacted
-  maintainers:
-  - name: Redacted
-    email: components@tmforum.org
   managementFunction:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
   securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
     secretsManagement:
       type: sideCar
       sideCar:
@@ -189,11 +203,15 @@ spec:
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
     - id: TMF669
-      version: v4.0.0
       apiType: openapi
       name: party-role-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
       port: 8080
       resources: []
     dependentAPIs: []
@@ -208,7 +226,9 @@ spec:
       - partyInteractionAttributeValueChangeEvent
       - partyInteractionDeleteEvent
       - partyInteractionStatusChangeEvent
-      specification: https://github.com/tmforum-apis/TMF683_PartyInteraction/blob/master/partyInteractionManagement_TMF_v1.0.0Review2.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF683_PartyInteraction/blob/master/partyInteractionManagement_TMF_v1.0.0Review2.json
+        version: null
       apiType: openapi
       id: TMF683
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
@@ -225,12 +245,13 @@ spec:
       - taskFlowDeleteEvent
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
-      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
       apiType: openapi
       id: TMF701
     subscribedEvents:
-    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
-      implementation: /{{.Release.Name}}-PartyManagement
+    - implementation: /{{.Release.Name}}-PartyManagement
       name: PartyManagement
       port: 80
       resources:
@@ -242,28 +263,35 @@ spec:
       - OrganizationAttributeValueChangeEvent
       - OrganizationStateChangeEvent
       - OrganizationDeleteEvent
-      specification: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+        version: v4.0.0
       apiType: openapi
       id: TMF632
-    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
-      implementation: /{{.Release.Name}}-PartyRoleManagement
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
+    - implementation: /{{.Release.Name}}-PartyRoleManagement
       name: PartyRoleManagement
       port: 80
       resources:
       - PartyRoleCreateEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
       apiType: openapi
       id: TMF701
-    - call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
-      implementation: /{{.Release.Name}}-DocumentgManagementEvent
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
+    - implementation: /{{.Release.Name}}-DocumentgManagementEvent
       name: documentManagement
       port: 80
       resources:
       - documentChangeEvent
       - documentSpecificationAttributeValueChangeEvent
-      specification: https://github.com/tmforum-apis/TMF667_Document/blob/master/TMF667-Document-v4.0.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF667_Document/blob/master/TMF667-Document-v4.0.0.swagger.json
+        version: v4.0.0
       apiType: openapi
       id: TMF667
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
@@ -273,6 +301,51 @@ spec:
       - processFlowStateChangeEvent
       - taskFlowCreateEvent
       - taskFlowStateChangeEvent
-      specification: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
       apiType: openapi
       id: TMF701
+  componentMetadata:
+    id: TMFC023
+    name: PartyInteractionManagement
+    version: 1.1.0
+    description: Party Interaction deals with the initial greeting and welcoming of
+      a new contact. This will typically be the first component in a customer experience
+      journey, shared by unassisted (self-service, retail kiosk) or assisted (call
+      center, retail store) channels. It will identify known parties or new parties
+      and react appropriately to propose available actions. It records all the interactions
+      for the parties from all channels.
+    publicationDate: 2024-04-30 00:00:00
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.3.5_Customer_Interaction_Management_v23.0
+    - 1.3.5.1_Create_Customer_Interaction_v23.0
+    - 1.3.5.2_Update_Customer_Interaction_v23.0
+    - 1.3.5.3_Close_Customer_Interaction_v23.0
+    - 1.3.5.4_Log_Customer_Interaction_v23.0
+    - 1.3.5.6_Track_and_Manage_Customer_Interaction_v23.0
+    - 1.3.5.7_Report_Customer_interaction_v23.0
+    - 1.6.9_Business_Partner_Interaction_Management_v23.0
+    - 1.6.9.1_Log_Business_Partner_Interaction_v23.0
+    - 1.6.9.3_Track_and_Manage_Business_Partner_Interaction_v23.0
+    - 1.6.9.5_Analyze_&_Report_Business_Partner_Interactions_v23.0
+    functionalFrameworkFunctions:
+    - 93_Customer_Behavior_Tracking_v23.0
+    - 163_Contact_Queuing_v23.0
+    - 165_Customer_Support_Collaboration_Access_v23.0
+    - 168_Voice_Channel_Contact_Routing_v23.0
+    - 189_Customer_Interaction_Information_Capturing_v23.0
+    - 191_Customer_Relationship/Context_Event_Data_Accumulation_v23.0
+    - 196_Customer_Interaction_Logging_v23.0
+    - 239_Recommendation_to_Customer_Notification_v23.0
+    - 1041_Partner_Interaction_Journalizing_v23.0

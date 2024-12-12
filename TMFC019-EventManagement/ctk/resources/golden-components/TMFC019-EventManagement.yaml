@@ -1,14 +1,44 @@
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1beta4
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
+  componentMetadata:
+    description: Event Management component is a messaging management component that
+      is responsible for processing events as they happen from components. Processing
+      of record of activities include modelling event messages, syntax validation
+      and formatting of event messages and sending/receiving messages between components
+      (consumer/producer). Event Management component supports different patterns
+      of usage, including Event notification (subscription), Event-sourcing (representational
+      state changes) and Event-carried state transfer (including data needed to perform
+      further processing). Event Management component should include functionality
+      providing a centralised CQRS queryStore for all components that implement event-sourcing
+      with event carrier state transfer.
+    eTOMs:
+    - 1.5.7_Resource_Data_Collection_&_Distribution_v23.0
+    - 1.5.7.1_Collect_Management_and_Security_Information_&_Data_v23.0
+    - 1.5.7.3_Distribute_Management_and_Security_Information_&_Data_v23.0
+    - 1.5.7.4_insert_business_activity_name_v23.0
+    functionalBlock: DecouplingAndIntegration
+    functionalFrameworkFunctions: []
+    id: TMFC019
+    maintainers:
+    - email: components@tmforum.org
+      name: Redacted
+      url: Redacted
+    name: EventManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    publicationDate: 2023-08-18 00:00:00
+    status: specified
+    version: 1.1.1
   coreFunction:
     dependentAPIs:
     - apiType: openapi
       id: TMF688
       name: event-management-api
-      port: 8080
       required: false
       resources:
       - hub:
@@ -16,12 +46,16 @@ spec:
         - POST
         - GET /id
         - DELETE /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
     exposedAPIs:
     - apiType: openapi
+      developerUI: not_defined
       id: TMF688
+      implementation: not_defined
       name: event-management-api
+      path: not_defined
       port: 8080
       required: true
       resources:
@@ -53,22 +87,13 @@ spec:
         - GET /id
         - PATCH /id
         - DELETE /id
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
-      version: v4.0.0
-  description: Event Management component is a messaging management component that
-    is responsible for processing events as they happen from components. Processing
-    of record of activities include modelling event messages, syntax validation and
-    formatting of event messages and sending/receiving messages between components
-    (consumer/producer). Event Management component supports different patterns of
-    usage, including Event notification (subscription), Event-sourcing (representational
-    state changes) and Event-carried state transfer (including data needed to perform
-    further processing). Event Management component should include functionality providing
-    a centralised CQRS queryStore for all components that implement event-sourcing
-    with event carrier state transfer.
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
   eventNotification:
     publishedEvents:
     - apiType: openapi
-      call-back: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/call-back
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/call-back
       id: TMF688
       implementation: /{{.Release.Name}}-EventManagement
       name: EventManagement
@@ -82,37 +107,51 @@ spec:
       - HubAttributeValueChangeEvent
       - HubStateChangeEvent
       - HubDeleteEvent
-      specification: https://github.com/tmforum-apis/TMF688-EventManagement/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF688-EventManagement/blob/master/TMF688-EventManagement-v4.0.0.swagger.json
+        version: v4.0.0
     subscribedEvents: []
-  functionalBlock: DecouplingAndIntegration
-  id: TMFC019
-  maintainers:
-  - email: components@tmforum.org
-    name: Redacted
   managementFunction:
+    dependentAPIs:
+    - apiType: dependentAPI_apiType
+      id: dependentAPI_id
+      name: dependentAPI_name
+      required: false
+      resources: []
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      version: dependentAPI_version
     exposedAPIs:
     - apiType: prometheus
+      developerUI: exposedAPI_developerUI
+      id: exposedAPI_id
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       name: metrics
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
-  name: EventManagement
-  owners:
-  - email: Redacted
-    name: Redacted
-  publicationDate: 2023-08-18 00:00:00
+      required: false
+      resources: []
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      version: exposedAPI_version
   securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
     dependentAPIs: []
     exposedAPIs:
     - apiType: openapi
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
       id: TMF669
+      implementation: '{{.Release.Name}}-partyroleapi'
       name: party-role-management-api
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
       port: 8080
       required: true
       resources: []
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      version: v4.0.0
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
     secretsManagement:
       podSelector:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
@@ -121,5 +160,3 @@ spec:
       sideCar:
         port: 8080
       type: sideCar
-  status: specified
-  version: 1.1.1

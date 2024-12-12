@@ -20,21 +20,6 @@
                     }
                 }
             }
-        },
-        "TMF683_v4.0.0": {
-            "PartyInteraction": {
-                "POST": {
-                    "payload": {
-                        "channel": [
-                            {
-                                "id": "555"
-                            }
-                        ],
-                        "direction": "inbounds",
-                        "reason": "The user wanted to buy TV and internet plan"
-                    }
-                }
-            }
         }
     }
 }

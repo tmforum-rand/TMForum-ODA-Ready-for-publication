@@ -14,7 +14,7 @@ spec:
       labels:
         app: '{{.Release.Name}}-{{.Values.component.name}}'
         impl: '{{.Release.Name}}-promotion-management-api'
-        version: v4.1.0
+        version: v4.0.0
     spec:
       containers:
       - env:

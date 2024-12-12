@@ -849,13 +849,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{Quote_API}}quote?state={{STATEQU01}}",
+							"raw": "{{Quote_API}}quote?quoteDate={{STATEQU01}}",
 							"host": [
 								"{{Quote_API}}quote"
 							],
 							"query": [
 								{
-									"key": "state",
+									"key": "quoteDate",
 									"value": "{{STATEQU01}}"
 								}
 							]

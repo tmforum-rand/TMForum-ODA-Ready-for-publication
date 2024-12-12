@@ -6,7 +6,6 @@ images:
   tmf633: tmforumorg/tmfc006-tmf633-v4.0.0:latest
   tmf657: tmforumorg/tmfc006-tmf657-v4.0.0:latest
   tmf669: tmforumorg/tmfc006-tmf669-v4.0.0:latest
-  tmf688: tmforumorg/tmfc006-tmf688-v4.0.0:latest
   tmf701: tmforumorg/tmfc006-tmf701-v4.0.0:latest
 secretsManagement:
   podSelector:

@@ -1,25 +1,17 @@
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1beta4
 kind: component
 metadata:
   name: components.oda.tmforum.org
 spec:
-  name: DigitalIdentityManagement
-  id: TMFC020
-  functionalBlock: PartyManagement
-  description: The Digital Identity Management is responsible for the parties (customers,
-    employees, partners) and resources authentication.
-  publicationDate: 2023-08-18 00:00:00
-  status: specified
-  version: 1.1.0
   coreFunction:
     dependentAPIs:
     - id: TMF632
-      version: v4.0.0
       apiType: openapi
       name: party-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - individual:
         - GET
@@ -28,22 +20,22 @@ spec:
         - GET
         - GET/id
     - id: TMF669
-      version: v4.0.0
       apiType: openapi
       name: party-role-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
       resources:
       - partyRole:
         - POST
     - id: TMF701
-      version: v4.0.0
       apiType: openapi
       name: process-flow-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-      port: 8080
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
       resources:
       - processFlow:
         - POST
@@ -56,11 +48,15 @@ spec:
         - GET /id
     exposedAPIs:
     - id: TMF720
-      version: v4.0.0
       apiType: openapi
       name: digital-identity-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF720_Digital_Identity/4.0.0/swagger/TMF720_Digital_Identity_Management_API_v4.0.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF720_Digital_Identity/4.0.0/swagger/TMF720_Digital_Identity_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
       port: 8080
       resources:
       - digitalIdentity:
@@ -76,11 +72,15 @@ spec:
         - PATCH/id
         - DELETE/id
     - id: TMF701
-      version: v4.0.0
       apiType: openapi
       name: process-flow-management-api
       required: false
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
       port: 8080
       resources:
       - processFlow:
@@ -92,21 +92,33 @@ spec:
         - GET
         - GET/id
         - PATCH/id
-  owners:
-  - email: Redacted
-    name: Redacted
-  maintainers:
-  - name: Redacted
-    email: components@tmforum.org
   managementFunction:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
       implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
       port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
   securityFunction:
-    controllerRole: '{{ .Values.security.controllerRole }}'
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
     secretsManagement:
       type: sideCar
       sideCar:
@@ -117,11 +129,15 @@ spec:
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
     - id: TMF669
-      version: v4.0.0
       apiType: openapi
       name: party-role-management-api
       required: true
-      specification: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
       port: 8080
       resources: []
     dependentAPIs: []
@@ -135,7 +151,9 @@ spec:
       - DigitalIdentityStateChangeEvent
       - DigitalIdentityDeleteEvent
       - DigitalIdentityAttributeValueChangeEvent
-      specification: https://raw.githubusercontent.com/tmforum-apis/TMF720_DigitalIdentityManagement/master/TMF720-DigitalIdentityManagement-v4.0.0.swagger.json
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF720_DigitalIdentityManagement/master/TMF720-DigitalIdentityManagement-v4.0.0.swagger.json
+        version: v4.0.0
       apiType: openapi
       id: TMF720
     subscribedEvents:
@@ -144,6 +162,25 @@ spec:
       resources:
       - UserRoleCreationNotification
       - UserRoleChangeNotification
-      specification: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+      specification:
+      - url: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+        version: v4.0.0
       apiType: openapi
       id: TMF669
+  componentMetadata:
+    id: TMFC020
+    name: DigitalIdentityManagement
+    version: 1.1.0
+    description: The Digital Identity Management is responsible for the parties (customers,
+      employees, partners) and resources authentication.
+    publicationDate: 2023-08-18 00:00:00
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted

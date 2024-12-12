@@ -4,7 +4,7 @@ component:
   publicationDate: '2024-10-17T00:00:00.000Z'
 images:
   tmf669: tmforumorg/tmfc023-tmf669-v4.0.0:latest
-  tmf683: tmforumorg/tmfc023-tmf683-v4.0.0:latest
+  tmf683: tmforumorg/tmfc023-tmf683-v0.0.1:latest
   tmf688: tmforumorg/tmfc023-tmf688-v4.0.0:latest
   tmf701: tmforumorg/tmfc023-tmf701-v4.0.0:latest
 secretsManagement:

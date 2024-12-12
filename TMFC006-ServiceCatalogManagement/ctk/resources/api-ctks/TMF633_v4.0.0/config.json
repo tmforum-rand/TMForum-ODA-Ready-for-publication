@@ -2,7 +2,10 @@
     "url": " http://localhost:8633/tmf-api/serviceCatalogManagement/v4/",
     "sslconfig": {
         "sslClientCert": "pem.key",
-        "sslClientKey": "pem.key"
+        "sslClientKey": "pem.key",
+        "sslClientPassphrase": "",
+        "sslExtraCaCerts": "",
+        "sslClientCertList": ""
     },
     "headers": {
         "Accept": "application/json",

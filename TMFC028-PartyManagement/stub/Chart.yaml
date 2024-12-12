@@ -1,4 +1,4 @@
 apiVersion: v2
-appVersion: v1beta3
+appVersion: v1beta4
 name: tmfc028-partymanagement
 version: 0.1.0

@@ -68,7 +68,7 @@ describe('Step 1: Component manifest checks',  function() {
 
     it('Component api version is within supported versions', async function () {
         addContext(this, 'Component manifest must contain a supported apiVersion')
-        const supportedVersios = ['oda.tmforum.org/v1beta3', 'oda.tmforum.org/v1beta2', 'oda.tmforum.org/v1beta1']
+        const supportedVersios = ['oda.tmforum.org/v1beta4','oda.tmforum.org/v1beta3', 'oda.tmforum.org/v1beta2', 'oda.tmforum.org/v1beta1']
         let apiVersion = component_object.get('apiVersion')
         expect(apiVersion).to.not.be.null
         expect(apiVersion).to.be.a('string')

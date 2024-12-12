@@ -29,7 +29,6 @@ pmCollection['item'].forEach(function(i, indexi){
     });
 });
 
-fs.writeFileSync('pmtest.json',JSON.stringify(pmCollection))
 Object.keys(config['payloads']).forEach(resource => {
     var v = new Validator();
     var schema = require('./schemas/'+resource+'.schema.json');
@@ -67,6 +66,7 @@ function exportEnvironment() {
     });
     jsonData = JSON.stringify(envJson);
     fs.writeFileSync("TMFENV.json", jsonData);
+    fs.writeFileSync('pmtest.json',JSON.stringify(pmCollection, null, 3))
     runNewman()
 }
 

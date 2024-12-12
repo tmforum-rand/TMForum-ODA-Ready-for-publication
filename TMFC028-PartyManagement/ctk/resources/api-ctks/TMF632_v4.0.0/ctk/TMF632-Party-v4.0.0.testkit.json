@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3d6f8f32-d097-4ec7-bb40-d80037034091",
+		"_postman_id": "19f5c82c-7e6b-4bac-96d4-836c3cb7b0c4",
 		"name": "CTK-Party-4.0.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -86,6 +86,87 @@
 							]
 						},
 						"description": "This operation creates a Individual"
+					},
+					"response": []
+				},
+				{
+					"name": "/Individual",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"  ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var instance = pm.response.json();",
+									"var requiredAttributes = ['familyName', 'givenName', 'href', 'id'];",
+									"",
+									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"",
+									"",
+									"",
+									"pm.test('Response has familyName attribute', function() { pm.expect(instance[\"familyName\"]).to.be.a('string'); });",
+									"pm.test('Response has givenName attribute', function() { pm.expect(instance[\"givenName\"]).to.be.a('string'); });",
+									"pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"",
+									"pm.globals.set('FAMILYNAMEIN02', instance['familyName']);",
+									"pm.globals.set('GIVENNAMEIN02', instance['givenName']);",
+									"pm.globals.set('HREFIN02', instance['href']);",
+									"pm.globals.set('IDIN02', instance['id']);",
+									"",
+									"pm.test('Body includes value held on familyName', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['familyName']);",
+									"});",
+									"pm.test('Body includes value held on givenName', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['givenName']);",
+									"});",
+									"pm.test('Body includes value held on href', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['href']);",
+									"});",
+									"pm.test('Body includes value held on id', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['id']);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"familyName\": \"Lamborgizzia\",\n  \"givenName\": \"Jane\"\n}"
+						},
+						"url": {
+							"raw": "{{Party}}individual",
+							"host": [
+								"{{Party}}individual"
+							]
+						},
+						"description": "This operation creates another Individual"
 					},
 					"response": []
 				},
@@ -342,6 +423,135 @@
 						"description": "This operation search for one of the created Individual"
 					},
 					"response": []
+				},
+				{
+					"name": "/Individual/{{IDIN02}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['familyName', 'givenName', 'href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has familyName attribute', function() { pm.expect(instance[\"familyName\"]).to.be.a('string'); });",
+									"        pm.test('Response has givenName attribute', function() { pm.expect(instance[\"givenName\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on familyName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['familyName']);",
+									"        });",
+									"        pm.test('Body includes value held on givenName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['givenName']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDIN02\")) {",
+									"            pm.test('familyName is ' + pm.globals.get(\"FAMILYNAMEIN02\"), function() {pm.expect(instance['familyName']) == pm.globals.get('FAMILYNAMEIN02');});",
+									"            pm.test('givenName is ' + pm.globals.get(\"GIVENNAMEIN02\"), function() {pm.expect(instance['givenName']) == pm.globals.get('GIVENNAMEIN02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFIN02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFIN02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDIN02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDIN02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDIN01\")) {",
+									"            pm.test('IDIN01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['familyName', 'givenName', 'href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has familyName attribute', function() { pm.expect(instance[\"familyName\"]).to.be.a('string'); });",
+									"        pm.test('Response has givenName attribute', function() { pm.expect(instance[\"givenName\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on familyName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['familyName']);",
+									"        });",
+									"        pm.test('Body includes value held on givenName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['givenName']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDIN02\")) {",
+									"            pm.test('familyName is ' + pm.globals.get(\"FAMILYNAMEIN02\"), function() {pm.expect(instance['familyName']) == pm.globals.get('FAMILYNAMEIN02');});",
+									"            pm.test('givenName is ' + pm.globals.get(\"GIVENNAMEIN02\"), function() {pm.expect(instance['givenName']) == pm.globals.get('GIVENNAMEIN02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFIN02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFIN02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDIN02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDIN02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDIN01\")) {",
+									"            pm.test('IDIN01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Party}}individual/{{IDIN02}}",
+							"host": [
+								"{{Party}}individual"
+							],
+							"path": [
+								"{{IDIN02}}"
+							]
+						},
+						"description": "This operation search for the other one of the created Individual"
+					},
+					"response": []
 				}
 			]
 		},
@@ -514,6 +724,138 @@
 								{
 									"key": "familyName",
 									"value": "{{FAMILYNAMEIN01}}"
+								}
+							]
+						},
+						"description": "This operation filter a Individual"
+					},
+					"response": []
+				},
+				{
+					"name": "/Individual?familyName={{FAMILYNAMEIN02}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['familyName', 'givenName', 'href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has familyName attribute', function() { pm.expect(instance[\"familyName\"]).to.be.a('string'); });",
+									"        pm.test('Response has givenName attribute', function() { pm.expect(instance[\"givenName\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on familyName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['familyName']);",
+									"        });",
+									"        pm.test('Body includes value held on givenName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['givenName']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDIN02\")) {",
+									"            pm.test('familyName is ' + pm.globals.get(\"FAMILYNAMEIN02\"), function() {pm.expect(instance['familyName']) == pm.globals.get('FAMILYNAMEIN02');});",
+									"            pm.test('givenName is ' + pm.globals.get(\"GIVENNAMEIN02\"), function() {pm.expect(instance['givenName']) == pm.globals.get('GIVENNAMEIN02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFIN02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFIN02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDIN02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDIN02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDIN01\")) {",
+									"            pm.test('IDIN01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['familyName', 'givenName', 'href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has familyName attribute', function() { pm.expect(instance[\"familyName\"]).to.be.a('string'); });",
+									"        pm.test('Response has givenName attribute', function() { pm.expect(instance[\"givenName\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on familyName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['familyName']);",
+									"        });",
+									"        pm.test('Body includes value held on givenName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['givenName']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDIN02\")) {",
+									"            pm.test('familyName is ' + pm.globals.get(\"FAMILYNAMEIN02\"), function() {pm.expect(instance['familyName']) == pm.globals.get('FAMILYNAMEIN02');});",
+									"            pm.test('givenName is ' + pm.globals.get(\"GIVENNAMEIN02\"), function() {pm.expect(instance['givenName']) == pm.globals.get('GIVENNAMEIN02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFIN02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFIN02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDIN02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDIN02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDIN01\")) {",
+									"            pm.test('IDIN01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Party}}individual?familyName={{FAMILYNAMEIN02}}",
+							"host": [
+								"{{Party}}individual"
+							],
+							"query": [
+								{
+									"key": "familyName",
+									"value": "{{FAMILYNAMEIN02}}"
 								}
 							]
 						},
@@ -695,6 +1037,138 @@
 					"response": []
 				},
 				{
+					"name": "/Individual?givenName={{GIVENNAMEIN02}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['familyName', 'givenName', 'href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has familyName attribute', function() { pm.expect(instance[\"familyName\"]).to.be.a('string'); });",
+									"        pm.test('Response has givenName attribute', function() { pm.expect(instance[\"givenName\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on familyName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['familyName']);",
+									"        });",
+									"        pm.test('Body includes value held on givenName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['givenName']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDIN02\")) {",
+									"            pm.test('familyName is ' + pm.globals.get(\"FAMILYNAMEIN02\"), function() {pm.expect(instance['familyName']) == pm.globals.get('FAMILYNAMEIN02');});",
+									"            pm.test('givenName is ' + pm.globals.get(\"GIVENNAMEIN02\"), function() {pm.expect(instance['givenName']) == pm.globals.get('GIVENNAMEIN02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFIN02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFIN02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDIN02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDIN02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDIN01\")) {",
+									"            pm.test('IDIN01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['familyName', 'givenName', 'href', 'id'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has familyName attribute', function() { pm.expect(instance[\"familyName\"]).to.be.a('string'); });",
+									"        pm.test('Response has givenName attribute', function() { pm.expect(instance[\"givenName\"]).to.be.a('string'); });",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on familyName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['familyName']);",
+									"        });",
+									"        pm.test('Body includes value held on givenName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['givenName']);",
+									"        });",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDIN02\")) {",
+									"            pm.test('familyName is ' + pm.globals.get(\"FAMILYNAMEIN02\"), function() {pm.expect(instance['familyName']) == pm.globals.get('FAMILYNAMEIN02');});",
+									"            pm.test('givenName is ' + pm.globals.get(\"GIVENNAMEIN02\"), function() {pm.expect(instance['givenName']) == pm.globals.get('GIVENNAMEIN02');});",
+									"            pm.test('href is ' + pm.globals.get(\"HREFIN02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFIN02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDIN02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDIN02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDIN01\")) {",
+									"            pm.test('IDIN01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Party}}individual?givenName={{GIVENNAMEIN02}}",
+							"host": [
+								"{{Party}}individual"
+							],
+							"query": [
+								{
+									"key": "givenName",
+									"value": "{{GIVENNAMEIN02}}"
+								}
+							]
+						},
+						"description": "This operation filter a Individual"
+					},
+					"response": []
+				},
+				{
 					"name": "/Individual?fields=id",
 					"event": [
 						{
@@ -860,6 +1334,82 @@
 							]
 						},
 						"description": "This operation creates a Organization"
+					},
+					"response": []
+				},
+				{
+					"name": "/Organization",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"if (Array.isArray(jsonData)) { ",
+									"  ",
+									"    pm.test('Array not expected as response', function (){pm.expect.fail()});",
+									"  ",
+									"",
+									"}",
+									"",
+									"pm.test(\"Status code is 201\", function () {",
+									"  pm.response.to.have.status(201);",
+									"});",
+									"",
+									"var instance = pm.response.json();",
+									"var requiredAttributes = ['href', 'id', 'tradingName'];",
+									"",
+									"pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"",
+									"",
+									"",
+									"pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"pm.test('Response has tradingName attribute', function() { pm.expect(instance[\"tradingName\"]).to.be.a('string'); });",
+									"",
+									"pm.globals.set('HREFOR02', instance['href']);",
+									"pm.globals.set('IDOR02', instance['id']);",
+									"pm.globals.set('TRADINGNAMEOR02', instance['tradingName']);",
+									"",
+									"pm.test('Body includes value held on href', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['href']);",
+									"});",
+									"pm.test('Body includes value held on id', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['id']);",
+									"});",
+									"pm.test('Body includes value held on tradingName', function () {",
+									"  pm.expect(pm.response.text()).to.include(instance['tradingName']);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tradingName\": \"Coffee Do Brazil Fair Trade\"\n}"
+						},
+						"url": {
+							"raw": "{{Party}}organization",
+							"host": [
+								"{{Party}}organization"
+							]
+						},
+						"description": "This operation creates another Organization"
 					},
 					"response": []
 				},
@@ -1094,6 +1644,125 @@
 						"description": "This operation search for one of the created Organization"
 					},
 					"response": []
+				},
+				{
+					"name": "/Organization/{{IDOR02}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'tradingName'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has tradingName attribute', function() { pm.expect(instance[\"tradingName\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on tradingName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['tradingName']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDOR02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFOR02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFOR02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDOR02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDOR02');});",
+									"            pm.test('tradingName is ' + pm.globals.get(\"TRADINGNAMEOR02\"), function() {pm.expect(instance['tradingName']) == pm.globals.get('TRADINGNAMEOR02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDOR01\")) {",
+									"            pm.test('IDOR01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'tradingName'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has tradingName attribute', function() { pm.expect(instance[\"tradingName\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on tradingName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['tradingName']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDOR02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFOR02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFOR02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDOR02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDOR02');});",
+									"            pm.test('tradingName is ' + pm.globals.get(\"TRADINGNAMEOR02\"), function() {pm.expect(instance['tradingName']) == pm.globals.get('TRADINGNAMEOR02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDOR01\")) {",
+									"            pm.test('IDOR01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Party}}organization/{{IDOR02}}",
+							"host": [
+								"{{Party}}organization"
+							],
+							"path": [
+								"{{IDOR02}}"
+							]
+						},
+						"description": "This operation search for the other one of the created Organization"
+					},
+					"response": []
 				}
 			]
 		},
@@ -1297,6 +1966,128 @@
 								{
 									"key": "tradingName",
 									"value": "{{TRADINGNAMEOR01}}"
+								}
+							]
+						},
+						"description": "This operation filter a Organization"
+					},
+					"response": []
+				},
+				{
+					"name": "/Organization?tradingName={{TRADINGNAMEOR02}}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"  ",
+									"  ",
+									"  ",
+									"var jsonData = pm.response.json();",
+									"  ",
+									"if (Array.isArray(jsonData) && (jsonData.length > 0)) {",
+									"    jsonData.forEach(function (instance, index) {",
+									"      ",
+									"        var requiredAttributes = ['href', 'id', 'tradingName'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has tradingName attribute', function() { pm.expect(instance[\"tradingName\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on tradingName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['tradingName']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDOR02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFOR02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFOR02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDOR02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDOR02');});",
+									"            pm.test('tradingName is ' + pm.globals.get(\"TRADINGNAMEOR02\"), function() {pm.expect(instance['tradingName']) == pm.globals.get('TRADINGNAMEOR02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDOR01\")) {",
+									"            pm.test('IDOR01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"          ",
+									"    });",
+									"  }",
+									"  else {",
+									"    var instance = pm.response.json();",
+									"    var requiredAttributes = ['href', 'id', 'tradingName'];",
+									"      ",
+									"        pm.test('Instance has all mandatory attributes', function () { pm.expect(Object.keys(instance)).to.include.members(requiredAttributes) });",
+									"      ",
+									"      ",
+									"      ",
+									"        pm.test('Response has href attribute', function() { pm.expect(instance[\"href\"]).to.be.a('string'); });",
+									"        pm.test('Response has id attribute', function() { pm.expect(instance[\"id\"]).to.be.a('string'); });",
+									"        pm.test('Response has tradingName attribute', function() { pm.expect(instance[\"tradingName\"]).to.be.a('string'); });",
+									"      ",
+									"        pm.test('Body includes value held on href', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['href']);",
+									"        });",
+									"        pm.test('Body includes value held on id', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['id']);",
+									"        });",
+									"        pm.test('Body includes value held on tradingName', function () {",
+									"            pm.expect(pm.response.text()).to.include(instance['tradingName']);",
+									"        });",
+									"        // Individualized tests",
+									"        if (instance.id == pm.globals.get(\"IDOR02\")) {",
+									"            pm.test('href is ' + pm.globals.get(\"HREFOR02\"), function() {pm.expect(instance['href']) == pm.globals.get('HREFOR02');});",
+									"            pm.test('id is ' + pm.globals.get(\"IDOR02\"), function() {pm.expect(instance['id']) == pm.globals.get('IDOR02');});",
+									"            pm.test('tradingName is ' + pm.globals.get(\"TRADINGNAMEOR02\"), function() {pm.expect(instance['tradingName']) == pm.globals.get('TRADINGNAMEOR02');});",
+									"        }",
+									"        if (instance.id == pm.globals.get(\"IDOR01\")) {",
+									"            pm.test('IDOR01 not expected on this test', function () {",
+									"                console.log(\"Non expected resource, may happen if there is a collision on attributes\")",
+									"            });",
+									"        }",
+									"",
+									"        ",
+									"   ",
+									"}",
+									"  ",
+									"  "
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{Party}}organization?tradingName={{TRADINGNAMEOR02}}",
+							"host": [
+								"{{Party}}organization"
+							],
+							"query": [
+								{
+									"key": "tradingName",
+									"value": "{{TRADINGNAMEOR02}}"
 								}
 							]
 						},

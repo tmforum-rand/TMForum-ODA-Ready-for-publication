@@ -14,7 +14,6 @@ spec:
       labels:
         app: '{{.Release.Name}}-{{.Values.component.name}}'
         impl: '{{.Release.Name}}-party-interaction-management-api'
-        version: v4.0.0
     spec:
       containers:
       - env:

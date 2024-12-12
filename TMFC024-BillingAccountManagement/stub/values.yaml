@@ -5,7 +5,6 @@ component:
 images:
   tmf666: tmforumorg/tmfc024-tmf666-v4.0.0:latest
   tmf669: tmforumorg/tmfc024-tmf669-v4.0.0:latest
-  tmf688: tmforumorg/tmfc024-tmf688-v4.0.0:latest
   tmf701: tmforumorg/tmfc024-tmf701-v4.0.0:latest
 secretsManagement:
   podSelector:
