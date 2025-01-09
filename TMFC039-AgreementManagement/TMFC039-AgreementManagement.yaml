@@ -221,7 +221,7 @@ spec:
       and renewal notifications for agreements.
     publicationDate: 2024-08-19 00:00:00
     status: specified
-    functionalBlock: Party Management
+    functionalBlock: PartyManagement
     owners:
     - email: Redacted
       name: Redacted

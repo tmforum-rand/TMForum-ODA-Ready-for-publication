@@ -428,7 +428,7 @@ spec:
       creation or update is the global consistency with related Product Catalog information.
     publicationDate: 2024-06-27 00:00:00
     status: specified
-    functionalBlock: CoreCommerceManagement
+    functionalBlock: CoreCommerce
     owners:
     - email: Redacted
       name: Redacted

@@ -1,4 +1,4 @@
-apiVersion: oda.tmforum.org/v1beta3
+apiVersion: oda.tmforum.org/v1beta4
 kind: component
 metadata:
   name: components.oda.tmforum.org
@@ -59,6 +59,130 @@ spec:
         version: v4.0.0
       resources:
       - productOfferingQualification:
+        - GET
+        - GET /id
+    - id: TMF666
+      apiType: openapi
+      name: account-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - billingAccount:
+        - GET
+        - GET /id
+    - id: TMF629
+      apiType: openapi
+      name: customer-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF629_Customer/4.0.0/swagger/TMF629_Customer_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - customer:
+        - GET
+        - GET /id
+    - id: TMF663
+      apiType: openapi
+      name: shopping-cart-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF663_Shopping_Cart/4.0.0/swagger/TMF663_Shopping_Cart_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - shoppingCart:
+        - GET
+        - GET /id
+    - id: TMF671
+      apiType: openapi
+      name: promotion-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF671_Promotion/4.0.0/swagger/TMF671_Promotion_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - promotion:
+        - GET
+        - GET /id
+    - id: TMF673
+      apiType: openapi
+      name: geographic-address-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicAddressManagement:
+        - GET
+        - GET /id
+    - id: TMF675
+      apiType: openapi
+      name: geographic-location-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicLocationManagement:
+        - GET
+        - GET /id
+    - id: TMF632
+      apiType: openapi
+      name: party-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+    - id: TMF669
+      apiType: openapi
+      name: party-role-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - partyRole:
+        - GET
+        - GET /id
+    - id: TMF678
+      apiType: openapi
+      name: customer-bill-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/4.0.0/swagger/TMF678_Customer_Bill_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - customerBill:
+        - GET
+        - GET /id
+    - id: TMF621
+      apiType: openapi
+      name: trouble-ticket-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF621_Trouble_Ticket/4.0.0/swagger/TMF621_Trouble_Ticket_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - troubleTicket:
+        - GET
+        - GET /id
+    - id: TMF635
+      apiType: openapi
+      name: usage-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF635_Usage/4.0.0/swagger/TMF635_Usage_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - usage:
         - GET
         - GET /id
     exposedAPIs:
@@ -181,14 +305,36 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
-    subscribedEvents: []
+    subscribedEvents:
+    - implementation: /{{.Release.Name}}-ProductCatalogManagement
+      name: ProductCatalogManagement
+      port: 80
+      resources:
+      - productSpecificationCreate
+      - productSpecificationDeleteEvent
+      - categoryCreateEvent
+      - categoryDeleteEvent
+      - productOfferingCreateEvent
+      - productOfferingAttributeValueChangeEvent
+      - productOfferingStateChangeEvent
+      - productOfferingDeleteEvent
+      - productOfferingPriceCreateEvent
+      - productOfferingPriceAttributeValueChangeEvent
+      - productOfferingPriceStateChangeEvent
+      - productOfferingPriceDeleteEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF620
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back
   componentMetadata:
     id: TMFC050
-    name: RecommendationManagement
+    name: ProductRecommendationManagement
     version: 1.0.0
-    description: BRecommendation component is responsible for evaluating and providing
-      party recommendations offerings based on the history and real-time context of
-      a party.
+    description: Product Recommendation Management component is responsible for evaluating
+      and providing party recommendations offerings based on the history and real-time
+      context of a party.
     publicationDate: 2024-12-03
     status: specified
     functionalBlock: IntelligenceManagement

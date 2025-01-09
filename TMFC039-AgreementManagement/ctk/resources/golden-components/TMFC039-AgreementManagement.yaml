@@ -17,7 +17,7 @@ spec:
     - 1.6.5_Party_Agreement_Management_v23.0
     - 1.7.14_Enterprise_Governance_v23.0
     - 1.7.14.5_Manage_Contract_v23.0
-    functionalBlock: Party Management
+    functionalBlock: PartyManagement
     functionalFrameworkFunctions:
     - 1026_Partner_Collaboration_Constraints_Collection_v23.0
     - 1045_Partner_Agreement_Tracking_v23.0

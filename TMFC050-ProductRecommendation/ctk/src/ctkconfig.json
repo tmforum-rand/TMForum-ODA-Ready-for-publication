@@ -1,7 +1,7 @@
 {
-    "componentFilePath": "../resources/component/TMFC050-ProductOfferingRecommendation.yaml",
+    "componentFilePath": "../resources/component/TMFC050-ProductRecommendation.yaml",
     "companyName": "",
-    "componentName": "TMFC050-ProductOfferingRecommendation",
+    "componentName": "TMFC050-ProductRecommendation",
     "productName": "",
     "componentUrl": "",
     "productUrl": "",
@@ -10,7 +10,7 @@
         "Accept": "application/json",
         "Content-Type": "application/json"
     },
-    "goldenComponentFilePath": "../resources/golden-components/TMFC050-ProductOfferingRecommendation.yaml",
+    "goldenComponentFilePath": "../resources/golden-components/TMFC050-ProductRecommendation.yaml",
     "payloads": {
         "TMF680_v4.0.0": {
             "QueryProductRecommendation": {

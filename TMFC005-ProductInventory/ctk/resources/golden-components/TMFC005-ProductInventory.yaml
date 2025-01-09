@@ -16,7 +16,7 @@ spec:
     - 1.1.19.2_Loyalty_Program_Operation_v23.0
     - 1.1.19.2.5_Manage_Loyalty_Program_Account_v23.0
     - 1.1.19.2.7_Provide_Loyalty_Program_Operation_Report_v23.0
-    functionalBlock: CoreCommerceManagement
+    functionalBlock: CoreCommerce
     functionalFrameworkFunctions:
     - 180_Assigned_Products_Maintenance_v23.0
     - 197_Customer_Product_Storage_v23.0

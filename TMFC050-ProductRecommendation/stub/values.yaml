@@ -1,6 +1,6 @@
 component:
   id: tmfc050
-  name: tmfc050-productofferingrecommendation
+  name: tmfc050-productrecommendation
   publicationDate: '2024-10-17T00:00:00.000Z'
 images:
   tmf669: tmforumorg/tmfc050-tmf669-v4.0.0:latest
