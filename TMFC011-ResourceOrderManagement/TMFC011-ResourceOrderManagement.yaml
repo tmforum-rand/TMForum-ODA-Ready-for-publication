@@ -8,7 +8,7 @@ spec:
     - id: TMF702
       apiType: openapi
       name: resource-activation-management-api
-      required: true
+      required: false
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF702_Resource_Activation/4.0.0/swagger/TMF702_Resource_Activation_Management_API_v4.0.0_swagger.json
         version: v4.0.0
@@ -53,7 +53,7 @@ spec:
     - id: TMF664
       apiType: openapi
       name: resource-function-activation-management-api
-      required: true
+      required: false
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF664_Resource_Function_Activation/4.0.0/swagger/TMF664_Resource_Function_Activation_Management_API_v4.0.0_swagger.json
         version: v4.0.0

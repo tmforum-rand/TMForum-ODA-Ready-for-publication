@@ -65,7 +65,7 @@ spec:
     - apiType: openapi
       id: TMF702
       name: resource-activation-management-api
-      required: true
+      required: false
       resources:
       - resource:
         - GET
@@ -110,7 +110,7 @@ spec:
     - apiType: openapi
       id: TMF664
       name: resource-function-activation-management-api
-      required: true
+      required: false
       resources:
       - resourceFunction:
         - GET
