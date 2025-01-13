@@ -11,8 +11,12 @@ spec:
     eTOMs: []
     functionalBlock: Production
     functionalFrameworkFunctions:
-    - 429_"Location_Change_History_Management_vNA
+    - 429_Location_Change_History_Management_v23
     id: TMFC014
+    maintainers:
+    - email: components@tmforum.org
+      name: Redacted
+      url: Redacted
     name: LocationManagement
     owners:
     - email: Redacted

@@ -356,6 +356,10 @@ spec:
     - email: Redacted
       name: Redacted
       url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
     eTOMs:
     - 1.1.11_Contact/Lead/Prospect_Management_v23.0
     - 1.1.11.1_Manage_Sales_Contact_v23.0

@@ -27,6 +27,10 @@ spec:
     - 376_Funnel_Leads_Tracking_v23.0
     - 726_Sales_Lead_Capturing_v23.0
     id: TMFC036
+    maintainers:
+    - email: components@tmforum.org
+      name: Redacted
+      url: Redacted
     name: LeadAndOpportunityManagement
     owners:
     - email: Redacted

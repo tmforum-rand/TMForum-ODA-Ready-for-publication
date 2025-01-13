@@ -216,6 +216,10 @@ spec:
     - email: Redacted
       name: Redacted
       url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
     eTOMs: []
     functionalFrameworkFunctions:
-    - 429_"Location_Change_History_Management_vNA
+    - 429_Location_Change_History_Management_v23

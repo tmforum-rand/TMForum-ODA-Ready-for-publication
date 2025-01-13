@@ -16,15 +16,15 @@ spec:
       level order items, and of the related product items . So, it triggers the updates
       of the related inventories.'
     eTOMs:
-    - 1.3.3_Customer_Order_Handling_vv23.0
-    - 1.3.3.8_Manage_Order_Fallout_vv23.0
-    - 1.3.3.9_Customer_Order_Orchestration_vv23.0
-    - 1.2.9_Product_Offering_Purchasing_vv23.0
-    - 1.2.9.5_Complete_Product_Offering_Purchase_vv23.0
-    - 1.4.5_Service_Configuration_&_Activation_vv23.0
-    - 1.4.5.6_Issue_Service_Order_vv23.0
-    - 1.5.6_Resource_Provisioning_vv23.0
-    - 1.5.6.7_Issue_Resource_Order_vv23.0
+    - 1.3.3_Customer_Order_Handling_v23.0
+    - 1.3.3.8_Manage_Order_Fallout_v23.0
+    - 1.3.3.9_Customer_Order_Orchestration_v23.0
+    - 1.2.9_Product_Offering_Purchasing_v23.0
+    - 1.2.9.5_Complete_Product_Offering_Purchase_v23.0
+    - 1.4.5_Service_Configuration_&_Activation_v23.0
+    - 1.4.5.6_Issue_Service_Order_v23.0
+    - 1.5.6_Resource_Provisioning_v23.0
+    - 1.5.6.7_Issue_Resource_Order_v23.0
     functionalBlock: CoreCommerce
     functionalFrameworkFunctions:
     - 16_Fallout_Automated_Correction_vv23.0

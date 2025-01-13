@@ -232,37 +232,35 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.3.9_Customer_Bill_Invoice_Management_vv 23.0
-    - 1.3.9.2_Create_Customer_Bill_Invoice_vv 23.0
-    - 1.3.9.2.1_Render_&_Format_Customer_Invoice_vv 23.0
-    - 1.3.9.2.2_Deliver_Electronic_Invoice_vv 23.0
-    - 1.3.9.2.3_Verify_Customer_Invoice_Quality_vv 23.0
-    - 1.3.9.2.4_Manage_Customer_Invoice_Quality_vv 23.0
-    - 1.3.9.3_Produce_&_Distribute_Customer_Bill_vv 23.0
-    - 1.3.9.3.1_Co-ordinate_Billing_Insertion_vv 23.0
-    - 1.3.9.3.2_Establish_&_Manage_Bill_Production_Cycle_vv 23.0
-    - 1.3.9.3.3_Deliver_Invoice_Information_vv 23.0
-    - 1.3.9.4_Pricing,_Discounting,_Adjustments_&_Rebates_Application_vv 23.0
-    - 1.3.9.4.2_Apply_Pricing,_Discounting,_Adjustments_&_Rebates_to_Customer_Account_vv
-      23.0
-    - 1.6.15_BP_Bill/Invoice_Management_vv 23.0
-    - 1.6.15.2_BP_Bill/Invoice_Control_vv 23.0
-    - 1.6.15.2.1_Establish_&_Maintain_BP_Bill_Invoice_Format_vv 23.0
-    - 1.6.15.2.2_Maintain_Bill_Invoice_BP_List_vv 23.0
-    - 1.6.15.2.3_Define_BP_Billing_Cycle_vv 23.0
-    - 1.6.15.3.2_Create_BP_Bill/Invoice_vv 23.0
-    - 1.6.15.3.2_Create_BP_Bill/Invoice_vv 23.0
-    - 1.6.15.3.3_Distribute_BP_Bill/Invoice_vv 23.0
-    - 1.6.15.3.4_Manage_BP_Bill/Invoice_Archive_vv 23.0
-    - 1.6.15.3.5_Receive_BP_Bill/Invoice_vv 23.0
-    - 1.6.15.3.6_Administer_Commercial_Arrangement_for_BP_Bill/Invoice_Creation_Capability_vv
-      23.0
+    - 1.3.9_Customer_Bill_Invoice_Management_v23.0
+    - 1.3.9.2_Create_Customer_Bill_Invoice_v23.0
+    - 1.3.9.2.1_Render_&_Format_Customer_Invoice_v23.0
+    - 1.3.9.2.2_Deliver_Electronic_Invoice_v23.0
+    - 1.3.9.2.3_Verify_Customer_Invoice_Quality_v23.0
+    - 1.3.9.2.4_Manage_Customer_Invoice_Quality_v23.0
+    - 1.3.9.3_Produce_&_Distribute_Customer_Bill_v23.0
+    - 1.3.9.3.1_Co-ordinate_Billing_Insertion_v23.0
+    - 1.3.9.3.2_Establish_&_Manage_Bill_Production_Cycle_v23.0
+    - 1.3.9.3.3_Deliver_Invoice_Information_v23.0
+    - 1.3.9.4_Pricing,_Discounting,_Adjustments_&_Rebates_Application_v23.0
+    - 1.3.9.4.2_Apply_Pricing,_Discounting,_Adjustments_&_Rebates_to_Customer_Account_v23.0
+    - 1.6.15_BP_Bill/Invoice_Management_v23.0
+    - 1.6.15.2_BP_Bill/Invoice_Control_v23.0
+    - 1.6.15.2.1_Establish_&_Maintain_BP_Bill_Invoice_Format_v23.0
+    - 1.6.15.2.2_Maintain_Bill_Invoice_BP_List_v23.0
+    - 1.6.15.2.3_Define_BP_Billing_Cycle_v23.0
+    - 1.6.15.3.2_Create_BP_Bill/Invoice_v23.0
+    - 1.6.15.3.2_Create_BP_Bill/Invoice_v23.0
+    - 1.6.15.3.3_Distribute_BP_Bill/Invoice_v23.0
+    - 1.6.15.3.4_Manage_BP_Bill/Invoice_Archive_v23.0
+    - 1.6.15.3.5_Receive_BP_Bill/Invoice_v23.0
+    - 1.6.15.3.6_Administer_Commercial_Arrangement_for_BP_Bill/Invoice_Creation_Capability_v23.0
     functionalFrameworkFunctions:
-    - 65_Bill_Image_Presentation_vv 23.0
-    - 62_Invoice_Items_Listing_vv 23.0
-    - 63_Invoice_Listing_vv 23.0
-    - 329_Invoice_Tax_Calculation_vv 23.0
-    - 309_Invoice_Balance_Calculation_vv 23.0
-    - 310_Invoice_Charges_Compilation_vv 23.0
-    - 312_Invoice_Detail_Collection_vv 23.0
-    - 311_Invoice_Totals_Calculation_vv 23.0
+    - 65_Bill_Image_Presentation_v23.0
+    - 62_Invoice_Items_Listing_v23.0
+    - 63_Invoice_Listing_v23.0
+    - 329_Invoice_Tax_Calculation_v23.0
+    - 309_Invoice_Balance_Calculation_v23.0
+    - 310_Invoice_Charges_Compilation_v23.0
+    - 312_Invoice_Detail_Collection_v23.0
+    - 311_Invoice_Totals_Calculation_v23.0

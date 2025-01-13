@@ -18,7 +18,6 @@ spec:
       information will be used as an input to price calculation.
     eTOMs:
     - 1.4.5_Service_Configuration_&_Activation_v23.0
-    - ?_?_v23.0
     functionalBlock: Production
     functionalFrameworkFunctions:
     - 319_Service_Feasibility_Checking_v23.0

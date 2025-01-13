@@ -238,7 +238,6 @@ spec:
       url: Redacted
     eTOMs:
     - 1.4.5_Service_Configuration_&_Activation_v23.0
-    - ?_?_v23.0
     functionalFrameworkFunctions:
     - 319_Service_Feasibility_Checking_v23.0
     - 586_Service_Availability_Validation_v23.0

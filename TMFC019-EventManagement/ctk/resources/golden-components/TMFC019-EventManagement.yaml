@@ -14,13 +14,7 @@ spec:
       further processing). Event Management component should include functionality
       providing a centralised CQRS queryStore for all components that implement event-sourcing
       with event carrier state transfer.
-    eTOMs:
-    - 1.5.7_Resource_Data_Collection_&_Distribution_v23.0
-    - 1.5.7.1_Collect_Management_and_Security_Information_&_Data_v23.0
-    - 1.5.7.3_Distribute_Management_and_Security_Information_&_Data_v23.0
-    - 1.5.7.4_insert_business_activity_name_v23.0
     functionalBlock: DecouplingAndIntegration
-    functionalFrameworkFunctions: []
     id: TMFC019
     maintainers:
     - email: components@tmforum.org
