@@ -1,0 +1,20 @@
+{
+    "url": " http://localhost:8679/tmf-api/productOfferingQualification/v4/",
+    "headers": {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+    },
+    "payloads": {
+        "ProductOfferingQualification": {
+            "POST": {
+                "payload": {
+                    "productOfferingQualificationItem": [
+                        {
+                            "id": "1"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

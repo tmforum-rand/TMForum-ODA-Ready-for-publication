@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "productOfferingQualificationItem": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    }
+                },
+                "minItems": 1,
+                "required": [
+                    "id"
+                ]
+            }
+        }
+    },
+    "required": [
+        "productOfferingQualificationItem"
+    ]
+}

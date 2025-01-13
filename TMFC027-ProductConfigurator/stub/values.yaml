@@ -1,0 +1,16 @@
+component:
+  id: tmfc027
+  name: tmfc027-productconfigurator
+  publicationDate: '2024-10-17T00:00:00.000Z'
+images:
+  tmf669: tmforumorg/tmfc027-tmf669-v4.0.0:latest
+  tmf679: tmforumorg/tmfc027-tmf679-v4.0.0:latest
+  tmf701: tmforumorg/tmfc027-tmf701-v4.0.0:latest
+  tmf760: tmforumorg/tmfc027-tmf760-v0.0.1:latest
+secretsManagement:
+  podSelector:
+    name: '{{.Release.Name}}-{{.Values.component.name}}'
+    namespace: default
+    serviceaccount: default
+security:
+  controllerRole: admin

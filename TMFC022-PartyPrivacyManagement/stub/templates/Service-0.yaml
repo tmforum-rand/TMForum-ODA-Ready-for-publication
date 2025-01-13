@@ -3,11 +3,11 @@ kind: Service
 metadata:
   labels:
     oda.tmforum.org/componentName: '{{.Release.Name}}-{{.Values.component.name}}'
-  name: '{{.Release.Name}}-privacy-management-api'
+  name: '{{.Release.Name}}-mongodb'
 spec:
   ports:
-  - name: tcp-{{.Release.Name}}-privacy
-    port: 8080
-    targetPort: '{{.Release.Name}}-privacy'
+  - name: tcp-{{.Release.Name}}-mongodb
+    port: 27017
+    targetPort: '{{.Release.Name}}-mongodb'
   selector:
-    impl: '{{.Release.Name}}-privacy-management-api'
+    impl: '{{.Release.Name}}-mongodb'

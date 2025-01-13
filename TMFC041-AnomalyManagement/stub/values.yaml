@@ -1,0 +1,13 @@
+component:
+  id: tmfc041
+  name: tmfc041-anomalymanagement
+  publicationDate: '2024-10-17T00:00:00.000Z'
+images:
+  tmf669: tmforumorg/tmfc041-tmf669-v4.0.0:latest
+secretsManagement:
+  podSelector:
+    name: '{{.Release.Name}}-{{.Values.component.name}}'
+    namespace: default
+    serviceaccount: default
+security:
+  controllerRole: admin

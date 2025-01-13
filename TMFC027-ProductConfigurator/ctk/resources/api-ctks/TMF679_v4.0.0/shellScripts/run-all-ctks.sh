@@ -1,0 +1,1 @@
+for d in ../out/*; do     ( cd "$d" && sh ./Mac-Linux-RUNCTK.sh && firefox htmlResults.html && find . -iname "*.docx" -print -exec libreoffice {} \;); done
