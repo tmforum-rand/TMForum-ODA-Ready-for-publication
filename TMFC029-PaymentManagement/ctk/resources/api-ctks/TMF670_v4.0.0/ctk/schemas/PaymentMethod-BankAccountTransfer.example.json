@@ -1,7 +1,0 @@
-{
-    "name": "transfer",
-    "@type": "BankAccountTransfer",
-    "accountNumber": "AL47 2121 1009 0000 0002 3569 87411",
-    "owner": "HSV",
-    "bank": "HSBC"
-}

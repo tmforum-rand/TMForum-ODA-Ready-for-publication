@@ -1,7 +1,0 @@
-{
-    "name": "Wallet",
-    "@type": "DigitalWallet",
-    "service": "Bitcoin",
-    "walletId": "123123",
-    "walletUrl": "{rooturl}"
-}

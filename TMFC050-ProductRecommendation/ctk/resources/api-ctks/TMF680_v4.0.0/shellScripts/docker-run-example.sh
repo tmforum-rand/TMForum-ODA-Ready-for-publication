@@ -1,1 +1,0 @@
-docker run --link mongo -dti -p 8702:8080 tmforumorg/resource-activation_tmf-702:4.0.0
