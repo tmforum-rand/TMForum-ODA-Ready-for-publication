@@ -457,14 +457,14 @@ spec:
     eTOMs:
     - 1.4.5_Service_Configuration_&_Activation_v21.5
     - 1.4.5.1_Design_Solution_v21.5
-    - 1.4.5.2_"Allocate_Specific_Service_Parameters_to_Services_v21.5
+    - 1.4.5.2_Allocate_Specific_Service_Parameters_to_Services_v21.5
     - 1.4.5.3_Track_&_Manage_Service_Provisioning_v21.5
     - 1.4.5.4_Implement,_configure_&_activate_service_v21.5
-    - 1.4.5.6_"Issue_Service_Order_v21.5
+    - 1.4.5.6_Issue_Service_Order_v21.5
     - 1.4.5.7_Report_service_provisioning_v21.5
     - 1.4.5.8_Close_Service_Order_v21.5
     - 1.5.6_Resource_Provisioning_v21.5
-    - 1.5.6.7_"Issue_Resource_Order_v21.5
+    - 1.5.6.7_Issue_Resource_Order_v21.5
     functionalFrameworkFunctions:
     - 584_Service_Activation_Planning_v21.5
     - 588_Service_Orchestration_Configuration_v21.5

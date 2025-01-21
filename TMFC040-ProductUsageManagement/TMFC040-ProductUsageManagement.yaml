@@ -266,7 +266,7 @@ spec:
     - 1.2.17_Product_Rating_&_Rate_Assignment_v23.0
     - 1.2.17.1_Perform_Rating_v23.0
     - 1.2.17.2_Aggregate_Items_For_Rate_Assignment_v23.0
-    - 1.2.17.3_"Manage_Customer_Assignment_Hierarchy_v23.0
+    - 1.2.17.3_Manage_Customer_Assignment_Hierarchy_v23.0
     - 1.2.17.4_Provide_Advice_of_Rate_v23.0
     - 1.2.17.5_Apply_Rate_Level_Discounts_v23.0
     functionalFrameworkFunctions:

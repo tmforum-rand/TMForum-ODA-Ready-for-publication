@@ -223,3 +223,8 @@ spec:
     eTOMs: []
     functionalFrameworkFunctions:
     - 429_Location_Change_History_Management_v23
+    - 430_PreFormattedLocation_InformationPresentation_v23
+    - 431_Location_Information_Updating_v23
+    - 432_Location_Information_Searching_v23
+    - 433_Location_Structure_Data_Configuration_v23
+    - 434_Location_Data_Integrity_Management_v23
