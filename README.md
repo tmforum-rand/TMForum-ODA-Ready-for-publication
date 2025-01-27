@@ -3,6 +3,13 @@
 This document explains the repository fundamentals such as the component specification, stub and CTK (Component Test Kit).  
 Component Specification purpose, attributes, and the key differences between the `oda.tmforum.org/v1beta3` and `oda.tmforum.org/v1beta4` are also going to be handled with in this documentation. 
 
+Please Note :
+This repo is intended to house the Component project deliverables before they are committed to the TMForum.org website.
+
+It contains not only the YAML files specifying the Components but also (soon) the means to confirm that the Components specified can be certified as adhering to the Component Specification.
+
+The specifications contained here are derived from content in closed repos, such as the TM Forum API repos and the Component Specification repo. The factory code for producing these assets is contained in private repos ODA CI and ODA Component Conformance.
+
 The releasable assets in this repository are:
 - Golden Component definitions for each componets, 
 - CTK's (Component Conformance Tests) (will be delivered soon)
