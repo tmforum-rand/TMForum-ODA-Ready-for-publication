@@ -87,6 +87,7 @@ The component specification file serves as a blueprint for defining and describi
 
 3. **Specifications**:
    - Specifications is a collection which contains more than one specifications. Enhanced format to include details like `url`, `version`.
+   - Versions v5.0.0 and v5.1.0 are used as-is when found in the URL. Other versions are extracted from the URL and follow the vX.0.0 standardization rule.
 
 4. **Owners and Maintainers**:
    - Both fields have 3 attributes : `name`, `email`, `url`.
@@ -117,6 +118,7 @@ The component specification file serves as a blueprint for defining and describi
 ```yaml
 - id: TMF633
   apiType: openapi
+  apiSDO: not_defined
   name: service-catalog-management-api
   required: false
   specification:
