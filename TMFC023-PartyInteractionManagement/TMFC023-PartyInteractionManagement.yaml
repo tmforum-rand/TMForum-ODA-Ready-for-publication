@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -21,6 +22,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -32,6 +34,7 @@ spec:
         - GET /id
     - id: TMF672
       apiType: openapi
+      apiSDO: not_defined
       name: user-role-permission-management-api
       required: false
       specification:
@@ -43,6 +46,7 @@ spec:
         - GET /id
     - id: TMF662
       apiType: openapi
+      apiSDO: not_defined
       name: entity-catalog-management-api
       required: false
       specification:
@@ -63,6 +67,7 @@ spec:
         - GET /id
     - id: TMF667
       apiType: openapi
+      apiSDO: not_defined
       name: document-management-api
       required: false
       specification:
@@ -74,6 +79,7 @@ spec:
         - GET /id
     - id: TMF688
       apiType: openapi
+      apiSDO: not_defined
       name: event-management-api
       required: false
       specification:
@@ -85,6 +91,7 @@ spec:
         - GET /id
     - id: TMF681
       apiType: openapi
+      apiSDO: not_defined
       name: communication-management-api
       required: false
       specification:
@@ -96,6 +103,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -110,11 +118,12 @@ spec:
     exposedAPIs:
     - id: TMF683
       apiType: openapi
+      apiSDO: not_defined
       name: party-interaction-management-api
       required: true
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json
-        version: null
+        version: v4.0.0
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/4.0.0/swagger/TMF683_Party_Interaction_Management_API_v4.0.0_swagger.json
         version: v4.0.0
       path: not_defined
@@ -130,6 +139,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -151,6 +161,7 @@ spec:
         - GET /id
     - id: TMF688
       apiType: openapi
+      apiSDO: not_defined
       name: event-management-api
       required: false
       specification:
@@ -170,6 +181,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -186,6 +198,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -204,6 +217,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -231,6 +245,7 @@ spec:
         version: null
       apiType: openapi
       id: TMF683
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
@@ -250,6 +265,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
     subscribedEvents:
     - implementation: /{{.Release.Name}}-PartyManagement
       name: PartyManagement
@@ -269,6 +285,7 @@ spec:
       apiType: openapi
       id: TMF632
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-PartyRoleManagement
       name: PartyRoleManagement
       port: 80
@@ -280,6 +297,7 @@ spec:
       apiType: openapi
       id: TMF701
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-DocumentgManagementEvent
       name: documentManagement
       port: 80
@@ -292,6 +310,7 @@ spec:
       apiType: openapi
       id: TMF667
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
@@ -306,6 +325,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC023
     name: PartyInteractionManagement

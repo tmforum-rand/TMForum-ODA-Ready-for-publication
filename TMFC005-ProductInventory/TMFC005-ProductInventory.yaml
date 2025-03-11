@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF620
       apiType: openapi
+      apiSDO: not_defined
       name: product-catalog-management-api
       required: true
       specification:
@@ -24,6 +25,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -35,6 +37,7 @@ spec:
         - GET /id
     - id: TMF639
       apiType: openapi
+      apiSDO: not_defined
       name: resource-inventory-management-api
       required: false
       specification:
@@ -46,6 +49,7 @@ spec:
         - GET /id
     - id: TMF651
       apiType: openapi
+      apiSDO: not_defined
       name: agreement-management-api
       required: false
       specification:
@@ -57,6 +61,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-address-management-api
       required: false
       specification:
@@ -71,6 +76,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-site-management-api
       required: false
       specification:
@@ -82,6 +88,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-location-management-api
       required: false
       specification:
@@ -93,6 +100,7 @@ spec:
         - GET /id
     - id: TMF666
       apiType: openapi
+      apiSDO: not_defined
       name: account-management-api
       required: false
       specification:
@@ -104,6 +112,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -118,6 +127,7 @@ spec:
         - GET /id
     - id: TMF637
       apiType: openapi
+      apiSDO: not_defined
       name: product-inventory-management-api
       required: false
       specification:
@@ -132,6 +142,7 @@ spec:
         - DELETE
     - id: TMF638
       apiType: openapi
+      apiSDO: not_defined
       name: service-inventory-management-api
       required: false
       specification:
@@ -143,6 +154,7 @@ spec:
         - GET /id
     - id: TMF622
       apiType: openapi
+      apiSDO: not_defined
       name: product-ordering-management-api
       required: false
       specification:
@@ -155,6 +167,7 @@ spec:
     exposedAPIs:
     - id: TMF637
       apiType: openapi
+      apiSDO: not_defined
       name: product-inventory-management-api
       required: true
       specification:
@@ -173,6 +186,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -196,6 +210,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -212,6 +227,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -230,6 +246,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -258,6 +275,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF637
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
@@ -277,6 +295,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
     subscribedEvents:
     - implementation: /{{.Release.Name}}-ResourceInventoryManagement
       name: ResourceInventoryManagement
@@ -289,6 +308,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Resource/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-ServiceInventoryManagement
       name: ServiceInventoryManagement
       port: 80
@@ -300,6 +320,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-ProductCatalogManagement
       name: ProductCatalogManagement
       port: 80
@@ -313,6 +334,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalog/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-PartyRoleManagement
       name: PartyRoleManagement
       port: 80
@@ -324,6 +346,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRole/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-AgreementManagement
       name: AgreementManagement
       port: 80
@@ -335,6 +358,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Agreement/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-AccountManagement
       name: AccountManagement
       port: 80
@@ -346,6 +370,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Account/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-UserRolePermissionManagement
       name: UserRolePermissionManagement
       port: 80
@@ -357,6 +382,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UserRolePermission/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-GeographicSiteManagement
       name: GeographicSiteManagement
       port: 80
@@ -368,6 +394,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-GeographicLocation
       name: GeographicLocation
       port: 80
@@ -379,6 +406,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-PartyManagement
       name: PartyManagement
       port: 80
@@ -391,6 +419,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-ProductOrderingManagement
       name: ProductOrderingManagement
       port: 80
@@ -402,6 +431,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOrdering/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-ProductInventoryManagement
       name: ProductInventoryManagement
       port: 80
@@ -416,6 +446,7 @@ spec:
       apiType: openapi
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductInventory/call-back
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC005
     name: ProductInventory

@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF628
       apiType: openapi
+      apiSDO: not_defined
       name: performance-management-api
       required: false
       specification:
@@ -42,6 +43,7 @@ spec:
         - GET /id
     - id: TMF639
       apiType: openapi
+      apiSDO: not_defined
       name: resource-inventory-management-api
       required: false
       specification:
@@ -53,6 +55,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-address-management-api
       required: false
       specification:
@@ -67,6 +70,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-site-management-api
       required: false
       specification:
@@ -78,6 +82,7 @@ spec:
         - GET/id
     - id: TMF675
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-location-management-api
       required: false
       specification:
@@ -89,6 +94,7 @@ spec:
         - GET/id
     - id: TMF688
       apiType: openapi
+      apiSDO: not_defined
       name: event-management-api
       required: false
       specification:
@@ -100,6 +106,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -118,6 +125,7 @@ spec:
     exposedAPIs:
     - id: TMF628
       apiType: openapi
+      apiSDO: not_defined
       name: performance-management-api
       required: true
       specification:
@@ -157,6 +165,7 @@ spec:
         - GET /id
     - id: TMF649
       apiType: openapi
+      apiSDO: not_defined
       name: performance-thresholding-management-api
       required: true
       specification:
@@ -181,6 +190,7 @@ spec:
         - DELETE /id
     - id: TMF642
       apiType: openapi
+      apiSDO: not_defined
       name: alarm-management-api
       required: false
       specification:
@@ -199,6 +209,7 @@ spec:
         - DELETE /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -222,6 +233,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -238,6 +250,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -256,6 +269,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -288,6 +302,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Alarm/hub
       implementation: /{{.Release.Name}}-Alarm
       name: AlarmManagement
@@ -302,6 +317,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF642
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Performance/hub
       implementation: /{{.Release.Name}}-Performance
       name: PerformanceManagement
@@ -324,6 +340,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF628
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThreshold/hub
       implementation: /{{.Release.Name}}-PerformanceThreshold
       name: PerformanceThresholdManagement
@@ -342,6 +359,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF628
+      apiSDO: not_defined
     subscribedEvents:
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/hub
       implementation: /{{.Release.Name}}-ResourceCatalog
@@ -354,6 +372,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF634
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/hub
       implementation: /{{.Release.Name}}-ResourceInventory
       name: ResourceInventoryManagement
@@ -368,6 +387,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF639
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/hub
       implementation: /{{.Release.Name}}-GeographicAddressManagement
       name: GeographicAddressManagement
@@ -379,6 +399,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF673
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
@@ -397,6 +418,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC038
     name: ResourcePerformanceManagement

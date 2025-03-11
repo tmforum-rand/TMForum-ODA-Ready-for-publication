@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -21,6 +22,7 @@ spec:
         - GET /id
     - id: TMF633
       apiType: openapi
+      apiSDO: not_defined
       name: service-catalog-management-api
       required: true
       specification:
@@ -32,6 +34,7 @@ spec:
         - GET /id
     - id: TMF634
       apiType: openapi
+      apiSDO: not_defined
       name: resource-catalog-management-api
       required: false
       specification:
@@ -43,6 +46,7 @@ spec:
         - GET /id
     - id: TMF638
       apiType: openapi
+      apiSDO: not_defined
       name: service-inventory-management-api
       required: true
       specification:
@@ -57,6 +61,7 @@ spec:
         - DELETE
     - id: TMF639
       apiType: openapi
+      apiSDO: not_defined
       name: resource-inventory-management-api
       required: false
       specification:
@@ -68,6 +73,7 @@ spec:
         - GET /id
     - id: TMF640
       apiType: openapi
+      apiSDO: not_defined
       name: service-activation-management-api
       required: false
       specification:
@@ -79,6 +85,7 @@ spec:
         - GET /id
     - id: TMF641
       apiType: openapi
+      apiSDO: not_defined
       name: service-ordering-management-api
       required: false
       specification:
@@ -97,6 +104,7 @@ spec:
         - POST
     - id: TMF645
       apiType: openapi
+      apiSDO: not_defined
       name: service-qualification-management-api
       required: false
       specification:
@@ -115,6 +123,7 @@ spec:
         - PATCH
     - id: TMF646
       apiType: openapi
+      apiSDO: not_defined
       name: appointment-management-api
       required: false
       specification:
@@ -133,6 +142,7 @@ spec:
         - PATCH
     - id: TMF652
       apiType: openapi
+      apiSDO: not_defined
       name: resource-order-management-api
       required: false
       specification:
@@ -153,6 +163,7 @@ spec:
         - DELETE
     - id: TMF653
       apiType: openapi
+      apiSDO: not_defined
       name: service-test-management-api
       required: false
       specification:
@@ -167,6 +178,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -178,6 +190,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-address-management-api
       required: false
       specification:
@@ -196,6 +209,7 @@ spec:
         - POST
     - id: TMF674
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-site-management-api
       required: false
       specification:
@@ -207,6 +221,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-location-management-api
       required: false
       specification:
@@ -218,6 +233,7 @@ spec:
         - GET /id
     - id: TMF681
       apiType: openapi
+      apiSDO: not_defined
       name: communication-management-api
       required: false
       specification:
@@ -229,6 +245,7 @@ spec:
         - GET /id
     - id: TMF697
       apiType: openapi
+      apiSDO: not_defined
       name: work-order-management-api
       required: false
       specification:
@@ -240,6 +257,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -254,6 +272,7 @@ spec:
     exposedAPIs:
     - id: TMF641
       apiType: openapi
+      apiSDO: not_defined
       name: service-ordering-management-api
       required: true
       specification:
@@ -276,6 +295,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -299,6 +319,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -315,6 +336,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -333,6 +355,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -365,6 +388,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF641
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       name: ProcessFlowManagement
       port: 80
@@ -383,6 +407,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
     subscribedEvents:
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrderManagement/hub
       name: ResourceOrderManagement
@@ -398,6 +423,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF634
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/hub
       name: ServiceQualification
       port: 80
@@ -409,6 +435,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF645
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Communication/hub
       name: Communication
       port: 80
@@ -419,6 +446,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF681
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/WorkOrder/hub
       name: WorkOrder
       port: 80
@@ -429,6 +457,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF697
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC007
     name: ServiceOrderManagement

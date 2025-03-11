@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -21,6 +22,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-site-management-api
       required: false
       specification:
@@ -33,6 +35,7 @@ spec:
     exposedAPIs:
     - id: TMF673
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-address-management-api
       required: true
       specification:
@@ -56,6 +59,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-site-management-api
       required: true
       specification:
@@ -74,6 +78,7 @@ spec:
         - DELETE
     - id: TMF675
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-location-management-api
       required: true
       specification:
@@ -92,6 +97,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -115,6 +121,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -131,6 +138,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -149,6 +157,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -173,6 +182,7 @@ spec:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF673_GeographicAddress/master/TMF673-GeographicAddress-v4.0.1.swagger.json
         version: v4.0.0
       apiType: openapi
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSiteManagement/hub
       implementation: /{{.Release.Name}}-GeographicSiteManagementEvent
       name: GeographicSiteManagement
@@ -187,6 +197,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF674
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/hub
       implementation: /{{.Release.Name}}-GeographicLocationEvent
       name: GeographicLocation
@@ -200,6 +211,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF675
+      apiSDO: not_defined
     subscribedEvents: []
   componentMetadata:
     id: TMFC014

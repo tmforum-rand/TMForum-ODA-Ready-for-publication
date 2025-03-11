@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF666
       apiType: openapi
+      apiSDO: not_defined
       name: account-management-api
       required: true
       specification:
@@ -27,6 +28,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: true
       specification:
@@ -41,6 +43,7 @@ spec:
         - GET /id
     - id: TMF676
       apiType: openapi
+      apiSDO: not_defined
       name: payment-management-api
       required: false
       specification:
@@ -57,6 +60,7 @@ spec:
         - POST
     - id: TMF667
       apiType: openapi
+      apiSDO: not_defined
       name: document-management-api
       required: false
       specification:
@@ -69,6 +73,7 @@ spec:
         - POST
     - id: TMF637
       apiType: openapi
+      apiSDO: not_defined
       name: product-inventory-management-api
       required: false
       specification:
@@ -80,6 +85,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -91,6 +97,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -110,6 +117,7 @@ spec:
     exposedAPIs:
     - id: TMF678
       apiType: openapi
+      apiSDO: not_defined
       name: customer-bill-management-api
       required: true
       specification:
@@ -131,6 +139,7 @@ spec:
         - PATCH /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -154,6 +163,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -170,6 +180,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -188,6 +199,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -213,6 +225,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF669
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC030
     name: BillGeneration

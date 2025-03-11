@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF634
       apiType: openapi
+      apiSDO: not_defined
       name: resource-catalog-management-api
       required: false
       specification:
@@ -18,6 +19,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -29,6 +31,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -43,6 +46,7 @@ spec:
         - GET /id
     - id: TMF662
       apiType: openapi
+      apiSDO: not_defined
       name: entity-catalog-management-api
       required: false
       specification:
@@ -58,6 +62,7 @@ spec:
     exposedAPIs:
     - id: TMF633
       apiType: openapi
+      apiSDO: not_defined
       name: service-catalog-management-api
       required: true
       specification:
@@ -104,6 +109,7 @@ spec:
         - DELETE
     - id: TMF657
       apiType: openapi
+      apiSDO: not_defined
       name: service-quality-management-management-api
       required: true
       specification:
@@ -134,6 +140,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -157,6 +164,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -173,6 +181,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -191,6 +200,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -227,6 +237,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF633
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/hub
       implementation: /{{.Release.Name}}-ServiceQualityManagement
       name: ServiceQualityManagement
@@ -243,6 +254,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF657
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
@@ -262,6 +274,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
     subscribedEvents:
     - implementation: /{{.Release.Name}}-ResourceCatalog
       name: ResourceCatalogManagement
@@ -276,6 +289,7 @@ spec:
       apiType: openapi
       id: TMF634
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-EntityCatalog
       name: EntityCatalogManagement
       port: 80
@@ -290,6 +304,7 @@ spec:
       apiType: openapi
       id: TMF662
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EntityCatalog/call-back
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC006
     name: ServiceCatalogManagement

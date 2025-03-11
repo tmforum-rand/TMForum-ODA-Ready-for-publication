@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: true
       specification:
@@ -21,6 +22,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -32,6 +34,7 @@ spec:
         - GET /id
     - id: TMF670
       apiType: openapi
+      apiSDO: not_defined
       name: payment-method-management-api
       required: false
       specification:
@@ -43,6 +46,7 @@ spec:
         - GET /id
     - id: TMF676
       apiType: openapi
+      apiSDO: not_defined
       name: payment-management-api
       required: false
       specification:
@@ -54,6 +58,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -68,6 +73,7 @@ spec:
     exposedAPIs:
     - id: TMF666
       apiType: openapi
+      apiSDO: not_defined
       name: account-management-api
       required: true
       specification:
@@ -104,6 +110,7 @@ spec:
         - DELETE /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -127,6 +134,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -143,6 +151,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -161,6 +170,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -185,6 +195,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF666
+      apiSDO: not_defined
     subscribedEvents:
     - name: PartyRoleManagement
       port: 80
@@ -197,6 +208,7 @@ spec:
       - url: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
         version: v4.0.0
       id: TMF669
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC024
     name: BillingAccountManagement

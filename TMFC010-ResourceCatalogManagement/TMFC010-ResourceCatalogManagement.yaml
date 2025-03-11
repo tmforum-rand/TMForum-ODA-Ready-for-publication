@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF634
       apiType: openapi
+      apiSDO: not_defined
       name: resource-catalog-management-api
       required: false
       specification:
@@ -44,6 +45,7 @@ spec:
         - DELETE
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -55,6 +57,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -69,6 +72,7 @@ spec:
         - GET /id
     - id: TMF662
       apiType: openapi
+      apiSDO: not_defined
       name: entity-catalog-management-api
       required: false
       specification:
@@ -84,6 +88,7 @@ spec:
     exposedAPIs:
     - id: TMF634
       apiType: openapi
+      apiSDO: not_defined
       name: resource-catalog-management-api
       required: true
       specification:
@@ -130,6 +135,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -153,6 +159,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -169,6 +176,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -187,6 +195,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -225,6 +234,7 @@ spec:
         version: v4.0.0
       version: 4
       id: TMF634
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
@@ -245,6 +255,7 @@ spec:
       version: 4
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
     subscribedEvents:
     - id: TMF662
       name: EntityCatalogManagement
@@ -259,6 +270,7 @@ spec:
         version: v4.0.0
       version: 4
       callback: /{{.Release.Name}}-EntityCatalog/call-back
+      apiSDO: not_defined
     - id: TMF669
       name: PartyRoleManagement
       port: 80
@@ -269,6 +281,7 @@ spec:
         version: null
       version: 4
       callback: /{{.Release.Name}}-EntityCatalog/call-back
+      apiSDO: not_defined
     - id: TMF632
       name: Party
       port: 80
@@ -280,6 +293,7 @@ spec:
         version: v4.0.0
       version: 4
       callback: /{{.Release.Name}}-EntityCatalog/call-back
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC010
     name: ResourceCatalogManagement

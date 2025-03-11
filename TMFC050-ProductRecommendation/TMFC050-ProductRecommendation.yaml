@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF620
       apiType: openapi
+      apiSDO: not_defined
       name: product-catalog-management-api
       required: true
       specification:
@@ -30,6 +31,7 @@ spec:
         - GET /id
     - id: TMF637
       apiType: openapi
+      apiSDO: not_defined
       name: product-inventory-management-api
       required: false
       specification:
@@ -41,6 +43,7 @@ spec:
         - GET /id
     - id: TMF622
       apiType: openapi
+      apiSDO: not_defined
       name: product-ordering-management-api
       required: false
       specification:
@@ -52,6 +55,7 @@ spec:
         - GET /id
     - id: TMF679
       apiType: openapi
+      apiSDO: not_defined
       name: product-offering-qualification-management-api
       required: false
       specification:
@@ -63,6 +67,7 @@ spec:
         - GET /id
     - id: TMF666
       apiType: openapi
+      apiSDO: not_defined
       name: account-management-api
       required: false
       specification:
@@ -74,6 +79,7 @@ spec:
         - GET /id
     - id: TMF629
       apiType: openapi
+      apiSDO: not_defined
       name: customer-management-api
       required: false
       specification:
@@ -85,6 +91,7 @@ spec:
         - GET /id
     - id: TMF663
       apiType: openapi
+      apiSDO: not_defined
       name: shopping-cart-management-api
       required: false
       specification:
@@ -96,6 +103,7 @@ spec:
         - GET /id
     - id: TMF671
       apiType: openapi
+      apiSDO: not_defined
       name: promotion-management-api
       required: false
       specification:
@@ -107,6 +115,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-address-management-api
       required: false
       specification:
@@ -118,6 +127,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-location-management-api
       required: false
       specification:
@@ -129,6 +139,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -143,6 +154,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -154,6 +166,7 @@ spec:
         - GET /id
     - id: TMF678
       apiType: openapi
+      apiSDO: not_defined
       name: customer-bill-management-api
       required: false
       specification:
@@ -165,6 +178,7 @@ spec:
         - GET /id
     - id: TMF621
       apiType: openapi
+      apiSDO: not_defined
       name: trouble-ticket-management-api
       required: false
       specification:
@@ -176,6 +190,7 @@ spec:
         - GET /id
     - id: TMF635
       apiType: openapi
+      apiSDO: not_defined
       name: usage-management-api
       required: false
       specification:
@@ -188,6 +203,7 @@ spec:
     exposedAPIs:
     - id: TMF680
       apiType: openapi
+      apiSDO: not_defined
       name: recommendation-management-api
       required: true
       specification:
@@ -204,6 +220,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -227,6 +244,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -243,6 +261,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -261,6 +280,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -286,6 +306,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF680
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagement
       name: processFlowManagement
@@ -305,6 +326,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
     subscribedEvents:
     - implementation: /{{.Release.Name}}-ProductCatalogManagement
       name: ProductCatalogManagement
@@ -328,6 +350,7 @@ spec:
       apiType: openapi
       id: TMF620
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC050
     name: ProductRecommendationManagement

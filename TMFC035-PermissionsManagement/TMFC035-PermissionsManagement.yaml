@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: true
       specification:
@@ -21,6 +22,7 @@ spec:
         - GET/id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -39,6 +41,7 @@ spec:
     exposedAPIs:
     - id: TMF672
       apiType: openapi
+      apiSDO: not_defined
       name: user-role-permission-management-api
       required: true
       specification:
@@ -63,6 +66,7 @@ spec:
         - DELETE/id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -83,6 +87,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -99,6 +104,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -117,6 +123,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -147,6 +154,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF672
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-partyroleapi
       name: partyRole
       port: 80
@@ -160,6 +168,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF669
+      apiSDO: not_defined
     subscribedEvents:
     - implementation: /{{.Release.Name}}-PartyManagement
       name: PartyManagement
@@ -176,6 +185,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF632
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-ProcessFlowManagement
       name: ProcessFlowManagement
       port: 80
@@ -189,6 +199,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC035
     name: PermissionsManagement

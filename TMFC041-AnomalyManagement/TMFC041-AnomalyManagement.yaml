@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF688
       apiType: openapi
+      apiSDO: not_defined
       name: event-management-api
       required: false
       specification:
@@ -19,6 +20,7 @@ spec:
         - POST
     - id: TMF642
       apiType: openapi
+      apiSDO: not_defined
       name: alarm-management-api
       required: false
       specification:
@@ -31,11 +33,12 @@ spec:
         - POST
     - id: TMF723
       apiType: openapi
+      apiSDO: not_defined
       name: policy-management-api
       required: false
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF723_Policy_Management/5.0.0/swagger/TMF723-Policy_Management-v5.0.0.oas.yaml
-        version: null
+        version: v5.0.0
       resources:
       - managedPolicy:
         - GET
@@ -43,6 +46,7 @@ spec:
         - PATCH /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -57,6 +61,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -68,6 +73,7 @@ spec:
         - GET /id
     - id: TMF915
       apiType: openapi
+      apiSDO: not_defined
       name: ai-management-api
       required: false
       specification:
@@ -88,6 +94,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -104,6 +111,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -122,6 +130,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -153,6 +162,7 @@ spec:
       - url: https://github.com/tmforum-rand/Open_API_And_Data_Model/blob/v4.0-Sprint-2020-03/apis/TMF751_AnomalyManagement/swaggers/TMF751-AnomalyManagement-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
+      apiSDO: not_defined
     subscribedEvents:
     - implementation: /{{.Release.Name}}-AIManagement
       name: AIManagement
@@ -178,6 +188,7 @@ spec:
       id: TMF915
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AIManagement/call-back
       apiType: openapi
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-AlarmManagement
       name: AlarmManagement
       port: 80
@@ -191,6 +202,7 @@ spec:
       id: TMF642
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/call-back
       apiType: openapi
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC041
     name: AnomalyManagement

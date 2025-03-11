@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF702
       apiType: openapi
+      apiSDO: not_defined
       name: resource-activation-management-api
       required: true
       specification:
@@ -24,6 +25,7 @@ spec:
         - GET /id
     - id: TMF634
       apiType: openapi
+      apiSDO: not_defined
       name: resource-catalog-management-api
       required: true
       specification:
@@ -38,6 +40,7 @@ spec:
         - DELETE
     - id: TMF639
       apiType: openapi
+      apiSDO: not_defined
       name: resource-inventory-management-api
       required: true
       specification:
@@ -52,6 +55,7 @@ spec:
         - DELETE
     - id: TMF664
       apiType: openapi
+      apiSDO: not_defined
       name: resource-function-activation-management-api
       required: true
       specification:
@@ -66,6 +70,7 @@ spec:
         - DELETE
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -80,6 +85,7 @@ spec:
         - GET /id
     - id: TMF646
       apiType: openapi
+      apiSDO: not_defined
       name: appointment-management-api
       required: false
       specification:
@@ -91,6 +97,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-address-management-api
       required: false
       specification:
@@ -102,6 +109,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-site-management-api
       required: false
       specification:
@@ -113,6 +121,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-location-management-api
       required: false
       specification:
@@ -125,6 +134,7 @@ spec:
     exposedAPIs:
     - id: TMF652
       apiType: openapi
+      apiSDO: not_defined
       name: resource-order-management-api
       required: true
       specification:
@@ -147,6 +157,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -170,6 +181,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -186,6 +198,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -204,6 +217,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -241,6 +255,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF652
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement
@@ -260,6 +275,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
+      apiSDO: not_defined
     subscribedEvents:
     - implementation: /{{.Release.Name}}-ResourceFunctionActivationConfiguration
       name: ResourceFunctionActivationConfiguration
@@ -277,6 +293,7 @@ spec:
       apiType: openapi
       id: TMF664
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceFunctionActivationConfiguration/call-back
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-ResourceActivationAndConfiguration
       name: ResourceActivationAndConfiguration
       port: 80
@@ -290,6 +307,7 @@ spec:
       apiType: openapi
       id: TMF702
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceActivationAndConfiguration/call-back
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC011
     name: ResourceOrderManagement

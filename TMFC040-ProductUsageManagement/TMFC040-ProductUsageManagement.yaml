@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: true
       specification:
@@ -21,6 +22,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -32,6 +34,7 @@ spec:
         - GET /id
     - id: TMF620
       apiType: openapi
+      apiSDO: not_defined
       name: product-catalog-management-api
       required: false
       specification:
@@ -49,6 +52,7 @@ spec:
         - GET /id
     - id: TMF637
       apiType: openapi
+      apiSDO: not_defined
       name: product-inventory-management-api
       required: false
       specification:
@@ -60,6 +64,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -74,6 +79,7 @@ spec:
     exposedAPIs:
     - id: TMF635
       apiType: openapi
+      apiSDO: not_defined
       name: usage-management-api
       required: true
       specification:
@@ -91,6 +97,7 @@ spec:
         - PATCH/id
     - id: TMF677
       apiType: openapi
+      apiSDO: not_defined
       name: usage-consumption-management-api
       required: true
       specification:
@@ -107,6 +114,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -130,6 +138,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -146,6 +155,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -164,6 +174,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -189,6 +200,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF677
+      apiSDO: not_defined
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/usageManagement/hub
       name: UsageManagement
       port: 80
@@ -202,6 +214,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF635
+      apiSDO: not_defined
     subscribedEvents:
     - name: Party
       port: 80
@@ -214,6 +227,7 @@ spec:
       apiType: openapi
       id: TMF632
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/party/call-back
+      apiSDO: not_defined
     - name: PartyRoleManagement
       port: 80
       resources:
@@ -227,6 +241,7 @@ spec:
       apiType: openapi
       id: TMF669
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyrole/call-back
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC040
     name: ProductUsageManagement

@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF666
       apiType: openapi
+      apiSDO: not_defined
       name: account-management-api
       required: true
       specification:
@@ -21,6 +22,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -35,6 +37,7 @@ spec:
         - GET /id
     - id: TMF637
       apiType: openapi
+      apiSDO: not_defined
       name: product-inventory-management-api
       required: true
       specification:
@@ -46,6 +49,7 @@ spec:
         - GET /id
     - id: TMF620
       apiType: openapi
+      apiSDO: not_defined
       name: product-catalog-management-api
       required: false
       specification:
@@ -63,6 +67,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -76,6 +81,7 @@ spec:
         - PATCH
     - id: TMF635
       apiType: openapi
+      apiSDO: not_defined
       name: usage-management-api
       required: false
       specification:
@@ -91,6 +97,7 @@ spec:
     exposedAPIs:
     - id: TMF678
       apiType: openapi
+      apiSDO: not_defined
       name: customer-bill-management-api
       required: true
       specification:
@@ -106,6 +113,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -129,6 +137,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -145,6 +154,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -163,6 +173,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -191,6 +202,7 @@ spec:
       - url: https://github.com/tmforum-apis/TMF635_UsageManagement/blob/master/TMF635-UsageManagement-v4.0.0.swagger.json
         version: v4.0.0
       id: TMF635
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC031
     name: BillCalculation

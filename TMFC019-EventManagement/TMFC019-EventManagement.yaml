@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF688
       apiType: openapi
+      apiSDO: not_defined
       name: event-management-api
       required: false
       specification:
@@ -21,6 +22,7 @@ spec:
     exposedAPIs:
     - id: TMF688
       apiType: openapi
+      apiSDO: not_defined
       name: event-management-api
       required: true
       specification:
@@ -63,6 +65,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -79,6 +82,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -97,6 +101,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -128,6 +133,7 @@ spec:
       apiType: openapi
       id: TMF688
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/call-back
+      apiSDO: not_defined
     subscribedEvents: []
   componentMetadata:
     id: TMFC019

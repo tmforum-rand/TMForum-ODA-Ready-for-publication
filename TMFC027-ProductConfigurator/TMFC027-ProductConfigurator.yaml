@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF637
       apiType: openapi
+      apiSDO: not_defined
       name: product-inventory-management-api
       required: true
       specification:
@@ -18,6 +19,7 @@ spec:
         - GET /id
     - id: TMF620
       apiType: openapi
+      apiSDO: not_defined
       name: product-catalog-management-api
       required: true
       specification:
@@ -41,6 +43,7 @@ spec:
         - GET /id
     - id: TMF622
       apiType: openapi
+      apiSDO: not_defined
       name: product-ordering-management-api
       required: true
       specification:
@@ -52,6 +55,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -66,6 +70,7 @@ spec:
         - GET /id
     - id: TMF666
       apiType: openapi
+      apiSDO: not_defined
       name: account-management-api
       required: false
       specification:
@@ -77,6 +82,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -88,6 +94,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-address-management-api
       required: false
       specification:
@@ -102,6 +109,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-site-management-api
       required: false
       specification:
@@ -113,6 +121,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -130,6 +139,7 @@ spec:
         - GET /id
     - id: TMF662
       apiType: openapi
+      apiSDO: not_defined
       name: entity-catalog-management-api
       required: false
       specification:
@@ -141,6 +151,7 @@ spec:
         - GET /id
     - id: TMF921
       apiType: openapi
+      apiSDO: not_defined
       name: intent-management-api
       required: false
       specification:
@@ -153,6 +164,7 @@ spec:
     exposedAPIs:
     - id: TMF679
       apiType: openapi
+      apiSDO: not_defined
       name: product-offering-qualification-management-api
       required: true
       specification:
@@ -171,11 +183,12 @@ spec:
         - DELETE
     - id: TMF760
       apiType: openapi
+      apiSDO: not_defined
       name: product-configuration-management-api
       required: true
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF760_Product_Configuration/5.0.0/swagger/TMF760-ProductConfiguration-v5.0.0.oas.yaml
-        version: null
+        version: v5.0.0
       path: not_defined
       developerUI: not_defined
       implementation: not_defined
@@ -191,6 +204,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -214,6 +228,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -230,6 +245,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -248,6 +264,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -272,6 +289,7 @@ spec:
       specification: ''
       apiType: openapi
       id: null
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-ProductOfferingQualification
       name: ProductOfferingQualification
       port: 80
@@ -283,6 +301,7 @@ spec:
       specification: ''
       apiType: openapi
       id: null
+      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-pdtquali
       name: ProductConfiguration
       port: 80
@@ -297,6 +316,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF679
+      apiSDO: not_defined
     subscribedEvents:
     - name: ProductCatalogManagement
       port: 80
@@ -321,6 +341,7 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF622
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC027
     name: ProductConfigurator

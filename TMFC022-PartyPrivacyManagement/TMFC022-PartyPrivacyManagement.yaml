@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF620
       apiType: openapi
+      apiSDO: not_defined
       name: product-catalog-management-api
       required: false
       specification:
@@ -18,6 +19,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: true
       specification:
@@ -32,6 +34,7 @@ spec:
         - GET /id
     - id: TMF667
       apiType: openapi
+      apiSDO: not_defined
       name: document-management-api
       required: false
       specification:
@@ -44,6 +47,7 @@ spec:
         - POST
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -56,6 +60,7 @@ spec:
     exposedAPIs:
     - id: TMF644
       apiType: openapi
+      apiSDO: not_defined
       name: privacy-management-api
       required: true
       specification:
@@ -86,6 +91,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -109,6 +115,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -125,6 +132,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -143,6 +151,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:

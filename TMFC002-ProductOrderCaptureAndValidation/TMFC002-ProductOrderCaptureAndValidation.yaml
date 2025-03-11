@@ -7,6 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF620
       apiType: openapi
+      apiSDO: not_defined
       name: product-catalog-management-api
       required: true
       specification:
@@ -27,6 +28,7 @@ spec:
         - GET /id
     - id: TMF637
       apiType: openapi
+      apiSDO: not_defined
       name: product-inventory-management-api
       required: true
       specification:
@@ -40,6 +42,7 @@ spec:
         - PATCH
     - id: TMF679
       apiType: openapi
+      apiSDO: not_defined
       name: product-offering-qualification-management-api
       required: false
       specification:
@@ -53,6 +56,7 @@ spec:
         - PATCH
     - id: TMF645
       apiType: openapi
+      apiSDO: not_defined
       name: service-qualification-management-api
       required: false
       specification:
@@ -71,6 +75,7 @@ spec:
         - PATCH
     - id: TMF646
       apiType: openapi
+      apiSDO: not_defined
       name: appointment-management-api
       required: false
       specification:
@@ -91,6 +96,7 @@ spec:
         - DELETE
     - id: TMF673
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-address-management-api
       required: false
       specification:
@@ -110,6 +116,7 @@ spec:
         - PATCH
     - id: TMF674
       apiType: openapi
+      apiSDO: not_defined
       name: geographic-site-management-api
       required: false
       specification:
@@ -121,6 +128,7 @@ spec:
         - GET /id
     - id: TMF687
       apiType: openapi
+      apiSDO: not_defined
       name: stock-management-api
       required: false
       specification:
@@ -150,6 +158,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
+      apiSDO: not_defined
       name: party-management-api
       required: false
       specification:
@@ -164,6 +173,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: false
       specification:
@@ -175,6 +185,7 @@ spec:
         - GET /id
     - id: TMF666
       apiType: openapi
+      apiSDO: not_defined
       name: account-management-api
       required: false
       specification:
@@ -186,6 +197,7 @@ spec:
         - GET
     - id: TMF676
       apiType: openapi
+      apiSDO: not_defined
       name: payment-management-api
       required: false
       specification:
@@ -197,11 +209,12 @@ spec:
         - GET
     - id: TMF683
       apiType: openapi
+      apiSDO: not_defined
       name: party-interaction-management-api
       required: false
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json
-        version: null
+        version: v4.0.0
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/4.0.0/swagger/TMF683_Party_Interaction_Management_API_v4.0.0_swagger.json
         version: v4.0.0
       resources:
@@ -210,6 +223,7 @@ spec:
         - GET
     - id: TMF638
       apiType: openapi
+      apiSDO: not_defined
       name: service-inventory-management-api
       required: false
       specification:
@@ -221,6 +235,7 @@ spec:
         - GET
     - id: TMF639
       apiType: openapi
+      apiSDO: not_defined
       name: resource-inventory-management-api
       required: false
       specification:
@@ -232,6 +247,7 @@ spec:
         - GET
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -250,11 +266,12 @@ spec:
         - GET /id
     - id: TMF760
       apiType: openapi
+      apiSDO: not_defined
       name: product-configuration-management-api
       required: false
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF760_Product_Configuration/5.0.0/swagger/TMF760-ProductConfiguration-v5.0.0.oas.yaml
-        version: null
+        version: v5.0.0
       resources:
       - checkProductConfiguration:
         - GET
@@ -266,6 +283,7 @@ spec:
         - POST
     - id: TMF651
       apiType: openapi
+      apiSDO: not_defined
       name: agreement-management-api
       required: false
       specification:
@@ -278,6 +296,7 @@ spec:
     exposedAPIs:
     - id: TMF622
       apiType: openapi
+      apiSDO: not_defined
       name: product-ordering-management-api
       required: true
       specification:
@@ -300,6 +319,7 @@ spec:
         - GET /id
     - id: TMF648
       apiType: openapi
+      apiSDO: not_defined
       name: quote-management-api
       required: false
       specification:
@@ -318,6 +338,7 @@ spec:
         - DELETE
     - id: TMF663
       apiType: openapi
+      apiSDO: not_defined
       name: shopping-cart-management-api
       required: false
       specification:
@@ -336,6 +357,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
+      apiSDO: not_defined
       name: process-flow-management-api
       required: false
       specification:
@@ -359,6 +381,7 @@ spec:
     exposedAPIs:
     - name: metrics
       apiType: prometheus
+      apiSDO: not_defined
       specification:
       - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
         version: v4.0.0
@@ -375,6 +398,7 @@ spec:
       id: dependentAPI_id
       version: dependentAPI_version
       apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
       specification:
       - url: dependentAPI_spec
         version: dependentAPI_version
@@ -393,6 +417,7 @@ spec:
     exposedAPIs:
     - id: TMF669
       apiType: openapi
+      apiSDO: not_defined
       name: party-role-management-api
       required: true
       specification:
@@ -424,6 +449,7 @@ spec:
       - url: https://github.com/tmforum-apis/TMF622_ProductOrder/blob/master/TMF622-ProductOrder-v4.0.0.swagger.json
         version: v4.0.0
       id: TMF622
+      apiSDO: not_defined
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Quote/hub
       implementation: /{{.Release.Name}}-QuoteEvent
@@ -439,6 +465,7 @@ spec:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
         version: v4.0.0
       id: TMF648
+      apiSDO: not_defined
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ShoppingCart/hub
       implementation: /{{.Release.Name}}-ShoppingCartEvent
@@ -452,6 +479,7 @@ spec:
       - url: https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v4.0.0.swagger.json
         version: v4.0.0
       id: TMF663
+      apiSDO: not_defined
     - apiType: openapi
       hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
@@ -471,6 +499,7 @@ spec:
       - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
         version: v4.0.0
       id: TMF701
+      apiSDO: not_defined
     subscribedEvents:
     - apiType: openapi
       implementation: /{{.Release.Name}}-ProductOfferingQualificationEvent
@@ -483,6 +512,7 @@ spec:
         version: v4.0.0
       id: TMF679
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductOfferingQualification/call-back
+      apiSDO: not_defined
     - apiType: openapi
       implementation: /{{.Release.Name}}-ServiceQualificationEvent
       name: ServiceQualification
@@ -495,6 +525,7 @@ spec:
         version: v4.0.0
       id: TMF645
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/call-back
+      apiSDO: not_defined
     - apiType: openapi
       implementation: /{{.Release.Name}}-GeographicAddressManagementEvent
       name: GeographicAddressManagement
@@ -506,6 +537,7 @@ spec:
         version: v4.0.0
       id: TMF673
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/call-back
+      apiSDO: not_defined
     - apiType: openapi
       implementation: /{{.Release.Name}}-PaymentManagementEvent
       name: PaymentManagement
@@ -518,6 +550,7 @@ spec:
         version: v4.0.0
       id: TMF676
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentManagementEvent/call-back
+      apiSDO: not_defined
     - apiType: openapi
       implementation: /{{.Release.Name}}-ResourceReservationEvent
       name: ResourceReservation
@@ -536,6 +569,7 @@ spec:
         version: v4.0.0
       id: TMF716
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceReservationEvent/call-back
+      apiSDO: not_defined
   componentMetadata:
     id: TMFC002
     name: ProductOrderCaptureAndValidation
