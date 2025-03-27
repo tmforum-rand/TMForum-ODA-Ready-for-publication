@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF637
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-inventory-management-api
       required: true
       specification:
@@ -19,7 +19,7 @@ spec:
         - GET /id
     - id: TMF620
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-catalog-management-api
       required: true
       specification:
@@ -43,7 +43,7 @@ spec:
         - GET /id
     - id: TMF622
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-ordering-management-api
       required: true
       specification:
@@ -55,7 +55,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -70,7 +70,7 @@ spec:
         - GET /id
     - id: TMF666
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: account-management-api
       required: false
       specification:
@@ -82,7 +82,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -94,7 +94,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -109,7 +109,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -121,7 +121,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -139,7 +139,7 @@ spec:
         - GET /id
     - id: TMF662
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: entity-catalog-management-api
       required: false
       specification:
@@ -151,7 +151,7 @@ spec:
         - GET /id
     - id: TMF921
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: intent-management-api
       required: false
       specification:
@@ -164,7 +164,7 @@ spec:
     exposedAPIs:
     - id: TMF679
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-offering-qualification-management-api
       required: true
       specification:
@@ -183,7 +183,7 @@ spec:
         - DELETE
     - id: TMF760
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-configuration-management-api
       required: true
       specification:
@@ -204,7 +204,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -224,6 +224,26 @@ spec:
         - GET
         - get /id
         - PATCH
+  componentMetadata:
+    id: TMFC027
+    name: ProductConfigurator
+    version: 2.1.1
+    description: The Product Configurator ODA Component is empowering sales by offering
+      the right product combinations, controlling discounting, and automating approvals
+      through support of configuration, pricing and quote generation activities.
+    publicationDate: 2023-11-27
+    status: specified
+    functionalBlock: CoreCommerceManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -342,21 +362,3 @@ spec:
       apiType: openapi
       id: TMF622
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC027
-    name: ProductConfigurator
-    version: 2.1.1
-    description: The Product Configurator ODA Component is empowering sales by offering
-      the right product combinations, controlling discounting, and automating approvals
-      through support of configuration, pricing and quote generation activities.
-    publicationDate: 2023-11-27
-    status: specified
-    functionalBlock: CoreCommerceManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted

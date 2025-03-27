@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF620
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-catalog-management-api
       required: true
       specification:
@@ -19,7 +19,7 @@ spec:
         - GET /id
     - id: TMF622
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-ordering-management-api
       required: true
       specification:
@@ -31,7 +31,7 @@ spec:
         - PATCH
     - id: TMF637
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-inventory-management-api
       required: true
       specification:
@@ -44,7 +44,7 @@ spec:
         - PATCH
     - id: TMF633
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-catalog-management-api
       required: false
       specification:
@@ -56,7 +56,7 @@ spec:
         - GET /id
     - id: TMF638
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-inventory-management-api
       required: false
       specification:
@@ -68,7 +68,7 @@ spec:
         - GET
     - id: TMF641
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-ordering-management-api
       required: true
       specification:
@@ -87,7 +87,7 @@ spec:
         - POST
     - id: TMF634
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-catalog-management-api
       required: false
       specification:
@@ -99,7 +99,7 @@ spec:
         - GET /id
     - id: TMF639
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-inventory-management-api
       required: false
       specification:
@@ -111,7 +111,7 @@ spec:
         - GET /id
     - id: TMF652
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-order-management-api
       required: false
       specification:
@@ -123,7 +123,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -142,7 +142,7 @@ spec:
     exposedAPIs:
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -162,6 +162,60 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC003
+    name: ProductOrderDeliveryOrchestrationAndManagement
+    version: 1.1.1
+    description: 'This component is in charge of the orchestration of the delivery
+      of Product Orders (status accepted). Based on the Product specification level
+      of information available in the Product Catalog (ex: prerequisite links between
+      product specifications, links between product and CFS specifications, ...):
+      it determines in which order the product specification level order items need
+      to be delivered, and to which CFS (or Resource) specification each ordered product
+      corresponds, and prepares and addresses each related service (or resource) order
+      to the production system in charge. During the delivery process execution, this
+      component is in charge of the evolution of the status of the product specification
+      level order items, and of the related product items . So, it triggers the updates
+      of the related inventories.'
+    publicationDate: 2023-08-18 00:00:00
+    status: specified
+    functionalBlock: CoreCommerce
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.3.3-Customer_Order_Handling-v23.0
+    - 1.3.3.8-Manage_Order_Fallout-v23.0
+    - 1.3.3.9-Customer_Order_Orchestration-v23.0
+    - 1.2.9-Product_Offering_Purchasing-v23.0
+    - 1.2.9.5-Complete_Product_Offering_Purchase-v23.0
+    - 1.4.5-Service_Configuration_&_Activation-v23.0
+    - 1.4.5.6-Issue_Service_Order-v23.0
+    - 1.5.6-Resource_Provisioning-v23.0
+    - 1.5.6.7-Issue_Resource_Order-v23.0
+    functionalFrameworkFunctions:
+    - 16-Fallout_Automated_Correction_vv23.0
+    - 17-Fallout_Correction_Information_Collection_vv23.0
+    - 18-Fallout_Management_to_Fulfillment_Application_Accessing_vv23.0
+    - 19-Fallout_Manual_Correction_Queuing_vv23.0
+    - 20-Fallout_Notification_vv23.0
+    - 21-Fallout_Orchestration_vv23.0
+    - 22-Fallout_Reporting_vv23.0
+    - 23-Fallout_Dashboard_System_Log-in_Accessing_vv23.0
+    - 24-Pre-populated_Fallout_Information_Presentation_vv23.0
+    - 175-Customer_Support_Jeopardy_Notification_vv23.0
+    - 174-Customer_Order_Error_Resolution_Support_vv23.0
+    - 723-Customer_Order_Item_Decomposition_vv23.0
+    - 214-Customer_Order_Orchestration_vv23.0
+    - 215-Retro-active_order_orchestration_vv23.0
+    - 342-Mass_Service/product_pre-activation_vv23.0
+    - 743-Number_Portability_Orchestration_vv23.0
+    - 756-Fallout_Rule_Based_Error_Correction_vv23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -286,57 +340,3 @@ spec:
       id: TMF652
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrder/call-back
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC003
-    name: ProductOrderDeliveryOrchestrationAndManagement
-    version: 1.1.1
-    description: 'This component is in charge of the orchestration of the delivery
-      of Product Orders (status accepted). Based on the Product specification level
-      of information available in the Product Catalog (ex: prerequisite links between
-      product specifications, links between product and CFS specifications, ...):
-      it determines in which order the product specification level order items need
-      to be delivered, and to which CFS (or Resource) specification each ordered product
-      corresponds, and prepares and addresses each related service (or resource) order
-      to the production system in charge. During the delivery process execution, this
-      component is in charge of the evolution of the status of the product specification
-      level order items, and of the related product items . So, it triggers the updates
-      of the related inventories.'
-    publicationDate: 2023-08-18 00:00:00
-    status: specified
-    functionalBlock: CoreCommerce
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.3.3_Customer_Order_Handling_v23.0
-    - 1.3.3.8_Manage_Order_Fallout_v23.0
-    - 1.3.3.9_Customer_Order_Orchestration_v23.0
-    - 1.2.9_Product_Offering_Purchasing_v23.0
-    - 1.2.9.5_Complete_Product_Offering_Purchase_v23.0
-    - 1.4.5_Service_Configuration_&_Activation_v23.0
-    - 1.4.5.6_Issue_Service_Order_v23.0
-    - 1.5.6_Resource_Provisioning_v23.0
-    - 1.5.6.7_Issue_Resource_Order_v23.0
-    functionalFrameworkFunctions:
-    - 16_Fallout_Automated_Correction_vv23.0
-    - 17_Fallout_Correction_Information_Collection_vv23.0
-    - 18_Fallout_Management_to_Fulfillment_Application_Accessing_vv23.0
-    - 19_Fallout_Manual_Correction_Queuing_vv23.0
-    - 20_Fallout_Notification_vv23.0
-    - 21_Fallout_Orchestration_vv23.0
-    - 22_Fallout_Reporting_vv23.0
-    - 23_Fallout_Dashboard_System_Log-in_Accessing_vv23.0
-    - 24_Pre-populated_Fallout_Information_Presentation_vv23.0
-    - 175_Customer_Support_Jeopardy_Notification_vv23.0
-    - 174_Customer_Order_Error_Resolution_Support_vv23.0
-    - 723_Customer_Order_Item_Decomposition_vv23.0
-    - 214_Customer_Order_Orchestration_vv23.0
-    - 215_Retro-active_order_orchestration_vv23.0
-    - 342_Mass_Service/product_pre-activation_vv23.0
-    - 743_Number_Portability_Orchestration_vv23.0
-    - 756_Fallout_Rule_Based_Error_Correction_vv23.0

@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: true
       specification:
@@ -19,7 +19,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -31,7 +31,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -43,7 +43,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-location-management-api
       required: false
       specification:
@@ -55,7 +55,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -73,7 +73,7 @@ spec:
         - GET /id
     - id: TMF688
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: event-management-api
       required: false
       specification:
@@ -86,7 +86,7 @@ spec:
     exposedAPIs:
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: true
       specification:
@@ -111,7 +111,7 @@ spec:
         - DELETE/id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -131,6 +131,60 @@ spec:
         - GET
         - GET/id
         - PATCH/id
+  componentMetadata:
+    id: TMFC028
+    name: PartyManagement
+    version: 2.1.0
+    description: 'Party Management component is responsible for the capture, validation
+      and management of Parties and their Roles. A Party may be an individual or organization
+      that has a relationship with an enterprise. In this context it is responsible
+      for the e2e life cycle of: Individual, Organization. and its related sub-entities:Contact
+      Medium, Currency and tax exemption certificates, Identification, Community'
+    publicationDate: 2024-10-14 00:00:00
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.3.16-Customer_Inventory_Management-v23.0
+    - 1.3.6-Customer_Information_Management-v23.0
+    - 1.3.4-Customer_Relationship_Management-v23.0
+    - 1.3.4.2-Establish_Customer_Relationship-v23.0
+    - 1.3.4.3-Re-establish_Customer_Relationship-v23.0
+    - 1.3.4.4-Terminate_Customer_Relationship-v23.0
+    - 1.6.3-Party_Relationship_Development_&_Retirement-v23.0
+    - 1.6.3.1-Party_Relationship_Management-v23.0
+    - 1.6.3.1.5-Collect_Party_data-v23.0
+    - 1.6.21-Party_Inventory_Management-v23.0
+    - 1.7.7-Human_Resources_Management-v23.0
+    - 1.7.7.2-Develop_the_Workforce-v23.0
+    functionalFrameworkFunctions:
+    - 92-Customer_Relation_Map_Exposure-v23.0
+    - 369-Customer_Data_Fencing-v23.0
+    - 225-Customer_Details_Management-v23.0
+    - 400-Customer_Information_Management-v23.0
+    - 282-Customer_Information_Presentation-v23.0
+    - 226-Customer_Preferences_Administration-v23.0
+    - 364-Customer/Prospect_Data_Acquisition-v23.0
+    - 233-Customer_Actions_Profile_Updating-v23.0
+    - 195-Customers_Hierarchy_and_Group_Management-v23.0
+    - 122-Customer_Information_Searching-v23.0
+    - 91-Customer_Profile_Updating-v23.0
+    - 121-Registration-v23.0
+    - 124-Guided_Customer_Information_Capturing-v23.0
+    - 1032-Partner_Group_and_Hierarchy_Definition-v23.0
+    - 1033-Partner_Group_and_Hierarchy_Assigning-v23.0
+    - 1035-Partner_Preferences_Management-v23.0
+    - 1034-Partner_Profile_Management-v23.0
+    - 1036-Partner_Profile_Enquiry_and_Filtering-v23.0
+    - 1037-Partner_Profile_Storage-v23.0
+    - 746-Partner_Workflow_Management-v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -204,57 +258,3 @@ spec:
       id: TMF632
       apiSDO: not_defined
     subscribedEvents: []
-  componentMetadata:
-    id: TMFC028
-    name: PartyManagement
-    version: 2.1.0
-    description: 'Party Management component is responsible for the capture, validation
-      and management of Parties and their Roles. A Party may be an individual or organization
-      that has a relationship with an enterprise. In this context it is responsible
-      for the e2e life cycle of: Individual, Organization. and its related sub-entities:Contact
-      Medium, Currency and tax exemption certificates, Identification, Community'
-    publicationDate: 2024-10-14 00:00:00
-    status: specified
-    functionalBlock: PartyManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.3.16_Customer_Inventory_Management_v23.0
-    - 1.3.6_Customer_Information_Management_v23.0
-    - 1.3.4_Customer_Relationship_Management_v23.0
-    - 1.3.4.2_Establish_Customer_Relationship_v23.0
-    - 1.3.4.3_Re-establish_Customer_Relationship_v23.0
-    - 1.3.4.4_Terminate_Customer_Relationship_v23.0
-    - 1.6.3_Party_Relationship_Development_&_Retirement_v23.0
-    - 1.6.3.1_Party_Relationship_Management_v23.0
-    - 1.6.3.1.5_Collect_Party_data_v23.0
-    - 1.6.21_Party_Inventory_Management_v23.0
-    - 1.7.7_Human_Resources_Management_v23.0
-    - 1.7.7.2_Develop_the_Workforce_v23.0
-    functionalFrameworkFunctions:
-    - 92_Customer_Relation_Map_Exposure_v23.0
-    - 369_Customer_Data_Fencing_v23.0
-    - 225_Customer_Details_Management_v23.0
-    - 400_Customer_Information_Management_v23.0
-    - 282_Customer_Information_Presentation_v23.0
-    - 226_Customer_Preferences_Administration_v23.0
-    - 364_Customer/Prospect_Data_Acquisition_v23.0
-    - 233_Customer_Actions_Profile_Updating_v23.0
-    - 195_Customers_Hierarchy_and_Group_Management_v23.0
-    - 122_Customer_Information_Searching_v23.0
-    - 91_Customer_Profile_Updating_v23.0
-    - 121_Registration_v23.0
-    - 124_Guided_Customer_Information_Capturing_v23.0
-    - 1032_Partner_Group_and_Hierarchy_Definition_v23.0
-    - 1033_Partner_Group_and_Hierarchy_Assigning_v23.0
-    - 1035_Partner_Preferences_Management_v23.0
-    - 1034_Partner_Profile_Management_v23.0
-    - 1036_Partner_Profile_Enquiry_and_Filtering_v23.0
-    - 1037_Partner_Profile_Storage_v23.0
-    - 746_Partner_Workflow_Management_v23.0

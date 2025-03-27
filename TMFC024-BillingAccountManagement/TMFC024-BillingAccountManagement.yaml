@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: true
       specification:
@@ -22,7 +22,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: true
       specification:
@@ -34,7 +34,7 @@ spec:
         - GET /id
     - id: TMF670
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: payment-method-management-api
       required: false
       specification:
@@ -46,7 +46,7 @@ spec:
         - GET /id
     - id: TMF676
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: payment-management-api
       required: false
       specification:
@@ -58,7 +58,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -73,7 +73,7 @@ spec:
     exposedAPIs:
     - id: TMF666
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: account-management-api
       required: true
       specification:
@@ -110,7 +110,7 @@ spec:
         - DELETE /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -130,6 +130,38 @@ spec:
         - GET
         - GET /id
         - PATCH /id
+  componentMetadata:
+    id: TMFC024
+    name: BillingAccountManagement
+    version: 2.0.0
+    description: The billing account management component aims to provide all the
+      needed functionalities to create, configure and modify billing accounts. BAM
+      component has the goal to support and handle the following capabilities/ functionalities.
+      Set-up/ creation of Billing account. Associate payment plan(s). Associate payment
+      method(s) - optional. Account taxes/ fees exception management. Define account
+      associations. Provide account balance details. Set-up Billing contacts. Set-up
+      Billing preferences (e.g., bill cycle frequency, invoice media type, invoice
+      template option, etc.)
+    publicationDate: 2024-11-18 00:00:00
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.3.10-Customer_Bill_Payments_&_Receivables_Management-v23.0
+    - 1.3.10.1-Manage_Customer_Billing_Account-v23.0
+    functionalFrameworkFunctions:
+    - 77-Billing_Account_Information_Configuration-v23.0
+    - 73-Billing_Account_Reporting-v23.0
+    - 76-Billing_Account_Structure_Configuration-v23.0
+    - 75-Billing_Accounts_Creation-v23.0
+    - 248-Customer_Billing_Hierarchies_Management-v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -209,35 +241,3 @@ spec:
         version: v4.0.0
       id: TMF669
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC024
-    name: BillingAccountManagement
-    version: 2.0.0
-    description: The billing account management component aims to provide all the
-      needed functionalities to create, configure and modify billing accounts. BAM
-      component has the goal to support and handle the following capabilities/ functionalities.
-      Set-up/ creation of Billing account. Associate payment plan(s). Associate payment
-      method(s) - optional. Account taxes/ fees exception management. Define account
-      associations. Provide account balance details. Set-up Billing contacts. Set-up
-      Billing preferences (e.g., bill cycle frequency, invoice media type, invoice
-      template option, etc.)
-    publicationDate: 2024-11-18 00:00:00
-    status: specified
-    functionalBlock: PartyManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.3.10_Customer_Bill_Payments_&_Receivables_Management_v23.0
-    - 1.3.10.1_Manage_Customer_Billing_Account_v23.0
-    functionalFrameworkFunctions:
-    - 77_Billing_Account_Information_Configuration_v23.0
-    - 73_Billing_Account_Reporting_v23.0
-    - 76_Billing_Account_Structure_Configuration_v23.0
-    - 75_Billing_Accounts_Creation_v23.0
-    - 248_Customer_Billing_Hierarchies_Management_v23.0

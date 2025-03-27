@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -22,7 +22,7 @@ spec:
         - GET/id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -34,7 +34,7 @@ spec:
         - GET/id
     - id: TMF620
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-catalog-management-api
       required: false
       specification:
@@ -49,7 +49,7 @@ spec:
         - GET/id
     - id: TMF651
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: agreement-management-api
       required: false
       specification:
@@ -64,7 +64,7 @@ spec:
         - GET/id
     - id: TMF648
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: quote-management-api
       required: false
       specification:
@@ -76,7 +76,7 @@ spec:
         - GET /id
     - id: TMF622
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-ordering-management-api
       required: false
       specification:
@@ -88,7 +88,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -107,7 +107,7 @@ spec:
     exposedAPIs:
     - id: TMF699
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: sales-management-api
       required: true
       specification:
@@ -132,7 +132,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -152,6 +152,42 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC036
+    name: LeadAndOpportunityManagement
+    version: 1.2.0
+    description: 'Lead and Opportunity Management provides the necessary functionality
+      during pre-sales stage in terms of: lead and opportunity capture, qualification,
+      reporting, support.'
+    publicationDate: 2023-11-18 00:00:00
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.1.11-Contact/Lead/Prospect_Management-v23.0
+    - 1.1.11.1-Manage_Sales_Contact-v23.0
+    - 1.1.11.2-Manage_Sales_Lead-v23.0
+    - 1.1.11.3-Manage_Sales_Prospect-v23.0
+    - 1.1.9-Selling-v23.0
+    - 1.1.9.1-Qualify_Selling_Opportunity-v23.0
+    - 1.1.9.3-Acquire_Sales_Prospect_Data-v23.0
+    - 1.1.7-Market_Sales_Support_&_Readiness-v23.0
+    - 1.1.7.2-Support_Selling-v23.0
+    - 1.1.7.5-Manage_Sales_Accounts-v23.0
+    functionalFrameworkFunctions:
+    - 394-Sales_Aids_Support-v23.0
+    - 372-Sales_Opportunity_Management-v23.0
+    - 375-Funnel_Assigning-v23.0
+    - 374-Funnel_Creation-v23.0
+    - 376-Funnel_Leads_Tracking-v23.0
+    - 726-Sales_Lead_Capturing-v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -362,39 +398,3 @@ spec:
       id: TMF701
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC036
-    name: LeadAndOpportunityManagement
-    version: 1.2.0
-    description: 'Lead and Opportunity Management provides the necessary functionality
-      during pre-sales stage in terms of: lead and opportunity capture, qualification,
-      reporting, support.'
-    publicationDate: 2023-11-18 00:00:00
-    status: specified
-    functionalBlock: PartyManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.1.11_Contact/Lead/Prospect_Management_v23.0
-    - 1.1.11.1_Manage_Sales_Contact_v23.0
-    - 1.1.11.2_Manage_Sales_Lead_v23.0
-    - 1.1.11.3_Manage_Sales_Prospect_v23.0
-    - 1.1.9_Selling_v23.0
-    - 1.1.9.1_Qualify_Selling_Opportunity_v23.0
-    - 1.1.9.3_Acquire_Sales_Prospect_Data_v23.0
-    - 1.1.7_Market_Sales_Support_&_Readiness_v23.0
-    - 1.1.7.2_Support_Selling_v23.0
-    - 1.1.7.5_Manage_Sales_Accounts_v23.0
-    functionalFrameworkFunctions:
-    - 394_Sales_Aids_Support_v23.0
-    - 372_Sales_Opportunity_Management_v23.0
-    - 375_Funnel_Assigning_v23.0
-    - 374_Funnel_Creation_v23.0
-    - 376_Funnel_Leads_Tracking_v23.0
-    - 726_Sales_Lead_Capturing_v23.0

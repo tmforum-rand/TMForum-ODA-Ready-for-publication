@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF628
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: performance-management-api
       required: false
       specification:
@@ -43,7 +43,7 @@ spec:
         - GET /id
     - id: TMF639
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-inventory-management-api
       required: false
       specification:
@@ -55,7 +55,7 @@ spec:
         - GET /id
     - id: TMF638
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-inventory-management-api
       required: false
       specification:
@@ -67,7 +67,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -82,7 +82,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -94,7 +94,7 @@ spec:
         - GET/id
     - id: TMF657
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-quality-management-management-api
       required: false
       specification:
@@ -109,7 +109,7 @@ spec:
         - GET/id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -128,7 +128,7 @@ spec:
     exposedAPIs:
     - id: TMF628
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: performance-management-api
       required: true
       specification:
@@ -168,7 +168,7 @@ spec:
         - GET /id
     - id: TMF649
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: performance-thresholding-management-api
       required: true
       specification:
@@ -193,7 +193,7 @@ spec:
         - DELETE /id
     - id: TMF642
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: alarm-management-api
       required: false
       specification:
@@ -212,7 +212,7 @@ spec:
         - DELETE /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -232,6 +232,29 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC037
+    name: ServicePerformanceManagement
+    version: 1.2.0
+    description: Service Performance Management will monitor, analyze, and report
+      on the end-end service performance. This can include a real-time, end-to-end
+      view to ensure that each service is functioning correctly as well as a historical
+      view. These functions build on the Resource Performance data and active end-end
+      service performance test data to provide a view of a service. The component
+      provides a key input to determine the Quality of Service.
+    publicationDate: 2024-12-17 00:00:00
+    status: specified
+    functionalBlock: IntelligenceManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -410,24 +433,3 @@ spec:
       id: TMF701
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/call-back
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC037
-    name: ServicePerformanceManagement
-    version: 1.2.0
-    description: Service Performance Management will monitor, analyze, and report
-      on the end-end service performance. This can include a real-time, end-to-end
-      view to ensure that each service is functioning correctly as well as a historical
-      view. These functions build on the Resource Performance data and active end-end
-      service performance test data to provide a view of a service. The component
-      provides a key input to determine the Quality of Service.
-    publicationDate: 2024-12-17 00:00:00
-    status: specified
-    functionalBlock: IntelligenceManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted

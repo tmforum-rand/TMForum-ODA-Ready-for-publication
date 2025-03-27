@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF620
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-catalog-management-api
       required: true
       specification:
@@ -25,7 +25,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -37,7 +37,7 @@ spec:
         - GET /id
     - id: TMF639
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-inventory-management-api
       required: false
       specification:
@@ -49,7 +49,7 @@ spec:
         - GET /id
     - id: TMF651
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: agreement-management-api
       required: false
       specification:
@@ -61,7 +61,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -76,7 +76,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -88,7 +88,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-location-management-api
       required: false
       specification:
@@ -100,7 +100,7 @@ spec:
         - GET /id
     - id: TMF666
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: account-management-api
       required: false
       specification:
@@ -112,7 +112,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -127,7 +127,7 @@ spec:
         - GET /id
     - id: TMF637
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-inventory-management-api
       required: false
       specification:
@@ -142,7 +142,7 @@ spec:
         - DELETE
     - id: TMF638
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-inventory-management-api
       required: false
       specification:
@@ -154,7 +154,7 @@ spec:
         - GET /id
     - id: TMF622
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-ordering-management-api
       required: false
       specification:
@@ -167,7 +167,7 @@ spec:
     exposedAPIs:
     - id: TMF637
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-inventory-management-api
       required: true
       specification:
@@ -186,7 +186,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -206,6 +206,41 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC005
+    name: ProductInventory
+    version: 1.2.0
+    description: Product  Inventory component is responsible for storage and exposure
+      of products that are assigned to and used by Parties. Product Inventory component
+      has functionality that enables inventory items creation, inventory organization,
+      inventory search or filter, inventory monitoring and tracking, inventory control
+      and inventory auditing. The minimum check to be performed at inventory items
+      creation or update is the global consistency with related Product Catalog information.
+    publicationDate: 2024-06-27 00:00:00
+    status: specified
+    functionalBlock: CoreCommerce
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.2.11-Product_Inventory_Management-v23.0
+    - 1.1.19-Loyalty_Program_Management-v23.0
+    - 1.1.19.2-Loyalty_Program_Operation-v23.0
+    - 1.1.19.2.5-Manage_Loyalty_Program_Account-v23.0
+    - 1.1.19.2.7-Provide_Loyalty_Program_Operation_Report-v23.0
+    functionalFrameworkFunctions:
+    - 180-Assigned_Products_Maintenance-v23.0
+    - 197-Customer_Product_Storage-v23.0
+    - 198-Customer_Loyalty_Score_Balance_Management-v23.0
+    - 237-Customer_Loyalty_Communication-v23.0
+    - 361-Contract_Implementation-v23.0
+    - 362-Contract_Searching-v23.0
+    - 363-Contract_Storage-v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -447,38 +482,3 @@ spec:
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductInventory/call-back
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC005
-    name: ProductInventory
-    version: 1.2.0
-    description: Product  Inventory component is responsible for storage and exposure
-      of products that are assigned to and used by Parties. Product Inventory component
-      has functionality that enables inventory items creation, inventory organization,
-      inventory search or filter, inventory monitoring and tracking, inventory control
-      and inventory auditing. The minimum check to be performed at inventory items
-      creation or update is the global consistency with related Product Catalog information.
-    publicationDate: 2024-06-27 00:00:00
-    status: specified
-    functionalBlock: CoreCommerce
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.2.11_Product_Inventory_Management_v23.0
-    - 1.1.19_Loyalty_Program_Management_v23.0
-    - 1.1.19.2_Loyalty_Program_Operation_v23.0
-    - 1.1.19.2.5_Manage_Loyalty_Program_Account_v23.0
-    - 1.1.19.2.7_Provide_Loyalty_Program_Operation_Report_v23.0
-    functionalFrameworkFunctions:
-    - 180_Assigned_Products_Maintenance_v23.0
-    - 197_Customer_Product_Storage_v23.0
-    - 198_Customer_Loyalty_Score_Balance_Management_v23.0
-    - 237_Customer_Loyalty_Communication_v23.0
-    - 361_Contract_Implementation_v23.0
-    - 362_Contract_Searching_v23.0
-    - 363_Contract_Storage_v23.0

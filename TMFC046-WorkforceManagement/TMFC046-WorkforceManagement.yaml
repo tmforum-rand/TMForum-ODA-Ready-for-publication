@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -22,7 +22,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -34,7 +34,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -49,7 +49,7 @@ spec:
     exposedAPIs:
     - id: TMF646
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: appointment-management-api
       required: true
       specification:
@@ -74,7 +74,7 @@ spec:
         - DELETE /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -94,6 +94,44 @@ spec:
         - GET
         - GET /id
         - PATCH /id
+  componentMetadata:
+    id: TMFC046
+    name: WorkforceManagement
+    version: 1.1.0
+    description: Workforce Management provides capabilities to describe teams, organizations,
+      skills and availability of sales / technical experts. It provides the ability
+      in reserving time slots to carry out assigned task (internal or customer facing).
+      It allows the reservation (and their updates / reschedule) of appointments and
+      interventions. option, etc.)
+    publicationDate: 2024-04-18 00:00:00
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.5.4-Resource_Readiness_&_Support-v23.0
+    - 1.5.4.8-Manage_Field_Workforce-v23.0
+    functionalFrameworkFunctions:
+    - 119-Center_Time_Management-v23.0
+    - 1326-Work_List_Management-v23.0
+    - 113-Care-center_Compliance_Management-v23.0
+    - 116-Center_Activity_Management-v23.0
+    - 449-Resource_Change_Project_Collaboration-v23.0
+    - 1184-Workforce_Agenda_Booking-v23.0
+    - 1183-Workforce_Availability_Check-v23.0
+    - 114-Care-center_Case_Queing-v23.0
+    - 554-Workforce_Appointment_Schedule_Configuration-v23.0
+    - 555-Workload_Forecasting-v23.0
+    - 556-Workforce_Availability_Management-v23.0
+    - 558-Workforce_Dispatchability_Management-v23.0
+    - 482-Workforce_Management-v23.0
+    - 561-Workforce_Scheduling-v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -198,41 +236,3 @@ spec:
       apiType: openapi
       id: TMF701
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC046
-    name: WorkforceManagement
-    version: 1.1.0
-    description: Workforce Management provides capabilities to describe teams, organizations,
-      skills and availability of sales / technical experts. It provides the ability
-      in reserving time slots to carry out assigned task (internal or customer facing).
-      It allows the reservation (and their updates / reschedule) of appointments and
-      interventions. option, etc.)
-    publicationDate: 2024-04-18 00:00:00
-    status: specified
-    functionalBlock: Production
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.5.4_Resource_Readiness_&_Support_v23.0
-    - 1.5.4.8_Manage_Field_Workforce_v23.0
-    functionalFrameworkFunctions:
-    - 119_Center_Time_Management_v23.0
-    - 1326_Work_List_Management_v23.0
-    - 113_Care-center_Compliance_Management_v23.0
-    - 116_Center_Activity_Management_v23.0
-    - 449_Resource_Change_Project_Collaboration_v23.0
-    - 1184_Workforce_Agenda_Booking_v23.0
-    - 1183_Workforce_Availability_Check_v23.0
-    - 114_Care-center_Case_Queing_v23.0
-    - 554_Workforce_Appointment_Schedule_Configuration_v23.0
-    - 555_Workload_Forecasting_v23.0
-    - 556_Workforce_Availability_Management_v23.0
-    - 558_Workforce_Dispatchability_Management_v23.0
-    - 482_Workforce_Management_v23.0
-    - 561_Workforce_Scheduling_v23.0

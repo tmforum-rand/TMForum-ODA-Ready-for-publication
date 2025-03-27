@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF633
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-catalog-management-api
       required: true
       specification:
@@ -19,7 +19,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -31,7 +31,7 @@ spec:
         - GET /id
     - id: TMF639
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-inventory-management-api
       required: false
       specification:
@@ -43,7 +43,7 @@ spec:
         - GET /id
     - id: TMF638
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-inventory-management-api
       required: false
       specification:
@@ -55,7 +55,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -70,7 +70,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -82,7 +82,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-location-management-api
       required: false
       specification:
@@ -94,7 +94,7 @@ spec:
         - GET /id
     - id: TMF641
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-ordering-management-api
       required: false
       specification:
@@ -106,7 +106,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -122,7 +122,7 @@ spec:
     exposedAPIs:
     - id: TMF638
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-inventory-management-api
       required: true
       specification:
@@ -141,7 +141,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -161,6 +161,42 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC008
+    name: ServiceInventory
+    version: 1.2.0
+    description: Service Inventory component is responsible for storage and exposure
+      of CFS (Customer Facing Service) that are associated to Product Inventory items.
+      It is also responsible for RFS (Resource Facing Service) definition, mapping
+      between CFS and RFS and mapping with infrastructure/network resources. Service
+      Inventory component has functionality that enables inventory items creation,
+      inventory organization, inventory search or filter, inventory monitoring and
+      tracking, inventory control and inventory auditing.The minimum check to be performed
+      at inventory items creation or update is the global consistency with related
+      Service Catalog information.
+    publicationDate: 2024-11-12 00:00:00
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.4.4-Service_Support_Readiness-v23.0
+    - 1.4.4.1-Manage_Service_Inventory-v23.0
+    functionalFrameworkFunctions:
+    - 576-Service_Data_Retrieval-v23.0
+    - 593-Service_Inventory_Repository_Updating-v23.0
+    - 628-Service_to_Resource_Relationship_Management-v23.0
+    - 629-Service_to_Resource_Relationship_Synchronization-v23.0
+    - 630-Service-Resource_Relationship_Management_Notifications-v23.0
+    - 964-Onboarded_Service_Integration_Configuration-v23.0
+    - 965-Service_Instance_Lifecycle_Management-v23.0
+    - 1344-Service_Topology_Discovery-v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -350,39 +386,3 @@ spec:
       id: null
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceOrdering/call-back
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC008
-    name: ServiceInventory
-    version: 1.2.0
-    description: Service Inventory component is responsible for storage and exposure
-      of CFS (Customer Facing Service) that are associated to Product Inventory items.
-      It is also responsible for RFS (Resource Facing Service) definition, mapping
-      between CFS and RFS and mapping with infrastructure/network resources. Service
-      Inventory component has functionality that enables inventory items creation,
-      inventory organization, inventory search or filter, inventory monitoring and
-      tracking, inventory control and inventory auditing.The minimum check to be performed
-      at inventory items creation or update is the global consistency with related
-      Service Catalog information.
-    publicationDate: 2024-11-12 00:00:00
-    status: specified
-    functionalBlock: Production
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.4.4_Service_Support_Readiness_v23.0
-    - 1.4.4.1_Manage_Service_Inventory_v23.0
-    functionalFrameworkFunctions:
-    - 576_Service_Data_Retrieval_v23.0
-    - 593_Service_Inventory_Repository_Updating_v23.0
-    - 628_Service_to_Resource_Relationship_Management_v23.0
-    - 629_Service_to_Resource_Relationship_Synchronization_v23.0
-    - 630_Service-Resource_Relationship_Management_Notifications_v23.0
-    - 964_Onboarded_Service_Integration_Configuration_v23.0
-    - 965_Service_Instance_Lifecycle_Management_v23.0
-    - 1344_Service_Topology_Discovery_v23.0

@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: true
       specification:
@@ -22,7 +22,7 @@ spec:
         - GET/id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -41,7 +41,7 @@ spec:
     exposedAPIs:
     - id: TMF672
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: user-role-permission-management-api
       required: true
       specification:
@@ -66,7 +66,7 @@ spec:
         - DELETE/id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: true
       specification:
@@ -83,6 +83,27 @@ spec:
         - POST
         - PATCH/id
         - DELETE/id
+  componentMetadata:
+    id: TMFC035
+    name: PermissionsManagement
+    version: 1.1.1
+    description: 'Party Roles & Permissions Management component aims to manage and
+      expose, roles and related permissions. Permissions Management component allows
+      to: create, modify and delete permissions. delegate permissions. When a specific
+      role is assigned, a set of permissions is inherited.'
+    publicationDate: 2023-08-18 00:00:00
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -200,22 +221,3 @@ spec:
       apiType: openapi
       id: TMF701
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC035
-    name: PermissionsManagement
-    version: 1.1.1
-    description: 'Party Roles & Permissions Management component aims to manage and
-      expose, roles and related permissions. Permissions Management component allows
-      to: create, modify and delete permissions. delegate permissions. When a specific
-      role is assigned, a set of permissions is inherited.'
-    publicationDate: 2023-08-18 00:00:00
-    status: specified
-    functionalBlock: PartyManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted

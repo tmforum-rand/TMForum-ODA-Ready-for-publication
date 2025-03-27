@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF666
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: account-management-api
       required: true
       specification:
@@ -22,7 +22,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -37,7 +37,7 @@ spec:
         - GET /id
     - id: TMF637
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-inventory-management-api
       required: true
       specification:
@@ -49,7 +49,7 @@ spec:
         - GET /id
     - id: TMF620
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-catalog-management-api
       required: false
       specification:
@@ -67,7 +67,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -81,7 +81,7 @@ spec:
         - PATCH
     - id: TMF635
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: usage-management-api
       required: false
       specification:
@@ -97,7 +97,7 @@ spec:
     exposedAPIs:
     - id: TMF678
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: customer-bill-management-api
       required: true
       specification:
@@ -113,7 +113,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -133,6 +133,26 @@ spec:
         - GET
         - GET /id
         - PATCH /id
+  componentMetadata:
+    id: TMFC031
+    name: BillCalculation
+    version: 2.0.0
+    description: Bill generation mgmt. manage the party invoice management. It addresses
+      the invoice formatting, presentation and dispatching to the proper means of
+      communication.
+    publicationDate: 2023-06-25
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -203,21 +223,3 @@ spec:
         version: v4.0.0
       id: TMF635
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC031
-    name: BillCalculation
-    version: 2.0.0
-    description: Bill generation mgmt. manage the party invoice management. It addresses
-      the invoice formatting, presentation and dispatching to the proper means of
-      communication.
-    publicationDate: 2023-06-25
-    status: specified
-    functionalBlock: PartyManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted

@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF633
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-catalog-management-api
       required: true
       specification:
@@ -22,7 +22,7 @@ spec:
         - GET /id
     - id: TMF638
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-inventory-management-api
       required: false
       specification:
@@ -34,7 +34,7 @@ spec:
         - GET /id
     - id: TMF634
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-catalog-management-api
       required: false
       specification:
@@ -46,7 +46,7 @@ spec:
         - GET /id
     - id: TMF639
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-inventory-management-api
       required: false
       specification:
@@ -58,7 +58,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -73,7 +73,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -85,7 +85,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -100,7 +100,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -112,7 +112,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-location-management-api
       required: false
       specification:
@@ -125,7 +125,7 @@ spec:
     exposedAPIs:
     - id: TMF645
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-qualification-management-api
       required: true
       specification:
@@ -148,6 +148,39 @@ spec:
         - POST
         - PATCH
         - DELETE
+  componentMetadata:
+    id: TMFC009
+    name: ServiceQualificationManagement
+    version: 1.1.0
+    description: Service Qualification component is responsible for checking and validating
+      the availability of a service according to specified and configured business
+      rules. It must identify at least one technical solution (RFSspec) available
+      to deliver the service (CFSspec) and check the availability of all the resources
+      types involved in this technical solution. No resources are allocated during
+      Service Qualification. Service Qualification component has functionality that
+      include checking service feasibility status and publishing or reporting service
+      qualification result, but also calculated service delivery due date and identified
+      need of an appointment at the customer site. Service Qualification can also
+      be in charge of the cost calculation of the technical solution identified, when
+      it cannot be determined at catalog design time (complex B2B services). This
+      information will be used as an input to price calculation.
+    publicationDate: 2023-08-18 00:00:00
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.4.5-Service_Configuration_&_Activation-v23.0
+    functionalFrameworkFunctions:
+    - 319-Service_Feasibility_Checking-v23.0
+    - 586-Service_Availability_Validation-v23.0
+    - 571-Service_Delivery_Due_Date_Calculation-v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -223,36 +256,3 @@ spec:
       id: TMF645
       apiSDO: not_defined
     subscribedEvents: []
-  componentMetadata:
-    id: TMFC009
-    name: ServiceQualificationManagement
-    version: 1.1.0
-    description: Service Qualification component is responsible for checking and validating
-      the availability of a service according to specified and configured business
-      rules. It must identify at least one technical solution (RFSspec) available
-      to deliver the service (CFSspec) and check the availability of all the resources
-      types involved in this technical solution. No resources are allocated during
-      Service Qualification. Service Qualification component has functionality that
-      include checking service feasibility status and publishing or reporting service
-      qualification result, but also calculated service delivery due date and identified
-      need of an appointment at the customer site. Service Qualification can also
-      be in charge of the cost calculation of the technical solution identified, when
-      it cannot be determined at catalog design time (complex B2B services). This
-      information will be used as an input to price calculation.
-    publicationDate: 2023-08-18 00:00:00
-    status: specified
-    functionalBlock: Production
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.4.5_Service_Configuration_&_Activation_v23.0
-    functionalFrameworkFunctions:
-    - 319_Service_Feasibility_Checking_v23.0
-    - 586_Service_Availability_Validation_v23.0
-    - 571_Service_Delivery_Due_Date_Calculation_v23.0

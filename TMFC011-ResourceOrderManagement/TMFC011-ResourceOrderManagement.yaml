@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF702
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-activation-management-api
       required: true
       specification:
@@ -25,7 +25,7 @@ spec:
         - GET /id
     - id: TMF634
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-catalog-management-api
       required: true
       specification:
@@ -40,7 +40,7 @@ spec:
         - DELETE
     - id: TMF639
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-inventory-management-api
       required: true
       specification:
@@ -55,7 +55,7 @@ spec:
         - DELETE
     - id: TMF664
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-function-activation-management-api
       required: true
       specification:
@@ -70,7 +70,7 @@ spec:
         - DELETE
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -85,7 +85,7 @@ spec:
         - GET /id
     - id: TMF646
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: appointment-management-api
       required: false
       specification:
@@ -97,7 +97,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -109,7 +109,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -121,7 +121,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-location-management-api
       required: false
       specification:
@@ -134,7 +134,7 @@ spec:
     exposedAPIs:
     - id: TMF652
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-order-management-api
       required: true
       specification:
@@ -157,7 +157,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -177,6 +177,63 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC011
+    name: ResourceOrderManagement
+    version: 1.1.0
+    description: Resource Order Management Component manages the end-to-end lifecycle
+      of a resource  order request. This includes validating resource availability
+      as well as the  resource order request. Other functionality includes resource
+      order assurance,  resource order decomposition and resource order tracking,
+      along with orchestrating  the activation and the test and turn-up processes.
+    publicationDate: null
+    status: Pre-production
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.5.5-Resource_Order_Management_v23
+    - 1.5.5.6-Manage_Resource_Order_Capture_v23
+    - 1.5.5.7-Manage_Resource_Work_Order_v23
+    - 1.5.5.8-Manage_Resource_Order_Fulfilment_v23
+    - 1.5.5.9-Manage_Resource_Order_Picking/Packing_v23
+    - 1.5.5.12-Manage_Resource_Order_Tracking_v23
+    - 1.5.5.13-Manage_Resource_Order_Closure_v23
+    functionalFrameworkFunctions:
+    - 448-Resource_Availability_Validation_v23
+    - 568-Resource_Availability_Checking_v23
+    - 569-Network_Facility_Selection_v23
+    - 490-Resource_Order_Data_Collection_v23
+    - 491-Resource_Order_Initiation_v23
+    - 495-Resource_Order_Completion_v23
+    - 503-Resource_Order_Validation_v23
+    - 452-Resource_Commissioning_v23
+    - 492-Resource_Order_Management_v23
+    - 493-Resource_Order_Dependency_Manageme_v23
+    - 494-Resource_Order_Jeopardy_Tracking_v23
+    - 529-Tactical_Resource_Planning_v23
+    - 958-Resource_Task_Decomposition_v23
+    - 961-Resource_Work_Item_Sequence_Execution_v23
+    - 496-Resource_Order_Tracking_v23
+    - 497-Resource_Orcer_Status_Reporting_v23
+    - 488-Resource_Parameter_Allocation_v23
+    - 487-Resource_Parameter_Reservation_v23
+    - 16-Fallout_Automated_Correction_v23
+    - 17-Fallout_Correction_Information_Collection_v23
+    - 19-Fallout_Manual_Correction_Queuing_v23
+    - 21-Fallout_Orchestration_v23
+    - 24-Pre-populated_Fallout_Information_Presentation_v23
+    - 756-Fallout_Rule_Based_Error_Correction_v23
+    - 18-Fallout_Management_to_Fulfillment_Application_Accessing_v23
+    - 20-Fallout_Notification_v23
+    - 22-Fallout_Reporting_v23
+    - 23-Fallout_Dashboard_System_Log-in_Accessing_v23
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -308,60 +365,3 @@ spec:
       id: TMF702
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceActivationAndConfiguration/call-back
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC011
-    name: ResourceOrderManagement
-    version: 1.1.0
-    description: Resource Order Management Component manages the end-to-end lifecycle
-      of a resource  order request. This includes validating resource availability
-      as well as the  resource order request. Other functionality includes resource
-      order assurance,  resource order decomposition and resource order tracking,
-      along with orchestrating  the activation and the test and turn-up processes.
-    publicationDate: null
-    status: Pre-production
-    functionalBlock: Production
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.5.5_Resource_Order_Management_v23
-    - 1.5.5.6_Manage_Resource_Order_Capture_v23
-    - 1.5.5.7_Manage_Resource_Work_Order_v23
-    - 1.5.5.8_Manage_Resource_Order_Fulfilment_v23
-    - 1.5.5.9_Manage_Resource_Order_Picking/Packing_v23
-    - 1.5.5.12_Manage_Resource_Order_Tracking_v23
-    - 1.5.5.13_Manage_Resource_Order_Closure_v23
-    functionalFrameworkFunctions:
-    - 448_Resource_Availability_Validation_v23
-    - 568_Resource_Availability_Checking_v23
-    - 569_Network_Facility_Selection_v23
-    - 490_Resource_Order_Data_Collection_v23
-    - 491_Resource_Order_Initiation_v23
-    - 495_Resource_Order_Completion_v23
-    - 503_Resource_Order_Validation_v23
-    - 452_Resource_Commissioning_v23
-    - 492_Resource_Order_Management_v23
-    - 493_Resource_Order_Dependency_Manageme_v23
-    - 494_Resource_Order_Jeopardy_Tracking_v23
-    - 529_Tactical_Resource_Planning_v23
-    - 958_Resource_Task_Decomposition_v23
-    - 961_Resource_Work_Item_Sequence_Execution_v23
-    - 496_Resource_Order_Tracking_v23
-    - 497_Resource_Orcer_Status_Reporting_v23
-    - 488_Resource_Parameter_Allocation_v23
-    - 487_Resource_Parameter_Reservation_v23
-    - 16_Fallout_Automated_Correction_v23
-    - 17_Fallout_Correction_Information_Collection_v23
-    - 19_Fallout_Manual_Correction_Queuing_v23
-    - 21_Fallout_Orchestration_v23
-    - 24_Pre-populated_Fallout_Information_Presentation_v23
-    - 756_Fallout_Rule_Based_Error_Correction_v23
-    - 18_Fallout_Management_to_Fulfillment_Application_Accessing_v23
-    - 20_Fallout_Notification_v23
-    - 22_Fallout_Reporting_v23
-    - 23_Fallout_Dashboard_System_Log-in_Accessing_v23

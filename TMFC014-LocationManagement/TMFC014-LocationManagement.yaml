@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -22,7 +22,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -35,7 +35,7 @@ spec:
     exposedAPIs:
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: true
       specification:
@@ -59,7 +59,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: true
       specification:
@@ -78,7 +78,7 @@ spec:
         - DELETE
     - id: TMF675
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-location-management-api
       required: true
       specification:
@@ -97,7 +97,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -117,6 +117,33 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC014
+    name: LocationManagement
+    version: 1.1.1
+    description: "The Location Management Component  allows easy reference to geographic\
+      \ places important to other entities, where a geographic place is an entity\
+      \ that can answer the question \u201Cwhere?\u201D . This component could  be\
+      \ a facade tool into GIS systems (e.g. Google Maps)"
+    publicationDate: 2023-08-18 00:00:00
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions:
+    - 429-Location_Change_History_Management_v23
+    - 430-PreFormattedLocation_InformationPresentation_v23
+    - 431-Location_Information_Updating_v23
+    - 432-Location_Information_Searching_v23
+    - 433-Location_Structure_Data_Configuration_v23
+    - 434-Location_Data_Integrity_Management_v23
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -213,30 +240,3 @@ spec:
       id: TMF675
       apiSDO: not_defined
     subscribedEvents: []
-  componentMetadata:
-    id: TMFC014
-    name: LocationManagement
-    version: 1.1.1
-    description: "The Location Management Component  allows easy reference to geographic\
-      \ places important to other entities, where a geographic place is an entity\
-      \ that can answer the question \u201Cwhere?\u201D . This component could  be\
-      \ a facade tool into GIS systems (e.g. Google Maps)"
-    publicationDate: 2023-08-18 00:00:00
-    status: specified
-    functionalBlock: Production
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs: []
-    functionalFrameworkFunctions:
-    - 429_Location_Change_History_Management_v23
-    - 430_PreFormattedLocation_InformationPresentation_v23
-    - 431_Location_Information_Updating_v23
-    - 432_Location_Information_Searching_v23
-    - 433_Location_Structure_Data_Configuration_v23
-    - 434_Location_Data_Integrity_Management_v23

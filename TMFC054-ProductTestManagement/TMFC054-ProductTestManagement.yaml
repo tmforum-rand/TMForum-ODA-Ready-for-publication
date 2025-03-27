@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF620
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-catalog-management-api
       required: true
       specification:
@@ -19,7 +19,7 @@ spec:
         - GET /id
     - id: TMF637
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-inventory-management-api
       required: true
       specification:
@@ -31,7 +31,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -46,7 +46,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -58,7 +58,7 @@ spec:
         - GET /id
     - id: TMF653
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-test-management-api
       required: false
       specification:
@@ -76,7 +76,7 @@ spec:
         - DELETE
     - id: TMF638
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: service-inventory-management-api
       required: false
       specification:
@@ -88,7 +88,7 @@ spec:
         - GET /id
     - id: TMF724
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: incident-management-api
       required: false
       specification:
@@ -100,7 +100,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -120,7 +120,7 @@ spec:
     exposedAPIs:
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -140,8 +140,30 @@ spec:
         - PATCH
         - GET
         - GET /id
-  eTOMs: ''
-  functionalFrameworkFunctions: ''
+  componentMetadata:
+    id: TMFC054
+    name: ProductTestManagement
+    version: 1.0.0
+    description: 'Product Test Management is responsible for: Product Test Specification:
+      for each Product Specification, identification of the possible tests to launch
+      automatically, by the delivery or assurance processes, or manually by the customer
+      or user, or by a CSR, to test a product functioning. They are based on tests
+      available at service specification level (or resource specification level for
+      a tangible product).Product Test end-to-end execution and reporting according
+      to the context and/or the actor'
+    publicationDate: 2025-02-25 00:00:00
+    status: specified
+    functionalBlock: CoreCommerce
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -252,25 +274,3 @@ spec:
       id: TMF632
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyManagement/call-back
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC054
-    name: ProductTestManagement
-    version: 1.0.0
-    description: 'Product Test Management is responsible for: Product Test Specification:
-      for each Product Specification, identification of the possible tests to launch
-      automatically, by the delivery or assurance processes, or manually by the customer
-      or user, or by a CSR, to test a product functioning. They are based on tests
-      available at service specification level (or resource specification level for
-      a tangible product).Product Test end-to-end execution and reporting according
-      to the context and/or the actor'
-    publicationDate: 2025-02-25 00:00:00
-    status: specified
-    functionalBlock: CoreCommerce
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted

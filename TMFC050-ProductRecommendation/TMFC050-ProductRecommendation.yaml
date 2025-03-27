@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF620
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-catalog-management-api
       required: true
       specification:
@@ -31,7 +31,7 @@ spec:
         - GET /id
     - id: TMF637
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-inventory-management-api
       required: false
       specification:
@@ -43,7 +43,7 @@ spec:
         - GET /id
     - id: TMF622
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-ordering-management-api
       required: false
       specification:
@@ -55,7 +55,7 @@ spec:
         - GET /id
     - id: TMF679
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-offering-qualification-management-api
       required: false
       specification:
@@ -67,7 +67,7 @@ spec:
         - GET /id
     - id: TMF666
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: account-management-api
       required: false
       specification:
@@ -79,7 +79,7 @@ spec:
         - GET /id
     - id: TMF629
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: customer-management-api
       required: false
       specification:
@@ -91,7 +91,7 @@ spec:
         - GET /id
     - id: TMF663
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: shopping-cart-management-api
       required: false
       specification:
@@ -103,7 +103,7 @@ spec:
         - GET /id
     - id: TMF671
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: promotion-management-api
       required: false
       specification:
@@ -115,7 +115,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -127,7 +127,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-location-management-api
       required: false
       specification:
@@ -139,7 +139,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -154,7 +154,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -166,7 +166,7 @@ spec:
         - GET /id
     - id: TMF678
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: customer-bill-management-api
       required: false
       specification:
@@ -178,7 +178,7 @@ spec:
         - GET /id
     - id: TMF621
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: trouble-ticket-management-api
       required: false
       specification:
@@ -190,7 +190,7 @@ spec:
         - GET /id
     - id: TMF635
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: usage-management-api
       required: false
       specification:
@@ -203,7 +203,7 @@ spec:
     exposedAPIs:
     - id: TMF680
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: recommendation-management-api
       required: true
       specification:
@@ -220,7 +220,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -240,6 +240,26 @@ spec:
         - GET
         - GET /id
         - PATCH /id
+  componentMetadata:
+    id: TMFC050
+    name: ProductRecommendationManagement
+    version: 1.0.0
+    description: Product Recommendation Management component is responsible for evaluating
+      and providing party recommendations offerings based on the history and real-time
+      context of a party.
+    publicationDate: 2024-12-03
+    status: specified
+    functionalBlock: IntelligenceManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -351,21 +371,3 @@ spec:
       id: TMF620
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC050
-    name: ProductRecommendationManagement
-    version: 1.0.0
-    description: Product Recommendation Management component is responsible for evaluating
-      and providing party recommendations offerings based on the history and real-time
-      context of a party.
-    publicationDate: 2024-12-03
-    status: specified
-    functionalBlock: IntelligenceManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted

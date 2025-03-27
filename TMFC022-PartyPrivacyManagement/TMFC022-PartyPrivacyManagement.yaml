@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF620
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: product-catalog-management-api
       required: false
       specification:
@@ -19,7 +19,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: true
       specification:
@@ -34,7 +34,7 @@ spec:
         - GET /id
     - id: TMF667
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: document-management-api
       required: false
       specification:
@@ -47,7 +47,7 @@ spec:
         - POST
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: true
       specification:
@@ -60,7 +60,7 @@ spec:
     exposedAPIs:
     - id: TMF644
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: privacy-management-api
       required: true
       specification:
@@ -91,7 +91,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -111,6 +111,25 @@ spec:
         - GET
         - GET /id
         - PATCH /id
+  componentMetadata:
+    id: TMFC022
+    name: PartyPrivacyManagement
+    version: 1.1.0
+    description: 'The Party Privacy Management component aims to: define the Privacy
+      Policy rules established by the CSP, according to applicable regulations, such
+      as GDPR in Europe, apply these rules to each Party interacting with the CSP
+      and to all of their personnal information and personally identifiable information
+      (PII); register explicit opt-in and opt-out given by Parties regarding the usage
+      of some of their personal information for dedicated purpose, such as marketing.'
+    publicationDate: 2024-08-08
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: components@tmforum.org
+      name: Redacted
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -166,20 +185,3 @@ spec:
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
-  componentMetadata:
-    id: TMFC022
-    name: PartyPrivacyManagement
-    version: 1.1.0
-    description: 'The Party Privacy Management component aims to: define the Privacy
-      Policy rules established by the CSP, according to applicable regulations, such
-      as GDPR in Europe, apply these rules to each Party interacting with the CSP
-      and to all of their personnal information and personally identifiable information
-      (PII); register explicit opt-in and opt-out given by Parties regarding the usage
-      of some of their personal information for dedicated purpose, such as marketing.'
-    publicationDate: 2024-08-08
-    status: specified
-    functionalBlock: PartyManagement
-    owners:
-    - email: components@tmforum.org
-      name: Redacted
-      url: Redacted

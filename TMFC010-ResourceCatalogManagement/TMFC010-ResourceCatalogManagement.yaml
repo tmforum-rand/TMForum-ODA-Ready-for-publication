@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF634
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-catalog-management-api
       required: false
       specification:
@@ -45,7 +45,7 @@ spec:
         - DELETE
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -57,7 +57,7 @@ spec:
         - GET /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -72,7 +72,7 @@ spec:
         - GET /id
     - id: TMF662
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: entity-catalog-management-api
       required: false
       specification:
@@ -88,7 +88,7 @@ spec:
     exposedAPIs:
     - id: TMF634
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-catalog-management-api
       required: true
       specification:
@@ -135,7 +135,7 @@ spec:
         - DELETE
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -155,6 +155,51 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC010
+    name: ResourceCatalogManagement
+    version: 1.3.0
+    description: Resource Catalog Management component is responsible for organizing
+      the collection resource specifications that identify and define all requirements
+      for a resource. Resource Catalog Management component has the functionality
+      that enable presenting a customer-facing view, so users are able to browse and
+      select resource they need, as well as a technical view to enable define and
+      setup resources contained in the resource catalog. Additional functionalities
+      include capturing specifications of new resource specifications, managing resources
+      (registering assets and components and identifying and mapping connections/relationships),
+      administering the lifecycle of resources, describing relationships between resources,
+      reporting on resources and changes to their attributes, and facilitating easy
+      access to identify and assign resources.
+    publicationDate: 2024-12-03 00:00:00
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.5.15-Resource_Catalog_Lifecycle_Management-v23.0
+    - 1.5.16-Resource_Catalog_Operational_Readiness_Management-v23.0
+    - 1.5.17-Resource_Catalog_Content_Management-v23.0
+    - 1.5.18-Resource_Catalog_Planning_Management-v23.0
+    - 1.5.19-Resource_Specification_Management-v23.0
+    - 1.5.3-Resource_Specification_Development_&_Retirement-v23.0
+    - 1.5.3.4-Develop_Detailed_Resource_Specifications-v23.0
+    functionalFrameworkFunctions:
+    - 737-Resource_Capability_Specification_Management-v23.0
+    - 467-Resource_Data_Transformation/Parsing_Rules_Configuration-v23.0
+    - 951-Resource_Catalog_Entities_Management-v23.0
+    - 996-Resource_Task_Item_Policy_Control_Configuration-v23.0
+    - 1083-Resource_Specification_Repository_Management-v23.0
+    - 1088-Resource_Specification_to_Supplier_Product_Specification_Relationship_Design-v23.0
+    - 1089-Resource_Specification_Action_Skill_Design-v23.0
+    - 1082-Resource_Specification_Change_Auditing-v23.0
+    - 1064-Logical_and_Software_Resources_Designing-v23.0
+    - 1087-Resource_Specification_Design-v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -294,48 +339,3 @@ spec:
       version: 4
       callback: /{{.Release.Name}}-EntityCatalog/call-back
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC010
-    name: ResourceCatalogManagement
-    version: 1.3.0
-    description: Resource Catalog Management component is responsible for organizing
-      the collection resource specifications that identify and define all requirements
-      for a resource. Resource Catalog Management component has the functionality
-      that enable presenting a customer-facing view, so users are able to browse and
-      select resource they need, as well as a technical view to enable define and
-      setup resources contained in the resource catalog. Additional functionalities
-      include capturing specifications of new resource specifications, managing resources
-      (registering assets and components and identifying and mapping connections/relationships),
-      administering the lifecycle of resources, describing relationships between resources,
-      reporting on resources and changes to their attributes, and facilitating easy
-      access to identify and assign resources.
-    publicationDate: 2024-12-03 00:00:00
-    status: specified
-    functionalBlock: Production
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.5.15_Resource_Catalog_Lifecycle_Management_v23.0
-    - 1.5.16_Resource_Catalog_Operational_Readiness_Management_v23.0
-    - 1.5.17_Resource_Catalog_Content_Management_v23.0
-    - 1.5.18_Resource_Catalog_Planning_Management_v23.0
-    - 1.5.19_Resource_Specification_Management_v23.0
-    - 1.5.3_Resource_Specification_Development_&_Retirement_v23.0
-    - 1.5.3.4_Develop_Detailed_Resource_Specifications_v23.0
-    functionalFrameworkFunctions:
-    - 737_Resource_Capability_Specification_Management_v23.0
-    - 467_Resource_Data_Transformation/Parsing_Rules_Configuration_v23.0
-    - 951_Resource_Catalog_Entities_Management_v23.0
-    - 996_Resource_Task_Item_Policy_Control_Configuration_v23.0
-    - 1083_Resource_Specification_Repository_Management_v23.0
-    - 1088_Resource_Specification_to_Supplier_Product_Specification_Relationship_Design_v23.0
-    - 1089_Resource_Specification_Action_Skill_Design_v23.0
-    - 1082_Resource_Specification_Change_Auditing_v23.0
-    - 1064_Logical_and_Software_Resources_Designing_v23.0
-    - 1087_Resource_Specification_Design_v23.0

@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF688
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: event-management-api
       required: false
       specification:
@@ -22,7 +22,7 @@ spec:
     exposedAPIs:
     - id: TMF688
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: event-management-api
       required: true
       specification:
@@ -61,6 +61,33 @@ spec:
         - GET /id
         - PATCH /id
         - DELETE /id
+  componentMetadata:
+    id: TMFC019
+    name: EventManagement
+    version: 1.1.1
+    description: Event Management component is a messaging management component that
+      is responsible for processing events as they happen from components. Processing
+      of record of activities include modelling event messages, syntax validation
+      and formatting of event messages and sending/receiving messages between components
+      (consumer/producer). Event Management component supports different patterns
+      of usage, including Event notification (subscription), Event-sourcing (representational
+      state changes) and Event-carried state transfer (including data needed to perform
+      further processing). Event Management component should include functionality
+      providing a centralised CQRS queryStore for all components that implement event-sourcing
+      with event carrier state transfer.
+    publicationDate: 2023-08-18 00:00:00
+    status: specified
+    functionalBlock: DecouplingAndIntegration
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -135,28 +162,3 @@ spec:
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/call-back
       apiSDO: not_defined
     subscribedEvents: []
-  componentMetadata:
-    id: TMFC019
-    name: EventManagement
-    version: 1.1.1
-    description: Event Management component is a messaging management component that
-      is responsible for processing events as they happen from components. Processing
-      of record of activities include modelling event messages, syntax validation
-      and formatting of event messages and sending/receiving messages between components
-      (consumer/producer). Event Management component supports different patterns
-      of usage, including Event notification (subscription), Event-sourcing (representational
-      state changes) and Event-carried state transfer (including data needed to perform
-      further processing). Event Management component should include functionality
-      providing a centralised CQRS queryStore for all components that implement event-sourcing
-      with event carrier state transfer.
-    publicationDate: 2023-08-18 00:00:00
-    status: specified
-    functionalBlock: DecouplingAndIntegration
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted

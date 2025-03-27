@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -22,7 +22,7 @@ spec:
         - GET /id
     - id: TMF666
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: account-management-api
       required: false
       specification:
@@ -52,7 +52,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -70,7 +70,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -82,7 +82,7 @@ spec:
         - GET /id
     - id: TMF675
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-location-management-api
       required: false
       specification:
@@ -95,7 +95,7 @@ spec:
     exposedAPIs:
     - id: TMF670
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: payment-method-management-api
       required: true
       specification:
@@ -114,7 +114,7 @@ spec:
         - DELETE
     - id: TMF676
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: payment-management-api
       required: true
       specification:
@@ -135,7 +135,7 @@ spec:
         - POST
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -155,6 +155,33 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC029
+    name: PaymentManagement
+    version: 1.2.0
+    description: Payment Management manages methods used by parties to make payments,
+      it also administers payment plan, handles payment, assigns payments against
+      bills, settlements, and other object requiring payments.
+    publicationDate: 2024-11-18 00:00:00
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.3.10-Customer_Bill_Payments_&_Receivables_Management-v23.0
+    - 1.3.10.2-Manage_Customer_Payments-v23.0
+    - 1.6.16-Business_Partner_Payments_&_Receivables_Management-v23.0
+    - 1.6.16.1-Business_Partner_Payment_Management-v23.0
+    - 1.6.16.1.1-Business_Partner_Payment_Handling-v23.0
+    - 1.6.16.1.2-Business_Partner_Payment_Method_Management-v23.0
+    - 1.6.16.1.3-Business_Partner_Payment_Plan_Administration-v23.0
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -263,30 +290,3 @@ spec:
       id: TMF701
       apiSDO: not_defined
     subscribedEvents: []
-  componentMetadata:
-    id: TMFC029
-    name: PaymentManagement
-    version: 1.2.0
-    description: Payment Management manages methods used by parties to make payments,
-      it also administers payment plan, handles payment, assigns payments against
-      bills, settlements, and other object requiring payments.
-    publicationDate: 2024-11-18 00:00:00
-    status: specified
-    functionalBlock: PartyManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.3.10_Customer_Bill_Payments_&_Receivables_Management_v23.0
-    - 1.3.10.2_Manage_Customer_Payments_v23.0
-    - 1.6.16_Business_Partner_Payments_&_Receivables_Management_v23.0
-    - 1.6.16.1_Business_Partner_Payment_Management_v23.0
-    - 1.6.16.1.1_Business_Partner_Payment_Handling_v23.0
-    - 1.6.16.1.2_Business_Partner_Payment_Method_Management_v23.0
-    - 1.6.16.1.3_Business_Partner_Payment_Plan_Administration_v23.0
-    functionalFrameworkFunctions: []

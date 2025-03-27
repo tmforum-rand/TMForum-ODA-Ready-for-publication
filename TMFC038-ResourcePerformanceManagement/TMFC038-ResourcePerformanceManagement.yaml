@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF628
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: performance-management-api
       required: false
       specification:
@@ -43,7 +43,7 @@ spec:
         - GET /id
     - id: TMF639
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-inventory-management-api
       required: false
       specification:
@@ -55,7 +55,7 @@ spec:
         - GET /id
     - id: TMF673
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-address-management-api
       required: false
       specification:
@@ -70,7 +70,7 @@ spec:
         - GET /id
     - id: TMF674
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-site-management-api
       required: false
       specification:
@@ -82,7 +82,7 @@ spec:
         - GET/id
     - id: TMF675
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: geographic-location-management-api
       required: false
       specification:
@@ -94,7 +94,7 @@ spec:
         - GET/id
     - id: TMF688
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: event-management-api
       required: false
       specification:
@@ -106,7 +106,7 @@ spec:
         - GET /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -125,7 +125,7 @@ spec:
     exposedAPIs:
     - id: TMF628
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: performance-management-api
       required: true
       specification:
@@ -165,7 +165,7 @@ spec:
         - GET /id
     - id: TMF649
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: performance-thresholding-management-api
       required: true
       specification:
@@ -190,7 +190,7 @@ spec:
         - DELETE /id
     - id: TMF642
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: alarm-management-api
       required: false
       specification:
@@ -209,7 +209,7 @@ spec:
         - DELETE /id
     - id: TMF701
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: process-flow-management-api
       required: false
       specification:
@@ -229,6 +229,25 @@ spec:
         - PATCH
         - GET
         - GET /id
+  componentMetadata:
+    id: TMFC038
+    name: ResourcePerformanceManagement
+    version: 1.2.0
+    description: Resource Performance Management will monitor, analyze, and report
+      on the performance of the service provider's resources.
+    publicationDate: 2024-12-17 00:00:00
+    status: specified
+    functionalBlock: IntelligenceManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -419,20 +438,3 @@ spec:
       apiType: openapi
       id: TMF701
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC038
-    name: ResourcePerformanceManagement
-    version: 1.2.0
-    description: Resource Performance Management will monitor, analyze, and report
-      on the performance of the service provider's resources.
-    publicationDate: 2024-12-17 00:00:00
-    status: specified
-    functionalBlock: IntelligenceManagement
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted

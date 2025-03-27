@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF634
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-catalog-management-api
       required: false
       specification:
@@ -19,7 +19,7 @@ spec:
         - GET/id
     - id: TMF639
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-inventory-management-api
       required: false
       specification:
@@ -35,7 +35,7 @@ spec:
     exposedAPIs:
     - id: TMF702
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-activation-management-api
       required: true
       specification:
@@ -54,7 +54,7 @@ spec:
         - DELETE /id
     - id: TMF664
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: resource-function-activation-management-api
       required: false
       specification:
@@ -83,6 +83,22 @@ spec:
         - GET
         - GET /id
         - POST
+  componentMetadata:
+    id: TMFC062
+    name: ResourceConfigurationandActivation
+    version: 1.0.0
+    description: The Resource Configuration and Activation component is responsible
+      to configure and activate the resource instances and as well to provide query
+      on resource instances to acquire the resource activation states and attributes.
+    publicationDate: 2024-11-18 00:00:00
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: gaetano.biancardi@accenture.com
+      name: Gaetano Biancardi
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -194,17 +210,3 @@ spec:
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalogManagement/call-back
       apiType: openapi
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC062
-    name: ResourceConfigurationandActivation
-    version: 1.0.0
-    description: The Resource Configuration and Activation component is responsible
-      to configure and activate the resource instances and as well to provide query
-      on resource instances to acquire the resource activation states and attributes.
-    publicationDate: 2024-11-18 00:00:00
-    status: specified
-    functionalBlock: Production
-    owners:
-    - email: gaetano.biancardi@accenture.com
-      name: Gaetano Biancardi
-      url: Redacted

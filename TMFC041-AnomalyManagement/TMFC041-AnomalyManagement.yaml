@@ -7,7 +7,7 @@ spec:
     dependentAPIs:
     - id: TMF688
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: event-management-api
       required: false
       specification:
@@ -20,7 +20,7 @@ spec:
         - POST
     - id: TMF642
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: alarm-management-api
       required: false
       specification:
@@ -33,7 +33,7 @@ spec:
         - POST
     - id: TMF723
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: policy-management-api
       required: false
       specification:
@@ -46,7 +46,7 @@ spec:
         - PATCH /id
     - id: TMF632
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-management-api
       required: false
       specification:
@@ -61,7 +61,7 @@ spec:
         - GET /id
     - id: TMF669
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: party-role-management-api
       required: false
       specification:
@@ -73,7 +73,7 @@ spec:
         - GET /id
     - id: TMF915
       apiType: openapi
-      apiSDO: not_defined
+      apiSDO: tmForum
       name: ai-management-api
       required: false
       specification:
@@ -90,6 +90,28 @@ spec:
         - GET
         - GET /id
     exposedAPIs: []
+  componentMetadata:
+    id: TMFC041
+    name: AnomalyManagement
+    version: 1.1.0
+    description: The Anomaly Management ODA Component is responsible for predicting,
+      detecting and managing anomalous patterns in the usage and behavior of products,
+      services and resources in order to avoid occurence of problems. Anomaly Management
+      ODA component has fuctionality to predict, detect and flag unusual patterns
+      or outliers for products, services and resource entities, and initiating mitigatory
+      actions to prevent outlier patterns in usage or behavior to become problems.
+      In the event of failure to predict or detect an early warning signt to a possible
+      problem occurence, the component hands of mitigatory actions to the ODA problem
+      management component.
+    publicationDate: 2024-11-19 00:00:00
+    status: specified
+    functionalBlock: Intelligence Management
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -203,23 +225,3 @@ spec:
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/call-back
       apiType: openapi
       apiSDO: not_defined
-  componentMetadata:
-    id: TMFC041
-    name: AnomalyManagement
-    version: 1.1.0
-    description: The Anomaly Management ODA Component is responsible for predicting,
-      detecting and managing anomalous patterns in the usage and behavior of products,
-      services and resources in order to avoid occurence of problems. Anomaly Management
-      ODA component has fuctionality to predict, detect and flag unusual patterns
-      or outliers for products, services and resource entities, and initiating mitigatory
-      actions to prevent outlier patterns in usage or behavior to become problems.
-      In the event of failure to predict or detect an early warning signt to a possible
-      problem occurence, the component hands of mitigatory actions to the ODA problem
-      management component.
-    publicationDate: 2024-11-19 00:00:00
-    status: specified
-    functionalBlock: Intelligence Management
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
