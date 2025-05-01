@@ -1,0 +1,44 @@
+{
+    "releaseName": "<RELEASE_NAME>",
+    "component_to_run": "<COMPONENT_UNDER_TEST>",
+    "standardComponentPath": "",
+    "ctk_name_mapping": {},
+    "runExposedOptional": false,
+    "runDependentOptional": false,
+    "runSecurityOptional": false,
+    "ctk_download_urls": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Component-Specification/refs/heads/v1beta4/apiIndex.json",
+    "standardComponentDownload": {
+        "apiBaseUrl": "https://api.github.com",
+        "repoOwner": "tmforum-rand",
+        "repoName": "TMForum-ODA-Ready-for-publication",
+        "gitUrl": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/refs/heads",
+        "gitBranch": "v1beta4",
+        "sslVerify": false
+    },
+    "ctkconfig": {
+        "companyName": "<COMPANY_NAME>",
+        "productName": "<PRODUCT_NAME>",
+        "productUrl": "<PRODUCT_WEBPAGE_URL>",
+        "componentUrl": "https://www.tmforum.org/oda/directory/components-map",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "payloads": {
+            "TMF669_v4": {
+                "PartyRole": {
+                    "POST": {
+                        "payload": {
+                            "name": "qqymucymyd"
+                        }
+                    }
+                }
+            }
+        },
+        "rejectUnauthorized": false
+    },
+    "retrySettings": {
+        "maxRetries": 30,
+        "retryInterval": 10000
+    }
+}
