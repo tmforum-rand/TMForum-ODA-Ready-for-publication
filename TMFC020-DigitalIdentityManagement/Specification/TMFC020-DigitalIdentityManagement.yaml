@@ -1,5 +1,5 @@
 apiVersion: oda.tmforum.org/v1
-kind: component
+kind: Component
 metadata:
   name: components.oda.tmforum.org
 spec:
