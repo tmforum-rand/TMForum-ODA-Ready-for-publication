@@ -1,5 +1,5 @@
 apiVersion: oda.tmforum.org/v1beta4
-kind: component
+kind: Component
 metadata:
   name: components.oda.tmforum.org
 spec:
@@ -161,7 +161,7 @@ spec:
         - PATCH /id
   componentMetadata:
     id: TMFC030
-    name: BillGeneration
+    name: BillGenerationManagement
     version: 2.0.0
     description: Bill generation mgmt. manage the party invoice management. It addresses
       the invoice formatting, presentation and dispatching to the proper means of
