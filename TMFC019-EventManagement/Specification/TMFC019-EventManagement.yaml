@@ -65,15 +65,15 @@ spec:
     id: TMFC019
     name: EventManagement
     version: 1.1.1
-    description: Event Management component is a messaging management component that
-      is responsible for processing events as they happen from components. Processing
-      of record of activities include modelling event messages, syntax validation
+    description: The Event Management component is a messaging management component,
+      responsible for processing events as they happen from components. Processing
+      of a record of activities includes modeling event messages, syntax validation
       and formatting of event messages and sending/receiving messages between components
-      (consumer/producer). Event Management component supports different patterns
-      of usage, including Event notification (subscription), Event-sourcing (representational
-      state changes) and Event-carried state transfer (including data needed to perform
-      further processing). Event Management component should include functionality
-      providing a centralised CQRS queryStore for all components that implement event-sourcing
+      (consumer/producer). The Event Management component supports different patterns
+      of usage, including event notification (subscription), event-sourcing (representational
+      state changes) and event-carried state transfer (including data needed to perform
+      further processing). The Event Management component includes functionality providing
+      a centralized CQRS query store for all components that implement event-sourcing
       with event carrier state transfer.
     publicationDate: 2023-08-18 00:00:00
     status: specified

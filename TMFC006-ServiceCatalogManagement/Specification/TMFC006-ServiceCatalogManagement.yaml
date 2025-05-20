@@ -164,20 +164,20 @@ spec:
     id: TMFC006
     name: ServiceCatalogManagement
     version: 1.2.0
-    description: "\tService Catalog Management component is responsible for organizing\
-      \ the collection of service specifications that identify and define all requirements\
-      \ of a service that can be performed. Service Catalog Management component has\
-      \ the functionality that enable present a customer-facing view so users are\
-      \ able to search and select services they need, as well as a technical view\
-      \ to enable define and setup what's needed to deliver service specifications\
-      \ (Customer Facing Service Specifications (CFSSs) and Resource Facing Service\
-      \ Specifications (RFSSs)) contained in the service catalog. Service Catalog\
-      \ Management component has functionalities that include creation of new service\
-      \ specifications, managing service specifications, administering the lifecycle\
-      \ of services, describing relationships between service specification attributes,\
-      \ reporting on service specification and their changes, and facilitating easy\
-      \ and systematic indexing and access to services, as well as facilitate automating\
-      \ the service delivery process."
+    description: The Service Catalog Management component is responsible for organizing
+      the collection of service specifications that identify and define all requirements
+      of a service that can be performed. This component has the functionality that
+      enables presentation of a customer-facing view so users are able to search and
+      select services they need, as well as a technical view to enable definition
+      and setup of what is needed to deliver service specifications (Customer Facing
+      Service Specifications (CFSSs) and Resource Facing Service Specifications (RFSSs))
+      contained in the service catalog. The Service Catalog Management component has
+      functionalities that include creation of new service specifications, managing
+      service specifications, administering the lifecycle of services, describing
+      relationships between service specification attributes, reporting on service
+      specifications and their changes, and facilitating easy and systematic indexing
+      and access to services, as well as facilitating automation of the service delivery
+      process.
     publicationDate: 2024-11-12 00:00:00
     status: specified
     functionalBlock: Production

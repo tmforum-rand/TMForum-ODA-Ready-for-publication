@@ -87,9 +87,9 @@ spec:
     id: TMFC062
     name: ResourceConfigurationandActivation
     version: 1.0.0
-    description: The Resource Configuration and Activation component is responsible
-      to configure and activate the resource instances and as well to provide query
-      on resource instances to acquire the resource activation states and attributes.
+    description: The Resource Configuration and Activation component configures and
+      activates resource instances and enables querying of resource instances to acquire
+      the resource activation states and attributes.
     publicationDate: 2024-11-18 00:00:00
     status: specified
     functionalBlock: Production

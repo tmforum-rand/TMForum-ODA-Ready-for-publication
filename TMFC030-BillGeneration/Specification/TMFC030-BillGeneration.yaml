@@ -163,9 +163,9 @@ spec:
     id: TMFC030
     name: BillGenerationManagement
     version: 2.0.0
-    description: Bill generation mgmt. manage the party invoice management. It addresses
-      the invoice formatting, presentation and dispatching to the proper means of
-      communication.
+    description: The Bill Generation component is responsible for Party invoice management.
+      It addresses the invoice formatting, presentation and dispatching via the appropriate
+      means of communication.
     publicationDate: 2024-12-03
     status: specified
     functionalBlock: PartyManagement

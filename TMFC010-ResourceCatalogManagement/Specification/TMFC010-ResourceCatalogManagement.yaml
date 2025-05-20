@@ -159,14 +159,14 @@ spec:
     id: TMFC010
     name: ResourceCatalogManagement
     version: 1.3.0
-    description: Resource Catalog Management component is responsible for organizing
-      the collection resource specifications that identify and define all requirements
-      for a resource. Resource Catalog Management component has the functionality
-      that enable presenting a customer-facing view, so users are able to browse and
-      select resource they need, as well as a technical view to enable define and
-      setup resources contained in the resource catalog. Additional functionalities
-      include capturing specifications of new resource specifications, managing resources
-      (registering assets and components and identifying and mapping connections/relationships),
+    description: The Resource Catalog Management component is responsible for organizing
+      the collection of resource specifications that identify and define all requirements
+      for a resource. The Resource Catalog Management component has the functionality
+      that enables presentation of a customer-facing view, so users are able to browse
+      and select resources they need, as well as a technical view to enable definition
+      and setup of resources contained in the resource catalog. Additional functionalities
+      include capturing new resource specifications, managing resources (registering
+      assets and components and identifying and mapping connections/relationships),
       administering the lifecycle of resources, describing relationships between resources,
       reporting on resources and changes to their attributes, and facilitating easy
       access to identify and assign resources.

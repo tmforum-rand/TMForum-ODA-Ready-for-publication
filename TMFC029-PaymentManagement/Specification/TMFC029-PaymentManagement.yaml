@@ -159,9 +159,9 @@ spec:
     id: TMFC029
     name: PaymentManagement
     version: 1.2.0
-    description: Payment Management manages methods used by parties to make payments,
-      it also administers payment plan, handles payment, assigns payments against
-      bills, settlements, and other object requiring payments.
+    description: Payment Management manages methods used by parties to make payments.
+      It also administers payment plans, handles payments, assigns payments against
+      bills, settlements, and other objects requiring payments.
     publicationDate: 2024-11-18 00:00:00
     status: specified
     functionalBlock: PartyManagement

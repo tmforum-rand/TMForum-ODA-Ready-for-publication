@@ -134,14 +134,13 @@ spec:
     id: TMFC024
     name: BillingAccountManagement
     version: 2.0.0
-    description: The billing account management component aims to provide all the
-      needed functionalities to create, configure and modify billing accounts. BAM
-      component has the goal to support and handle the following capabilities/ functionalities.
-      Set-up/ creation of Billing account. Associate payment plan(s). Associate payment
-      method(s) - optional. Account taxes/ fees exception management. Define account
-      associations. Provide account balance details. Set-up Billing contacts. Set-up
-      Billing preferences (e.g., bill cycle frequency, invoice media type, invoice
-      template option, etc.)
+    description: The Billing Account Management (BAM) component provides all the needed
+      functionalities to create, configure and modify billing accounts. The BAM component
+      supports and handles the following capabilities/functionalities - setup/creation
+      of billing accounts, associate payment plan(s), associate payment method(s)
+      (optional), account taxes/fees exception management, define account associations,
+      provide account balance details, set up billing contacts, set up billing preferences
+      (eg bill cycle frequency, invoice media type, invoice template option, etc.)
     publicationDate: 2024-11-18 00:00:00
     status: specified
     functionalBlock: PartyManagement

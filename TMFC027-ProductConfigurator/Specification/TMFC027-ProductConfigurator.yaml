@@ -228,8 +228,8 @@ spec:
     id: TMFC027
     name: ProductConfigurator
     version: 2.1.1
-    description: The Product Configurator ODA Component is empowering sales by offering
-      the right product combinations, controlling discounting, and automating approvals
+    description: The Product Configurator component empowers sales by offering the
+      right product combinations, controlling discounting, and automating approvals
       through support of configuration, pricing and quote generation activities.
     publicationDate: 2023-11-27
     status: specified

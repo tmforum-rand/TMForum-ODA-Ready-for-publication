@@ -274,16 +274,16 @@ spec:
     id: TMFC043
     name: FaultManagement
     version: 1.0.0
-    description: Fault management involves identifying, diagnosing, and resolving
+    description: Fault Management involves identifying, diagnosing, and resolving
       issues that prevent the communication resources and their overlaying services
-      from functioning correctly It s scope covers this functionality at the ODA Production
-      layer while Buiness related resolutions are not part of its scope. The Fault
-      Management component manages the currently active alarms or problem candidates.
-      potentially modifying or enhancing their data to make the persistent alarms
-      more actionable. It may apply logic to preserve alarms that reflect actual problems,
+      from functioning correctly. Its scope covers this functionality at the ODA Production
+      layer while business related resolutions are not part of its scope. The Fault
+      Management component manages the currently active alarms or problem candidates,
+      potentially modifying or enhancing their data to make persistent alarms more
+      actionable. It may apply logic to preserve alarms that reflect actual problems,
       eliminating those that are merely symptoms. Various actions can be taken using
-      the alarm/problem information as part of the resolution process, such asProduction
-      applying automated corrective actions or opening trouble tickets.
+      the alarm/problem information as part of the resolution process, such as applying
+      automated corrective actions or opening trouble tickets.
     publicationDate: 2025-03-11 00:00:00
     status: specified
     functionalBlock: Production

@@ -157,8 +157,8 @@ spec:
     id: TMFC038
     name: ResourcePerformanceManagement
     version: 1.2.0
-    description: Resource Performance Management will monitor, analyze, and report
-      on the performance of the service provider's resources.
+    description: Resource Performance Management monitors, analyzes, and reports on
+      the performance of the service provider's resources.
     publicationDate: 2024-12-17 00:00:00
     status: specified
     functionalBlock: IntelligenceManagement

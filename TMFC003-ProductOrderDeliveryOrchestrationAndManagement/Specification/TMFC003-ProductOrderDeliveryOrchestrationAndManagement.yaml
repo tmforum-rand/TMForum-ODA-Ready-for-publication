@@ -166,17 +166,16 @@ spec:
     id: TMFC003
     name: ProductOrderDeliveryOrchestrationAndManagement
     version: 1.1.1
-    description: 'This component is in charge of the orchestration of the delivery
-      of Product Orders (status accepted). Based on the Product specification level
-      of information available in the Product Catalog (ex: prerequisite links between
-      product specifications, links between product and CFS specifications, ...):
-      it determines in which order the product specification level order items need
-      to be delivered, and to which CFS (or Resource) specification each ordered product
-      corresponds, and prepares and addresses each related service (or resource) order
-      to the production system in charge. During the delivery process execution, this
-      component is in charge of the evolution of the status of the product specification
-      level order items, and of the related product items . So, it triggers the updates
-      of the related inventories.'
+    description: This component orchestrates the delivery of Product Orders (status
+      accepted). Based on the level of Product specification information available
+      in the Product Catalog (eg prerequisite links between product specifications,
+      links between product and CFS specifications...) it determines in which order
+      the product specification level order items need to be delivered, and to which
+      CFS (or Resource) specification each ordered product corresponds, and prepares
+      and addresses each related service (or Resource) order to the production system
+      in charge. During the delivery process execution, this component is in charge
+      of the evolution of the status of the product specification level order items,
+      and of the related product items, triggering updates of the related inventories.
     publicationDate: 2023-08-18 00:00:00
     status: specified
     functionalBlock: CoreCommerce
@@ -199,23 +198,23 @@ spec:
     - 1.5.6-Resource_Provisioning-v23.0
     - 1.5.6.7-Issue_Resource_Order-v23.0
     functionalFrameworkFunctions:
-    - 16-Fallout_Automated_Correction_vv23.0
-    - 17-Fallout_Correction_Information_Collection_vv23.0
-    - 18-Fallout_Management_to_Fulfillment_Application_Accessing_vv23.0
-    - 19-Fallout_Manual_Correction_Queuing_vv23.0
-    - 20-Fallout_Notification_vv23.0
-    - 21-Fallout_Orchestration_vv23.0
-    - 22-Fallout_Reporting_vv23.0
-    - 23-Fallout_Dashboard_System_Log-in_Accessing_vv23.0
-    - 24-Pre-populated_Fallout_Information_Presentation_vv23.0
-    - 175-Customer_Support_Jeopardy_Notification_vv23.0
-    - 174-Customer_Order_Error_Resolution_Support_vv23.0
-    - 723-Customer_Order_Item_Decomposition_vv23.0
-    - 214-Customer_Order_Orchestration_vv23.0
-    - 215-Retro-active_order_orchestration_vv23.0
-    - 342-Mass_Service/product_pre-activation_vv23.0
-    - 743-Number_Portability_Orchestration_vv23.0
-    - 756-Fallout_Rule_Based_Error_Correction_vv23.0
+    - 16-Fallout_Automated_Correction_v23.0
+    - 17-Fallout_Correction_Information_Collection_v23.0
+    - 18-Fallout_Management_to_Fulfillment_Application_Accessing_v23.0
+    - 19-Fallout_Manual_Correction_Queuing_v23.0
+    - 20-Fallout_Notification_v23.0
+    - 21-Fallout_Orchestration_v23.0
+    - 22-Fallout_Reporting_v23.0
+    - 23-Fallout_Dashboard_System_Log-in_Accessing_v23.0
+    - 24-Pre-populated_Fallout_Information_Presentation_v23.0
+    - 175-Customer_Support_Jeopardy_Notification_v23.0
+    - 174-Customer_Order_Error_Resolution_Support_v23.0
+    - 723-Customer_Order_Item_Decomposition_v23.0
+    - 214-Customer_Order_Orchestration_v23.0
+    - 215-Retro-active_order_orchestration_v23.0
+    - 342-Mass_Service/product_pre-activation_v23.0
+    - 743-Number_Portability_Orchestration_v23.0
+    - 756-Fallout_Rule_Based_Error_Correction_v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics

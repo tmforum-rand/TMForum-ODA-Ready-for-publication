@@ -270,8 +270,8 @@ spec:
     id: TMFC001
     name: ProductCatalogManagement
     version: 2.1.0
-    description: The Product Catalog Management ODA Component is responsible for organizing
-      the collection of Products and Product Offerings specifications that identify
+    description: The Product Catalog Management component is responsible for organizing
+      the collection of Products and Product Offering specifications that identify
       and define all requirements of a product or a product offering that can be commercialized.
     publicationDate: 2024-11-12 00:00:00
     status: specified
@@ -285,49 +285,50 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.2.20-Product_Catalog_Lifecycle_Management-v23.0
-    - 1.1.19-Loyalty_Program_Management-v23.0
-    - 1.1.19.1-Loyalty_Program_Development_&_Retirement-v23.0
-    - 1.2.7-Product_Specification_&_Offering_Development_&_Retirement-v23.0
-    - 1.2.8.7-Implement_Product_Capacity_Plan-v23.0
-    - 1.6.4-Business_Partner_Offering_Development_&_Retirement-v23.0
-    - 1.2.8-Product_Capacity_Management-v23.0
-    - 1.2.22-Product_Catalog_Content_Management-v23.0
-    - 1.2.21-Product_Catalog_Operational_Readiness_Management-v23.0
-    - 1.2.19-Product_Catalog_Planning_Management-v23.0
-    - 1.2.23-Product_Specification_Management-v23.0
-    - 1.2.8.7.1-Specify_Required_Product_Capacity-v23.0
+    - 1.2.20-Product_Catalog_Lifecycle_Management-v23.5
+    - 1.1.19-Loyalty_Program_Management-v23.5
+    - 1.1.19.1-Loyalty_Program_Development_&_Retirement-v23.5
+    - 1.2.7-Product_Specification_&_Offering_Development_&_Retirement-v23.5
+    - 1.2.8.7-Implement_Product_Capacity_Plan-v23.5
+    - 1.6.4-Business_Partner_Offering_Development_&_Retirement-v23.5
+    - 1.2.8-Product_Capacity_Management-v23.5
+    - 1.2.22-Product_Catalog_Content_Management-v23.5
+    - 1.2.21-Product_Catalog_Operational_Readiness_Management-v23.5
+    - 1.2.19-Product_Catalog_Planning_Management-v23.5
+    - 1.2.23-Product_Specification_Management-v23.5
+    - 1.2.8.7.1-Specify_Required_Product_Capacity-v23.5
     functionalFrameworkFunctions:
-    - 3-Repository_Entity_Relations_Configuration-v23.0
-    - 4-Repository_Entity_Grouping_Configuration-v23.0
-    - 6-Repository_Entity_Data_Model_Configuration-v23.0
-    - 11-Repository_Entity_Hierarchy_Management-v23.0
-    - 123-Product_Catalog_Browsing-v23.0
-    - 210-Centralized_Ordering_Rules_Management-v23.0
-    - 360-Contract_Template_Creation-v23.0
-    - 407-Product_Modeling_Support-v23.0
-    - 408-Product_Retirement-v23.0
-    - 415-Product_Strategy_linking-v23.0
-    - 649-Product_Sourcing_Registration-v23.0
-    - 650-Partner_Product_Certification-v23.0
-    - 662-Sourcing_Reference_Data_Collection-v23.0
-    - 721-Customer_Order_Rules_Configuration-v23.0
-    - 722-Order_Rules_Retrieval-v23.0
-    - 992-Entity_Management_Notification-v23.0
-    - 993-Entity_Management_Reporting-v23.0
-    - 1050-Product_Onboarding_Management-v23.0
-    - 1053-Onboarded_Product_Workflows_Definition-v23.0
-    - 1076-Product_Specification_Design-v23.0
-    - 1077-Product_Offering_Design-v23.0
-    - 1078-Product_Specification_and_Offering_Change_Auditing-v23.0
-    - 1079-Product_Specification_and_Offering_Repository_Management-v23.0
-    - 238-Customer_Loyalty_Rules_Management-v23.0
-    - 416-Product_Propositions_Operations_Planning-v23.0
-    - 417-Product_Strategy_to_Proposition_Alignment-v23.0
-    - 418-Product_Strategy/Propositions_Creation-v23.0
-    - 419-Product_Strategy_performance_reporting-v23.0
-    - 897-Building_Access_Control-v23.0
-    - 900-Authorization_Control_Management-v23.0
+    - 3-Repository_Entity_Relations_Configuration-v23.5
+    - 4-Repository_Entity_Grouping_Configuration-v23.5
+    - 6-Repository_Entity_Data_Model_Configuration-v23.5
+    - 11-Repository_Entity_Hierarchy_Management-v23.5
+    - 123-Product_Catalog_Browsing-v23.5
+    - 210-Centralized_Ordering_Rules_Management-v23.5
+    - 238-Customer_Loyalty_Rules_Management-v23.5
+    - 263-Product_Compatibility_Checking-v23.5
+    - 360-Product_Agreement_Specification_Design-v23.5
+    - 407-Product_Modeling_Support-v23.5
+    - 408-Product_Retirement-v23.5
+    - 415-Product_Strategy_linking-v23.5
+    - 649-Product_Sourcing_Registration-v23.5
+    - 650-Partner_Product_Certification-v23.5
+    - 662-Sourcing_Reference_Data_Collection-v23.5
+    - 721-Customer_Order_Rules_Configuration-v23.5
+    - 722-Order_Rules_Retrieval-v23.5
+    - 992-Entity_Management_Notification-v23.5
+    - 993-Entity_Management_Reporting-v23.5
+    - 1050-Product_Onboarding_Management-v23.5
+    - 1053-Onboarded_Product_Workflows_Definition-v23.5
+    - 1076-Product_Specification_Design-v23.5
+    - 1077-Product_Offering_Design-v23.5
+    - 1078-Product_Specification_and_Offering_Change_Auditing-v23.5
+    - 1079-Product_Specification_and_Offering_Repository_Management-v23.5
+    - 416-Product_Propositions_Operations_Planning-v23.5
+    - 417-Product_Strategy_to_Proposition_Alignment-v23.5
+    - 418-Product_Strategy/Propositions_Creation-v23.5
+    - 419-Product_Strategy_performance_reporting-v23.5
+    - 897-Building_Access_Control-v23.5
+    - 900-Authorization_Control_Management-v23.5
   managementFunction:
     exposedAPIs:
     - name: metrics

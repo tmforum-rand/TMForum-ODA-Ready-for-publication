@@ -137,12 +137,12 @@ spec:
     id: TMFC031
     name: BillCalculation
     version: 2.0.0
-    description: The Bill Calculation processes all charges against billing accounts
-      during bill cycles. Bill Calculation can be executed both on a cyclic basis
-      and on demand. It performs calculations with bill compilation of charges, credits,
-      fees & taxes, including prorata, at various levels, such as product and/or account
-      level that have been generated since the last run for that account, applying
-      promotions and discounts as well.
+    description: The Bill Calculation component processes all charges against billing
+      accounts during bill cycles. Bill Calculation can be executed both on a cyclic
+      basis and on demand. It performs calculations with bill compilation of charges,
+      credits, fees & taxes, including pro rata, at various levels, such as product
+      and/or account level that have been generated since the last run for that account,
+      applying promotions and discounts.
     publicationDate: 2023-06-25
     status: specified
     functionalBlock: CoreCommerce

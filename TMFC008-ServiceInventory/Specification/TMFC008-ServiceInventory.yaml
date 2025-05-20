@@ -165,15 +165,15 @@ spec:
     id: TMFC008
     name: ServiceInventory
     version: 1.2.0
-    description: Service Inventory component is responsible for storage and exposure
-      of CFS (Customer Facing Service) that are associated to Product Inventory items.
+    description: The Service Inventory component is responsible for storage and exposure
+      of CFS (Customer Facing Services) that are associated to Product Inventory items.
       It is also responsible for RFS (Resource Facing Service) definition, mapping
-      between CFS and RFS and mapping with infrastructure/network resources. Service
-      Inventory component has functionality that enables inventory items creation,
+      between CFS and RFS and mapping with infrastructure/network resources. The Service
+      Inventory component has functionality that enables creation of inventory items,
       inventory organization, inventory search or filter, inventory monitoring and
-      tracking, inventory control and inventory auditing.The minimum check to be performed
-      at inventory items creation or update is the global consistency with related
-      Service Catalog information.
+      tracking, inventory control and inventory auditing. The minimum check to be
+      performed at inventory item creation or update is for global consistency with
+      related Service Catalog information.
     publicationDate: 2024-11-12 00:00:00
     status: specified
     functionalBlock: Production

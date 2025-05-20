@@ -115,12 +115,12 @@ spec:
     id: TMFC022
     name: PartyPrivacyManagement
     version: 1.1.0
-    description: 'The Party Privacy Management component aims to: define the Privacy
-      Policy rules established by the CSP, according to applicable regulations, such
-      as GDPR in Europe, apply these rules to each Party interacting with the CSP
-      and to all of their personnal information and personally identifiable information
-      (PII); register explicit opt-in and opt-out given by Parties regarding the usage
-      of some of their personal information for dedicated purpose, such as marketing.'
+    description: The Party Privacy Management component defines the privacy policy
+      rules established by the CSP (according to applicable regulations such as GDPR
+      in Europe); applies these rules to each Party interacting with the CSP and to
+      all of their personal information and personally identifiable information; and
+      registers explicit opt-in and opt-out given by Parties regarding the use of
+      their personal information for dedicated purposes, such as marketing.
     publicationDate: 2024-08-08
     status: specified
     functionalBlock: PartyManagement

@@ -94,15 +94,15 @@ spec:
     id: TMFC041
     name: AnomalyManagement
     version: 1.1.0
-    description: The Anomaly Management ODA Component is responsible for predicting,
-      detecting and managing anomalous patterns in the usage and behavior of products,
-      services and resources in order to avoid occurence of problems. Anomaly Management
-      ODA component has fuctionality to predict, detect and flag unusual patterns
-      or outliers for products, services and resource entities, and initiating mitigatory
-      actions to prevent outlier patterns in usage or behavior to become problems.
-      In the event of failure to predict or detect an early warning signt to a possible
-      problem occurence, the component hands of mitigatory actions to the ODA problem
-      management component.
+    description: The Anomaly Management component is responsible for predicting, detecting
+      and managing anomalous patterns in the usage and behavior of products, services
+      and resources in order to avoid occurrence of problems. Anomaly Management has
+      functionality for predicting, detecting and flagging unusual patterns or outliers
+      for products, services and resource entities, and initiating mitigatory actions
+      to prevent outlier patterns in usage or behavior becoming problems. In the event
+      of failure to predict or detect an early warning sign of a possible problem
+      occurrence, the component hands off mitigatory actions to the Party Problem
+      Management component.
     publicationDate: 2024-11-19 00:00:00
     status: specified
     functionalBlock: Intelligence Management

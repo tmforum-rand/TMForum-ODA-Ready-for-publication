@@ -141,15 +141,15 @@ spec:
     id: TMFC039
     name: AgreementManagement
     version: 1.1.0
-    description: Agreement Management component is responsible for creating, storing,
-      editing, and tracking agreed  arrangements with related terms and conditions
+    description: The Agreement Management component is responsible for creating, storing,
+      editing, and tracking agreed arrangements with related terms and conditions
       over a lifecycle. The component manages offers, records acceptance, and associated
-      considerations and intentions to establish agreements as legally binding. As
-      well this components provides workfows and templates that facilitates collaboration,
+      considerations and intentions to establish agreements as legally binding. This
+      component also provides workflows and templates that facilitate collaboration,
       communication and negotiation of agreements between parties, and administers
-      the specificities related to translate  agreements into contracts, when it is
-      required. It provides a secure storage, version control, compliance management,
-      and renewal notifications for agreements.
+      the translation of agreements into contracts, when required. It provides secure
+      storage, version control, compliance management, and renewal notifications for
+      agreements.
     publicationDate: 2024-08-19 00:00:00
     status: specified
     functionalBlock: PartyManagement

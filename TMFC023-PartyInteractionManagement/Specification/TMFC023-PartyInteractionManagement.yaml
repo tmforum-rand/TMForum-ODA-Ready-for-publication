@@ -184,9 +184,9 @@ spec:
     description: Party Interaction deals with the initial greeting and welcoming of
       a new contact. This will typically be the first component in a customer experience
       journey, shared by unassisted (self-service, retail kiosk) or assisted (call
-      center, retail store) channels. It will identify known parties or new parties
+      center, retail store) channels. It will identify known Parties or new Parties
       and react appropriately to propose available actions. It records all the interactions
-      for the parties from all channels.
+      for the Parties from all channels.
     publicationDate: 2024-04-30 00:00:00
     status: specified
     functionalBlock: PartyManagement
