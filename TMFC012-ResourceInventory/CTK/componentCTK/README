@@ -26,6 +26,11 @@ The `componentCTK` directory contains the following:
 - `Reports/<ComponentName>`
   This folder will contain the output reports and the results of running the CTK
 
+- `CHANGE_ME.json`
+  Central configuration file
+
+- `MAC-LINUX-RUN.sh/WINDOWS-RUN.bat`
+  Shell scripts to execute the CTK
 
 ---
 ## 🚀 How to Run
@@ -34,6 +39,8 @@ The `componentCTK` directory contains the following:
     - Define the component you want to test
     - Update the product details under ctkconfig
     - Add any API-specific payloads or headers under ctkconfig
+    - Specify dependent API helm releases where applicable
+    - Provide BDD payloads under bddPayloads
 
 2. From the componentCTK directory, run the appropriate shell script for your system:
     🐧 macOS / Linux
@@ -43,7 +50,7 @@ The `componentCTK` directory contains the following:
 
 
 ```bash
-python3 componentCTK/CTK_Executor.py
+python3 componentCTK/scripts/CTK_Executor.py
 ```
 
 This will:
@@ -71,6 +78,12 @@ Used for running the tests and generating HTML reports from JSON results.
 
 - **Version:** Node.js v16 or later
 
+### Canvas Cluster
+Before executing the CTK, ensure that a valid ODA Canvas runtime environment is available and that Kubernetes connectivity to the cluster is properly configured (e.g., via kubectl config or context switching).
+
+### Dependent Components
+Ensure that all required dependent components (APIs) are already deployed in the Canvas cluster. Their corresponding Helm release names must be correctly configured under the dependentStubs section in CHANGE_ME.json.
+
 ---
 
 ## 🛠 How to Update `CHANGE_ME.json`
@@ -92,11 +105,23 @@ Update the fields below to configure your CTK run:
 | - `productUrl`                | Link to the product web page                          | `{...}`                      |
 | - `headers`                   | Required headers for API tests                        | `{...}`                      |
 | - `payloads`                  | Additional payloads for API tests                     | `{...}`                      |
+| `dependentStubs`              | Map of required dependent components per test         | `{...}`                      |
+| - `componentName`             | Name of the component under test                      | `{...}`                      |
+| - - `dependentApiName`        | helm release of the dependent api for the test        | `{s001}`                     |
+| `bddPayloads`                 | Test payloads for exposed + dependent APIs            | `{...}`                      |
 
 💡 Only update the values you need for your test run. Others can remain default.
 
 🧩 standardComponentDownload Block
 - You typically dont need to modify this unless you are testing from a different fork or a different branch.
+
+🧪 Example: Payload Injection Logic
+
+For a success test:
+
+If targetPayload contains placeholder __VALID_ID__, it is replaced dynamically during test execution
+If the dependentAPI payload already contains a valid id, the framework checks the resource's existence
+  If not found, it will POST a new resource to the dependent API and extract the returned id/href
 
 ---
 
@@ -142,6 +167,12 @@ Update the fields below to configure your CTK run:
 ## 📤 Outputs
 
 - `Reports/<ComponentName>/` – contains reports and results
+
+Output File	Description
+  componentCTK/Reports/<Component>/consolidatedResults.json	    Unified report (CTK, BDD, config)
+  Reports/<Component>/reports/	                                HTML reports generated from Mustache
+  Reports/<Component>/results/	                                JSON test outputs (Newman, Mocha, BDD)
+
 
 ---
 

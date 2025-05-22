@@ -31,6 +31,10 @@ os.makedirs(resources_dir, exist_ok=True)
 os.makedirs(standard_components_dir, exist_ok=True)
 ctk_mapping = {}
 
+component_namespace = config.get("component_namespace")
+if not component_namespace:
+    component_namespace = "components"
+
 # Function to write data to a JSON file
 def write_json_file(filename, data):
     with open(filename, 'w') as file:
@@ -146,13 +150,14 @@ def clear_results_folder(results_dir):
         print(f"Failed to create results directory. Error: {e}")
 
 # Consolidate all the CTK json results into a single JSON file
-def consolidate_results_to_json(results_dir):
+def consolidate_results_to_json(results_dir, payload_output_dir):
     consolidated = {
         "resultsSummary": None,
         "apiCtkResults": [],
         "configurationReport": None,
         "deploymentReport": None,
-        "bddResults": None
+        "bddResults": None,
+        "bddPayloads": {}
     }
 
     summary_path = os.path.join(results_dir, "reportData.json")
@@ -185,6 +190,12 @@ def consolidate_results_to_json(results_dir):
     if os.path.exists(bdd_path):
         with open(bdd_path, "r", encoding="utf-8") as f:
             consolidated["bddResults"] = json.load(f)
+
+    if os.path.exists(payload_output_dir):
+        for file in os.listdir(payload_output_dir):
+            if file.endswith(".json"):
+                with open(os.path.join(payload_output_dir, file), "r", encoding="utf-8") as f:
+                    consolidated["bddPayloads"][file] = json.load(f)
 
     output_file = os.path.join(reportGeneratorSrc, "componentCTK", "resources", "consolidatedResults.json")
     with open(output_file, "w", encoding="utf-8") as f:
@@ -372,7 +383,7 @@ def generateComponentYaml(releasename):
     output_path = os.path.join(reportGeneratorSrc, f"componentCTK/resources/component-{releasename}.yaml")
     try:
         result = subprocess.run(
-            ["helm", "get", "manifest", releasename, "-n", "components"],
+            ["helm", "get", "manifest", releasename, "-n", component_namespace],
             capture_output=True,
             text=True,
             check=True
@@ -421,6 +432,21 @@ def run_ctk(api_id, path):
 
     os.chdir(c_path)
 
+# Prepare BDD payloads directory
+def prepare_payload_dir(payload_dir):
+    if os.path.exists(payload_dir):
+        shutil.rmtree(payload_dir)
+        print(f"Cleared existing payloads directory: {payload_dir}")
+    os.makedirs(payload_dir, exist_ok=True)
+    print(f"Created bdd payloads directory: {payload_dir}")
+
+def generate_bdd_payload_files_for_component_under_test(bdd_payloads, payload_output_dir, component_to_run):
+    component_payloads = bdd_payloads.get(component_to_run.lower(), {})
+    for file_name, payload in component_payloads.items():
+        file_path = os.path.join(payload_output_dir, f"{file_name}.json")
+        with open(file_path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
+        print(f"Created payload file: {file_path}")
 
 # Main executor function
 def ctkExecutor():
@@ -430,6 +456,8 @@ def ctkExecutor():
     if not component_to_run:
         print("No Component Name found to run the CTK")
         return
+    else:
+        component_to_run = component_to_run.upper()
 
 # Clear results folder
     results_dir = os.path.join(reportGeneratorSrc, "componentCTK", "resources", "results")
@@ -460,6 +488,14 @@ def ctkExecutor():
     write_json_file(ctkconfig_path, ctkconfig)
 
     current_dir = os.getcwd()
+
+# Setup BDD Payloads for Component Under Test
+    bdd_payloads = config.get("bddPayloads", {})
+    payload_output_dir = os.path.join(reportGeneratorSrc, 'componentCTK', 'src', 'features', 'payloads')
+    prepare_payload_dir(payload_output_dir)
+    generate_bdd_payload_files_for_component_under_test(bdd_payloads, payload_output_dir, component_to_run)
+
+# Read yaml file to process apis
     print("reading yaml file at path: ", component_yaml_path)
     yaml_content = read_yaml_file(component_yaml_path)
 
@@ -471,7 +507,7 @@ def ctkExecutor():
     generateReport()
     os.chdir(current_dir)
 
-    consolidated_results = consolidate_results_to_json(results_dir)
+    consolidated_results = consolidate_results_to_json(results_dir, payload_output_dir)
 
     # Create reports directory if it doesn't exist
     reports_dir = os.path.join(reportGeneratorSrc, "componentCTK", "Reports")
@@ -498,6 +534,7 @@ def update_ctkconfig(ctkconfig, path):
     ctkconfig["goldenComponentFilePath"] = f"../resources/standard-components/{path}"
     ctkconfig["componentName"] = path.split('.')[0]
     ctkconfig["componentFilePath"] = f"../resources/component-{config.get('releaseName')}.yaml"
+    ctkconfig["component_namespace"] = component_namespace
 
     # Set optional run flags
     optional_flags = ['runExposedOptional', 'runDependentOptional', 'runSecurityOptional']

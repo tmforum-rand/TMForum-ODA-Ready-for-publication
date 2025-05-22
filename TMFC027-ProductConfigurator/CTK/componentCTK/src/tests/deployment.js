@@ -18,7 +18,7 @@ chai.use(chaiHttp)
 const GOLDEN_COMPONENT_PATH = config.goldenComponentFilePath
 const COMPONENT = 'Component'
 const COMPONENTS = 'components'
-const NAMESPACE = "components"
+const NAMESPACE = config.component_namespace
 const HEADER = process.env.HEADER
 const TMFORUM_ODA_API_GROUP = 'oda.tmforum.org'
 const TMFORUM_ODA_API_VERSION = 'v1beta3'

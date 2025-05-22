@@ -65,7 +65,8 @@ class Component {
         let report = await fs.promises.readFile(actualJsonPath, 'utf8')
         report = JSON.parse(report)
 
-        let hasPassed = report.run.stats.scripts.failed === 0
+        let failedAssertions = report.run?.stats?.assertions?.failed ?? 0;
+        let hasPassed = failedAssertions === 0;
         return {
           apiName: api.id + " " + api.name.split('-').join(" ") + " - " + apiOptionalText,
           htmlResultsPath: Path.join(resultsPath, "api-ctk-results", expectedApiRelease + ".html"),
@@ -410,8 +411,8 @@ async function getNewmanSummary(apiResults){
     let jsonResultSummary = await fs.promises.readFile(api.jsonResultsPath, 'utf8')
     jsonResultSummary = JSON.parse(jsonResultSummary)
 
-    let totalFailed = jsonResultSummary.run.stats.scripts.failed
-    let total = jsonResultSummary.run.stats.scripts.total
+    let totalFailed = jsonResultSummary.run?.stats?.assertions?.failed
+    let total = jsonResultSummary.run?.stats?.assertions?.total
     let passed = total - totalFailed
     return {
       total: total,

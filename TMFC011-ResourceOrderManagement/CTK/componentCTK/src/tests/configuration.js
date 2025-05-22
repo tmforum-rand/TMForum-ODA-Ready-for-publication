@@ -155,8 +155,19 @@ describe('Step 1: Component manifest checks',  function() {
         expect(fs.existsSync(GOLDEN_COMPONENT_PATH)).to.be.true
     })
 
-    it('Apis defined in standard component specification must be specified in component manifest', async function () {
-        addContext(this, 'All APIs defined in the standard component specification must be specified in the component manifest')
+    it("Component ID from the manifest of component under test matches the standard specification", async function () {
+        addContext(this, 'Component manifest ID must match the ID in the standard component specification')
+    
+        const gc_id = gc_manifest.get("spec")?.get("componentMetadata")?.get("id")
+        const deployed_id = component_object.get("spec")?.get("componentMetadata")?.get("id")
+    
+        expect(gc_id, "Component ID not found in standard specification").to.exist
+        expect(deployed_id, "Component ID not found in component manifest").to.exist
+        expect(deployed_id).to.equal(gc_id, `Mismatch between deployed component ID (${deployed_id}) and standard specification ID (${gc_id})`)
+    })
+
+    it('Exposed Apis defined in standard component specification must be specified in component manifest', async function () {
+        addContext(this, 'All mandatory Exposed APIs defined in the standard component specification must be specified in the component manifest')
         let gc_apis = gc_manifest.get("spec").get("coreFunction").get("exposedAPIs").items
         let comp_api = component_object.get("spec").get("coreFunction").get("exposedAPIs").items
 
@@ -172,7 +183,25 @@ describe('Step 1: Component manifest checks',  function() {
 //        })
 
         gc_api_ids.forEach(api => {
-            expect(comp_api_ids).to.include(api, `Missing required API ID: ${api} in component manifest`)
+            expect(comp_api_ids).to.include(api, `Missing required ExposedAPI ID: ${api} in component manifest`)
+        })
+    })
+
+    it('Dependent APIs defined in the standard component specification must be specified in the component manifest', async function () {
+        addContext(this, 'All mandatory Dependent APIs in the standard component specification must also be declared in the component manifest')
+    
+        const gc_dependent_apis = gc_manifest.get("spec").get("coreFunction").get("dependentAPIs")?.items || []
+        const comp_dependent_apis = component_object.get("spec").get("coreFunction").get("dependentAPIs")?.items || []
+    
+        const gc_dependent_ids = gc_dependent_apis.filter(api => api.get("required")).map(api => api.get("id"))
+        
+        const comp_dependent_ids = comp_dependent_apis.map(api => api.get("id"))
+    
+        gc_dependent_ids.forEach(api_id => {
+            expect(comp_dependent_ids).to.include(
+                api_id,
+                `Missing required dependent API ID: ${api_id} in component manifest`
+            )
         })
     })
 

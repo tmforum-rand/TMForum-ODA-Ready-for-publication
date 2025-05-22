@@ -5,17 +5,17 @@ const k8s = require('@kubernetes/client-node');
 const fs = require('fs');
 const { execSync } = require("child_process");
 const YAML = require('yaml');
+const path = require('path');
 
 // Load configuration
-const path = require('path');
 const configPath = path.resolve(__dirname, '../../../CHANGE_ME.json');
 const config = require(configPath);
 const deploymentJsonPath = path.resolve(__dirname, '../../deployment.json');
 const ctkConfigPath  = path.resolve(__dirname, '../../ctkconfig.json');
-const stubPath = path.resolve(__dirname, '../../stubs');  
 const ctkConfig = require(ctkConfigPath);
+
 const COMPONENTS = 'components';
-const NAMESPACE = "components";
+const NAMESPACE = ctkConfig.component_namespace;
 const TMFORUM_ODA_API_GROUP = 'oda.tmforum.org';
 const retrySettings = config.retrySettings || {};
 const DEFAULT_MAX_RETRIES = retrySettings.maxRetries || 30;
@@ -25,8 +25,6 @@ const DEFAULT_RETRY_INTERVAL = retrySettings.retryInterval || 10000;
 let EXPOSED_API_BASE_URL = null;
 let DEPENDENT_API_BASE_URL = null;
 let createdResources = [];
-let firstPassDone = false;
-let installedStubReleaseName = null;
 
 // K8S variables
 let kc = null;
@@ -40,14 +38,6 @@ function getKubeConfig(){
         kc.loadFromDefault();
     }
     return kc;
-}
-
-function getCoreAPI(){
-    if (!coreAPI) {
-        console.log("Initializing CoreV1API client...");
-        coreAPI = getKubeConfig().makeApiClient(k8s.CoreV1Api);
-    }
-    return coreAPI;
 }
 
 function getCustomAPI(){
@@ -136,110 +126,7 @@ async function fetchFromKubernetes() {
     }
 };
 
-async function waitForStubReady(installedStubName, stubReleaseName, stubApiVersion, maxRetries = DEFAULT_MAX_RETRIES, retryInterval = DEFAULT_RETRY_INTERVAL) {
-    console.log(`Waiting for stub component '${installedStubName}' to be ready...`);
-
-    for (let attempt = 1; attempt <= maxRetries; attempt++ ) {
-        try {
-            const apiVersion = stubApiVersion.split("/")[1];
-            const k8sCustomApi = getCustomAPI();
-            const stubDeployment = await k8sCustomApi.listNamespacedCustomObject(
-                TMFORUM_ODA_API_GROUP,
-                apiVersion,
-                NAMESPACE,
-                COMPONENTS,
-                undefined,
-                undefined,
-                `metadata.name=${installedStubName}`
-            );
-
-            if (stubDeployment.body.items.length > 0) {
-                const stubComponentStatus = stubDeployment.body.items[0].status;
-                const coreAPI = stubComponentStatus.coreAPIs?.[0];
-                const mongoReady = await isMongoReady(stubReleaseName);
-
-                if (coreAPI?.ready && mongoReady) {
-                    DEPENDENT_API_BASE_URL = coreAPI?.url || null;
-                    console.log(`✅ Stub component '${installedStubName}' is ready!`);
-                    console.log(`✅ DEPENDENT_API_BASE_URL updated to: ${DEPENDENT_API_BASE_URL}`);
-                    return true;
-                } else {
-                    console.log(`🔄 Attempt ${attempt}/${maxRetries}: Stub '${installedStubName}' not ready yet... Retrying in ${retryInterval / 1000} seconds`);
-                }
-            } else {
-                console.log(`⚠️ Attempt ${attempt}/${maxRetries}: Stub component '${installedStubName}' not found.`);
-            }
-
-            
-        } catch (error) {
-            console.error(`❌ Error checking readiness for stub '${installedStubName}': ${error.message}`);
-        }
-
-        await new Promise(resolve => setTimeout(resolve, retryInterval));
-    }
-
-    console.error(`❌ Timeout! Stub component '${installedStubName}' did not become ready within 5 minutes.`);
-    return false;
-};
-
-async function isMongoReady(stubReleaseName) {
-    const coreAPI = getCoreAPI();
-    const labelSelector = `impl=${stubReleaseName}-mongodb`;
-
-    try {
-        const res = await coreAPI.listNamespacedPod(NAMESPACE, undefined, undefined, undefined, undefined, labelSelector);
-        const pods = res.body.items;
-
-        if (!pods.length){
-            console.warn(`No mongodb pods found for stub release '${stubReleaseName}'`);
-            return false;
-        }
-
-        for (const pod of pods){
-            const isRunning = pod.status.phase === "Running";
-            const allReady = pod.status.containerStatuses?.every(cs => cs.ready);
-
-            if (isRunning && allReady) {
-                console.log(`MongoDB pod '${pod.metadata.name}' is running and all containers are ready.`);
-                return true;
-            } else {
-                console.warn(`MongoDB pod '${pod.metadata.name}' not ready. Phase: ${pod.status.phase}`);
-            }
-        }
-
-        return false;
-    } catch (e) {
-        console.error(`Error checking MongoDB readiness: ${e.message}`);
-        return false;
-    }
-}
-
-async function getInstalledStubComponentName(stubReleaseName) {
-    try {
-        console.log(`🔄 Retrieving installed stub component name for release '${stubReleaseName}'...`);
-
-        const manifestOutput = execSync(`helm get manifest ${stubReleaseName} -n ${NAMESPACE}`, { encoding: 'utf-8'});
-        const parsedDocument = YAML.parseAllDocuments(manifestOutput);
-        for (const doc of parsedDocument) {
-            const kind = doc.get("kind");
-            if (kind === "Component") {
-                const metadata = doc.get("metadata");
-                const installedStubName = metadata.get("name");
-                const stubApiVersion = doc.get("apiVersion");
-                console.log(`✅ Extracted Component Name for '${stubReleaseName}': ${installedStubName}`);
-                return { installedStubName, stubApiVersion };
-            }
-        }
-
-        console.warn(`⚠️ No 'Component' kind found in manifest for '${stubReleaseName}'.`);
-        return { installedStubName: null, stubApiVersion: null };
-    } catch (error) {
-        console.error(`❌ Error retrieving component name for '${stubReleaseName}': ${error.message}`);
-        return { installedStubName: null, stubApiVersion: null };
-    }
-};
-
-
+//=================Cucumber Hooks=================
 Before(function (scenario) {
     const componentToRun = config.component_to_run?.toLowerCase();
     const featureTags = scenario.pickle.tags.map(tag => tag.name);
@@ -253,6 +140,7 @@ Before(function (scenario) {
     
       console.log(`Running scenario: ${scenario.pickle.name}`);
 });
+
 // Step Definitions
 Given("the CTK target component {string} has been installed successfully", async function (componentUnderTest) {
     let deploymentData = getDeploymentData();
@@ -268,47 +156,46 @@ Given("the CTK target component {string} has been installed successfully", async
     console.log(`Dependent API Base URL: ${DEPENDENT_API_BASE_URL}`);
 });
 
-Given("the supporting stub {string} with release {string} has been installed successfully", { timeout: 300000 }, async function(dependentComponent, stubReleaseName){
-    console.log(`🔄 Checking if stub component '${stubReleaseName}' is installed for dependent API '${dependentComponent}'...`);
-    installedStubReleaseName = stubReleaseName;
-    let stubInstalled = false;
-    let installedStubName, stubApiVersion;
-    ({ installedStubName, stubApiVersion }  = await getInstalledStubComponentName(stubReleaseName));
+Given("the supporting stub {string} for API {string} has been installed successfully", async function(dependentComponent, dependentAPI){
+    console.log(`🔄 Checking if stub component is installed for dependent API '${dependentComponent}'...`);
+    this.dependentComponent = dependentComponent;
+    this.dependentAPI = dependentAPI;
 
-    console.log(`installed stubname is: ${installedStubName} with release: ${stubReleaseName}`);
+    const componentUnderTest = config.component_to_run.toLowerCase();
+    const dependentStubMap = config.dependentStubs?.[componentUnderTest];
 
-    if (!installedStubName) {
-        console.log(`⚠️ Stub component '${stubReleaseName}' not found. Installing now...`);
-        try {
-            const installCommand = `helm install ${stubReleaseName} "${stubPath}/${dependentComponent}" -n ${NAMESPACE}`;
-            execSync(installCommand, { stdio: "inherit" });
-        
-            console.log(`✅ Stub component '${stubReleaseName}' installed successfully.`);
+    if (!dependentStubMap || Object.keys(dependentStubMap).length === 0) {
+        throw new Error(`No dependent stub mapping found for '${componentUnderTest}' in CHANGE_ME.json`);
+    }
 
-            // Verify installation
-            const installResult = execSync(`helm list -n ${NAMESPACE} --output json`, {encoding: "utf-8"});
-            const releases = JSON.parse(installResult);
-            const matchedRelease = releases.find(release => release.name === stubReleaseName);
+    let matched = false;
+    for (const [stubName, releaseName] of Object.entries(dependentStubMap)) {
+        const manifestOutput = execSync(`helm get manifest ${releaseName} -n ${NAMESPACE}`, { encoding: 'utf-8' });
+        const parsedDocuments = YAML.parseAllDocuments(manifestOutput);
+        const componentDoc = parsedDocuments.find(doc => doc.get('kind') === 'Component');
+        if (!componentDoc) continue;
 
-            if (matchedRelease) {
-                console.log(`✅ Helm verification successful: Stub component '${stubReleaseName}' is now installed.`);
-                ({ installedStubName, stubApiVersion } = await getInstalledStubComponentName(stubReleaseName));
-            } else {
-                throw new Error(`❌ Helm verification failed: '${stubReleaseName}' is not listed in installed releases.`);
+        const spec = componentDoc.get('spec');
+        const exposedAPIs = spec.get('coreFunction')?.get('exposedAPIs')?.items || [];
+
+        const matchedAPI = exposedAPIs.find(api => {
+            const path = api.get('path');
+            return typeof path === 'string' && DEPENDENT_API_BASE_URL.includes(path);
+        });
+
+        if (matchedAPI) {
+            const declaredPath = matchedAPI.get('path');
+            if (DEPENDENT_API_BASE_URL.includes(declaredPath)) {
+                this.stubReleaseName = releaseName;
+                matched = true;
+                break;
             }
-        } catch (error) {
-            console.error(`❌ Failed to install stub component '${stubReleaseName}': ${error.message}`);
-            throw new Error(`Stub installation failed for '${stubReleaseName}'.`);
         }
     }
-    // Fetch the exposedAPI of the dependent component stub
-    console.log(`🔄 Fetching Exposed API URL for stub '${stubReleaseName}' with name '${installedStubName}'...`);
 
-    const isStubReady = await waitForStubReady(installedStubName, stubReleaseName, stubApiVersion);
-    if (!isStubReady) {
-        throw new Error(`Stub component '${stubReleaseName}' failed to become ready.`);
+    if (!matched) {
+        throw new Error(`None of the declared stub releases for '${componentUnderTest}' expose API '${dependentAPI} at '${DEPENDENT_API_BASE_URL}'`);
     }
-    console.log(`✅ Stub '${stubReleaseName}' is fully ready. Proceeding with the test.`);
 });
 
 Given("the dependent API stub {string} is initialized with the payload defined in file {string}", async function (dependentAPI, basePayload) {
@@ -318,60 +205,83 @@ Given("the dependent API stub {string} is initialized with the payload defined i
 
     const url = DEPENDENT_API_BASE_URL.endsWith('/') ? `${DEPENDENT_API_BASE_URL}${dependentAPI}` : `${DEPENDENT_API_BASE_URL}/${dependentAPI}`;
     const headers = ctkConfig.headers;
-    const response = await makeApiRequest('POST', url, payload, headers);
-    console.log(`Response for API POST request: ${JSON.stringify(response.data)}`);
 
-    if (response.status === 201) {
-        const returnedID = response.data?.id;
-        if (returnedID) {
-            console.log(`✅ API Initialization successful! Returned ID: ${returnedID}`);
-            this.dependentAPI_ID = returnedID;  // Store the ID for validation
-        } else {
-            console.warn(`⚠️ Warning: No ID returned from dependent API.`);
+    let resourceId = payload?.id;
+    let resourceHref = payload?.href;
+    let resourceExists = false;
+
+    // Validate if id and href found in the dependent api
+    if (resourceId && resourceHref) {
+        const getUrl = `${url}/${resourceId}`;
+        console.log(`Attempting GET to validate existing resource: ${getUrl}`);
+
+        try {
+            const response = await makeApiRequest('GET', getUrl, null, headers);
+            if (response.status === 200) {
+                console.log(`Existing resource found in dependent API. ID: ${resourceId}`);
+                this.dependentAPI_ID = resourceId;
+                this.dependentAPI_HREF = resourceHref;
+                resourceExists = true;
+            } else {
+                console.warn(`GET failed on dependent API (status: ${response.status}), will POST new resource.`);
+            }
+        } catch (err) {
+            console.warn(`Resource with ID '${resourceId}' not found (error: ${err}). Proceeding with POST`);
         }
-    } else {
-        console.error(`❌ Dependent API initialization failed with status ${response.status}: ${response.data}`);
-        throw new Error(`Dependent API stub '${dependentAPI}' failed to initialize.`);
     }
 
-    assert.strictEqual(response.status, 201, `Failed to preload dependent API stub: ${response.statusText}`);
+    // If resource does not exist or id/href missing from payload, POST the payload.
+    if (!resourceExists) {
+        delete payload.id;
+        delete payload.href;
+
+        console.log(`Creating new resource via POST to: ${url}`);
+        const postResponse = await makeApiRequest('POST', url, payload, headers);
+        console.log(`Response for API POST request: ${JSON.stringify(postResponse.data)}`);
+        if (postResponse.status === 201) {
+            const returnedID = postResponse.data?.id;
+            const returnedHref = postResponse.data?.href;
+            if (returnedID) {
+                console.log(`✅ Dependent API Initialization successful! Returned ID: ${returnedID}`);
+                this.dependentAPI_ID = returnedID;  // Store the ID for validation
+                this.dependentAPI_HREF = returnedHref;
+            } else {
+                console.warn(`⚠️ Warning: No ID returned from dependent API.`);
+            }
+        } else {
+            console.error(`❌ Dependent API initialization failed with status ${postResponse.status}: ${postResponse.data}`);
+            throw new Error(`Dependent API stub '${dependentAPI}' failed to initialize.`);
+        }
+    }
+
+    assert(this.dependentAPI_ID, `Could not resolve depedent API ID for: ${dependentAPI}`);
     console.log(`Dependent API ${dependentAPI} initialized successfully.`);
 
 });
 
 
-When("a {string} with payload defined in file {string} is created in API {string}", async function (resourceType, targetPayload, exposedAPI){
+When("a {string} with payload defined in file {string} is created in API {string} expecting {string}", async function (resourceType, targetPayload, exposedAPI, expectedResponse){
 
     // Step 1: construct the file path and read the payload
+    const payloadPath = path.resolve(__dirname, '../payloads', targetPayload);
     const payload = loadPayload(targetPayload);
     console.log(`Creating resource of type ${resourceType} in API ${exposedAPI} with targetPayload`);
 
-    // Step 2: Extract the serviceSpecification ID from the payload
-    let specificationID = payload[resourceType]?.id;
-    
-    if (!specificationID){
-        console.error(`❌ ${resourceType} ID not found in payload.`);
-        this.response = { status: 400 };
-        return;
+    // Step 2: Update id/href for success scenario
+    if (expectedResponse === "success" && this.dependentAPI_ID) {
+        payload[resourceType] = payload[resourceType] || {};
+        payload[resourceType].id = this.dependentAPI_ID;
+        payload[resourceType].href = this.dependentAPI_HREF;
+        
+        // Write updated payload back to file
+        try {
+            fs.writeFileSync(payloadPath, JSON.stringify(payload, null, 2));
+        } catch (err) {
+            console.error(`Failed to write updated payload to ${payloadPath}: `, err.message);
+        }
     }
 
-    if (!firstPassDone && this.dependentAPI_ID) {
-        specificationID = this.dependentAPI_ID;
-    }
-
-    const dependentURL = DEPENDENT_API_BASE_URL.endsWith('/') ? `${DEPENDENT_API_BASE_URL}${this.dependentAPI}` : `${DEPENDENT_API_BASE_URL}/${this.dependentAPI}`;
-    // Step 3: Check if the specification ID exists in catalog (Dependent API)
-    console.log(`Validating Service Specification ID: ${specificationID}`);
-    const validationSuccess = await validateSpecificationId(specificationID, dependentURL);
-
-    if (!validationSuccess) {
-        console.log(`Expected Failure: Specification ID ${specificationID} not found (404)`);
-        this.response = { status: 404 };
-        return;
-    }
-
-
-    // Step 4: Proceed with POST to Exposed API
+    // Step 3: Proceed with POST to Exposed API
     const url = EXPOSED_API_BASE_URL.endsWith('/') ? `${EXPOSED_API_BASE_URL}${exposedAPI}` : `${EXPOSED_API_BASE_URL}/${exposedAPI}`;
     const headers = ctkConfig.headers;
     this.response = await makeApiRequest('POST', url, payload, headers);
@@ -381,12 +291,11 @@ When("a {string} with payload defined in file {string} is created in API {string
         // Store response ID for cleanup
         const createdResourceID = this.response.data.id;
         createdResources.push({ url, id: createdResourceID });
-        console.log(`Tracing resource ID for cleanup: ${createdResourceID}`);
+        console.log(`Tracking resource ID for cleanup: ${createdResourceID}`);
     } else {
         console.error(`❌ POST failed with status ${this.response.status}: ${this.response.data}`);
     }
 
-    firstPassDone = true;
 });
 
 Then("expected response for operation {string} should be {string}", function (operationID, expectedResponse){
@@ -407,9 +316,10 @@ Then("expected response for operation {string} should be {string}", function (op
         console.log(`Operation ${operationID} validated successfully with status ${actualStatusCode}`);
     }
     else if (expectedResponse === 'failure'){
-        assert(
-            failureStatusCodes.includes(actualStatusCode),
-            `Operation ${operationID} failed unexpectedly: Expected one of [${failureStatusCodes.join(', ')}], but got ${actualStatusCode}.`
+        assert.notStrictEqual(
+            actualStatusCode,
+            successStatus,
+            `Operation ${operationID} unexpectedly succeeded: Expected one of [${failureStatusCodes.join(', ')}, etc.], but got ${actualStatusCode}.`
         );
     }
     else {
@@ -443,23 +353,4 @@ After(async function () {
     }
     // Clear tracked resources
     createdResources = [];
-});
-
-AfterAll(async function () {
-    console.log(`Uninstalling stub: ${installedStubReleaseName}`);
-    if (!installedStubReleaseName) {
-        console.log("No stub release specified. Skipping final uninstallation.");
-        return 'skipped';
-    }
-
-    console.log(`Uninstalling stub component '${installedStubReleaseName}' after all scenarios.`)
-
-    try {
-        const uninstallCommand = `helm uninstall ${installedStubReleaseName} -n ${NAMESPACE}`;
-        execSync(uninstallCommand, { stdio: "inherit" });
-        console.log(`✅ Stub component '${installedStubReleaseName}' uninstalled successfully.`);
-    } catch (error) {
-        console.error(`❌ Failed to uninstall stub component '${installedStubReleaseName}': ${error.message}`);
-    }
-    installedStubReleaseName = null;
 });

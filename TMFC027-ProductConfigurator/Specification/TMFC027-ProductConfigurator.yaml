@@ -233,7 +233,7 @@ spec:
       through support of configuration, pricing and quote generation activities.
     publicationDate: 2023-11-27
     status: specified
-    functionalBlock: CoreCommerceManagement
+    functionalBlock: CoreCommerce
     owners:
     - email: Redacted
       name: Redacted
