@@ -29,7 +29,7 @@ spec:
         id: TMF634
         specification:
           - url: >-
-              https://raw.githubusercontent.com/tmforum-apis/TMF634_ResourceCatalog/master/TMF634-ResourceCatalog-v4.0.0.swagger.json
+              https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
         implementation: {{.Release.Name}}-resourcecatalogapi
         apiType: openapi
         path: >-
@@ -48,19 +48,6 @@ spec:
     dependentAPIs: []
   securityFunction:
     canvasSystemRole: {{.Values.security.controllerRole}}
-    exposedAPIs:
-      - name: partyrole
-        id: TMF669
-        specification:
-          - url: >-
-              https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json
-        implementation: {{.Release.Name}}-partyroleapi
-        apiType: openapi
-        path: >-
-          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
-        developerUI: >-
-          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
-        port: 8080
-        gatewayConfiguration: {}
+    exposedAPIs: []
     
   

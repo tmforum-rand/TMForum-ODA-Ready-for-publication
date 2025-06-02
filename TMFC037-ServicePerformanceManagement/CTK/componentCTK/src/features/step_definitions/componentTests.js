@@ -1,16 +1,18 @@
 const { Given, When, Then, Before, After, AfterAll } = require('@cucumber/cucumber');
 const assert = require('assert');
 const { loadPayload, makeApiRequest, validateSpecificationId } = require('../utils/api');
+const { getDeploymentData, fetchFromKubernetes } = require('../utils/kubernetes');
+const { resolveStubRelease } = require('../utils/stubResolver');
 const k8s = require('@kubernetes/client-node');
 const fs = require('fs');
 const { execSync } = require("child_process");
 const YAML = require('yaml');
 const path = require('path');
+const _ = require('lodash');
 
 // Load configuration
 const configPath = path.resolve(__dirname, '../../../CHANGE_ME.json');
 const config = require(configPath);
-const deploymentJsonPath = path.resolve(__dirname, '../../deployment.json');
 const ctkConfigPath  = path.resolve(__dirname, '../../ctkconfig.json');
 const ctkConfig = require(ctkConfigPath);
 
@@ -26,105 +28,6 @@ let EXPOSED_API_BASE_URL = null;
 let DEPENDENT_API_BASE_URL = null;
 let createdResources = [];
 
-// K8S variables
-let kc = null;
-let coreAPI = null;
-let customAPI = null;
-
-function getKubeConfig(){
-    if (!kc) {
-        console.log("Initializing Kubernetes Config...");
-        kc = new k8s.KubeConfig();
-        kc.loadFromDefault();
-    }
-    return kc;
-}
-
-function getCustomAPI(){
-    if (!customAPI) {
-        console.log("Initializing CustomObjectsAPI client...");
-        customAPI = getKubeConfig().makeApiClient(k8s.CustomObjectsApi);
-    }
-    return customAPI;
-}
-
-function getDeploymentData() {
-    if (!fs.existsSync(deploymentJsonPath)) {
-        console.error(`❌ Deployment file not found: ${deploymentJsonPath}`);
-        return {exposedApiBaseUrl: null, dependentApiBaseUrl: null};
-    }
-
-    try {
-        const deploymentData = JSON.parse(fs.readFileSync(deploymentJsonPath, 'utf-8'));
-        const items = deploymentData.body.items;
-
-        if (!items || items.length === 0) {
-            console.error(`❌ No items found in deployment.json`);
-            return {exposedApiBaseUrl: null, dependentApiBaseUrl: null};
-        }
-
-        const componentStatus = items[0].status;
-
-        const exposedApiBaseUrl = componentStatus.coreAPIs?.[0]?.url || null;
-
-        const dependentApiBaseUrl = componentStatus.coreDependentAPIs?.[0]?.url || null;
-        console.log(`✅ Extracted Exposed API URL: ${exposedApiBaseUrl}`);
-        console.log(`✅ Extracted Dependent API URL: ${dependentApiBaseUrl}`);
-
-        return { exposedApiBaseUrl, dependentApiBaseUrl };
-    } catch (error) {
-        console.error(`❌ Error parsing deployment.json: ${error.message}`);
-        return {exposedApiBaseUrl: null, dependentApiBaseUrl: null};
-    }
-};
-
-function getComponentDocument (inDocumentArray) {
-    return inDocumentArray.find(doc => {
-        let kind = doc.get('kind') || ''
-        return kind.toLowerCase() === 'component'
-    })
-};
-
-async function fetchFromKubernetes() {
-    try {
-        console.log("🔄 Fetching live values from Kubernetes...");
-        const manifest = await fs.promises.readFile(ctkConfig.componentFilePath, 'utf8');
-        const component_manifests = YAML.parseAllDocuments(manifest);
-        const component_object = getComponentDocument(component_manifests);
-        const js_component = component_object.toJSON();
-        const componentApiVersion = js_component.apiVersion;
-        const apiVersion = componentApiVersion.split("/")[1];
-        const componentName = js_component.metadata.name
-        const k8sCustomApi = getCustomAPI();
-        const deployment = await k8sCustomApi.listNamespacedCustomObject(
-            TMFORUM_ODA_API_GROUP,
-            apiVersion,
-            NAMESPACE,
-            COMPONENTS,
-            undefined,
-            undefined,
-            'metadata.name=' + componentName
-        );
-
-        if (!deployment.body.items || deployment.body.items.length === 0) {
-            console.error(`❌ Component ${componentName} not found in Kubernetes.`);
-            return { exposedApiBaseUrl: null, dependentApiBaseUrl: null };
-        }
-
-        const componentStatus = deployment.body.items[0].status;
-
-        const exposedApiBaseUrl = componentStatus.coreAPIs?.[0]?.url || null;
-        const dependentApiBaseUrl = componentStatus.coreDependentAPIs?.[0]?.url || null;
-
-        console.log(`✅ Extracted Exposed API URL from Kubernetes: ${exposedApiBaseUrl}`);
-        console.log(`✅ Extracted Dependent API URL from Kubernetes: ${dependentApiBaseUrl}`);
-
-        return { exposedApiBaseUrl, dependentApiBaseUrl };
-    } catch (error) {
-        console.error(`❌ Error fetching Kubernetes component: ${error.message}`);
-        return { exposedApiBaseUrl: null, dependentApiBaseUrl: null };
-    }
-};
 
 //=================Cucumber Hooks=================
 Before(function (scenario) {
@@ -142,10 +45,10 @@ Before(function (scenario) {
 });
 
 // Step Definitions
-Given("the CTK target component {string} has been installed successfully", async function (componentUnderTest) {
-    let deploymentData = getDeploymentData();
+Given("the CTK target component {string} with exposed API ID {string} and dependent API ID {string} has been installed successfully", async function (componentUnderTest, exposedApiId, dependentApiId) {
+    let deploymentData = getDeploymentData(exposedApiId, dependentApiId);
     if (!deploymentData.exposedApiBaseUrl || !deploymentData.dependentApiBaseUrl) {
-        deploymentData = await fetchFromKubernetes();
+        deploymentData = await fetchFromKubernetes(exposedApiId, dependentApiId);
     }
     // Set global variable values
     EXPOSED_API_BASE_URL = deploymentData.exposedApiBaseUrl;
@@ -168,34 +71,20 @@ Given("the supporting stub {string} for API {string} has been installed successf
         throw new Error(`No dependent stub mapping found for '${componentUnderTest}' in CHANGE_ME.json`);
     }
 
-    let matched = false;
-    for (const [stubName, releaseName] of Object.entries(dependentStubMap)) {
-        const manifestOutput = execSync(`helm get manifest ${releaseName} -n ${NAMESPACE}`, { encoding: 'utf-8' });
-        const parsedDocuments = YAML.parseAllDocuments(manifestOutput);
-        const componentDoc = parsedDocuments.find(doc => doc.get('kind') === 'Component');
-        if (!componentDoc) continue;
+    const resolvedStub = resolveStubRelease(
+        componentUnderTest,
+        dependentComponent,
+        DEPENDENT_API_BASE_URL,
+        dependentStubMap,
+        ctkConfig.headers,
+        NAMESPACE
+    );
 
-        const spec = componentDoc.get('spec');
-        const exposedAPIs = spec.get('coreFunction')?.get('exposedAPIs')?.items || [];
-
-        const matchedAPI = exposedAPIs.find(api => {
-            const path = api.get('path');
-            return typeof path === 'string' && DEPENDENT_API_BASE_URL.includes(path);
-        });
-
-        if (matchedAPI) {
-            const declaredPath = matchedAPI.get('path');
-            if (DEPENDENT_API_BASE_URL.includes(declaredPath)) {
-                this.stubReleaseName = releaseName;
-                matched = true;
-                break;
-            }
-        }
+    if (!resolvedStub) {
+        throw new Error(`None of the declared stub releases for '${componentUnderTest}' expose API '${dependentAPI}' at '${DEPENDENT_API_BASE_URL}'`);
     }
-
-    if (!matched) {
-        throw new Error(`None of the declared stub releases for '${componentUnderTest}' expose API '${dependentAPI} at '${DEPENDENT_API_BASE_URL}'`);
-    }
+    this.stubReleaseName = resolvedStub.releaseName;
+    this.stubHeaders = resolvedStub.headers;
 });
 
 Given("the dependent API stub {string} is initialized with the payload defined in file {string}", async function (dependentAPI, basePayload) {
@@ -216,7 +105,7 @@ Given("the dependent API stub {string} is initialized with the payload defined i
         console.log(`Attempting GET to validate existing resource: ${getUrl}`);
 
         try {
-            const response = await makeApiRequest('GET', getUrl, null, headers);
+            const response = await makeApiRequest('GET', getUrl, null, this.stubHeaders);
             if (response.status === 200) {
                 console.log(`Existing resource found in dependent API. ID: ${resourceId}`);
                 this.dependentAPI_ID = resourceId;
@@ -236,6 +125,7 @@ Given("the dependent API stub {string} is initialized with the payload defined i
         delete payload.href;
 
         console.log(`Creating new resource via POST to: ${url}`);
+        const headers = this.stubHeaders;
         const postResponse = await makeApiRequest('POST', url, payload, headers);
         console.log(`Response for API POST request: ${JSON.stringify(postResponse.data)}`);
         if (postResponse.status === 201) {
@@ -245,6 +135,10 @@ Given("the dependent API stub {string} is initialized with the payload defined i
                 console.log(`✅ Dependent API Initialization successful! Returned ID: ${returnedID}`);
                 this.dependentAPI_ID = returnedID;  // Store the ID for validation
                 this.dependentAPI_HREF = returnedHref;
+                // Store response ID for cleanup
+                const createdResourceID = returnedID;
+                createdResources.push({ url, id: createdResourceID, headers });
+                console.log(`Tracking resource ID for cleanup: ${createdResourceID}`);
             } else {
                 console.warn(`⚠️ Warning: No ID returned from dependent API.`);
             }
@@ -260,7 +154,7 @@ Given("the dependent API stub {string} is initialized with the payload defined i
 });
 
 
-When("a {string} with payload defined in file {string} is created in API {string} expecting {string}", async function (resourceType, targetPayload, exposedAPI, expectedResponse){
+When("a {string} with {string} on payload defined in file {string} is created in API {string} expecting {string}", async function (resourceType, resourceFieldPath, targetPayload, exposedAPI, expectedResponse){
 
     // Step 1: construct the file path and read the payload
     const payloadPath = path.resolve(__dirname, '../payloads', targetPayload);
@@ -269,9 +163,9 @@ When("a {string} with payload defined in file {string} is created in API {string
 
     // Step 2: Update id/href for success scenario
     if (expectedResponse === "success" && this.dependentAPI_ID) {
-        payload[resourceType] = payload[resourceType] || {};
-        payload[resourceType].id = this.dependentAPI_ID;
-        payload[resourceType].href = this.dependentAPI_HREF;
+        // Inject id and href  into dynamic path
+        _.set(payload, `${resourceFieldPath}.id`, this.dependentAPI_ID);
+        _.set(payload, `${resourceFieldPath}.href`, this.dependentAPI_HREF);
         
         // Write updated payload back to file
         try {
@@ -290,7 +184,7 @@ When("a {string} with payload defined in file {string} is created in API {string
 
         // Store response ID for cleanup
         const createdResourceID = this.response.data.id;
-        createdResources.push({ url, id: createdResourceID });
+        createdResources.push({ url, id: createdResourceID, headers });
         console.log(`Tracking resource ID for cleanup: ${createdResourceID}`);
     } else {
         console.error(`❌ POST failed with status ${this.response.status}: ${this.response.data}`);
@@ -340,7 +234,7 @@ After(async function () {
             const deleteUrl = `${resource.url}/${resource.id}`;
             console.log(`Deleting resource: ${deleteUrl}`);
             const headers = ctkConfig.headers;
-            const response = await makeApiRequest('DELETE', deleteUrl, null, headers);
+            const response = await makeApiRequest('DELETE', deleteUrl, null, resource.headers);
 
             if (response.status === 204 || response.status === 200) {
                 console.log(`✅ Successfully deleted resource: ${resource.id}`);

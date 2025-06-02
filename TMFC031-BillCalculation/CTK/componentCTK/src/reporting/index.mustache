@@ -210,13 +210,13 @@
                                 <li>
                                     <div class="collapsible-header">
                                         <span>Exposed</span>
-                                        {{ #coreFunctionPassed}}
+                                        {{ #exposedApiPassed}}
                                         <span class="lozenge success">Passed</span>
-                                        {{ /coreFunctionPassed}}
+                                        {{ /exposedApiPassed}}
 
-                                        {{^coreFunctionPassed}}
+                                        {{^exposedApiPassed}}
                                         <span class="lozenge failure">Failed</span>
-                                        {{/coreFunctionPassed}}
+                                        {{/exposedApiPassed}}
 
                                     </div>
                                     <div class="collapsible-body">

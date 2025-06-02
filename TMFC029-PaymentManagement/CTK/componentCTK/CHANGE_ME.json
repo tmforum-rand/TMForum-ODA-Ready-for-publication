@@ -40,17 +40,32 @@
     },
     "dependentStubs": {
         "tmfc005": {
-            "productCatalog": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            }
         },
         "tmfc007": {
-            "serviceCatalog": "<HELM_RELEASE_SERVICE_CATALOG>",
-            "serviceInventory": "<HELM_RELEASE_SERVICE_INVENTORY>"
+            "serviceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_CATALOG>"
+            },
+            "serviceInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_INVENTORY>"
+            }
         },
         "tmfc008": {
-            "serviceCatalog": "<HELM_RELEASE_SERVICE_CATALOG>"
+            "serviceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_CATALOG>"
+            }
         },
         "tmfc012": {
-            "resourceCatalog": "<HELM_RELEASE_RESOURCE_CATALOG>"
+            "resourceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_CATALOG>"
+            }
         }
     },
     "bddPayloads": {
@@ -73,6 +88,133 @@
             },
             "product-catalog-0001":{
                 "name": "Cisco Firepower NGFW"
+            }
+        },
+        "tmfc007": {
+            "service-target-0001": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                {
+                    "id": "1",
+                    "action": "add",
+                    "service": {
+                        "state": "active",
+                        "serviceType": "CFS",
+                        "serviceCharacteristic": [
+                        {
+                          "name": "vCPE_IP",
+                          "valueType": "String",
+                          "value": "193.218.236.21"
+                        }
+                        ],
+                        "serviceSpecification": {
+                            "id": "__VALID_ID__", 
+                            "href": "__VALID_HREF__",
+                            "name": "vCPE",
+                            "version": "1"
+                        }
+                    }
+                }
+                ]
+            },
+            "service-target-0002": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                {
+                    "id": "1",
+                    "action": "add",
+                    "service": {
+                        "state": "active",
+                        "serviceType": "CFS",
+                        "serviceCharacteristic": [
+                        {
+                          "name": "vCPE_IP",
+                          "valueType": "String",
+                          "value": "193.218.236.21"
+                        }
+                        ],
+                        "serviceSpecification": {
+                            "id": "non-existent-id",  
+                            "href": "http://example.com/non-existent",
+                            "name": "vCPE",
+                            "version": "1"
+                        }
+                    }
+                }
+                ]
+            },
+            "service-target-0003": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                    {
+                        "id": "1",
+                        "action": "modify",
+                        "service": {
+                            "state": "active",
+                            "serviceType": "CFS",
+                            "id": "__VALID_ID__", 
+                            "href": "__VALID_HREF__"
+                        }
+                    }
+                ]
+            },
+            "service-target-0004": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                    {
+                        "id": "1",
+                        "action": "modify",
+                        "service": {
+                            "state": "active",
+                            "serviceType": "CFS",
+                            "id": "non-existent-id",  
+                            "href": "http://example.com/non-existent"
+                        }
+                    }
+                ]
+            },
+            "service-catalog-0001":{
+                "id": "__VALID_ID__", 
+                "href": "__VALID_HREF__",
+                "name": "vCPE",
+                "version": "1"
+            },
+            "service-inventory-0001":{
+                "state": "active",
+                "serviceType": "CFS",
+                "serviceCharacteristic": [
+                {
+                    "name": "vCPE_IP",
+                    "valueType": "String",
+                    "value": "193.218.236.21"
+                }
+                ],
+                "serviceSpecification": {
+                    "id": "__VALID_ID__", 
+                    "href": "__VALID_HREF__",
+                    "name": "vCPE",
+                    "version": "1"
+                }
             }
         },
         "tmfc008": {

@@ -181,7 +181,7 @@ describe("Step 1: Deployment component tests", function () {
                     } else {
                         api_configs.push({
                             path: ctk_location,
-                            url: ref_to_url[api_ref],
+                            url: ref_to_url[api_ref].replace("localhost", "127.0.0.1"),
                             api_ref: api_ref
                         })    
                     }

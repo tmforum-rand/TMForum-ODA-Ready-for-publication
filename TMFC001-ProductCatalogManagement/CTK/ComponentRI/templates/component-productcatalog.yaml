@@ -24,7 +24,7 @@ spec:
     - name: productcatalogmanagement
       id: TMF620
       specification:
-      - url: "https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json"
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json"
       implementation: {{.Release.Name}}-prodcatapi
       apiType: openapi
       gatewayConfiguration:
@@ -38,8 +38,9 @@ spec:
       developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v4/docs
       port: 8080
     - name: promotionmanagement
+      id: TMF671
       specification:
-      - url: "https://raw.githubusercontent.com/tmforum-apis/TMF671_Promotion/master/TMF671-Promotion-v4.0.0.swagger.json"
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF671_Promotion/4.0.0/swagger/TMF671_Promotion_Management_API_v4.0.0_beta_swagger.json"
       implementation: {{.Release.Name}}-promgmtapi
       apiType: openapi
       gatewayConfiguration:
@@ -80,20 +81,4 @@ spec:
       port: 4000    
   securityFunction:
     canvasSystemRole: {{ .Values.security.canvasSystemRole }}
-    exposedAPIs: 
-    - name: partyrole
-      id: TMF669
-      specification:
-      - url: "https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.0.swagger.json"
-      implementation: {{.Release.Name}}-partyroleapi
-      apiType: openapi
-      gatewayConfiguration:
-        apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 10}}
-        rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 10}}
-        quota: {{.Values.component.apipolicy.quota | toYaml | nindent 10}}
-        OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 10}}
-        CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 10}}
-        template: "{{.Values.component.apipolicy.template}}"
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
-      port: 8080
+    exposedAPIs: []

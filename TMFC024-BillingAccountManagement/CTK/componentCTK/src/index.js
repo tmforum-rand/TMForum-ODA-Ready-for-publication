@@ -583,6 +583,9 @@ async function generateReportData(resultsPath) {
   let dependentFunctionSummary = await getNewmanSummary(dependentFunctionResults)
   console.log("Got all newman results")
   let bddResults = await getBddResultsSumary(Path.join(resultsPath, "cucumber-bdd/results.json"))
+  let exposedApisPassed = coreFunctionSummary.cfSummary.passed
+  let exposedApisFailed = coreFunctionSummary.cfSummary.failed
+  coreFunctionSummary.cfSummary.total += bddResults.total
   coreFunctionSummary.cfSummary.passed += bddResults.passed
   coreFunctionSummary.cfSummary.failed += bddResults.failed
   if (bddResults.passed === 0 && bddResults.failed === 0){
@@ -652,6 +655,7 @@ async function generateReportData(resultsPath) {
     componentUrl: componentUrl,
     coreFunctionPassed: coreFunctionSummary.cfSummary.failed === 0,
     coreFunctionResults: coreFunctionResults,
+    exposedApiPassed: exposedApisFailed === 0,
 //    dependentFunctionPassed: dependentFunctionSummary.cfSummary.failed === 0,
     dependentFunctionPassed: (bddResults.failed === 0 || bddResults.failed === "N/A"),
     dependentFunctionResults: {

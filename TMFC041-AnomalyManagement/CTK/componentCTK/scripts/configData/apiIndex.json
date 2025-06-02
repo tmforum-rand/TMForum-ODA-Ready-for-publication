@@ -72,7 +72,7 @@
     "TMF641_v4.1.0": {
         "name": "Service Ordering Management API",
         "swagger": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json",
-        "ctk": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.1.0/ctk/TMF641-ServiceOrdering-v4-1.zip"
+        "ctk": "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.1.0/ctk/TMF641-ServiceOrdering-v4.1.0.zip"
     },
     "TMF648_v4.0.0": {
         "name": "Quote Management API",

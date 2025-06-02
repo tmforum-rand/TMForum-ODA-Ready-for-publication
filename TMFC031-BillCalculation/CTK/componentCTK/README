@@ -33,14 +33,23 @@ The `componentCTK` directory contains the following:
   Shell scripts to execute the CTK
 
 ---
-## 🚀 How to Run
+## 🚀 How to Run 
 
-1. Update CHANGE_ME.json with your configuration:
+## Prerequisites: 
+1. The test system should be connected to a valid instance of an ODA Canvas
+
+2. (Conditional): If the component under test has any mandatory dependent APIs, then the dependentAPI must be installed on the ODA Canvas before installing the component under test (in order to meet the required resource dependencies)
+
+3. The component under test must be installed successfully on the test Canvas environment.
+
+
+## Steps to run the CTK
+1. Update CHANGE_ME.json with your configuration (refer "How to Update `CHANGE_ME.json`" below):
     - Define the component you want to test
     - Update the product details under ctkconfig
     - Add any API-specific payloads or headers under ctkconfig
-    - Specify dependent API helm releases where applicable
-    - Provide BDD payloads under bddPayloads
+    - Specify dependent API helm releases where applicable and provide dependent API-specific headers where needed
+    - Provide BDD payloads under bddPayloads section applicable to the component under test
 
 2. From the componentCTK directory, run the appropriate shell script for your system:
     🐧 macOS / Linux
@@ -60,7 +69,7 @@ This will:
 - Generate reports
 
 ---
-## 🔧 Prerequisites
+## 🔧 Requirements
 
 Before running the CTK execution framework, ensure the following are installed on your system:
 
@@ -108,7 +117,7 @@ Update the fields below to configure your CTK run:
 | `dependentStubs`              | Map of required dependent components per test         | `{...}`                      |
 | - `componentName`             | Name of the component under test                      | `{...}`                      |
 | - - `dependentApiName`        | helm release of the dependent api for the test        | `{s001}`                     |
-| `bddPayloads`                 | Test payloads for exposed + dependent APIs            | `{...}`                      |
+| `bddPayloads`                 | Test payloads for exposed + dependent APIs BDD tests  | `{...}`                      |
 
 💡 Only update the values you need for your test run. Others can remain default.
 
@@ -119,9 +128,11 @@ Update the fields below to configure your CTK run:
 
 For a success test:
 
-If targetPayload contains placeholder __VALID_ID__, it is replaced dynamically during test execution
+The targetPayload contains placeholder __VALID_ID__, which is replaced dynamically during test execution using values from the basePayload.
 If the dependentAPI payload already contains a valid id, the framework checks the resource's existence
   If not found, it will POST a new resource to the dependent API and extract the returned id/href
+If the dependentAPI payload does not contain id and href fields, the framework will POST the payload and the extracted id/href gets injected into the targetPaylaod.
+
 
 ---
 
@@ -132,7 +143,7 @@ If the dependentAPI payload already contains a valid id, the framework checks th
    All configuration is consolidated in the root-level `CHANGE_ME.json`.
 
 2. **Downloads Component YAML:**  
-   Retrieves the standard component YAML file from the TM Forum GitHub repository and stores it under:
+   Retrieves the standard component YAML file from the TM Forum GitHub repository and stores it under (This step is skipped if the required YAML file is already found in the below mentioned directory):
    ```
    componentCTK/resources/standard-components/
    ```
@@ -182,6 +193,7 @@ Output File	Description
 - Check that `CHANGE_ME.json` is filled correctly (missing keys will cause runtime errors)
 - Use `verify=False` in your requests config if working behind self-signed certs
 - Make sure Node.js is installed (`npm install` is automatically handled)
+- If the download of the YAML file of the standard specification from TM Forum's github repository takes too long, you can manually download the specification and place it under componentCTK/resources/standard-components/
 
 ---
 

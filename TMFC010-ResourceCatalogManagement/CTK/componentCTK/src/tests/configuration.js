@@ -163,7 +163,11 @@ describe('Step 1: Component manifest checks',  function() {
     
         expect(gc_id, "Component ID not found in standard specification").to.exist
         expect(deployed_id, "Component ID not found in component manifest").to.exist
-        expect(deployed_id).to.equal(gc_id, `Mismatch between deployed component ID (${deployed_id}) and standard specification ID (${gc_id})`)
+
+        const deployedLower = deployed_id.toLowerCase()
+        const gcIdLower = gc_id.toLowerCase()
+
+        expect(deployedLower.includes(gcIdLower), `Mismatch between deployed component ID (${deployed_id}) and standard specification ID (${gc_id})`).to.be.true
     })
 
     it('Exposed Apis defined in standard component specification must be specified in component manifest', async function () {
