@@ -4,34 +4,6 @@ metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
-    dependentAPIs:
-    - id: TMF632
-      apiType: openapi
-      apiSDO: tmForum
-      name: party-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - individual:
-        - GET
-        - GET /id
-      - organization:
-        - GET
-        - GET /id
-    - id: TMF674
-      apiType: openapi
-      apiSDO: tmForum
-      name: geographic-site-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - geographicSite:
-        - GET
-        - GET /id
     exposedAPIs:
     - id: TMF673
       apiType: openapi
@@ -117,6 +89,7 @@ spec:
         - PATCH
         - GET
         - GET /id
+    dependentAPIs: []
   componentMetadata:
     id: TMFC014
     name: LocationManagement
