@@ -156,9 +156,9 @@ spec:
     id: TMFC036
     name: LeadAndOpportunityManagement
     version: 1.2.0
-    description: Lead and Opportunity Management provides the functionality for lead
-      and opportunity capture, qualification, reporting, and support during the pre-sales
-      stage.
+    description: Lead and Opportunity Management component provides the functionality
+      for lead and opportunity capture, qualification, reporting, and support during
+      the pre-sales stage.
     publicationDate: 2023-11-18 00:00:00
     status: specified
     functionalBlock: PartyManagement

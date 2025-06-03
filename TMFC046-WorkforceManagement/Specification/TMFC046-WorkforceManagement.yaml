@@ -98,10 +98,11 @@ spec:
     id: TMFC046
     name: WorkforceManagement
     version: 1.1.0
-    description: Workforce Management provides capabilities to describe teams, organizations,
-      skills and availability of sales / technical experts. It provides the ability
-      to reserve time slots to carry out assigned tasks (internal or customer facing).
-      It allows the reservation (and updates / rescheduling) of appointments and interventions.
+    description: Workforce Management component provides capabilities to describe
+      teams, organizations, skills and availability of sales / technical experts.
+      It provides the ability to reserve time slots to carry out assigned tasks (internal
+      or customer facing). It allows the reservation (and updates / rescheduling)
+      of appointments and interventions.
     publicationDate: 2024-04-18 00:00:00
     status: specified
     functionalBlock: Production

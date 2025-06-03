@@ -169,14 +169,14 @@ spec:
     id: TMFC054
     name: ProductTestManagement
     version: 1.0.0
-    description: Product Test Management is responsible for product test specification
-      for each Product Specification, and identification of the possible tests to
-      be launched automatically by the delivery or assurance processes, or manually
-      by the customer or user or by a CSR, to test that a product is functioning correctly.
-      It utilizes tests available at the service specification level (or resource
-      specification level for a tangible product). Product Test Management owns end-to-end
-      execution and reporting of product tests according to the context and/or the
-      actor.
+    description: Product Test Management component is responsible for product test
+      specification for each Product Specification, and identification of the possible
+      tests to be launched automatically by the delivery or assurance processes, or
+      manually by the customer or user or by a CSR, to test that a product is functioning
+      correctly. It utilizes tests available at the service specification level (or
+      resource specification level for a tangible product). Product Test Management
+      owns end-to-end execution and reporting of product tests according to the context
+      and/or the actor.
     publicationDate: 2025-02-25 00:00:00
     status: specified
     functionalBlock: CoreCommerce

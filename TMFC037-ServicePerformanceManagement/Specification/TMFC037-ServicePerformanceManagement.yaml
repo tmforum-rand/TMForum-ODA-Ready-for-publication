@@ -21,7 +21,7 @@ spec:
       apiType: openapi
       apiSDO: tmForum
       name: service-inventory-management-api
-      required: false
+      required: true
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
         version: v4.0.0
@@ -160,9 +160,9 @@ spec:
     id: TMFC037
     name: ServicePerformanceManagement
     version: 1.2.0
-    description: Service Performance Management monitors, analyzes, and reports on
-      end-to-end service performance. This can include a real-time, end-to-end view
-      to ensure that each service is functioning correctly as well as a historical
+    description: Service Performance Management component monitors, analyzes, and
+      reports on end-to-end service performance. This can include a real-time, end-to-end
+      view to ensure that each service is functioning correctly as well as a historical
       view. These functions build on the Resource Performance data and active end-to-end
       service performance test data to provide a view of a service. The component
       provides a key input to determine Quality of Service.

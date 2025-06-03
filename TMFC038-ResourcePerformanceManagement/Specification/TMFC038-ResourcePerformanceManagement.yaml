@@ -9,7 +9,7 @@ spec:
       apiType: openapi
       apiSDO: tmForum
       name: resource-inventory-management-api
-      required: false
+      required: true
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
         version: v4.0.0
@@ -157,8 +157,8 @@ spec:
     id: TMFC038
     name: ResourcePerformanceManagement
     version: 1.2.0
-    description: Resource Performance Management monitors, analyzes, and reports on
-      the performance of the service provider's resources.
+    description: Resource Performance Management component monitors, analyzes, and
+      reports on the performance of the service provider's resources.
     publicationDate: 2024-12-17 00:00:00
     status: specified
     functionalBlock: IntelligenceManagement

@@ -94,10 +94,10 @@ spec:
     id: TMFC014
     name: LocationManagement
     version: 1.1.1
-    description: The Location Management Component  allows easy reference to geographic
-      places important to other entities, where a geographic place is an entity that
-      can answer the question "where?" This component could be a facade tool into
-      GIS systems (eg Google Maps).
+    description: The Location Management Component component allows easy reference
+      to geographic places important to other entities, where a geographic place is
+      an entity that can answer the question "where?" This component could be a facade
+      tool into GIS systems (eg Google Maps).
     publicationDate: 2023-08-18 00:00:00
     status: specified
     functionalBlock: Production

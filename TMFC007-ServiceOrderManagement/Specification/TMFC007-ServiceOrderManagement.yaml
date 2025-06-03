@@ -319,17 +319,17 @@ spec:
     id: TMFC007
     name: ServiceOrderManagement
     version: 2.0.0
-    description: Service Order Management (SOM) is the entry point to the Production
-      Domain. It oversees delivery of Customer-Facing-Service (CFS) resources (network
-      and service platform equipment). The SOM exposes the API ServiceOrder. It is
-      triggered when the Product Order Delivery Orchestration And Management component
-      calls this API to request CFS delivery. To achieve delivery of a CFS, the SOM
-      orchestrates the CFS delivery process which identifies possible RFS and chooses
-      one, using the catalog and technical inventory. It selects the resources (servers,
-      equipment, etc.) and their instances, and requests the Resource Order Management
-      (ROM) component to update selected resource instances to deliver CFS. Requests
-      sent to the ROM contain the CFS and the list of configured resource instances
-      to be updated.
+    description: Service Order Management (SOM) component is the entry point to the
+      Production Domain. It oversees delivery of Customer-Facing-Service (CFS) resources
+      (network and service platform equipment). The SOM exposes the API ServiceOrder.
+      It is triggered when the Product Order Delivery Orchestration And Management
+      component calls this API to request CFS delivery. To achieve delivery of a CFS,
+      the SOM orchestrates the CFS delivery process which identifies possible RFS
+      and chooses one, using the catalog and technical inventory. It selects the resources
+      (servers, equipment, etc.) and their instances, and requests the Resource Order
+      Management (ROM) component to update selected resource instances to deliver
+      CFS. Requests sent to the ROM contain the CFS and the list of configured resource
+      instances to be updated.
     publicationDate: 2024-02-23
     status: specified
     functionalBlock: Production

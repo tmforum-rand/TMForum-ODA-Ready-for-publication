@@ -1231,8 +1231,8 @@ TMFC037,ServicePerformanceManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.
 TMFC037,ServicePerformanceManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET /id
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET /id
-TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET
-TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET /id
+TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,true,service,GET
+TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,true,service,GET /id
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET/id
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicSubAddress,GET
@@ -1275,8 +1275,8 @@ TMFC038,ResourcePerformanceManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1
 TMFC038,ResourcePerformanceManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,PATCH
 TMFC038,ResourcePerformanceManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET
 TMFC038,ResourcePerformanceManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET /id
-TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET
-TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET /id
+TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,GET
+TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,GET /id
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET/id
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicSubAddress,GET
