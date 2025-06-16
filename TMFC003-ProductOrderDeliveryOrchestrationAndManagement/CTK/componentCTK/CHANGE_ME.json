@@ -39,6 +39,16 @@
         "rejectUnauthorized": false
     },
     "dependentStubs": {
+        "tmfc002": {
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            },
+            "productInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_INVENTORY>"
+            }
+        },
         "tmfc005": {
             "productCatalog": {
                 "headers": {},
@@ -69,6 +79,121 @@
         }
     },
     "bddPayloads": {
+        "tmfc002": {
+            "product-target-0001": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                {
+                    "id": "110",
+                    "action": "add",
+                    "product": {
+                        "isBundle": false,
+                        "productSpecification": {
+                            "id": "__VALID_ID__",
+                            "href": "__VALID_HREF__",
+                            "name": "Mobile Telephony",
+                            "version": "1",
+                            "@type": "ProductSpecification"
+                        }
+                    },
+                    "@type": "ProductOrderItem"
+                }
+                ]
+            },
+            "product-target-0002": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                {
+                    "id": "110",
+                    "action": "add",
+                    "product": {
+                        "isBundle": false,
+                        "productSpecification": {
+                            "id": "invalid-id",
+                            "href": "invalid-href",
+                            "name": "Mobile Telephony",
+                            "version": "1",
+                            "@type": "ProductSpecification"
+                        }
+                    },
+                    "@type": "ProductOrderItem"
+                }
+                ]
+            },
+            "product-target-0003": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                    {
+                    "id": "110",
+                    "action": "modify",
+                    "product": {
+                        "id": "__VALID_ID__",
+                        "href": "__VALID_HREF__",
+                        "status": "active"
+                    },
+                    "@type": "ProductOrderItem"
+                    }
+                ]
+            },
+            "product-target-0004": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                    {
+                    "id": "110",
+                    "action": "modify",
+                    "product": {
+                        "id": "invalid-id",
+                        "href": "invalid-href",
+                        "status": "active"
+                    },
+                    "@type": "ProductOrderItem"
+                    }
+                ]
+            },
+            "product-catalog-0001":{
+                "name": "Mobile Telephony",
+                "version": "1",
+                "@type": "ProductSpecification"
+            },
+            "product-inventory-0001":{
+                "isBundle": false,
+                "status": "created",
+                "productCharacteristic": [
+                {
+                    "name": "TEL_MSISDN",
+                    "valueType": "string",
+                    "value": "415 279 7439"
+                }
+                ],
+                "productSpecification": {
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__",
+                    "name": "Mobile Telephony",
+                    "version": "1",
+                    "@type": "ProductSpecification"
+                }
+            }
+        },
         "tmfc005": {
             "product-target-0001": {
                 "status": "created",

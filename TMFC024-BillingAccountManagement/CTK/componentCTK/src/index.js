@@ -25,6 +25,7 @@ const ODA_COMPONENT_BASE_URL = "https://www.tmforum.org/oda/directory/components
 var canvasVersion= "v1beta3";
 var kubernetes= "v1";
 var canvasCTKPassed= false;
+var ctkVersion = "v1.0.0"
 
 class Component {
   constructor(componentInstance){
@@ -485,6 +486,11 @@ async function getBddResultsSumary(bddResults){
   return report
 }
 
+function getCtkVersion(){
+  const ctkVersion = configData.ctkVersion
+  return ctkVersion
+}
+
 async function getCanvasVersion(){
   try {
     // Run helm list to get installed Canvas version
@@ -638,10 +644,12 @@ async function generateReportData(resultsPath) {
 
   canvasVersion = await getCanvasVersion();
   kubernetes = await getKubernetesVersion();
+  ctkVersion = getCtkVersion();
   const canvasData = {
     canvasVersion: canvasVersion,
     kubernetes: kubernetes,
-    canvasCTKPassed: canvasCTKPassed
+    canvasCTKPassed: canvasCTKPassed,
+    ctkVersion: ctkVersion
   }
   //console.log("configData component to run: ", configData.component_to_run)
   //const componentName = configData.component_to_run ? configData.component_to_run.toUpperCase() : "Unknown"

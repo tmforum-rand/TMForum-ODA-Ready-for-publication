@@ -222,7 +222,7 @@ Then("expected response for operation {string} should be {string}", function (op
     
 });
 
-After(async function () {
+After({ timeout: 15000 },async function () {
     if (createdResources.length === 0) {
         console.log("No resources to clean up.");
         return 'skipped';
