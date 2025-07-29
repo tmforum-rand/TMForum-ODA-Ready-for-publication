@@ -5,7 +5,7 @@ const addContext = require('mochawesome/addContext');
 const config  = require('../ctkconfig.json')
 const fs = require('fs')
 const Path = require('path')
-const url = require('url')
+const URL = require('url')
 const YAML = require('yaml');
 const https = require('https')
 const http = require('http')
@@ -369,8 +369,9 @@ function isValidJSONUrl(url) {
         try {
             let {response, body} = await getUrl(url)
             if (isRedirect(response)) {
-                const {hostname, protocol} = new URL(url);
-                let redirectURL = protocol + "//" + hostname + response.headers.location;
+                let location = response.headers.location
+                //const {hostname, protocol} = new URL(url);
+                let redirectURL = new URL(location, url).toString()
                 resolve(await isValidJSONUrl(redirectURL))
             }
             if(response.statusCode >= 200 && response.statusCode < 300) {

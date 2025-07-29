@@ -1,0 +1,202 @@
+# Component CTK Execution Framework
+
+This module is responsible for validating TM Forum ODA Components using CTKs (Conformance Test Kits). It is designed to dynamically run CTKs for all exposed, dependent, and security APIs based on a centralized configuration (`CHANGE_ME.json`), and generate rich HTML and JSON test reports.
+
+---
+
+## 📦 Overview
+
+The `componentCTK` directory contains the following:
+
+- `resources/`  
+  Holds downloaded CTKs, standard component YAMLs, and generated reports/results.
+
+- `scripts/`
+  Contains the python script that orchestrates the various steps of executing the CTK from downloading the required resources to running the CTK application
+
+- `scripts/configData/`  
+  Contains API Index (`apiIndex.json`) used to resolve CTK download URLs.
+
+- `scripts/CTK_Executor.py`  
+  The main Python script that orchestrates CTK preparation, execution, and reporting.
+
+- `src/`  
+  Contains the Node.js application that executes the required tests as part of conformance and generates the consolidated HTML and JSON reports
+
+- `Reports/<ComponentName>`
+  This folder will contain the output reports and the results of running the CTK
+
+- `CHANGE_ME.json`
+  Central configuration file
+
+- `MAC-LINUX-RUN.sh/WINDOWS-RUN.bat`
+  Shell scripts to execute the CTK
+
+---
+## 🚀 How to Run 
+
+## Prerequisites: 
+1. The test system should be connected to a valid instance of an ODA Canvas
+
+2. (Conditional): If the component under test has any mandatory dependent APIs, then the dependentAPI must be installed on the ODA Canvas before installing the component under test (in order to meet the required resource dependencies)
+
+3. The component under test must be installed successfully on the test Canvas environment.
+
+
+## Steps to run the CTK
+1. Update CHANGE_ME.json with your configuration (refer "How to Update `CHANGE_ME.json`" below):
+    - Define the component you want to test
+    - Update the product details under ctkconfig
+    - Add any API-specific payloads or headers under ctkconfig
+    - Specify dependent API helm releases where applicable and provide dependent API-specific headers where needed
+    - Provide BDD payloads under bddPayloads section applicable to the component under test
+
+2. From the componentCTK directory, run the appropriate shell script for your system:
+    🐧 macOS / Linux
+      ./MAC-LINUX-RUN.sh
+    🪟 Windows
+      WINDOWS-RUN.bat
+
+
+```bash
+python3 componentCTK/scripts/CTK_Executor.py
+```
+
+This will:
+- Fetch the correct component YAML from GitHub
+- Download required CTKs
+- Execute conformance tests
+- Generate reports
+
+---
+## 🔧 Requirements
+
+Before running the CTK execution framework, ensure the following are installed on your system:
+
+### 🐍 Python
+- **Version:** Python 3.10 or later
+- **Required Packages:**
+  Install all dependencies using pip:
+
+  Required packages:
+  - `requests`
+  - `pyyaml`
+
+### 📦 Node.js
+Used for running the tests and generating HTML reports from JSON results.
+
+- **Version:** Node.js v16 or later
+
+### Canvas Cluster
+Before executing the CTK, ensure that a valid ODA Canvas runtime environment is available and that Kubernetes connectivity to the cluster is properly configured (e.g., via kubectl config or context switching).
+
+### Dependent Components
+Ensure that all required dependent components (APIs) are already deployed in the Canvas cluster. Their corresponding Helm release names must be correctly configured under the dependentStubs section in CHANGE_ME.json.
+
+---
+
+## 🛠 How to Update `CHANGE_ME.json`
+
+Update the fields below to configure your CTK run:
+
+| Field                         | Description                                           | Example                      |
+|-------------------------------|-------------------------------------------------------|------------------------------|
+| `releaseName`                 | Helm release name of the component as deployed        | `"rc-1"`                     |
+| `component_to_run`            | Component ID prefix to test                           | `"TMFC010"`                  |
+| `runExposedOptional`          | Run optional exposed APIs                             | `false`                      |
+| `runDependentOptional`        | Run optional dependent APIs                           | `false`                      |
+| `runSecurityOptional`         | Run optional security APIs                            | `false`                      |
+| `ctk_download_urls`           | URL to CTK API index JSON                             | `"https://.../apiIndex.json"`|
+| `standardComponentDownload`   | GitHub repo info for component YAML (for internal use)| `{...}`                      |
+| `ctkconfig`                   | Template for `ctkconfig.json` generation              | `{...}`                      |
+| - `companyName`               | Name of the Company conducting the test               | `TM Forum`                   |
+| - `productName`               | Name of the Product undergoing the test               | `Reference Component`        |
+| - `productUrl`                | Link to the product web page                          | `{...}`                      |
+| - `headers`                   | Required headers for API tests                        | `{...}`                      |
+| - `payloads`                  | Additional payloads for API tests                     | `{...}`                      |
+| `dependentStubs`              | Map of required dependent components per test         | `{...}`                      |
+| - `componentName`             | Name of the component under test                      | `{...}`                      |
+| - - `dependentApiName`        | helm release of the dependent api for the test        | `{s001}`                     |
+| `bddPayloads`                 | Test payloads for exposed + dependent APIs BDD tests  | `{...}`                      |
+
+💡 Only update the values you need for your test run. Others can remain default.
+
+🧩 standardComponentDownload Block
+- You typically dont need to modify this unless you are testing from a different fork or a different branch.
+
+🧪 Example: Payload Injection Logic
+
+For a success test:
+
+The targetPayload contains placeholder __VALID_ID__, which is replaced dynamically during test execution using values from the basePayload.
+If the dependentAPI payload already contains a valid id, the framework checks the resource's existence
+  If not found, it will POST a new resource to the dependent API and extract the returned id/href
+If the dependentAPI payload does not contain id and href fields, the framework will POST the payload and the extracted id/href gets injected into the targetPaylaod.
+
+
+---
+
+
+## ⚙️ How It Works
+
+1. **Reads Configuration:**  
+   All configuration is consolidated in the root-level `CHANGE_ME.json`.
+
+2. **Downloads Component YAML:**  
+   Retrieves the standard component YAML file from the TM Forum GitHub repository and stores it under (This step is skipped if the required YAML file is already found in the below mentioned directory):
+   ```
+   componentCTK/resources/standard-components/
+   ```
+
+3. **Downloads and Unzips CTKs:**  
+   Uses the CTK download URLs (from `apiIndex.json`) to pull the correct api CTKs into:
+   ```
+   componentCTK/resources/api-ctks/
+   ```
+
+6. **Generates HTML Report:**  
+   Launches the Node.js application in `src/` to execute the component CTK test steps and produce a human-readable HTML report.
+
+7. **Stores Outputs:**  
+   Test results and reports are placed under:
+   ```
+   componentCTK/Reports/<ComponentName>/
+   ├── reports/   # HTML files
+   └── results/   # JSON output
+   ```
+
+---
+
+## 📥 Inputs
+
+- `CHANGE_ME.json` – centralized configuration used across the project
+- `apiIndex.json` – contains CTK download metadata
+- `TMFCxxx-<Name>.yaml` – component YAML, downloaded dynamically
+
+---
+
+## 📤 Outputs
+
+- `Reports/<ComponentName>/` – contains reports and results
+
+Output File	Description
+  componentCTK/Reports/<Component>/consolidatedResults.json	    Unified report (CTK, BDD, config)
+  Reports/<Component>/reports/	                                HTML reports generated from Mustache
+  Reports/<Component>/results/	                                JSON test outputs (Newman, Mocha, BDD)
+
+
+---
+
+## 🛠 Troubleshooting
+
+- Ensure you are connected to the internet (for CTK/component downloads)
+- Check that `CHANGE_ME.json` is filled correctly (missing keys will cause runtime errors)
+- Use `verify=False` in your requests config if working behind self-signed certs
+- Make sure Node.js is installed (`npm install` is automatically handled)
+- If the download of the YAML file of the standard specification from TM Forum's github repository takes too long, you can manually download the specification and place it under componentCTK/resources/standard-components/
+
+---
+
+## 👥 Maintainers
+
+This tooling is part of the TM Forum ODA Canvas and Components initiative. For issues or contributions, please contact components@tmforum.org.

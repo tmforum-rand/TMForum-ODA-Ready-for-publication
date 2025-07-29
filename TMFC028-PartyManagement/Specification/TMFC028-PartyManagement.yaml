@@ -136,9 +136,9 @@ spec:
     name: PartyManagement
     version: 2.1.0
     description: 'The Party Management component is responsible for the capture, validation
-      and management of Parties and their Roles. A Party may be an individual or organization
-      that has a relationship with an enterprise. In this context it is responsible
-      for the end-to-end lifecycle of: Individual, Organization and its related sub-entities,
+      and management of Parties. A Party may be an individual or organization that
+      has a relationship with an enterprise. In this context it is responsible for
+      the end-to-end lifecycle of: Individual, Organization and its related sub-entities,
       Contact Medium, Currency and tax exemption certificates, Identification, and
       Community.'
     publicationDate: 2024-10-14 00:00:00
