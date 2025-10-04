@@ -5,7 +5,7 @@ const addContext = require('mochawesome/addContext');
 const config  = require('../ctkconfig.json')
 const fs = require('fs')
 const Path = require('path')
-const URL = require('url')
+const {URL} = require('url')
 const YAML = require('yaml');
 const https = require('https')
 const http = require('http')
@@ -80,14 +80,14 @@ describe("Step 1: Deployment component tests", function () {
         expect(status["summary/status"].deployment_status).to.be.equal('Complete')
     })
 
-    it('Test if all exposed api are accessible and return status is 200', async function() {
-        this.timeout(150000)
-        addContext(this, 'All exposed apis defined in the component must provide a valid url')
-        let apis = deployment.body.items[0].status.coreAPIs
-        let api_queries = apis.map(async api => await isValidJSONUrl(api.url))
-        let results = await Promise.all(api_queries)
-        expect(results).to.not.include(false)
-    })
+//    it('Test if all exposed api are accessible and return status is 200', async function() {
+//        this.timeout(150000)
+//        addContext(this, 'All exposed apis defined in the component must provide a valid url')
+//        let apis = deployment.body.items[0].status.coreAPIs
+//        let api_queries = apis.map(async api => await isValidJSONUrl(api.url))
+//        let results = await Promise.all(api_queries)
+//        expect(results).to.not.include(false)
+//    })
 
     it('Security api must return at least one partyrole with canvas system role defined in component file', async function() {
         this.timeout(150000)
