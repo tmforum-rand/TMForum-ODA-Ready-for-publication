@@ -7,6 +7,7 @@
     "runExposedOptional": false,
     "runDependentOptional": false,
     "runSecurityOptional": false,
+    "ctkVersion": "v1.0.1",
     "ctk_download_urls": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Component-Specification/refs/heads/v1beta4/apiIndex.json",
     "standardComponentDownload": {
         "apiBaseUrl": "https://api.github.com",
