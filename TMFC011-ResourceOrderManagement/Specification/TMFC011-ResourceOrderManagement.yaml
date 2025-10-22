@@ -42,7 +42,7 @@ spec:
   componentMetadata:
     id: TMFC011
     name: ResourceOrderManagement
-    version: 1.1.0
+    version: 1.1.3
     description: The Resource Order Management Component manages the end-to-end lifecycle
       of a resource  order request. This includes validating resource availability
       as well as the resource order request. Other functionality includes resource

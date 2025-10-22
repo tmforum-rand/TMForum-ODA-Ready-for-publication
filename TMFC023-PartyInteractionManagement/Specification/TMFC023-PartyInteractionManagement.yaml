@@ -23,16 +23,7 @@ spec:
     - array_id: null
       minItems: null
       apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
     - array_id: null
       minItems: null
       apis: []
@@ -42,14 +33,14 @@ spec:
   componentMetadata:
     id: TMFC023
     name: PartyInteractionManagement
-    version: 1.1.0
+    version: 1.1.2
     description: Party Interaction deals with the initial greeting and welcoming of
       a new contact. This will typically be the first component in a customer experience
       journey, shared by unassisted (self-service, retail kiosk) or assisted (call
       center, retail store) channels. It will identify known Parties or new Parties
       and react appropriately to propose available actions. It records all the interactions
       for the Parties from all channels.
-    publicationDate: 2024-04-30 00:00:00
+    publicationDate: 2025-10-21 00:00:00
     status: specified
     functionalBlock: PartyManagement
     owners:
@@ -61,27 +52,27 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.3.5-Customer_Interaction_Management-v23.0
-    - 1.3.5.1-Create_Customer_Interaction-v23.0
-    - 1.3.5.2-Update_Customer_Interaction-v23.0
-    - 1.3.5.3-Close_Customer_Interaction-v23.0
-    - 1.3.5.4-Log_Customer_Interaction-v23.0
-    - 1.3.5.6-Track_and_Manage_Customer_Interaction-v23.0
-    - 1.3.5.7-Report_Customer_interaction-v23.0
-    - 1.6.9-Business_Partner_Interaction_Management-v23.0
-    - 1.6.9.1-Log_Business_Partner_Interaction-v23.0
-    - 1.6.9.3-Track_and_Manage_Business_Partner_Interaction-v23.0
-    - 1.6.9.5-Analyze_&_Report_Business_Partner_Interactions-v23.0
+    - 1.3.5-Customer_Interaction_Management-v24.0
+    - 1.3.5.1-Create_Customer_Interaction-v24.0
+    - 1.3.5.2-Update_Customer_Interaction-v24.0
+    - 1.3.5.3-Close_Customer_Interaction-v24.0
+    - 1.3.5.4-Log_Customer_Interaction-v24.0
+    - 1.3.5.6-Track_and_Manage_Customer_Interaction-v24.0
+    - 1.3.5.7-Report_Customer_interaction-v24.0
+    - 1.6.9-Business_Partner_Interaction_Management-v24.0
+    - 1.6.9.1-Log_Business_Partner_Interaction-v24.0
+    - 1.6.9.3-Track_and_Manage_Business_Partner_Interaction-v24.0
+    - 1.6.9.5-Analyze_&_Report_Business_Partner_Interactions-v24.0
     functionalFrameworkFunctions:
-    - 93-Customer_Behavior_Tracking-v23.0
-    - 163-Contact_Queuing-v23.0
-    - 165-Customer_Support_Collaboration_Access-v23.0
-    - 168-Voice_Channel_Contact_Routing-v23.0
-    - 189-Customer_Interaction_Information_Capturing-v23.0
-    - 191-Customer_Relationship/Context_Event_Data_Accumulation-v23.0
-    - 196-Customer_Interaction_Logging-v23.0
-    - 239-Recommendation_to_Customer_Notification-v23.0
-    - 1041-Partner_Interaction_Journalizing-v23.0
+    - 93-Customer_Behavior_Tracking-v24.0
+    - 163-Contact_Queuing-v24.0
+    - 165-Customer_Support_Collaboration_Access-v24.0
+    - 168-Voice_Channel_Contact_Routing-v24.0
+    - 189-Customer_Interaction_Information_Capturing-v24.0
+    - 191-Customer_Relationship/Context_Event_Data_Accumulation-v24.0
+    - 196-Customer_Interaction_Logging-v24.0
+    - 239-Recommendation_to_Customer_Notification-v24.0
+    - 1041-Partner_Interaction_Journalizing-v24.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -169,14 +160,14 @@ spec:
       name: PartyManagement
       port: 80
       resources:
-      - IndividualCreateEvent
-      - IndividualAttributeValueChangeEvent
-      - IndividualStateChangeEvent
-      - IndividualDeleteEvent
-      - OrganizationCreateEvent
-      - OrganizationAttributeValueChangeEvent
-      - OrganizationStateChangeEvent
-      - OrganizationDeleteEvent
+      - individualCreateEvent
+      - individualAttributeValueChangeEvent
+      - individualStateChangeEvent
+      - individualDeleteEvent
+      - organizationCreateEvent
+      - organizationAttributeValueChangeEvent
+      - organizationStateChangeEvent
+      - organizationDeleteEvent
       specification:
       - url: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
         version: v4.0.0
@@ -188,12 +179,12 @@ spec:
       name: PartyRoleManagement
       port: 80
       resources:
-      - PartyRoleCreateEvent
+      - partyRoleCreateEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+      - url: https://github.com/tmforum-apis/TMF669_PartyRole/blob/master/TMF669-PartyRole-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF701
+      id: TMF669
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
       apiSDO: not_defined
     - implementation: /{{.Release.Name}}-DocumentgManagementEvent
