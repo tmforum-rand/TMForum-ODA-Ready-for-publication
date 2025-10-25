@@ -5,58 +5,241 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF620
+      apiType: openapi
+      apiSDO: tmForum
+      name: product-catalog-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
+      resources:
+      - catalog:
+        - GET
+        - GET /id
+      - category:
+        - GET
+        - GET /id
+      - productSpecification:
+        - GET
+        - GET /id
+      - productOffering:
+        - GET
+        - GET /id
+      - productOfferingPrice:
+        - GET
+        - GET /id
+    - id: TMF637
+      apiType: openapi
+      apiSDO: tmForum
+      name: product-inventory-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - product:
+        - GET
+        - GET /id
+    - id: TMF622
+      apiType: openapi
+      apiSDO: tmForum
+      name: product-ordering-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - productOrder:
+        - GET
+        - GET /id
+    - id: TMF679
+      apiType: openapi
+      apiSDO: tmForum
+      name: product-offering-qualification-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF679_Product_Offering_Qualification/4.0.0/swagger/TMF679_Product_Offering_Qualification_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - productOfferingQualification:
+        - GET
+        - GET /id
+    - id: TMF666
+      apiType: openapi
+      apiSDO: tmForum
+      name: account-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - billingAccount:
+        - GET
+        - GET /id
+    - id: TMF629
+      apiType: openapi
+      apiSDO: tmForum
+      name: customer-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF629_Customer/4.0.0/swagger/TMF629_Customer_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - customer:
+        - GET
+        - GET /id
+    - id: TMF663
+      apiType: openapi
+      apiSDO: tmForum
+      name: shopping-cart-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF663_Shopping_Cart/4.0.0/swagger/TMF663_Shopping_Cart_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - shoppingCart:
+        - GET
+        - GET /id
+    - id: TMF671
+      apiType: openapi
+      apiSDO: tmForum
+      name: promotion-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF671_Promotion/4.0.0/swagger/TMF671_Promotion_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - promotion:
+        - GET
+        - GET /id
+    - id: TMF673
+      apiType: openapi
+      apiSDO: tmForum
+      name: geographic-address-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicAddressManagement:
+        - GET
+        - GET /id
+    - id: TMF675
+      apiType: openapi
+      apiSDO: tmForum
+      name: geographic-location-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicLocationManagement:
+        - GET
+        - GET /id
+    - id: TMF632
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+    - id: TMF669
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-role-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - partyRole:
+        - GET
+        - GET /id
+    - id: TMF678
+      apiType: openapi
+      apiSDO: tmForum
+      name: customer-bill-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/4.0.0/swagger/TMF678_Customer_Bill_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - customerBill:
+        - GET
+        - GET /id
+    - id: TMF621
+      apiType: openapi
+      apiSDO: tmForum
+      name: trouble-ticket-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF621_Trouble_Ticket/4.0.0/swagger/TMF621_Trouble_Ticket_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - troubleTicket:
+        - GET
+        - GET /id
+    - id: TMF635
+      apiType: openapi
+      apiSDO: tmForum
+      name: usage-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF635_Usage/4.0.0/swagger/TMF635_Usage_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - usage:
+        - GET
+        - GET /id
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF680
+      apiType: openapi
+      apiSDO: tmForum
+      name: recommendation-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF680_Recommendation/4.0.0/swagger/TMF680_Recommendation_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - queryProductRecommendation:
+        - GET
+        - GET /id
+        - POST
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - GET
+        - GET /id
+        - POST
+        - DELETE /id
+      - taskFlow:
+        - GET
+        - GET /id
+        - PATCH /id
   componentMetadata:
     id: TMFC050
     name: ProductRecommendationManagement
@@ -115,13 +298,20 @@ spec:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    dependentAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
   eventNotification:
     publishedEvents:
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/queryProductRecommendation/hub

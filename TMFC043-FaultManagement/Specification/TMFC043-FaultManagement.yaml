@@ -5,15 +5,93 @@ metadata:
 spec:
   coreFunction:
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF642
+      apiType: openapi
+      apiSDO: tmForum
+      name: alarm-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF642_Alarm/4.0.0/swagger/TMF642_Alarm_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - alarm:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - ackAlarm:
+        - GET
+        - GET /id
+        - POST
+      - unAckAlarm:
+        - GET
+        - GET /id
+        - POST
+      - clearAlarm:
+        - GET
+        - GET /id
+        - POST
+      - commentAlarmlarm:
+        - GET
+        - GET /id
+        - POST
+      - groupAlarm:
+        - GET
+        - GET /id
+        - POST
+      - unGroupAlarm:
+        - GET
+        - GET /id
+        - POST
+    - id: TMF656
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-problem-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF656_Service_Problem/4.0.0/swagger/TMF656_Service_Problem_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - serviceProblem:
+        - GET
+        - GET /id
+        - POST
+        - DELETE
+      - problemGroup:
+        - POST
+      - problemUnGroup:
+        - POST
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
     dependentAPIs: []
   componentMetadata:
     id: TMFC043
@@ -78,13 +156,20 @@ spec:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    dependentAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
   eventNotification:
     publishedEvents:
     - name: Alarm Management API

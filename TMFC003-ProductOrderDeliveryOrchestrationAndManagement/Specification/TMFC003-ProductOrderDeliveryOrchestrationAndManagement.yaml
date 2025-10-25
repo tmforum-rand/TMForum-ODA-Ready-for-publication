@@ -5,40 +5,163 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF620
+      apiType: openapi
+      apiSDO: tmForum
+      name: product-catalog-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
+      resources:
+      - productSpecification:
+        - GET
+        - GET /id
+    - id: TMF622
+      apiType: openapi
+      apiSDO: tmForum
+      name: product-ordering-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - productOrder:
+        - GET /id
+        - PATCH
+    - id: TMF637
+      apiType: openapi
+      apiSDO: tmForum
+      name: product-inventory-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - product:
+        - GET
+        - GET /id
+        - PATCH
+    - id: TMF633
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-catalog-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - serviceSpecification:
+        - GET
+        - GET /id
+    - id: TMF638
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-inventory-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - service:
+        - GET / id
+        - GET
+    - id: TMF641
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-ordering-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF641_Service_Ordering/4.2.0/swagger/TMF641_Service_Ordering_v4.2.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - serviceOrder:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - cancelServiceOrder:
+        - GET
+        - GET /id
+        - POST
+    - id: TMF634
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-catalog-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
+      resources:
+      - resourceSpecification:
+        - GET
+        - GET /id
+    - id: TMF639
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-inventory-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - resource:
+        - GET
+        - GET /id
+    - id: TMF652
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-order-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF652_Resource_Order/4.0.0/swagger/TMF652_Resource_Order_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - resourceOrder:
+        - GET /id
+        - POST
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - processFlow:
+        - GET
+        - GET /id
+        - POST
+        - DELETE /id
+      - taskFlow:
+        - GET
+        - GET /id
+        - PATCH /id
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
   componentMetadata:
     id: TMFC003
     name: ProductOrderDeliveryOrchestrationAndManagement
@@ -130,13 +253,20 @@ spec:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    dependentAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
   eventNotification:
     publishedEvents:
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub

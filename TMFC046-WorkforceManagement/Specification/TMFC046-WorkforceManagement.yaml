@@ -5,22 +5,95 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF632
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+    - id: TMF669
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-role-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - PartyRole:
+        - GET
+        - GET /id
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - PATCH
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF646
+      apiType: openapi
+      apiSDO: tmForum
+      name: appointment-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - appointment:
+        - GET
+        - GET /id
+        - POST
+        - PATCH /id
+        - DELETE /id
+      - searchTimeSlot:
+        - GET
+        - GET /id
+        - POST
+        - PATCH /id
+        - DELETE /id
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - GET
+        - GET /id
+        - POST
+        - DELETE /id
+      - taskFlow:
+        - GET
+        - GET /id
+        - PATCH /id
   componentMetadata:
     id: TMFC046
     name: WorkforceManagement
@@ -97,13 +170,20 @@ spec:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    dependentAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
   eventNotification:
     publishedEvents:
     - implementation: /{{.Release.Name}}-appointmentManagement
