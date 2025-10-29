@@ -137,6 +137,9 @@ spec:
         - GET / id
         - POST
         - PATCH /id
+      - billCycle:
+        - GET
+        - GET /id
     - id: TMF701
       apiType: openapi
       apiSDO: tmForum

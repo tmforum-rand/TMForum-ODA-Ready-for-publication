@@ -1047,6 +1047,8 @@ TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,tr
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,GET / id
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,POST
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,PATCH /id
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,billCycle,GET
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,billCycle,GET /id
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET /id
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,POST
