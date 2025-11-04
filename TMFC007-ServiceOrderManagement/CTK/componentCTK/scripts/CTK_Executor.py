@@ -112,9 +112,11 @@ def download_standard_component_specification(componentName):
     
     # Construct raw URL to the YAML file
     filename = f"{component_folder}.yaml"
+    repo_path = download_info.get('repoPath', '')
+    repo_path_struct = f"/{repo_path}" if repo_path else ""
     raw_url = (
         f"{download_info.get('gitUrl')}/{download_info.get('gitBranch')}/"
-        f"{component_folder}/{filename}"
+        f"{component_folder}{repo_path_struct}/{filename}"
     )
 
     # Target Path

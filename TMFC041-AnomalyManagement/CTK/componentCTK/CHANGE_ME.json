@@ -7,14 +7,15 @@
     "runExposedOptional": false,
     "runDependentOptional": false,
     "runSecurityOptional": false,
-    "ctkVersion": "v1.0.1",
-    "ctk_download_urls": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Component-Specification/refs/heads/v1beta4/apiIndex.json",
+    "ctkVersion": "v1.1.0",
+    "ctk_download_urls": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Component-Specification/refs/heads/v1.0.0/apiIndex.json",
     "standardComponentDownload": {
         "apiBaseUrl": "https://api.github.com",
         "repoOwner": "tmforum-rand",
         "repoName": "TMForum-ODA-Ready-for-publication",
+        "repoPath": "Specification",
         "gitUrl": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/refs/heads",
-        "gitBranch": "v1beta4",
+        "gitBranch": "v1.0.0",
         "sslVerify": false
     },
     "ctkconfig": {
