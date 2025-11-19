@@ -136,7 +136,7 @@ spec:
   componentMetadata:
     id: TMFC031
     name: BillCalculation
-    version: 2.0.0
+    version: 3.0.0
     description: The Bill Calculation component processes all charges against billing
       accounts during bill cycles. Bill Calculation can be executed both on a cyclic
       basis and on demand. It performs calculations with bill compilation of charges,

@@ -209,7 +209,7 @@ spec:
   componentMetadata:
     id: TMFC005
     name: ProductInventory
-    version: 1.2.1
+    version: 1.0.4
     description: The Product  Inventory component is responsible for storage and exposure
       of products that are assigned to and used by Parties. This component has functionality
       that enables creation of inventory items, inventory organization, inventory
