@@ -329,6 +329,13 @@ spec:
     - 419-Product_Strategy_performance_reporting-v24.0
     - 897-Building_Access_Control-v24.0
     - 900-Authorization_Control_Management-v24.0
+    SIDs:
+    - Product_Domain | Product_Offering_Specification_ABE | v25.0
+    - Product_Domain | Product_Specification_ABE | v25.0
+    - Product_Domain | Product_Configuration_ABE | ProductConfigSpec_BE | v25.0
+    - Product_Domain | Loyalty_ABE | Product_Usage_Spec_ABE | v25.0
+    - Product_Domain | Product_Usage_ABE | Loyalty_Program_Specification_ABE | v25.0
+    - Business_Partner_Domain | Party_Product_Specification_and_Offering_ABE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics
