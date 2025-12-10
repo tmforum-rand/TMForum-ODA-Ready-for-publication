@@ -479,6 +479,10 @@ spec:
     - 756-Fallout_Rule_Based_Error_Correction-v23.0
     - 934-Sales_Negotiation_Support-v23.0
     - 1063-Sales_Quote_Management-v23.0
+    SIDs:
+    - Customer_Domain | Customer_Product_Order_ABE | SalesQuote_BE |  v25.0
+    - Customer_Domain | Customer_Product_Order_ABE | ShoppingCart_BE |  v25.0
+    - Customer_Domain | Customer_Product_Order_ABE | CustomerProductOrder |  v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

@@ -207,6 +207,13 @@ spec:
     - 1086-Service_Specification_to_Supplier_Product_Specification_Relationship_Design-v23.0
     - 897-Building_Access_Control-v23.0
     - 900-Authorization_Control_Management-v23.0
+    SIDs:
+    - Service_Domain | Service_Specification_ABE |  v25.0
+    - Service_Domain | Service_Performance_ABE | Service_Level_Spec_ABE |  v25.0
+    - Service_Domain | Service_Performance_ABE | Service_Performance_Specification_ABE
+      |  v25.0
+    - Service_Domain | Service_Usage_ABE | ServiceUsageSpec_BE |  v25.0
+    - Service_Domain | Service_Configuration_ABE | ServiceConfigSpec_BE |  v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

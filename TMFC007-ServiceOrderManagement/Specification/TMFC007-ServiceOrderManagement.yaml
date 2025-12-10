@@ -379,6 +379,8 @@ spec:
     - 590-Service_Configuration-v21.5
     - 585-Service_Configuration_Activation-v21.5
     - 592-Service_Parameters_Reservation-v21.5
+    SIDs:
+    - Service_Domain | Service_Order_ABE |  v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

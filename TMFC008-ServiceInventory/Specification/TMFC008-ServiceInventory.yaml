@@ -197,6 +197,8 @@ spec:
     - 964-Onboarded_Service_Integration_Configuration-v23.0
     - 965-Service_Instance_Lifecycle_Management-v23.0
     - 1344-Service_Topology_Discovery-v23.0
+    SIDs:
+    - Service_Domain | Service_ABE |  v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

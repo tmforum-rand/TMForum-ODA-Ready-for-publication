@@ -191,6 +191,8 @@ spec:
     - 1249-Number_Porting-v23.0
     - 438-Number_Reservation-v23.0
     - 435-Number_Inventory_Establishing-v23.0
+    SIDs:
+    - Resource_Domain | Resource_ABE |  v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics
