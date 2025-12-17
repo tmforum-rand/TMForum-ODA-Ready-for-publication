@@ -188,6 +188,9 @@ spec:
     - 67-Usage_Summary_and_Details_Presentation-v23.0
     - 85-Billing_Event_Processing_Distribution-v23.0
     - 86-Billing_Event_Processing_Enrichment-v23.0
+    SIDs:
+    - Product Domain | Product Usage ABE | v25.0
+    - Product Domain | Product Offering Instance ABE | Product Price ABE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

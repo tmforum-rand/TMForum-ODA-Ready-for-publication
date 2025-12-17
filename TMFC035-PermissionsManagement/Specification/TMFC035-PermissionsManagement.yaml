@@ -104,6 +104,16 @@ spec:
       url: Redacted
     eTOMs: []
     functionalFrameworkFunctions: []
+    SIDs:
+    - Shared Domain | Permission ABE | PermissionSpecSet BE | v25.0
+    - Shared Domain | Permission ABE | PermissionSet BE | v25.0
+    - Shared Domain | Permission ABE | Permission BE | v25.0
+    - Shared Domain | Party ABE | PartyRole BE | v25.0
+    - Shared Domain | Party ABE | PartyRoleSpecification BE | v25.0
+    - Shared Domain | Party ABE | Party Organization ABE | v25.0
+    - Market & Sales Domain | Market Sales Party Roles ABE | v25.0
+    - Service Domain | Service Party Roles ABE | v25.0
+    - Resource Domain | Resource Party Roles ABE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

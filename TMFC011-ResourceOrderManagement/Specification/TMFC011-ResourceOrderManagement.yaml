@@ -234,6 +234,8 @@ spec:
     - 20-Fallout_Notification_v23
     - 22-Fallout_Reporting_v23
     - 23-Fallout_Dashboard_System_Log-in_Accessing_v23
+    SIDs:
+    - Resource Domain | Resource Order ABE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

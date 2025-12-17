@@ -186,6 +186,12 @@ spec:
     - 1036-Partner_Profile_Enquiry_and_Filtering-v23.0
     - 1037-Partner_Profile_Storage-v23.0
     - 746-Partner_Workflow_Management-v23.0
+    SIDs:
+    - Shared Domain | Party ABE | Party BE | v25.0
+    - Shared Domain | Party ABE | Contact Medium ABE | v25.0
+    - Shared Domain | Party ABE | TaxExemptionCertificate BE | v25.0
+    - Shared Domain | Party ABE | Party Identification ABE | v25.0
+    - Shared Domain | Party ABE | Party Community ABE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

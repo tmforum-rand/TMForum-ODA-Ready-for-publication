@@ -28,6 +28,10 @@ spec:
       url: Redacted
     eTOMs: []
     functionalFrameworkFunctions: []
+    SIDs:
+    - Patterns Domain | Anomaly ABE | Anomaly Entity ABE | v25.0
+    - Patterns Domain | Anomaly ABE | Anomaly Management Plan ABE | v25.0
+    - Patterns Domain | Anomaly ABE |  | Anomaly Specification ABE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

@@ -180,6 +180,12 @@ spec:
     - 1043-Partner_Agreement_Storage_and_Searching-v23.0
     - 1044-Partner_Agreement_Implementation-v23.0
     - 1045-Partner_Agreement_Tracking-v23.0
+    SIDs:
+    - Patterns Domain | Agreement ABE | Agreement BE | v25.0
+    - Patterns Domain | Agreement ABE | AgreementItem BE | v25.0
+    - Patterns Domain | Agreement ABE | AgreementTermOrCondition BE | v25.0
+    - Patterns Domain | Agreement ABE | AgreementAuthorization BE | v25.0
+    - Patterns Domain | Agreement ABE | AgreementApproval BE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics
