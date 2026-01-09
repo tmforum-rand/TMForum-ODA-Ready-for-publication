@@ -214,7 +214,7 @@ spec:
     - 312-Invoice_Detail_Collection-v23.0
     - 311-Invoice_Totals_Calculation-v23.0
     SIDs:
-    - Customer Domain | Customer Bill ABE | v25.0
+    - Customer_Domain | Customer_Bill_ABE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

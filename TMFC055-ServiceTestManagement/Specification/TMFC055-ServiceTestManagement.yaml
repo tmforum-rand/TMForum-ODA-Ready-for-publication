@@ -181,8 +181,8 @@ spec:
     - FF577-Service_End_to_End_Test_Scheduling-v24.0
     - FF579-Service_End_to_End_Testing-v24.0
     SIDs:
-    - "Service\_Domain | Service\_Test ABE | ServiceTest BE | v25.0"
-    - "Service\_Domain | Service\_Test ABE | ServiceTestSpec BE | v25.0"
+    - Service_Domain | Service_Test_ABE | ServiceTest_BE | v25.0
+    - Service_Domain | Service_Test_ABE | ServiceTestSpec_BE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

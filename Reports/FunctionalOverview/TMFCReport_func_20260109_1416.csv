@@ -42,6 +42,12 @@ TMFC001,ProductCatalogManagement,CoreCommerce,functionalFrameworkFunctions,418-P
 TMFC001,ProductCatalogManagement,CoreCommerce,functionalFrameworkFunctions,419-Product_Strategy_performance_reporting-v24.0
 TMFC001,ProductCatalogManagement,CoreCommerce,functionalFrameworkFunctions,897-Building_Access_Control-v24.0
 TMFC001,ProductCatalogManagement,CoreCommerce,functionalFrameworkFunctions,900-Authorization_Control_Management-v24.0
+TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain | Product_Offering_Specification_ABE | v25.0
+TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain | Product_Specification_ABE | v25.0
+TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain | Product_Configuration_ABE | ProductConfigSpec_BE | v25.0
+TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain | Loyalty_ABE | Product_Usage_Spec_ABE | v25.0
+TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain | Product_Usage_ABE | Loyalty_Program_Specification_ABE | v25.0
+TMFC001,ProductCatalogManagement,CoreCommerce,SID,Business_Partner_Domain | Party_Product_Specification_and_Offering_ABE | v25.0
 TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,eTOM,1.1.9-Selling-v23.0
 TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,eTOM,1.1.9.2-Develop_Sales_Proposal-v23.0
 TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,eTOM,1.1.9.5-Negotiate_Sales/Contract-v23.0
@@ -97,6 +103,9 @@ TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,functionalFrameworkFunctio
 TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,functionalFrameworkFunctions,756-Fallout_Rule_Based_Error_Correction-v23.0
 TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,functionalFrameworkFunctions,934-Sales_Negotiation_Support-v23.0
 TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,functionalFrameworkFunctions,1063-Sales_Quote_Management-v23.0
+TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,SID,Customer_Domain | Customer_Product_Order_ABE | SalesQuote_BE |  v25.0
+TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,SID,Customer_Domain | Customer_Product_Order_ABE | ShoppingCart_BE |  v25.0
+TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,SID,Customer_Domain | Customer_Product_Order_ABE | CustomerProductOrder |  v25.0
 TMFC003,ProductOrderDeliveryOrchestrationAndManagement,CoreCommerce,eTOM,1.3.3-Customer_Order_Handling-v23.0
 TMFC003,ProductOrderDeliveryOrchestrationAndManagement,CoreCommerce,eTOM,1.3.3.8-Manage_Order_Fallout-v23.0
 TMFC003,ProductOrderDeliveryOrchestrationAndManagement,CoreCommerce,eTOM,1.3.3.9-Customer_Order_Orchestration-v23.0
@@ -135,6 +144,9 @@ TMFC005,ProductInventory,CoreCommerce,functionalFrameworkFunctions,237-Customer_
 TMFC005,ProductInventory,CoreCommerce,functionalFrameworkFunctions,361-Contract_Implementation-v24.0
 TMFC005,ProductInventory,CoreCommerce,functionalFrameworkFunctions,362-Contract_Searching-v24.0
 TMFC005,ProductInventory,CoreCommerce,functionalFrameworkFunctions,363-Contract_Storage-v24.0
+TMFC005,ProductInventory,CoreCommerce,SID,Product_Domain | Product_and_Offering_Instance_ABE. | Product_ABE |  v25.0
+TMFC005,ProductInventory,CoreCommerce,SID,Product_Domain | ProductOfferingInstance_ABE | v25.0
+TMFC005,ProductInventory,CoreCommerce,SID,Product_Domain | Loyalty_ABE | Loyalty_Program_ABE |  v25.0
 TMFC006,ServiceCatalogManagement,Production,eTOM,1.4.13-Service_Catalog_Lifecycle_Management-v23.0
 TMFC006,ServiceCatalogManagement,Production,eTOM,1.4.14-Service_Catalog_Operational_Readiness_Management-v23.0
 TMFC006,ServiceCatalogManagement,Production,eTOM,1.4.15-Service_Catalog_Content_Management-v23.0
@@ -151,6 +163,11 @@ TMFC006,ServiceCatalogManagement,Production,functionalFrameworkFunctions,1085-Te
 TMFC006,ServiceCatalogManagement,Production,functionalFrameworkFunctions,1086-Service_Specification_to_Supplier_Product_Specification_Relationship_Design-v23.0
 TMFC006,ServiceCatalogManagement,Production,functionalFrameworkFunctions,897-Building_Access_Control-v23.0
 TMFC006,ServiceCatalogManagement,Production,functionalFrameworkFunctions,900-Authorization_Control_Management-v23.0
+TMFC006,ServiceCatalogManagement,Production,SID,Service_Domain | Service_Specification_ABE |  v25.0
+TMFC006,ServiceCatalogManagement,Production,SID,Service_Domain | Service_Performance_ABE | Service_Level_Spec_ABE |  v25.0
+TMFC006,ServiceCatalogManagement,Production,SID,Service_Domain | Service_Performance_ABE | Service_Performance_Specification_ABE |  v25.0
+TMFC006,ServiceCatalogManagement,Production,SID,Service_Domain | Service_Usage_ABE | ServiceUsageSpec_BE |  v25.0
+TMFC006,ServiceCatalogManagement,Production,SID,Service_Domain | Service_Configuration_ABE | ServiceConfigSpec_BE |  v25.0
 TMFC007,ServiceOrderManagement,Production,eTOM,1.4.5-Service_Configuration_&_Activation-v21.5
 TMFC007,ServiceOrderManagement,Production,eTOM,1.4.5.1-Design_Solution-v21.5
 TMFC007,ServiceOrderManagement,Production,eTOM,1.4.5.2-Allocate_Specific_Service_Parameters_to_Services-v21.5
@@ -187,6 +204,7 @@ TMFC007,ServiceOrderManagement,Production,functionalFrameworkFunctions,589-Cross
 TMFC007,ServiceOrderManagement,Production,functionalFrameworkFunctions,590-Service_Configuration-v21.5
 TMFC007,ServiceOrderManagement,Production,functionalFrameworkFunctions,585-Service_Configuration_Activation-v21.5
 TMFC007,ServiceOrderManagement,Production,functionalFrameworkFunctions,592-Service_Parameters_Reservation-v21.5
+TMFC007,ServiceOrderManagement,Production,SID,Service_Domain | Service_Order_ABE |  v25.0
 TMFC008,ServiceInventory,Production,eTOM,1.4.4-Service_Support_Readiness-v23.0
 TMFC008,ServiceInventory,Production,eTOM,1.4.4.1-Manage_Service_Inventory-v23.0
 TMFC008,ServiceInventory,Production,functionalFrameworkFunctions,576-Service_Data_Retrieval-v23.0
@@ -197,6 +215,7 @@ TMFC008,ServiceInventory,Production,functionalFrameworkFunctions,630-Service-Res
 TMFC008,ServiceInventory,Production,functionalFrameworkFunctions,964-Onboarded_Service_Integration_Configuration-v23.0
 TMFC008,ServiceInventory,Production,functionalFrameworkFunctions,965-Service_Instance_Lifecycle_Management-v23.0
 TMFC008,ServiceInventory,Production,functionalFrameworkFunctions,1344-Service_Topology_Discovery-v23.0
+TMFC008,ServiceInventory,Production,SID,Service_Domain | Service_ABE |  v25.0
 TMFC009,ServiceQualificationManagement,Production,eTOM,1.4.5-Service_Configuration_&_Activation-v23.0
 TMFC009,ServiceQualificationManagement,Production,functionalFrameworkFunctions,319-Service_Feasibility_Checking-v23.0
 TMFC009,ServiceQualificationManagement,Production,functionalFrameworkFunctions,586-Service_Availability_Validation-v23.0
@@ -218,6 +237,10 @@ TMFC010,ResourceCatalogManagement,Production,functionalFrameworkFunctions,1089-R
 TMFC010,ResourceCatalogManagement,Production,functionalFrameworkFunctions,1082-Resource_Specification_Change_Auditing-v23.0
 TMFC010,ResourceCatalogManagement,Production,functionalFrameworkFunctions,1064-Logical_and_Software_Resources_Designing-v23.0
 TMFC010,ResourceCatalogManagement,Production,functionalFrameworkFunctions,1087-Resource_Specification_Design-v23.0
+TMFC010,ResourceCatalogManagement,Production,SID,Resource_Domain | Resource_Specification_ABE |  v25.0
+TMFC010,ResourceCatalogManagement,Production,SID,Resource_Domain | Resource_Performance_ABE | ResourcePerformanceSpecification_BE |  v25.0
+TMFC010,ResourceCatalogManagement,Production,SID,Resource_Domain | Resource_Usage_ABE | ResourceUsageSpec_BE |  v25.0
+TMFC010,ResourceCatalogManagement,Production,SID,Resource_Domain | Resource_Configuration_ABE | ResourceConfigSpec_BE |  v25.0
 TMFC011,ResourceOrderManagement,Production,eTOM,1.5.5-Resource_Order_Management_v23
 TMFC011,ResourceOrderManagement,Production,eTOM,1.5.5.6-Manage_Resource_Order_Capture_v23
 TMFC011,ResourceOrderManagement,Production,eTOM,1.5.5.7-Manage_Resource_Work_Order_v23
@@ -253,6 +276,7 @@ TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,18-Fallo
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,20-Fallout_Notification_v23
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,22-Fallout_Reporting_v23
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,23-Fallout_Dashboard_System_Log-in_Accessing_v23
+TMFC011,ResourceOrderManagement,Production,SID,Resource_Domain | Resource_Order_ABE | v25.0
 TMFC012,ResourceInventory,Production,eTOM,1.5.4-Resource_Support_Readiness-v23.0
 TMFC012,ResourceInventory,Production,eTOM,1.5.4.5-Manage_Resource_Inventory-v23.0
 TMFC012,ResourceInventory,Production,functionalFrameworkFunctions,426-Physical_Implementation_Information_Capturing-v23.0
@@ -279,12 +303,15 @@ TMFC012,ResourceInventory,Production,functionalFrameworkFunctions,1062-Number_Ac
 TMFC012,ResourceInventory,Production,functionalFrameworkFunctions,1249-Number_Porting-v23.0
 TMFC012,ResourceInventory,Production,functionalFrameworkFunctions,438-Number_Reservation-v23.0
 TMFC012,ResourceInventory,Production,functionalFrameworkFunctions,435-Number_Inventory_Establishing-v23.0
+TMFC012,ResourceInventory,Production,SID,Resource_Domain | Resource_ABE |  v25.0
 TMFC014,LocationManagement,Production,functionalFrameworkFunctions,429-Location_Change_History_Management_v23
 TMFC014,LocationManagement,Production,functionalFrameworkFunctions,430-PreFormattedLocation_InformationPresentation_v23
 TMFC014,LocationManagement,Production,functionalFrameworkFunctions,431-Location_Information_Updating_v23
 TMFC014,LocationManagement,Production,functionalFrameworkFunctions,432-Location_Information_Searching_v23
 TMFC014,LocationManagement,Production,functionalFrameworkFunctions,433-Location_Structure_Data_Configuration_v23
 TMFC014,LocationManagement,Production,functionalFrameworkFunctions,434-Location_Data_Integrity_Management_v23
+TMFC020,DigitalIdentityManagement,PartyManagement,SID,Shared_Domain | Digital_Identity_ABE | v25.0
+TMFC022,PartyPrivacyManagement,PartyManagement,SID,Party_Domain | Party_Privacy_ABE | Party_Privacy_Profile_ABE | v25.0
 TMFC023,PartyInteractionManagement,PartyManagement,eTOM,1.3.5-Customer_Interaction_Management-v24.0
 TMFC023,PartyInteractionManagement,PartyManagement,eTOM,1.3.5.1-Create_Customer_Interaction-v24.0
 TMFC023,PartyInteractionManagement,PartyManagement,eTOM,1.3.5.2-Update_Customer_Interaction-v24.0
@@ -305,6 +332,7 @@ TMFC023,PartyInteractionManagement,PartyManagement,functionalFrameworkFunctions,
 TMFC023,PartyInteractionManagement,PartyManagement,functionalFrameworkFunctions,196-Customer_Interaction_Logging-v24.0
 TMFC023,PartyInteractionManagement,PartyManagement,functionalFrameworkFunctions,239-Recommendation_to_Customer_Notification-v24.0
 TMFC023,PartyInteractionManagement,PartyManagement,functionalFrameworkFunctions,1041-Partner_Interaction_Journalizing-v24.0
+TMFC023,PartyInteractionManagement,PartyManagement,SID,Shared_Domain | Communication_Interaction_ABE |  v25.0
 TMFC024,BillingAccountManagement,PartyManagement,eTOM,1.3.10-Customer_Bill_Payments_&_Receivables_Management-v23.0
 TMFC024,BillingAccountManagement,PartyManagement,eTOM,1.3.10.1-Manage_Customer_Billing_Account-v23.0
 TMFC024,BillingAccountManagement,PartyManagement,functionalFrameworkFunctions,77-Billing_Account_Information_Configuration-v23.0
@@ -312,6 +340,8 @@ TMFC024,BillingAccountManagement,PartyManagement,functionalFrameworkFunctions,73
 TMFC024,BillingAccountManagement,PartyManagement,functionalFrameworkFunctions,76-Billing_Account_Structure_Configuration-v23.0
 TMFC024,BillingAccountManagement,PartyManagement,functionalFrameworkFunctions,75-Billing_Accounts_Creation-v23.0
 TMFC024,BillingAccountManagement,PartyManagement,functionalFrameworkFunctions,248-Customer_Billing_Hierarchies_Management-v23.0
+TMFC024,BillingAccountManagement,PartyManagement,SID,Customer_Domain | Customer_Billing_Account_ABE | v25.0
+TMFC027,ProductConfigurator,CoreCommerce,SID,Product_Domain | Product_Configuration_ABE | ProductConfiguration_BE | v25.0
 TMFC028,PartyManagement,PartyManagement,eTOM,1.3.16-Customer_Inventory_Management-v23.0
 TMFC028,PartyManagement,PartyManagement,eTOM,1.3.6-Customer_Information_Management-v23.0
 TMFC028,PartyManagement,PartyManagement,eTOM,1.3.4-Customer_Relationship_Management-v23.0
@@ -344,6 +374,11 @@ TMFC028,PartyManagement,PartyManagement,functionalFrameworkFunctions,1034-Partne
 TMFC028,PartyManagement,PartyManagement,functionalFrameworkFunctions,1036-Partner_Profile_Enquiry_and_Filtering-v23.0
 TMFC028,PartyManagement,PartyManagement,functionalFrameworkFunctions,1037-Partner_Profile_Storage-v23.0
 TMFC028,PartyManagement,PartyManagement,functionalFrameworkFunctions,746-Partner_Workflow_Management-v23.0
+TMFC028,PartyManagement,PartyManagement,SID,Shared_Domain | Party_ABE | Party_BE | v25.0
+TMFC028,PartyManagement,PartyManagement,SID,Shared_Domain | Party_ABE | Contact_Medium_ABE | v25.0
+TMFC028,PartyManagement,PartyManagement,SID,Shared_Domain | Party_ABE | TaxExemptionCertificate_BE | v25.0
+TMFC028,PartyManagement,PartyManagement,SID,Shared_Domain | Party_ABE | Party_Identification_ABE | v25.0
+TMFC028,PartyManagement,PartyManagement,SID,Shared_Domain | Party_ABE | Party_Community_ABE | v25.0
 TMFC029,PaymentManagement,PartyManagement,eTOM,1.3.10-Customer_Bill_Payments_&_Receivables_Management-v23.0
 TMFC029,PaymentManagement,PartyManagement,eTOM,1.3.10.2-Manage_Customer_Payments-v23.0
 TMFC029,PaymentManagement,PartyManagement,eTOM,1.6.16-Business_Partner_Payments_&_Receivables_Management-v23.0
@@ -351,6 +386,7 @@ TMFC029,PaymentManagement,PartyManagement,eTOM,1.6.16.1-Business_Partner_Payment
 TMFC029,PaymentManagement,PartyManagement,eTOM,1.6.16.1.1-Business_Partner_Payment_Handling-v23.0
 TMFC029,PaymentManagement,PartyManagement,eTOM,1.6.16.1.2-Business_Partner_Payment_Method_Management-v23.0
 TMFC029,PaymentManagement,PartyManagement,eTOM,1.6.16.1.3-Business_Partner_Payment_Plan_Administration-v23.0
+TMFC029,PaymentManagement,PartyManagement,SID,Shared_Domain | Party_Payment_ABE |  v25.0
 TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.3.9-Customer_Bill_Invoice_Management-v23.0
 TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.3.9.2-Create_Customer_Bill_Invoice-v23.0
 TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.3.9.2.1-Render_&_Format_Customer_Invoice-v23.0
@@ -382,6 +418,16 @@ TMFC030,BillGenerationManagement,PartyManagement,functionalFrameworkFunctions,30
 TMFC030,BillGenerationManagement,PartyManagement,functionalFrameworkFunctions,310-Invoice_Charges_Compilation-v23.0
 TMFC030,BillGenerationManagement,PartyManagement,functionalFrameworkFunctions,312-Invoice_Detail_Collection-v23.0
 TMFC030,BillGenerationManagement,PartyManagement,functionalFrameworkFunctions,311-Invoice_Totals_Calculation-v23.0
+TMFC030,BillGenerationManagement,PartyManagement,SID,Customer_Domain | Customer_Bill_ABE | v25.0
+TMFC035,PermissionsManagement,PartyManagement,SID,Shared_Domain | Permission_ABE | PermissionSpecSet_BE | v25.0
+TMFC035,PermissionsManagement,PartyManagement,SID,Shared_Domain | Permission_ABE | PermissionSet_BE | v25.0
+TMFC035,PermissionsManagement,PartyManagement,SID,Shared_Domain | Permission_ABE | Permission_BE | v25.0
+TMFC035,PermissionsManagement,PartyManagement,SID,Shared_Domain | Party_ABE | PartyRole_BE | v25.0
+TMFC035,PermissionsManagement,PartyManagement,SID,Shared_Domain | Party_ABE | PartyRoleSpecification_BE | v25.0
+TMFC035,PermissionsManagement,PartyManagement,SID,Shared_Domain | Party_ABE | Party_Organization_ABE | v25.0
+TMFC035,PermissionsManagement,PartyManagement,SID,Market_&_Sales_Domain | Market_Sales_Party_Roles_ABE | v25.0
+TMFC035,PermissionsManagement,PartyManagement,SID,Service_Domain | Service_Party_Roles_ABE | v25.0
+TMFC035,PermissionsManagement,PartyManagement,SID,Resource_Domain | Resource_Party_Roles_ABE | v25.0
 TMFC036,LeadAndOpportunityManagement,PartyManagement,eTOM,1.1.11-Contact/Lead/Prospect_Management-v23.0
 TMFC036,LeadAndOpportunityManagement,PartyManagement,eTOM,1.1.11.1-Manage_Sales_Contact-v23.0
 TMFC036,LeadAndOpportunityManagement,PartyManagement,eTOM,1.1.11.2-Manage_Sales_Lead-v23.0
@@ -398,6 +444,20 @@ TMFC036,LeadAndOpportunityManagement,PartyManagement,functionalFrameworkFunction
 TMFC036,LeadAndOpportunityManagement,PartyManagement,functionalFrameworkFunctions,374-Funnel_Creation-v23.0
 TMFC036,LeadAndOpportunityManagement,PartyManagement,functionalFrameworkFunctions,376-Funnel_Leads_Tracking-v23.0
 TMFC036,LeadAndOpportunityManagement,PartyManagement,functionalFrameworkFunctions,726-Sales_Lead_Capturing-v23.0
+TMFC036,LeadAndOpportunityManagement,PartyManagement,SID,Market_&_Sales_Domain | Sales_Lead_and_Opportunity_ABE | Sales_Lead_ABE |  v25.0
+TMFC036,LeadAndOpportunityManagement,PartyManagement,SID,Market_&_Sales_Domain | Sales_Lead_and_Opportunity_ABE | Sales_Opportunity_ABE |  v25.0
+TMFC037,ServicePerformanceManagement,IntelligenceManagement,SID,Service_Domain | Service_Performance_ABE | v25.0
+TMFC037,ServicePerformanceManagement,IntelligenceManagement,SID,Patterns_Domain | Performance_ABE | Performance_Monitoring_ABE | Performance_Production_ABE | MeasurementProductionJob_BE | v25.0
+TMFC037,ServicePerformanceManagement,IntelligenceManagement,SID,Patterns_Domain | Performance_ABE | Performance_Monitoring_ABE | Performance_Collection_ABE | AdhocCollection_BE | v25.0
+TMFC037,ServicePerformanceManagement,IntelligenceManagement,SID,Patterns_Domain | Performance_ABE | Performance_Monitoring_ABE | Performance_Collection_ABE | MeasurementCollectionJob_BE | v25.0
+TMFC037,ServicePerformanceManagement,IntelligenceManagement,SID,Patterns_Domain | Performance_ABE | Performance_Threshold_ABE | v25.0
+TMFC037,ServicePerformanceManagement,IntelligenceManagement,SID,Resource_Domain | Resource_Trouble_ABE | Alarm_ABE | v25.0
+TMFC038,ResourcePerformanceManagement,IntelligenceManagement,SID,Resource_Domain | Resource_Performance_ABE | v25.0
+TMFC038,ResourcePerformanceManagement,IntelligenceManagement,SID,Patterns_Domain | Performance_ABE | Performance_Monitoring ABE | Performance_Production ABE | MeasurementProductionJob_BE | v25.0
+TMFC038,ResourcePerformanceManagement,IntelligenceManagement,SID,Patterns_Domain | Performance_ABE | Performance_Monitoring ABE | Performance_Collection ABE | AdhocCollection_BE | v25.0
+TMFC038,ResourcePerformanceManagement,IntelligenceManagement,SID,Patterns_Domain | Performance_ABE | Performance_Monitoring ABE | Performance_Collection ABE | MeasurementCollectionJob_BE | v25.0
+TMFC038,ResourcePerformanceManagement,IntelligenceManagement,SID,Patterns_Domain | Performance_ABE | Performance_Threshold ABE | v25.0
+TMFC038,ResourcePerformanceManagement,IntelligenceManagement,SID,Resource_Domain | Resource_Trouble_ABE | Alarm_ABE | v25.0
 TMFC039,AgreementManagement,PartyManagement,eTOM,1.6.5-Party_Agreement_Management-v23.0
 TMFC039,AgreementManagement,PartyManagement,eTOM,1.7.14-Enterprise_Governance-v23.0
 TMFC039,AgreementManagement,PartyManagement,eTOM,1.7.14.5-Manage_Contract-v23.0
@@ -415,6 +475,11 @@ TMFC039,AgreementManagement,PartyManagement,functionalFrameworkFunctions,1042-Pa
 TMFC039,AgreementManagement,PartyManagement,functionalFrameworkFunctions,1043-Partner_Agreement_Storage_and_Searching-v23.0
 TMFC039,AgreementManagement,PartyManagement,functionalFrameworkFunctions,1044-Partner_Agreement_Implementation-v23.0
 TMFC039,AgreementManagement,PartyManagement,functionalFrameworkFunctions,1045-Partner_Agreement_Tracking-v23.0
+TMFC039,AgreementManagement,PartyManagement,SID,Patterns_Domain | Agreement_ABE | Agreement_BE | v25.0
+TMFC039,AgreementManagement,PartyManagement,SID,Patterns_Domain | Agreement_ABE | AgreementItem_BE | v25.0
+TMFC039,AgreementManagement,PartyManagement,SID,Patterns_Domain | Agreement_ABE | AgreementTermOrCondition_BE | v25.0
+TMFC039,AgreementManagement,PartyManagement,SID,Patterns_Domain | Agreement_ABE | AgreementAuthorization_BE | v25.0
+TMFC039,AgreementManagement,PartyManagement,SID,Patterns_Domain | Agreement_ABE | AgreementApproval_BE | v25.0
 TMFC040,ProductUsageManagement,CoreCommerce,eTOM,1.2.16-Product_Usage_Management-v23.0
 TMFC040,ProductUsageManagement,CoreCommerce,eTOM,1.2.16.1-Product_Usages-v23.0
 TMFC040,ProductUsageManagement,CoreCommerce,eTOM,1.2.16.1.1-Add_Product_Usage_Data-v23.0
@@ -447,6 +512,12 @@ TMFC040,ProductUsageManagement,CoreCommerce,functionalFrameworkFunctions,300-Dis
 TMFC040,ProductUsageManagement,CoreCommerce,functionalFrameworkFunctions,67-Usage_Summary_and_Details_Presentation-v23.0
 TMFC040,ProductUsageManagement,CoreCommerce,functionalFrameworkFunctions,85-Billing_Event_Processing_Distribution-v23.0
 TMFC040,ProductUsageManagement,CoreCommerce,functionalFrameworkFunctions,86-Billing_Event_Processing_Enrichment-v23.0
+TMFC040,ProductUsageManagement,CoreCommerce,SID,Product_Domain | Product_Usage_ABE | v25.0
+TMFC040,ProductUsageManagement,CoreCommerce,SID,Product_Domain | Product_Offering_Instance_ABE | Product_Price_ABE | v25.0
+TMFC041,AnomalyManagement,IntelligenceManagement,SID,Patterns_Domain | Anomaly_ABE | Anomaly_Entity_ABE | v25.0
+TMFC041,AnomalyManagement,IntelligenceManagement,SID,Patterns_Domain | Anomaly_ABE | Anomaly_Management_Plan_ABE | v25.0
+TMFC041,AnomalyManagement,IntelligenceManagement,SID,Patterns_Domain | Anomaly_ABE | Anomaly_Specification_ABE | v25.0
+TMFC043,FaultManagement,Production,SID,Resource_Domain | Resource_Trouble_ABE | Resource_Alarm_ABE |  v25.0
 TMFC046,WorkforceManagement,Production,eTOM,1.5.4-Resource_Readiness_&_Support-v23.0
 TMFC046,WorkforceManagement,Production,eTOM,1.5.4.8-Manage_Field_Workforce-v23.0
 TMFC046,WorkforceManagement,Production,functionalFrameworkFunctions,119-Center_Time_Management-v23.0
@@ -463,6 +534,8 @@ TMFC046,WorkforceManagement,Production,functionalFrameworkFunctions,556-Workforc
 TMFC046,WorkforceManagement,Production,functionalFrameworkFunctions,558-Workforce_Dispatchability_Management-v23.0
 TMFC046,WorkforceManagement,Production,functionalFrameworkFunctions,482-Workforce_Management-v23.0
 TMFC046,WorkforceManagement,Production,functionalFrameworkFunctions,561-Workforce_Scheduling-v23.0
+TMFC046,WorkforceManagement,Production,SID,Enterprise_Domain | Workforce_ABE | v25.0
+TMFC054,ProductTestManagement,CoreCommerce,SID,Product_Domain | Product_Test_ABE | v25.0
 TMFC055,ServiceTestManagement,Production,eTOM,1.4.1-Service_Strategy_Management-v24.5
 TMFC055,ServiceTestManagement,Production,eTOM,1.4.1.8-Service_Test_Strategy-v24.5
 TMFC055,ServiceTestManagement,Production,functionalFrameworkFunctions,FF625-Service_Test_Operation_Control-v24.0
@@ -478,3 +551,8 @@ TMFC055,ServiceTestManagement,Production,functionalFrameworkFunctions,FF575-Serv
 TMFC055,ServiceTestManagement,Production,functionalFrameworkFunctions,FF626-Service_Testing_Management-v24.0
 TMFC055,ServiceTestManagement,Production,functionalFrameworkFunctions,FF577-Service_End_to_End_Test_Scheduling-v24.0
 TMFC055,ServiceTestManagement,Production,functionalFrameworkFunctions,FF579-Service_End_to_End_Testing-v24.0
+TMFC055,ServiceTestManagement,Production,SID,Service_Domain | Service_Test_ABE | ServiceTest_BE | v25.0
+TMFC055,ServiceTestManagement,Production,SID,Service_Domain | Service_Test_ABE | ServiceTestSpec_BE | v25.0
+TMFC061,WorkOrderManagement,Production,SID,Enterprise_Domain | Workforce_ABE | Work_Specification_ABE | v25.0
+TMFC061,WorkOrderManagement,Production,SID,Product_Domain | Project_ABE | Work_Order_ABE | v25.0
+TMFC062,ResourceConfigurationandActivation,Production,SID,Resource_Domain | Resource_Configuration_ABE | v25.0

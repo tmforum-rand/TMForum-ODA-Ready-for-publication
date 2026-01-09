@@ -225,8 +225,8 @@ spec:
     eTOMs: []
     functionalFrameworkFunctions: []
     SIDs:
-    - Enterprise Domain | Workforce ABE | Work Specification ABE | v25.0
-    - Product Domain | Project ABE | Work Order ABE | v25.0
+    - Enterprise_Domain | Workforce_ABE | Work_Specification_ABE | v25.0
+    - Product_Domain | Project_ABE | Work_Order_ABE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

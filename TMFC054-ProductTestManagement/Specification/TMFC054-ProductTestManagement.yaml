@@ -191,7 +191,7 @@ spec:
     eTOMs: []
     functionalFrameworkFunctions: []
     SIDs:
-    - Product Domain | Product Test ABE | v25.0
+    - Product_Domain | Product_Test_ABE | v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics
