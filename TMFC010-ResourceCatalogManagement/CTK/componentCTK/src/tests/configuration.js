@@ -191,6 +191,50 @@ describe('Step 1: Component manifest checks',  function() {
         })
     })
 
+    it('Exposed API versions in component manifest must match one of the allowed versions in the standard spec', async function () {
+        addContext(this, "For each exposed API, the deployed version must exist in the standard component specification")
+        const gcExposed = gc_manifest.get("spec").get("coreFunction").get("exposedAPIs").items
+        const deployedExposed = component_object.get("spec").get("coreFunction").get("exposedAPIs").items
+        const toMajor = v => "v" + v.replace(/^v/, "").split(".")[0]
+
+        const gcVersionMap = {}
+        const gcMinItems = {}
+
+        gcExposed.forEach(api => {
+            const id = api.get("id")
+            const min = api.get("minItems") || 1;
+            const specs = api.get("specification").items
+            gcVersionMap[id] = specs.map(s => toMajor(s.get("version") || ""))
+            gcMinItems[id] = min
+        });
+
+        deployedExposed.forEach(api => {
+            const id = api.get("id")
+            const specArray = api.get("specification")?.items || []
+    
+            if (!gcVersionMap[id]) {
+                return; // Skip APIs not in the standard component
+            }
+    
+            // Extract deployed version(s)
+            const deployedMajors = specArray
+                .map(s => extractDeployedMajorVersion(s))
+                .filter(v => v !== null)
+            const allowedVersions = gcVersionMap[id]
+            const minItems = gcMinItems[id] || 1
+    
+            // Validate: at least one version must be valid
+            const matchingVersions = deployedMajors.filter(v => allowedVersions.includes(v))
+    
+            expect(
+                matchingVersions.length >= minItems,
+                `API ${id} implements only ${matchingVersions.length} valid version(s): ${matchingVersions}.
+                But the standard specification requires at least ${minItems} version(s).
+                Allowed versions: ${allowedVersions}`
+            ).to.be.true;
+        })
+    })
+
     it('Dependent APIs defined in the standard component specification must be specified in the component manifest', async function () {
         addContext(this, 'All mandatory Dependent APIs in the standard component specification must also be declared in the component manifest')
     
@@ -207,6 +251,65 @@ describe('Step 1: Component manifest checks',  function() {
                 `Missing required dependent API ID: ${api_id} in component manifest`
             )
         })
+    })
+
+    it('Dependent API versions in the component manifest must match one of the allowed versions in the standard spec', async function () {
+        addContext(this,
+            "For each dependent API, the deployed version must exist in the standard component specification"
+        )
+        const gcDependent = gc_manifest
+            .get("spec").get("coreFunction").get("dependentAPIs")?.items || []
+        const deployedDependent = component_object
+            .get("spec").get("coreFunction").get("dependentAPIs")?.items || []
+
+        const toMajor = v => "v" + v.replace(/^v/, "").split(".")[0]
+        const gcVersionMap = {}
+        const gcMinItems = {}
+
+        gcDependent.forEach(api => {
+            const id = api.get("id")
+            const min = api.get("minItems") || 1
+
+            const specs = api.get("specification")?.items || []
+            const allowedMajors = specs.map(s => toMajor(s.get("version") || ""))
+
+            gcVersionMap[id] = allowedMajors
+            gcMinItems[id] = min
+        })
+
+        // ---- VALIDATE DEPLOYED SPEC AGAINST GOLDEN SPEC ----
+        deployedDependent.forEach(api => {
+            const id = api.get("id")
+            const specArray = api.get("specification")?.items || []
+
+            // Skip if API is not in standard spec
+            if (!gcVersionMap[id]) {
+                return
+            }
+
+            const deployedMajors = specArray
+                .map(s => extractDeployedMajorVersion(s))
+                .filter(v => v !== null)
+            const allowedVersions = gcVersionMap[id]
+            const minItems = gcMinItems[id] || 1
+
+            // Find matches
+            const matchingVersions = deployedMajors.filter(v =>
+                allowedVersions.includes(v)
+            )
+
+            // Must meet minItems version compatibility
+            const isValid = matchingVersions.length >= minItems
+
+            expect(
+                isValid,
+                `❌ Dependent API ${id} has invalid version(s): ${deployedMajors}\n` +
+                `✔ Allowed major versions: ${allowedVersions}\n` +
+                `✔ minItems required: ${minItems}\n` +
+                `✔ matchingVersions: ${matchingVersions}`
+            ).to.be.true
+        })
+
     })
 
     it('All swagger urls must be valid and accessible and version fields ', async function () {
@@ -286,4 +389,20 @@ function getComponentDocument (inDocumentArray) {
         return kind.toLowerCase() === 'component'
     })
 };
-  
+
+function extractDeployedMajorVersion(specEntry) {
+    // 1. Try explicit version field
+    const v = specEntry.get("version");
+    if (v && typeof v === "string") {
+        return "v" + v.replace(/^v/, "").split(".")[0];
+    }
+
+    // 2. Fall back to URL
+    const url = specEntry.get("url") || "";
+    const match = url.match(/\/v(\d+)/) || url.match(/v(\d+)\./);
+    if (match) {
+        return "v" + match[1];
+    }
+
+    return null; // No usable version
+};

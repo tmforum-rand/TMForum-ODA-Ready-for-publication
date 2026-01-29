@@ -693,6 +693,43 @@ TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,pro
 TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,PATCH
 TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET
 TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET /id
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,capacitySpecification,POST
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,capacitySpecification,GET
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,capacitySpecification,GET /id
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,capacitySpecification,PATCH
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,capacitySpecification,DELETE
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,POST
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,PATCH
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,GET
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,GET /id
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,DELETE
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,POST
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,PATCH
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,GET
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,GET /id
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,DELETE
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,POST
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,PATCH
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,GET
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,GET /id
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,resourcePoolSpecification,DELETE
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,availabilityCheck,POST
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,availabilityCheck,GET
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,availabilityCheck,GET /id
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,push,POST
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,push,GET
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,push,GET /id
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,extract,POST
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,extract,GET
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF685,v5.0.0,5.0.0,false,extract,GET /id
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF716,v4.0.0,4.0.0,false,resourceReservation,POST
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF716,v4.0.0,4.0.0,false,resourceReservation,GET
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF716,v4.0.0,4.0.0,false,resourceReservation,GET /id
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF716,v4.0.0,4.0.0,false,resourceReservation,PATCH
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF716,v4.0.0,4.0.0,false,resourceReservation,DELETE
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF716,v4.0.0,4.0.0,false,cancelResourceReservation,POST
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF716,v4.0.0,4.0.0,false,cancelResourceReservation,GET
+TMFC012,ResourceInventory,coreFunction,exposedAPIs,TMF716,v4.0.0,4.0.0,false,cancelResourceReservation,GET /id
 TMFC012,ResourceInventory,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,GET
 TMFC012,ResourceInventory,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,GET /id
 TMFC012,ResourceInventory,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET
