@@ -651,6 +651,13 @@ TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF702,v4.0.0,4.0.0,f
 TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF702,v4.0.0,4.0.0,false,resource,DELETE
 TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF702,v4.0.0,4.0.0,false,monitor,GET
 TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF702,v4.0.0,4.0.0,false,monitor,GET /id
+TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,GET
+TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,GET /id
+TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,POST
+TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,PATCH
+TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF685,v5.0.0,5.0.0,false,resourcePool,DELETE
+TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF685,v5.0.0,5.0.0,false,availabilityCheck,GET
+TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF685,v5.0.0,5.0.0,false,availabilityCheck,GET /id
 TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,GET
 TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,GET /id
 TMFC011,ResourceOrderManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,POST

@@ -23,6 +23,24 @@ spec:
       - monitor:
         - GET
         - GET /id
+    - id: TMF685
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-pool-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF685_Resource_Pool/5.0.0/swagger/TMF685-Resource_Pool_Management-v5.0.0.oas.yaml
+        version: v5.0.0
+      resources:
+      - resourcePool:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - availabilityCheck:
+        - GET
+        - GET /id
     - id: TMF634
       apiType: openapi
       apiSDO: tmForum
@@ -206,9 +224,6 @@ spec:
     - 1.5.5.12-Manage_Resource_Order_Tracking_v23
     - 1.5.5.13-Manage_Resource_Order_Closure_v23
     functionalFrameworkFunctions:
-    - 448-Resource_Availability_Validation_v23
-    - 568-Resource_Availability_Checking_v23
-    - 569-Network_Facility_Selection_v23
     - 490-Resource_Order_Data_Collection_v23
     - 491-Resource_Order_Initiation_v23
     - 495-Resource_Order_Completion_v23
