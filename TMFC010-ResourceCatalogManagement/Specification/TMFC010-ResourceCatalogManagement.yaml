@@ -182,30 +182,29 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.5.15-Resource_Catalog_Lifecycle_Management-v23.0
-    - 1.5.16-Resource_Catalog_Operational_Readiness_Management-v23.0
-    - 1.5.17-Resource_Catalog_Content_Management-v23.0
-    - 1.5.18-Resource_Catalog_Planning_Management-v23.0
-    - 1.5.19-Resource_Specification_Management-v23.0
-    - 1.5.3-Resource_Specification_Development_&_Retirement-v23.0
-    - 1.5.3.4-Develop_Detailed_Resource_Specifications-v23.0
+    - 1.5.15|Resource_Catalog_Lifecycle_Management|v23.0
+    - 1.5.16|Resource_Catalog_Operational_Readiness_Management|v23.0
+    - 1.5.17|Resource_Catalog_Content_Management|v23.0
+    - 1.5.18|Resource_Catalog_Planning_Management|v23.0
+    - 1.5.19|Resource_Specification_Management|v23.0
+    - 1.5.3|Resource_Specification_Development_&_Retirement|v23.0
+    - 1.5.3.4|Develop_Detailed_Resource_Specifications|v23.0
     functionalFrameworkFunctions:
-    - 737-Resource_Capability_Specification_Management-v23.0
-    - 467-Resource_Data_Transformation/Parsing_Rules_Configuration-v23.0
-    - 951-Resource_Catalog_Entities_Management-v23.0
-    - 996-Resource_Task_Item_Policy_Control_Configuration-v23.0
-    - 1083-Resource_Specification_Repository_Management-v23.0
-    - 1088-Resource_Specification_to_Supplier_Product_Specification_Relationship_Design-v23.0
-    - 1089-Resource_Specification_Action_Skill_Design-v23.0
-    - 1082-Resource_Specification_Change_Auditing-v23.0
-    - 1064-Logical_and_Software_Resources_Designing-v23.0
-    - 1087-Resource_Specification_Design-v23.0
+    - 737|Resource_Capability_Specification_Management|v23.0
+    - 467|Resource_Data_Transformation/Parsing_Rules_Configuration|v23.0
+    - 951|Resource_Catalog_Entities_Management|v23.0
+    - 996|Resource_Task_Item_Policy_Control_Configuration|v23.0
+    - 1083|Resource_Specification_Repository_Management|v23.0
+    - 1088|Resource_Specification_to_Supplier_Product_Specification_Relationship_Design|v23.0
+    - 1089|Resource_Specification_Action_Skill_Design|v23.0
+    - 1082|Resource_Specification_Change_Auditing|v23.0
+    - 1064|Logical_and_Software_Resources_Designing|v23.0
+    - 1087|Resource_Specification_Design|v23.0
     SIDs:
-    - Resource_Domain | Resource_Specification_ABE |  v25.0
-    - Resource_Domain | Resource_Performance_ABE | ResourcePerformanceSpecification_BE
-      |  v25.0
-    - Resource_Domain | Resource_Usage_ABE | ResourceUsageSpec_BE |  v25.0
-    - Resource_Domain | Resource_Configuration_ABE | ResourceConfigSpec_BE |  v25.0
+    - Resource_Domain|Resource_Specification_ABE|v25.0
+    - Resource_Domain|Resource_Performance_ABE|ResourcePerformanceSpecification_BE|v25.0
+    - Resource_Domain|Resource_Usage_ABE|ResourceUsageSpec_BE|v25.0
+    - Resource_Domain|Resource_Configuration_ABE|ResourceConfigSpec_BE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

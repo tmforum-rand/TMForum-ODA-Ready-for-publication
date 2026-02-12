@@ -342,45 +342,45 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.4.5-Service_Configuration_&_Activation-v21.5
-    - 1.4.5.1-Design_Solution-v21.5
-    - 1.4.5.2-Allocate_Specific_Service_Parameters_to_Services-v21.5
-    - 1.4.5.3-Track_&_Manage_Service_Provisioning-v21.5
-    - 1.4.5.4-Implement,_configure_&_activate_service-v21.5
-    - 1.4.5.6-Issue_Service_Order-v21.5
-    - 1.4.5.7-Report_service_provisioning-v21.5
-    - 1.4.5.8-Close_Service_Order-v21.5
-    - 1.5.6-Resource_Provisioning-v21.5
-    - 1.5.6.7-Issue_Resource_Order-v21.5
+    - 1.4.5|Service_Configuration_&_Activation|v21.5
+    - 1.4.5.1|Design_Solution|v21.5
+    - 1.4.5.2|Allocate_Specific_Service_Parameters_to_Services|v21.5
+    - 1.4.5.3|Track_&_Manage_Service_Provisioning|v21.5
+    - 1.4.5.4|Implement,_configure_&_activate_service|v21.5
+    - 1.4.5.6|Issue_Service_Order|v21.5
+    - 1.4.5.7|Report_service_provisioning|v21.5
+    - 1.4.5.8|Close_Service_Order|v21.5
+    - 1.5.6|Resource_Provisioning|v21.5
+    - 1.5.6.7|Issue_Resource_Order|v21.5
     functionalFrameworkFunctions:
-    - 584-Service_Activation_Planning-v21.5
-    - 588-Service_Orchestration_Configuration-v21.5
-    - 591-Service_Parameters_Allocation-v21.5
-    - 596-Service_Order_Transfer_Supervision-v21.5
-    - 598-Service_Order_Orchestration-v21.5
-    - 733-Service_Order_Decomposition-v21.5
-    - 734-Service_Data_Collection-v21.5
-    - 963-Service_Task_Item_Decomposition-v21.5
-    - 968-Service_Work_Item_Sequence_Execution-v21.5
-    - 969-Service_Work_Item_Sequence_Execution_Configuration-v21.5
-    - 571-Service_Delivery_Due_Date_Calculation-v21.5
-    - 1061-Service_Order_Initiation-v21.5
-    - 595-Service_Order_Completion-v21.5
-    - 600-Service_Order_Validation-v21.5
-    - 583-Activation_Notification-v21.5
-    - 594-Service_Order_Storage-v21.5
-    - 597-Service_Order_Exposure-v21.5
-    - 599-Service_Order_Tracking-v21.5
-    - 735-Access_Provider_Selection-v21.5
-    - 341-Service_Activation-v21.5
-    - 342-Mass_Service_Pre-activation-v21.5
-    - 570-Solution_Services_Design_Management-v21.5
-    - 589-Cross_Services_Dependencies_Configuration-v21.5
-    - 590-Service_Configuration-v21.5
-    - 585-Service_Configuration_Activation-v21.5
-    - 592-Service_Parameters_Reservation-v21.5
+    - 584|Service_Activation_Planning|v21.5
+    - 588|Service_Orchestration_Configuration|v21.5
+    - 591|Service_Parameters_Allocation|v21.5
+    - 596|Service_Order_Transfer_Supervision|v21.5
+    - 598|Service_Order_Orchestration|v21.5
+    - 733|Service_Order_Decomposition|v21.5
+    - 734|Service_Data_Collection|v21.5
+    - 963|Service_Task_Item_Decomposition|v21.5
+    - 968|Service_Work_Item_Sequence_Execution|v21.5
+    - 969|Service_Work_Item_Sequence_Execution_Configuration|v21.5
+    - 571|Service_Delivery_Due_Date_Calculation|v21.5
+    - 1061|Service_Order_Initiation|v21.5
+    - 595|Service_Order_Completion|v21.5
+    - 600|Service_Order_Validation|v21.5
+    - 583|Activation_Notification|v21.5
+    - 594|Service_Order_Storage|v21.5
+    - 597|Service_Order_Exposure|v21.5
+    - 599|Service_Order_Tracking|v21.5
+    - 735|Access_Provider_Selection|v21.5
+    - 341|Service_Activation|v21.5
+    - 342|Mass_Service_Pre-activation|v21.5
+    - 570|Solution_Services_Design_Management|v21.5
+    - 589|Cross_Services_Dependencies_Configuration|v21.5
+    - 590|Service_Configuration|v21.5
+    - 585|Service_Configuration_Activation|v21.5
+    - 592|Service_Parameters_Reservation|v21.5
     SIDs:
-    - Service_Domain | Service_Order_ABE |  v25.0
+    - Service_Domain|Service_Order_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

@@ -94,10 +94,10 @@ spec:
     id: TMFC014
     name: LocationManagement
     version: 1.2.1
-    description: The Location Management Component component allows easy reference
-      to geographic places important to other entities, where a geographic place is
-      an entity that can answer the question "where?" This component could be a facade
-      tool into GIS systems (eg Google Maps).
+    description: The Location Management Component allows easy reference to geographic
+      places important to other entities, where a geographic place is an entity that
+      can answer the question "where?" This component could be a facade tool for GIS
+      systems, address sytems, BIM systems, mapping systems ... (eg. Google Maps).
     publicationDate: 2023-08-18 00:00:00
     status: specified
     functionalBlock: Production
@@ -111,12 +111,12 @@ spec:
       url: Redacted
     eTOMs: []
     functionalFrameworkFunctions:
-    - 429|Location_Change_History_Management|v23
-    - 430|PreFormattedLocation_InformationPresentation|v23
-    - 431|Location_Information_Updating|v23
-    - 432|Location_Information_Searching|v23
-    - 433|Location_Structure_Data_Configuration|v23
-    - 434|Location_Data_Integrity_Management|v23
+    - 429|Location_Change_History_Management|v23.0
+    - 430|PreFormattedLocation_InformationPresentation|v23.0
+    - 431|Location_Information_Updating|v23.0
+    - 432|Location_Information_Searching|v23.0
+    - 433|Location_Structure_Data_Configuration|v23.0
+    - 434|Location_Data_Integrity_Management|v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics

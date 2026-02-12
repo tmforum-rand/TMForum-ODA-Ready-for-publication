@@ -177,7 +177,7 @@ spec:
     - 191|Customer_Relationship/Context_Event_Data_Accumulation|v24.0
     - 196|Customer_Interaction_Logging|v24.0
     - 239|Recommendation_to_Customer_Notification|v24.0
-    - 1041|Partner_Interaction_Journalizing\v24.0
+    - 1041|Partner_Interaction_Journalizing|v24.0
     SIDs:
     - Shared_Domain|Communication_Interaction_ABE|v25.0
   managementFunction:

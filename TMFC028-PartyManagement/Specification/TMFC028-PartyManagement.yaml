@@ -177,7 +177,7 @@ spec:
     - 195|Customers_Hierarchy_and_Group_Management|v23.0
     - 122|Customer_Information_Searching|v23.0
     - 91|Customer_Profile_Updating|v23.0
-    - 121|Registration-v23.0
+    - 121|Registration|v23.0
     - 124|Guided_Customer_Information_Capturing|v23.0
     - 1032|Partner_Group_and_Hierarchy_Definition|v23.0
     - 1033|Partner_Group_and_Hierarchy_Assigning|v23.0

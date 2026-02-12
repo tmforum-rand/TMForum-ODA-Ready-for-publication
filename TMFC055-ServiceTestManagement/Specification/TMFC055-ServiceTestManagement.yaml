@@ -139,8 +139,8 @@ spec:
     id: TMFC055
     name: ServiceTestManagement
     eTOMs:
-    - 1.4.1-Service_Strategy_Management-v24.5
-    - 1.4.1.8-Service_Test_Strategy-v24.5
+    - 1.4.1|Service_Strategy_Management|v24.5
+    - 1.4.1.8|Service_Test_Strategy|v24.5
     owners:
     - url: Redacted
       name: Redacted
