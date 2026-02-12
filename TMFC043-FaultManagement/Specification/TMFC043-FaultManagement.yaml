@@ -119,7 +119,7 @@ spec:
     eTOMs: []
     functionalFrameworkFunctions: []
     SIDs:
-    - Resource_Domain | Resource_Trouble_ABE | Resource_Alarm_ABE |  v25.0
+    - Resource_Domain|Resource_Trouble_ABE|Resource_Alarm_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

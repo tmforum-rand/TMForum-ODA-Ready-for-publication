@@ -171,27 +171,26 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.1.11-Contact/Lead/Prospect_Management-v23.0
-    - 1.1.11.1-Manage_Sales_Contact-v23.0
-    - 1.1.11.2-Manage_Sales_Lead-v23.0
-    - 1.1.11.3-Manage_Sales_Prospect-v23.0
-    - 1.1.9-Selling-v23.0
-    - 1.1.9.1-Qualify_Selling_Opportunity-v23.0
-    - 1.1.9.3-Acquire_Sales_Prospect_Data-v23.0
-    - 1.1.7-Market_Sales_Support_&_Readiness-v23.0
-    - 1.1.7.2-Support_Selling-v23.0
-    - 1.1.7.5-Manage_Sales_Accounts-v23.0
+    - 1.1.11|Contact/Lead/Prospect_Management|v23.0
+    - 1.1.11.1|Manage_Sales_Contact|v23.0
+    - 1.1.11.2|Manage_Sales_Lead|v23.0
+    - 1.1.11.3|Manage_Sales_Prospect|v23.0
+    - 1.1.9|Selling|v23.0
+    - 1.1.9.1|Qualify_Selling_Opportunity|v23.0
+    - 1.1.9.3|Acquire_Sales_Prospect_Data|v23.0
+    - 1.1.7|Market_Sales_Support_&_Readiness|v23.0
+    - 1.1.7.2|Support_Selling|v23.0
+    - 1.1.7.5|Manage_Sales_Accounts|v23.0
     functionalFrameworkFunctions:
-    - 394-Sales_Aids_Support-v23.0
-    - 372-Sales_Opportunity_Management-v23.0
-    - 375-Funnel_Assigning-v23.0
-    - 374-Funnel_Creation-v23.0
-    - 376-Funnel_Leads_Tracking-v23.0
-    - 726-Sales_Lead_Capturing-v23.0
+    - 394|Sales_Aids_Support|v23.0
+    - 372|Sales_Opportunity_Management|v23.0
+    - 375|Funnel_Assigning|v23.0
+    - 374|Funnel_Creation|v23.0
+    - 376|Funnel_Leads_Tracking|v23.0
+    - 726|Sales_Lead_Capturing|v23.0
     SIDs:
-    - Market_&_Sales_Domain | Sales_Lead_and_Opportunity_ABE | Sales_Lead_ABE |  v25.0
-    - Market_&_Sales_Domain | Sales_Lead_and_Opportunity_ABE | Sales_Opportunity_ABE
-      |  v25.0
+    - Market_&_Sales_Domain|Sales_Lead_and_Opportunity_ABE|Sales_Lead_ABE|v25.0
+    - Market_&_Sales_Domain|Sales_Lead_and_Opportunity_ABE|Sales_Opportunity_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

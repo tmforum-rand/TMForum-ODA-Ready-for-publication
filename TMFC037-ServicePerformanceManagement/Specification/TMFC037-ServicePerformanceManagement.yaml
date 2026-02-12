@@ -180,15 +180,12 @@ spec:
     eTOMs: []
     functionalFrameworkFunctions: []
     SIDs:
-    - Service_Domain | Service_Performance_ABE | v25.0
-    - Patterns_Domain | Performance_ABE | Performance_Monitoring_ABE | Performance_Production_ABE
-      | MeasurementProductionJob_BE | v25.0
-    - Patterns_Domain | Performance_ABE | Performance_Monitoring_ABE | Performance_Collection_ABE
-      | AdhocCollection_BE | v25.0
-    - Patterns_Domain | Performance_ABE | Performance_Monitoring_ABE | Performance_Collection_ABE
-      | MeasurementCollectionJob_BE | v25.0
-    - Patterns_Domain | Performance_ABE | Performance_Threshold_ABE | v25.0
-    - Resource_Domain | Resource_Trouble_ABE | Alarm_ABE | v25.0
+    - Service_Domain|Service_Performance_ABE | v25.0
+    - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Production_ABE|MeasurementProductionJob_BE|v25.0
+    - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Collection_ABE|AdhocCollection_BE|v25.0
+    - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Collection_ABE|MeasurementCollectionJob_BE|v25.0
+    - Patterns_Domain|Performance_ABE|Performance_Threshold_ABE|v25.0
+    - Resource_Domain|Resource_Trouble_ABE|Alarm_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

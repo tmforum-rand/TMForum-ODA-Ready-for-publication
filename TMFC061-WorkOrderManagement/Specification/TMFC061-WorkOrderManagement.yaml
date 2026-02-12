@@ -205,7 +205,7 @@ spec:
     version: 1.0.0
     description: Work Order Management component is responsible of the setup and maintenance
       requests from initiation to completion.Work Order is a formal request that outlines
-      essential details related to necessary setup / maintenance tasks. These details
+      essential details related to necessary setup/maintenance tasks. These details
       typically include Nature of the task A description of the work that needs to
       be done. Location Where the maintenance or repair is required. Required materials
       The items or resources needed for the job. Assigned personnel The technician
@@ -225,8 +225,8 @@ spec:
     eTOMs: []
     functionalFrameworkFunctions: []
     SIDs:
-    - Enterprise_Domain | Workforce_ABE | Work_Specification_ABE | v25.0
-    - Product_Domain | Project_ABE | Work_Order_ABE | v25.0
+    - Enterprise_Domain|Workforce_ABE|Work_Specification_ABE|v25.0
+    - Product_Domain|Project_ABE|Work_Order_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

@@ -157,29 +157,29 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.3.5-Customer_Interaction_Management-v24.0
-    - 1.3.5.1-Create_Customer_Interaction-v24.0
-    - 1.3.5.2-Update_Customer_Interaction-v24.0
-    - 1.3.5.3-Close_Customer_Interaction-v24.0
-    - 1.3.5.4-Log_Customer_Interaction-v24.0
-    - 1.3.5.6-Track_and_Manage_Customer_Interaction-v24.0
-    - 1.3.5.7-Report_Customer_interaction-v24.0
-    - 1.6.9-Business_Partner_Interaction_Management-v24.0
-    - 1.6.9.1-Log_Business_Partner_Interaction-v24.0
-    - 1.6.9.3-Track_and_Manage_Business_Partner_Interaction-v24.0
-    - 1.6.9.5-Analyze_&_Report_Business_Partner_Interactions-v24.0
+    - 1.3.5|Customer_Interaction_Management|v24.0
+    - 1.3.5.1|Create_Customer_Interaction|v24.0
+    - 1.3.5.2|Update_Customer_Interaction|v24.0
+    - 1.3.5.3|Close_Customer_Interaction|v24.0
+    - 1.3.5.4|Log_Customer_Interaction|v24.0
+    - 1.3.5.6|Track_and_Manage_Customer_Interaction|v24.0
+    - 1.3.5.7|Report_Customer_interaction|v24.0
+    - 1.6.9|Business_Partner_Interaction_Management|v24.0
+    - 1.6.9.1|Log_Business_Partner_Interaction|v24.0
+    - 1.6.9.3|Track_and_Manage_Business_Partner_Interaction|v24.0
+    - 1.6.9.5|Analyze_&_Report_Business_Partner_Interactions|v24.0
     functionalFrameworkFunctions:
-    - 93-Customer_Behavior_Tracking-v24.0
-    - 163-Contact_Queuing-v24.0
-    - 165-Customer_Support_Collaboration_Access-v24.0
-    - 168-Voice_Channel_Contact_Routing-v24.0
-    - 189-Customer_Interaction_Information_Capturing-v24.0
-    - 191-Customer_Relationship/Context_Event_Data_Accumulation-v24.0
-    - 196-Customer_Interaction_Logging-v24.0
-    - 239-Recommendation_to_Customer_Notification-v24.0
-    - 1041-Partner_Interaction_Journalizing-v24.0
+    - 93|Customer_Behavior_Tracking|v24.0
+    - 163|Contact_Queuing|v24.0
+    - 165|Customer_Support_Collaboration_Access|v24.0
+    - 168|Voice_Channel_Contact_Routing|v24.0
+    - 189|Customer_Interaction_Information_Capturing|v24.0
+    - 191|Customer_Relationship/Context_Event_Data_Accumulation|v24.0
+    - 196|Customer_Interaction_Logging|v24.0
+    - 239|Recommendation_to_Customer_Notification|v24.0
+    - 1041|Partner_Interaction_Journalizing\v24.0
     SIDs:
-    - Shared_Domain | Communication_Interaction_ABE |  v25.0
+    - Shared_Domain|Communication_Interaction_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

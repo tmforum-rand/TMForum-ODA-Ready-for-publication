@@ -167,22 +167,22 @@ spec:
     functionalBlock: Production
     publicationDate: 2025-07-16 15:05:47
     functionalFrameworkFunctions:
-    - FF625-Service_Test_Operation_Control-v24.0
-    - FF1136-Service_Test_Specification_and_Scenario_Management-v24.0
-    - FF566-Service_Test_Result_Analysis_Policy_Configuration-v24.0
-    - FF573-Service_Testing_Rules_Management-v24.0
-    - FF581-Automated_Service_Test_Invocation-v24.0
-    - FF1138-Service_Test_Reporting_Rules_Management-v24.0
-    - FF582-Manual_Service_Test_Invocation-v24.0
-    - FF627-Service_Test_Strategy_Management-v24.0
-    - FF1137-Service_Test_Rules_Management-v24.0
-    - FF575-Service_Test_Results_Reporting-v24.0
-    - FF626-Service_Testing_Management-v24.0
-    - FF577-Service_End_to_End_Test_Scheduling-v24.0
-    - FF579-Service_End_to_End_Testing-v24.0
+    - 625|Service_Test_Operation_Control|v24.0
+    - 1136|Service_Test_Specification_and_Scenario_Management|v24.0
+    - 566|Service_Test_Result_Analysis_Policy_Configuration|v24.0
+    - 573|Service_Testing_Rules_Management|v24.0
+    - 581|Automated_Service_Test_Invocation|v24.0
+    - 1138|Service_Test_Reporting_Rules_Management|v24.0
+    - 582|Manual_Service_Test_Invocation|v24.0
+    - 627|Service_Test_Strategy_Management|v24.0
+    - 1137|Service_Test_Rules_Management|v24.0
+    - 575|Service_Test_Results_Reporting|v24.0
+    - 626|Service_Testing_Management|v24.0
+    - 577|Service_End_to_End_Test_Scheduling|v24.0
+    - 579|Service_End_to_End_Testing|v24.0
     SIDs:
-    - Service_Domain | Service_Test_ABE | ServiceTest_BE | v25.0
-    - Service_Domain | Service_Test_ABE | ServiceTestSpec_BE | v25.0
+    - Service_Domain|Service_Test_ABE|ServiceTest_BE|v25.0
+    - Service_Domain|Service_Test_ABE|ServiceTestSpec_BE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

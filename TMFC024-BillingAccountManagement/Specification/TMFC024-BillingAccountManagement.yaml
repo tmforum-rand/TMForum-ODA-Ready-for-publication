@@ -154,16 +154,16 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.3.10-Customer_Bill_Payments_&_Receivables_Management-v23.0
-    - 1.3.10.1-Manage_Customer_Billing_Account-v23.0
+    - 1.3.10|Customer_Bill_Payments_&_Receivables_Management|v23.0
+    - 1.3.10.1|Manage_Customer_Billing_Account|v23.0
     functionalFrameworkFunctions:
-    - 77-Billing_Account_Information_Configuration-v23.0
-    - 73-Billing_Account_Reporting-v23.0
-    - 76-Billing_Account_Structure_Configuration-v23.0
-    - 75-Billing_Accounts_Creation-v23.0
-    - 248-Customer_Billing_Hierarchies_Management-v23.0
+    - 77|Billing_Account_Information_Configuration|v23.0
+    - 73|Billing_Account_Reporting|v23.0
+    - 76|Billing_Account_Structure_Configuration|v23.0
+    - 75|Billing_Accounts_Creation|v23.0
+    - 248|Customer_Billing_Hierarchies_Management|v23.0
     SIDs:
-    - Customer_Domain | Customer_Billing_Account_ABE | v25.0
+    - Customer_Domain|Customer_Billing_Account_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

@@ -188,33 +188,33 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.3.3-Customer_Order_Handling-v23.0
-    - 1.3.3.8-Manage_Order_Fallout-v23.0
-    - 1.3.3.9-Customer_Order_Orchestration-v23.0
-    - 1.2.9-Product_Offering_Purchasing-v23.0
-    - 1.2.9.5-Complete_Product_Offering_Purchase-v23.0
-    - 1.4.5-Service_Configuration_&_Activation-v23.0
-    - 1.4.5.6-Issue_Service_Order-v23.0
-    - 1.5.6-Resource_Provisioning-v23.0
-    - 1.5.6.7-Issue_Resource_Order-v23.0
+    - 1.3.3|Customer_Order_Handling|v23.0
+    - 1.3.3.8|Manage_Order_Fallout|v23.0
+    - 1.3.3.9|Customer_Order_Orchestration|v23.0
+    - 1.2.9|Product_Offering_Purchasing|v23.0
+    - 1.2.9.5|Complete_Product_Offering_Purchase|v23.0
+    - 1.4.5|Service_Configuration_&_Activation|v23.0
+    - 1.4.5.6|Issue_Service_Order|v23.0
+    - 1.5.6|Resource_Provisioning|v23.0
+    - 1.5.6.7|Issue_Resource_Order|v23.0
     functionalFrameworkFunctions:
-    - 16-Fallout_Automated_Correction_v23.0
-    - 17-Fallout_Correction_Information_Collection_v23.0
-    - 18-Fallout_Management_to_Fulfillment_Application_Accessing_v23.0
-    - 19-Fallout_Manual_Correction_Queuing_v23.0
-    - 20-Fallout_Notification_v23.0
-    - 21-Fallout_Orchestration_v23.0
-    - 22-Fallout_Reporting_v23.0
-    - 23-Fallout_Dashboard_System_Log-in_Accessing_v23.0
-    - 24-Pre-populated_Fallout_Information_Presentation_v23.0
-    - 175-Customer_Support_Jeopardy_Notification_v23.0
-    - 174-Customer_Order_Error_Resolution_Support_v23.0
-    - 723-Customer_Order_Item_Decomposition_v23.0
-    - 214-Customer_Order_Orchestration_v23.0
-    - 215-Retro-active_order_orchestration_v23.0
-    - 342-Mass_Service/product_pre-activation_v23.0
-    - 743-Number_Portability_Orchestration_v23.0
-    - 756-Fallout_Rule_Based_Error_Correction_v23.0
+    - 16|Fallout_Automated_Correction|v23.0
+    - 17|Fallout_Correction_Information_Collection|v23.0
+    - 18|Fallout_Management_to_Fulfillment_Application_Accessing|v23.0
+    - 19|Fallout_Manual_Correction_Queuing|v23.0
+    - 20|Fallout_Notification|v23.0
+    - 21|Fallout_Orchestration|v23.0
+    - 22|Fallout_Reporting|v23.0
+    - 23|Fallout_Dashboard_System_Log-in_Accessing|v23.0
+    - 24|Pre-populated_Fallout_Information_Presentation|v23.0
+    - 175|Customer_Support_Jeopardy_Notification|v23.0
+    - 174|Customer_Order_Error_Resolution_Support|v23.0
+    - 723|Customer_Order_Item_Decomposition|v23.0
+    - 214|Customer_Order_Orchestration|v23.0
+    - 215|Retro-active_order_orchestration|v23.0
+    - 342|Mass_Service/product_pre-activation|v23.0
+    - 743|Number_Portability_Orchestration|v23.0
+    - 756|Fallout_Rule_Based_Error_Correction|v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics

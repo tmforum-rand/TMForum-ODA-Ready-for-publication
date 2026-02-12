@@ -111,12 +111,12 @@ spec:
       url: Redacted
     eTOMs: []
     functionalFrameworkFunctions:
-    - 429-Location_Change_History_Management_v23
-    - 430-PreFormattedLocation_InformationPresentation_v23
-    - 431-Location_Information_Updating_v23
-    - 432-Location_Information_Searching_v23
-    - 433-Location_Structure_Data_Configuration_v23
-    - 434-Location_Data_Integrity_Management_v23
+    - 429|Location_Change_History_Management|v23
+    - 430|PreFormattedLocation_InformationPresentation|v23
+    - 431|Location_Information_Updating|v23
+    - 432|Location_Information_Searching|v23
+    - 433|Location_Structure_Data_Configuration|v23
+    - 434|Location_Data_Integrity_Management|v23
   managementFunction:
     exposedAPIs:
     - name: metrics

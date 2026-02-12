@@ -105,15 +105,15 @@ spec:
     eTOMs: []
     functionalFrameworkFunctions: []
     SIDs:
-    - Shared_Domain | Permission_ABE | PermissionSpecSet_BE | v25.0
-    - Shared_Domain | Permission_ABE | PermissionSet_BE | v25.0
-    - Shared_Domain | Permission_ABE | Permission_BE | v25.0
-    - Shared_Domain | Party_ABE | PartyRole_BE | v25.0
-    - Shared_Domain | Party_ABE | PartyRoleSpecification_BE | v25.0
-    - Shared_Domain | Party_ABE | Party_Organization_ABE | v25.0
-    - Market_&_Sales_Domain | Market_Sales_Party_Roles_ABE | v25.0
-    - Service_Domain | Service_Party_Roles_ABE | v25.0
-    - Resource_Domain | Resource_Party_Roles_ABE | v25.0
+    - Shared_Domain|Permission_ABE|PermissionSpecSet_BE|v25.0
+    - Shared_Domain|Permission_ABE|PermissionSet_BE|v25.0
+    - Shared_Domain|Permission_ABE|Permission_BE|v25.0
+    - Shared_Domain|Party_ABE|PartyRole_BE|v25.0
+    - Shared_Domain|Party_ABE|PartyRoleSpecification_BE|v25.0
+    - Shared_Domain|Party_ABE|Party_Organization_ABE|v25.0
+    - Market_&_Sales_Domain|Market_Sales_Party_Roles_ABE|v25.0
+    - Service_Domain|Service_Party_Roles_ABE|v25.0
+    - Resource_Domain|Resource_Party_Roles_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

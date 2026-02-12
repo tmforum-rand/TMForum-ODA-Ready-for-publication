@@ -236,34 +236,34 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.5.4-Resource_Support_Readiness-v23.0
-    - 1.5.4.5-Manage_Resource_Inventory-v23.0
+    - 1.5.4|Resource_Support_Readiness|v23.0
+    - 1.5.4.5|Manage_Resource_Inventory|v23.0
     functionalFrameworkFunctions:
-    - 426-Physical_Implementation_Information_Capturing-v23.0
-    - 442-Network_Overviews_Presentation-v23.0
-    - 453-Resource_Configuration_Change_Logging-v23.0
-    - 454-Resource_Configuration_Management-v23.0
-    - 456-Resource_Topology_Verification-v23.0
-    - 468-Resource_Information_Model_Creation-v23.0
-    - 470-Resource_Repository_Retrieval-v23.0
-    - 471-Resource_Repository_Updating-v23.0
-    - 472-Resource_Repository_Update_Notification-v23.0
-    - 562-Voucher_Reporting-v23.0
-    - 564-Voucher_Life_Cycle_Management-v23.0
-    - 738-Resource_Data_Inventory_Synchronization-v23.0
-    - 436-Number_Aging-v23.0
-    - 437-Number_Assigning-v23.0
-    - 439-Number_Searching-v23.0
-    - 440-Number_Tracking_and_Reporting-v23.0
-    - 743-Number_Portability_Orchestration-v23.0
-    - 744-Number_Portability_Risk_&_Effectiveness_Management-v23.0
-    - 745-Number_Portability_Validation-v23.0
-    - 1062-Number_Acquisition-v23.0
-    - 1249-Number_Porting-v23.0
-    - 438-Number_Reservation-v23.0
-    - 435-Number_Inventory_Establishing-v23.0
+    - 426|Physical_Implementation_Information_Capturing|v23.0
+    - 442|Network_Overviews_Presentation|v23.0
+    - 453|Resource_Configuration_Change_Logging|v23.0
+    - 454|Resource_Configuration_Management|v23.0
+    - 456|Resource_Topology_Verification|v23.0
+    - 468|Resource_Information_Model_Creation|v23.0
+    - 470|Resource_Repository_Retrieval|v23.0
+    - 471|Resource_Repository_Updating|v23.0
+    - 472|Resource_Repository_Update_Notification|v23.0
+    - 562|Voucher_Reporting|v23.0
+    - 564|Voucher_Life_Cycle_Management|v23.0
+    - 738|Resource_Data_Inventory_Synchronization|v23.0
+    - 436|Number_Aging|v23.0
+    - 437|Number_Assigning|v23.0
+    - 439|Number_Searching|v23.0
+    - 440|Number_Tracking_and_Reporting|v23.0
+    - 743|Number_Portability_Orchestration|v23.0
+    - 744|Number_Portability_Risk_&_Effectiveness_Management|v23.0
+    - 745|Number_Portability_Validation|v23.0
+    - 1062|Number_Acquisition|v23.0
+    - 1249|Number_Porting|v23.0
+    - 438|Number_Reservation|v23.0
+    - 435|Number_Inventory_Establishing|v23.0
     SIDs:
-    - Resource_Domain | Resource_ABE |  v25.0
+    - Resource_Domain|Resource_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics
