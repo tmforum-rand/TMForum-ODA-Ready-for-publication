@@ -161,6 +161,37 @@ spec:
       - intent:
         - GET
         - GET /id
+    - id: TMF645
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-qualification-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - checkServiceQualification:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+      - queryServiceQualification:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+    - id: TMF651
+      apiType: openapi
+      apiSDO: tmForum
+      name: agreement-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - agreement:
+        - GET
+        - GET /id
     exposedAPIs:
     - id: TMF679
       apiType: openapi
@@ -308,14 +339,6 @@ spec:
       - checkProductConfigurationCreateEvent
       - checkProductConfigurationDeleteEvent
       - checkProductConfigurationStateChangeEvent
-      specification: ''
-      apiType: openapi
-      id: null
-      apiSDO: not_defined
-    - implementation: /{{.Release.Name}}-ProductOfferingQualification
-      name: ProductOfferingQualification
-      port: 80
-      resources:
       - queryProductConfigurationAttributeValueChangeEvent
       - queryProductConfigurationCreateEvent
       - queryProductConfigurationDeleteEvent
@@ -363,4 +386,17 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF622
+      apiSDO: not_defined
+    - apiType: openapi
+      implementation: /{{.Release.Name}}-ServiceQualificationEvent
+      name: ServiceQualification
+      port: 80
+      resources:
+      - checkServiceQualificationStateChangeEvent
+      - queryServiceQualificationStateChangeEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+        version: v4.0.0
+      id: TMF645
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/call-back
       apiSDO: not_defined
