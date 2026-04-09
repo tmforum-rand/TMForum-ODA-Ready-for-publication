@@ -173,7 +173,7 @@ spec:
       inventory organization, inventory search or filter, inventory monitoring and
       tracking, inventory control and inventory auditing. The minimum check to be
       performed at inventory item creation or update is for global consistency with
-      related Service Catalog information.
+      the related Service Catalog information.
     publicationDate: 2024-11-12 00:00:00
     status: specified
     functionalBlock: Production
