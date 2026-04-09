@@ -13,10 +13,8 @@ const YAML = require('yaml');
 const exp = require('constants');
 const { execSync } = require('child_process');
 const { json } = require('stream/consumers');
-const { merge } = require('lodash');
 const configPath = path.resolve(__dirname, '../CHANGE_ME.json');
 const configData = require(configPath);
-const resolvedAPIVersions = config.resolvedAPIVersions || {};
 
 
 
@@ -43,55 +41,43 @@ class Component {
     let apiResultsPath = Path.join(resultsPath, "api-ctk-results")
 
     let results = coreExposedApis.filter(api => api.required || config.runExposedOptional).map(async api => {
-      let resolvedVersion = resolvedAPIVersions[api.id];
-      console.log(`Resolved version for ${api.id} is ${resolvedVersion}`);
-      let majorApiVersion = null;
-      if (resolvedVersion) {
-        majorApiVersion = resolvedVersion.replace(/^v/, "");
-      } else {
-        // fallback to spec (rarely needed)
-        const apiVersionFromSpec = api.specification?.[0]?.version || "v0";
-        majorApiVersion = apiVersionFromSpec.match(/^v?(\d+)/)?.[1];
-      }
-      console.log(`📌 Using major API version for ${api.id}: v${majorApiVersion}`)
+      const apiVersion = api.specification?.[0]?.version || "unknown_version";
+      console.log(`api id is: ${api.id}, and api version is: ${apiVersion}`)
+      const majorApiVersion = apiVersion.match(/^v?(\d+)/)?.[1];
+      console.log(`📌 Debug: API ID: ${api.id}, Full Version: ${apiVersion}, Major Version: v${majorApiVersion}`);
 
       let expectedApiRelease = `${api.id}_v${majorApiVersion}`;
       console.log(`apiRelease is now: ${expectedApiRelease}`)    
       let apiOptionalText = api.required ?  "Mandatory" : "Optional" 
 
-      // 4️⃣ Find actual JSON result file for v4 or v5
-      let actualJsonPath = await findMatchingVersionByMajor(
-        apiResultsPath,
-        api.id,
-        majorApiVersion
-      );
+      let actualJsonPath = await findMatchingVersionByMajor(apiResultsPath, api.id, majorApiVersion);
 
-      if (!actualJsonPath) {
-          console.warn(`⚠️ Warning: No matching CTK result found for ${api.id} (${majorApiVersion})`);
-          //return null; // Skip this API if no matching result exists
-          return null
-       }
+        if (!actualJsonPath) {
+            console.warn(`⚠️ Warning: No matching CTK result found for ${api.id} (${majorApiVersion})`);
+            //return null; // Skip this API if no matching result exists
+            return null
+        }
 
-      console.log(`✅ Using file: ${actualJsonPath}`);
+        console.log(`✅ Using file: ${actualJsonPath}`);
 
 
       if (api.required || config.runExposedOptional){
       try {
-        let reportRaw = await fs.promises.readFile(actualJsonPath, 'utf8')
-        let report = JSON.parse(reportRaw)
-        const parsed = parseCtkResult(report);
+        let report = await fs.promises.readFile(actualJsonPath, 'utf8')
+        report = JSON.parse(report)
 
+        let failedAssertions = report.run?.stats?.assertions?.failed ?? 0;
+        let hasPassed = failedAssertions === 0;
         return {
-          apiName: `${api.id} ${api.name.split('-').join(" ")} (v${majorApiVersion}) - ${apiOptionalText}`,
+          apiName: api.id + " " + api.name.split('-').join(" ") + " - " + apiOptionalText,
           htmlResultsPath: Path.join(resultsPath, "api-ctk-results", expectedApiRelease + ".html"),
           jsonResultsPath: actualJsonPath,
           htmlUrl: "../results/api-ctk-results/" + expectedApiRelease + ".html",
-          hasPassed: parsed.failed === 0
+          hasPassed: hasPassed
         }
       }
       catch (e) {
-        console.log("Error processing api ctk result report ", e)
-        return null
+        console.log("Error processing newman report ", e)
       }
     }
     })
@@ -103,20 +89,13 @@ class Component {
     let apiResultsPath = Path.join(resultsPath, "api-ctk-results")
 
     let results = securityApis.filter(api => api.required).map(async api => {
-      
-      let resolvedVersion = resolvedAPIVersions[api.id];
-      let majorApiVersion = null;
-      if (resolvedVersion) {
-        majorApiVersion = resolvedVersion.replace(/^v/, "");
-      } else {
-        // fallback to spec (rarely needed)
-        const apiVersionFromSpec = api.specification?.[0]?.version || "v0";
-        majorApiVersion = apiVersionFromSpec.match(/^v?(\d+)/)?.[1];
-      }
-      console.log(`📌 Using major API version for ${api.id}: v${majorApiVersion}`)
+      const apiVersion = api.specification?.[0]?.version || "unknown_version";
+      console.log(`api id is: ${api.id}, and api version is: ${apiVersion}`)
+      const majorApiVersion = apiVersion.match(/^v?(\d+)/)?.[1];
+      //console.log(`📌 Debug: API ID: ${api.id}, Full Version: ${apiVersion}, Major Version: v${majorApiVersion}`);
 
       let expectedApiRelease = `${api.id}_v${majorApiVersion}`;
-      console.log(`apiRelease is now: ${expectedApiRelease}`)    
+      //console.log(`apiRelease is now: ${expectedApiRelease}`)    
       let apiOptionalText = api.required ?  "Mandatory" : "Optional" 
 
       let actualJsonPath = await findMatchingVersionByMajor(apiResultsPath, api.id, majorApiVersion);
@@ -131,17 +110,16 @@ class Component {
 
       if (api.required || config.runSecurityOptional){
       try {
-        let reportRaw = await fs.promises.readFile(actualJsonPath, "utf8");
-        let report = JSON.parse(reportRaw);
+        let report = await fs.promises.readFile(actualJsonPath, 'utf8')
+        report = JSON.parse(report)
 
-        const parsed = parseCtkResult(report); // normalized { total, passed, failed }
-
+        let hasPassed = report.run.stats.scripts.failed === 0
         return {
-          apiName: `${api.id} ${api.name.split("-").join(" ")} (v${majorApiVersion}) - ${apiOptionalText}`,
+          apiName: api.id + " " + api.name.split('-').join(" ") + " - " + apiOptionalText,
           htmlResultsPath: Path.join(resultsPath, "api-ctk-results", expectedApiRelease + ".html"),
           jsonResultsPath: actualJsonPath,
-          htmlUrl: `../results/api-ctk-results/${expectedApiRelease}.html`,
-          hasPassed: parsed.failed === 0
+          htmlUrl: "../results/api-ctk-results/" + expectedApiRelease + ".html",
+          hasPassed: hasPassed
         }
       }
       catch (e) {
@@ -154,56 +132,51 @@ class Component {
 
   async getDependentFunctionResults(resultsPath){
     let dependentApis = this.instance.spec.coreFunction.dependentAPIs
-    // No dependent API? → No BDD tests.
-    if (!dependentApis || dependentApis.length === 0) {
-      console.log("ℹ️ No dependent APIs declared — skipping dependent function results.");
-      return [];
-    }
+    let apiResultsPath = Path.join(resultsPath, "api-ctk-results")
 
-    const bddJsonPath = Path.join(resultsPath, "cucumber-bdd", "results.json");
-    const bddHtmlPath = Path.join(resultsPath, "cucumber-bdd", "results.html");
-    // Return one entry summarising dependent tests (UI uses summary separately)
-    return [
-      {
-          apiName: "Dependent APIs (BDD Tests)",
-          jsonResultsPath: bddJsonPath,
-          htmlResultsPath: bddHtmlPath,
-          htmlUrl: "../results/cucumber-bdd/results.html",
-          // Pass/fail is computed later using getBddResultsSummary()
-          hasPassed: null  
+    let results = dependentApis.filter(api => api.required).map(async api => {
+      const apiVersion = api.specification?.[0]?.version || "unknown_version";
+      //console.log(`api id is: ${api.id}, and api version is: ${apiVersion}`)
+      const majorApiVersion = apiVersion.match(/^v?(\d+)/)?.[1];
+      //console.log(`📌 Debug: API ID: ${api.id}, Full Version: ${apiVersion}, Major Version: v${majorApiVersion}`);
+
+      let expectedApiRelease = `${api.id}_v${majorApiVersion}`;
+         
+      let apiOptionalText = api.required ?  "Mandatory" : "Optional" 
+
+      let actualJsonPath = await findMatchingVersionByMajor(apiResultsPath, api.id, majorApiVersion);
+
+        if (!actualJsonPath) {
+            console.warn(`⚠️ Warning: No matching CTK result found for ${api.id}_v${majorApiVersion}`);
+            return null; // Skip this API if no matching result exists
+        }
+
+        console.log(`✅ Using file: ${actualJsonPath}`);
+
+
+      if (api.required || config.runDependentOptional){
+      try {
+        let report = await fs.promises.readFile(actualJsonPath, 'utf8')
+        report = JSON.parse(report)
+
+        let hasPassed = report.run.stats.scripts.failed === 0
+        return {
+          apiName: api.id + " " + api.name.split('-').join(" ") + " - " + apiOptionalText,
+          htmlResultsPath: Path.join(resultsPath, "api-ctk-results", expectedApiRelease + ".html"),
+          jsonResultsPath: actualJsonPath,
+          htmlUrl: "../results/api-ctk-results/" + expectedApiRelease + ".html",
+          hasPassed: hasPassed
+        }
       }
-    ];
+      catch (e) {
+        console.log("Error processing newman report ", e)
+      }
+    }
+    })
+    return ((await Promise.all(results)).filter(Boolean))
   }
 
   
-}
-
-/**
- * Universal CTK result parser (v4 Newman or v5 Cypress)
- */
-function parseCtkResult(report) {
-
-  // --- V4 NEWMAN FORMAT ---
-  if (report?.run?.stats?.assertions) {
-    const failed = report.run.stats.assertions.failed ?? 0;
-    const total  = report.run.stats.assertions.total ?? 0;
-    const passed = total - failed;
-
-    return { failed, passed, total, format: "v4-newman" };
-  }
-
-  // --- V5 CYPRESS FORMAT ---
-  if (report?.stats?.tests !== undefined) {
-    const failed = report.stats.failures ?? 0;
-    const total  = report.stats.tests ?? 0;
-    const passed = report.stats.passes ?? total - failed;
-
-    return { failed, passed, total, format: "v5-cypress" };
-  }
-
-  // --- UNKNOWN FORMAT ---
-  console.warn("⚠️ Unknown CTK result format:", Object.keys(report));
-  return { failed: 0, passed: 0, total: 0, format: "unknown" };
 }
 
 async function findMatchingVersionByMajor(apiResultsPath, apiId, majorApiVersion) {
@@ -264,109 +237,35 @@ async function runSuit(suite){
 
 async function configureAPICTKS(){
   let componentCtkConfig = config.payloads
-  if (!componentCtkConfig || Object.keys(componentCtkConfig).length === 0) {
+  if (!componentCtkConfig) {
     console.log("No payloads defined in component CTK config.")
     return
   }
   let ctks = Path.join(__dirname, "../resources/api-ctks")
 
-  let entries;
-  try {
-    entries = await fs.promises.readdir(ctks, { withFileTypes: true })
-  } catch (e) {
-    console.error(`Could not read api-ctks directory at ${ctks}: `, e.message)
-    return
-  }
-
   for (let apiRef of Object.keys(componentCtkConfig)){
-    const overridePayload = componentCtkConfig[apiRef]
-    // 🔥 Extract API ID and Major Version (v4/v5)
-    const [apiId, versionSegment] = apiRef.split("_v");  
-    const majorVersion = versionSegment;    // "4" or "5"
+    let ctk_config = Path.join(ctks, apiRef, "config.json")
 
-    // 🔥 Select exact CTK folder based on major version
-    const dirEntry =
-      entries.find(e =>
-        e.isDirectory() && e.name.startsWith(`${apiId}_v${majorVersion}.`)
-      )
-
-    if (!dirEntry) {
-      console.warn(
-        `⚠️ Skipping payload injection for ${apiRef}: no matching CTK folder found under ${ctks}`
-      )
+    if (!fs.existsSync(ctk_config)) {
+      console.warn(`Skiping ${apiRef}: config.json not found at ${ctk_config}`)
       continue
     }
+    try {
+      let config_data = await fs.promises.readFile(ctk_config)
+      config_data = JSON.parse(config_data)
+      config_data.payloads = {
+        ...config_data.payloads,
+        ...componentCtkConfig[apiRef],
+      }
 
-    const ctkFolder = Path.join(ctks, dirEntry.name);
-    // Detect CTK type *after* selecting folder
-    const v4File = Path.join(ctkFolder, "config.json");
-    const v5File = Path.join(ctkFolder, "CHANGE_ME.json");
-
-    if (fs.existsSync(v4File)) {
-      await injectPayloadV4(v4File, overridePayload, apiRef);
-    } else if (fs.existsSync(v5File)) {
-      await injectPayloadV5(v5File, overridePayload, apiRef);
-    } else {
-      console.warn(
-        `⚠️ No config.json or CHANGE_ME.json found in CTK folder for ${apiRef}`
-      )
+      await fs.promises.writeFile(ctk_config, JSON.stringify(config_data, null, 2))
+    }
+    catch (e){
+      console.log(`Could not process ${apiRef}: `, e.message)
     }
   }
 }
 
-async function injectPayloadV4(configPath, overridePayload, apiRef) {
-  try {
-    let raw = await fs.promises.readFile(configPath, "utf8");
-    let json = JSON.parse(raw);
-
-    if (!json.payloads) {
-      json.payloads = {};
-    }
-
-    json.payloads = mergePayloads(json.payloads, overridePayload);
-
-    await fs.promises.writeFile(configPath, JSON.stringify(json, null, 2));
-
-    console.log(`✅ Injected v4 payloads into ${apiRef}`);
-  } catch (e) {
-    console.error(`❌ Failed injecting payload into v4 CTK ${apiRef}: ${e.message}`);
-  }
-}
-
-async function injectPayloadV5(configPath, overridePayload, apiRef) {
-  try {
-    let raw = await fs.promises.readFile(configPath, "utf8");
-    let json = JSON.parse(raw);
-
-    if (!json.payloads) {
-      json.payloads = {};
-    }
-
-    json.payloads = mergePayloads(json.payloads, overridePayload);
-
-    await fs.promises.writeFile(configPath, JSON.stringify(json, null, 2));
-
-    console.log(`✅ Injected v5 payloads into ${apiRef}`);
-  } catch (e) {
-    console.error(`❌ Failed injecting payload into v5 CTK ${apiRef}: ${e.message}`);
-  }
-}
-
-function mergePayloads(target, source) {
-  for (const key of Object.keys(source)) {
-    if (
-      source[key] instanceof Object &&
-      key in target &&
-      target[key] instanceof Object
-    ) {
-      // Recursive merge for nested objects
-      mergePayloads(target[key], source[key]);
-    } else {
-      target[key] = source[key];
-    }
-  }
-  return target;
-}
 
 async function runCucumberBDD() {
 
@@ -497,7 +396,7 @@ async function compileMustacheTemplate(templatePath, data) {
 
 async function getNewmanSummary(apiResults){
   if (!apiResults || apiResults.length === 0){
-    console.warn("⚠️ Skipping API CTK summary generation: No API results found.")
+    console.warn("⚠️ Skipping Newman summary generation: No API results found.")
 //    return null
     return {
       cfSummary: {
@@ -510,14 +409,16 @@ async function getNewmanSummary(apiResults){
   }
   const entries = apiResults.map(async api => {
     console.log(`api.apiName is ${api.apiName} and results path is ${api.jsonResultsPath}`)
-    let jsonResultRaw = await fs.promises.readFile(api.jsonResultsPath, 'utf8')
-    let jsonResultSummary = JSON.parse(jsonResultRaw)
+    let jsonResultSummary = await fs.promises.readFile(api.jsonResultsPath, 'utf8')
+    jsonResultSummary = JSON.parse(jsonResultSummary)
 
-    const parsed = parseCtkResult(jsonResultSummary)
+    let totalFailed = jsonResultSummary.run?.stats?.assertions?.failed
+    let total = jsonResultSummary.run?.stats?.assertions?.total
+    let passed = total - totalFailed
     return {
-      total: parsed.total,
-      failed: parsed.failed,
-      passed: parsed.passed,
+      total: total,
+      failed: totalFailed,
+      passed: passed,
       name: "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + api.apiName
     }
   })
@@ -681,12 +582,12 @@ async function generateReportData(resultsPath) {
   if(deploymentSummary.passed==deploymentSummary.total && configurationSummary.passed==configurationSummary.total){
     canvasCTKPassed=true
   }
-  console.log("attempting getting core function API CTK results")
+  console.log("attempting getting core function newman results")
   let coreFunctionSummary = await getNewmanSummary(coreFunctionResults)
-  console.log("attempting getting security function API CTK results")
+  console.log("attempting getting security function newman results")
   let securityFunctionSummary = await getNewmanSummary(securityFunctionResults)
-  //let dependentFunctionSummary = await getNewmanSummary(dependentFunctionResults)
-  console.log("Got all API CTK results")
+  let dependentFunctionSummary = await getNewmanSummary(dependentFunctionResults)
+  console.log("Got all newman results")
   let bddResults = await getBddResultsSumary(Path.join(resultsPath, "cucumber-bdd/results.json"))
   let exposedApisPassed = coreFunctionSummary.cfSummary.passed
   let exposedApisFailed = coreFunctionSummary.cfSummary.failed
@@ -787,7 +688,6 @@ async function generateReportData(resultsPath) {
     company: config.companyName,
     productUrl: config.productUrl,
     productName: config.productName,
-    productVersion: config.productVersion,
     ctkPassed: calculateCTKStatus(canvasData, summaryTable),
     ...canvasData
   }
