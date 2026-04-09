@@ -4,10 +4,7 @@ metadata:
   name: components.oda.tmforum.org
 spec:
   coreFunction:
-    exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
+    exposedAPIs: []
     dependentAPIs: []
   componentMetadata:
     id: TMFC041
@@ -31,6 +28,10 @@ spec:
       url: Redacted
     eTOMs: []
     functionalFrameworkFunctions: []
+    SIDs:
+    - Patterns_Domain|Anomaly_ABE|Anomaly_Entity_ABE|v25.0
+    - Patterns_Domain|Anomaly_ABE|Anomaly_Management_Plan_ABE|v25.0
+    - Patterns_Domain|Anomaly_ABE|Anomaly_Specification_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -69,13 +70,20 @@ spec:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
-    dependentAPIs:
-    - array_id: null
-      minItems: null
-      apis: []
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
   eventNotification:
     publishedEvents:
     - hub: /{{.Release.Name}}-AnomalyManagementEvent/hub
