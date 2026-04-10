@@ -5,162 +5,40 @@ metadata:
 spec:
   coreFunction:
     dependentAPIs:
-    - id: TMF633
-      apiType: openapi
-      apiSDO: tmForum
-      name: service-catalog-management-api
-      required: true
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - serviceSpecification:
-        - GET
-        - GET /id
-    - id: TMF669
-      apiType: openapi
-      apiSDO: tmForum
-      name: party-role-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - PartyRole:
-        - GET
-        - GET /id
-    - id: TMF639
-      apiType: openapi
-      apiSDO: tmForum
-      name: resource-inventory-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - resource:
-        - GET
-        - GET /id
-    - id: TMF638
-      apiType: openapi
-      apiSDO: tmForum
-      name: service-inventory-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - service:
-        - GET
-        - GET /id
-    - id: TMF673
-      apiType: openapi
-      apiSDO: tmForum
-      name: geographic-address-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - geographicAddress:
-        - GET
-        - GET /id
-      - geographicSubAddress:
-        - GET
-        - GET /id
-    - id: TMF674
-      apiType: openapi
-      apiSDO: tmForum
-      name: geographic-site-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - geographicSite:
-        - GET
-        - GET /id
-    - id: TMF675
-      apiType: openapi
-      apiSDO: tmForum
-      name: geographic-location-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
-        version: v4.0.0
-      resources:
-      - geographicLocation:
-        - GET
-        - GET /id
-    - id: TMF641
-      apiType: openapi
-      apiSDO: tmForum
-      name: service-ordering-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF641_Service_Ordering/4.2.0/swagger/TMF641_Service_Ordering_v4.2.0_beta_swagger.json
-        version: v4.0.0
-      resources:
-      - serviceOrder:
-        - GET
-        - GET /id
-    - id: TMF632
-      apiType: openapi
-      apiSDO: tmForum
-      name: party-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - individual:
-        - GET
-        - GET /id
-      - organization:
-        - GET
-        - GET /id
+    - array_id: null
+      minItems: null
+      apis: []
+    - array_id: null
+      minItems: null
+      apis: []
+    - array_id: null
+      minItems: null
+      apis: []
+    - array_id: null
+      minItems: null
+      apis: []
+    - array_id: null
+      minItems: null
+      apis: []
+    - array_id: null
+      minItems: null
+      apis: []
+    - array_id: null
+      minItems: null
+      apis: []
+    - array_id: null
+      minItems: null
+      apis: []
+    - array_id: null
+      minItems: null
+      apis: []
     exposedAPIs:
-    - id: TMF638
-      apiType: openapi
-      apiSDO: tmForum
-      name: service-inventory-management-api
-      required: true
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      path: not_defined
-      developerUI: not_defined
-      implementation: not_defined
-      port: 8080
-      resources:
-      - service:
-        - GET
-        - GET /id
-        - POST
-        - PATCH
-        - DELETE
-    - id: TMF701
-      apiType: openapi
-      apiSDO: tmForum
-      name: process-flow-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-        version: v4.0.0
-      path: not_defined
-      developerUI: not_defined
-      implementation: not_defined
-      port: 8080
-      resources:
-      - processFlow:
-        - POST
-        - GET
-        - GET /id
-        - DELETE
-      - taskFlow:
-        - PATCH
-        - GET
-        - GET /id
+    - array_id: null
+      minItems: null
+      apis: []
+    - array_id: null
+      minItems: null
+      apis: []
   componentMetadata:
     id: TMFC008
     name: ServiceInventory
@@ -173,7 +51,7 @@ spec:
       inventory organization, inventory search or filter, inventory monitoring and
       tracking, inventory control and inventory auditing. The minimum check to be
       performed at inventory item creation or update is for global consistency with
-      the related Service Catalog information.
+      related Service Catalog information.
     publicationDate: 2024-11-12 00:00:00
     status: specified
     functionalBlock: Production
@@ -186,19 +64,17 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.4.4|Service_Support_Readiness|v23.0
-    - 1.4.4.1|Manage_Service_Inventory|v23.0
+    - 1.4.4-Service_Support_Readiness-v23.0
+    - 1.4.4.1-Manage_Service_Inventory-v23.0
     functionalFrameworkFunctions:
-    - 576|Service_Data_Retrieval|v23.0
-    - 593|Service_Inventory_Repository_Updating|v23.0
-    - 628|Service_to_Resource_Relationship_Management|v23.0
-    - 629|Service_to_Resource_Relationship_Synchronization|v23.0
-    - 630|Service-Resource_Relationship_Management_Notifications|v23.0
-    - 964|Onboarded_Service_Integration_Configuration|v23.0
-    - 965|Service_Instance_Lifecycle_Management|v23.0
-    - 1344|Service_Topology_Discovery|v23.0
-    SIDs:
-    - Service_Domain|Service_ABE|v25.0
+    - 576-Service_Data_Retrieval-v23.0
+    - 593-Service_Inventory_Repository_Updating-v23.0
+    - 628-Service_to_Resource_Relationship_Management-v23.0
+    - 629-Service_to_Resource_Relationship_Synchronization-v23.0
+    - 630-Service-Resource_Relationship_Management_Notifications-v23.0
+    - 964-Onboarded_Service_Integration_Configuration-v23.0
+    - 965-Service_Instance_Lifecycle_Management-v23.0
+    - 1344-Service_Topology_Discovery-v23.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -237,20 +113,13 @@ spec:
         name: '{{ .Values.secretsManagement.podSelector.name }}'
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
-    - id: TMF669
-      apiType: openapi
-      apiSDO: not_defined
-      name: party-role-management-api
-      required: true
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
-      implementation: '{{.Release.Name}}-partyroleapi'
-      port: 8080
-      resources: []
-    dependentAPIs: []
+    - array_id: null
+      minItems: null
+      apis: []
+    dependentAPIs:
+    - array_id: null
+      minItems: null
+      apis: []
   eventNotification:
     publishedEvents:
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceInventory/hub

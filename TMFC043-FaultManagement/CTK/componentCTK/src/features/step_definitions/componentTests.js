@@ -79,7 +79,6 @@ Given("the supporting stub {string} for API {string} has been installed successf
         ctkConfig.headers,
         NAMESPACE
     );
-    console.log(`Resolved stub release for dependent API '${dependentAPI}':`, resolvedStub);
 
     if (!resolvedStub) {
         throw new Error(`None of the declared stub releases for '${componentUnderTest}' expose API '${dependentAPI}' at '${DEPENDENT_API_BASE_URL}'`);
@@ -128,7 +127,7 @@ Given("the dependent API stub {string} is initialized with the payload defined i
         console.log(`Creating new resource via POST to: ${url}`);
         const headers = this.stubHeaders;
         const postResponse = await makeApiRequest('POST', url, payload, headers);
-        //console.log(`Response for API POST request: ${JSON.stringify(postResponse.data)}`);
+        console.log(`Response for API POST request: ${JSON.stringify(postResponse.data)}`);
         if (postResponse.status === 201) {
             const returnedID = postResponse.data?.id;
             const returnedHref = postResponse.data?.href;
