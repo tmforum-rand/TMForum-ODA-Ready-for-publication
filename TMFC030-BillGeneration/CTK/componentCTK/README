@@ -14,9 +14,6 @@ The `componentCTK` directory contains the following:
 - `scripts/`
   Contains the python script that orchestrates the various steps of executing the CTK from downloading the required resources to running the CTK application
 
-- `scripts/configData/`  
-  Contains API Index (`apiIndex.json`) used to resolve CTK download URLs.
-
 - `scripts/CTK_Executor.py`  
   The main Python script that orchestrates CTK preparation, execution, and reporting.
 
@@ -41,6 +38,11 @@ The `componentCTK` directory contains the following:
 2. (Conditional): If the component under test has any mandatory dependent APIs, then the dependentAPI must be installed on the ODA Canvas before installing the component under test (in order to meet the required resource dependencies)
 
 3. The component under test must be installed successfully on the test Canvas environment.
+
+4. **Docker Desktop** is installed and running.
+  - On **Windows 11**, make sure that:
+    - Virtualization is enabled in the BIOS
+    - [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install) is installed and set as default
 
 
 ## Steps to run the CTK
@@ -106,12 +108,13 @@ Update the fields below to configure your CTK run:
 | `runExposedOptional`          | Run optional exposed APIs                             | `false`                      |
 | `runDependentOptional`        | Run optional dependent APIs                           | `false`                      |
 | `runSecurityOptional`         | Run optional security APIs                            | `false`                      |
-| `ctk_download_urls`           | URL to CTK API index JSON                             | `"https://.../apiIndex.json"`|
+| `download_sslVerify`          | TLS certificate verification for HTTP(S) downloads    | `true`                       |
 | `standardComponentDownload`   | GitHub repo info for component YAML (for internal use)| `{...}`                      |
 | `ctkconfig`                   | Template for `ctkconfig.json` generation              | `{...}`                      |
 | - `companyName`               | Name of the Company conducting the test               | `TM Forum`                   |
 | - `productName`               | Name of the Product undergoing the test               | `Reference Component`        |
 | - `productUrl`                | Link to the product web page                          | `{...}`                      |
+| - `productVersion`            | Version of the Product undergoing the test            | `{...}`                      |
 | - `headers`                   | Required headers for API tests                        | `{...}`                      |
 | - `payloads`                  | Additional payloads for API tests                     | `{...}`                      |
 | `dependentStubs`              | Map of required dependent components per test         | `{...}`                      |
@@ -170,7 +173,6 @@ If the dependentAPI payload does not contain id and href fields, the framework w
 ## 📥 Inputs
 
 - `CHANGE_ME.json` – centralized configuration used across the project
-- `apiIndex.json` – contains CTK download metadata
 - `TMFCxxx-<Name>.yaml` – component YAML, downloaded dynamically
 
 ---
@@ -191,7 +193,7 @@ Output File	Description
 
 - Ensure you are connected to the internet (for CTK/component downloads)
 - Check that `CHANGE_ME.json` is filled correctly (missing keys will cause runtime errors)
-- Use `verify=False` in your requests config if working behind self-signed certs
+- Use `sslVerify=False` in your requests config if working behind self-signed certs
 - Make sure Node.js is installed (`npm install` is automatically handled)
 - If the download of the YAML file of the standard specification from TM Forum's github repository takes too long, you can manually download the specification and place it under componentCTK/resources/standard-components/
 

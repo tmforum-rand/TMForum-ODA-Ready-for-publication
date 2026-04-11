@@ -7,20 +7,27 @@
     "runExposedOptional": false,
     "runDependentOptional": false,
     "runSecurityOptional": false,
-    "ctkVersion": "v1.0.1",
-    "ctk_download_urls": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Component-Specification/refs/heads/v1beta4/apiIndex.json",
+    "ctkVersion": "v1.2.0",
+    "apiVersionUnderTest": "",
+    "apiVersionOverrides": {},
+    "ctkLogging": {
+        "ctkLogs": "summary",
+        "ctkLogTailLines": 40
+    },
+    "download_sslVerify": true,
     "standardComponentDownload": {
         "apiBaseUrl": "https://api.github.com",
         "repoOwner": "tmforum-rand",
         "repoName": "TMForum-ODA-Ready-for-publication",
+        "repoPath": "Specification",
         "gitUrl": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/refs/heads",
-        "gitBranch": "v1beta4",
-        "sslVerify": false
+        "gitBranch": "v1.0.0"
     },
     "ctkconfig": {
         "companyName": "<COMPANY_NAME>",
         "productName": "<PRODUCT_NAME>",
         "productUrl": "<PRODUCT_WEBPAGE_URL>",
+        "productVersion": "<PRODUCT_VERSION>",
         "componentUrl": "https://www.tmforum.org/oda/directory/components-map",
         "headers": {
             "Accept": "application/json",
@@ -174,6 +181,8 @@
             "product-catalog-0001":{
                 "name": "Mobile Telephony",
                 "version": "1",
+                "lastUpdate": "2020-09-23T16:42:23.000Z",
+                "lifecycleStatus": "Active",
                 "@type": "ProductSpecification"
             },
             "product-inventory-0001":{
