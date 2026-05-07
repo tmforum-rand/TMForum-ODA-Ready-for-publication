@@ -194,6 +194,8 @@ TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF676,v4.0.
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,payment,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF683,v4.0.0,unknown,false,partyInteraction,GET / id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF683,v4.0.0,unknown,false,partyInteraction,GET
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF683,v4.0.0,4.0.0,false,partyInteraction,GET / id
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF683,v4.0.0,4.0.0,false,partyInteraction,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET / id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET / id
@@ -856,6 +858,11 @@ TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF683,v4.0.0,unknow
 TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF683,v4.0.0,unknown,true,partyInteraction,POST
 TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF683,v4.0.0,unknown,true,partyInteraction,PATCH
 TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF683,v4.0.0,unknown,true,partyInteraction,DELETE
+TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF683,v4.0.0,4.0.0,true,partyInteraction,GET
+TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF683,v4.0.0,4.0.0,true,partyInteraction,GET /id
+TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF683,v4.0.0,4.0.0,true,partyInteraction,POST
+TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF683,v4.0.0,4.0.0,true,partyInteraction,PATCH
+TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF683,v4.0.0,4.0.0,true,partyInteraction,DELETE
 TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,POST
 TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET
 TMFC023,PartyInteractionManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET /id
