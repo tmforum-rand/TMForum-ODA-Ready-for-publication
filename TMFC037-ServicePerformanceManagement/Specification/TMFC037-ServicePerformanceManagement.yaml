@@ -6,160 +6,207 @@ spec:
   coreFunction:
     dependentAPIs:
     - id: TMF639
-      apiType: openapi
-      apiSDO: tmForum
       name: resource-inventory-management-api
+      apiSDO: not_defined
       required: false
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - resource:
-        - GET
-        - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - resource:
+          - GET
+          - GET /id
     - id: TMF638
-      apiType: openapi
-      apiSDO: tmForum
       name: service-inventory-management-api
+      apiSDO: not_defined
       required: true
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - service:
-        - GET
-        - GET /id
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/5.0.0/swagger/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - service:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - service:
+          - GET
+          - GET /id
     - id: TMF673
-      apiType: openapi
-      apiSDO: tmForum
       name: geographic-address-management-api
+      apiSDO: not_defined
       required: false
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - geographicAddress:
-        - GET
-        - GET/id
-      - geographicSubAddress:
-        - GET
-        - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - geographicAddress:
+          - GET
+          - GET/id
+        - geographicSubAddress:
+          - GET
+          - GET /id
     - id: TMF674
-      apiType: openapi
-      apiSDO: tmForum
       name: geographic-site-management-api
+      apiSDO: not_defined
       required: false
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - geographicSite:
-        - GET
-        - GET/id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - geographicSite:
+          - GET
+          - GET/id
     - id: TMF657
-      apiType: openapi
-      apiSDO: tmForum
       name: service-quality-management-api
+      apiSDO: not_defined
       required: false
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF657_Service_Quality_Management/4.0.0/swagger/TMF657_Service_Quality_Management_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      resources:
-      - serviceLevelObjective:
-        - GET
-        - GET/id
-      - serviceLevelSpecification:
-        - GET
-        - GET/id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF657_Service_Quality_Management/4.0.0/swagger/TMF657_Service_Quality_Management_Management_API_v4.0.0_swagger.json
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - serviceLevelObjective:
+          - GET
+          - GET/id
+        - serviceLevelSpecification:
+          - GET
+          - GET/id
     - id: TMF701
-      apiType: openapi
-      apiSDO: tmForum
       name: process-flow-management-api
+      apiSDO: not_defined
       required: false
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-        version: v4.0.0
-      resources:
-      - processFlow:
-        - POST
-        - GET
-        - GET /id
-        - DELETE
-      - taskFlow:
-        - PATCH
-        - GET
-        - GET /id
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
     exposedAPIs:
     - id: TMF649
-      apiType: openapi
-      apiSDO: tmForum
       name: performance-thresholding-management-api
+      apiSDO: not_defined
       required: true
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF649_Performance_Thresholding/4.0.0/swagger/TMF649_Performance_Thresholding_Management_API_v4.0.0_beta_swagger.json
-        version: v4.0.0
-      path: not_defined
-      developerUI: not_defined
-      implementation: not_defined
-      port: 8080
-      resources:
-      - threshold:
-        - POST
-        - GET
-        - GET /id
-        - PATCH /id
-        - DELETE /id
-      - thresholdJob:
-        - POST
-        - GET
-        - GET /id
-        - PATCH /id
-        - DELETE /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF649_Performance_Thresholding/4.0.0/swagger/TMF649_Performance_Thresholding_Management_API_v4.0.0_beta_swagger.json
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - threshold:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - thresholdJob:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
     - id: TMF642
-      apiType: openapi
-      apiSDO: tmForum
       name: alarm-management-api
+      apiSDO: not_defined
       required: false
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF642_Alarm/4.0.0/swagger/TMF642_Alarm_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      path: not_defined
-      developerUI: not_defined
-      implementation: not_defined
-      port: 8080
-      resources:
-      - alarm:
-        - POST
-        - GET
-        - GET /id
-        - PATCH /id
-        - DELETE /id
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF642_Alarm/5.0.0/swagger/TMF642_Alarm_v5.0.1.oas.yaml
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - alarm:
+          - GET
+          - GET /id
+          - POST
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF642_Alarm/4.0.0/swagger/TMF642_Alarm_Management_API_v4.0.0_swagger.json
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - alarm:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
     - id: TMF701
-      apiType: openapi
-      apiSDO: tmForum
       name: process-flow-management-api
+      apiSDO: not_defined
       required: false
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-        version: v4.0.0
-      path: not_defined
-      developerUI: not_defined
-      implementation: not_defined
-      port: 8080
-      resources:
-      - processFlow:
-        - POST
-        - GET
-        - GET /id
-        - DELETE
-      - taskFlow:
-        - PATCH
-        - GET
-        - GET /id
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+        resources:
+        - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
   componentMetadata:
     id: TMFC037
     name: ServicePerformanceManagement
-    version: 1.2.0
+    version: 1.3.0
     description: Service Performance Management component monitors, analyzes, and
       reports on end-to-end service performance. This can include a real-time, end-to-end
       view to ensure that each service is functioning correctly as well as a historical
@@ -167,7 +214,7 @@ spec:
       service performance test data to provide a view of a service. The component
       provides a key input to determine Quality of Service.
     publicationDate: 2024-12-17 00:00:00
-    status: specified
+    status: preview
     functionalBlock: IntelligenceManagement
     owners:
     - email: Redacted
@@ -186,33 +233,23 @@ spec:
     - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Collection_ABE|MeasurementCollectionJob_BE|v25.0
     - Patterns_Domain|Performance_ABE|Performance_Threshold_ABE|v25.0
     - Resource_Domain|Resource_Trouble_ABE|Alarm_ABE|v25.0
+  apiSDO: tmForum
   managementFunction:
     exposedAPIs:
     - name: metrics
-      apiType: prometheus
-      apiSDO: not_defined
-      specification:
-      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-        version: v4.0.0
-      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
-      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000
       id: exposedAPI_id
-      version: exposedAPI_version
-      resources: []
+      apiSDO: not_defined
       required: false
-      developerUI: exposedAPI_developerUI
-    dependentAPIs:
-    - name: dependentAPI_name
-      id: dependentAPI_id
-      version: dependentAPI_version
-      apiType: dependentAPI_apiType
-      apiSDO: dependentAPI_apiSDO
       specification:
-      - url: dependentAPI_spec
-        version: dependentAPI_version
-      resources: []
-      required: false
+      - version: v4.0.0
+        url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        apiType: prometheus
+        implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+        port: 4000
+        resources: []
+        developerUI: exposedAPI_developerUI
+    dependentAPIs: []
   securityFunction:
     canvasSystemRole: '{{ .Values.security.controllerRole }}'
     secretsManagement:
@@ -225,18 +262,39 @@ spec:
         serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
     exposedAPIs:
     - id: TMF669
-      apiType: openapi
-      apiSDO: not_defined
-      name: party-role-management-api
-      required: true
+      name: partyrole
+      apiSDO: tmForum
+      required: false
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-        version: v4.0.0
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
-      implementation: '{{.Release.Name}}-partyroleapi'
-      port: 8080
-      resources: []
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+        implementation: '{{.Release.Name}}-partyroleapi'
+        port: 8080
+        resources: []
+    - id: TMF672
+      name: user-role-permission-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+        resources: []
+      - version: v5.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+        resources: []
     dependentAPIs: []
   eventNotification:
     publishedEvents:

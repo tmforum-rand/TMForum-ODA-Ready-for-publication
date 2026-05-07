@@ -179,7 +179,13 @@ describe("Step 1: Deployment component tests", function () {
                 continue;
             }
 
-            let statusEntry = status_apis.find(api => api.implementation === impl)
+            const path = specEntry.path
+            if (!path) {
+                console.log(`❌ No path defined for API ${apiId} version ${versionToTest}, skipping.`);
+                continue;
+            }
+
+            let statusEntry = status_apis.find(api => api.implementation === impl && api.path === path)
             if (!statusEntry) {
                 console.log(`❌ No status entry found for implementation ${impl} of API ${apiId}, skipping.`);
                 continue;
@@ -348,8 +354,10 @@ describe("Step 1: Deployment component tests", function () {
                 const v4Json = Path.join(api.path, "reports", "jsonResults.json")
 
                 // TMForum CTK generates reports in DO_NOT_CHANGE/cypress/reports/ or REPORT.HTML at root
-                const v5Html = Path.join(api.path, "DO_NOT_CHANGE", "cypress", "reports", "index.html")
-                const v5Json = Path.join(api.path, "DO_NOT_CHANGE", "cypress", "reports", "index.json")
+                //const v5Html = Path.join(api.path, "DO_NOT_CHANGE", "cypress", "reports", "index.html")
+                //const v5Json = Path.join(api.path, "DO_NOT_CHANGE", "cypress", "reports", "index.json")
+                const v5Html = Path.join(api.path, "reports", "index.html")
+                const v5Json = Path.join(api.path, "reports", "index.json")
 
                 let sourceHtml, sourceJson
                 if (fs.existsSync(v4Html) && fs.existsSync(v4Json)) {
@@ -438,7 +446,7 @@ function runAPICTK(apiData) {
     const mode = detectCTKExecutionMode(ctkPath);
     console.log(`🔍 Detected CTK mode: ${mode}`);
 
-    if (mode === "docker-v4" || mode === "docker-v5") {
+    if (mode === "docker-ctk" || mode === "docker-v5") {
         return runDockerCTK(ctkPath, apiData.api_ref);
     }
     
@@ -677,7 +685,7 @@ function normalizeExposedApiFromManifest(api) {
     };
 };
 
-function runCommandDebug(command, cwd, label = "CTK") {
+function runCommandDebug(command, cwd, label = "CTK", env = process.env) {
     const logMode = (config.ctkLogging.ctkLogs || "summary").toLowerCase();
     const tailN = Number(config.ctkLogging.ctkLogTailLines || 30);
 
@@ -696,18 +704,20 @@ function runCommandDebug(command, cwd, label = "CTK") {
     }
   
     return new Promise((resolve, reject) => {
-      const child = exec(command, { cwd, shell: true, env: process.env });
+      const child = exec(command, { cwd, shell: true, env });
   
       let stdoutBuf = "";
       let stderrBuf = "";
   
       child.stdout.on("data", (data) => {
-        stdoutBuf += data.toString();
+        const s = data.toString();
+        stdoutBuf += s;
         if (streamLive) process.stdout.write(`🟢 [stdout] ${s}`);
       });
   
       child.stderr.on("data", (data) => {
-        stderrBuf += data.toString();
+        const s = data.toString();
+        stderrBuf += s;
         if (streamLive) process.stderr.write(`🔴 [stderr] ${s}`)
       });
   
@@ -812,7 +822,7 @@ function detectCTKExecutionMode(ctkPath) {
         return "cypress-v5";
     }
     // v4 family classification
-    if (hasCompose || hasRunScripts) return "docker-v4";
+    if (hasCompose || hasRunScripts) return "docker-ctk";
 
     return "unknown";
 }
@@ -887,10 +897,15 @@ async function runDockerCTK(ctkPath, apiRef){
         }
     }
 
+    // ✅ Always provide platform env var (required by v5; harmless for v4)
+    const platformValue = computeDockerPlatformEnv();
+    const env = { ...process.env, platform: process.env.platform || platformValue };
+
     return runCommandDebug(
         isWindows ? script : `./${script}`,
         ctkPath,
-        `${apiRef} (Docker CTK)`
+        `${apiRef} (Docker CTK)`,
+        env
     ).then(() => ({
         statusCode: 0,
         api: apiRef,
@@ -1055,7 +1070,7 @@ async function patchDockerRunScripts(ctkPath, apiRef) {
         return { ok: false, reason: "script-missing", scriptPath };
    }
 
-   const PATCH_ID = "TMF_CTK_SUPPRESS_REPORT_OPEN_V1";
+   const PATCH_ID = "TMF_CTK_SUPPRESS_REPORT_OPEN_V2";
    const BEGIN = isWin
         ? `REM === BEGIN PATCH: ${PATCH_ID} ===`
         : `# === BEGIN PATCH: ${PATCH_ID} ===`;
@@ -1130,7 +1145,7 @@ function writePatchAudit(ctkPath, apiRef, scriptName, scriptPath, action) {
 * We DO NOT remove report existence checks, cleanup(), trap, or exit codes.
 * We only replace the OS-specific open block with a no-op message.
 */
-function patchRunSh(content, BEGIN, END) {
+//function patchRunSh(content, BEGIN, END) {
     // Typical block:
     // if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     //     xdg-open $reportPath
@@ -1141,27 +1156,41 @@ function patchRunSh(content, BEGIN, END) {
     // fi
     //
     // We'll replace that entire if/elif/else/fi with a suppressed message.
-    const openBlockRegex =
-      /if\s+\[\[\s*"\$OSTYPE"\s*==\s*"linux-gnu"\*?\s*\]\];\s*then[\s\S]*?elif\s+\[\[\s*"\$OSTYPE"\s*==\s*"darwin"\*?\s*\]\];\s*then[\s\S]*?else[\s\S]*?fi\s*/m;
+//    const openBlockRegex =
+//      /if\s+\[\[\s*"\$OSTYPE"\s*==\s*"linux-gnu"\*?\s*\]\];\s*then[\s\S]*?\n\s*xdg-open\s+\$[A-Za-z_][A-Za-z0-9_]*\s*[\s\S]*?elif\s+\[\[\s*"\$OSTYPE"\s*==\s*"darwin"\*?\s*\]\];\s*then[\s\S]*?\n\s*open\s+\$[A-Za-z_][A-Za-z0-9_]*\s*[\s\S]*?else[\s\S]*?fi\s*/m;
+//  
+//    if (openBlockRegex.test(content)) {
+//        const replacement =
+//          `${BEGIN}\n` +
+//          `echo "📄 Report auto-open suppressed by CTK framework."\n` +
+//          `echo "   (If generated) report is under ./reports/ or REPORT.HTML in this CTK folder."\n` +
+//          `${END}\n`;
+    
+//        return content.replace(openBlockRegex, replacement);
+//    }
+    
+    // Fallback: comment out any xdg-open/open line that references reportPath or modifiedReportPath
+ //   const safeCommented = content
+ //       .replace(/^\s*xdg-open\s+\$[A-Za-z_][A-Za-z0-9_]*\s*$/gm, "# $&  # suppressed by CTK framework")
+ //       .replace(/^\s*open\s+\$[A-Za-z_][A-Za-z0-9_]*\s*$/gm, "# $&  # suppressed by CTK framework");
+    
+ //   return safeCommented + `\n${BEGIN}\n# No OS open-block found; commented out direct open/xdg-open lines.\n${END}\n`;
+//}
+function patchRunSh(content, BEGIN, END) {
+    // Idempotent marker: append markers only once
+    const already = content.includes(BEGIN) && content.includes(END);
   
-    if (!openBlockRegex.test(content)) {
-      // If CTK script changes structure, do a safer minimal approach:
-      // comment out direct `open $reportPath` and `xdg-open $reportPath` lines only.
-      const safeCommented = content
-        .replace(/^\s*xdg-open\s+\$reportPath\s*$/gm, "# xdg-open $reportPath  # suppressed by CTK framework")
-        .replace(/^\s*open\s+\$reportPath\s*$/gm, "# open $reportPath  # suppressed by CTK framework");
+    // Comment out any open commands (works with reportPath, modifiedReportPath, etc.)
+    let patched = content
+        .replace(/^(\s*)xdg-open(\s+.*)$/gm, '$1: # xdg-open suppressed by CTK framework')
+        .replace(/^(\s*)open(\s+.*)$/gm, '$1: # open suppressed by CTK framework');
   
-      return safeCommented + `\n${BEGIN}\n# No OS open-block found; commented out any direct open/xdg-open lines.\n${END}\n`;
+    if (!already) {
+        patched += `\n${BEGIN}\n# Suppressed report auto-open by commenting open/xdg-open commands.\n${END}\n`;
     }
   
-    const replacement =
-      `${BEGIN}\n` +
-      `echo "📄 Report auto-open suppressed by CTK framework. Report located at: ${"${reportPath}"}"\n` +
-      `${END}\n`;
-  
-    return content.replace(openBlockRegex, replacement);
-}
-  
+    return patched;
+}  
 /**
  * run.bat patch:
 * Replace:
@@ -1173,20 +1202,24 @@ function patchRunSh(content, BEGIN, END) {
 function patchRunBat(content, BEGIN, END) {
     // Most CTKs have exactly: start "" "%REPORT_PATH%"
     // We'll replace any "start ... REPORT_PATH" with a suppressed message block.
-    const startLineRegex = /^\s*start\s+""\s+"%REPORT_PATH%"\s*$/gmi;
+    const startLineRegex = /^\s*start\s+""\s+"%(REPORT_PATH|modifiedReportPath)%"?\s*$/gmi;
   
-    if (!startLineRegex.test(content)) {
-      // Fallback: if the line differs, attempt to comment out any `start` line that references REPORT_PATH.
-      const fallback = content.replace(/^\s*start\b.*%REPORT_PATH%.*$/gmi, "REM start \"\" \"%REPORT_PATH%\"  REM suppressed by CTK framework");
-      return `${BEGIN}\r\n${fallback}\r\n${END}\r\n`;
+    if (startAnyReportRegex.test(content)) {
+        const suppressed =
+          `${BEGIN}\r\n` +
+          `echo Report auto-open suppressed by CTK framework.\r\n` +
+          `${END}\r\n`;
+    
+        return content.replace(startAnyReportRegex, suppressed.trimEnd());
     }
-  
-    const suppressed =
-      `${BEGIN}\r\n` +
-      `echo Report auto-open suppressed by CTK framework. Report located at: "%REPORT_PATH%"\r\n` +
-      `${END}\r\n`;
-  
-    return content.replace(startLineRegex, suppressed.trimEnd());
+    
+    // Fallback: comment out any start that references REPORT_PATH or modifiedReportPath
+    const fallback = content.replace(
+        /^\s*start\b.*%(REPORT_PATH|modifiedReportPath)%.*$/gmi,
+        "REM $&  REM suppressed by CTK framework"
+    );
+    
+    return `${BEGIN}\r\n${fallback}\r\n${END}\r\n`;
 }
   
 // --- newline helpers ---
@@ -1197,4 +1230,14 @@ function normalizeToCRLF(s) {
   
 function normalizeToLF(s) {
     return s.replace(/\r\n/g, "\n");
+}
+
+function computeDockerPlatformEnv() {
+    // default to amd64 unless we can confidently infer arm64
+    const arch = process.arch; // 'arm64', 'x64', etc.
+    const isArm = arch === "arm64";
+  
+    // Linux images in your CTKs are for linux/*
+    // v5 requires this env var named exactly: platform
+    return isArm ? "linux/arm64" : "linux/amd64";
 }

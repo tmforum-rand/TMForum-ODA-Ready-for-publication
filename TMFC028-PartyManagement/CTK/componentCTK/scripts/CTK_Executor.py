@@ -754,9 +754,11 @@ def resolve_api_versions(manifest_path):
 
     api_sources = [
         deployed_spec.get("coreFunction", {}).get("exposedAPIs", []),
-        deployed_spec.get("coreFunction", {}).get("dependentAPIs", []),
+# Removing dependent APIs as we do not need to execute API CTKs for dependent APIs. Dependent APIs are tested via BDD tests.
+#        deployed_spec.get("coreFunction", {}).get("dependentAPIs", []),
         deployed_spec.get("securityFunction", {}).get("exposedAPIs", []),
-        deployed_spec.get("securityFunction", {}).get("dependentAPIs", []),
+# Removing dependent APIs as we do not need to execute API CTKs for dependent APIs. Dependent APIs are tested via BDD tests.
+#        deployed_spec.get("securityFunction", {}).get("dependentAPIs", []),
     ]
 
     api_version_under_test = config.get("apiVersionUnderTest", None)

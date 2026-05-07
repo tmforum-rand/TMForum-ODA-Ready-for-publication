@@ -88,10 +88,62 @@ Given("the supporting stub {string} for API {string} has been installed successf
     this.stubHeaders = resolvedStub.headers;
 });
 
+Given("the target component exposed API {string} is initialized with the payload defined in file {string}", async function (exposedAPI, basePayload) {
+    const payload = loadPayload(basePayload);
+    console.log(`Initializing target component exposed API ${exposedAPI} with basePayload`);
+
+    const url = EXPOSED_API_BASE_URL.endsWith('/') ? `${EXPOSED_API_BASE_URL}${exposedAPI}` : `${EXPOSED_API_BASE_URL}/${exposedAPI}`;
+    const headers = ctkConfig.headers;
+
+    // POST the base party to the target component
+    console.log(`Creating base party resource via POST to: ${url}`);
+    const postResponse = await makeApiRequest('POST', url, payload, headers);
+    console.log(`Response for base party POST request: ${JSON.stringify(postResponse.data)}`);
+
+    if (postResponse.status === 201) {
+        const returnedID = postResponse.data?.id;
+        const returnedHref = postResponse.data?.href;
+        if (returnedID) {
+            console.log(`✅ Target component API initialization successful! Returned ID: ${returnedID}`);
+            this.baseParty_ID = returnedID;  // Store the ID for injection into party-role
+            this.baseParty_HREF = returnedHref;
+            // Store response ID for cleanup
+            const createdResourceID = returnedID;
+            createdResources.push({ url, id: createdResourceID, headers });
+            console.log(`Tracking base party resource ID for cleanup: ${createdResourceID}`);
+        } else {
+            console.warn(`⚠️ Warning: No ID returned from target component API.`);
+        }
+    } else {
+        console.error(`❌ Target component API initialization failed with status ${postResponse.status}: ${postResponse.data}`);
+        throw new Error(`Target component API '${exposedAPI}' failed to initialize with basePayload.`);
+    }
+
+    assert(this.baseParty_ID, `Could not resolve base party ID for: ${exposedAPI}`);
+    console.log(`Target component exposed API ${exposedAPI} initialized successfully with base party.`);
+});
+
 Given("the dependent API stub {string} is initialized with the payload defined in file {string}", async function (dependentAPI, basePayload) {
     this.dependentAPI = dependentAPI
     const payload = loadPayload(basePayload);
     console.log(`Initializing dependent API ${dependentAPI} with basePayload`);
+
+    // Inject base party ID into engagedParty if it exists
+    if (this.baseParty_ID && payload.engagedParty) {
+        console.log(`Injecting base party ID into engagedParty: ${this.baseParty_ID}`);
+        _.set(payload, 'engagedParty.id', this.baseParty_ID);
+        _.set(payload, 'engagedParty.href', this.baseParty_HREF);
+        console.log(`✅ Injected base party references into ${dependentAPI} payload`);
+
+        // Write back the payload with injected engagedParty references
+        const payloadPath = path.resolve(__dirname, '../payloads', basePayload);
+        try {
+            fs.writeFileSync(payloadPath, JSON.stringify(payload, null, 2));
+            console.log(`✅ Updated ${basePayload} with engagedParty references`);
+        } catch (err) {
+            console.error(`Failed to write updated payload to ${payloadPath}: `, err.message);
+        }
+    }
 
     const url = DEPENDENT_API_BASE_URL.endsWith('/') ? `${DEPENDENT_API_BASE_URL}${dependentAPI}` : `${DEPENDENT_API_BASE_URL}/${dependentAPI}`;
     const headers = ctkConfig.headers;

@@ -7,7 +7,7 @@
     "runExposedOptional": false,
     "runDependentOptional": false,
     "runSecurityOptional": false,
-    "ctkVersion": "v1.2.0",
+    "ctkVersion": "v1.3.0",
     "apiVersionUnderTest": "",
     "apiVersionOverrides": {},
     "ctkLogging": {
@@ -21,7 +21,7 @@
         "repoName": "TMForum-ODA-Ready-for-publication",
         "repoPath": "Specification",
         "gitUrl": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/refs/heads",
-        "gitBranch": "v1.0.0"
+        "gitBranch": "v1.1.0"
     },
     "ctkconfig": {
         "companyName": "<COMPANY_NAME>",
@@ -83,6 +83,12 @@
             "resourceCatalog": {
                 "headers": {},
                 "releaseName": "<HELM_RELEASE_RESOURCE_CATALOG>"
+            }
+        },
+        "tmfc028": {
+            "partyRole": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_ROLE>"
             }
         }
     },
@@ -394,6 +400,66 @@
                 "name": "Virtual Storage Medium",
                 "id": "39a4d9c4-8113-47e6-b7f5-0fceab81f4b4",
                 "href": "http://34.34.123.159/s010-resourcecatalog/tmf-api/resourceCatalog/v4/resourceSpecification/39a4d9c4-8113-47e6-b7f5-0fceab81f4b4"
+            }
+        },
+        "tmfc028": {
+            "party-target-0001": {
+                "@type": "organization",
+                "name": "Coffee Do Brazil",
+                "tradingName": "Coffee Do Brazil Fair Trade",
+                "relatedParty": [
+                    {
+                        "id": "__VALID_ID__",
+                        "href": "__VALID_HREF__",
+                        "role": "Supplier",
+                        "name": "Coffee Do Brazil Supplier",
+                        "@referredType": "partyRole"
+                    }
+                ]
+            },
+            "supplier-party-0001": {
+                "@type": "organization",
+                "name": "Acme Corporation",
+                "tradingName": "Acme"
+            },
+            "supplier-party-role-0001": {
+                "name": "Acme Corporation - Supplier Role",
+                "engagedParty": {
+                    "id": "__VALID_PARTY_ID__",
+                    "href": "__VALID_PARTY_HREF__",
+                    "name": "Acme Corporation",
+                    "role": "Supplier",
+                    "@referredType": "organization"
+                }
+            },
+            "party-target-0002": {
+                "@type": "organization",
+                "name": "Coffee Do Brazil",
+                "tradingName": "Coffee Do Brazil Fair Trade",
+                "relatedParty": [
+                    {
+                        "id": "invalid-id",
+                        "href": "invalid-href",
+                        "role": "Supplier",
+                        "name": "Coffee Do Brazil Supplier",
+                        "@referredType": "partyRole"
+                    }
+                ]
+            },
+            "supplier-party-0002": {
+                "@type": "organization",
+                "name": "Acme Corporation",
+                "tradingName": "Acme"
+            },
+            "supplier-party-role-0002": {
+                "name": "Acme Corporation - Supplier Role",
+                "engagedParty": {
+                    "id": "__VALID_PARTY_ID__",
+                    "href": "__VALID_PARTY_HREF__",
+                    "name": "Acme Corporation",
+                    "role": "Supplier",
+                    "@referredType": "organization"
+                }
             }
         }
     },
