@@ -7,42 +7,30 @@ spec:
     dependentAPIs:
     - id: TMF634
       name: resource-catalog-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/5.0.0/swagger/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - resourceSpecification:
           - GET
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - resourceSpecification:
           - GET
           - GET/id
     - id: TMF639
       name: resource-inventory-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - resource:
           - GET
@@ -53,16 +41,12 @@ spec:
     exposedAPIs:
     - id: TMF702
       name: resource-activation-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: true
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF702_Resource_Activation/4.0.0/swagger/TMF702_Resource_Activation_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - resource:
           - GET
@@ -70,18 +54,18 @@ spec:
           - POST /id
           - PATCH
           - DELETE /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
     - id: TMF664
       name: resource-function-activation-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF664_Resource_Function_Activation/4.0.0/swagger/TMF664_Resource_Function_Activation_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - resourceFunction:
           - GET
@@ -101,6 +85,10 @@ spec:
           - GET
           - GET /id
           - POST
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
   componentMetadata:
     id: TMFC062
     name: ResourceConfigurationandActivation
@@ -119,7 +107,6 @@ spec:
     functionalFrameworkFunctions: []
     SIDs:
     - Resource_Domain|Resource_Configuration_ABE|v25.0
-  apiSDO: tmForum
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -155,11 +142,11 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
         implementation: '{{.Release.Name}}-partyroleapi'
         port: 8080
-        resources: []
     - id: TMF672
       name: user-role-permission-management-api
       apiSDO: tmForum
@@ -168,19 +155,19 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
         implementation: '{{.Release.Name}}-userrolepermissionapi'
         port: 8080
-        resources: []
       - version: v5.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
         implementation: '{{.Release.Name}}-userrolepermissionapi'
         port: 8080
-        resources: []
     dependentAPIs: []
   eventNotification:
     publishedEvents:

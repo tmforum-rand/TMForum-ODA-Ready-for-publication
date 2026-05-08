@@ -13,3 +13,4 @@ Feature: Dependent API interaction testing for tmfc028 - Party
     | componentUnderTest | dependentComponent   | resourceType  | exposedApiId  | exposedAPI   | dependentApiId | dependentAPI  | basePayload              | basePayload2                  | targetPayload             | resourceFieldPath          | operationID        | expectedResponse |
     | tmfc028            | permission           | organization  | TMF632        | organization | TMF669         | partyRole     | supplier-party-0001.json | supplier-party-role-0001.json | party-target-0001.json    | relatedParty[0]            | createOrganization | success          |
     | tmfc028            | permission           | organization  | TMF632        | organization | TMF669         | partyRole     | supplier-party-0002.json | supplier-party-role-0002.json | party-target-0002.json    | relatedParty[0]            | createOrganization | failure          |
+    

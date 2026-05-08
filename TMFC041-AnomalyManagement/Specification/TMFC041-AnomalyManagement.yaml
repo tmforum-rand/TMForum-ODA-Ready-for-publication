@@ -32,7 +32,6 @@ spec:
     - Patterns_Domain|Anomaly_ABE|Anomaly_Entity_ABE|v25.0
     - Patterns_Domain|Anomaly_ABE|Anomaly_Management_Plan_ABE|v25.0
     - Patterns_Domain|Anomaly_ABE|Anomaly_Specification_ABE|v25.0
-  apiSDO: tmForum
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -68,11 +67,11 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
         implementation: '{{.Release.Name}}-partyroleapi'
         port: 8080
-        resources: []
     - id: TMF672
       name: user-role-permission-management-api
       apiSDO: tmForum
@@ -81,19 +80,19 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
         implementation: '{{.Release.Name}}-userrolepermissionapi'
         port: 8080
-        resources: []
       - version: v5.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
         implementation: '{{.Release.Name}}-userrolepermissionapi'
         port: 8080
-        resources: []
     dependentAPIs: []
   eventNotification:
     publishedEvents:

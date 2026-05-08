@@ -7,16 +7,12 @@ spec:
     dependentAPIs:
     - id: TMF666
       name: account-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: true
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/5.0.0/swagger/TMF666-Account_Management-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - billingAccount:
           - GET
@@ -27,10 +23,6 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - BillingAccount:
           - GET
@@ -40,16 +32,12 @@ spec:
           - GET /id
     - id: TMF632
       name: party-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/5.0.0/swagger/TMF632-Party_Management-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - individual:
           - GET
@@ -60,10 +48,6 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - individual:
           - GET
@@ -73,16 +57,12 @@ spec:
           - GET /id
     - id: TMF637
       name: product-inventory-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: true
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/5.0.0/swagger/TMF637-ProductInventory-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - product:
           - GET
@@ -90,26 +70,18 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - product:
           - GET
           - GET /id
     - id: TMF620
       name: product-catalog-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/5.0.0/swagger/TMF620-Product_Catalog_Management-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - productOffering:
           - GET
@@ -123,10 +95,6 @@ spec:
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - productOffering:
           - GET
@@ -139,16 +107,12 @@ spec:
           - GET /id
     - id: TMF701
       name: process-flow-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - processFlow:
           - POST
@@ -157,16 +121,12 @@ spec:
           - PATCH
     - id: TMF635
       name: usage-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF635_Usage/4.0.0/swagger/TMF635_Usage_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - usage:
           - GET
@@ -177,43 +137,39 @@ spec:
     exposedAPIs:
     - id: TMF678
       name: customer-bill-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: true
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/5.0.0/swagger/TMF678-CustomerBill-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - appliedCustomerBillingRate:
           - GET
           - GET /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/4.0.0/swagger/TMF678_Customer_Bill_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - appliedCustomerBillingRate:
           - GET
           - GET /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
     - id: TMF701
       name: process-flow-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - processFlow:
           - GET
@@ -224,6 +180,10 @@ spec:
           - GET
           - GET /id
           - PATCH /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
   componentMetadata:
     id: TMFC031
     name: BillCalculation
@@ -247,7 +207,6 @@ spec:
       url: Redacted
     eTOMs: []
     functionalFrameworkFunctions: []
-  apiSDO: tmForum
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -283,11 +242,11 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
         implementation: '{{.Release.Name}}-partyroleapi'
         port: 8080
-        resources: []
     - id: TMF672
       name: user-role-permission-management-api
       apiSDO: tmForum
@@ -296,19 +255,19 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
         implementation: '{{.Release.Name}}-userrolepermissionapi'
         port: 8080
-        resources: []
       - version: v5.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
         implementation: '{{.Release.Name}}-userrolepermissionapi'
         port: 8080
-        resources: []
     dependentAPIs: []
   eventNotification:
     publishedEvents: []

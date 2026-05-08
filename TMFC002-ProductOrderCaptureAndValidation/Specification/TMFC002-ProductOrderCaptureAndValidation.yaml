@@ -7,16 +7,12 @@ spec:
     dependentAPIs:
     - id: TMF620
       name: product-catalog-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: true
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/5.0.0/swagger/TMF620-Product_Catalog_Management-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - productOffering:
           - GET
@@ -30,10 +26,6 @@ spec:
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - productCategory:
           - GET
@@ -49,16 +41,12 @@ spec:
           - GET /id
     - id: TMF637
       name: product-inventory-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: true
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/5.0.0/swagger/TMF637-ProductInventory-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - product:
           - GET
@@ -68,10 +56,6 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - product:
           - GET
@@ -80,16 +64,12 @@ spec:
           - PATCH
     - id: TMF679
       name: product-offering-qualification-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF679_Product_Offering_Qualification/4.0.0/swagger/TMF679_Product_Offering_Qualification_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - productOfferingQualification:
           - GET
@@ -98,16 +78,12 @@ spec:
           - PATCH
     - id: TMF646
       name: appointment-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF646_Appointment/4.0.0/swagger/TMF646_Appointment_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - appointment:
           - GET
@@ -123,16 +99,12 @@ spec:
           - DELETE
     - id: TMF673
       name: geographic-address-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - geographicAddress:
           - GET
@@ -147,32 +119,24 @@ spec:
           - PATCH
     - id: TMF674
       name: geographic-site-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - geographicSite:
           - GET
           - GET /id
     - id: TMF716
       name: resource-reservation
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF716_Resource_Reservation/4.0.0/swagger/TMF716_ResourceReservation_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - resourceReservation:
           - GET
@@ -186,16 +150,12 @@ spec:
           - POST
     - id: TMF687
       name: stock-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF687_Stock/4.0.0/swagger/TMF687_Stock_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - checkProductStock:
           - GET
@@ -220,16 +180,12 @@ spec:
           - GET /id
     - id: TMF632
       name: party-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/5.0.0/swagger/TMF632-Party_Management-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - individual:
           - GET
@@ -240,10 +196,6 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - individual:
           - GET
@@ -253,16 +205,12 @@ spec:
           - GET /id
     - id: TMF669
       name: party-role-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/5.0.0/swagger/TMF669-Party_Role_Management-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - partyRole:
           - GET
@@ -270,26 +218,18 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - partyRole:
           - GET
           - GET /id
     - id: TMF666
       name: account-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/5.0.0/swagger/TMF666-Account_Management-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - billingAccount:
           - GET
@@ -297,110 +237,78 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - billingAccount:
           - GET /id
           - GET
     - id: TMF676
       name: payment-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - payment:
           - GET / id
           - GET
     - id: TMF683
       name: party-interaction-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/5.0.0/swagger/TMF683-Party_Interaction-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - partyInteraction:
           - GET
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - partyInteraction:
           - GET / id
           - GET
     - id: TMF638
       name: service-inventory-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/5.0.0/swagger/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - service:
           - GET
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - service:
           - GET / id
           - GET
     - id: TMF639
       name: resource-inventory-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - resource:
           - GET / id
           - GET
     - id: TMF701
       name: process-flow-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - processFlow:
           - POST
@@ -414,16 +322,12 @@ spec:
           - GET /id
     - id: TMF760
       name: product-configuration-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF760_Product_Configuration/5.0.0/swagger/TMF760-ProductConfiguration-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - checkProductConfiguration:
           - GET
@@ -435,16 +339,12 @@ spec:
           - POST
     - id: TMF651
       name: agreement-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - agreement:
           - GET
@@ -452,16 +352,12 @@ spec:
     exposedAPIs:
     - id: TMF648
       name: quote-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF648_Quote/4.0.0/swagger/TMF648_Quote_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - quote:
           - POST
@@ -469,18 +365,18 @@ spec:
           - GET /id
           - PATCH
           - DELETE
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
     - id: TMF663
       name: shopping-cart-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v5.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF663_Shopping_Cart/5.0.0/swagger/TMF663-Shopping_Cart-v5.0.0.oas.yaml
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - shoppingCart:
           - GET
@@ -488,13 +384,13 @@ spec:
           - POST
           - PATCH
           - DELETE
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF663_Shopping_Cart/4.0.0/swagger/TMF663_Shopping_Cart_Management_API_v4.0.0_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - shoppingCart:
           - POST
@@ -502,18 +398,18 @@ spec:
           - GET /id
           - PATCH
           - DELETE
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
     - id: TMF701
       name: process-flow-management-api
-      apiSDO: not_defined
+      apiSDO: tmForum
       required: false
       specification:
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
-        path: not_defined
-        developerUI: not_defined
-        implementation: not_defined
-        port: 8080
         resources:
         - processFlow:
           - POST
@@ -524,6 +420,10 @@ spec:
           - PATCH
           - GET
           - GET /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
   componentMetadata:
     id: TMFC002
     name: ProductOrderCaptureAndValidation
@@ -585,7 +485,6 @@ spec:
     SIDs:
     - Customer_Domain|Customer_Product_Order_ABE|SalesQuote_BE|v25.0
     - Customer_Domain|Customer_Product_Order_ABE|ShoppingCart_BE|v25.0
-  apiSDO: tmForum
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -621,11 +520,11 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
         implementation: '{{.Release.Name}}-partyroleapi'
         port: 8080
-        resources: []
     - id: TMF672
       name: user-role-permission-management-api
       apiSDO: tmForum
@@ -634,19 +533,19 @@ spec:
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
         implementation: '{{.Release.Name}}-userrolepermissionapi'
         port: 8080
-        resources: []
       - version: v5.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
         path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
         developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
         implementation: '{{.Release.Name}}-userrolepermissionapi'
         port: 8080
-        resources: []
     dependentAPIs: []
   eventNotification:
     publishedEvents:

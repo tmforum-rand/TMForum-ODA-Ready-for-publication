@@ -105,7 +105,8 @@ Given("the target component exposed API {string} is initialized with the payload
         const returnedHref = postResponse.data?.href;
         if (returnedID) {
             console.log(`✅ Target component API initialization successful! Returned ID: ${returnedID}`);
-            this.baseParty_ID = returnedID;  // Store the ID for injection into party-role
+            // Store the ID for injection into party-role
+            this.baseParty_ID = returnedID;
             this.baseParty_HREF = returnedHref;
             // Store response ID for cleanup
             const createdResourceID = returnedID;
