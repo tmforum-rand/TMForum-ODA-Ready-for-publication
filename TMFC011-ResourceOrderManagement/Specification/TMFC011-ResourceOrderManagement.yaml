@@ -224,7 +224,7 @@ spec:
       as well as the resource order request. Other functionality includes resource
       order assurance,  resource order decomposition and resource order tracking,
       along with orchestrating  activation and the test and turn-up processes.
-    publicationDate: null
+    publicationDate: 20264-05-08 00:00:00
     status: preview
     functionalBlock: Production
     owners:

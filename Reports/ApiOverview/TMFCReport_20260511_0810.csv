@@ -1,4 +1,9 @@
 component,name,function,apiType,api,version,specVersion,required,resource,method
+TMFC001,ProductCatalogManagement,coreFunction,exposedAPIs,TMF620,v5.0.0,5.0.0,true,productCatalog,GET
+TMFC001,ProductCatalogManagement,coreFunction,exposedAPIs,TMF620,v5.0.0,5.0.0,true,productCatalog,GET /id
+TMFC001,ProductCatalogManagement,coreFunction,exposedAPIs,TMF620,v5.0.0,5.0.0,true,productCatalog,POST
+TMFC001,ProductCatalogManagement,coreFunction,exposedAPIs,TMF620,v5.0.0,5.0.0,true,productCatalog,PATCH
+TMFC001,ProductCatalogManagement,coreFunction,exposedAPIs,TMF620,v5.0.0,5.0.0,true,productCatalog,DELETE
 TMFC001,ProductCatalogManagement,coreFunction,exposedAPIs,TMF620,v5.0.0,5.0.0,true,category,GET
 TMFC001,ProductCatalogManagement,coreFunction,exposedAPIs,TMF620,v5.0.0,5.0.0,true,category,GET /id
 TMFC001,ProductCatalogManagement,coreFunction,exposedAPIs,TMF620,v5.0.0,5.0.0,true,category,POST
@@ -104,6 +109,11 @@ TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,entitySpecification,GET /id
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,associationSpecification,GET
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,associationSpecification,GET /id
+TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productCatalog,GET
+TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productCatalog,GET /id
+TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productCatalog,POST
+TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productCatalog,PATCH
+TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productCatalog,DELETE
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,category,GET
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,category,GET /id
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,category,POST
