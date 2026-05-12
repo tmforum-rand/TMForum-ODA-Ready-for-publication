@@ -117,7 +117,7 @@ spec:
         - individual:
           - GET
           - GET /id
-        - organization:
+        - organisation:
           - GET
           - GET /id
     - id: TMF662
@@ -262,8 +262,8 @@ spec:
       administering the lifecycle of resources, describing relationships between resources,
       reporting on resources and changes to their attributes, and facilitating easy
       access to identify and assign resources.
-    publicationDate: 2024-12-03 00:00:00
-    status: preview
+    publicationDate: 2026-05-11
+    status: production
     functionalBlock: Production
     owners:
     - email: Redacted

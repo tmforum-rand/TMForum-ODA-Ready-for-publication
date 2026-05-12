@@ -152,7 +152,7 @@ spec:
         - individual:
           - GET
           - GET /id
-        - organization:
+        - organisation:
           - GET
           - GET /id
     - id: TMF637
@@ -284,8 +284,8 @@ spec:
       search or filter, inventory monitoring and tracking, inventory control and inventory
       auditing. The minimum check to be performed upon inventory item creation or
       update is for global consistency with related Product Catalog information.
-    publicationDate: 2024-06-27 00:00:00
-    status: preview
+    publicationDate: 2026-05-11
+    status: production
     functionalBlock: CoreCommerce
     owners:
     - email: Redacted

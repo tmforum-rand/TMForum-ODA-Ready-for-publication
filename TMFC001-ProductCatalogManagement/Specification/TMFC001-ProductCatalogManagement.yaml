@@ -389,8 +389,8 @@ spec:
     description: The product catalog management component is responsible for organizing
       the collection of products and product offering specifications that identify
       and define all requirements of a product or a product offering that can be commercialized.
-    publicationDate: 2025-11-12 00:00:00
-    status: preview
+    publicationDate: 2026-05-11
+    status: production
     functionalBlock: CoreCommerce
     owners:
     - email: Redacted

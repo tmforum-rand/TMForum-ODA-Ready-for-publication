@@ -444,8 +444,8 @@ TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,or
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,organization,GET /id
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET /id
-TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET
-TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET /id
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v5.0.0,5.0.0,false,product,GET
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v5.0.0,5.0.0,false,product,GET /id
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v5.0.0,5.0.0,false,product,POST
@@ -886,8 +886,8 @@ TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,organization,GET /id
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET /id
-TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET
-TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET /id
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,entitySpecification,GET
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,entitySpecification,GET /id
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,associationSpecification,GET
