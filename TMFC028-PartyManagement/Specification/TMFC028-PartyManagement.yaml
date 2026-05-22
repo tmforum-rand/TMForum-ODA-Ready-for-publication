@@ -102,10 +102,16 @@ spec:
         resources:
         - individual:
           - GET
+          - GET /id
           - POST
+          - PATCH /id
+          - DELETE /id
         - organization:
           - GET
+          - GET /id
           - POST
+          - PATCH /id
+          - Delete /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined
@@ -162,7 +168,7 @@ spec:
       the end-to-end lifecycle of: Individual, Organization and its related sub-entities,
       Contact Medium, Currency and tax exemption certificates, Identification, and
       Community.'
-    publicationDate: 2024-10-14 00:00:00
+    publicationDate: 2026-05-21
     status: preview
     functionalBlock: PartyManagement
     owners:

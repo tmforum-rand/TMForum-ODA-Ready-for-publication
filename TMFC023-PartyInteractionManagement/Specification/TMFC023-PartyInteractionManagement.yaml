@@ -175,7 +175,7 @@ spec:
       and react appropriately to propose available actions. It records all the interactions
       for the Parties from all channels.
     publicationDate: 2025-10-21 00:00:00
-    status: preview
+    status: production
     functionalBlock: PartyManagement
     owners:
     - email: Redacted

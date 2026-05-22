@@ -95,16 +95,19 @@ spec:
           - GET
           - GET /id
           - POST
+          - Patch /id
           - DELETE
         - partyPrivacyProfile:
           - GET
           - GET /id
           - POST
+          - Patch /id
           - DELETE
         - partyPrivacyProfileSpecification:
           - GET
           - GET /id
           - POST
+          - Patch /id
           - DELETE
         path: not_defined
         developerUI: not_defined
@@ -168,7 +171,7 @@ spec:
       all of their personal information and personally identifiable information; and
       registers explicit opt-in and opt-out given by Parties regarding the use of
       their personal information for dedicated purposes, such as marketing.
-    publicationDate: 2024-08-08
+    publicationDate: 2026-05-21
     status: preview
     functionalBlock: PartyManagement
     owners:

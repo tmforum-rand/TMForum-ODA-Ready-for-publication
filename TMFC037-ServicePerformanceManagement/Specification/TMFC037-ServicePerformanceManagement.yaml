@@ -185,9 +185,9 @@ spec:
       view. These functions build on the Resource Performance data and active end-to-end
       service performance test data to provide a view of a service. The component
       provides a key input to determine Quality of Service.
-    publicationDate: 2024-12-17 00:00:00
+    publicationDate: 2026-05-21
     status: preview
-    functionalBlock: IntelligenceManagement
+    functionalBlock: Production
     owners:
     - email: Redacted
       name: Redacted

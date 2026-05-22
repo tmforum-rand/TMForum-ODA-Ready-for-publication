@@ -169,6 +169,9 @@ spec:
           - GET /id
         - customerBill:
           - GET
+          - GET /id
+          - POST
+          - PATCH /id
         - customerBillOnDemand:
           - GET
           - GET /id
@@ -226,7 +229,7 @@ spec:
     description: The Bill Generation component is responsible for Party invoice management.
       It addresses the invoice formatting, presentation and dispatching via the appropriate
       means of communication.
-    publicationDate: 2024-12-03
+    publicationDate: 2026-05-21
     status: preview
     functionalBlock: PartyManagement
     owners:

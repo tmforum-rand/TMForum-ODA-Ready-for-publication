@@ -39,6 +39,7 @@ spec:
         resources:
         - partyRole:
           - GET
+          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
@@ -188,8 +189,8 @@ spec:
     description: Lead and Opportunity Management component provides the functionality
       for lead and opportunity capture, qualification, reporting, and support during
       the pre-sales stage.
-    publicationDate: 2023-11-18 00:00:00
-    status: preview
+    publicationDate: 2026-05-21
+    status: production
     functionalBlock: PartyManagement
     owners:
     - email: Redacted

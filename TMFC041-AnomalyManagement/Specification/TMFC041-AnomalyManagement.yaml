@@ -9,7 +9,7 @@ spec:
   componentMetadata:
     id: TMFC041
     name: AnomalyManagement
-    version: 1.2.0
+    version: 1.3.0
     description: The Anomaly Management component is responsible for predicting, detecting
       and managing anomalous patterns in the usage and behavior of products, services
       and resources in order to avoid occurrence of problems. Anomaly Management has
@@ -19,9 +19,9 @@ spec:
       of failure to predict or detect an early warning sign of a possible problem
       occurrence, the component hands off mitigatory actions to the Party Problem
       Management component.
-    publicationDate: 2024-11-19 00:00:00
+    publicationDate: 2026-05-21
     status: preview
-    functionalBlock: IntelligenceManagement
+    functionalBlock: Production
     owners:
     - email: Redacted
       name: Redacted

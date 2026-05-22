@@ -245,7 +245,7 @@ spec:
   componentMetadata:
     id: TMFC003
     name: ProductOrderDeliveryOrchestrationAndManagement
-    version: 1.2.1
+    version: 2.0.0
     description: This component orchestrates the delivery of Product Orders (status
       accepted). Based on the level of Product specification information available
       in the Product Catalog (eg prerequisite links between product specifications,
@@ -256,7 +256,7 @@ spec:
       in charge. During the delivery process execution, this component is in charge
       of the evolution of the status of the product specification level order items,
       and of the related product items, triggering updates of the related inventories.
-    publicationDate: 2023-08-18 00:00:00
+    publicationDate: 2026-05-21 00:00:00
     status: preview
     functionalBlock: CoreCommerce
     owners:

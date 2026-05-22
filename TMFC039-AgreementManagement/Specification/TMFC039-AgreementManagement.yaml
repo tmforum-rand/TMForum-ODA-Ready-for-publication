@@ -39,6 +39,7 @@ spec:
         resources:
         - partyRole:
           - GET
+          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
@@ -178,7 +179,7 @@ spec:
       the translation of agreements into contracts, when required. It provides secure
       storage, version control, compliance management, and renewal notifications for
       agreements.
-    publicationDate: 2024-08-19 00:00:00
+    publicationDate: 2026-05-21
     status: preview
     functionalBlock: PartyManagement
     owners:

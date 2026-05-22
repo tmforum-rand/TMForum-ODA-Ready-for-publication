@@ -121,7 +121,7 @@ spec:
       or customer facing). It allows the reservation (and updates/rescheduling) of
       appointments and interventions.
     publicationDate: 2024-04-18 00:00:00
-    status: preview
+    status: production
     functionalBlock: Production
     owners:
     - email: Redacted

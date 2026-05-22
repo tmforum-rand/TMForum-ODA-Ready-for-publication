@@ -101,18 +101,26 @@ spec:
           - GET
           - GET /id
           - POST
+          - PATCH /id
+          - DELETE /id
         - billPresentationMedia:
           - GET
           - GET /id
           - POST
+          - PATCH /id
+          - DELETE /id
         - billingAccount:
           - GET
           - GET /id
           - POST
+          - PATCH /id
+          - DELETE /id
         - billingCycleSpecification:
           - GET
           - GET /id
           - POST
+          - PATCH /id
+          - DELETE /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined
@@ -183,7 +191,7 @@ spec:
       associations, Provide account balance details, Set-up Billing contacts, Set-up
       Billing preferences (e.g., bill cycle frequency, invoice media type, invoice
       template option, etc.)
-    publicationDate: 2024-11-18 00:00:00
+    publicationDate: 2026-05-21
     status: preview
     functionalBlock: PartyManagement
     owners:

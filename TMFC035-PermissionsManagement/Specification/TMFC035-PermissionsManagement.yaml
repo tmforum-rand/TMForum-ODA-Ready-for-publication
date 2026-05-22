@@ -83,7 +83,10 @@ spec:
         resources:
         - partyRole:
           - GET
+          - GET /id
           - POST
+          - PATCH /id
+          - DELETE /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined
@@ -110,7 +113,7 @@ spec:
       related permissions. This component enables creation, modification and deletion
       of permissions and delegate permissions. When a specific role is assigned, a
       set of permissions is inherited.
-    publicationDate: 2023-08-18 00:00:00
+    publicationDate: 2026-05-21
     status: preview
     functionalBlock: PartyManagement
     owners:

@@ -33,6 +33,9 @@ spec:
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/5.0.0/swagger/TMF620-Product_Catalog_Management-v5.0.0.oas.yaml
         resources:
+        - productCatalog:
+          - GET
+          - GET /id
         - category:
           - GET
           - GET /id

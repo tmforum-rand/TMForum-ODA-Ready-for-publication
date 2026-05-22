@@ -225,7 +225,7 @@ spec:
       order assurance,  resource order decomposition and resource order tracking,
       along with orchestrating  activation and the test and turn-up processes.
     publicationDate: 20264-05-08 00:00:00
-    status: preview
+    status: production
     functionalBlock: Production
     owners:
     - email: Redacted

@@ -41,6 +41,13 @@ spec:
       apiSDO: tmForum
       required: false
       specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/5.0.0/swagger/TMF669-Party_Role_Management-v5.0.0.oas.yaml
+        resources:
+        - partyRoleManagement:
+          - GET
+          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
@@ -284,7 +291,7 @@ spec:
       search or filter, inventory monitoring and tracking, inventory control and inventory
       auditing. The minimum check to be performed upon inventory item creation or
       update is for global consistency with related Product Catalog information.
-    publicationDate: 2026-05-11
+    publicationDate: 2026-05-21
     status: production
     functionalBlock: CoreCommerce
     owners:

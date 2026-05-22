@@ -264,6 +264,7 @@ spec:
         resources:
         - partyInteraction:
           - GET
+          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json
@@ -427,7 +428,7 @@ spec:
   componentMetadata:
     id: TMFC002
     name: ProductOrderCaptureAndValidation
-    version: 2.2.0
+    version: 3.0.0
     description: This component captures what a customer wants to order based on the
       CSP's Product Catalog. It enables configuration of the product offerings and
       products desired, provides quotes, checks the eligibility of the customer order,
@@ -439,8 +440,8 @@ spec:
       closure of the order. It includes update of the Product Inventory (status and
       starting/end date of tariffs and discounts) and potential commercial rules control
       (eg receipt of the contract document signed by the customer).
-    publicationDate: 2024-11-12 00:00:00
-    status: preview
+    publicationDate: 2026-05-21 00:00:00
+    status: production
     functionalBlock: CoreCommerce
     owners:
     - email: Redacted

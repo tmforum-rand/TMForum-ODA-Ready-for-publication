@@ -379,7 +379,7 @@ spec:
       CFS. Requests sent to the ROM contain the CFS and the list of configured resource
       instances to be updated.
     publicationDate: 2024-02-23
-    status: preview
+    status: production
     functionalBlock: Production
     owners:
     - email: Redacted

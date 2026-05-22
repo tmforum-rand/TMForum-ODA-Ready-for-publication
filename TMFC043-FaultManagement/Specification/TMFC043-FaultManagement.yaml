@@ -40,6 +40,10 @@ spec:
           - GET
           - GET /id
           - POST
+        - commentAlarm:
+          - GET
+          - GET /id
+          - POST
         path: not_defined
         developerUI: not_defined
         implementation: not_defined
@@ -159,8 +163,8 @@ spec:
       actions can be taken using the alarm/problem information as part of the resolution
       process, such as applying automated/automonous corrective actions or opening
       trouble tickets.
-    publicationDate: 2025-03-11 00:00:00
-    status: preview
+    publicationDate: 2026-05-21
+    status: production
     functionalBlock: Production
     owners:
     - email: Redacted
