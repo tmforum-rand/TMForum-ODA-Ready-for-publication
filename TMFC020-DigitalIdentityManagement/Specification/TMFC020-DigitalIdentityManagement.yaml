@@ -16,18 +16,20 @@ spec:
         resources:
         - individual:
           - GET
+          - GET /id
         - organization:
           - GET
+          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
         resources:
         - individual:
           - GET
-          - GET/id
+          - GET /id
         - organization:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF669
       name: party-role-management-api
       apiSDO: tmForum

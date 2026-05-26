@@ -1097,11 +1097,13 @@ TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,f
 TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET/id
 TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,PATCH/id
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET
+TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET /id
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET
+TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET /id
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET
-TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET/id
+TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET /id
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET
-TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET/id
+TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET /id
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,true,partyRole,POST
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,POST
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
@@ -1668,7 +1670,9 @@ TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,PATCH/id
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,DELETE/id
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET
+TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET /id
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET
+TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET /id
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET/id
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET
@@ -1856,11 +1860,13 @@ TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,t
 TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET
 TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET
-TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET/id
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET
-TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET/id
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,false,partyRole,GET
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,false,partyRole,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET
