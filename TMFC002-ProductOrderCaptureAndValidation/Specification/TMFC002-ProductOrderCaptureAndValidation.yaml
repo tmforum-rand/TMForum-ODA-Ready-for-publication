@@ -373,7 +373,7 @@ spec:
     - id: TMF663
       name: shopping-cart-management-api
       apiSDO: tmForum
-      required: false
+      required: true
       specification:
       - version: v5.0.0
         apiType: openapi

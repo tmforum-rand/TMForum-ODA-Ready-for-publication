@@ -184,16 +184,16 @@ TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF648,v4.0.0,
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF648,v4.0.0,4.0.0,false,quote,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF648,v4.0.0,4.0.0,false,quote,PATCH
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF648,v4.0.0,4.0.0,false,quote,DELETE
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,false,shoppingCart,GET
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,false,shoppingCart,GET /id
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,false,shoppingCart,POST
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,false,shoppingCart,PATCH
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,false,shoppingCart,DELETE
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,false,shoppingCart,POST
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,false,shoppingCart,GET
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,false,shoppingCart,GET /id
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,false,shoppingCart,PATCH
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,false,shoppingCart,DELETE
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,true,shoppingCart,GET
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,true,shoppingCart,GET /id
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,true,shoppingCart,POST
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,true,shoppingCart,PATCH
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v5.0.0,5.0.0,true,shoppingCart,DELETE
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,true,shoppingCart,POST
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,true,shoppingCart,GET
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,true,shoppingCart,GET /id
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,true,shoppingCart,PATCH
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF663,v4.0.0,4.0.0,true,shoppingCart,DELETE
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET /id
