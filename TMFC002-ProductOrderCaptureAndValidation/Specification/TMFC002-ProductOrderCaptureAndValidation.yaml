@@ -161,19 +161,16 @@ spec:
           - GET
           - GET /id
           - POST
-          - PATCH
           - DELETE
         - queryProductStock:
           - GET
           - GET /id
           - POST
-          - PATCH
           - DELETE
         - reserveProductStock:
           - GET
           - GET /id
           - POST
-          - PATCH
           - DELETE
         - productStock:
           - GET
@@ -556,11 +553,11 @@ spec:
       name: Quote
       port: 80
       resources:
-      - quoteStateChange
+      - quoteStateChangeEvent
       - quoteCreateEvent
-      - quoteAttributeValueChange
-      - quoteDelete
-      - quoteInformationRequired
+      - quoteAttributeValueChangeEvent
+      - quoteDeleteEvent
+      - quoteInformationRequiredEvent
       specification:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
         version: v4.0.0
@@ -573,8 +570,8 @@ spec:
       port: 80
       resources:
       - shoppingCartCreateEvent
-      - shoppingCartAttributeValueChange
-      - shoppingCartDelete
+      - shoppingCartAttributeValueChangeEvent
+      - shoppingCartDeleteEvent
       specification:
       - url: https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v4.0.0.swagger.json
         version: v4.0.0
@@ -618,7 +615,7 @@ spec:
       name: GeographicAddressManagement
       port: 80
       resources:
-      - geographicAddressValidationStateChange
+      - geographicAddressValidationStateChangeEvent
       specification:
       - url: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
         version: v4.0.0
@@ -630,8 +627,8 @@ spec:
       name: PaymentManagement
       port: 80
       resources:
-      - paymentCreate
-      - paymentStateChange
+      - paymentCreateEvent
+      - paymentStateChangeEvent
       specification:
       - url: https://github.com/tmforum-apis/TMF676_PaymentManagement/blob/master/TMF676-Payment-v4.0.0.swagger.json
         version: v4.0.0

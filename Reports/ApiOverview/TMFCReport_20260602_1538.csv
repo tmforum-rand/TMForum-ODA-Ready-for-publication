@@ -258,17 +258,14 @@ TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF716,v4.0.
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,checkProductStock,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,checkProductStock,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,checkProductStock,POST
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,checkProductStock,PATCH
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,checkProductStock,DELETE
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,queryProductStock,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,queryProductStock,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,queryProductStock,POST
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,queryProductStock,PATCH
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,queryProductStock,DELETE
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,reserveProductStock,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,reserveProductStock,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,reserveProductStock,POST
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,reserveProductStock,PATCH
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,reserveProductStock,DELETE
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,productStock,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF687,v4.0.0,4.0.0,false,productStock,GET /id
