@@ -8,7 +8,7 @@ spec:
     - id: TMF634
       name: resource-catalog-management-api
       apiSDO: tmForum
-      required: false
+      required: true
       specification:
       - version: v5.0.0
         apiType: openapi
@@ -16,17 +16,18 @@ spec:
         resources:
         - resourceSpecification:
           - GET
+          - GET /id
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
         resources:
         - resourceSpecification:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF639
       name: resource-inventory-management-api
       apiSDO: tmForum
-      required: false
+      required: true
       specification:
       - version: v4.0.0
         apiType: openapi
@@ -96,7 +97,7 @@ spec:
     description: The Resource Configuration and Activation component configures and
       activates resource instances and enables querying of resource instances to acquire
       the resource activation states and attributes.
-    publicationDate: 2024-11-18 00:00:00
+    publicationDate: 2026-06-02
     status: preview
     functionalBlock: Production
     owners:

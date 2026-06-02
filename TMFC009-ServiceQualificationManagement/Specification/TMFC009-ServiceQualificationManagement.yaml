@@ -114,6 +114,25 @@ spec:
         - partyRole:
           - GET
           - GET /id
+    - id: TMF672
+      name: user-role-permission-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF672_User_Role_Permission/5.0.0/swagger/TMF672-Roles_And_Permissions-v5.0.0.oas.yaml
+        resources:
+        - permission:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources:
+        - permission:
+          - GET
+          - GET /id
     - id: TMF673
       name: geographic-address-management-api
       apiSDO: tmForum

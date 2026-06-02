@@ -17,9 +17,6 @@ spec:
         - billingAccount:
           - GET
           - GET /id
-        - billingCycleSpecification:
-          - GET
-          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
@@ -27,7 +24,16 @@ spec:
         - BillingAccount:
           - GET
           - GET /id
-        - BillingCycleSpecification:
+    - id: TMF678
+      name: customer-bill-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/5.0.0/swagger/TMF678-CustomerBill-v5.0.0.oas.yaml
+        resources:
+        - billingCycle:
           - GET
           - GET /id
     - id: TMF632
