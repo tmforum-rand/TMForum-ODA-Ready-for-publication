@@ -359,7 +359,7 @@ spec:
     name: ProductOrderCaptureAndValidation
     version: 2.1.0
     description: This component captures what a customer wants to order based on the
-      CSP's Product Catalog. It enables configuration of the product offerings and
+      CSP's Product Catalog.  It enables configuration of the product offerings and
       products desired, provides quotes, checks the eligibility of the customer order,
       and completes it with information needed such as the related parties or associated
       billing account and the delivery appointment. This component owns quote management,
