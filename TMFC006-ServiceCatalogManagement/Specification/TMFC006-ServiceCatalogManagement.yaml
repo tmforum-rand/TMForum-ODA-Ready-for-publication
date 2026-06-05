@@ -181,7 +181,7 @@ spec:
       and facilitating easy and systematic indexing and access to services, as well
       as facilitating automation of the service delivery process.'
     publicationDate: 2024-11-12 00:00:00
-    status: production
+    status: specified
     functionalBlock: Production
     owners:
     - email: Redacted
