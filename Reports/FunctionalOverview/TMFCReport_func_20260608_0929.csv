@@ -525,9 +525,9 @@ TMFC040,ProductUsageManagement,CoreCommerce,functionalFrameworkFunctions,85|Bill
 TMFC040,ProductUsageManagement,CoreCommerce,functionalFrameworkFunctions,86|Billing_Event_Processing_Enrichment|v23.0
 TMFC040,ProductUsageManagement,CoreCommerce,SID,Product_Domain|Product_Usage_ABE|v25.0
 TMFC040,ProductUsageManagement,CoreCommerce,SID,Product_Domain|Product_Offering_Instance_ABE|Product_Price_ABE|v25.0
-TMFC041,AnomalyManagement,Production,SID,Patterns_Domain|Anomaly_ABE|Anomaly_Entity_ABE|v25.0
-TMFC041,AnomalyManagement,Production,SID,Patterns_Domain|Anomaly_ABE|Anomaly_Management_Plan_ABE|v25.0
-TMFC041,AnomalyManagement,Production,SID,Patterns_Domain|Anomaly_ABE|Anomaly_Specification_ABE|v25.0
+TMFC041,AnomalyManagement,IntelligenceManagement,SID,Patterns_Domain|Anomaly_ABE|Anomaly_Entity_ABE|v25.0
+TMFC041,AnomalyManagement,IntelligenceManagement,SID,Patterns_Domain|Anomaly_ABE|Anomaly_Management_Plan_ABE|v25.0
+TMFC041,AnomalyManagement,IntelligenceManagement,SID,Patterns_Domain|Anomaly_ABE|Anomaly_Specification_ABE|v25.0
 TMFC043,FaultManagement,Production,SID,Resource_Domain|Resource_Trouble_ABE|Resource_Alarm_ABE|v25.0
 TMFC046,WorkforceManagement,Production,eTOM,1.5.4|Resource_Readiness_&_Support|v23.0
 TMFC046,WorkforceManagement,Production,eTOM,1.5.4.8|Manage_Field_Workforce|v23.0

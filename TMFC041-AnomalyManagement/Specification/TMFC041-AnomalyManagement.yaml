@@ -21,7 +21,7 @@ spec:
       Management component.
     publicationDate: 2026-05-21
     status: preview
-    functionalBlock: Production
+    functionalBlock: IntelligenceManagement
     owners:
     - email: Redacted
       name: Redacted
