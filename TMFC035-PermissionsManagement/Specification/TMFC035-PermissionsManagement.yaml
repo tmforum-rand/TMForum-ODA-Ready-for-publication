@@ -60,16 +60,16 @@ spec:
         resources:
         - permission:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - PATCH/id
-          - DELETE/id
+          - PATCH /id
+          - DELETE /id
         - userRole:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - PATCH/id
-          - DELETE/id
+          - PATCH /id
+          - DELETE /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined
@@ -99,10 +99,10 @@ spec:
         resources:
         - partyRole:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - PATCH/id
-          - DELETE/id
+          - PATCH /id
+          - DELETE /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined

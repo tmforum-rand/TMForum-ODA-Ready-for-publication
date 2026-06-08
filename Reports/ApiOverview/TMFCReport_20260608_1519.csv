@@ -285,16 +285,17 @@ TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF666,v5.0.
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF666,v5.0.0,5.0.0,false,billingAccount,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,false,billingAccount,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,false,billingAccount,GET
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,payment,GET / id
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,payment,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,payment,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF683,v5.0.0,5.0.0,false,partyInteraction,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF683,v5.0.0,5.0.0,false,partyInteraction,GET /id
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF683,v4.0.0,unknown,false,partyInteraction,GET / id
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF683,v4.0.0,unknown,false,partyInteraction,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF683,v4.0.0,unknown,false,partyInteraction,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF638,v5.0.0,5.0.0,false,service,GET
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET / id
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF638,v5.0.0,5.0.0,false,service,GET /id
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET
-TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET / id
+TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET /id
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
 TMFC002,ProductOrderCaptureAndValidation,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,PATCH
@@ -497,17 +498,17 @@ TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF633,v4.0.0,4.0.0,tr
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF633,v4.0.0,4.0.0,true,importJob,GET /id
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF633,v4.0.0,4.0.0,true,importJob,DELETE
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecification,GET
-TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecification,GET/id
+TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecification,GET /id
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecification,POST
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecification,PATCH
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecification,DELETE
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelObjective,GET
-TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelObjective,GET/id
+TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelObjective,GET /id
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelObjective,POST
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelObjective,PATCH
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelObjective,DELETE
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecParameter,GET
-TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecParameter,GET/id
+TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecParameter,GET /id
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecParameter,POST
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecParameter,PATCH
 TMFC006,ServiceCatalogManagement,coreFunction,exposedAPIs,TMF657,v4.0.0,4.0.0,true,serviceLevelSpecParameter,DELETE
@@ -1091,12 +1092,12 @@ TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF720,v4.0.0,4.0.0,t
 TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF720,v4.0.0,4.0.0,true,roles,PATCH /id
 TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF720,v4.0.0,4.0.0,true,roles,DELETE /id
 TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET
-TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET/id
+TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET /id
 TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
-TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,DELETE/id
+TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,DELETE /id
 TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET
-TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET/id
-TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,PATCH/id
+TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET /id
+TMFC020,DigitalIdentityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,PATCH /id
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET /id
 TMFC020,DigitalIdentityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET
@@ -1420,12 +1421,12 @@ TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,organi
 TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,organization,PATCH /id
 TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,organization,DELETE /id
 TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET
-TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET /id
 TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
-TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,DELETE/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,DELETE /id
 TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET
-TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET/id
-TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,PATCH/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET /id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,PATCH /id
 TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,true,partyRole,GET
 TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,true,partyRole,GET /id
 TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,GET
@@ -1528,7 +1529,7 @@ TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,tr
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBillOnDemand,POST
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBillOnDemand,GET /id
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,GET
-TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,GET / id
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,GET /id
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,POST
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,PATCH /id
 TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,billCycle,GET
@@ -1647,25 +1648,25 @@ TMFC031,BillCalculation,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,false,,
 TMFC031,BillCalculation,securityFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,false,,
 TMFC031,BillCalculation,securityFunction,exposedAPIs,TMF672,v5.1.0,5.1.0,false,,
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,permission,GET
-TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,permission,GET/id
+TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,permission,GET /id
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,permission,POST
-TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,permission,PATCH/id
-TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,permission,DELETE/id
+TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,permission,PATCH /id
+TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,permission,DELETE /id
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,userRole,GET
-TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,userRole,GET/id
+TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,userRole,GET /id
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,userRole,POST
-TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,userRole,PATCH/id
-TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,userRole,DELETE/id
+TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,userRole,PATCH /id
+TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,true,userRole,DELETE /id
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v5.0.0,5.0.0,true,partyRole,GET
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v5.0.0,5.0.0,true,partyRole,GET /id
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v5.0.0,5.0.0,true,partyRole,POST
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v5.0.0,5.0.0,true,partyRole,PATCH /id
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v5.0.0,5.0.0,true,partyRole,DELETE /id
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,GET
-TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,GET/id
+TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,GET /id
 TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,POST
-TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,PATCH/id
-TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,DELETE/id
+TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,PATCH /id
+TMFC035,PermissionsManagement,coreFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,DELETE /id
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,individual,GET /id
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET
@@ -1703,25 +1704,28 @@ TMFC036,LeadAndOpportunityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.
 TMFC036,LeadAndOpportunityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET
 TMFC036,LeadAndOpportunityManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,taskFlow,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,individual,GET
-TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,organization,GET
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,individual,GET /id
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,organization,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET
-TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET/id
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET
-TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET/id
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,false,partyRole,GET
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,false,partyRole,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET
-TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET/id
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOffering,GET
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOffering,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOfferingPrice,GET
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOfferingPrice,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOffering,GET
-TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOffering,GET/id
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOffering,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOfferingPrice,GET
-TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOfferingPrice,GET/id
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOfferingPrice,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF651,v4.0.0,4.0.0,false,agreement,GET
-TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF651,v4.0.0,4.0.0,false,agreement,GET/id
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF651,v4.0.0,4.0.0,false,agreement,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF651,v4.0.0,4.0.0,false,agreementSpecification,GET
-TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF651,v4.0.0,4.0.0,false,agreementSpecification,GET/id
+TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF651,v4.0.0,4.0.0,false,agreementSpecification,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF648,v4.0.0,4.0.0,false,quote,GET
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF648,v4.0.0,4.0.0,false,quote,GET /id
 TMFC036,LeadAndOpportunityManagement,coreFunction,dependentAPIs,TMF622,v5.0.0,5.0.0,false,productOrder,GET
@@ -1817,15 +1821,15 @@ TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF638,v5.0.0,5.
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,true,service,GET
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,true,service,GET /id
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET
-TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET/id
+TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET /id
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicSubAddress,GET
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicSubAddress,GET /id
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET
-TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET/id
+TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET /id
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF657,v4.0.0,4.0.0,false,serviceLevelObjective,GET
-TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF657,v4.0.0,4.0.0,false,serviceLevelObjective,GET/id
+TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF657,v4.0.0,4.0.0,false,serviceLevelObjective,GET /id
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF657,v4.0.0,4.0.0,false,serviceLevelSpecification,GET
-TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF657,v4.0.0,4.0.0,false,serviceLevelSpecification,GET/id
+TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF657,v4.0.0,4.0.0,false,serviceLevelSpecification,GET /id
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET
 TMFC037,ServicePerformanceManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET /id
@@ -1865,13 +1869,13 @@ TMFC038,ResourcePerformanceManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,GET
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,GET /id
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET
-TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET/id
+TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET /id
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicSubAddress,GET
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicSubAddress,GET /id
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET
-TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET/id
+TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET /id
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF675,v4.0.0,4.0.0,false,geographicLocation,GET
-TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF675,v4.0.0,4.0.0,false,geographicLocation,GET/id
+TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF675,v4.0.0,4.0.0,false,geographicLocation,GET /id
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF688,v4.0.0,4.0.0,false,event,GET
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF688,v4.0.0,4.0.0,false,event,GET /id
 TMFC038,ResourcePerformanceManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
@@ -1886,15 +1890,15 @@ TMFC038,ResourcePerformanceManagement,securityFunction,exposedAPIs,TMF669,v4.0.0
 TMFC038,ResourcePerformanceManagement,securityFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,false,,
 TMFC038,ResourcePerformanceManagement,securityFunction,exposedAPIs,TMF672,v5.1.0,5.1.0,false,,
 TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreement,GET
-TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreement,GET/id
+TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreement,GET /id
 TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreement,POST
-TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreement,PATCH/id
-TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreement,DELETE/id
+TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreement,PATCH /id
+TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreement,DELETE /id
 TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreementSpecification,GET
-TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreementSpecification,GET/id
+TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreementSpecification,GET /id
 TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreementSpecification,POST
-TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreementSpecification,PATCH/id
-TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreementSpecification,DELETE/id
+TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreementSpecification,PATCH /id
+TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF651,v4.0.0,4.0.0,true,agreementSpecification,DELETE /id
 TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
 TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET
 TMFC039,AgreementManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET /id
@@ -1915,16 +1919,19 @@ TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,false
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET/id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOffering,GET
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOffering,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOfferingPrice,GET
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOfferingPrice,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOffering,GET
-TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOffering,GET/id
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOffering,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOfferingPrice,GET
-TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOfferingPrice,GET/id
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v4.1.0,4.1.0,false,productOfferingPrice,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF637,v5.0.0,5.0.0,false,product,GET
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF637,v5.0.0,5.0.0,false,product,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,GET
-TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,GET/id
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF667,v4.0.0,4.0.0,false,document,GET
-TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF667,v4.0.0,4.0.0,false,document,GET/id
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF667,v4.0.0,4.0.0,false,document,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET /id
@@ -1937,14 +1944,14 @@ TMFC039,AgreementManagement,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,fal
 TMFC039,AgreementManagement,securityFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,false,,
 TMFC039,AgreementManagement,securityFunction,exposedAPIs,TMF672,v5.1.0,5.1.0,false,,
 TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF635,v4.0.0,4.0.0,true,usage,GET
-TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF635,v4.0.0,4.0.0,true,usage,GET/id
+TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF635,v4.0.0,4.0.0,true,usage,GET /id
 TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF635,v4.0.0,4.0.0,true,usage,POST
-TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF635,v4.0.0,4.0.0,true,usage,PATCH/id
+TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF635,v4.0.0,4.0.0,true,usage,PATCH /id
 TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF677,v5.0.0,5.0.0,true,queryUsageConsumption,GET
 TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF677,v5.0.0,5.0.0,true,queryUsageConsumption,GET /id
 TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF677,v5.0.0,5.0.0,true,queryUsageConsumption,POST
 TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF677,v4.0.0,4.0.0,true,queryUsageConsumption,GET
-TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF677,v4.0.0,4.0.0,true,queryUsageConsumption,GET/id
+TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF677,v4.0.0,4.0.0,true,queryUsageConsumption,GET /id
 TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF677,v4.0.0,4.0.0,true,queryUsageConsumption,POST
 TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET
 TMFC040,ProductUsageManagement,coreFunction,exposedAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET /id
@@ -2408,7 +2415,7 @@ TMFC062,ResourceConfigurationandActivation,coreFunction,dependentAPIs,TMF634,v5.
 TMFC062,ResourceConfigurationandActivation,coreFunction,dependentAPIs,TMF634,v4.1.0,4.1.0,true,resourceSpecification,GET
 TMFC062,ResourceConfigurationandActivation,coreFunction,dependentAPIs,TMF634,v4.1.0,4.1.0,true,resourceSpecification,GET /id
 TMFC062,ResourceConfigurationandActivation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,GET
-TMFC062,ResourceConfigurationandActivation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,GET/id
+TMFC062,ResourceConfigurationandActivation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,GET /id
 TMFC062,ResourceConfigurationandActivation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,POST
 TMFC062,ResourceConfigurationandActivation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,PATCH /id
 TMFC062,ResourceConfigurationandActivation,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,true,resource,DELETE /id

@@ -60,18 +60,20 @@ spec:
         resources:
         - productOffering:
           - GET
+          - GET /id
         - productOfferingPrice:
           - GET
+          - GET /id
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
         resources:
         - productOffering:
           - GET
-          - GET/id
+          - GET /id
         - productOfferingPrice:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF637
       name: product-inventory-management-api
       apiSDO: tmForum
@@ -83,13 +85,14 @@ spec:
         resources:
         - product:
           - GET
+          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
         resources:
         - product:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF667
       name: document-management-api
       apiSDO: tmForum
@@ -101,7 +104,7 @@ spec:
         resources:
         - document:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF701
       name: process-flow-management-api
       apiSDO: tmForum
@@ -132,16 +135,16 @@ spec:
         resources:
         - agreement:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - PATCH/id
-          - DELETE/id
+          - PATCH /id
+          - DELETE /id
         - agreementSpecification:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - PATCH/id
-          - DELETE/id
+          - PATCH /id
+          - DELETE /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined

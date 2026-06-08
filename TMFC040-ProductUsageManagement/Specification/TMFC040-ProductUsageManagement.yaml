@@ -125,9 +125,9 @@ spec:
         resources:
         - usage:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - PATCH/id
+          - PATCH /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined
@@ -155,7 +155,7 @@ spec:
         resources:
         - queryUsageConsumption:
           - GET
-          - GET/id
+          - GET /id
           - POST
         path: not_defined
         developerUI: not_defined

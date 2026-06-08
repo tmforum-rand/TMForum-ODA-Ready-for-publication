@@ -190,7 +190,7 @@ spec:
           - GET /id
         - customerBill:
           - GET
-          - GET / id
+          - GET /id
           - POST
           - PATCH /id
         - billCycle:

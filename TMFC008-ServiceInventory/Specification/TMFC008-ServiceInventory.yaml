@@ -212,8 +212,8 @@ spec:
       tracking, inventory control and inventory auditing. The minimum check to be
       performed at inventory item creation or update is for global consistency with
       the related Service Catalog information.
-    publicationDate: 2024-11-12 00:00:00
-    status: production
+    publicationDate: 2026-06-08
+    status: preview
     functionalBlock: Production
     owners:
     - email: Redacted

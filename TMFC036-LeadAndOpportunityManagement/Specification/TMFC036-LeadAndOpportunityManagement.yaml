@@ -16,18 +16,19 @@ spec:
         resources:
         - individual:
           - GET
+          - GET /id
         - organization:
-          - GET
+          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
         resources:
         - individual:
           - GET
-          - GET/id
+          - GET /id
         - organization:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF669
       name: party-role-management-api
       apiSDO: tmForum
@@ -46,7 +47,7 @@ spec:
         resources:
         - partyRole:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF620
       name: product-catalog-management-api
       apiSDO: tmForum
@@ -58,18 +59,20 @@ spec:
         resources:
         - productOffering:
           - GET
+          - GET /id
         - productOfferingPrice:
           - GET
+          - GET /id
       - version: v4.1.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
         resources:
         - productOffering:
           - GET
-          - GET/id
+          - GET /id
         - productOfferingPrice:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF651
       name: agreement-management-api
       apiSDO: tmForum
@@ -81,10 +84,10 @@ spec:
         resources:
         - agreement:
           - GET
-          - GET/id
+          - GET /id
         - agreementSpecification:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF648
       name: quote-management-api
       apiSDO: tmForum

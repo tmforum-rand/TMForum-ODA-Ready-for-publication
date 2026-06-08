@@ -95,7 +95,7 @@ spec:
         resources:
         - geographicAddress:
           - GET
-          - GET/id
+          - GET /id
         - geographicSubAddress:
           - GET
           - GET /id
@@ -110,7 +110,7 @@ spec:
         resources:
         - geographicSite:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF657
       name: service-quality-management-api
       apiSDO: tmForum
@@ -122,10 +122,10 @@ spec:
         resources:
         - serviceLevelObjective:
           - GET
-          - GET/id
+          - GET /id
         - serviceLevelSpecification:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF701
       name: process-flow-management-api
       apiSDO: tmForum

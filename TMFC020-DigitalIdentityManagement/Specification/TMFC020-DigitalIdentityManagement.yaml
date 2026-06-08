@@ -102,13 +102,13 @@ spec:
         resources:
         - processFlow:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - DELETE/id
+          - DELETE /id
         - taskFlow:
           - GET
-          - GET/id
-          - PATCH/id
+          - GET /id
+          - PATCH /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined
@@ -119,7 +119,7 @@ spec:
     version: 1.2.0
     description: The Digital Identity Management component is responsible for authentication
       of parties (customers, employees, partners), and resources authentication.
-    publicationDate: 2023-08-18 00:00:00
+    publicationDate: 2026-06-08 00:00:00
     status: preview
     functionalBlock: PartyManagement
     owners:

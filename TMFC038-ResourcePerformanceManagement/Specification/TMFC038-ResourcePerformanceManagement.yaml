@@ -28,7 +28,7 @@ spec:
         resources:
         - geographicAddress:
           - GET
-          - GET/id
+          - GET /id
         - geographicSubAddress:
           - GET
           - GET /id
@@ -43,7 +43,7 @@ spec:
         resources:
         - geographicSite:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF675
       name: geographic-location-management-api
       apiSDO: tmForum
@@ -55,7 +55,7 @@ spec:
         resources:
         - geographicLocation:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF688
       name: event-management-api
       apiSDO: tmForum

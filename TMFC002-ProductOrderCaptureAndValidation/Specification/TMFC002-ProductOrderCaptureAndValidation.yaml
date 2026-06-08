@@ -248,7 +248,7 @@ spec:
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF676_Payment/4.0.0/swagger/TMF676_Payment_Management_API_v4.0.0_swagger.json
         resources:
         - payment:
-          - GET / id
+          - GET /id
           - GET
     - id: TMF683
       name: party-interaction-management-api
@@ -267,7 +267,7 @@ spec:
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json
         resources:
         - partyInteraction:
-          - GET / id
+          - GET /id
           - GET
     - id: TMF638
       name: service-inventory-management-api
@@ -280,12 +280,13 @@ spec:
         resources:
         - service:
           - GET
+          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
         resources:
         - service:
-          - GET / id
+          - GET /id
           - GET
     - id: TMF639
       name: resource-inventory-management-api
@@ -297,7 +298,7 @@ spec:
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
         resources:
         - resource:
-          - GET / id
+          - GET /id
           - GET
     - id: TMF701
       name: process-flow-management-api

@@ -135,13 +135,13 @@ spec:
         resources:
         - processFlow:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - DELETE/id
+          - DELETE /id
         - taskFlow:
           - GET
-          - GET/id
-          - PATCH/id
+          - GET /id
+          - PATCH /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined

@@ -142,19 +142,19 @@ spec:
         resources:
         - serviceLevelSpecification:
           - GET
-          - GET/id
+          - GET /id
           - POST
           - PATCH
           - DELETE
         - serviceLevelObjective:
           - GET
-          - GET/id
+          - GET /id
           - POST
           - PATCH
           - DELETE
         - serviceLevelSpecParameter:
           - GET
-          - GET/id
+          - GET /id
           - POST
           - PATCH
           - DELETE

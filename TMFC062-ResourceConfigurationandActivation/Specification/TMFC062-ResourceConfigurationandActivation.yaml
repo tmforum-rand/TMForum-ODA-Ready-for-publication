@@ -35,7 +35,7 @@ spec:
         resources:
         - resource:
           - GET
-          - GET/id
+          - GET /id
           - POST
           - PATCH /id
           - DELETE /id
@@ -101,7 +101,7 @@ spec:
     status: preview
     functionalBlock: Production
     owners:
-    - email: gaetano.biancardi@accenture.com
+    - email: redacted
       name: Gaetano Biancardi
       url: Redacted
     eTOMs: []
