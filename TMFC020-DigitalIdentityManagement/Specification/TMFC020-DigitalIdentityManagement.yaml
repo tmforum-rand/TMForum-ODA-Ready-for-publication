@@ -77,16 +77,16 @@ spec:
         resources:
         - digitalIdentity:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - PATCH/id
-          - DELETE/id
+          - PATCH /id
+          - DELETE /id
         - roles:
           - GET
-          - GET/id
+          - GET /id
           - POST
-          - PATCH/id
-          - DELETE/id
+          - PATCH /id
+          - DELETE /id
         path: not_defined
         developerUI: not_defined
         implementation: not_defined

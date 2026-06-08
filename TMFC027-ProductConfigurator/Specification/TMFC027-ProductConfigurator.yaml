@@ -338,7 +338,7 @@ spec:
     description: The Product Configurator component empowers sales by offering the
       right product combinations, controlling discounting, and automating approvals
       through support of configuration, pricing and quote generation activities.
-    publicationDate: 2023-11-27
+    publicationDate: 2026-06-02
     status: preview
     functionalBlock: CoreCommerce
     owners:
