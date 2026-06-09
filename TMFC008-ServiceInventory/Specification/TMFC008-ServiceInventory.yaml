@@ -213,7 +213,7 @@ spec:
       performed at inventory item creation or update is for global consistency with
       the related Service Catalog information.
     publicationDate: 2026-06-08
-    status: preview
+    status: production
     functionalBlock: Production
     owners:
     - email: Redacted

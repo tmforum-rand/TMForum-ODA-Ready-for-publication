@@ -361,7 +361,8 @@ TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPI
 TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPIs,TMF633,v4.0.0,4.0.0,false,serviceSpecification,GET
 TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPIs,TMF633,v4.0.0,4.0.0,false,serviceSpecification,GET /id
 TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPIs,TMF638,v5.0.0,5.0.0,false,service,GET
-TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET / id
+TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPIs,TMF638,v5.0.0,5.0.0,false,service,GET /id
+TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET /id
 TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET
 TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPIs,TMF641,v4.2.0,4.2.0,true,serviceOrder,GET
 TMFC003,ProductOrderDeliveryOrchestrationAndManagement,coreFunction,dependentAPIs,TMF641,v4.2.0,4.2.0,true,serviceOrder,GET /id

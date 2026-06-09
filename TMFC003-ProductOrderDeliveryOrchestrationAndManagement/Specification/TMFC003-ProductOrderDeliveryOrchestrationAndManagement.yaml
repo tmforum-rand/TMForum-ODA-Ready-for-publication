@@ -91,12 +91,13 @@ spec:
         resources:
         - service:
           - GET
+          - GET /id
       - version: v4.0.0
         apiType: openapi
         url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
         resources:
         - service:
-          - GET / id
+          - GET /id
           - GET
     - id: TMF641
       name: service-ordering-management-api
@@ -256,7 +257,7 @@ spec:
       in charge. During the delivery process execution, this component is in charge
       of the evolution of the status of the product specification level order items,
       and of the related product items, triggering updates of the related inventories.
-    publicationDate: 2026-05-21 00:00:00
+    publicationDate: 2026-05-21
     status: preview
     functionalBlock: CoreCommerce
     owners:

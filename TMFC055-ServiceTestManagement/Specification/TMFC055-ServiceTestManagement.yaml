@@ -171,25 +171,20 @@ spec:
       email: Redacted
     status: preview
     version: 1.1.0
-    description: 'Service Test Management is responsible for managing the service
-      test specification and executing tests based on this specification to ensure
-      the service operates correctly.
-
-
-      Service test specification involves capturing potential tests for each Service
-      Specification that can be initiated either automatically or manually by the
-      service user. These tests are derived from those available at the service specification
-      or resource specification level.
-
-
+    description: Service Test Management is responsible for managing the service test
+      specification and executing tests based on this specification to ensure the
+      service operates correctly.      Service test specification involves capturing
+      potential tests for each Service Specification that can be initiated either
+      automatically or manually by the service user. These tests are derived from
+      those available at the service specification or resource specification level.
       The scope of the component includes the end-to-end execution and reporting of
-      tests, tailored to the specific context and actor involved.'
+      tests, tailored to the specific context and actor involved.
     maintainers:
     - url: Redacted
       name: Redacted
       email: components@tmforum.org
     functionalBlock: Production
-    publicationDate: 2025-07-16 15:05:47
+    publicationDate: 2025-07-16
     functionalFrameworkFunctions:
     - 625|Service_Test_Operation_Control|v24.0
     - 1136|Service_Test_Specification_and_Scenario_Management|v24.0

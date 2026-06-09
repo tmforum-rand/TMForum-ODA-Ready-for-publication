@@ -188,9 +188,7 @@ spec:
     id: TMFC006
     name: ServiceCatalogManagement
     version: 1.3.0
-    description: 'This Component has conformance testing for v4 APIs only at this
-      point.
-
+    description: This Component has conformance testing for v4 APIs only at this point.
       The Service Catalog Management component is responsible for organizing the collection
       of service specifications that identify and define all requirements of a service
       that can be performed. This component has the functionality that enables presentation
@@ -203,8 +201,8 @@ spec:
       administering the lifecycle of services, describing relationships between service
       specification attributes, reporting on service specifications and their changes,
       and facilitating easy and systematic indexing and access to services, as well
-      as facilitating automation of the service delivery process.'
-    publicationDate: 2024-11-12 00:00:00
+      as facilitating automation of the service delivery process.
+    publicationDate: 2024-11-12
     status: production
     functionalBlock: Production
     owners:

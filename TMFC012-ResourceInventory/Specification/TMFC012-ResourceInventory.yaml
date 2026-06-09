@@ -248,7 +248,7 @@ spec:
       tracking, inventory control (organization, re-stock management etc.) and inventory
       auditing. The minimum check to be performed at inventory item creation or update
       is for global consistency with related Resource Catalog information.
-    publicationDate: 2026-06-08 00:00:00
+    publicationDate: 2026-06-08
     status: production
     functionalBlock: Production
     owners:

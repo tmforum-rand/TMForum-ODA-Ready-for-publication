@@ -235,7 +235,7 @@ spec:
       calculation of the technical solution identified, when it cannot be determined
       at catalog design time (complex B2B services). This information will be used
       as an input to price calculation.
-    publicationDate: 2023-08-18 00:00:00
+    publicationDate: 2023-08-18
     status: preview
     functionalBlock: Production
     owners:

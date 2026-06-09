@@ -120,7 +120,7 @@ spec:
       It provides the ability to reserve time slots to carry out assigned tasks (internal
       or customer facing). It allows the reservation (and updates/rescheduling) of
       appointments and interventions.
-    publicationDate: 2024-04-18 00:00:00
+    publicationDate: 2024-04-18
     status: production
     functionalBlock: Production
     owners:
