@@ -89,8 +89,8 @@ TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,organization,GET /id
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET /id
-TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET
-TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET /id
+TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET
+TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET /id
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF634,v5.0.0,5.0.0,false,resourceSpecification,GET
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF634,v5.0.0,5.0.0,false,resourceSpecification,GET /id
 TMFC001,ProductCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.1.0,4.1.0,false,resourceSpecification,GET
@@ -446,8 +446,8 @@ TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,or
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,organization,GET /id
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET /id
-TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET
-TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET /id
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v5.0.0,5.0.0,false,product,GET
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v5.0.0,5.0.0,false,product,GET /id
 TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v5.0.0,5.0.0,false,product,POST
@@ -892,8 +892,8 @@ TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,organization,GET /id
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET /id
-TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET
-TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET /id
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,entitySpecification,GET
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,entitySpecification,GET /id
 TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,associationSpecification,GET
@@ -1301,9 +1301,9 @@ TMFC024,BillingAccountManagement,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.
 TMFC024,BillingAccountManagement,securityFunction,exposedAPIs,TMF672,v4.0.0,4.0.0,false,,
 TMFC024,BillingAccountManagement,securityFunction,exposedAPIs,TMF672,v5.1.0,5.1.0,false,,
 TMFC027,ProductConfigurator,coreFunction,exposedAPIs,TMF679,v4.0.0,4.0.0,true,productOfferingQualification,GET
-TMFC027,ProductConfigurator,coreFunction,exposedAPIs,TMF679,v4.0.0,4.0.0,true,productOfferingQualification,GET/id
+TMFC027,ProductConfigurator,coreFunction,exposedAPIs,TMF679,v4.0.0,4.0.0,true,productOfferingQualification,GET /id
 TMFC027,ProductConfigurator,coreFunction,exposedAPIs,TMF679,v4.0.0,4.0.0,true,productOfferingQualification,POST
-TMFC027,ProductConfigurator,coreFunction,exposedAPIs,TMF679,v4.0.0,4.0.0,true,productOfferingQualification,PATCH/id
+TMFC027,ProductConfigurator,coreFunction,exposedAPIs,TMF679,v4.0.0,4.0.0,true,productOfferingQualification,PATCH /id
 TMFC027,ProductConfigurator,coreFunction,exposedAPIs,TMF679,v4.0.0,4.0.0,true,productOfferingQualification,DELETE
 TMFC027,ProductConfigurator,coreFunction,exposedAPIs,TMF760,v5.0.0,5.0.0,true,checkProductConfiguration,GET
 TMFC027,ProductConfigurator,coreFunction,exposedAPIs,TMF760,v5.0.0,5.0.0,true,checkProductConfiguration,POST
@@ -1673,9 +1673,9 @@ TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,tru
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,true,organization,GET /id
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET
-TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET/id
+TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET /id
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET
-TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET/id
+TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET /id
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,POST
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET
 TMFC035,PermissionsManagement,coreFunction,dependentAPIs,TMF701,v4.1.0,4.1.0,false,processFlow,GET /id
@@ -1918,7 +1918,7 @@ TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,false,partyRole,GET
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,false,partyRole,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET
-TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET/id
+TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOffering,GET
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOffering,GET /id
 TMFC039,AgreementManagement,coreFunction,dependentAPIs,TMF620,v5.0.0,5.0.0,false,productOfferingPrice,GET
@@ -2238,8 +2238,8 @@ TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,fal
 TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF632,v5.0.0,5.0.0,false,organization,GET /id
 TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET
 TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET /id
-TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET
-TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organisation,GET /id
+TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET
+TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET /id
 TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,false,partyRole,GET
 TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF669,v5.0.0,5.0.0,false,partyRole,GET /id
 TMFC054,ProductTestManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET

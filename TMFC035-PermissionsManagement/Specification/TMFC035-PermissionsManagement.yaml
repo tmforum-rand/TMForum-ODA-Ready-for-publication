@@ -26,10 +26,10 @@ spec:
         resources:
         - individual:
           - GET
-          - GET/id
+          - GET /id
         - organization:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF701
       name: process-flow-management-api
       apiSDO: tmForum

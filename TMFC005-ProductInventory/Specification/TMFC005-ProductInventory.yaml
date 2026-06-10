@@ -159,7 +159,7 @@ spec:
         - individual:
           - GET
           - GET /id
-        - organisation:
+        - organization:
           - GET
           - GET /id
     - id: TMF637

@@ -48,7 +48,7 @@ spec:
         resources:
         - partyRole:
           - GET
-          - GET/id
+          - GET /id
     - id: TMF620
       name: product-catalog-management-api
       apiSDO: tmForum
