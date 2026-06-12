@@ -201,7 +201,7 @@ spec:
       in charge. During the delivery process execution, this component is in charge
       of the evolution of the status of the product specification level order items,
       and of the related product items, triggering updates of the related inventories.
-    publicationDate: 2023-08-18 00:00:00
+    publicationDate: 2023-08-18
     status: specified
     functionalBlock: CoreCommerce
     owners:

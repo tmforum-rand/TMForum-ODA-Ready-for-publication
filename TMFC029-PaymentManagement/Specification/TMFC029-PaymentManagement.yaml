@@ -162,7 +162,7 @@ spec:
     description: Payment Management component manages methods used by parties to make
       payments. It also administers payment plans, handles payments, assigns payments
       against bills, settlements, and other objects requiring payments.
-    publicationDate: 2024-11-18 00:00:00
+    publicationDate: 2024-11-18
     status: specified
     functionalBlock: PartyManagement
     owners:

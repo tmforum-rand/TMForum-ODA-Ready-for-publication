@@ -159,7 +159,7 @@ spec:
     version: 1.2.0
     description: Resource Performance Management component monitors, analyzes, and
       reports on the performance of the service provider's resources.
-    publicationDate: 2024-12-17 00:00:00
+    publicationDate: 2024-12-17
     status: specified
     functionalBlock: IntelligenceManagement
     owners:

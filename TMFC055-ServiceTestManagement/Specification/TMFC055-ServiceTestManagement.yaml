@@ -165,7 +165,7 @@ spec:
       name: Redacted
       email: components@tmforum.org
     functionalBlock: Production
-    publicationDate: 2025-07-16 15:05:47
+    publicationDate: 2025-07-16
     functionalFrameworkFunctions:
     - 625|Service_Test_Operation_Control|v24.0
     - 1136|Service_Test_Specification_and_Scenario_Management|v24.0

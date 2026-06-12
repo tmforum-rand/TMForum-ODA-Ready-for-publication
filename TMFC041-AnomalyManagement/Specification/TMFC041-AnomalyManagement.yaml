@@ -19,7 +19,7 @@ spec:
       of failure to predict or detect an early warning sign of a possible problem
       occurrence, the component hands off mitigatory actions to the Party Problem
       Management component.
-    publicationDate: 2024-11-19 00:00:00
+    publicationDate: 2024-11-19
     status: specified
     functionalBlock: IntelligenceManagement
     owners:

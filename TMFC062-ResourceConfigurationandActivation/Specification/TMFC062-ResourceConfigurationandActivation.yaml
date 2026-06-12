@@ -90,7 +90,7 @@ spec:
     description: The Resource Configuration and Activation component configures and
       activates resource instances and enables querying of resource instances to acquire
       the resource activation states and attributes.
-    publicationDate: 2024-11-18 00:00:00
+    publicationDate: 2024-11-18
     status: specified
     functionalBlock: Production
     owners:

@@ -150,7 +150,7 @@ spec:
       the translation of agreements into contracts, when required. It provides secure
       storage, version control, compliance management, and renewal notifications for
       agreements.
-    publicationDate: 2024-08-19 00:00:00
+    publicationDate: 2024-08-19
     status: specified
     functionalBlock: PartyManagement
     owners:

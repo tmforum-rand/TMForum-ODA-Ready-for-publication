@@ -177,7 +177,7 @@ spec:
       resource specification level for a tangible product). Product Test Management
       owns end-to-end execution and reporting of product tests according to the context
       and/or the actor.
-    publicationDate: 2025-02-25 00:00:00
+    publicationDate: 2025-02-25
     status: specified
     functionalBlock: CoreCommerce
     owners:

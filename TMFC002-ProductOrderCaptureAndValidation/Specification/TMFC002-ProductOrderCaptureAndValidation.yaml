@@ -369,7 +369,7 @@ spec:
       closure of the order. It includes update of the Product Inventory (status and
       starting/end date of tariffs and discounts) and potential commercial rules control
       (eg receipt of the contract document signed by the customer).
-    publicationDate: 2024-11-12 00:00:00
+    publicationDate: 2024-11-12
     status: specified
     functionalBlock: CoreCommerce
     owners:

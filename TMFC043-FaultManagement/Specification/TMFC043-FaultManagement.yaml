@@ -108,7 +108,7 @@ spec:
       actions can be taken using the alarm/problem information as part of the resolution
       process, such as applying automated/automonous corrective actions or opening
       trouble tickets.
-    publicationDate: 2025-03-11 00:00:00
+    publicationDate: 2025-03-11
     status: specified
     functionalBlock: Production
     owners:

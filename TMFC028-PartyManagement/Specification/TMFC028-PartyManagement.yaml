@@ -141,7 +141,7 @@ spec:
       the end-to-end lifecycle of: Individual, Organization and its related sub-entities,
       Contact Medium, Currency and tax exemption certificates, Identification, and
       Community.'
-    publicationDate: 2024-10-14 00:00:00
+    publicationDate: 2024-10-14
     status: specified
     functionalBlock: PartyManagement
     owners:
