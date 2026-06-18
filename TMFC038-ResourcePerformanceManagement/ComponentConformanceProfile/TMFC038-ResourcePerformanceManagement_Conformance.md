@@ -1,18 +1,17 @@
-# TMFC023 – PartyInteractionManagement – v1.2.2
+# TMFC038 – ResourcePerformanceManagement – v1.3.0
 
 ## Mandatory Exposed APIs (Require Conformance)
 
-- **TMF683 – Party Interaction Management API**  
+- **TMF649 – Performance Thresholding Management API**  
   Swagger:  
-  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/5.0.0/swagger/TMF683-Party_Interaction-v5.0.0.oas.yaml  
-  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Historic/TMF683_Party_Interaction/4.0.0/swagger/TMF683-PartyInteraction-4.0.0.swagger.json  
-
-*(Conformance MUST support one of the specified versions above.)*
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF649_Performance_Thresholding/4.0.0/swagger/TMF649_Performance_Thresholding_Management_API_v4.0.0_beta_swagger.json  
 
 
 ## Mandatory Dependent APIs (Require Conformance)
 
-There are **no mandatory dependent APIs** specified in this component.
+- **TMF639 – Resource Inventory Management API**  
+  Swagger:  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json  
 
 
 ## Security Conformance Requirements
@@ -22,13 +21,6 @@ The Component under test must comply with the Security Function requirements def
 In this case, **TMF669 (Party Role Management API)** is present under the Security Function and must therefore be treated as **mandatory for conformance**. The component must ensure that this API is correctly implemented and accessible, or alternatively ensure that a valid `canvasSystemRole` is configured.
 
 The presence of **TMF672 (User Role Permission Management API)** is ignored for conformance purposes.
-
-
-### Mandatory Security API
-
-- **TMF669 – Party Role Management API**  
-  Swagger:  
-  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json  
 
 
 ---
@@ -50,13 +42,12 @@ Component can be found in namespace: `<namespace of components>`
 The component must be found in the established namespace for components  
 Component has deployed successfully (status: Complete)  
 The component must have deployed successfully and its status must be complete  
-Test if all exposed api are accessible and return status is 200  
-All exposed apis defined in the component must provide a valid url  
-Security api must return at least one partyrole with canvas system role defined in component file  
-The security api must return at least one partyrole, unless only `canvasSystemRole` is defined  
-CTKs for all exposed apis have been executed successfully  
-This step configures the api ctks. There must be no errors during the process [1](https://tmf365-my.sharepoint.com/personal/hvaughan_tmforum_org1/Documents/ODA%20Component%20and%20Canvas/ODA%20Conformance/TMForum_ODA_Component_Conformance/Conformance%20Profiles/Static%20content%2020260618.txt)  
-
+Test if all exposed APIs are accessible and return status is 200  
+All exposed APIs defined in the component must provide a valid URL  
+Security API must return at least one partyrole with canvas system role defined in component file  
+The security API must return at least one partyrole, unless only canvasSystemRole is defined  
+CTKs for all exposed APIs have been executed successfully  
+This step configures the API CTKs. There must be no errors during the process [1](https://tmf365-my.sharepoint.com/personal/hvaughan_tmforum_org1/Documents/ODA%20Component%20and%20Canvas/ODA%20Conformance/TMForum_ODA_Component_Conformance/Conformance%20Profiles/Static%20content%2020260618.txt)  
 
 ### Configuration Conformance
 

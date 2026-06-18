@@ -1,92 +1,108 @@
-# Component Conformance Profile
-## TMFC006 – Service Catalog Management Component
+# TMFC006 – ServiceCatalogManagement – v1.3.0
+
+## Mandatory Exposed APIs (Require Conformance)
+
+- **TMF633 – Service Catalog Management API**  
+  Swagger:  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json  
+
+- **TMF657 – Service Quality Management API**  
+  Swagger:  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF657_Service_Quality_Management/4.0.0/swagger/TMF657_Service_Quality_Management_Management_API_v4.0.0_swagger.json  
+
+
+## Mandatory Dependent APIs (Require Conformance)
+
+There are **no mandatory dependent APIs** specified in this component.
+
+
+## Security Conformance Requirements
+
+The Component under test must comply with the Security Function requirements defined in the manifest. Specifically, the component must either use the APIs listed under the `securityFunction` or provide a valid `canvasSystemRole`. 
+
+In this case, **TMF669 (Party Role Management API)** is present under the Security Function and must therefore be treated as **mandatory for conformance**. The component must ensure that this API is correctly implemented and accessible, or alternatively ensure that a valid `canvasSystemRole` is configured. 
+
+The presence of **TMF672 (User Role Permission Management API)** is ignored for conformance purposes.
+
+
+### Mandatory Security API
+
+- **TMF669 – Party Role Management API**  
+  Swagger:  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json  
+
 
 ---
 
-## Component Under Test
+## Canvas Conformance
 
-**Component ID:** TMFC006  
-**Name:** ServiceCatalogManagement  
-**Version:** 1.3.0  
-**Status:** Preview  
+### Deployment Conformance
+Canvas should be Kubernetes based and it is required to have the component deployment in a Kubernetes based environment. Cluster should be running on a supported Kubernetes version. Ensure that the Kubernetes manifests, deployment configurations, and custom resources are compatible with the targeted Kubernetes API version. Compatibility with 3 previous Kubernetes versions must also be considered for backward compatibility. Only trusted container images from reputable sources must be used.   
 
-This Component is responsible for managing service catalogs and service specifications, supporting both customer-facing and resource-facing service definitions, lifecycle management, and integration with related TM Forum Open APIs.
+The component deployment and the Kubernetes cluster must pass the following tests:
 
----
+#### Step 0: Basic environment connectivity tests
+Kubectl configured correctly  
+The purpose of this test is to check if the kubectl is configured correctly. The configuration must be available and the context must be set to the correct cluster  
+Kubectl should return pods in `<namespace of components>` namespace   
 
-## Mandatory Exposed APIs (Conformance Required)
+#### Step1: Deployment component tests
+Component can be found in namespace: `<namespace of components>`  
+The component must be found in the established namespace for components  
+Component has deployed successfully (status: Complete)  
+The component must have deployed successfully and its status must be complete  
+Test if all exposed api are accessible and return status is 200  
+All exposed apis defined in the component must provide a valid url  
+Security api must return at least one partyrole with canvas system role defined in component file  
+The security api must return at least one partyrole, unless only canvasSystemRole is defined  
+CTKs for all exposed apis have been executed successfully  
+This step configures the api ctks. There must be no errors during the process   
 
-The following **exposed APIs** are marked as `required: true` and **MUST** be implemented by the Component under test. Conformance is required against the listed OpenAPI specifications.
+### Configuration Conformance
 
-### TMF633 – Service Catalog Management API
-- **API ID:** TMF633  
-- **Required:** Yes  
-- **Conformance Version(s):**
-  - **v4.0.0**
-- **Specification (Swagger/OpenAPI):**
-  - [TMF633 Service Catalog Management v4.0.0](https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json)
+Helm chart MUST be used to deploy the ODA Component in a Kubernetes cluster and should contain all necessary resources.  
+Configuration file MUST in YAML.  
+Namespace MUST exist for Canvas and Components.  
+Custom resource Definition (CRD) MUST exist for Components and API definitions.  
+Canvas operator and Canvas component versioning webhook MUST be running.   
 
----
+The deployed component must pass the following configuration checks:
 
-### TMF657 – Service Quality Management API
-- **API ID:** TMF657  
-- **Required:** Yes  
-- **Conformance Version(s):**
-  - **v4.0.0**
-- **Specification (Swagger/OpenAPI):**
-  - [TMF657 Service Quality Management v4.0.0](https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF657_Service_Quality_Management/4.0.0/swagger/TMF657_Service_Quality_Management_Management_API_v4.0.0_swagger.json)
+#### Step 0: Component file checks
+Component’s helm manifest file must exist at the path specified in ctkconfig.json – as retrieved from Kubernetes  
+File contains valid YAML  
+Component manifest must be valid YAML   
 
----
-
-## Mandatory Dependent APIs
-
-All **dependent APIs** listed in the Core Function are marked as `required: false`.  
-✅ **There are no mandatory dependent APIs for conformance** under the Core Function for this Component.
-
----
-
-## Security Function – Mandatory Security Conformance
-
-The Component under test **MUST** either:
-
-1. **Use the APIs listed under the Security Function**, **or**
-2. **Operate with a valid `canvasSystemRole`**, as defined by the ODA Canvas security model.
-
-Because the following APIs are explicitly defined under the **Security Function**, they are considered **mandatory for conformance** unless a valid `canvasSystemRole` is used.
-
-### TMF669 – Party Role Management API
-- **API ID:** TMF669  
-- **Required (Security):** Yes  
-- **Conformance Version(s):**
-  - **v4.0.0**
-- **Specification (Swagger/OpenAPI):**
-  - [TMF669 Party Role Management v4.0.0](https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json)
-
----
-
-### TMF672 – User Role Permission Management API
-- **API ID:** TMF672  
-- **Required (Security):** Yes  
-- **Conformance Version(s):**
-  - **v4.0.0**, **v5.1.0**  
-- **Conformance Rule:**  
-  - Conformance may be achieved against **either version or both versions**.
-- **Specification (Swagger/OpenAPI):**
-  - [TMF672 User Role Permission Management v4.0.0](https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json)
-  - [TMF672 User Role Permission Management v5.1.0](https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml)
-
----
-
-## Summary of Mandatory Conformance Scope
-
-| Category | API ID | Version(s) | Mandatory |
-|-------|--------|------------|-----------|
-| Exposed API | TMF633 | v4.0.0 | ✅ |
-| Exposed API | TMF657 | v4.0.0 | ✅ |
-| Security API | TMF669 | v4.0.0 | ✅ |
-| Security API | TMF672 | v4.0.0 or v5.1.0 | ✅ |
-| Dependent APIs | — | — | ❌ |
-
----
-
-**Note:** If the Component does not directly expose or integrate with the Security Function APIs listed above, it **MUST** declare and operate with a valid `canvasSystemRole` to remain conformant with ODA security requirements.
+#### Step 1: Component manifest checks
+Document of kind ‘Component’ is found  
+Component manifest must contain a document of kind: Component  
+Component api version is within supported versions  
+Component manifest must contain a supported api version (oda.tmforum.org/v1)  
+Component has metadata field  
+Component manifest must contain a metadata field  
+Component metadata has name and labels  
+Component metadata must contain name and label fields  
+Component has spec field  
+Component manifest must contain a spec field  
+Spec has coreFunction with exposed and dependent APIs  
+Component spec must contain a coreFunction field with exposedAPIs and dependentAPIs  
+Spec has security function  
+Component spec must contain a security field  
+Security function has canvas system role or exposed apis  
+Security function must contain a canvas system role (string) or expose a partyRole API  
+All resources are labelled with the component name  
+All resources in the component manifest must be labelled with the component name  
+Standard component specification exists in the component ctk  
+TM Forum standard component specification must exist in the resources folder of the component CTK (gets downloaded by the CTK if doest exist)  
+Component ID from the manifest of component under test matches the standard specification  
+Component manifest ID must match the ID in the standard component specification  
+Exposed Apis defined in standard component specification must be specified in component manifest  
+All mandatory Exposed APIs defined in the standard component specification must be specified in the component manifest  
+Exposed API versions in component manifest must match one of the allowed versions in standard specification  
+For each exposed API, the deployed version must exist in the standard component specification  
+Dependent APIs defined in the standard component specification must be specified in the component manifest  
+All mandatory Dependent APIs in the standard component specification must also be declared in the component manifest  
+Dependent API versions in component manifest must match one of the allowed versions in standard specification  
+For each dependent API, the deployed version must exist in the standard component specification  
+All swagger urls must be valid and accessible and version fields  
+All swagger urls must be valid and accessible   

@@ -1,18 +1,25 @@
-# TMFC012 – ResourceInventory – v2.3.0
+# TMFC035 – PermissionsManagement – v1.2.1
 
 ## Mandatory Exposed APIs (Require Conformance)
 
-- **TMF639 – Resource Inventory Management API**  
+- **TMF672 – User Role Permission Management API**  
   Swagger:  
-  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json  
+
+- **TMF669 – Party Role Management API**  
+  Swagger:  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/5.0.0/swagger/TMF669-Party_Role_Management-v5.0.0.oas.yaml  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json  
+
+*(Conformance MUST support one of the specified versions for TMF669.)*
 
 
 ## Mandatory Dependent APIs (Require Conformance)
 
-- **TMF634 – Resource Catalog Management API**  
+- **TMF632 – Party Management API**  
   Swagger:  
-  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/5.0.0/swagger/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml  
-  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/5.0.0/swagger/TMF632-Party_Management-v5.0.0.oas.yaml  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json  
 
 *(Conformance MUST support one of the specified versions above.)*
 
@@ -24,13 +31,6 @@ The Component under test must comply with the Security Function requirements def
 In this case, **TMF669 (Party Role Management API)** is present under the Security Function and must therefore be treated as **mandatory for conformance**. The component must ensure that this API is correctly implemented and accessible, or alternatively ensure that a valid `canvasSystemRole` is configured.  
 
 The presence of **TMF672 (User Role Permission Management API)** is ignored for conformance purposes.
-
-
-### Mandatory Security API
-
-- **TMF669 – Party Role Management API**  
-  Swagger:  
-  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json  
 
 
 ---
@@ -67,8 +67,6 @@ Namespace MUST exist for Canvas and Components.
 Custom resource Definition (CRD) MUST exist for Components and API definitions.  
 Canvas operator and Canvas component versioning webhook MUST be running. [1](https://tmf365-my.sharepoint.com/personal/hvaughan_tmforum_org1/Documents/ODA%20Component%20and%20Canvas/ODA%20Conformance/TMForum_ODA_Component_Conformance/Conformance%20Profiles/Static%20content%2020260618.txt)  
 
-The deployed component must pass the following configuration checks:
-
 #### Step 0: Component file checks
 Component’s helm manifest file must exist at the path specified in ctkconfig.json – as retrieved from Kubernetes  
 File contains valid YAML  
@@ -94,7 +92,6 @@ Security function must contain a canvas system role (string) or expose a partyRo
 All resources are labelled with the component name  
 All resources in the component manifest must be labelled with the component name  
 Standard component specification exists in the component ctk  
-TM Forum standard component specification must exist in the resources folder of the component CTK (gets downloaded by the CTK if doest exist)  
 Component ID from the manifest of component under test matches the standard specification  
 Component manifest ID must match the ID in the standard component specification  
 Exposed Apis defined in standard component specification must be specified in component manifest  

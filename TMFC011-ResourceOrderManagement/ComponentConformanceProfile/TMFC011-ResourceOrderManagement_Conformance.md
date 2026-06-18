@@ -1,10 +1,10 @@
-# TMFC012 – ResourceInventory – v2.3.0
+# TMFC011 – ResourceOrderManagement – v1.3.0
 
 ## Mandatory Exposed APIs (Require Conformance)
 
-- **TMF639 – Resource Inventory Management API**  
+- **TMF652 – Resource Order Management API**  
   Swagger:  
-  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF652_Resource_Order/4.0.0/swagger/TMF652_Resource_Order_Management_API_v4.0.0_swagger.json  
 
 
 ## Mandatory Dependent APIs (Require Conformance)
@@ -14,7 +14,9 @@
   - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/5.0.0/swagger/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml  
   - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json  
 
-*(Conformance MUST support one of the specified versions above.)*
+- **TMF639 – Resource Inventory Management API**  
+  Swagger:  
+  - https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json  
 
 
 ## Security Conformance Requirements
@@ -23,7 +25,7 @@ The Component under test must comply with the Security Function requirements def
 
 In this case, **TMF669 (Party Role Management API)** is present under the Security Function and must therefore be treated as **mandatory for conformance**. The component must ensure that this API is correctly implemented and accessible, or alternatively ensure that a valid `canvasSystemRole` is configured.  
 
-The presence of **TMF672 (User Role Permission Management API)** is ignored for conformance purposes.
+The presence of **TMF672 (User Role Permission Management API)** is ignored for conformance purposes.  
 
 
 ### Mandatory Security API
