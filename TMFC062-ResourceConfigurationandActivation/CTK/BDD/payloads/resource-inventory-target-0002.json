@@ -1,0 +1,12 @@
+{
+  "name": "Test Resource",
+  "resourceRelationship": [
+    {
+      "relationshipType": "reliesOn",
+      "resource": {
+        "id": "non-existent-id",
+        "href": "non-existent-href"
+      }
+    }
+  ]
+}

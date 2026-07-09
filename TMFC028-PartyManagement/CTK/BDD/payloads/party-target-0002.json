@@ -1,0 +1,14 @@
+{
+    "@type": "organization",
+    "name": "Coffee Do Brazil",
+    "tradingName": "Coffee Do Brazil Fair Trade",
+    "relatedParty": [
+        {
+            "id": "invalid-id",
+            "href": "invalid-href",
+            "role": "Supplier",
+            "name": "Coffee Do Brazil Supplier",
+            "@referredType": "partyRole"
+        }
+    ]
+}

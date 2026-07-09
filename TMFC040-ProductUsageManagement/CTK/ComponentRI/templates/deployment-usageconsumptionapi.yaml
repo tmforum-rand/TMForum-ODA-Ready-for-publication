@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-usageconsumptionapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: {{.Release.Name}}-usageconsumptionapi
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        impl: {{.Release.Name}}-usageconsumptionapi
+        version: {{.Values.usageconsumption.versionLabel}}
+    spec:
+      containers:
+      - name: {{.Release.Name}}-usageconsumptionapi
+        image: {{.Values.usageconsumption.image}}
+        env:
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: PORT
+          value: "8080"
+        - name: dbhost
+          value: {{.Release.Name}}-mongodb
+        - name: dbport
+          value: "{{.Values.mongodb.port}}"
+        - name: dbname
+          value: {{.Values.mongodb.database}}
+        - name: LOG_LEVEL
+          value: "info"
+        imagePullPolicy: {{.Values.image.pullPolicy}}
+        ports:
+        - containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/usageConsumption/v5/queryUsageConsumption
+            port: 8080
+          failureThreshold: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/usageConsumption/v5/queryUsageConsumption
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5

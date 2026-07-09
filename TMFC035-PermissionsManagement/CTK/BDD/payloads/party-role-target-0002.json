@@ -1,0 +1,10 @@
+{
+  "@type": "PartyRole",
+  "name": "Customer",
+  "engagedParty": {
+    "@type": "PartyRef",
+    "@referredType": "Individual",
+    "id": "non-existent-id",
+    "href": "non-existent-href"
+  }
+}

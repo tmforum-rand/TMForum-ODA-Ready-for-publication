@@ -4,54 +4,67 @@ metadata:
   name: {{.Release.Name}}-{{.Values.component.name}}
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
-  annotations:
-    webhookconverted: Webhook converted From oda.tmforum.org/v1beta3 to oda.tmforum.org/v1
 spec:
   componentMetadata:
     id: {{.Values.component.id}}
     name: {{.Values.component.name}}
-    version: {{.Values.component.version}}
-    description: >-
-      Simple Service Inventory ODA-Component from Open-API reference
-      implementation.
     functionalBlock: {{.Values.component.functionalBlock}}
     publicationDate: {{.Values.component.publicationDate}}
     status: specified
+    version: {{.Values.component.version}}
+    description: "The Service Inventory component provides a consistent mechanism to query and manipulate the Service inventory, supporting creation, retrieval, update and deletion of service instances."
     maintainers:
-      - name: TM Forum
-        email: components@tmforum.org
+    - name: Anshul Kumar
+      email: anshulkumar123skt@gmail.com
     owners:
-      - name: TM Forum
-        email: components@tmforum.org
+    - name: Anshul Kumar
+      email: anshulkumar123skt@gmail.com
+
   coreFunction:
     exposedAPIs:
-      - name: serviceinventorymanagement
-        id: TMF638
-        specification:
-          - url: >-
-              https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+    - name: service-inventory-management-api
+      id: TMF638
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/5.0.0/swagger/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml"
         implementation: {{.Release.Name}}-serviceinventoryapi
         apiType: openapi
-        path: >-
-          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v4
-        developerUI: >-
-          /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v4/docs
+        gatewayConfiguration:
+          apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 12}}
+          rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 12}}
+          quota: {{.Values.component.apipolicy.quota | toYaml | nindent 12}}
+          OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 12}}
+          CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 12}}
+          template: "{{.Values.component.apipolicy.template}}"
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v5/api-docs
         port: 8080
-        gatewayConfiguration: {}
+
     dependentAPIs:
-      - name: servicecatalogmanagement
-        id: TMF633
-        apiType: openapi
-        specification:
-        - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+    - name: service-catalog-management-api
+      id: TMF633
+      apiType: openapi
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json"
+
   eventNotification:
     publishedEvents: []
     subscribedEvents: []
+
   managementFunction:
-    exposedAPIs: []
-    dependentAPIs: []
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      gatewayConfiguration:
+        apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 10}}
+        rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 10}}
+        quota: {{.Values.component.apipolicy.quota | toYaml | nindent 10}}
+        OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 10}}
+        CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 10}}
+        template: "{{.Values.component.apipolicy.template}}"
+      implementation: {{.Release.Name}}-{{.Values.component.name}}-sm
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+
   securityFunction:
-    canvasSystemRole: {{.Values.security.controllerRole}}
+    canvasSystemRole: {{ .Values.security.canvasSystemRole }}
     exposedAPIs: []
-    
-  

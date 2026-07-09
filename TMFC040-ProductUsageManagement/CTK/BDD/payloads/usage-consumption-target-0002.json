@@ -1,0 +1,14 @@
+{
+  "@type": "QueryUsageConsumption",
+  "relatedParty": [
+    {
+      "@type": "RelatedPartyRefOrPartyRoleRef",
+      "role": "customer",
+      "partyOrPartyRole": {
+        "@type": "PartyRef",
+        "id": "non-existent-id",
+        "href": "non-existent-href"
+      }
+    }
+  ]
+}

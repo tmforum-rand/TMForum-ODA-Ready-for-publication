@@ -1,0 +1,9 @@
+{
+  "@type": "Service",
+  "state": "active",
+  "serviceSpecification": {
+    "@type": "ServiceSpecificationRef",
+    "id": "__VALID_ID__",
+    "href": "__VALID_HREF__"
+  }
+}

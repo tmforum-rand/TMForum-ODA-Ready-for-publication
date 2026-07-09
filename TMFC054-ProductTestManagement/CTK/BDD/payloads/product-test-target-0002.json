@@ -1,0 +1,15 @@
+{
+  "@type": "ProductTest",
+  "name": "Test Product Test",
+  "testSpecification": {
+    "@type": "ProductTestSpecificationRef",
+    "id": "test-product-test-spec-001",
+    "name": "Test Product Test Specification"
+  },
+  "relatedProduct": {
+    "@type": "ProductRef",
+    "id": "non-existent-id",
+    "href": "non-existent-href",
+    "name": "Non-existent Product"
+  }
+}

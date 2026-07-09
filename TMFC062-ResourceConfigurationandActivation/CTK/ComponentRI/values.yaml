@@ -1,0 +1,57 @@
+component:
+  id: TMFC062
+  name: resourceconfigandactivation
+  functionalBlock: Production
+  publicationDate: 2026-07-07T00:00:00.000Z
+  version: "1.1.0"
+  storageClassName: default
+  apipolicy:
+    apiKeyVerification:
+      enabled: false
+      location: "header"
+    rateLimit:
+      enabled: false
+      identifier: "IP"
+      limit: "6"
+      interval: "pm"
+    quota:
+      identifier: ""
+      limit: ""
+    OASValidation:
+      requestEnabled: false
+      responseEnabled: false
+      allowUnspecifiedHeaders: false
+      allowUnspecifiedQueryParams: false
+      allowUnspecifiedCookies: false
+    CORS:
+      enabled: false
+      allowCredentials: false
+      allowOrigins: "https://allowed-origin.com"
+      handlePreflightRequests:
+        enabled: false
+        allowHeaders: "Accept, Content-Type"
+        allowMethods: "GET, POST"
+        maxAge: 36000
+    template: ""
+
+security:
+  canvasSystemRole: Admin
+
+mongodb:
+  port: 27017
+  database: tmf
+
+image:
+  pullPolicy: Always
+
+api:
+  image: "akumartmf/resourceconfigandactivationapiv4:0.2"
+  versionLabel: resourceconfigandactivationapiv4-0.2
+  port: 8080
+
+metrics:
+  image: "akumartmf/resourceconfigandactivationmetricsv4:0.1"
+
+canvasinfo:
+  host: ""
+  basepath: ""

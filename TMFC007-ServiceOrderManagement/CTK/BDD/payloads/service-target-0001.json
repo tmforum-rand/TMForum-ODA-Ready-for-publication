@@ -1,0 +1,31 @@
+{
+    "externalId": "OrangeBSS748",
+    "priority": "1",
+    "description": "Service order description",
+    "category": "CloudServiceOrdering",
+    "requestedStartDate": "2018-01-15T09:37:40.508Z",
+    "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+    "serviceOrderItem": [
+    {
+        "id": "1",
+        "action": "add",
+        "service": {
+            "state": "active",
+            "serviceType": "CFS",
+            "serviceCharacteristic": [
+            {
+              "name": "vCPE_IP",
+              "valueType": "String",
+              "value": "193.218.236.21"
+            }
+            ],
+            "serviceSpecification": {
+                "id": "__VALID_ID__", 
+                "href": "__VALID_HREF__",
+                "name": "vCPE",
+                "version": "1"
+            }
+        }
+    }
+    ]
+}

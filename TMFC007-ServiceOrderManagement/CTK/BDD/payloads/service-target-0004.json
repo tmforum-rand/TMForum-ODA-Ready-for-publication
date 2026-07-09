@@ -1,0 +1,20 @@
+{
+    "externalId": "OrangeBSS748",
+    "priority": "1",
+    "description": "Service order description",
+    "category": "CloudServiceOrdering",
+    "requestedStartDate": "2018-01-15T09:37:40.508Z",
+    "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+    "serviceOrderItem": [
+        {
+            "id": "1",
+            "action": "modify",
+            "service": {
+                "state": "active",
+                "serviceType": "CFS",
+                "id": "non-existent-id",  
+                "href": "http://example.com/non-existent"
+            }
+        }
+    ]
+}

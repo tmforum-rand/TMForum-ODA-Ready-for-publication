@@ -5,59 +5,234 @@ metadata:
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
-  id: {{.Values.component.id}}
-  name: {{.Values.component.name}}
-  functionalBlock: {{.Values.component.functionalBlock}}
-  publicationDate: {{.Values.component.publicationDate}}
-  status: specified
-  version: {{.Values.component.version}}
-  description: "Simple Product Inventory ODA-Component from Open-API reference implementation."
-
-  maintainers:
-  - name: Anshul Kumar
-    email: akumar@tmforum.org
-  owners:
+  componentMetadata:
+    id: {{.Values.component.id}}
+    name: {{.Values.component.name}}
+    functionalBlock: {{.Values.component.functionalBlock}}
+    publicationDate: {{.Values.component.publicationDate}}
+    status: specified
+    version: {{.Values.component.version}}
+    description: "The Product Inventory component is responsible for storage and exposure of products that are assigned to and used by Parties. This component has functionality that enables creation of inventory items, inventory organization, inventory search or filter, inventory monitoring and tracking, inventory control and inventory auditing."
+    maintainers:
     - name: Anshul Kumar
-      email: akumar@tmforum.org
+      email: anshulkumar123skt@gmail.com
+    owners:
+    - name: Anshul Kumar
+      email: anshulkumar123skt@gmail.com
+
   coreFunction:
-    exposedAPIs: 
-    - name: productinventorymanagement
+    exposedAPIs:
+    - name: product-inventory-management-api
       id: TMF637
-      specification: 
-      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json"
-      implementation: {{.Release.Name}}-productinventoryapi
-      apiType: openapi
-      apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 8}}
-      rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 8}}
-      quota: {{.Values.component.apipolicy.quota | toYaml | nindent 8}}
-      OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 8}}
-      CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 8}}
-      template: "{{.Values.component.apipolicy.template}}"
-      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4
-      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v4/docs
-      port: 8080
-    dependentAPIs: 
-    - name: productcatalogmanagement
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/5.0.0/swagger/TMF637-ProductInventory-v5.0.0.oas.yaml"
+        implementation: {{.Release.Name}}-productinvapi
+        apiType: openapi
+        gatewayConfiguration:
+          apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 12}}
+          rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 12}}
+          quota: {{.Values.component.apipolicy.quota | toYaml | nindent 12}}
+          OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 12}}
+          CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 12}}
+          template: "{{.Values.component.apipolicy.template}}"
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/api-docs
+        port: 8637
+
+    dependentAPIs:
+    - name: product-catalog-management-api
       id: TMF620
       apiType: openapi
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/5.0.0/swagger/TMF620-Product_Catalog_Management-v5.0.0.oas.yaml"
+
   eventNotification:
-    publishedEvents: []
-    subscribedEvents: []
-  managementFunction: 
-    exposedAPIs: 
+    # CRITICAL: name must be lowercase-kebab-case — used by component operator to build K8s resource name
+    publishedEvents:
+    - hub: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/hub
+      implementation: /{{.Release.Name}}-productinventoryevent
+      name: productinventory
+      port: 80
+      resources:
+      - productCreateEvent
+      - productAttributeValueChangeEvent
+      - productStateChangeEvent
+      - productDeleteEvent
+      - productBatchEvent
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/5.0.0/swagger/TMF637-ProductInventory-v5.0.0.oas.yaml"
+        version: v5.0.0
+      apiType: openapi
+      id: TMF637
+      apiSDO: tmForum
+
+    subscribedEvents:
+    - implementation: /{{.Release.Name}}-resourceinventorymanagement
+      name: resource-inventory-management
+      port: 80
+      resources:
+      - resourceDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-ResourceInventory-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF639
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/resourceDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-serviceinventorymanagement
+      name: service-inventory-management
+      port: 80
+      resources:
+      - serviceDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-ServiceInventory-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF638
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/serviceDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-productcatalogmanagement
+      name: product-catalog-management
+      port: 80
+      resources:
+      - productSpecificationDeleteEvent
+      - productOfferingDeleteEvent
+      - productOfferingPriceDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-ProductCatalog-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF620
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/productSpecificationDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-partyrolemanagement
+      name: party-role-management
+      port: 80
+      resources:
+      - partyRoleDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-PartyRole-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF669
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/partyRoleDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-agreementmanagement
+      name: agreement-management
+      port: 80
+      resources:
+      - agreementDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-Agreement-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF651
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/agreementDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-accountmanagement
+      name: account-management
+      port: 80
+      resources:
+      - billingAccountDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-Account-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF666
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/billingAccountDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-userrolepermissionmanagement
+      name: user-role-permission-management
+      port: 80
+      resources:
+      - permissionDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-UserRolePermission-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF672
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/permissionDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-geographicsitemanagement
+      name: geographic-site-management
+      port: 80
+      resources:
+      - geographicSiteDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-GeographicSite-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF674
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/geographicSiteDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-geographiclocation
+      name: geographic-location
+      port: 80
+      resources:
+      - geographicLocationDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-GeographicLocation-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF675
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/geographicLocationDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-partymanagement
+      name: party-management
+      port: 80
+      resources:
+      - individualDeleteEvent
+      - organizationDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-Party-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF632
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/individualDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-productorderingmanagement
+      name: product-ordering-management
+      port: 80
+      resources:
+      - productOrderDeleteEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-ProductOrdering-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF622
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/productOrderDeleteEvent
+      apiSDO: tmForum
+    - implementation: /{{.Release.Name}}-productinventorymanagement
+      name: product-inventory-management
+      port: 80
+      resources:
+      - productCreateEvent
+      - productDeleteEvent
+      - productAttributeValueChangeEvent
+      - productStateChangeEvent
+      specification:
+      - url: "https://open-api.tmforum.org20-ProductInventory-v4.0.0.swagger.json"
+        version: v4.0.0
+      apiType: openapi
+      id: TMF637
+      callback: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productInventory/v5/listener/productCreateEvent
+      apiSDO: tmForum
+
+  managementFunction:
+    exposedAPIs:
     - name: metrics
       apiType: prometheus
-      apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 8}}
-      rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 8}}
-      quota: {{.Values.component.apipolicy.quota | toYaml | nindent 8}}
-      OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 8}}
-      CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 8}}
-      template: "{{.Values.component.apipolicy.template}}"
+      gatewayConfiguration:
+        apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 10}}
+        rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 10}}
+        quota: {{.Values.component.apipolicy.quota | toYaml | nindent 10}}
+        OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 10}}
+        CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 10}}
+        template: "{{.Values.component.apipolicy.template}}"
       implementation: {{.Release.Name}}-{{.Values.component.name}}-sm
       path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
-      port: 4000    
+      port: 4000
+
   securityFunction:
     canvasSystemRole: {{ .Values.security.canvasSystemRole }}
     exposedAPIs: []

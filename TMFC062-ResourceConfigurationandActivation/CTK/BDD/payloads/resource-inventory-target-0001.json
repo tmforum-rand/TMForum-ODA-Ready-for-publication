@@ -1,0 +1,12 @@
+{
+  "name": "Test Resource",
+  "resourceRelationship": [
+    {
+      "relationshipType": "reliesOn",
+      "resource": {
+        "id": "__VALID_ID__",
+        "href": "__VALID_HREF__"
+      }
+    }
+  ]
+}

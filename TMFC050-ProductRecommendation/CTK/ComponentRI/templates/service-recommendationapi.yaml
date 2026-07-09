@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Release.Name}}-recommendationapi
+  labels:
+    app: {{.Release.Name}}-{{.Values.component.name}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  ports:
+  - port: 8080
+    targetPort: {{.Release.Name}}-rec
+    name: http-{{.Release.Name}}-recommendationapi
+  type: NodePort
+  selector:
+    impl: {{.Release.Name}}-recommendationapi

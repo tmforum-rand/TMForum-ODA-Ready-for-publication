@@ -1,0 +1,11 @@
+{
+  "user": {
+    "@referredType": "Individual",
+    "id": "__VALID_ID__",
+    "href": "__VALID_HREF__"
+  },
+  "validFor": {
+    "startDateTime": "2024-01-01T00:00:00Z",
+    "endDateTime": "2025-01-01T00:00:00Z"
+  }
+}

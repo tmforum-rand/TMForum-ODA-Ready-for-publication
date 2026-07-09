@@ -17,14 +17,14 @@ spec:
         version: lesterthomas-metricsapi-latest
     spec:
       containers:
-      - name: {{.Release.Name}}-registerallevents
-        image: lesterthomas/registerallevents:latest
+      - name: {{.Release.Name}}-openmetrics
+        image: {{.Values.metrics.image}}
+        imagePullPolicy: {{.Values.image.pullPolicy}}
         env:
         - name: RELEASE_NAME
           value: {{.Release.Name}}           
         - name: COMPONENT_NAME
-          value: {{.Release.Name}}-{{.Values.component.name}}           
-        imagePullPolicy: Always
+          value: {{.Release.Name}}-{{.Values.component.name}}
         ports:
         - name: {{.Release.Name}}-prapi
           containerPort: 4000

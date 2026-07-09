@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{.Release.Name}}-servicequalificationinitialization
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-{{.Values.component.name}}
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: {{.Release.Name}}-servicequalificationinitialization
+        image: "akumartmf/servicequalificationinitialization:0.1"
+        env:
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}
+        - name: HUB_URL
+          value: "http://{{.Release.Name}}-servicequalificationapi:8645/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceQualificationManagement/v5/hub"
+        - name: LISTENER_URL
+          value: "http://{{.Release.Name}}-{{.Values.component.name}}-sm:4000/{{.Release.Name}}-{{.Values.component.name}}/metrics/listener"

@@ -1,0 +1,11 @@
+{
+  "user": {
+    "@referredType": "Individual",
+    "id": "non-existent-id",
+    "href": "non-existent-href"
+  },
+  "validFor": {
+    "startDateTime": "2024-01-01T00:00:00Z",
+    "endDateTime": "2025-01-01T00:00:00Z"
+  }
+}

@@ -12,34 +12,38 @@ spec:
   template:
     metadata:
       labels:
-        impl: {{.Release.Name}}-serviceinventoryapi
         app: {{.Release.Name}}-{{.Values.component.name}}
-        version:  serviceinventoryapi-0.2
+        impl: {{.Release.Name}}-serviceinventoryapi
+        version: {{.Values.api.versionLabel}}
     spec:
       containers:
-      - name: {{.Release.Name}}-serviceinventoryapi         
-        image: akumartmf/serviceinventoryapi:0.2
+      - name: {{.Release.Name}}-serviceinventoryapi
+        image: {{.Values.api.image}}
+        imagePullPolicy: {{.Values.image.pullPolicy}}
         env:
-        - name: RELEASE_NAME
-          value: {{.Release.Name}}           
         - name: COMPONENT_NAME
           value: {{.Release.Name}}-{{.Values.component.name}}
-        - name: MONGODB_HOST
+        - name: PORT
+          value: "8080"
+        - name: dbhost
           value: {{.Release.Name}}-mongodb
-        - name: MONGODB_PORT
+        - name: dbport
           value: "{{.Values.mongodb.port}}"
-        - name: MONGODB_DATABASE
+        - name: dbname
           value: {{.Values.mongodb.database}}
-        - name: NODE_ENV
-          value: production
-        imagePullPolicy: Always  
+        - name: LOG_LEVEL
+          value: "info"
         ports:
-        - name: {{.Release.Name}}-servinvapi
-          containerPort: 8080
+        - containerPort: 8080
         startupProbe:
           httpGet:
-            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v4/
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v5/service
+            port: 8080
+          failureThreshold: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v5/service
             port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5
-          failureThreshold: 30

@@ -1,0 +1,10 @@
+{
+  "name": "Test Service Test",
+  "testSpecification": {
+    "id": "test-service-test-spec-001"
+  },
+  "relatedService": {
+    "id": "non-existent-id",
+    "href": "non-existent-href"
+  }
+}

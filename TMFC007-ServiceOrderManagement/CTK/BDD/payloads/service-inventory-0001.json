@@ -1,0 +1,17 @@
+{
+    "state": "active",
+    "serviceType": "CFS",
+    "serviceCharacteristic": [
+    {
+        "name": "vCPE_IP",
+        "valueType": "String",
+        "value": "193.218.236.21"
+    }
+    ],
+    "serviceSpecification": {
+        "id": "__VALID_ID__", 
+        "href": "__VALID_HREF__",
+        "name": "vCPE",
+        "version": "1"
+    }
+}

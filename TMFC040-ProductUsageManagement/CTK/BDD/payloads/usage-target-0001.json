@@ -1,0 +1,9 @@
+{
+  "relatedParty": [
+    {
+      "@referredType": "Individual",
+      "id": "__VALID_ID__",
+      "href": "__VALID_HREF__"
+    }
+  ]
+}

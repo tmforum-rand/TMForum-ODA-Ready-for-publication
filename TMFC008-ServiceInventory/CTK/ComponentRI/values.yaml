@@ -1,14 +1,9 @@
-# Default values for servicecatalog.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 component:
-  # Specifies whether a service account should be created
   id: TMFC008
   name: serviceinventory
   functionalBlock: Production
-  publicationDate: "2024-11-12T00:00:00Z"
-  version: "1.2.0"
+  publicationDate: 2026-07-07T00:00:00.000Z
+  version: "1.0.0"
   storageClassName: default
   apipolicy:
     apiKeyVerification:
@@ -31,24 +26,32 @@ component:
     CORS:
       enabled: false
       allowCredentials: false
-      allowOrigins: "https://allowed-origin.com, https://allowed-origin2.com"
+      allowOrigins: "https://allowed-origin.com"
       handlePreflightRequests:
         enabled: false
-        allowHeaders: "Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+        allowHeaders: "Accept, Content-Type"
         allowMethods: "GET, POST"
         maxAge: 36000
     template: ""
+
 security:
-  controllerRole: Admin
-service:
-  type: ClusterIP
-  port: 80
+  canvasSystemRole: canvasRole
+
 mongodb:
   port: 27017
   database: tmf
-partyrole:
-  image: lesterthomas/partyroleapi:latest
-  versionlabel: partyroleapi-1.0
+
+image:
+  pullPolicy: Always
+
 api:
-  image: akumartmf/serviceinventoryapi:0.2
-  versionlabel: serviceinventoryapi-0.2
+  image: "akumartmf/serviceinventoryapiv5:0.1"
+  versionLabel: serviceinventoryapiv5-0.1
+  port: 8080
+
+metrics:
+  image: "akumartmf/serviceinventorymetricsv5:0.1"
+
+canvasinfo:
+  host: ""
+  basepath: ""

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-partyroleapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: {{.Release.Name}}-partyroleapi
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        impl: {{.Release.Name}}-partyroleapi
+        version: {{.Values.partyroleapi.versionLabel}}
+    spec:
+      containers:
+      - name: {{.Release.Name}}-partyroleapi
+        image: {{.Values.partyroleapi.image}}
+        imagePullPolicy: {{.Values.image.pullPolicy}}
+        env:
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: PORT
+          value: "8669"
+        - name: dbhost
+          value: {{.Release.Name}}-mongodb
+        - name: dbport
+          value: "{{.Values.mongodb.port}}"
+        - name: dbname
+          value: {{.Values.mongodb.database}}
+        - name: LOG_LEVEL
+          value: "info"
+        ports:
+        - containerPort: 8669
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRole
+            port: 8669
+          failureThreshold: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRole
+            port: 8669
+          initialDelaySeconds: 10
+          periodSeconds: 5

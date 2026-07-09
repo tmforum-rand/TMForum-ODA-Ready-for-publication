@@ -1,0 +1,138 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: {{.Release.Name}}-{{.Values.component.name}}
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  componentMetadata:
+    id: {{.Values.component.id}}
+    name: {{.Values.component.name}}
+    functionalBlock: {{.Values.component.functionalBlock}}
+    publicationDate: {{.Values.component.publicationDate}}
+    status: specified
+    version: {{.Values.component.version}}
+    description: "The Permissions Management component manages and exposes roles and related permissions. This component enables creation, modification and deletion of permissions and delegate permissions."
+    maintainers:
+    - name: TM Forum
+      email: components@tmforum.org
+    owners:
+    - name: TM Forum
+      email: components@tmforum.org
+
+  coreFunction:
+    exposedAPIs:
+    - name: user-role-permission-management-api
+      id: TMF672
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json"
+        implementation: {{.Release.Name}}-userrolepermapi
+        apiType: openapi
+        gatewayConfiguration:
+          apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 12}}
+          rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 12}}
+          quota: {{.Values.component.apipolicy.quota | toYaml | nindent 12}}
+          OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 12}}
+          CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 12}}
+          template: "{{.Values.component.apipolicy.template}}"
+        path: /{{.Release.Name}}-{{.Values.component.name}}/rolesAndPermissions/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/rolesAndPermissions/v4/docs
+        port: 8672
+
+    - name: party-role-management-api
+      id: TMF669
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/5.0.0/swagger/TMF669-Party_Role_Management-v5.0.0.oas.yaml"
+        implementation: {{.Release.Name}}-partyroleapi
+        apiType: openapi
+        gatewayConfiguration:
+          apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 12}}
+          rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 12}}
+          quota: {{.Values.component.apipolicy.quota | toYaml | nindent 12}}
+          OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 12}}
+          CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 12}}
+          template: "{{.Values.component.apipolicy.template}}"
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/api-docs
+        port: 8669
+
+    dependentAPIs:
+    - name: party-management-api
+      id: TMF632
+      required: true
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/5.0.0/swagger/TMF632-Party_Management-v5.0.0.oas.yaml"
+        apiType: openapi
+        resources:
+        - individual:
+          - GET
+          - GET /id
+        - organization:
+          - GET
+          - GET /id
+
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      implementation: /{{.Release.Name}}-userrolepermapi
+      name: user-role-permission-management-api
+      port: 8672
+      resources:
+      - permissionCreateEvent
+      - permissionAttributeValueChangeEvent
+      - permissionStateChangeEvent
+      - permissionDeleteEvent
+      - userRoleCreateEvent
+      - userRoleAttributeValueChangeEvent
+      - userRoleStateChangeEvent
+      - userRoleDeleteEvent
+      id: TMF672
+      apiSDO: tmForum
+    - apiType: openapi
+      implementation: /{{.Release.Name}}-partyroleapi
+      name: party-role-management-api
+      port: 8669
+      resources:
+      - partyRoleCreateEvent
+      - partyRoleAttributeValueChangeEvent
+      - partyRoleStateChangeEvent
+      - partyRoleDeleteEvent
+      - partyRoleSpecificationCreateEvent
+      - partyRoleSpecificationAttributeValueChangeEvent
+      - partyRoleSpecificationStateChangeEvent
+      - partyRoleSpecificationDeleteEvent
+      id: TMF669
+      apiSDO: tmForum
+    subscribedEvents:
+    - apiType: openapi
+      implementation: /{{.Release.Name}}-PartyManagement
+      name: party-management-api
+      port: 8632
+      resources:
+      - individualCreateEvent
+      - individualAttributeValueChangeEvent
+      - individualStateChangeEvent
+      - organizationCreateEvent
+      - organizationAttributeValueChangeEvent
+      - organizationStateChangeEvent
+      id: TMF632
+      apiSDO: tmForum
+
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      gatewayConfiguration:
+        apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 10}}
+        rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 10}}
+        quota: {{.Values.component.apipolicy.quota | toYaml | nindent 10}}
+        OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 10}}
+        CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 10}}
+        template: "{{.Values.component.apipolicy.template}}"
+      implementation: {{.Release.Name}}-{{.Values.component.name}}-sm
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+
+  securityFunction:
+    canvasSystemRole: {{ .Values.security.canvasSystemRole }}
+    exposedAPIs: []

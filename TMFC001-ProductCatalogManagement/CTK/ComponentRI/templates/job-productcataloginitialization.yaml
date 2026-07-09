@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{.Release.Name}}-productcataloginitialization
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-{{.Values.component.name}}
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: {{.Release.Name}}-productcataloginitialization
+        image: "akumartmf/productcatalogv5initialization:0.1"
+        env:
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: HUB_URL
+          value: "http://{{.Release.Name}}-prodcatapiv5:8620/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v5/hub"
+        - name: LISTENER_URL
+          value: "http://{{.Release.Name}}-{{.Values.component.name}}-sm:4000/{{.Release.Name}}-{{.Values.component.name}}/metrics/listener"

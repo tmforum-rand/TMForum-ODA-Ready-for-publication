@@ -1,15 +1,9 @@
-# Default values for productcatalog.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
-
 component:
-  # Specifies whether a service account should be created
   id: TMFC001
   name: productcatalogmanagement
   functionalBlock: CoreCommerce
-  publicationDate: 2024-09-17T00:00:00.000Z
-  version: "0.0.1"
+  publicationDate: 2026-05-11T00:00:00.000Z
+  version: "2.2.2"
   storageClassName: default
   apipolicy:
     apiKeyVerification:
@@ -32,42 +26,47 @@ component:
     CORS:
       enabled: false
       allowCredentials: false
-      allowOrigins: "https://allowed-origin.com, https://allowed-origin2.com"
+      allowOrigins: "https://allowed-origin.com"
       handlePreflightRequests:
         enabled: false
-        allowHeaders: "Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+        allowHeaders: "Accept, Content-Type"
         allowMethods: "GET, POST"
         maxAge: 36000
     template: ""
-  dependentAPIs:
-    enabled: false
-    rejectUnauthorizedCertificates: false
+
 security:
   canvasSystemRole: Admin
+
 mongodb:
   port: 27017
   database: tmf
+
+image:
+  pullPolicy: Always
+
 api:
-  image: lesterthomas/productcatalogapi:0.23
-  versionlabel: productcatalogapi-0.21
+  image: "akumartmf/productcatalogv5api:0.5"
+  versionLabel: productcatalogv5api-0.5
+  port: 8620
   otlp:
     console:
       enabled: false
     protobuffCollector:
-      enabled: true
-      url: http://datadog-agent.default.svc.cluster.local:4318/v1/traces
+      enabled: false
+      url: http://observability-opentelemetry-collector.monitoring.svc.cluster.local:4318/v1/traces
+
+metrics:
+  image: "akumartmf/productcatalogv5metrics:0.1"
+
+permissionspec:
+  image: lesterthomas/permissionspecapi:0.20
+  versionLabel: permissionspecapi-0.20
+  enabled: true
+
 partyrole:
-  image: lesterthomas/partyroleapi:1.0
-  versionlabel: partyroleapi-1.0
-promotionmgmt:
-  image: lesterthomas/promotionmgmtapi:0.5
-  versionlabel: promotionmgmtapi-0.5
-  otlp:
-    console:
-      enabled: false
-    protobuffCollector:
-      enabled: true
-      url: http://datadog-agent.default.svc.cluster.local:4318/v1/traces
+  image: lesterthomas/partyroleapi:1.1
+  versionLabel: partyroleapi-1.1
+
 canvasinfo:
-  host: info.canvas.svc.cluster.local
-  basepath: /
+  host: ""
+  basepath: ""

@@ -1,0 +1,16 @@
+{
+  "@type": "CheckServiceQualification",
+  "serviceQualificationItem": [
+    {
+      "@type": "CheckServiceQualificationItem",
+      "service": {
+        "@type": "Service",
+        "serviceSpecification": {
+          "@type": "ServiceSpecificationRef",
+          "id": "non-existent-id",
+          "href": "non-existent-href"
+        }
+      }
+    }
+  ]
+}

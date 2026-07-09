@@ -7,9 +7,10 @@ metadata:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   ports:
-  - port: 8080
-    targetPort: {{.Release.Name}}-servinvapi
-    name: http-{{.Release.Name}}-serviceinventoryapi
-  type: NodePort
+  - name: serviceinventoryapi-http
+    port: 8080
+    targetPort: 8080
+    protocol: TCP
   selector:
     impl: {{.Release.Name}}-serviceinventoryapi
+  type: NodePort

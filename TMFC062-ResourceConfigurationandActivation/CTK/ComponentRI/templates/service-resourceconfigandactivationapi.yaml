@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Release.Name}}-resourceconfigandactivationapi
+  labels:
+    app: {{.Release.Name}}-{{.Values.component.name}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  ports:
+  - name: resourceconfigandactivationapi-http
+    port: 8080
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    impl: {{.Release.Name}}-resourceconfigandactivationapi
+  type: NodePort
