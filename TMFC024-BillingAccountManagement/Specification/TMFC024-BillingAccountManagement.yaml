@@ -192,7 +192,7 @@ spec:
       Billing preferences (e.g., bill cycle frequency, invoice media type, invoice
       template option, etc.)
     publicationDate: 2026-05-21
-    status: preview
+    status: roadmap
     functionalBlock: PartyManagement
     owners:
     - email: Redacted

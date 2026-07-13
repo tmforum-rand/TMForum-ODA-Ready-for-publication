@@ -339,7 +339,7 @@ spec:
       right product combinations, controlling discounting, and automating approvals
       through support of configuration, pricing and quote generation activities.
     publicationDate: 2026-06-02
-    status: preview
+    status: roadmap
     functionalBlock: CoreCommerce
     owners:
     - email: Redacted

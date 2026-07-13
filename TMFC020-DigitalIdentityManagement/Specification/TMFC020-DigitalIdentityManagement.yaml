@@ -120,7 +120,7 @@ spec:
     description: The Digital Identity Management component is responsible for authentication
       of parties (customers, employees, partners), and resources authentication.
     publicationDate: 2026-06-08
-    status: preview
+    status: roadmap
     functionalBlock: PartyManagement
     owners:
     - email: Redacted

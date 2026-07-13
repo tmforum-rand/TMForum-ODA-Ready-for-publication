@@ -20,7 +20,7 @@ spec:
       occurrence, the component hands off mitigatory actions to the Party Problem
       Management component.
     publicationDate: 2026-05-21
-    status: preview
+    status: roadmap
     functionalBlock: IntelligenceManagement
     owners:
     - email: Redacted

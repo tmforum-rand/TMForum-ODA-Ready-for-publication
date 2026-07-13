@@ -185,7 +185,7 @@ spec:
       storage, version control, compliance management, and renewal notifications for
       agreements.
     publicationDate: 2026-05-21
-    status: preview
+    status: roadmap
     functionalBlock: PartyManagement
     owners:
     - email: Redacted

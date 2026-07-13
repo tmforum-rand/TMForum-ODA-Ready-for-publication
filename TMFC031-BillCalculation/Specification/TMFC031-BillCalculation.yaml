@@ -201,7 +201,7 @@ spec:
       and/or account level that have been generated since the last run for that account,
       applying promotions and discounts.
     publicationDate: 2023-06-25
-    status: preview
+    status: roadmap
     functionalBlock: CoreCommerce
     owners:
     - email: Redacted

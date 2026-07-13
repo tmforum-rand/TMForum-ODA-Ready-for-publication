@@ -99,7 +99,7 @@ spec:
       can answer the question "where?" This component could be a facade tool for GIS
       systems, address sytems, BIM systems, mapping systems ... (eg. Google Maps).
     publicationDate: 2023-08-18
-    status: preview
+    status: roadmap
     functionalBlock: Production
     owners:
     - email: Redacted

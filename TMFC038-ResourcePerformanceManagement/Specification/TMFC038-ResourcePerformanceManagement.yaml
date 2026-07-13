@@ -172,7 +172,7 @@ spec:
     description: Resource Performance Management component monitors, analyzes, and
       reports on the performance of the service provider's resources.
     publicationDate: 2026-05-21
-    status: preview
+    status: roadmap
     functionalBlock: Production
     owners:
     - email: Redacted

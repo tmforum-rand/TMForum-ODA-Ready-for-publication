@@ -274,7 +274,7 @@ spec:
       service performance test data to provide a view of a service. The component
       provides a key input to determine Quality of Service.
     publicationDate: 2026-05-21
-    status: preview
+    status: roadmap
     functionalBlock: Production
     owners:
     - email: Redacted
