@@ -762,21 +762,27 @@ async function generateReportData(resultsPath) {
     componentUrl: componentUrl,
     coreFunctionPassed: coreFunctionSummary.cfSummary.failed === 0,
     coreFunctionResults: coreFunctionResults,
+    hasCoreFunctionReports: coreFunctionResults.length > 0 || dependentFunctionResults.length > 0,
+    hasExposedFunctionReports: coreFunctionResults.length > 0,
     exposedApiPassed: exposedApisFailed === 0,
 //    dependentFunctionPassed: dependentFunctionSummary.cfSummary.failed === 0,
     dependentFunctionPassed: (bddResults.failed === 0 || bddResults.failed === "N/A"),
+    hasDependentFunctionReports: dependentFunctionResults.length > 0,
     dependentFunctionResults: {
       file: "../results/cucumber-bdd/results.html"
     },
     securityFunctionResults: securityFunctionResults,
+    hasSecurityFunctionReports: securityFunctionResults.length > 0,
     securityFunctionPassed: (securityFunctionSummary.cfSummary.failed === 0 || securityFunctionSummary.cfSummary.failed === "N/A"),
 //    bddPassed: bddResults.failed === 0,
     configuration: {
       passed: configurationSummary.failed === 0,
+      hasReports: true,
       file: "../results/baseline-ctk/Configuration-report.html"
     },
     deployment: {
       passed: deploymentSummary.failed === 0,
+      hasReports: true,
       file: "../results/baseline-ctk/deployment-report.html"
     },
 //    bdd: {

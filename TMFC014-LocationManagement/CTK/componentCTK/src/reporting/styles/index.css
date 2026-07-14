@@ -159,12 +159,30 @@ Materialize overrides
 }
 
 .collapsible-header {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto 24px;
+    column-gap: 1rem;
     align-items: center;
-    justify-content: space-between;
     padding: 1rem 1.5rem;
     border: none;
     background-color: unset;
+}
+
+.collapsible-header .lozenge {
+    grid-column: 2;
+    justify-self: end;
+}
+
+.collapsible-header .report-chevron {
+    grid-column: 3;
+    width: 24px;
+    margin: 0;
+    text-align: center;
+    transition: transform 200ms ease;
+}
+
+.collapsible li.active > .collapsible-header .report-chevron {
+    transform: rotate(90deg);
 }
 
 .collapsible li:nth-child(even) {

@@ -7,7 +7,7 @@
     "runExposedOptional": false,
     "runDependentOptional": false,
     "runSecurityOptional": false,
-    "ctkVersion": "v1.3.0",
+    "ctkVersion": "v1.3.1",
     "apiVersionUnderTest": "",
     "apiVersionOverrides": {},
     "ctkLogging": {
@@ -79,16 +79,86 @@
                 "releaseName": "<HELM_RELEASE_SERVICE_CATALOG>"
             }
         },
+        "tmfc009": {
+            "serviceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_CATALOG>"
+            }
+        },
+        "tmfc011": {
+            "resourceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_CATALOG>"
+            },
+            "resourceInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_INVENTORY>"
+            }
+        },
         "tmfc012": {
             "resourceCatalog": {
                 "headers": {},
                 "releaseName": "<HELM_RELEASE_RESOURCE_CATALOG>"
             }
         },
+        "tmfc022": {
+            "party": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_MANAGEMENT>"
+            },
+            "partyRole": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_ROLE>"
+            }
+        },
         "tmfc028": {
             "partyRole": {
                 "headers": {},
                 "releaseName": "<HELM_RELEASE_PARTY_ROLE>"
+            }
+        },
+        "tmfc035": {
+            "party": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_MANAGEMENT>"
+            }
+        },
+        "tmfc040": {
+            "party": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_MANAGEMENT>"
+            }
+        },
+        "tmfc050": {
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            }
+        },
+        "tmfc054": {
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            },
+            "productInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_INVENTORY>"
+            }
+        },
+        "tmfc055": {
+            "serviceInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_INVENTORY>"
+            }
+        },
+        "tmfc062": {
+            "resourceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_CATALOG>"
+            },
+            "resourceInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_INVENTORY>"
             }
         }
     },
@@ -360,47 +430,216 @@
         },
         "tmfc008": {
             "service-target-0001": {
+                "@type": "Service",
                 "state": "active",
                 "serviceSpecification": {
-                    "id": "__VALID_ID__", 
-                    "href": "__VALID_HREF__", 
-                    "@referredType": "ServiceSpecification"
+                  "@type": "ServiceSpecificationRef",
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
                 }
             },
             "service-target-0002": {
+                "@type": "Service",
                 "state": "active",
                 "serviceSpecification": {
-                    "id": "non-existent-id",  
-                    "href": "http://example.com/non-existent",
-                    "@referredType": "ServiceSpecification"
+                  "@type": "ServiceSpecificationRef",
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
                 }
             },
             "service-catalog-0001":{
-                "name": "Cloud Storage Service"
+                "name": "Test Service Specification"
+            }              
+        },
+        "tmfc009": {
+            "service-target-0001": {
+                "@type": "CheckServiceQualification",
+                "serviceQualificationItem": [
+                  {
+                    "@type": "CheckServiceQualificationItem",
+                    "service": {
+                      "@type": "Service",
+                      "serviceSpecification": {
+                        "@type": "ServiceSpecificationRef",
+                        "id": "__VALID_ID__",
+                        "href": "__VALID_HREF__"
+                      }
+                    }
+                  }
+                ]
+            },
+            "service-target-0002": {
+                "@type": "CheckServiceQualification",
+                "serviceQualificationItem": [
+                  {
+                    "@type": "CheckServiceQualificationItem",
+                    "service": {
+                      "@type": "Service",
+                      "serviceSpecification": {
+                        "@type": "ServiceSpecificationRef",
+                        "id": "non-existent-id",
+                        "href": "non-existent-href"
+                      }
+                    }
+                  }
+                ]
+            },
+            "service-catalog-0001":{
+                "name": "Test Service Specification"
+            }              
+        },
+        "tmfc011": {
+            "resource-target-0001": {
+                "description": "Resource order for vCPE provisioning",
+                "orderItem": [
+                    {
+                        "id": "1",
+                        "action": "add",
+                        "resourceSpecification": {
+                            "id": "__VALID_ID__",
+                            "href": "__VALID_HREF__"
+                        }
+                    }
+                ]
+            },
+            "resource-target-0002": {
+                "description": "Resource order for vCPE provisioning",
+                "orderItem": [
+                    {
+                        "id": "1",
+                        "action": "add",
+                        "resourceSpecification": {
+                            "id": "non-existent-id",
+                            "href": "non-existent-href"
+                        }
+                    }
+                ]
+            },
+            "resource-target-0003": {
+                "description": "Resource order for vCPE provisioning",
+                "orderItem": [
+                    {
+                        "id": "1",
+                        "action": "add",
+                        "resource": {
+                            "id": "__VALID_ID__",
+                            "href": "__VALID_HREF__"
+                        }
+                    }
+                ]
+            },
+            "resource-target-0004": {
+                "description": "Resource order for vCPE provisioning",
+                "orderItem": [
+                    {
+                        "id": "1",
+                        "action": "add",
+                        "resource": {
+                            "id": "non-existent-id",
+                            "href": "non-existent-href"
+                        }
+                    }
+                ]
+            },
+            "resource-catalog-0001": {
+                "name": "vCPE Resource Specification",
+                "@type": "ResourceSpecification"
+            },
+            "resource-inventory-0001": {
+                "name": "vCPE Resource"
             }
         },
         "tmfc012": {
             "resource-target-0001": {
-                "name": "RouterXX",
+                "name": "Test Resource",
                 "resourceSpecification": {
-                    "id": "__VALID_ID__", 
-                    "href": "__VALID_HREF__"
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
                 }
-                
             },
             "resource-target-0002": {
-                "name": "RouterXX",
+                "name": "Test Resource",
                 "resourceSpecification": {
-                    "id": "non-existent-id",  
-                    "href": "http://example.com/non-existent"
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
                 }
-                
             },
             "resource-catalog-0001":{
-                "name": "Virtual Storage Medium",
-                "id": "39a4d9c4-8113-47e6-b7f5-0fceab81f4b4",
-                "href": "http://34.34.123.159/s010-resourcecatalog/tmf-api/resourceCatalog/v4/resourceSpecification/39a4d9c4-8113-47e6-b7f5-0fceab81f4b4"
+                "name": "Test Resource Specification",
+                "@type": "ResourceSpecification"
             }
+        },
+        "tmfc022": {
+            "privacy-target-0001": {
+                "@type": "PartyPrivacyAgreement",
+                "name": "Test Privacy Agreement",
+                "agreementType": "privacy",
+                "agreementItem": [{}],
+                "engagedParty": [
+                  {
+                    "@type": "PartyRef",
+                    "@referredType": "Individual",
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__"
+                  }
+                ]
+            },
+            "privacy-target-0002": {
+                "@type": "PartyPrivacyAgreement",
+                "name": "Test Privacy Agreement",
+                "agreementType": "privacy",
+                "agreementItem": [{}],
+                "engagedParty": [
+                  {
+                    "@type": "PartyRef",
+                    "@referredType": "Individual",
+                    "id": "non-existent-id",
+                    "href": "non-existent-href"
+                  }
+                ]
+            },
+            "privacy-target-0003": {
+                "@type": "PartyPrivacyAgreement",
+                "name": "Test Privacy Agreement",
+                "agreementType": "privacy",
+                "agreementItem": [{}],
+                "engagedParty": [
+                  {
+                    "@type": "PartyRoleRef",
+                    "@referredType": "PartyRole",
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__"
+                  }
+                ]
+            },
+            "privacy-target-0004": {
+                "@type": "PartyPrivacyAgreement",
+                "name": "Test Privacy Agreement",
+                "agreementType": "privacy",
+                "agreementItem": [{}],
+                "engagedParty": [
+                  {
+                    "@type": "PartyRoleRef",
+                    "@referredType": "PartyRole",
+                    "id": "non-existent-id",
+                    "href": "non-existent-href"
+                  }
+                ]
+            },
+            "party-management-0001": {
+                "@type": "Individual",
+                "givenName": "John",
+                "familyName": "Doe"
+            },
+            "party-role-0001": {
+                "@type": "PartyRole",
+                "name": "Test Party Role",
+                "engagedParty": {
+                  "@type": "PartyRef",
+                  "@referredType": "Individual",
+                  "id": "test-party-001"
+                }
+            }                                                                                    
         },
         "tmfc028": {
             "party-target-0001": {
@@ -460,6 +699,273 @@
                     "role": "Supplier",
                     "@referredType": "organization"
                 }
+            }
+        },
+        "tmfc035": {
+            "party-individual-0001": {
+                "@type": "Individual",
+                "givenName": "John",
+                "familyName": "Doe"
+            },
+            "party-role-target-0001": {
+                "@type": "PartyRole",
+                "name": "Customer",
+                "engagedParty": {
+                  "@type": "PartyRef",
+                  "@referredType": "Individual",
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                }
+            },
+            "party-role-target-0002": {
+                "@type": "PartyRole",
+                "name": "Customer",
+                "engagedParty": {
+                  "@type": "PartyRef",
+                  "@referredType": "Individual",
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                }
+            },
+            "permission-target-0001": {
+                "user": {
+                  "@referredType": "Individual",
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                },
+                "validFor": {
+                  "startDateTime": "2024-01-01T00:00:00Z",
+                  "endDateTime": "2025-01-01T00:00:00Z"
+                }
+            },
+            "permission-target-0002": {
+                "user": {
+                  "@referredType": "Individual",
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                },
+                "validFor": {
+                  "startDateTime": "2024-01-01T00:00:00Z",
+                  "endDateTime": "2025-01-01T00:00:00Z"
+                }
+            }                            
+        },
+        "tmfc040": {
+            "usage-consumption-target-0001": {
+                "@type": "QueryUsageConsumption",
+                "relatedParty": [
+                  {
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "role": "customer",
+                    "partyOrPartyRole": {
+                      "@type": "PartyRef",
+                      "id": "__VALID_ID__",
+                      "href": "__VALID_HREF__"
+                    }
+                  }
+                ]
+            },
+            "usage-consumption-target-0002":    {
+                "@type": "QueryUsageConsumption",
+                "relatedParty": [
+                  {
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "role": "customer",
+                    "partyOrPartyRole": {
+                      "@type": "PartyRef",
+                      "id": "non-existent-id",
+                      "href": "non-existent-href"
+                    }
+                  }
+                ]
+            },
+            "usage-target-0001": {
+                "relatedParty": [
+                  {
+                    "@referredType": "Individual",
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__"
+                  }
+                ]
+            },
+            "usage-target-0002": {
+                "relatedParty": [
+                  {
+                    "@referredType": "Individual",
+                    "id": "non-existent-id",
+                    "href": "non-existent-href"
+                  }
+                ]
+            },
+            "party-management-0001": {
+                "@type": "Individual",
+                "givenName": "John",
+                "familyName": "Doe"
+            }                                                     
+        },
+        "tmfc050": {
+            "recommendation-target-0001": {
+                "category": [
+                  {
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__"
+                  }
+                ]
+            },
+            "recommendation-target-0002": {
+                "category": [
+                  {
+                    "id": "non-existent-id",
+                    "href": "non-existent-href"
+                  }
+                ]
+            },
+            "product-catalog-0001": {
+                "@type": "Category",
+                "name": "Test Category"
+            }              
+        },
+        "tmfc054": {
+            "product-test-spec-target-0001": {
+                "@type": "ProductTestSpecification",
+                "name": "Test Product Test Specification",
+                "relatedProductSpecification": [
+                  {
+                    "@type": "ProductSpecificationRef",
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__",
+                    "name": "Test Product Specification"
+                  }
+                ]
+            },
+            "product-test-spec-target-0002": {
+                "@type": "ProductTestSpecification",
+                "name": "Test Product Test Specification",
+                "relatedProductSpecification": [
+                  {
+                    "@type": "ProductSpecificationRef",
+                    "id": "non-existent-id",
+                    "href": "non-existent-href",
+                    "name": "Non-existent Product Specification"
+                  }
+                ]
+            },
+            "product-test-target-0001": {
+                "@type": "ProductTest",
+                "name": "Test Product Test",
+                "testSpecification": {
+                  "@type": "ProductTestSpecificationRef",
+                  "id": "test-product-test-spec-001",
+                  "name": "Test Product Test Specification"
+                },
+                "relatedProduct": {
+                  "@type": "ProductRef",
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__",
+                  "name": "Test Product"
+                }
+            },
+            "product-test-target-0002": {
+                "@type": "ProductTest",
+                "name": "Test Product Test",
+                "testSpecification": {
+                  "@type": "ProductTestSpecificationRef",
+                  "id": "test-product-test-spec-001",
+                  "name": "Test Product Test Specification"
+                },
+                "relatedProduct": {
+                  "@type": "ProductRef",
+                  "id": "non-existent-id",
+                  "href": "non-existent-href",
+                  "name": "Non-existent Product"
+                }
+            },
+            "product-catalog-0001": {
+                "@type": "ProductSpecification",
+                "name": "Test Product Specification",
+                "lifecycleStatus": "active",
+                "lastUpdate": "2026-01-01T00:00:00.000Z"
+            },
+            "product-inventory-0001": {
+                "@type": "Product",
+                "status": "active"
+            }                                                                      
+        },
+        "tmfc055": {
+            "service-test-target-0001": {
+                "name": "Test Service Test",
+                "testSpecification": {
+                  "id": "test-service-test-spec-001"
+                },
+                "relatedService": {
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                }
+            },
+            "service-test-target-0002": {
+                "name": "Test Service Test",
+                "testSpecification": {
+                  "id": "test-service-test-spec-001"
+                },
+                "relatedService": {
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                }
+            },
+            "service-inventory-0001": {
+                "@type": "Service",
+                "state": "active",
+                "serviceSpecification": {
+                  "@type": "ServiceSpecificationRef",
+                  "id": "test-service-spec-001"
+                }
+            }                                          
+        },
+        "tmfc062": {
+            "resource-catalog-target-0001": {
+                "name": "Test Resource",
+                "resourceSpecification": {
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                }
+            },
+            "resource-catalog-target-0002": {
+                "name": "Test Resource",
+                "resourceSpecification": {
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                }
+            },
+            "resource-inventory-target-0001": {
+                "name": "Test Resource",
+                "resourceRelationship": [
+                  {
+                    "relationshipType": "reliesOn",
+                    "resource": {
+                      "id": "__VALID_ID__",
+                      "href": "__VALID_HREF__"
+                    }
+                  }
+                ]
+            },
+            "resource-inventory-target-0002": {
+                "name": "Test Resource",
+                "resourceRelationship": [
+                  {
+                    "relationshipType": "reliesOn",
+                    "resource": {
+                      "id": "non-existent-id",
+                      "href": "non-existent-href"
+                    }
+                  }
+                ]
+            },
+            "resource-catalog-0001": {
+                "@type": "ResourceSpecification",
+                "name": "Test Resource Specification"
+            },
+            "resource-inventory-0001": {
+                "name": "Test Resource"
             }
         }
     },

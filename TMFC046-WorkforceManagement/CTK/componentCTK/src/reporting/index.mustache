@@ -223,6 +223,9 @@
                             {{ ^coreFunctionPassed }}
                             <span class="lozenge failure">Failed</span>
                             {{ /coreFunctionPassed }}
+                            {{ #hasCoreFunctionReports }}
+                            <i class="material-icons report-chevron" aria-hidden="true">chevron_right</i>
+                            {{ /hasCoreFunctionReports }}
                         </div>
                         <div class="collapsible-body">
                             <ul class="collapsible">
@@ -236,7 +239,9 @@
                                         {{^exposedApiPassed}}
                                         <span class="lozenge failure">Failed</span>
                                         {{/exposedApiPassed}}
-
+                                        {{ #hasExposedFunctionReports }}
+                                        <i class="material-icons report-chevron" aria-hidden="true">chevron_right</i>
+                                        {{ /hasExposedFunctionReports }}
                                     </div>
                                     <div class="collapsible-body">
                                     {{ #coreFunctionResults }}
@@ -257,9 +262,9 @@
                                             {{^dependentFunctionPassed}}
                                             <span class="lozenge failure">Failed</span>
                                             {{/dependentFunctionPassed}}
-
-
-
+                                            {{ #hasDependentFunctionReports }}
+                                            <i class="material-icons report-chevron" aria-hidden="true">chevron_right</i>
+                                            {{ /hasDependentFunctionReports }}
                                         </div>
                                         <div class="collapsible-body">
                                         {{ #dependentFunctionResults }}
@@ -280,7 +285,9 @@
                             {{^securityFunctionPassed}}
                             <span class="lozenge failure">Failed</span>
                             {{ /securityFunctionPassed }}
-
+                            {{ #hasSecurityFunctionReports }}
+                            <i class="material-icons report-chevron" aria-hidden="true">chevron_right</i>
+                            {{ /hasSecurityFunctionReports }}
                         </div>
                         <div class="collapsible-body">
                         {{ #securityFunctionResults }}
@@ -302,6 +309,9 @@
                             {{ ^passed }}
                             <span class="lozenge failure">Failed</span>
                             {{ /passed }}
+                            {{ #hasReports }}
+                            <i class="material-icons report-chevron" aria-hidden="true">chevron_right</i>
+                            {{ /hasReports }}
                         </div>
                         <div class="collapsible-body">
                             <iframe src="{{ file }}" style="width: 100%; height: 100vh;"></iframe>
@@ -318,6 +328,9 @@
                             {{ ^passed }}
                             <span class="lozenge failure">Failed</span>
                             {{ /passed }}
+                            {{ #hasReports }}
+                            <i class="material-icons report-chevron" aria-hidden="true">chevron_right</i>
+                            {{ /hasReports }}
                         </div>
                         <div class="collapsible-body">
                             <iframe src="{{ file }}" style="width: 100%; height: 100vh;"></iframe>
