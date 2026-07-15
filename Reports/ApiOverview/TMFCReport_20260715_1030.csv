@@ -154,3 +154,74 @@ TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF622,v4.0.0,4.0.0,false,pr
 TMFC005,ProductInventory,managementFunction,exposedAPIs,exposedAPI_id,v4.0.0,unknown,false,,
 TMFC005,ProductInventory,managementFunction,dependentAPIs,dependentAPI_id,dependentAPI_version,unknown,false,,
 TMFC005,ProductInventory,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,,
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCatalog,GET
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCatalog,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCatalog,POST
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCatalog,PATCH
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCatalog,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCategory,GET
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCategory,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCategory,POST
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCategory,PATCH
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCategory,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,GET
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,POST
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,PATCH
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceSpecification,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCandidate,GET
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCandidate,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCandidate,POST
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCandidate,PATCH
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,resourceCandidate,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,exportJob,GET
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,exportJob,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,exportJob,POST
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,exportJob,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,importJob,GET
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,importJob,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,importJob,POST
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF634,v4.0.0,4.1.0,true,importJob,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,POST
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,PATCH
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET
+TMFC010,ResourceCatalogManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCatalog,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCatalog,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCategory,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCategory,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCategory,POST
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCategory,PATCH
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCategory,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceSpecification,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceSpecification,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceSpecification,POST
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceSpecification,PATCH
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceSpecification,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCandidate,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCandidate,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCandidate,POST
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCandidate,PATCH
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,resourceCandidate,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,exportJob,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,exportJob,POST
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,exportJob,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,importJob,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,importJob,POST
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF634,v4.0.0,4.1.0,false,importJob,DELETE
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,partyRole,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,entitySpecification,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,entitySpecification,GET /id
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,associationSpecification,GET
+TMFC010,ResourceCatalogManagement,coreFunction,dependentAPIs,TMF662,v4.0.0,4.0.0,false,associationSpecification,GET /id
+TMFC010,ResourceCatalogManagement,managementFunction,exposedAPIs,exposedAPI_id,v4.0.0,unknown,false,,
+TMFC010,ResourceCatalogManagement,managementFunction,dependentAPIs,dependentAPI_id,dependentAPI_version,unknown,false,,
+TMFC010,ResourceCatalogManagement,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,,
