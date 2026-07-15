@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Release.Name}}-resourcecatalogapi
+  name: {{.Release.Name}}-partyroleapi
   labels:
     oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      impl: {{.Release.Name}}-resourcecatalogapi
+      impl: {{.Release.Name}}-partyroleapi
   template:
     metadata:
       labels:
-        impl: {{.Release.Name}}-resourcecatalogapi
         app: {{.Release.Name}}-{{.Values.component.name}}
-        version:  resourcecatalogapi-0.1
+        impl: {{.Release.Name}}-partyroleapi
+        version: {{.Values.partyrole.versionlabel}}
     spec:
       containers:
-      - name: {{.Release.Name}}-resourcecatalogapi         
-        image: akumartmf/resourcecatalogapi:0.1
+      - name: {{.Release.Name}}-partyroleapi
+        image: {{.Values.partyrole.image}}
         env:
         - name: RELEASE_NAME
-          value: {{.Release.Name}}           
+          value: {{.Release.Name}}
         - name: COMPONENT_NAME
           value: {{.Release.Name}}-{{.Values.component.name}}
         - name: MONGODB_HOST
@@ -32,13 +32,13 @@ spec:
           value: {{.Values.mongodb.database}}
         - name: NODE_ENV
           value: production
-        imagePullPolicy: Always  
+        imagePullPolicy: Always
         ports:
-        - name: {{.Release.Name}}-rsccatapi
+        - name: {{.Release.Name}}-prapi
           containerPort: 8080
         startupProbe:
           httpGet:
-            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/resourceCatalog/v4/
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/partyRole
             port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5

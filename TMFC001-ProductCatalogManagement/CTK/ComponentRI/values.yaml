@@ -1,14 +1,15 @@
-# Default values for servicecatalog.
+# Default values for productcatalog.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+
 component:
   # Specifies whether a service account should be created
-  id: TMFC010
-  name: resourcecatalog
-  functionalBlock: Production
-  publicationDate: "2024-11-12T00:00:00Z"
-  version: "1.2.0"
+  id: TMFC001
+  name: productcatalogmanagement
+  functionalBlock: CoreCommerce
+  publicationDate: 2024-09-17T00:00:00.000Z
+  version: "0.0.1"
   storageClassName: default
   apipolicy:
     apiKeyVerification:
@@ -38,17 +39,35 @@ component:
         allowMethods: "GET, POST"
         maxAge: 36000
     template: ""
+  dependentAPIs:
+    enabled: false
+    rejectUnauthorizedCertificates: false
 security:
-  controllerRole: Admin
-service:
-  type: ClusterIP
-  port: 80
+  canvasSystemRole: Admin
 mongodb:
   port: 27017
   database: tmf
-partyrole:
-  image: lesterthomas/partyroleapi:latest
-  versionlabel: partyroleapi-1.0
 api:
-  image: akumartmf/resourcecatalogapi:0.1
-  versionlabel: resourcecatalogapi-0.1
+  image: lesterthomas/productcatalogapi:0.23
+  versionlabel: productcatalogapi-0.21
+  otlp:
+    console:
+      enabled: false
+    protobuffCollector:
+      enabled: true
+      url: http://datadog-agent.default.svc.cluster.local:4318/v1/traces
+partyrole:
+  image: lesterthomas/partyroleapi:1.0
+  versionlabel: partyroleapi-1.0
+promotionmgmt:
+  image: lesterthomas/promotionmgmtapi:0.5
+  versionlabel: promotionmgmtapi-0.5
+  otlp:
+    console:
+      enabled: false
+    protobuffCollector:
+      enabled: true
+      url: http://datadog-agent.default.svc.cluster.local:4318/v1/traces
+canvasinfo:
+  host: info.canvas.svc.cluster.local
+  basepath: /
