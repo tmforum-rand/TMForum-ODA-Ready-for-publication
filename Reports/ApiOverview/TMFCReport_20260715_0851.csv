@@ -1,0 +1,51 @@
+component,name,function,apiType,api,version,specVersion,required,resource,method
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF637,v4.0.0,4.0.0,true,product,GET
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF637,v4.0.0,4.0.0,true,product,GET /id
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF637,v4.0.0,4.0.0,true,product,POST
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF637,v4.0.0,4.0.0,true,product,PATCH
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF637,v4.0.0,4.0.0,true,product,DELETE
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,POST
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET /id
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,DELETE
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,PATCH
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET
+TMFC005,ProductInventory,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF620,v4.0.0,4.1.0,true,productSpecification,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF620,v4.0.0,4.1.0,true,productSpecification,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF620,v4.0.0,4.1.0,true,productOffering,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF620,v4.0.0,4.1.0,true,productOffering,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF620,v4.0.0,4.1.0,true,productOfferingPrice,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF620,v4.0.0,4.1.0,true,productOfferingPrice,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,PartyRoleManagement,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,false,PartyRoleManagement,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF639,v4.0.0,4.0.0,false,resource,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF651,v4.0.0,4.0.0,false,agreement,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF651,v4.0.0,4.0.0,false,agreement,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicSubAddress,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicSubAddress,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF675,v4.0.0,4.0.0,false,geographicLocation,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF675,v4.0.0,4.0.0,false,geographicLocation,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,false,billingAccount,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,false,billingAccount,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,individual,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,false,organization,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,POST
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,PATCH
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,DELETE
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF638,v4.0.0,4.0.0,false,service,GET /id
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF622,v4.0.0,4.0.0,false,productOrder,GET
+TMFC005,ProductInventory,coreFunction,dependentAPIs,TMF622,v4.0.0,4.0.0,false,productOrder,GET /id
+TMFC005,ProductInventory,managementFunction,exposedAPIs,exposedAPI_id,v4.0.0,unknown,false,,
+TMFC005,ProductInventory,managementFunction,dependentAPIs,dependentAPI_id,dependentAPI_version,unknown,false,,
+TMFC005,ProductInventory,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,,
