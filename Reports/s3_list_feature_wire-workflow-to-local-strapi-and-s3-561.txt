@@ -1,1 +1,12 @@
-loopback mode: aws s3 ls was not run, no listing available
+2026-07-16 20:07:12   16.6 KiB production/feature_wire-workflow-to-local-strapi-and-s3-561/TMFC001-ProductCatalogManagement.yaml
+2026-07-16 20:07:17  357.4 KiB production/feature_wire-workflow-to-local-strapi-and-s3-561/TMFC001-ProductCatalogManagement_Conformance.pdf
+2026-07-16 20:07:14  697.5 KiB production/feature_wire-workflow-to-local-strapi-and-s3-561/TMFC001_Product_Catalog_Management_v2.1.1.pdf
+2026-07-16 20:07:19   16.9 KiB production/feature_wire-workflow-to-local-strapi-and-s3-561/TMFC005-ProductInventory.yaml
+2026-07-16 20:07:20    3.9 KiB production/feature_wire-workflow-to-local-strapi-and-s3-561/TMFC005-ProductInventory_v1.1.4_Conformance.md
+2026-07-16 20:07:15  409.6 KiB production/feature_wire-workflow-to-local-strapi-and-s3-561/TMFC005_Product_Inventory_v1.0.3.pdf
+2026-07-16 20:07:18   11.5 KiB production/feature_wire-workflow-to-local-strapi-and-s3-561/TMFC010-ResourceCatalogManagement.yaml
+2026-07-16 20:07:13  129.9 KiB production/feature_wire-workflow-to-local-strapi-and-s3-561/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
+2026-07-16 20:07:11  478.9 KiB production/feature_wire-workflow-to-local-strapi-and-s3-561/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
+
+Total Objects: 9
+   Total Size: 2.1 MiB
