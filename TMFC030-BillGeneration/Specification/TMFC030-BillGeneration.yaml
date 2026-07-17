@@ -259,7 +259,6 @@ spec:
     - 1.6.15.2.2|Maintain_Bill_Invoice_BP_List|v23.0
     - 1.6.15.2.3|Define_BP_Billing_Cycle|v23.0
     - 1.6.15.3.2|Create_BP_Bill/Invoice|v23.0
-    - 1.6.15.3.2|Create_BP_Bill/Invoice|v23.0
     - 1.6.15.3.3|Distribute_BP_Bill/Invoice|v23.0
     - 1.6.15.3.4|Manage_BP_Bill/Invoice_Archive|v23.0
     - 1.6.15.3.5|Receive_BP_Bill/Invoice|v23.0

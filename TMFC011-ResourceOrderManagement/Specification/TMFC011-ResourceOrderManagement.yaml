@@ -250,13 +250,13 @@ spec:
     - 503|Resource_Order_Validation|v23.0
     - 452|Resource_Commissioning|v23.0
     - 492|Resource_Order_Management|v23.0
-    - 493|Resource_Order_Dependency_Management|v23
-    - 494|Resource_Order_Jeopardy_Tracking|v23
+    - 493|Resource_Order_Dependency_Management|v23.0
+    - 494|Resource_Order_Jeopardy_Tracking|v23.0
     - 529|Tactical_Resource_Planning|v23.0
     - 958|Resource_Task_Decomposition|v23.0
     - 961|Resource_Work_Item_Sequence_Execution|v23.0
     - 496|Resource_Order_Tracking|v23.0
-    - 497|Resource_Orcer_Status_Reporting|v23.0
+    - 497|Resource_Order_Status_Reporting|v23.0
     - 488|Resource_Parameter_Allocation|v23.0
     - 487|Resource_Parameter_Reservation|v23.0
     - 16|Fallout_Automated_Correction|v23.0

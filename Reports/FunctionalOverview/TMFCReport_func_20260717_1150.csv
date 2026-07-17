@@ -45,8 +45,8 @@ TMFC001,ProductCatalogManagement,CoreCommerce,functionalFrameworkFunctions,900|A
 TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain|Product_Offering_Specification_ABE|v25.0
 TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain|Product_Specification_ABE|v25.0
 TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain|Product_Configuration_ABE|ProductConfigSpec_BE|v25.0
-TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain|Loyalty_ABE|Product_Usage_Spec_ABE|v25.0
-TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain|Product_Usage_ABE|Loyalty_Program_Specification_ABE|v25.0
+TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain|Product_Usage_ABE|Product_Usage_Specification_ABE|v25.0
+TMFC001,ProductCatalogManagement,CoreCommerce,SID,Product_Domain|Loyalty_ABE|Loyalty_Program_Specification_ABE|v25.0
 TMFC001,ProductCatalogManagement,CoreCommerce,SID,Business_Partner_Domain|Party_Product_Specification_and_Offering_ABE|v25.0
 TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,eTOM,1.1.9|Selling|v23.0
 TMFC002,ProductOrderCaptureAndValidation,CoreCommerce,eTOM,1.1.9.2|Develop_Sales_Proposal|v23.0
@@ -251,13 +251,13 @@ TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,495|Reso
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,503|Resource_Order_Validation|v23.0
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,452|Resource_Commissioning|v23.0
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,492|Resource_Order_Management|v23.0
-TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,493|Resource_Order_Dependency_Management|v23
-TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,494|Resource_Order_Jeopardy_Tracking|v23
+TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,493|Resource_Order_Dependency_Management|v23.0
+TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,494|Resource_Order_Jeopardy_Tracking|v23.0
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,529|Tactical_Resource_Planning|v23.0
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,958|Resource_Task_Decomposition|v23.0
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,961|Resource_Work_Item_Sequence_Execution|v23.0
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,496|Resource_Order_Tracking|v23.0
-TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,497|Resource_Orcer_Status_Reporting|v23.0
+TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,497|Resource_Order_Status_Reporting|v23.0
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,488|Resource_Parameter_Allocation|v23.0
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,487|Resource_Parameter_Reservation|v23.0
 TMFC011,ResourceOrderManagement,Production,functionalFrameworkFunctions,16|Fallout_Automated_Correction|v23.0
@@ -334,8 +334,8 @@ TMFC024,BillingAccountManagement,PartyManagement,functionalFrameworkFunctions,76
 TMFC024,BillingAccountManagement,PartyManagement,functionalFrameworkFunctions,75|Billing_Accounts_Creation|v23.0
 TMFC024,BillingAccountManagement,PartyManagement,functionalFrameworkFunctions,248|Customer_Billing_Hierarchies_Management|v23.0
 TMFC024,BillingAccountManagement,PartyManagement,SID,Customer_Domain|Customer_Billing_Account_ABE|v25.0
-TMFC027,ProductConfigurator,CoreCommerce,eTOM,1.2.5|Product_Domain|Product_Configuration_Management|v25.0
-TMFC027,ProductConfigurator,CoreCommerce,eTOM,1.2.5|Product_Domain|Manage_Product_Configuration|v25.0
+TMFC027,ProductConfigurator,CoreCommerce,eTOM,1.2.5|Product_Configuration_Management|v25.0
+TMFC027,ProductConfigurator,CoreCommerce,eTOM,1.2.5.2|Manage_Product_Configuration|v25.0
 TMFC027,ProductConfigurator,CoreCommerce,functionalFrameworkFunctions,55|Price_&_Discount_Calculation|v25.0
 TMFC027,ProductConfigurator,CoreCommerce,functionalFrameworkFunctions,182|Inter_Product_Dependency_Identification|v25.0
 TMFC027,ProductConfigurator,CoreCommerce,functionalFrameworkFunctions,205|Customer_Order_Eligibility_Validation|v25.0
@@ -415,7 +415,6 @@ TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.6.15.2|BP_Bill/Invoice_C
 TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.6.15.2.1|Establish_&_Maintain_BP_Bill_Invoice_Format|v23.0
 TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.6.15.2.2|Maintain_Bill_Invoice_BP_List|v23.0
 TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.6.15.2.3|Define_BP_Billing_Cycle|v23.0
-TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.6.15.3.2|Create_BP_Bill/Invoice|v23.0
 TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.6.15.3.2|Create_BP_Bill/Invoice|v23.0
 TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.6.15.3.3|Distribute_BP_Bill/Invoice|v23.0
 TMFC030,BillGenerationManagement,PartyManagement,eTOM,1.6.15.3.4|Manage_BP_Bill/Invoice_Archive|v23.0
