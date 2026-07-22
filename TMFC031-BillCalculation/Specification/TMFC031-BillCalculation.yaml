@@ -200,19 +200,52 @@ spec:
       credits, fees & taxes, including pro rata, at various levels, such as product
       and/or account level that have been generated since the last run for that account,
       applying promotions and discounts.
-    publicationDate: 2023-06-25
+    publicationDate: '2023-06-25'
     status: roadmap
     functionalBlock: CoreCommerce
     owners:
-    - email: Redacted
-      name: Redacted
+    - name: Redacted
+      email: Redacted
       url: Redacted
     maintainers:
     - name: Redacted
       email: components@tmforum.org
       url: Redacted
-    eTOMs: []
-    functionalFrameworkFunctions: []
+    eTOMs:
+    - 1.3.9|Customer_Bill_Invoice_Management|v23.5
+    - 1.3.9.4|Pricing,_Discounting,_Adjustments_&_Rebates_Application|v23.5
+    - 1.3.9.4.1|Obtain_Billing_Events|v23.5
+    - 1.3.9.4.2|Apply_Pricing,_Discounting,_Adjustments_&_Rebates_to_Customer_Account|v23.5
+    - 1.3.9.4.3|Apply_Agreed_Customer_Bill_Adjustment|v23.5
+    - 1.6.15|BP_Bill/Invoice_Management|v23.5
+    - 1.6.15.1|BP_Bill/Invoice_Process_Management|v23.5
+    - 1.6.15.3|BP_Bill/Invoice_Lifecycle_Management|v23.5
+    - 1.6.15.3.1|Apply_BP_Pricing,_Discounting,_Adjustments_&_Rebates|v23.5
+    - 1.6.15.3.5|Receive_BP_Bill/Invoice|v23.5
+    functionalFrameworkFunctions:
+    - 67|Usage_Summary_and_Details_Presentation|v23.5.0.1
+    - 87|Billing_Event_Processing_Guiding|v23.5.0.1
+    - 316|Billing_Administration|v23.5.0.1
+    - 399|Billing_Management_Integration|v23.5.0.1
+    - 32|Billing_Initialization|v23.5.0.1
+    - 72|Billing_Account_Price_Plan_Determining|v23.5.0.1
+    - 70|Charge_To_Billing_Account_Distribution|v23.5.0.1
+    - 68|Charges_to_Billing_Statement_Identification|v23.5.0.1
+    - 158|Commitment_Tracking_Result_Determining|v23.5.0.1
+    - 159|Commitment_Tracking_Terms_&_Conditions_Evaluation|v23.5.0.1
+    - 160|Commitment_Tracking_Data_Collection|v23.5.0.1
+    - 256|Customer_Bill_Usage_and_Charges_Viewing|v23.5.0.1
+    - 89|Billing_Event_Aggregation|v23.5.0.1
+    - 90|Billing_Event_Processing_Analyzing|v23.5.0.1
+    - 183|Bill_Charges_Aggregation|v23.5.0.1
+    - 60|Split_Bill_Charge_Distribution|v23.5.0.1
+    - 184|Currency_Conversion|v23.5.0.1
+    - 61|On_Demand_Bill_Calculation|v23.5.0.1
+    - 300|Discount_Calculation|v23.5.0.1
+    - 55|Price_and_Discount_Calculation|v23.5.0.1
+    SIDs:
+    - Customer_Domain|Applied_Customer_Billing_Rate_ABE|v23.5.0
+    - Business_Partner_Domain|Applied_Party_Billing_Rate_ABE|v23.5.0
   managementFunction:
     exposedAPIs:
     - name: metrics
@@ -276,7 +309,6 @@ spec:
         port: 8080
     dependentAPIs: []
   eventNotification:
-    publishedEvents: []
     subscribedEvents:
     - name: usageManagement
       port: 80

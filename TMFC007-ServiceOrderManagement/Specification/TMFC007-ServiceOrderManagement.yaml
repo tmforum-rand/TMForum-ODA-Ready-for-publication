@@ -378,12 +378,12 @@ spec:
       Management (ROM) component to update selected resource instances to deliver
       CFS. Requests sent to the ROM contain the CFS and the list of configured resource
       instances to be updated.
-    publicationDate: 2024-02-23
+    publicationDate: '2024-02-23'
     status: production
     functionalBlock: Production
     owners:
-    - email: Redacted
-      name: Redacted
+    - name: Redacted
+      email: Redacted
       url: Redacted
     maintainers:
     - name: Redacted
@@ -429,6 +429,7 @@ spec:
     - 592|Service_Parameters_Reservation|v21.5
     SIDs:
     - Service_Domain|Service_Order_ABE|v25.0
+    - Service_Domain|Service_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

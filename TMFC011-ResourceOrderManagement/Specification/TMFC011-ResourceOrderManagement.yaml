@@ -224,12 +224,12 @@ spec:
       as well as the resource order request. Other functionality includes resource
       order assurance,  resource order decomposition and resource order tracking,
       along with orchestrating  activation and the test and turn-up processes.
-    publicationDate: 2026-06-02
+    publicationDate: '2026-06-02'
     status: preview
     functionalBlock: Production
     owners:
-    - email: Redacted
-      name: Redacted
+    - name: Redacted
+      email: Redacted
       url: Redacted
     maintainers:
     - name: Redacted
@@ -271,6 +271,8 @@ spec:
     - 23|Fallout_Dashboard_System_Log-in_Accessing|v23.0
     SIDs:
     - Resource_Domain|Resource_Order_ABE|v25.0
+    - Resource_Domain|Resource_Specification_ABE|v25.0
+    - Resource_Domain|Resource_Configuration_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

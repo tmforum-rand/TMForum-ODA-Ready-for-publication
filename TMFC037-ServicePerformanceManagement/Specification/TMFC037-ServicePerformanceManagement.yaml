@@ -273,19 +273,30 @@ spec:
       view. These functions build on the Resource Performance data and active end-to-end
       service performance test data to provide a view of a service. The component
       provides a key input to determine Quality of Service.
-    publicationDate: 2026-05-21
+    publicationDate: '2026-05-21'
     status: roadmap
     functionalBlock: Production
     owners:
-    - email: Redacted
-      name: Redacted
+    - name: Redacted
+      email: Redacted
       url: Redacted
     maintainers:
     - name: Redacted
       email: components@tmforum.org
       url: Redacted
-    eTOMs: []
-    functionalFrameworkFunctions: []
+    eTOMs:
+    - 1.4.7|Service_Performance_Management|v25.0
+    - 1.4.7.6|Manage_Service_Performance_Requirement|v25.0
+    - 1.4.7.7|Manage_Service_Performance_Plan|v25.0
+    - 1.4.7.8|Manage_Service_Performance_Measure|v25.0
+    - 1.4.7.9|Manage_Service_Performance_Analysis|v25.0
+    - 1.4.7.10|Manage_Service_Performance_Control|v25.0
+    - 1.4.7.11|Manage_Service_Performance_Reporting|v25.0
+    functionalFrameworkFunctions:
+    - 603|Service_Performance_Data_Collection|v25.0
+    - 604|Service_Performance_Event_Correlation|v25.0
+    - 605|Service_Performance_Monitoring|v25.0
+    - 606|Service_Performance_Reporting|v25.0
     SIDs:
     - Service_Domain|Service_Performance_ABE | v25.0
     - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Production_ABE|MeasurementProductionJob_BE|v25.0

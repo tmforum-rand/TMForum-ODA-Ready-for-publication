@@ -409,7 +409,7 @@ spec:
       id: TMF701
       apiSDO: not_defined
     subscribedEvents:
-    - id: TMF632
+    - id: TMF662
       name: EntityCatalogManagement
       port: 80
       resources:
