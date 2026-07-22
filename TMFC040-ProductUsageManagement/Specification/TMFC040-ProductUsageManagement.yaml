@@ -342,8 +342,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF632
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/party/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/party/call-back
     - name: PartyRoleManagement
       port: 80
       resources:
@@ -356,5 +356,5 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF669
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyrole/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyrole/call-back

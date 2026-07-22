@@ -497,5 +497,5 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF620
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back

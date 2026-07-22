@@ -595,8 +595,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF633
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
     - implementation: /{{.Release.Name}}-PartyRoleManagement
       name: PartyRoleManagement
       port: 80
@@ -606,8 +606,8 @@ spec:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
         version: v4.0.0
       id: TMF701
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
     - implementation: /{{.Release.Name}}-Party
       name: Party
       port: 80
@@ -619,5 +619,5 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF632
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/servicepecification/call-back

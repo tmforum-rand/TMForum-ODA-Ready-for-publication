@@ -434,8 +434,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF633
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
     - implementation: /{{.Release.Name}}-ServiceInventoryManagement
       name: ServiceInventoryManagement
       port: 80
@@ -449,8 +449,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF638
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
     - implementation: /{{.Release.Name}}-ResourceInventory
       name: ResourceInventoryManagement
       port: 80
@@ -464,8 +464,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF639
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/call-back
     - implementation: /{{.Release.Name}}-ProcessFlowManagement
       name: ProcessFlowManagement
       port: 80
@@ -479,5 +479,5 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF701
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/call-back

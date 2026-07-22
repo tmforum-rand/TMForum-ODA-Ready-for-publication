@@ -548,7 +548,7 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - id: null
+    - id: TMF648
       apiType: openapi
       hubResource: /hub
       resources:
@@ -558,7 +558,7 @@ spec:
       - quoteDeleteEvent
       - quoteInformationRequiredEvent
       apiSDO: not_defined
-    - id: null
+    - id: TMF663
       apiType: openapi
       hubResource: /hub
       resources:
@@ -566,7 +566,7 @@ spec:
       - shoppingCartAttributeValueChangeEvent
       - shoppingCartDeleteEvent
       apiSDO: not_defined
-    - id: null
+    - id: TMF701
       apiType: openapi
       hubResource: /hub
       resources:
@@ -581,23 +581,23 @@ spec:
       - taskFlowInformationRequiredEvent
       apiSDO: not_defined
     subscribedEvents:
-    - id: null
+    - id: TMF679
       apiType: openapi
       resources:
       - productOfferingQualificationStateChangeEvent
       apiSDO: not_defined
-    - id: null
+    - id: TMF673
       apiType: openapi
       resources:
       - geographicAddressValidationStateChangeEvent
       apiSDO: not_defined
-    - id: null
+    - id: TMF676
       apiType: openapi
       resources:
       - paymentCreateEvent
       - paymentStateChangeEvent
       apiSDO: not_defined
-    - id: null
+    - id: TMF716
       apiType: openapi
       resources:
       - resourceReservationCreateEvent

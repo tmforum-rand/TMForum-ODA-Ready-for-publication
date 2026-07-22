@@ -375,8 +375,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF634
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/call-back
     - implementation: /{{.Release.Name}}-EntityCatalog
       name: EntityCatalogManagement
       port: 80
@@ -390,5 +390,5 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF662
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EntityCatalog/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EntityCatalog/call-back

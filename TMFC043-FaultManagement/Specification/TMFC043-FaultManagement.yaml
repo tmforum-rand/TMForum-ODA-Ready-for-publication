@@ -478,7 +478,7 @@ spec:
       apiType: openapi
       id: TMF669
       apiSDO: not_defined
-    - name: EntityCatalogueManagement
+    - name: EntityCatalogManagement
       port: 80
       resources:
       - entityCatalogCreateEvent

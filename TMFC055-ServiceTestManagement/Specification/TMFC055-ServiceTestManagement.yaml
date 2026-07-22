@@ -296,8 +296,8 @@ spec:
         version: v4.0.0
       implementation: /{{.Release.Name}}-ServiceTestManagement
       id: TMF633
-      callback: ServiceTestManagement
       apiSDO: not_defined
+      callback: ServiceTestManagement
     - name: PartyManagement
       port: 80
       apiType: openapi
@@ -309,5 +309,5 @@ spec:
         version: v4.0.0
       implementation: /{{.Release.Name}}-PartyManagement
       id: TMF632
-      callback: PartyManagement
       apiSDO: not_defined
+      callback: PartyManagement

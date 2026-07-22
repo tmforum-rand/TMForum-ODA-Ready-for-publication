@@ -409,7 +409,7 @@ spec:
       id: TMF701
       apiSDO: not_defined
     subscribedEvents:
-    - id: TMF662
+    - id: TMF632
       name: EntityCatalogManagement
       port: 80
       resources:
@@ -421,8 +421,8 @@ spec:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF662_EntityCatalog/master/TMF662-EntityCatalog-v4.0.0.swagger.json
         version: v4.0.0
       version: 4
-      callback: /{{.Release.Name}}-EntityCatalog/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-EntityCatalog/call-back
     - id: TMF669
       name: PartyRoleManagement
       port: 80
@@ -432,8 +432,8 @@ spec:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.swagger.json
         version: null
       version: 4
-      callback: /{{.Release.Name}}-EntityCatalog/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-EntityCatalog/call-back
     - id: TMF632
       name: Party
       port: 80
@@ -444,5 +444,5 @@ spec:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
         version: v4.0.0
       version: 4
-      callback: /{{.Release.Name}}-EntityCatalog/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-EntityCatalog/call-back

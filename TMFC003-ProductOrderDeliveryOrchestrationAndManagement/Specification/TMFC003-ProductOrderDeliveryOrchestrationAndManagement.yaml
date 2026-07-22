@@ -440,8 +440,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF641
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceOrderingManagement/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceOrderingManagement/call-back
     - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrder/v4/docs
       implementation: /{{.Release.Name}}-ResourceOrder
       name: ResourceOrder
@@ -457,5 +457,5 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF652
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrder/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrder/call-back

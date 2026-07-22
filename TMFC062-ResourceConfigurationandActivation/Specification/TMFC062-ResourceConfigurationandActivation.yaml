@@ -185,8 +185,8 @@ spec:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF702_Resource_Activation_Management/master/TMF702_Resource_Activation_Management_API_v4.0.0_swagger.json
         version: v4.0.0
       id: TMF702
-      apiType: openapi
       apiSDO: not_defined
+      apiType: openapi
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceFunctionActivationManagement/hub
       implementation: /{{.Release.Name}}-ResourceFunctionActivationManagement
       name: ResourceFunctionActivationManagement
@@ -212,8 +212,8 @@ spec:
       - url: https://github.com/tmforum-apis/TMF664_Resource_Function_Activation_Management/blob/master/TMF664_Resource_Function_Activation_Management_API_v4.0.0_swagger.json
         version: v4.0.0
       id: TMF664
-      apiType: openapi
       apiSDO: not_defined
+      apiType: openapi
     subscribedEvents:
     - implementation: /{{.Release.Name}}-ResourceCatalogManagement
       name: ResourceCatalogManagement
@@ -226,6 +226,6 @@ spec:
       - url: https://github.com/tmforum-apis/TMF634_Resource_Catalog_Management/blob/master/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
         version: v4.0.0
       id: TMF634
+      apiSDO: not_defined
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalogManagement/call-back
       apiType: openapi
-      apiSDO: not_defined

@@ -326,8 +326,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF632
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
     - implementation: /{{.Release.Name}}-PartyRoleManagement
       name: PartyRoleManagement
       port: 80
@@ -338,8 +338,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF669
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
     - implementation: /{{.Release.Name}}-DocumentgManagementEvent
       name: documentManagement
       port: 80
@@ -351,8 +351,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF667
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
     - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
       implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
       name: ProcessFlowManagement

@@ -449,7 +449,7 @@ spec:
       - queryProductConfigurationStateChangeEvent
       specification: ''
       apiType: openapi
-      id: null
+      id: unknown
       apiSDO: not_defined
     - implementation: /{{.Release.Name}}-pdtquali
       name: ProductConfiguration
@@ -502,5 +502,5 @@ spec:
       - url: https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/master/TMF645-ServiceQualification-v4.0.0.swagger.json
         version: v4.0.0
       id: TMF645
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/call-back

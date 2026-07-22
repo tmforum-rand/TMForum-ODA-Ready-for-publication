@@ -97,7 +97,7 @@ spec:
   eventNotification:
     publishedEvents:
     - hub: /{{.Release.Name}}-AnomalyManagementEvent/hub
-      id: TMF751
+      id: TMF651
       implementation: /{{.Release.Name}}-AnomalyManagementEvent
       name: AnomalyManagementEvent
       port: 8080
@@ -113,8 +113,8 @@ spec:
       specification:
       - url: https://github.com/tmforum-rand/Open_API_And_Data_Model/blob/v4.0-Sprint-2020-03/apis/TMF751_AnomalyManagement/swaggers/TMF751-AnomalyManagement-v4.0.0.swagger.json
         version: v4.0.0
-      apiType: openapi
       apiSDO: not_defined
+      apiType: openapi
     subscribedEvents:
     - implementation: /{{.Release.Name}}-AIManagement
       name: AIManagement
@@ -138,9 +138,9 @@ spec:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF915_AIManagementSuite/master/TMF915-AIManagement-v4.0.0.swagger.json
         version: v4.0.0
       id: TMF915
+      apiSDO: not_defined
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AIManagement/call-back
       apiType: openapi
-      apiSDO: not_defined
     - implementation: /{{.Release.Name}}-AlarmManagement
       name: AlarmManagement
       port: 80
@@ -152,6 +152,6 @@ spec:
       - url: https://raw.githubusercontent.com/tmforum-apis/TMF642_AlarmManagement/master/TMF642-Alarm-v4.0.0.swagger.json
         version: v4.0.0
       id: TMF642
+      apiSDO: not_defined
       callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/call-back
       apiType: openapi
-      apiSDO: not_defined

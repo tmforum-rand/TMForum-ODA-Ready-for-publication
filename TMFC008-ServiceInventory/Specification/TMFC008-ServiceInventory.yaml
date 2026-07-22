@@ -346,9 +346,9 @@ spec:
       - url: https://open-api.tmforum.org20-ResourceInventory-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Resource/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Resource/call-back
     - implementation: /{{.Release.Name}}-ServiceInventoryManagement
       name: ServiceInventoryManagement
       port: 80
@@ -361,9 +361,9 @@ spec:
       - url: https://open-api.tmforum.org20-ServiceInventory-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
     - implementation: /{{.Release.Name}}-ServiceCatalogManagement
       name: ServiceCatalogManagement
       port: 80
@@ -373,9 +373,9 @@ spec:
       - url: https://open-api.tmforum.org20-ServiceCatalog-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
     - implementation: /{{.Release.Name}}-PartyRoleManagement
       name: PartyRoleManagement
       port: 80
@@ -384,9 +384,9 @@ spec:
       specification:
       - url: https://open-api.tmforum.org20-PartyRole-v4.0.0.swagger.json
         version: v4.0.0
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRole/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRole/call-back
     - implementation: /{{.Release.Name}}-GeographicSiteManagement
       name: GeographicSiteManagement
       port: 80
@@ -396,9 +396,9 @@ spec:
       - url: https://open-api.tmforum.org20-GeographicSite-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
     - implementation: /{{.Release.Name}}-GeographicLocation
       name: GeographicLocation
       port: 80
@@ -408,9 +408,9 @@ spec:
       - url: https://open-api.tmforum.org20-GeographicLocatin-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/call-back
     - implementation: /{{.Release.Name}}-PartyManagement
       name: PartyManagement
       port: 80
@@ -421,9 +421,9 @@ spec:
       - url: https://open-api.tmforum.org20-Party-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/call-back
     - implementation: /{{.Release.Name}}-ServiceOrderingManagement
       name: ServiceOrderingManagement
       port: 80
@@ -433,6 +433,6 @@ spec:
       - url: https://open-api.tmforum.org20-ServiceOrdering-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceOrdering/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceOrdering/call-back

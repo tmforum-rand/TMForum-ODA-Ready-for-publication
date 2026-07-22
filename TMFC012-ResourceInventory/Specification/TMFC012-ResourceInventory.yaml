@@ -457,9 +457,9 @@ spec:
       - url: https://open-api.tmforum.org20-GeographicSite-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
     - implementation: /{{.Release.Name}}-GeographicLocation
       name: GeographicLocation
       port: 80
@@ -469,9 +469,9 @@ spec:
       - url: https://open-api.tmforum.org20-GeographicLocatin-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/call-back
     - implementation: /{{.Release.Name}}-PartyManagement
       name: PartyManagement
       port: 80
@@ -482,6 +482,6 @@ spec:
       - url: https://open-api.tmforum.org20-Party-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: null
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/call-back
+      id: unknown
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/call-back

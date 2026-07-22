@@ -308,7 +308,7 @@ spec:
       - ProductTestStateChangeEvent
       specification: ''
       apiType: openapi
-      id: null
+      id: unknown
       apiSDO: not_defined
     subscribedEvents:
     - implementation: /{{.Release.Name}}-productCatalogManagement
@@ -322,8 +322,8 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF620
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/call-back
     - implementation: /{{.Release.Name}}-serviceTestManagement
       name: serviceTestManagement
       port: 80
@@ -335,8 +335,8 @@ spec:
       - url: https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/master/TMF653-ServiceTest-v4.1.0.swagger.json
         version: v4.0.0
       id: TMF653
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceTestManagement/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceTestManagement/call-back
     - implementation: /{{.Release.Name}}-Party
       name: Party
       port: 80
@@ -348,5 +348,5 @@ spec:
         version: v4.0.0
       apiType: openapi
       id: TMF632
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyManagement/call-back
       apiSDO: not_defined
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyManagement/call-back
