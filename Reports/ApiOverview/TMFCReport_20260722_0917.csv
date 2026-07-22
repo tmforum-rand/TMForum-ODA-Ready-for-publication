@@ -1002,6 +1002,43 @@ TMFC027,ProductConfigurator,coreFunction,dependentAPIs,TMF651,v4.0.0,4.0.0,false
 TMFC027,ProductConfigurator,managementFunction,exposedAPIs,exposedAPI_id,v4.0.0,unknown,false,,
 TMFC027,ProductConfigurator,managementFunction,dependentAPIs,dependentAPI_id,dependentAPI_version,unknown,false,,
 TMFC027,ProductConfigurator,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,,
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,individual,POST
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,individual,PATCH/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,individual,DELETE/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,organization,POST
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,organization,PATCH/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF632,v4.0.0,4.0.0,true,organization,DELETE/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,POST
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,DELETE/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET/id
+TMFC028,PartyManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,PATCH/id
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,GET
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,true,partyRole,GET /id
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF673,v4.0.0,4.0.0,false,geographicAddress,GET /id
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF674,v4.0.0,4.0.0,false,geographicSite,GET /id
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF675,v4.0.0,4.0.0,false,geographicLocation,GET
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF675,v4.0.0,4.0.0,false,geographicLocation,GET /id
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,POST
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET /id
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,DELETE
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,PATCH
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET /id
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF688,v4.0.0,4.0.0,false,event,GET
+TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF688,v4.0.0,4.0.0,false,event,GET /id
+TMFC028,PartyManagement,managementFunction,exposedAPIs,exposedAPI_id,v4.0.0,unknown,false,,
+TMFC028,PartyManagement,managementFunction,dependentAPIs,dependentAPI_id,dependentAPI_version,unknown,false,,
+TMFC028,PartyManagement,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,,
 TMFC029,PaymentManagement,coreFunction,exposedAPIs,TMF670,v4.0.0,4.0.0,true,paymentMethod,GET
 TMFC029,PaymentManagement,coreFunction,exposedAPIs,TMF670,v4.0.0,4.0.0,true,paymentMethod,GET /id
 TMFC029,PaymentManagement,coreFunction,exposedAPIs,TMF670,v4.0.0,4.0.0,true,paymentMethod,POST
