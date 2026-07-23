@@ -318,7 +318,7 @@ spec:
     - 363|Contract_Storage|v24.0
     SIDs:
     - Product_Domain|Product_and_Offering_Instance_ABE|Product_ABE|v25.0
-    - Product_Domain|ProductOfferingInstance_ABE|v25.0
+    - Product_Domain|Product_and_Offering_Instance_ABE|v25.0
     - Product_Domain|Loyalty_ABE|Loyalty_Program_ABE|v25.0
   managementFunction:
     exposedAPIs:

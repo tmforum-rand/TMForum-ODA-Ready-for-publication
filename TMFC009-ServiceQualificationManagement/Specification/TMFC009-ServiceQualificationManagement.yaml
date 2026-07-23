@@ -247,11 +247,13 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.4.5|Service_Configuration_&_Activation|v23.0
+    - 1.4.5|Service_Configuration_&_Activation|v23.0.1
     functionalFrameworkFunctions:
     - 319|Service_Feasibility_Checking|v23.0
     - 586|Service_Availability_Validation|v23.0
     - 571|Service_Delivery_Due_Date_Calculation|v23.0
+    SIDs:
+    - Service_Domain|Service_Configuration_ABE|v23.5.0
   managementFunction:
     exposedAPIs:
     - name: metrics

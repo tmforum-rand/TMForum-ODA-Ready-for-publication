@@ -298,7 +298,7 @@ spec:
     - 605|Service_Performance_Monitoring|v25.0
     - 606|Service_Performance_Reporting|v25.0
     SIDs:
-    - Service_Domain|Service_Performance_ABE | v25.0
+    - Service_Domain|Service_Performance_ABE|v25.0
     - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Production_ABE|MeasurementProductionJob_BE|v25.0
     - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Collection_ABE|AdhocCollection_BE|v25.0
     - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Collection_ABE|MeasurementCollectionJob_BE|v25.0

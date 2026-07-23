@@ -350,8 +350,8 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.2.5|Product_Domain|Product_Configuration_Management|v25.0
-    - 1.2.5|Product_Domain|Manage_Product_Configuration|v25.0
+    - 1.2.5|Product_Configuration_Management|v25.0
+    - 1.2.5.2|Manage_Product_Configuration|v25.0
     functionalFrameworkFunctions:
     - 55|Price_&_Discount_Calculation|v25.0
     - 182|Inter_Product_Dependency_Identification|v25.0

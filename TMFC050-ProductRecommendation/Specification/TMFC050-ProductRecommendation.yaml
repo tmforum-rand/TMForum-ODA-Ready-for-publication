@@ -376,8 +376,11 @@ spec:
     - name: Redacted
       email: components@tmforum.org
       url: Redacted
-    eTOMs: []
+    eTOMs:
+    - 1.12.9.4.2|Recommend_Appropriate_Product_Offering(s)|v26.0
     functionalFrameworkFunctions: []
+    SIDs:
+    - Product_Domain|Product_Offering_Specification_ABE|v26.0
   managementFunction:
     exposedAPIs:
     - name: metrics
