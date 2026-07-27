@@ -248,20 +248,20 @@ spec:
       tracking, inventory control (organization, re-stock management etc.) and inventory
       auditing. The minimum check to be performed at inventory item creation or update
       is for global consistency with related Resource Catalog information.
-    publicationDate: 2026-06-08
+    publicationDate: '2026-06-08'
     status: production
     functionalBlock: Production
     owners:
-    - email: Redacted
-      name: Redacted
+    - name: Redacted
+      email: Redacted
       url: Redacted
     maintainers:
     - name: Redacted
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.5.4|Resource_Support_Readiness|v23.0
-    - 1.5.4.5|Manage_Resource_Inventory|v23.0
+    - 1.5.4|Resource_Readiness_&_Support|v23.0.1
+    - 1.5.4.5|Manage_Resource_Inventory|v23.0.1
     functionalFrameworkFunctions:
     - 426|Physical_Implementation_Information_Capturing|v23.0
     - 442|Network_Overviews_Presentation|v23.0

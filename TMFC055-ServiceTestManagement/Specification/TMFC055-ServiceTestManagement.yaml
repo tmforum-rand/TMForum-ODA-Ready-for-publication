@@ -168,6 +168,8 @@ spec:
     - 1.4.3.8|Service_Specification_Test_Development_&_Retirement|v24.5
     - 1.4.1.9|Analyze_Service_Test_Quality|v24.5
     - 1.4.4.6|Manage_Service_Test|v24.5
+    - 1.4.4|Service_Support_Management|v24.5
+    - 1.4.3|Service_Specification_Lifecycle_Management|v24.5
     owners:
     - name: Redacted
       email: Redacted

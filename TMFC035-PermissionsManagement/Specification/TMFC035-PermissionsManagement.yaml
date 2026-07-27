@@ -126,6 +126,16 @@ spec:
     - name: Redacted
       email: components@tmforum.org
       url: Redacted
+    functionalFrameworkFunctions:
+    - 899|Single_Sign-On_Access_Control|v26.0
+    - 906|PKI_and_Digital_Certificates_Systems_Integration|v26.0
+    - 1025|Application_Access|v26.0
+    - 897|Building_Access_Control|v26.0
+    - 900|Authorization_Control|v26.0
+    - 898|Application_Security_Management|v26.0
+    - 260|Anonymous_User_Account_Creation|v26.0
+    - 1181|Party_Role_Assignment|v26.0
+    - 1182|Permission_Perimeter_Configuration|v26.0
     SIDs:
     - Shared_Domain|Permission_ABE|PermissionSpecSet_BE|v25.0
     - Shared_Domain|Permission_ABE|PermissionSet_BE|v25.0
@@ -136,6 +146,8 @@ spec:
     - Market_&_Sales_Domain|Market_Sales_Party_Roles_ABE|v25.0
     - Service_Domain|Service_Party_Roles_ABE|v25.0
     - Resource_Domain|Resource_Party_Roles_ABE|v25.0
+    - Shared_Domain|Party_ABE|v25.0
+    - Shared_Domain|Digital_Identity_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

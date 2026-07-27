@@ -378,7 +378,10 @@ spec:
       url: Redacted
     eTOMs:
     - 1.12.9.4.2|Recommend_Appropriate_Product_Offering(s)|v26.0
-    functionalFrameworkFunctions: []
+    - 1.12.9.4|Cross/Up_Sell|v26.0
+    functionalFrameworkFunctions:
+    - 1196|Product_Specification_&_Offering_Simulation|v26.0
+    - 1195|Pushed_Offer_Identification|v26.0
     SIDs:
     - Product_Domain|Product_Offering_Specification_ABE|v26.0
   managementFunction:

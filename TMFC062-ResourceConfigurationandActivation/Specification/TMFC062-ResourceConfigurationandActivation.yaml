@@ -97,15 +97,15 @@ spec:
     description: The Resource Configuration and Activation component configures and
       activates resource instances and enables querying of resource instances to acquire
       the resource activation states and attributes.
-    publicationDate: 2026-06-02
+    publicationDate: '2026-06-02'
     status: preview
     functionalBlock: Production
     owners:
-    - email: redacted
-      name: Gaetano Biancardi
+    - name: Gaetano Biancardi
+      email: redacted
       url: Redacted
-    eTOMs: []
-    functionalFrameworkFunctions: []
+    eTOMs:
+    - 1.5.8.2.1|Verify_Resource_Configuration|v25.0
     SIDs:
     - Resource_Domain|Resource_Configuration_ABE|v25.0
   managementFunction:

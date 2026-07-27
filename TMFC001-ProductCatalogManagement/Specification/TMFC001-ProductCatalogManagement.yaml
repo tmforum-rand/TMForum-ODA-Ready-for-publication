@@ -445,6 +445,12 @@ spec:
     - 419|Product_Strategy_performance_reporting|v24.0
     - 897|Building_Access_Control|v24.0
     - 900|Authorization_Control_Management|v24.0
+    - 651|Product_Onboarding_Support|v24.0
+    - 1291|External_Product_Specification_Development|v24.0
+    - 1292|External_Product_Offering_Development|v24.0
+    - 1293|Product_Specification_Recalls_Support|v24.0
+    - 1341|Product_Specification_Change_Notification|v24.0
+    - 1342|Product_Specification_Version_Control|v24.0
     SIDs:
     - Product_Domain|Product_Offering_Specification_ABE|v25.0
     - Product_Domain|Product_Specification_ABE|v25.0

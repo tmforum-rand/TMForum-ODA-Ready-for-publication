@@ -181,6 +181,12 @@ spec:
     - 1187|Resource_Trouble_Resolution|v25.0
     - 615|Service_Problem_Tracking_&_Management|v25.0
     - 1155|Resource_Diagnostic_and_Test_Analysis|v25.0
+    - 1186|Resource_Trouble_Cause_Identification|v25.0
+    - 610|Service_Problem_Prioritization|v25.0
+    - 612|Service_Problem_Automatic_Correction|v25.0
+    - 979|Service_Assurance_Control_Calculation|v25.0
+    - 980|Service_Assurance_Trouble_Mitigation|v25.0
+    - 1067|Service_Problem_Manual_Correction_Support|v25.0
     SIDs:
     - Resource_Domain|Resource_Trouble_ABE|Resource_Alarm_ABE|v25.0
     - Resource_Domain|Resource_Trouble_ABE|AlarmSeverityAssignmentProfile_BE|v25.0

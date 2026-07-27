@@ -210,10 +210,6 @@ spec:
     - 363|Product_Agreement_Storage|v23.0
     - 361|Product_Agreement_Implementation|v23.0
     - 653|Contract_Management|v23.0
-    - 1042|Partner_Agreement_Creation|v23.0
-    - 1043|Partner_Agreement_Storage_and_Searching|v23.0
-    - 1044|Partner_Agreement_Implementation|v23.0
-    - 1045|Partner_Agreement_Tracking|v23.0
     SIDs:
     - Patterns_Domain|Agreement_ABE|Agreement_BE|v25.0
     - Patterns_Domain|Agreement_ABE|AgreementItem_BE|v25.0

@@ -243,6 +243,7 @@ spec:
     - 61|On_Demand_Bill_Calculation|v23.5.0.1
     - 300|Discount_Calculation|v23.5.0.1
     - 55|Price_and_Discount_Calculation|v23.5.0.1
+    - 69|Charge_To_Billing_Account_Identification|v23.5.0.1
     SIDs:
     - Customer_Domain|Applied_Customer_Billing_Rate_ABE|v23.5.0
     - Business_Partner_Domain|Applied_Party_Billing_Rate_ABE|v23.5.0

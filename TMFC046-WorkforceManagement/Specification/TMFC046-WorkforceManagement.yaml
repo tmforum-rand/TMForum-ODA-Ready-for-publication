@@ -120,20 +120,20 @@ spec:
       It provides the ability to reserve time slots to carry out assigned tasks (internal
       or customer facing). It allows the reservation (and updates/rescheduling) of
       appointments and interventions.
-    publicationDate: 2024-04-18
+    publicationDate: '2024-04-18'
     status: production
     functionalBlock: Production
     owners:
-    - email: Redacted
-      name: Redacted
+    - name: Redacted
+      email: Redacted
       url: Redacted
     maintainers:
     - name: Redacted
       email: components@tmforum.org
       url: Redacted
     eTOMs:
-    - 1.5.4|Resource_Readiness_&_Support|v23.0
-    - 1.5.4.8|Manage_Field_Workforce|v23.0
+    - 1.5.4|Resource_Readiness_&_Support|v23.0.1
+    - 1.5.4.8|Manage_Field_Workforce|v23.0.1
     functionalFrameworkFunctions:
     - 119|Center_Time_Management|v23.0
     - 1326|Work_List_Management|v23.0

@@ -400,6 +400,11 @@ spec:
     - 1.4.5.8|Close_Service_Order|v21.5
     - 1.5.6|Resource_Provisioning|v21.5
     - 1.5.6.7|Issue_Resource_Order|v21.5
+    - 1.5.5|Resource_Order_Management|v26.0
+    - 1.5.5.6|Manage_Resource_Order_Capture|v26.0
+    - 1.5.5.6.1|Initiate_Resource_Order_Capture|v26.0
+    - 1.5.5.7|Manage_Resource_Work_Order|v26.0
+    - 1.5.5.7.1|Initiate_Resource_Work_Order|v26.0
     functionalFrameworkFunctions:
     - 584|Service_Activation_Planning|v21.5
     - 588|Service_Orchestration_Configuration|v21.5
@@ -427,6 +432,21 @@ spec:
     - 590|Service_Configuration|v21.5
     - 585|Service_Configuration_Activation|v21.5
     - 592|Service_Parameters_Reservation|v21.5
+    - 1219|Service_Order_Request_Consistency_Check|v26.0
+    - 1220|Internal_Service_Order_Initialization|v26.0
+    - 632|Service_Termination_Points_Determining|v26.0
+    - 1141|Installed_Resources_Identification|v26.0
+    - 1217|Service_Order_Needs_Identification|v26.0
+    - 16|Fallout_Automated_Correction|v26.0
+    - 17|Fallout_Correction_Information_Collection|v26.0
+    - 19|Fallout_Manual_Correction_Queuing|v26.0
+    - 21|Fallout_Orchestration|v26.0
+    - 24|Pre-populated_Fallout_Information_Presentation|v26.0
+    - 756|Fallout_Rule_Based_Error_Correction|v26.0
+    - 18|Fallout_Management_to_Fulfillment_Application_Accessing|v26.0
+    - 20|Fallout_Notification|v26.0
+    - 22|Fallout_Reporting|v26.0
+    - 23|Fallout_Dashboard_System_Log-in_Accessing|v26.0
     SIDs:
     - Service_Domain|Service_Order_ABE|v25.0
     - Service_Domain|Service_ABE|v25.0

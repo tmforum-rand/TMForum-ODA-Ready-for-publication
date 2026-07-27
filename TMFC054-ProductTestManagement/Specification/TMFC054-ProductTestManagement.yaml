@@ -215,19 +215,29 @@ spec:
       resource specification level for a tangible product). Product Test Management
       owns end-to-end execution and reporting of product tests according to the context
       and/or the actor.
-    publicationDate: 2026-06-02
+    publicationDate: '2026-06-02'
     status: preview
     functionalBlock: CoreCommerce
     owners:
-    - email: Redacted
-      name: Redacted
+    - name: Redacted
+      email: Redacted
       url: Redacted
     maintainers:
     - name: Redacted
       email: components@tmforum.org
       url: Redacted
-    eTOMs: []
-    functionalFrameworkFunctions: []
+    eTOMs:
+    - 1.2.1.5|Product_Test_Strategy|v25.0
+    - 1.2.4.9|Manage_Product_Test|v25.0
+    - 1.2.1|Product_Portfolio_Strategy_Management|v25.0
+    - 1.2.4|Product_Support_Management|v25.0
+    functionalFrameworkFunctions:
+    - 1073|Product_Test_Specification_Design|v26.0
+    - 1074|Product_Test_Configuration_Design|v26.0
+    - 1075|Product_Test_Restitution_Design|v26.0
+    - 1130|Product_Test_Authorization_Check|v26.0
+    - 1131|Product_Test_Execution|v26.0
+    - 1132|Product_Test_Reporting|v26.0
     SIDs:
     - Product_Domain|Product_Test_ABE|v25.0
   managementFunction:
