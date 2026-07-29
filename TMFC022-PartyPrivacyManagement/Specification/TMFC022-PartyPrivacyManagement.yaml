@@ -181,7 +181,7 @@ spec:
     eTOMs:
     - 1.3.21.2|Manage_Customer_Privacy_Profile|v25.0
     SIDs:
-    - Party_Domain|Party_Privacy_ABE|Party_Privacy_Profile_ABE|v25.0
+    - Shared_Domain|Party_Privacy_ABE|Party_Privacy_Profile_ABE|v25.0
     - Business_Partner_Domain|Business_Partner_Party_Roles_ABE|v25.0
     - Customer_Domain|Customer_Party_Roles_ABE|v25.0
     - Shared_Domain|Party_ABE|v25.0
