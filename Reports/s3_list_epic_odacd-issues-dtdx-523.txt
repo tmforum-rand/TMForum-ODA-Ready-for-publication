@@ -1,12 +1,12 @@
-2026-07-30 09:58:37   16.6 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement.yaml
-2026-07-30 09:58:43  357.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement_Conformance.pdf
-2026-07-30 09:58:41  537.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001_Product_Catalog_Management_v2.1.2.pdf
-2026-07-30 09:58:46   16.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory.yaml
-2026-07-30 09:58:47    3.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_v1.1.4_Conformance.md
-2026-07-30 09:58:40  409.6 KiB production/epic_odacd-issues-dtdx-523/TMFC005_Product_Inventory_v1.0.3.pdf
-2026-07-30 09:58:45   11.5 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement.yaml
-2026-07-30 09:58:38  129.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
-2026-07-30 09:58:34  478.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
+2026-07-30 10:07:22   16.6 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement.yaml
+2026-07-30 10:07:29  357.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement_Conformance.pdf
+2026-07-30 10:07:27  537.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001_Product_Catalog_Management_v2.1.2.pdf
+2026-07-30 10:07:32   16.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory.yaml
+2026-07-30 10:07:33    3.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_v1.1.4_Conformance.md
+2026-07-30 10:07:24  409.6 KiB production/epic_odacd-issues-dtdx-523/TMFC005_Product_Inventory_v1.0.3.pdf
+2026-07-30 10:07:31   11.5 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement.yaml
+2026-07-30 10:07:23  129.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
+2026-07-30 10:07:20  478.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
 
 Total Objects: 9
    Total Size: 1.9 MiB
