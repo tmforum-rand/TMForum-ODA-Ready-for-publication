@@ -1,1 +1,12 @@
-loopback mode: aws s3 ls was not run, no listing available
+2026-07-30 10:28:36   16.6 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement.yaml
+2026-07-30 10:28:42  357.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement_Conformance.pdf
+2026-07-30 10:28:40  537.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001_Product_Catalog_Management_v2.1.2.pdf
+2026-07-30 10:28:44   16.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory.yaml
+2026-07-30 10:28:45    3.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_v1.1.4_Conformance.md
+2026-07-30 10:28:39  409.6 KiB production/epic_odacd-issues-dtdx-523/TMFC005_Product_Inventory_v1.0.3.pdf
+2026-07-30 10:28:43   11.5 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement.yaml
+2026-07-30 10:28:37  129.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
+2026-07-30 10:28:35  478.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
+
+Total Objects: 9
+   Total Size: 1.9 MiB
