@@ -1,12 +1,19 @@
-2026-08-03 14:22:12   16.6 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC001-ProductCatalogManagement.yaml
-2026-08-03 14:22:19  357.4 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC001-ProductCatalogManagement_Conformance.pdf
-2026-08-03 14:22:17  537.4 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC001_Product_Catalog_Management_v2.1.2.pdf
-2026-08-03 14:22:26   16.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC005-ProductInventory.yaml
-2026-08-03 14:22:27    3.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC005-ProductInventory_v1.1.4_Conformance.md
-2026-08-03 14:22:15  409.6 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC005_Product_Inventory_v1.0.3.pdf
-2026-08-03 14:22:20   11.5 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC010-ResourceCatalogManagement.yaml
-2026-08-03 14:22:14  129.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
-2026-08-03 14:22:10  478.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
+2026-08-03 14:34:31   16.6 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC001-ProductCatalogManagement.yaml
+2026-08-03 14:34:38  357.4 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC001-ProductCatalogManagement_Conformance.pdf
+2026-08-03 14:34:51  960.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC001-ProductCatalogManagement_componentctk.zip
+2026-08-03 14:34:53   10.7 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC001-ProductCatalogManagement_componentri.zip
+2026-08-03 14:34:37  537.4 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC001_Product_Catalog_Management_v2.1.2.pdf
+2026-08-03 14:34:42   16.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC005-ProductInventory.yaml
+2026-08-03 14:34:33  717 Bytes production/feature_upload_conformanceP_url_to_Strapi/TMFC005-ProductInventory_bdd.zip
+2026-08-03 14:34:29  960.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC005-ProductInventory_componentctk.zip
+2026-08-03 14:34:50    8.4 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC005-ProductInventory_componentri.zip
+2026-08-03 14:34:44    3.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC005-ProductInventory_v1.1.4_Conformance.md
+2026-08-03 14:34:35  409.6 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC005_Product_Inventory_v1.0.3.pdf
+2026-08-03 14:34:40   11.5 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC010-ResourceCatalogManagement.yaml
+2026-08-03 14:34:25  960.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC010-ResourceCatalogManagement_componentctk.zip
+2026-08-03 14:34:41    7.4 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC010-ResourceCatalogManagement_componentri.zip
+2026-08-03 14:34:34  129.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
+2026-08-03 14:34:27  478.9 KiB production/feature_upload_conformanceP_url_to_Strapi/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
 
-Total Objects: 9
-   Total Size: 1.9 MiB
+Total Objects: 16
+   Total Size: 4.8 MiB
