@@ -1,19 +1,19 @@
-2026-08-04 15:12:58   16.6 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement.yaml
-2026-08-04 15:13:10  357.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement_Conformance.pdf
-2026-08-04 15:13:20  960.9 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement_componentctk.zip
-2026-08-04 15:13:23   10.7 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement_componentri.zip
-2026-08-04 15:13:09  537.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001_Product_Catalog_Management_v2.1.2.pdf
-2026-08-04 15:13:16   16.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory.yaml
-2026-08-04 15:13:04  717 Bytes production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_bdd.zip
-2026-08-04 15:12:55  960.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_componentctk.zip
-2026-08-04 15:13:19    8.4 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_componentri.zip
-2026-08-04 15:13:18    3.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_v1.1.4_Conformance.md
-2026-08-04 15:13:07  409.6 KiB production/epic_odacd-issues-dtdx-523/TMFC005_Product_Inventory_v1.0.3.pdf
-2026-08-04 15:13:12   11.5 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement.yaml
-2026-08-04 15:12:51  960.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement_componentctk.zip
-2026-08-04 15:13:13    7.4 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement_componentri.zip
-2026-08-04 15:13:06  129.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
-2026-08-04 15:12:53  478.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
+2026-08-04 15:22:59   16.6 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement.yaml
+2026-08-04 15:23:13  357.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement_Conformance.pdf
+2026-08-04 15:23:23  960.9 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement_componentctk.zip
+2026-08-04 15:23:25   10.7 KiB production/epic_odacd-issues-dtdx-523/TMFC001-ProductCatalogManagement_componentri.zip
+2026-08-04 15:23:10  537.4 KiB production/epic_odacd-issues-dtdx-523/TMFC001_Product_Catalog_Management_v2.1.2.pdf
+2026-08-04 15:23:17   16.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory.yaml
+2026-08-04 15:23:01  717 Bytes production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_bdd.zip
+2026-08-04 15:22:56  960.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_componentctk.zip
+2026-08-04 15:23:21    8.4 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_componentri.zip
+2026-08-04 15:23:20    3.9 KiB production/epic_odacd-issues-dtdx-523/TMFC005-ProductInventory_v1.1.4_Conformance.md
+2026-08-04 15:23:08  409.6 KiB production/epic_odacd-issues-dtdx-523/TMFC005_Product_Inventory_v1.0.3.pdf
+2026-08-04 15:23:15   11.5 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement.yaml
+2026-08-04 15:22:50  960.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement_componentctk.zip
+2026-08-04 15:23:16    7.4 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement_componentri.zip
+2026-08-04 15:23:02  129.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
+2026-08-04 15:22:54  478.9 KiB production/epic_odacd-issues-dtdx-523/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
 
 Total Objects: 16
    Total Size: 4.8 MiB
