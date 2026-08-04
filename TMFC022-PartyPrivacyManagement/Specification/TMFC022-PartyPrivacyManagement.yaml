@@ -180,6 +180,13 @@ spec:
       url: Redacted
     eTOMs:
     - 1.3.21.2|Manage_Customer_Privacy_Profile|v25.0
+    functionalFrameworkFunctions:
+    - 664|Privacy_Profile_Type_Creation|v24.0
+    - 665|Privacy_Profile_Rules_Configuration|v24.0
+    - 666|Privacy_Data_Browsing_Access|v24.0
+    - 667|Privacy_Data_Updating_Access|v24.0
+    - 668|Privacy_Consent_Agreement_Obtaining|v24.0
+    - 945|Record_Retention_Management|v24.0
     SIDs:
     - Shared_Domain|Party_Privacy_ABE|Party_Privacy_Profile_ABE|v25.0
     - Business_Partner_Domain|Business_Partner_Party_Roles_ABE|v25.0

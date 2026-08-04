@@ -131,7 +131,13 @@ spec:
       email: components@tmforum.org
       url: Redacted
     eTOMs: []
-    functionalFrameworkFunctions: []
+    functionalFrameworkFunctions:
+    - 1025|Application_Access|v23.5
+    - 906|PKI_and_Digital_Certificates_Systems_Integration|v23.5
+    - 899|Single_Sign-On_Access_Control|v23.5
+    - 1240|Identity_Verification|v23.5
+    - 1247|Credentials_Establishment|v23.5
+    - 1248|Credentials_Query|v23.5
     SIDs:
     - Shared_Domain|Digital_Identity_ABE|v25.0
   managementFunction:

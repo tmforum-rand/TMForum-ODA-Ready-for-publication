@@ -216,7 +216,26 @@ spec:
     - 1.6.16.1.1|Business_Partner_Payment_Handling|v23.0
     - 1.6.16.1.2|Business_Partner_Payment_Method_Management|v23.0
     - 1.6.16.1.3|Business_Partner_Payment_Plan_Administration|v23.0
-    functionalFrameworkFunctions: []
+    functionalFrameworkFunctions:
+    - 30|Advance_Payment_Acceptance|v24.0
+    - 33|Deposit_Management|v24.0
+    - 153|Collection_Payment_Agreement_Monitoring|v24.0
+    - 156|Collection_Payment_Planning|v24.0
+    - 157|Collection_Payment_Plan_Monitoring|v24.0
+    - 171|Customer_Support_Payment_Management|v24.0
+    - 251|Customer_Bill_Payment|v24.0
+    - 321|Bank_Interface_Direct_Debit_Payment_Receiving|v24.0
+    - 322|Payment_Transaction_Refunding|v24.0
+    - 323|Payment_Interface_Management|v24.0
+    - 324|Financial_Transaction_Settlement|v24.0
+    - 325|Financial_Institution_Reconciliation|v24.0
+    - 326|Financial_Institution_Payment_Authorization_Linking|v24.0
+    - 327|Remittance_Details_Access|v24.0
+    - 328|Financial_Institution_Security_Verification|v24.0
+    - 658|Partner_Payments_Management|v24.0
+    - 936|Customer_Support_Invoice_Payment|v24.0
+    - 937|Customer_Support_Prepaid_Recharge_Payment|v24.0
+    - 1065|Procurement_Order_Payment|v24.0
     SIDs:
     - Shared_Domain|Party_Payment_ABE|v25.0
   managementFunction:

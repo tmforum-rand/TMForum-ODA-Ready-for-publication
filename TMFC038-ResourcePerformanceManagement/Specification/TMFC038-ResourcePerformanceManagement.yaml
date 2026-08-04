@@ -182,8 +182,22 @@ spec:
     - name: Redacted
       email: components@tmforum.org
       url: Redacted
-    eTOMs: []
-    functionalFrameworkFunctions: []
+    eTOMs:
+    - 1.5.4|Resource_Readiness_and_Support|v24.5
+    - 1.5.4.2|Enable_Resource_Performance_Management|v24.5
+    - 1.5.9|Resource_Performance_Management|v24.5
+    - 1.5.9.1|Monitor_Resource_Performance|v24.5
+    - 1.5.9.2|Analyze_Resource_Performance|v24.5
+    - 1.5.9.4|Report_Resource_Performance|v24.5
+    - 1.5.9.5|Create_Resource_Performance_Degradation_Report|v24.5
+    - 1.5.9.7|Close_Resource_Performance_Degradation_Report|v24.5
+    functionalFrameworkFunctions:
+    - 498|Resource_Performance_Data_Analyzing|v24.5
+    - 499|Resource_Performance_Data_Aggregation_and_Trend_Analyzing|v24.5
+    - 501|Resource_Performance_Event_Correlation|v24.5
+    - 502|Resource_Performance_Data_Accumulation|v24.5
+    - 903|Anomaly_Monitoring|v24.5
+    - 1066|Resource_Performance_Event_Filtering|v24.5
     SIDs:
     - Resource_Domain|Resource_Performance_ABE|v25.0
     - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Production_ABE|MeasurementProductionJob_BE|v25.0

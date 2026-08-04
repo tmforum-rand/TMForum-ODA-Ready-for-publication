@@ -175,8 +175,8 @@ spec:
     - 1.3.4.3|Re-establish_Customer_Relationship|v23.0
     - 1.3.4.4|Terminate_Customer_Relationship|v23.0
     - 1.6.3|Party_Relationship_Development_&_Retirement|v23.0
-    - 1.6.3.1|Party_Relationship_Management|v23.0
-    - 1.6.3.1.5|Collect_Party_data|v23.0
+    - 1.6.3.1|Party_Relationship_Management|v26.0
+    - 1.6.3.1.5|Collect_Party_data|v26.0
     - 1.6.21|Party_Inventory_Management|v23.0
     - 1.7.7|Human_Resources_Management|v23.0
     - 1.7.7.2|Develop_the_Workforce|v23.0

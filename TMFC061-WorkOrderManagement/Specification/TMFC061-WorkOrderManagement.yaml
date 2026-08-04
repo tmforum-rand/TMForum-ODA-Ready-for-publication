@@ -239,8 +239,28 @@ spec:
     - name: Redacted
       email: components@tmforum.org
       url: Redacted
-    eTOMs: []
-    functionalFrameworkFunctions: []
+    eTOMs:
+    - 1.5.5|Resource_Order_Management|v23.5
+    - 1.5.5.7|Manage_Resource_Work_Order|v23.5
+    - 1.5.19|Resource_Specification_Management|v23.5
+    - 1.5.19.1|Develop_Resource_Specifications|v23.5
+    - 1.5.19.2|Master_Resource_Specifications|v23.5
+    - 1.5.19.3|Analyze_Resource_Specifications|v23.5
+    - 1.5.19.4|Update_and_Version_Resource_Specifications|v23.5
+    functionalFrameworkFunctions:
+    - 542|Dynamic_Work_Order_Assigning|v23.5
+    - 543|Periodic_Bulk_Work_Order_Assigning|v23.5
+    - 545|Work_Order_Coordination|v23.5
+    - 547|Work_Order_Information_Transferring|v23.5
+    - 549|Work_Order_Re-assigning|v23.5
+    - 540|Work_Order_Manual_Activities_Determining|v23.5
+    - 544|Work_Order_Closing|v23.5
+    - 739|Workflow_Delay_Jeopardy_Analyzing|v23.5
+    - 551|Work_Order_Status_Monitoring|v23.5
+    - 553|Work_Specification_Classification|v23.5
+    - 541|Work_Order_Assignment_Dispatching|v23.5
+    - 548|Work_Orders_Initiation|v23.5
+    - 552|Work_Order_Updating|v23.5
     SIDs:
     - Enterprise_Domain|Workforce_ABE|Work_Specification_ABE|v25.0
     - Product_Domain|Project_ABE|Work_Order_ABE|v25.0

@@ -27,7 +27,20 @@ spec:
       name: Redacted
       url: Redacted
     eTOMs: []
-    functionalFrameworkFunctions: []
+    functionalFrameworkFunctions:
+    - 1352|Anomaly_Pattern_Collection|v24.0
+    - 1353|Anomaly_Normal_Description_Capture|v24.0
+    - 1354|Anomaly_Pattern_Correlation|v24.0
+    - 1355|Anomaly_Learning|v24.0
+    - 1356|Anomaly_Alerting|v24.0
+    - 1357|Anomaly_Reporting|v24.0
+    - 1358|Anomaly_Pattern_Analysis|v24.0
+    - 1359|Univariate_Anomaly_Detection|v24.0
+    - 1360|Multivariate_Anomaly_Detection|v24.0
+    - 1361|Anomaly_Model_Selection|v24.0
+    - 1362|Real-time_Model_Inferencing|v24.0
+    - 1363|Anomaly_Batch_Inferencing|v24.0
+    - 1364|Anomaly_Pattern_Matching|v24.0
     SIDs:
     - Patterns_Domain|Anomaly_ABE|Anomaly_Entity_ABE|v25.0
     - Patterns_Domain|Anomaly_ABE|Anomaly_Management_Plan_ABE|v25.0

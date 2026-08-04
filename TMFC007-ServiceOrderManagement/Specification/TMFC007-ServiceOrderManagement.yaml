@@ -398,8 +398,6 @@ spec:
     - 1.4.5.6|Issue_Service_Order|v21.5
     - 1.4.5.7|Report_service_provisioning|v21.5
     - 1.4.5.8|Close_Service_Order|v21.5
-    - 1.5.6|Resource_Provisioning|v21.5
-    - 1.5.6.7|Issue_Resource_Order|v21.5
     - 1.5.5|Resource_Order_Management|v26.0
     - 1.5.5.6|Manage_Resource_Order_Capture|v26.0
     - 1.5.5.6.1|Initiate_Resource_Order_Capture|v26.0
