@@ -273,25 +273,20 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyInteractionManagement/hub
-      implementation: /{{.Release.Name}}-PartyInteractionManagementEvent
+    - id: TMF683
       name: PartyInteractionManagement
-      port: 80
       resources:
       - partyInteractionCreateEvent
       - partyInteractionAttributeValueChangeEvent
       - partyInteractionDeleteEvent
       - partyInteractionStatusChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF683_PartyInteraction/blob/master/partyInteractionManagement_TMF_v1.0.0Review2.json
-        version: null
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF683_v5.0.0.swagger.json
+        version: v5.0.0
       apiType: openapi
-      id: TMF683
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -303,15 +298,13 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-PartyManagement
+    - id: TMF632
       name: PartyManagement
-      port: 80
       resources:
       - individualCreateEvent
       - individualAttributeValueChangeEvent
@@ -322,49 +315,38 @@ spec:
       - organizationStateChangeEvent
       - organizationDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF632
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
-    - implementation: /{{.Release.Name}}-PartyRoleManagement
+    - id: TMF669
       name: PartyRoleManagement
-      port: 80
       resources:
       - partyRoleCreateEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF669_PartyRole/blob/master/TMF669-PartyRole-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF669
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
-    - implementation: /{{.Release.Name}}-DocumentgManagementEvent
+    - id: TMF667
       name: documentManagement
-      port: 80
       resources:
       - documentChangeEvent
       - documentSpecificationAttributeValueChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF667_Document/blob/master/TMF667-Document-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF667_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF667
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/DocumentgManagement/call-back
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
       - taskFlowCreateEvent
       - taskFlowStateChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined

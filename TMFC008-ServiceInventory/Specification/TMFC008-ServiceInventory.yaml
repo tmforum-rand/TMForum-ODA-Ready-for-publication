@@ -301,25 +301,20 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceInventory/hub
-      implementation: /{{.Release.Name}}-serviceInventoryEvent
+    - id: TMF638
       name: ServiceInventoryManagement
-      port: 80
       resources:
       - serviceCreateEvent
       - serviceAttributeValueChangeEvent
       - serviceStateChangeEvent
       - serviceDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF638_ServiceInventoryManagement/blob/master/TMF638_ServiceInventoryManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF638
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -331,108 +326,83 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-ResourceInventoryManagement
+    - id: TMF639
       name: ResourceInventoryManagement
-      port: 80
       resources:
       - resourceDeleteEvent
       specification:
-      - url: https://open-api.tmforum.org20-ResourceInventory-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: unknown
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Resource/call-back
-    - implementation: /{{.Release.Name}}-ServiceInventoryManagement
+    - id: TMF638
       name: ServiceInventoryManagement
-      port: 80
       resources:
       - serviceCreateEvent
       - serviceAttributeValueChangeEvent
       - serviceStateChangeEvent
       - serviceDeleteEvent
       specification:
-      - url: https://open-api.tmforum.org20-ServiceInventory-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: unknown
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
-    - implementation: /{{.Release.Name}}-ServiceCatalogManagement
+    - id: TMF633
       name: ServiceCatalogManagement
-      port: 80
       resources:
       - serviceSpecificationDeleteEvent
       specification:
-      - url: https://open-api.tmforum.org20-ServiceCatalog-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: unknown
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
-    - implementation: /{{.Release.Name}}-PartyRoleManagement
+    - id: TMF669
       name: PartyRoleManagement
-      port: 80
       resources:
       - partyRoleDeleteEvent
       specification:
-      - url: https://open-api.tmforum.org20-PartyRole-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
         version: v4.0.0
-      id: unknown
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRole/call-back
-    - implementation: /{{.Release.Name}}-GeographicSiteManagement
+    - id: TMF674
       name: GeographicSiteManagement
-      port: 80
       resources:
       - geographicSiteDeleteEvent
       specification:
-      - url: https://open-api.tmforum.org20-GeographicSite-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF674_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: unknown
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
-    - implementation: /{{.Release.Name}}-GeographicLocation
+    - id: TMF675
       name: GeographicLocation
-      port: 80
       resources:
       - geographicLocationDeleteEvent
       specification:
-      - url: https://open-api.tmforum.org20-GeographicLocatin-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
         version: v4.0.0
       apiType: openapi
-      id: unknown
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/call-back
-    - implementation: /{{.Release.Name}}-PartyManagement
+    - id: TMF632
       name: PartyManagement
-      port: 80
       resources:
       - individualDeleteEvent
       - organizationDeleteEvent
       specification:
-      - url: https://open-api.tmforum.org20-Party-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: unknown
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/call-back
-    - implementation: /{{.Release.Name}}-ServiceOrderingManagement
+    - id: TMF641
       name: ServiceOrderingManagement
-      port: 80
       resources:
       - serviceOrderDeleteEvent
       specification:
-      - url: https://open-api.tmforum.org20-ServiceOrdering-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: unknown
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceOrdering/call-back

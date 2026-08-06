@@ -304,10 +304,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productTestManagement/hub
-      implementation: /{{.Release.Name}}-productTestManagement
+    - id: TMF769
       name: productTestManagement
-      port: 80
       resources:
       - ProductTestSpecificationCreateEvent
       - ProductTestSpecificationDeleteEvent
@@ -316,47 +314,39 @@ spec:
       - ProductTestCreateEvent
       - ProductTestAttributeValueChangeEvent
       - ProductTestStateChangeEvent
-      specification: ''
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF769_Product_Test/5.0.0/swagger/TMF769-Product_Test-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: unknown
       apiSDO: not_defined
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-productCatalogManagement
+    - id: TMF620
       name: productCatalogManagement
-      port: 80
       resources:
       - productSpecificationCreateEvent
       - productSpecificationDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.1.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF620
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/productCatalogManagement/call-back
-    - implementation: /{{.Release.Name}}-serviceTestManagement
+    - id: TMF653
       name: serviceTestManagement
-      port: 80
       resources:
       - serviceTestSpecificationCreateEvent
       - serviceTestSpecificationAttributeValueChangeEvent
       - serviceTestSpecificationDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF653_ServiceTestManagement/blob/master/TMF653-ServiceTest-v4.1.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF653_v4.2.0.swagger.json
         version: v4.0.0
-      id: TMF653
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceTestManagement/call-back
-    - implementation: /{{.Release.Name}}-Party
+    - id: TMF632
       name: Party
-      port: 80
       resources:
       - individualDeleteEvent
       - organizationDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF632
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyManagement/call-back

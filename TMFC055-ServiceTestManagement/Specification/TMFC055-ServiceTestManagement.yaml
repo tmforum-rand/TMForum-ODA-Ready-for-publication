@@ -271,9 +271,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: ServiceTestManagement.com
+    - id: TMF653
       name: ServiceTestManagement
-      port: 80
       apiType: openapi
       resources:
       - serviceTestCreateEvent
@@ -284,35 +283,27 @@ spec:
       - serviceTestDeleteEvent
       - serviceTestSpecificationAttributeValueChangeEvent
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF653_Service_Test/4.2.0/swagger/TMF653_Service_Test_Management_API_v4.2.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF653_v4.2.0.swagger.json
         version: v4.0.0
-      implementation: ServiceTestManagement
-      id: TMF653
       apiSDO: not_defined
     subscribedEvents:
-    - name: ServiceTestManagement
-      port: 80
+    - id: TMF633
+      name: ServiceCatalogManagement
       apiType: openapi
       resources:
       - serviceSpecificationCreateEvent
       - serviceSpecificationDeleteEvent
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
         version: v4.0.0
-      implementation: /{{.Release.Name}}-ServiceTestManagement
-      id: TMF633
       apiSDO: not_defined
-      callback: ServiceTestManagement
-    - name: PartyManagement
-      port: 80
+    - id: TMF632
+      name: PartyManagement
       apiType: openapi
       resources:
       - organizationDeleteEvent
       - individualDeleteEvent
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
         version: v4.0.0
-      implementation: /{{.Release.Name}}-PartyManagement
-      id: TMF632
       apiSDO: not_defined
-      callback: PartyManagement

@@ -368,10 +368,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-processFlowEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -383,30 +381,24 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/hub
-      implementation: /{{.Release.Name}}-AlarmManagement
+    - id: TMF642
       name: AlarmManagement
-      port: 80
       resources:
       - alarmStateChange**
       - alarmCreateEvent**
       - alarmClearEvent**
       - alarmAckEvent**
       specification:
-      - url: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF642
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceManagement/hub
-      implementation: /{{.Release.Name}}-PerformanceManagement
+    - id: TMF628
       name: PerformanceManagement
-      port: 80
       resources:
       - measurementCollectionJobCreateEvent
       - measurementCollectionJobExecutionStateChangeEvent
@@ -420,6 +412,14 @@ spec:
       - onDemandCollectionAttributeValueChangeEvent
       - onDemandCollectionFilesReadyEvent
       - onDemandCollectionFilesPreparationErrorEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.1.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF649
+      name: PerformanceThresholdManagement
+      resources:
       - thresholdCreateNotification
       - thresholdChangeNotification
       - thresholdRuleCreateNotification
@@ -429,66 +429,53 @@ spec:
       - thresholdJobSuspendNotification
       - thresholdJobResumeNotification
       specification:
-      - url: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.1.0.swagger.json
+      - url: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF649-PerformanceThreshold-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF628
       apiSDO: not_defined
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-ServiceCatalogManagement
+    - id: TMF633
       name: ServiceCatalogManagement
-      port: 80
       resources:
       - serviceSpecificationChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF633
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/call-back
-    - implementation: /{{.Release.Name}}-ServiceInventoryManagement
+    - id: TMF638
       name: ServiceInventoryManagement
-      port: 80
       resources:
       - serviceCreateEvent
       - serviceAttributeValueChangeEvent
       - serviceStateChangeEvent
       - serviceDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF638_ServiceInventory/blob/master/TMF638-ServiceInventory-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF638
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceInventory/call-back
-    - implementation: /{{.Release.Name}}-ResourceInventory
+    - id: TMF639
       name: ResourceInventoryManagement
-      port: 80
       resources:
       - resourceCreateEvent
       - resourceAttributeValueChangeEvent
       - resourceStateChangeEvent
       - resourceDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF639
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/call-back
-    - implementation: /{{.Release.Name}}-ProcessFlowManagement
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
       - taskFlowCreateEvent
       - taskFlowStateChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701-ProcessFlowManagement/blob/master/TMF701-ProcessFlowManagement-v4.0.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/call-back

@@ -437,9 +437,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - implementation: /{{.Release.Name}}-ProductConfiguration
+    - id: TMF760
       name: ProductConfiguration
-      port: 80
       resources:
       - checkProductConfigurationAttributeValueChangeEvent
       - checkProductConfigurationCreateEvent
@@ -449,13 +448,13 @@ spec:
       - queryProductConfigurationCreateEvent
       - queryProductConfigurationDeleteEvent
       - queryProductConfigurationStateChangeEvent
-      specification: ''
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF760_v5.0.0.swagger.json
+        version: v5.0.0
       apiType: openapi
-      id: unknown
       apiSDO: not_defined
-    - implementation: /{{.Release.Name}}-pdtquali
-      name: ProductConfiguration
-      port: 80
+    - id: TMF679
+      name: ProductOfferingQualification
       resources:
       - ProductOfferingQualificationCreateEvent
       - ProductOfferingQualificationAttributeValueChangeEvent
@@ -463,14 +462,13 @@ spec:
       - ProductOfferingQualificationDeleteEvent
       - ProductOfferingQualificationInformationRequiredEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF679_ProductOfferingQualificationManagement/master/TMF679-ProductOfferingQualificationManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF679_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF679
       apiSDO: not_defined
     subscribedEvents:
-    - name: ProductCatalogManagement
-      port: 80
+    - id: TMF620
+      name: ProductCatalogManagement
       resources:
       - CatalogCreateEvent
       - CatalogAttributeValueChangeEvent
@@ -488,21 +486,17 @@ spec:
       - ProductSpecificationStateChangeEvent
       - ProductSpecificationDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF622-ProductCatalogManagement/blob/master/TMF622-ProductCatalogManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF622
       apiSDO: not_defined
-    - apiType: openapi
-      implementation: /{{.Release.Name}}-ServiceQualificationEvent
+    - id: TMF645
+      apiType: openapi
       name: ServiceQualification
-      port: 80
       resources:
       - checkServiceQualificationStateChangeEvent
       - queryServiceQualificationStateChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF645_ServiceQualification/blob/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF645_v4.0.0.swagger.json
         version: v4.0.0
-      id: TMF645
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/call-back

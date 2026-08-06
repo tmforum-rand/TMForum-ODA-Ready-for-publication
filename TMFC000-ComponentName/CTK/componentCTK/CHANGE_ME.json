@@ -1,0 +1,976 @@
+{
+    "releaseName": "<RELEASE_NAME>",
+    "component_to_run": "<COMPONENT_UNDER_TEST>",
+    "component_namespace": "components",
+    "standardComponentPath": "",
+    "ctk_name_mapping": {},
+    "runExposedOptional": false,
+    "runDependentOptional": false,
+    "runSecurityOptional": false,
+    "ctkVersion": "v1.3.1",
+    "apiVersionUnderTest": "",
+    "apiVersionOverrides": {},
+    "ctkLogging": {
+        "ctkLogs": "summary",
+        "ctkLogTailLines": 40
+    },
+    "download_sslVerify": true,
+    "standardComponentDownload": {
+        "apiBaseUrl": "https://api.github.com",
+        "repoOwner": "tmforum-rand",
+        "repoName": "TMForum-ODA-Ready-for-publication",
+        "repoPath": "Specification",
+        "gitUrl": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/refs/heads",
+        "gitBranch": "v1.1.0"
+    },
+    "ctkconfig": {
+        "companyName": "<COMPANY_NAME>",
+        "productName": "<PRODUCT_NAME>",
+        "productUrl": "<PRODUCT_WEBPAGE_URL>",
+        "productVersion": "<PRODUCT_VERSION>",
+        "componentUrl": "https://www.tmforum.org/oda/directory/components-map",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "payloads": {
+            "TMF669_v4": {
+                "PartyRole": {
+                    "POST": {
+                        "payload": {
+                            "name": "qqymucymyd"
+                        }
+                    }
+                }
+            }
+        },
+        "rejectUnauthorized": false
+    },
+    "dependentStubs": {
+        "tmfc002": {
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            },
+            "productInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_INVENTORY>"
+            }
+        },
+        "tmfc005": {
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            }
+        },
+        "tmfc007": {
+            "serviceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_CATALOG>"
+            },
+            "serviceInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_INVENTORY>"
+            }
+        },
+        "tmfc008": {
+            "serviceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_CATALOG>"
+            }
+        },
+        "tmfc009": {
+            "serviceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_CATALOG>"
+            }
+        },
+        "tmfc011": {
+            "resourceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_CATALOG>"
+            },
+            "resourceInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_INVENTORY>"
+            }
+        },
+        "tmfc012": {
+            "resourceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_CATALOG>"
+            }
+        },
+        "tmfc022": {
+            "party": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_MANAGEMENT>"
+            },
+            "partyRole": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_ROLE>"
+            }
+        },
+        "tmfc028": {
+            "partyRole": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_ROLE>"
+            }
+        },
+        "tmfc035": {
+            "party": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_MANAGEMENT>"
+            }
+        },
+        "tmfc040": {
+            "party": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PARTY_MANAGEMENT>"
+            }
+        },
+        "tmfc050": {
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            }
+        },
+        "tmfc054": {
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            },
+            "productInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_INVENTORY>"
+            }
+        },
+        "tmfc055": {
+            "serviceInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_INVENTORY>"
+            }
+        },
+        "tmfc062": {
+            "resourceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_CATALOG>"
+            },
+            "resourceInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_INVENTORY>"
+            }
+        }
+    },
+    "bddPayloads": {
+        "tmfc002": {
+            "product-target-0001": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                {
+                    "id": "110",
+                    "action": "add",
+                    "product": {
+                        "isBundle": false,
+                        "productSpecification": {
+                            "id": "__VALID_ID__",
+                            "href": "__VALID_HREF__",
+                            "name": "Mobile Telephony",
+                            "version": "1",
+                            "@type": "ProductSpecification"
+                        }
+                    },
+                    "@type": "ProductOrderItem"
+                }
+                ]
+            },
+            "product-target-0002": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                {
+                    "id": "110",
+                    "action": "add",
+                    "product": {
+                        "isBundle": false,
+                        "productSpecification": {
+                            "id": "invalid-id",
+                            "href": "invalid-href",
+                            "name": "Mobile Telephony",
+                            "version": "1",
+                            "@type": "ProductSpecification"
+                        }
+                    },
+                    "@type": "ProductOrderItem"
+                }
+                ]
+            },
+            "product-target-0003": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                    {
+                    "id": "110",
+                    "action": "modify",
+                    "product": {
+                        "id": "__VALID_ID__",
+                        "href": "__VALID_HREF__",
+                        "status": "active"
+                    },
+                    "@type": "ProductOrderItem"
+                    }
+                ]
+            },
+            "product-target-0004": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                    {
+                    "id": "110",
+                    "action": "modify",
+                    "product": {
+                        "id": "invalid-id",
+                        "href": "invalid-href",
+                        "status": "active"
+                    },
+                    "@type": "ProductOrderItem"
+                    }
+                ]
+            },
+            "product-catalog-0001":{
+                "name": "Mobile Telephony",
+                "version": "1",
+                "lastUpdate": "2020-09-23T16:42:23.000Z",
+                "lifecycleStatus": "Active",
+                "@type": "ProductSpecification"
+            },
+            "product-inventory-0001":{
+                "isBundle": false,
+                "status": "created",
+                "productCharacteristic": [
+                {
+                    "name": "TEL_MSISDN",
+                    "valueType": "string",
+                    "value": "415 279 7439"
+                }
+                ],
+                "productSpecification": {
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__",
+                    "name": "Mobile Telephony",
+                    "version": "1",
+                    "@type": "ProductSpecification"
+                }
+            }
+        },
+        "tmfc005": {
+            "product-target-0001": {
+                "status": "created",
+                "productSpecification": {
+                    "id": "__VALID_ID__",  
+                    "href": "__VALID_HREF__",
+                    "name": "Cisco Firepower NGFW"
+                }
+            },
+            "product-target-0002": {
+                "status": "created",
+                "productSpecification": {
+                    "id": "non-existent-id",  
+                    "href": "http://example.com/non-existent",
+                    "name": "Cisco Firepower NGFW"
+                }
+            },
+            "product-catalog-0001":{
+                "name": "Cisco Firepower NGFW"
+            }
+        },
+        "tmfc007": {
+            "service-target-0001": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                {
+                    "id": "1",
+                    "action": "add",
+                    "service": {
+                        "state": "active",
+                        "serviceType": "CFS",
+                        "serviceCharacteristic": [
+                        {
+                          "name": "vCPE_IP",
+                          "valueType": "String",
+                          "value": "193.218.236.21"
+                        }
+                        ],
+                        "serviceSpecification": {
+                            "id": "__VALID_ID__", 
+                            "href": "__VALID_HREF__",
+                            "name": "vCPE",
+                            "version": "1"
+                        }
+                    }
+                }
+                ]
+            },
+            "service-target-0002": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                {
+                    "id": "1",
+                    "action": "add",
+                    "service": {
+                        "state": "active",
+                        "serviceType": "CFS",
+                        "serviceCharacteristic": [
+                        {
+                          "name": "vCPE_IP",
+                          "valueType": "String",
+                          "value": "193.218.236.21"
+                        }
+                        ],
+                        "serviceSpecification": {
+                            "id": "non-existent-id",  
+                            "href": "http://example.com/non-existent",
+                            "name": "vCPE",
+                            "version": "1"
+                        }
+                    }
+                }
+                ]
+            },
+            "service-target-0003": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                    {
+                        "id": "1",
+                        "action": "modify",
+                        "service": {
+                            "state": "active",
+                            "serviceType": "CFS",
+                            "id": "__VALID_ID__", 
+                            "href": "__VALID_HREF__"
+                        }
+                    }
+                ]
+            },
+            "service-target-0004": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                    {
+                        "id": "1",
+                        "action": "modify",
+                        "service": {
+                            "state": "active",
+                            "serviceType": "CFS",
+                            "id": "non-existent-id",  
+                            "href": "http://example.com/non-existent"
+                        }
+                    }
+                ]
+            },
+            "service-catalog-0001":{
+                "id": "__VALID_ID__", 
+                "href": "__VALID_HREF__",
+                "name": "vCPE",
+                "version": "1"
+            },
+            "service-inventory-0001":{
+                "state": "active",
+                "serviceType": "CFS",
+                "serviceCharacteristic": [
+                {
+                    "name": "vCPE_IP",
+                    "valueType": "String",
+                    "value": "193.218.236.21"
+                }
+                ],
+                "serviceSpecification": {
+                    "id": "__VALID_ID__", 
+                    "href": "__VALID_HREF__",
+                    "name": "vCPE",
+                    "version": "1"
+                }
+            }
+        },
+        "tmfc008": {
+            "service-target-0001": {
+                "@type": "Service",
+                "state": "active",
+                "serviceSpecification": {
+                  "@type": "ServiceSpecificationRef",
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                }
+            },
+            "service-target-0002": {
+                "@type": "Service",
+                "state": "active",
+                "serviceSpecification": {
+                  "@type": "ServiceSpecificationRef",
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                }
+            },
+            "service-catalog-0001":{
+                "name": "Test Service Specification"
+            }              
+        },
+        "tmfc009": {
+            "service-target-0001": {
+                "@type": "CheckServiceQualification",
+                "serviceQualificationItem": [
+                  {
+                    "@type": "CheckServiceQualificationItem",
+                    "service": {
+                      "@type": "Service",
+                      "serviceSpecification": {
+                        "@type": "ServiceSpecificationRef",
+                        "id": "__VALID_ID__",
+                        "href": "__VALID_HREF__"
+                      }
+                    }
+                  }
+                ]
+            },
+            "service-target-0002": {
+                "@type": "CheckServiceQualification",
+                "serviceQualificationItem": [
+                  {
+                    "@type": "CheckServiceQualificationItem",
+                    "service": {
+                      "@type": "Service",
+                      "serviceSpecification": {
+                        "@type": "ServiceSpecificationRef",
+                        "id": "non-existent-id",
+                        "href": "non-existent-href"
+                      }
+                    }
+                  }
+                ]
+            },
+            "service-catalog-0001":{
+                "name": "Test Service Specification"
+            }              
+        },
+        "tmfc011": {
+            "resource-target-0001": {
+                "description": "Resource order for vCPE provisioning",
+                "orderItem": [
+                    {
+                        "id": "1",
+                        "action": "add",
+                        "resourceSpecification": {
+                            "id": "__VALID_ID__",
+                            "href": "__VALID_HREF__"
+                        }
+                    }
+                ]
+            },
+            "resource-target-0002": {
+                "description": "Resource order for vCPE provisioning",
+                "orderItem": [
+                    {
+                        "id": "1",
+                        "action": "add",
+                        "resourceSpecification": {
+                            "id": "non-existent-id",
+                            "href": "non-existent-href"
+                        }
+                    }
+                ]
+            },
+            "resource-target-0003": {
+                "description": "Resource order for vCPE provisioning",
+                "orderItem": [
+                    {
+                        "id": "1",
+                        "action": "add",
+                        "resource": {
+                            "id": "__VALID_ID__",
+                            "href": "__VALID_HREF__"
+                        }
+                    }
+                ]
+            },
+            "resource-target-0004": {
+                "description": "Resource order for vCPE provisioning",
+                "orderItem": [
+                    {
+                        "id": "1",
+                        "action": "add",
+                        "resource": {
+                            "id": "non-existent-id",
+                            "href": "non-existent-href"
+                        }
+                    }
+                ]
+            },
+            "resource-catalog-0001": {
+                "name": "vCPE Resource Specification",
+                "@type": "ResourceSpecification"
+            },
+            "resource-inventory-0001": {
+                "name": "vCPE Resource"
+            }
+        },
+        "tmfc012": {
+            "resource-target-0001": {
+                "name": "Test Resource",
+                "resourceSpecification": {
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                }
+            },
+            "resource-target-0002": {
+                "name": "Test Resource",
+                "resourceSpecification": {
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                }
+            },
+            "resource-catalog-0001":{
+                "name": "Test Resource Specification",
+                "@type": "ResourceSpecification"
+            }
+        },
+        "tmfc022": {
+            "privacy-target-0001": {
+                "@type": "PartyPrivacyAgreement",
+                "name": "Test Privacy Agreement",
+                "agreementType": "privacy",
+                "agreementItem": [{}],
+                "engagedParty": [
+                  {
+                    "@type": "PartyRef",
+                    "@referredType": "Individual",
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__"
+                  }
+                ]
+            },
+            "privacy-target-0002": {
+                "@type": "PartyPrivacyAgreement",
+                "name": "Test Privacy Agreement",
+                "agreementType": "privacy",
+                "agreementItem": [{}],
+                "engagedParty": [
+                  {
+                    "@type": "PartyRef",
+                    "@referredType": "Individual",
+                    "id": "non-existent-id",
+                    "href": "non-existent-href"
+                  }
+                ]
+            },
+            "privacy-target-0003": {
+                "@type": "PartyPrivacyAgreement",
+                "name": "Test Privacy Agreement",
+                "agreementType": "privacy",
+                "agreementItem": [{}],
+                "engagedParty": [
+                  {
+                    "@type": "PartyRoleRef",
+                    "@referredType": "PartyRole",
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__"
+                  }
+                ]
+            },
+            "privacy-target-0004": {
+                "@type": "PartyPrivacyAgreement",
+                "name": "Test Privacy Agreement",
+                "agreementType": "privacy",
+                "agreementItem": [{}],
+                "engagedParty": [
+                  {
+                    "@type": "PartyRoleRef",
+                    "@referredType": "PartyRole",
+                    "id": "non-existent-id",
+                    "href": "non-existent-href"
+                  }
+                ]
+            },
+            "party-management-0001": {
+                "@type": "Individual",
+                "givenName": "John",
+                "familyName": "Doe"
+            },
+            "party-role-0001": {
+                "@type": "PartyRole",
+                "name": "Test Party Role",
+                "engagedParty": {
+                  "@type": "PartyRef",
+                  "@referredType": "Individual",
+                  "id": "test-party-001"
+                }
+            }                                                                                    
+        },
+        "tmfc028": {
+            "party-target-0001": {
+                "@type": "organization",
+                "name": "Coffee Do Brazil",
+                "tradingName": "Coffee Do Brazil Fair Trade",
+                "relatedParty": [
+                    {
+                        "id": "__VALID_ID__",
+                        "href": "__VALID_HREF__",
+                        "role": "Supplier",
+                        "name": "Coffee Do Brazil Supplier",
+                        "@referredType": "partyRole"
+                    }
+                ]
+            },
+            "supplier-party-0001": {
+                "@type": "organization",
+                "name": "Acme Corporation",
+                "tradingName": "Acme"
+            },
+            "supplier-party-role-0001": {
+                "name": "Acme Corporation - Supplier Role",
+                "engagedParty": {
+                    "id": "__VALID_PARTY_ID__",
+                    "href": "__VALID_PARTY_HREF__",
+                    "name": "Acme Corporation",
+                    "role": "Supplier",
+                    "@referredType": "organization"
+                }
+            },
+            "party-target-0002": {
+                "@type": "organization",
+                "name": "Coffee Do Brazil",
+                "tradingName": "Coffee Do Brazil Fair Trade",
+                "relatedParty": [
+                    {
+                        "id": "invalid-id",
+                        "href": "invalid-href",
+                        "role": "Supplier",
+                        "name": "Coffee Do Brazil Supplier",
+                        "@referredType": "partyRole"
+                    }
+                ]
+            },
+            "supplier-party-0002": {
+                "@type": "organization",
+                "name": "Acme Corporation",
+                "tradingName": "Acme"
+            },
+            "supplier-party-role-0002": {
+                "name": "Acme Corporation - Supplier Role",
+                "engagedParty": {
+                    "id": "__VALID_PARTY_ID__",
+                    "href": "__VALID_PARTY_HREF__",
+                    "name": "Acme Corporation",
+                    "role": "Supplier",
+                    "@referredType": "organization"
+                }
+            }
+        },
+        "tmfc035": {
+            "party-individual-0001": {
+                "@type": "Individual",
+                "givenName": "John",
+                "familyName": "Doe"
+            },
+            "party-role-target-0001": {
+                "@type": "PartyRole",
+                "name": "Customer",
+                "engagedParty": {
+                  "@type": "PartyRef",
+                  "@referredType": "Individual",
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                }
+            },
+            "party-role-target-0002": {
+                "@type": "PartyRole",
+                "name": "Customer",
+                "engagedParty": {
+                  "@type": "PartyRef",
+                  "@referredType": "Individual",
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                }
+            },
+            "permission-target-0001": {
+                "user": {
+                  "@referredType": "Individual",
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                },
+                "validFor": {
+                  "startDateTime": "2024-01-01T00:00:00Z",
+                  "endDateTime": "2025-01-01T00:00:00Z"
+                }
+            },
+            "permission-target-0002": {
+                "user": {
+                  "@referredType": "Individual",
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                },
+                "validFor": {
+                  "startDateTime": "2024-01-01T00:00:00Z",
+                  "endDateTime": "2025-01-01T00:00:00Z"
+                }
+            }                            
+        },
+        "tmfc040": {
+            "usage-consumption-target-0001": {
+                "@type": "QueryUsageConsumption",
+                "relatedParty": [
+                  {
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "role": "customer",
+                    "partyOrPartyRole": {
+                      "@type": "PartyRef",
+                      "id": "__VALID_ID__",
+                      "href": "__VALID_HREF__"
+                    }
+                  }
+                ]
+            },
+            "usage-consumption-target-0002":    {
+                "@type": "QueryUsageConsumption",
+                "relatedParty": [
+                  {
+                    "@type": "RelatedPartyRefOrPartyRoleRef",
+                    "role": "customer",
+                    "partyOrPartyRole": {
+                      "@type": "PartyRef",
+                      "id": "non-existent-id",
+                      "href": "non-existent-href"
+                    }
+                  }
+                ]
+            },
+            "usage-target-0001": {
+                "relatedParty": [
+                  {
+                    "@referredType": "Individual",
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__"
+                  }
+                ]
+            },
+            "usage-target-0002": {
+                "relatedParty": [
+                  {
+                    "@referredType": "Individual",
+                    "id": "non-existent-id",
+                    "href": "non-existent-href"
+                  }
+                ]
+            },
+            "party-management-0001": {
+                "@type": "Individual",
+                "givenName": "John",
+                "familyName": "Doe"
+            }                                                     
+        },
+        "tmfc050": {
+            "recommendation-target-0001": {
+                "category": [
+                  {
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__"
+                  }
+                ]
+            },
+            "recommendation-target-0002": {
+                "category": [
+                  {
+                    "id": "non-existent-id",
+                    "href": "non-existent-href"
+                  }
+                ]
+            },
+            "product-catalog-0001": {
+                "@type": "Category",
+                "name": "Test Category"
+            }              
+        },
+        "tmfc054": {
+            "product-test-spec-target-0001": {
+                "@type": "ProductTestSpecification",
+                "name": "Test Product Test Specification",
+                "relatedProductSpecification": [
+                  {
+                    "@type": "ProductSpecificationRef",
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__",
+                    "name": "Test Product Specification"
+                  }
+                ]
+            },
+            "product-test-spec-target-0002": {
+                "@type": "ProductTestSpecification",
+                "name": "Test Product Test Specification",
+                "relatedProductSpecification": [
+                  {
+                    "@type": "ProductSpecificationRef",
+                    "id": "non-existent-id",
+                    "href": "non-existent-href",
+                    "name": "Non-existent Product Specification"
+                  }
+                ]
+            },
+            "product-test-target-0001": {
+                "@type": "ProductTest",
+                "name": "Test Product Test",
+                "testSpecification": {
+                  "@type": "ProductTestSpecificationRef",
+                  "id": "test-product-test-spec-001",
+                  "name": "Test Product Test Specification"
+                },
+                "relatedProduct": {
+                  "@type": "ProductRef",
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__",
+                  "name": "Test Product"
+                }
+            },
+            "product-test-target-0002": {
+                "@type": "ProductTest",
+                "name": "Test Product Test",
+                "testSpecification": {
+                  "@type": "ProductTestSpecificationRef",
+                  "id": "test-product-test-spec-001",
+                  "name": "Test Product Test Specification"
+                },
+                "relatedProduct": {
+                  "@type": "ProductRef",
+                  "id": "non-existent-id",
+                  "href": "non-existent-href",
+                  "name": "Non-existent Product"
+                }
+            },
+            "product-catalog-0001": {
+                "@type": "ProductSpecification",
+                "name": "Test Product Specification",
+                "lifecycleStatus": "active",
+                "lastUpdate": "2026-01-01T00:00:00.000Z"
+            },
+            "product-inventory-0001": {
+                "@type": "Product",
+                "status": "active"
+            }                                                                      
+        },
+        "tmfc055": {
+            "service-test-target-0001": {
+                "name": "Test Service Test",
+                "testSpecification": {
+                  "id": "test-service-test-spec-001"
+                },
+                "relatedService": {
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                }
+            },
+            "service-test-target-0002": {
+                "name": "Test Service Test",
+                "testSpecification": {
+                  "id": "test-service-test-spec-001"
+                },
+                "relatedService": {
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                }
+            },
+            "service-inventory-0001": {
+                "@type": "Service",
+                "state": "active",
+                "serviceSpecification": {
+                  "@type": "ServiceSpecificationRef",
+                  "id": "test-service-spec-001"
+                }
+            }                                          
+        },
+        "tmfc062": {
+            "resource-catalog-target-0001": {
+                "name": "Test Resource",
+                "resourceSpecification": {
+                  "id": "__VALID_ID__",
+                  "href": "__VALID_HREF__"
+                }
+            },
+            "resource-catalog-target-0002": {
+                "name": "Test Resource",
+                "resourceSpecification": {
+                  "id": "non-existent-id",
+                  "href": "non-existent-href"
+                }
+            },
+            "resource-inventory-target-0001": {
+                "name": "Test Resource",
+                "resourceRelationship": [
+                  {
+                    "relationshipType": "reliesOn",
+                    "resource": {
+                      "id": "__VALID_ID__",
+                      "href": "__VALID_HREF__"
+                    }
+                  }
+                ]
+            },
+            "resource-inventory-target-0002": {
+                "name": "Test Resource",
+                "resourceRelationship": [
+                  {
+                    "relationshipType": "reliesOn",
+                    "resource": {
+                      "id": "non-existent-id",
+                      "href": "non-existent-href"
+                    }
+                  }
+                ]
+            },
+            "resource-catalog-0001": {
+                "@type": "ResourceSpecification",
+                "name": "Test Resource Specification"
+            },
+            "resource-inventory-0001": {
+                "name": "Test Resource"
+            }
+        }
+    },
+    "retrySettings": {
+        "maxRetries": 30,
+        "retryInterval": 10000
+    }
+}

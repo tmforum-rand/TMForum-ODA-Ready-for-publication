@@ -378,7 +378,7 @@ spec:
       Management (ROM) component to update selected resource instances to deliver
       CFS. Requests sent to the ROM contain the CFS and the list of configured resource
       instances to be updated.
-    publicationDate: '2024-02-23'
+    publicationDate: 2024-02-23
     status: production
     functionalBlock: Production
     owners:
@@ -512,9 +512,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/serviceOrdeManagement/hub
+    - id: TMF641
       name: TMF641 Service Ordering Management API
-      port: 80
       resources:
       - serviceOrderCreateEvent
       - serviceOrderStateChangeEvent
@@ -527,14 +526,12 @@ spec:
       - cancelServiceOrderStateChangeEvent
       - cancelServiceOrderInformationRequiredEvent
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.1.0/swagger/TMF641_Service_Ordering_Management_API_v4.1.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF641_v4.1.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF641
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -546,15 +543,13 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.0.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
     subscribedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceOrderManagement/hub
-      name: ResourceOrderManagement
-      port: 80
+    - id: TMF652
+      name: ResourceOrderingManagement
       resources:
       - resourceOrderStateChange
       - resourceOrderAttributeValueChangeEvent
@@ -562,42 +557,42 @@ spec:
       - cancelResourceOrderStateChange
       - cancelResourceOrderInformationRequiredEvent
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF652_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF634
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/hub
+    - id: TMF645
       name: ServiceQualification
-      port: 80
       resources:
       - checkServiceQualificationStateChangeEvent
       - queryServiceQualificationStateChangeEvent
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF645_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF645
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Communication/hub
+    - id: TMF681
       name: Communication
-      port: 80
       resources:
       - communicationMessageStateChangeEvent
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF681_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF681
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/WorkOrder/hub
+    - id: TMF697
       name: WorkOrder
-      port: 80
       resources:
       - workOrderStateChange
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/4.0.0/swagger/TMF697_Work_Order_Management_API_v4.0.0_swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF697
+      apiSDO: not_defined
+    - id: TMF681
+      name: CommunicationManagementAPI
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF681_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
       apiSDO: not_defined

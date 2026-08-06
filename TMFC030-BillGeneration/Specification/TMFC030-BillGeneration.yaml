@@ -339,15 +339,14 @@ spec:
   eventNotification:
     publishedEvents: []
     subscribedEvents:
-    - name: partyRoleManagement
-      port: 80
+    - id: TMF669
+      name: partyRoleManagement
       resources:
       - partyRoleAttributeValueChangeEvent
       - partyRoleStateChangeEvent
       - partyRoleDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF669
       apiSDO: not_defined

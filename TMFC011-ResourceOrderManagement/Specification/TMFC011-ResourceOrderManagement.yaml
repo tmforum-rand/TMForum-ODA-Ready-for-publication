@@ -337,10 +337,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/resourceOrderingManagement/hub
-      implementation: /{{.Release.Name}}-ResourceOrderingManagementEvent
+    - id: TMF652
       name: ResourceOrderingManagement
-      port: 80
       resources:
       - CancelResourceOrderInformationRequiredEvent
       - CancelResourceOrderInformationRequiredEventPayload
@@ -357,15 +355,12 @@ spec:
       - ResourceOrderStateChangeEvent
       - ResourceOrderStateChangeEventPayload
       specification:
-      - url: https://tmforum-rand.github.io/TMForum-ODA-Asset-Build/swaggers/TMF652-ResourceOrder-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF652_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF652
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -377,15 +372,13 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-ResourceFunctionActivationConfiguration
+    - id: TMF664
       name: ResourceFunctionActivationConfiguration
-      port: 80
       resources:
       - resourceFunctionCreateEvent
       - resourceFunctionChangeEvent
@@ -394,23 +387,18 @@ spec:
       - scaleStatechangeEvent
       - migrateStatechangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF664_ResourceFunctionActivationConfiguration/master/TMF664-ResourceFunctionActivationConfiguration-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF664_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF664
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceFunctionActivationConfiguration/call-back
-    - implementation: /{{.Release.Name}}-ResourceActivationAndConfiguration
+    - id: TMF702
       name: ResourceActivationAndConfiguration
-      port: 80
       resources:
       - resourceChangeEvent
       - monitorCreateEvent
       - monitorStatechangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF702_ResourceActivation/master/TMF702-ResourceActivation-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF702_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF702
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceActivationAndConfiguration/call-back

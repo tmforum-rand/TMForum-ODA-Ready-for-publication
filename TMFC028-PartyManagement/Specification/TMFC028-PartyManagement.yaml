@@ -271,10 +271,9 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - apiType: openapi
-      implementation: /{{.Release.Name}}-partymngtapi
+    - id: TMF632
+      apiType: openapi
       name: Party Management API
-      port: 80
       resources:
       - IndividualCreateEvent
       - IndividualAttributeValueChangeEvent
@@ -285,8 +284,7 @@ spec:
       - OrganizationStateChangeEvent
       - OrganizationDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
         version: v4.0.0
-      id: TMF632
       apiSDO: not_defined
     subscribedEvents: []

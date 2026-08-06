@@ -215,9 +215,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - implementation: /{{.Release.Name}}-appointmentManagement
+    - id: TMF646
       name: appointmentManagement
-      port: 80
       resources:
       - appointmentStateChange
       - appointmentCreateEvent
@@ -228,27 +227,25 @@ spec:
       - searchTimeSlotStateChangeEvent
       - searchTimeSlotDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF646_AppointmentManagement/blob/master/TMF646-Appointment-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF646_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF646
       apiSDO: not_defined
     subscribedEvents:
-    - name: PartyRoleManagement
-      port: 80
+    - id: TMF669
+      name: PartyRoleManagement
       resources:
       - partyRoleCreateEvent
       - partyRoleAttributeValueChangeEvent
       - partyRoleStateChangeEvent
       - partyRoleDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF669
       apiSDO: not_defined
-    - name: ProcessFlowManagement
-      port: 80
+    - id: TMF701
+      name: ProcessFlowManagement
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -260,8 +257,7 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined

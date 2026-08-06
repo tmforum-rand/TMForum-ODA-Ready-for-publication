@@ -172,25 +172,20 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceActivationManagement/hub
-      implementation: /{{.Release.Name}}-ResourceActivationManagement
-      name: ResourceActivationManagement
-      port: 80
+    - id: TMF702
+      name: API Resource Activation and Configuration
       resources:
       - ResourceCreateEvent
       - ResourceAttributeValueChangeEvent
       - ResourceStateChangeEvent
       - ResourceDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF702_Resource_Activation_Management/master/TMF702_Resource_Activation_Management_API_v4.0.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF702_v4.0.0.swagger.json
         version: v4.0.0
-      id: TMF702
       apiSDO: not_defined
       apiType: openapi
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceFunctionActivationManagement/hub
-      implementation: /{{.Release.Name}}-ResourceFunctionActivationManagement
-      name: ResourceFunctionActivationManagement
-      port: 80
+    - id: TMF664
+      name: Resource Function Activation and Configuration
       resources:
       - ResourceFunctionCreateEvent
       - ResourceFunctionAttributeValueChangeEvent
@@ -209,23 +204,19 @@ spec:
       - MigrateChangeEvent
       - MigrateDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF664_Resource_Function_Activation_Management/blob/master/TMF664_Resource_Function_Activation_Management_API_v4.0.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF664_v4.0.0.swagger.json
         version: v4.0.0
-      id: TMF664
       apiSDO: not_defined
       apiType: openapi
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-ResourceCatalogManagement
+    - id: TMF634
       name: ResourceCatalogManagement
-      port: 80
       resources:
       - ResourceSpecificationCreateEvent
       - ResourceSpecificationChangeEvent
       - ResourceSpecificationDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF634_Resource_Catalog_Management/blob/master/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
         version: v4.0.0
-      id: TMF634
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalogManagement/call-back
       apiType: openapi

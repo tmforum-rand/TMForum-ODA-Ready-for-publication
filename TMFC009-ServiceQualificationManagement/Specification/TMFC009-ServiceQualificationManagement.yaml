@@ -318,11 +318,9 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/v4/docs
-      hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/hub
-      implementation: /{{.Release.Name}}-ServiceQualification
+    - id: TMF645
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/v4/docs
       name: ServiceQualification
-      port: 80
       resources:
       - checkServiceQualificationCreateEvent
       - checkServiceQualificationStateChangeEvent
@@ -333,9 +331,8 @@ spec:
       - queryServiceQualificationCreateEvent
       - queryServiceQualificationDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF645_ServiceQualification/master/TMF645-ServiceQualification-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF645_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF645
       apiSDO: not_defined
     subscribedEvents: []

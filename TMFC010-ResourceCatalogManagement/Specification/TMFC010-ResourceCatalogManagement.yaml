@@ -361,10 +361,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-ResourceCatalog/hub
-      implementation: /{{.Release.Name}}-ResourceCatalogEvent
+    - id: TMF634
       name: ResourceCatalogManagement
-      port: 80
       resources:
       - resourceCatalogCreateEvent
       - resourceCatalogChangeEvent
@@ -382,15 +380,12 @@ spec:
       - exportJobCreateEvent
       - exportJobStateChangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF634_resourceCatalog/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
         version: v4.0.0
       version: 4
-      id: TMF634
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -402,47 +397,40 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       version: 4
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
     subscribedEvents:
     - id: TMF662
       name: EntityCatalogManagement
-      port: 80
       resources:
       - entitySpecificationCreateEvent
       - entitySpecificationAttributeValueChangeEvent
       - entitySpecificationStateChangeEvent
       - entitySpecificationDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF662_EntityCatalog/master/TMF662-EntityCatalog-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF662_v4.0.0.swagger.json
         version: v4.0.0
       version: 4
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-EntityCatalog/call-back
     - id: TMF669
       name: PartyRoleManagement
-      port: 80
       resources:
       - partyRoleDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.swagger.json
-        version: null
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+        version: v4.0.0
       version: 4
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-EntityCatalog/call-back
     - id: TMF632
       name: Party
-      port: 80
       resources:
       - individualDeleteEvent
       - organizationDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
         version: v4.0.0
       version: 4
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-EntityCatalog/call-back

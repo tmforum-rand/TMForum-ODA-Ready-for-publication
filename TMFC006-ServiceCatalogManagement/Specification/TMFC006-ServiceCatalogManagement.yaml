@@ -301,10 +301,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/hub
-      implementation: /{{.Release.Name}}-ServiceCatalog
+    - id: TMF633
       name: ServiceCatalogManagement
-      port: 80
       resources:
       - serviceSpecificationCreateEvent
       - serviceSpecificationChangeEvent
@@ -320,15 +318,12 @@ spec:
       - serviceCatalogDeleteEvent
       - serviceCatalogBatchEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF633
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/hub
-      implementation: /{{.Release.Name}}-ServiceQualityManagement
+    - id: TMF657
       name: ServiceQualityManagement
-      port: 80
       resources:
       - serviceLevelObjectiveCreateEvent
       - serviceLevelObjectiveChangeEvent
@@ -337,15 +332,12 @@ spec:
       - serviceLevelSpecificationDeleteEvent
       - serviceLevelSpecificationAttributeValueChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/master/TMF657-ServiceQualityManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF657_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF657
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -357,38 +349,31 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-ResourceCatalog
+    - id: TMF634
       name: ResourceCatalogManagement
-      port: 80
       resources:
       - resourceSpecificationCreateEvent
       - resourceSpecificationChangeEvent
       - resourceSpecificationDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF634
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/call-back
-    - implementation: /{{.Release.Name}}-EntityCatalog
+    - id: TMF662
       name: EntityCatalogManagement
-      port: 80
       resources:
       - entitySpecificationCreateEvent
       - entitySpecificationAttributeValueChangeEvent
       - entitySpecificationChangeEvent
       - entitySpecificationDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/master/TMF662-EntityCatalog-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF662_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF662
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EntityCatalog/call-back

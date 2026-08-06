@@ -269,10 +269,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -284,30 +282,24 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Alarm/hub
-      implementation: /{{.Release.Name}}-Alarm
+    - id: TMF642
       name: AlarmManagement
-      port: 80
       resources:
       - alarmStateChange**
       - alarmCreateEvent**
       - alarmClearEvent**
       - alarmAckEvent**
       specification:
-      - url: https://github.com/tmforum-apis/TMF642_AlarmManagement/blob/master/TMF642-Alarm-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF642
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Performance/hub
-      implementation: /{{.Release.Name}}-Performance
+    - id: TMF628
       name: PerformanceManagement
-      port: 80
       resources:
       - measurementCollectionJobCreateEvent
       - measurementCollectionJobExecutionStateChangeEvent
@@ -325,12 +317,9 @@ spec:
       - url: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF628
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PerformanceThreshold/hub
-      implementation: /{{.Release.Name}}-PerformanceThreshold
+    - id: TMF649
       name: PerformanceThresholdManagement
-      port: 80
       resources:
       - thresholdCreateNotification
       - thresholdChangeNotification
@@ -344,52 +333,40 @@ spec:
       - url: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF649-PerformanceThreshold-v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF628
       apiSDO: not_defined
     subscribedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/hub
-      implementation: /{{.Release.Name}}-ResourceCatalog
+    - id: TMF634
       name: ResourceCatalogManagement
-      port: 80
       resources:
       - ResourceSpecificationChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF634
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/hub
-      implementation: /{{.Release.Name}}-ResourceInventory
+    - id: TMF639
       name: ResourceInventoryManagement
-      port: 80
       resources:
       - ResourceCreateEvent
       - ResourceAttributeValueChangeEvent
       - ResourceStateChangeEvent
       - ResourceDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF639_ResourceInventory/blob/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF639
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicAddressManagement/hub
-      implementation: /{{.Release.Name}}-GeographicAddressManagement
-      name: GeographicAddressManagement
-      port: 80
+    - id: TMF673
+      name: API Place - GeographicAddress
       resources:
       - geographicAddressValidationStateChange
       specification:
-      - url: https://github.com/tmforum-apis/TMF673_GeographicAddress/blob/master/TMF673-GeographicAddress-v4.0.1.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF673
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -400,8 +377,7 @@ spec:
       - taskFlowDeleteEvent
       - taskFlowAttributeValueChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined

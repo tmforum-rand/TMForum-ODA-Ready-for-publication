@@ -311,8 +311,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     subscribedEvents:
-    - name: usageManagement
-      port: 80
+    - id: TMF635
+      name: usageManagement
       resources:
       - UsageCreateEvent
       - UsageAttributeValueChangeEvent
@@ -322,7 +322,6 @@ spec:
       - UsageSpecificationAttributeValueChangeEvent
       - UsageSpecificationDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF635_UsageManagement/blob/master/TMF635-UsageManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF635_v4.0.0.swagger.json
         version: v4.0.0
-      id: TMF635
       apiSDO: not_defined

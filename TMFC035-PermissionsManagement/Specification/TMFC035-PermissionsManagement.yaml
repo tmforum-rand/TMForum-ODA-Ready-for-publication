@@ -212,9 +212,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - implementation: /{{.Release.Name}}-userrole&permapi
-      name: userRole
-      port: 80
+    - id: TMF672
+      name: User Roles And Permissions
       resources:
       - permissionCreateEvent
       - permissionAttributeValueChangeEvent
@@ -225,29 +224,25 @@ spec:
       - userRoleStateChangeEvent
       - userRoleDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRoleAndPermission/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF672_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF672
       apiSDO: not_defined
-    - implementation: /{{.Release.Name}}-partyroleapi
+    - id: TMF669
       name: partyRole
-      port: 80
       resources:
       - PartyRoleCreateEvent
       - PartyRoleAttributeValueChangeEvent
       - PartyRoleStateChangeEvent
       - PartyRoleDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRoleManagement/master/TMF672-PartyRoleManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF669
       apiSDO: not_defined
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-PartyManagement
+    - id: TMF632
       name: PartyManagement
-      port: 80
       resources:
       - individualCreateEvent
       - individualAttributeValueChangeEvent
@@ -256,22 +251,19 @@ spec:
       - organizationAttributeValueChangeEvent
       - organizationStateChangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF632
       apiSDO: not_defined
-    - implementation: /{{.Release.Name}}-ProcessFlowManagement
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
       - taskFlowCreateEvent
       - taskFlowStateChangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined

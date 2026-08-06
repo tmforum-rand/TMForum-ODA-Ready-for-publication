@@ -277,28 +277,25 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - implementation: /{{.Release.Name}}-accmngt
+    - id: TMF666
       name: AccountManagement
-      port: 80
       resources:
       - billingAccountAttributeValueChangeEvent
       - billingAccountStateChangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF666_AccountManagement/master/TMF666-AccountManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF666_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF666
       apiSDO: not_defined
     subscribedEvents:
-    - name: PartyRoleManagement
-      port: 80
+    - id: TMF669
+      name: PartyRoleManagement
       resources:
       - partyRoleCreateEvent
       - partyRoleAttributeValueChangeEvent
       - partyRoleStateChangeEvent
       - partyRoleDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
         version: v4.0.0
-      id: TMF669
       apiSDO: not_defined

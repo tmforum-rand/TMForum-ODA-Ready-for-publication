@@ -280,9 +280,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - implementation: /{{.Release.Name}}-agreemngtapi
-      name: userRole
-      port: 80
+    - id: TMF651
+      name: AgreementManagement
       resources:
       - agreementCreateEvent
       - agreementAttributeValueChangeEvent
@@ -290,21 +289,18 @@ spec:
       - agreementSpecificationCreateEvent
       - agreementSpecificationAttributeValueChangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF651_AgreementManagement/master/TMF651-AgreementManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF651_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF651
       apiSDO: not_defined
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-PartyManagement
+    - id: TMF632
       name: PartyManagement
-      port: 80
       resources:
       - individualDeleteEvent
       - organizationDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF632
       apiSDO: not_defined

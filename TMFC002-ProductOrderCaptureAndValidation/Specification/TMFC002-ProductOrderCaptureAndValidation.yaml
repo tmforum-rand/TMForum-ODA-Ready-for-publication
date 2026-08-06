@@ -439,7 +439,7 @@ spec:
       starting/end date of tariffs and discounts) and potential commercial rules control
       (eg receipt of the contract document signed by the customer).
     publicationDate: 2026-05-21
-    status: production
+    status: preview
     functionalBlock: CoreCommerce
     owners:
     - email: Redacted
@@ -557,6 +557,9 @@ spec:
       - quoteAttributeValueChangeEvent
       - quoteDeleteEvent
       - quoteInformationRequiredEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF648_v4.0.0.swagger.json
+        version: v4.0.0
       apiSDO: not_defined
     - id: TMF663
       apiType: openapi
@@ -565,6 +568,9 @@ spec:
       - shoppingCartCreateEvent
       - shoppingCartAttributeValueChangeEvent
       - shoppingCartDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF663_v4.0.0.swagger.json
+        version: v4.0.0
       apiSDO: not_defined
     - id: TMF701
       apiType: openapi
@@ -579,23 +585,35 @@ spec:
       - taskFlowDeleteEvent
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiSDO: not_defined
     subscribedEvents:
     - id: TMF679
       apiType: openapi
       resources:
       - productOfferingQualificationStateChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF679_v4.0.0.swagger.json
+        version: v4.0.0
       apiSDO: not_defined
     - id: TMF673
       apiType: openapi
       resources:
       - geographicAddressValidationStateChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF673_v4.0.0.swagger.json
+        version: v4.0.0
       apiSDO: not_defined
     - id: TMF676
       apiType: openapi
       resources:
       - paymentCreateEvent
       - paymentStateChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF676_v4.0.0.swagger.json
+        version: v4.0.0
       apiSDO: not_defined
     - id: TMF716
       apiType: openapi
@@ -608,4 +626,7 @@ spec:
       - cancelResourceReservationCreateEvent
       - cancelResourceReservationStateChangeEvent
       - cancelResourceReservationInformationRequiredEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF716_v4.0.0.swagger.json
+        version: v4.0.0
       apiSDO: not_defined

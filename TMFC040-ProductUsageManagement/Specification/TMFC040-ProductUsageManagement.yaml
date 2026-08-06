@@ -304,57 +304,49 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/UsageConsumption/hub
+    - id: TMF677
       name: UsageConsumption
-      port: 80
       resources:
       - queryUsageConsumptionCreateEvent
       - queryUsageConsumptionDeleteEvent
       - queryUsageConsumptionStateChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF677_UsageConsumption/blob/master/TMF677-UsageConsumption-v4.0.1.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF677_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF677
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/usageManagement/hub
+    - id: TMF635
       name: UsageManagement
-      port: 80
       resources:
       - usageCreateEvent
       - usageAttributeValueChangeEvent
       - usageDeleteEvent
       - usageStateChangeEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF635_UsageManagement/blob/master/TMF635-UsageManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF635_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF635
       apiSDO: not_defined
     subscribedEvents:
-    - name: Party
-      port: 80
+    - id: TMF632
+      name: Party
       resources:
       - individualDeleteEvent
       - organizationDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF632
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/party/call-back
-    - name: PartyRoleManagement
-      port: 80
+    - id: TMF669
+      name: PartyRoleManagement
       resources:
       - partyRoleCreateEvent
       - partyRoleAttributeValueChangeEvent
       - partyRoleStateChangeEvent
       - partyRoleDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF669
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/partyrole/call-back

@@ -109,11 +109,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-AnomalyManagementEvent/hub
-      id: TMF651
-      implementation: /{{.Release.Name}}-AnomalyManagementEvent
+    - id: TMF751
       name: AnomalyManagementEvent
-      port: 8080
       resources:
       - anomalyCreateEvent
       - anomalyDeleteEvent
@@ -129,9 +126,8 @@ spec:
       apiSDO: not_defined
       apiType: openapi
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-AIManagement
-      name: AIManagement
-      port: 80
+    - id: TMF915
+      name: Ai Management
       resources:
       - aiContractSpecificationCreateEvent
       - aiContractSpecificationDeleteEvent
@@ -148,23 +144,18 @@ spec:
       - aiContractAttributeValueChangeEvent
       - aiContractStateChangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF915_AIManagementSuite/master/TMF915-AIManagement-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF915_v4.0.0.swagger.json
         version: v4.0.0
-      id: TMF915
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AIManagement/call-back
       apiType: openapi
-    - implementation: /{{.Release.Name}}-AlarmManagement
+    - id: TMF642
       name: AlarmManagement
-      port: 80
       resources:
       - alarmCreateEvent
       - alarmStateChangeEvent
       - alarmDeleteEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF642_AlarmManagement/master/TMF642-Alarm-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
         version: v4.0.0
-      id: TMF642
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/AlarmManagement/call-back
       apiType: openapi

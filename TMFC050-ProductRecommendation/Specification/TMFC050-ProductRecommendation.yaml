@@ -448,23 +448,18 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/queryProductRecommendation/hub
-      implementation: /{{.Release.Name}}-QueryProductRecommendation
+    - id: TMF680
       name: queryProductRecommendation
-      port: 80
       resources:
       - queryProductRecommendationCreateEvent
       - queryProductRecommendationStateChangeEvent
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF680_Recommendation/4.0.0/swagger/TMF680_Recommendation_Management_API_v4.0.0_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF680_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF680
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagement
+    - id: TMF701
       name: processFlowManagement
-      port: 80
       resources:
       - processFlowCreateEvent
       - processFlowStateChangeEvent
@@ -476,15 +471,13 @@ spec:
       - taskFlowAttributeValueChangeEvent
       - taskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.0.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
     subscribedEvents:
-    - implementation: /{{.Release.Name}}-ProductCatalogManagement
+    - id: TMF620
       name: ProductCatalogManagement
-      port: 80
       resources:
       - productSpecificationCreate
       - productSpecificationDeleteEvent
@@ -499,9 +492,7 @@ spec:
       - productOfferingPriceStateChangeEvent
       - productOfferingPriceDeleteEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF620
       apiSDO: not_defined
-      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back

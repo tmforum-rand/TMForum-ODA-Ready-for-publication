@@ -302,10 +302,8 @@ spec:
     dependentAPIs: []
   eventNotification:
     publishedEvents:
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentManagement/hub
-      implementation: /{{.Release.Name}}-PaymentManagement
+    - id: TMF676
       name: PaymentManagement
-      port: 80
       resources:
       - PaymentAttributeValueChangeEvent
       - PaymentCreateEvent
@@ -315,30 +313,24 @@ spec:
       - RefundCreateEvent
       - RefundStatusChangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF676_PaymentManagement/master/TMF676-Payment-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF676_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF676
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PaymentMethods/hub
-      implementation: /{{.Release.Name}}-PaymentMethods
-      name: PaymentMethods
-      port: 80
+    - id: TMF670
+      name: Payment Method
       resources:
       - PaymentMethodAttributeValueChangeEvent
       - PaymentMethodCreateEvent
       - PaymentMethodDeleteEvent
       - PaymentMethodStatusChangeEvent
       specification:
-      - url: https://raw.githubusercontent.com/tmforum-apis/TMF670_PaymentMethods/master/TMF670-PaymentMethod-v4.0.0.swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF670_v4.0.0.swagger.json
         version: v4.0.0
       apiType: openapi
-      id: TMF670
       apiSDO: not_defined
-    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
-      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+    - id: TMF701
       name: ProcessFlowManagement
-      port: 80
       resources:
       - ProcessFlowCreateEvent
       - ProcessFlowStateChangeEvent
@@ -350,9 +342,8 @@ spec:
       - TaskFlowAttributeValueChangeEvent
       - TaskFlowInformationRequiredEvent
       specification:
-      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
-        version: v4.0.0
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
       apiType: openapi
-      id: TMF701
       apiSDO: not_defined
     subscribedEvents: []
