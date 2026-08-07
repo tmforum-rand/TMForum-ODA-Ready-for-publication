@@ -577,19 +577,6 @@ spec:
       apiType: openapi
       apiSDO: not_defined
     subscribedEvents:
-    - id: TMF633
-      name: ServiceCatalogManagement
-      resources:
-      - serviceSpecificationCreateEvent
-      - serviceSpecificationDeleteEvent
-      - resourceSpecificationCreateEvent
-      - resourceSpecificationChangeEvent
-      - resourceSpecificationDeleteEvent
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
-        version: v4.0.0
-      apiType: openapi
-      apiSDO: not_defined
     - id: TMF669
       name: PartyRoleManagement
       resources:
@@ -626,6 +613,7 @@ spec:
       - resourceSpecificationDeleteEvent
       - resourceSpecificationStatusChangeEvent
       - resourceSpecificationAttributeValueChangeEvent
+      - resourceSpecificationChangeEvent
       specification:
       - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF634_v4.1.0.swagger.json
         version: v4.0.0

@@ -271,8 +271,6 @@ spec:
     - 23|Fallout_Dashboard_System_Log-in_Accessing|v23.0
     SIDs:
     - Resource_Domain|Resource_Order_ABE|v25.0
-    - Resource_Domain|Resource_Specification_ABE|v25.0
-    - Resource_Domain|Resource_Configuration_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

@@ -371,8 +371,6 @@ spec:
     - 933|Price/Cost_Optimization_|v25.0
     SIDs:
     - Product_Domain|Product_Configuration_ABE|ProductConfiguration_BE|v25.0
-    - Product_Domain|Product_Specification_ABE|v25.0
-    - Product_Domain|Product_and_Offering_Instance_ABE|Product_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics

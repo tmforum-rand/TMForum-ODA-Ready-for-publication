@@ -447,7 +447,6 @@ spec:
     - 23|Fallout_Dashboard_System_Log-in_Accessing|v26.0
     SIDs:
     - Service_Domain|Service_Order_ABE|v25.0
-    - Service_Domain|Service_ABE|v25.0
   managementFunction:
     exposedAPIs:
     - name: metrics
