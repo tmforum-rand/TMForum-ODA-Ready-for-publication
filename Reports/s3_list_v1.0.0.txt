@@ -1,19 +1,19 @@
-2026-08-13 08:02:34   16.6 KiB production/v1.0.0/TMFC001-ProductCatalogManagement.yaml
-2026-08-13 08:02:39  357.4 KiB production/v1.0.0/TMFC001-ProductCatalogManagement_Conformance.pdf
-2026-08-13 08:02:51  960.9 KiB production/v1.0.0/TMFC001-ProductCatalogManagement_componentctk.zip
-2026-08-13 08:02:52   10.7 KiB production/v1.0.0/TMFC001-ProductCatalogManagement_componentri.zip
-2026-08-13 08:02:38  537.4 KiB production/v1.0.0/TMFC001_Product_Catalog_Management_v2.1.2.pdf
-2026-08-13 08:02:42   16.9 KiB production/v1.0.0/TMFC005-ProductInventory.yaml
-2026-08-13 08:02:35  717 Bytes production/v1.0.0/TMFC005-ProductInventory_bdd.zip
-2026-08-13 08:02:33  960.9 KiB production/v1.0.0/TMFC005-ProductInventory_componentctk.zip
-2026-08-13 08:02:50    8.4 KiB production/v1.0.0/TMFC005-ProductInventory_componentri.zip
-2026-08-13 08:02:43    3.9 KiB production/v1.0.0/TMFC005-ProductInventory_v1.1.4_Conformance.md
-2026-08-13 08:02:37  409.6 KiB production/v1.0.0/TMFC005_Product_Inventory_v1.0.3.pdf
-2026-08-13 08:02:41   11.5 KiB production/v1.0.0/TMFC010-ResourceCatalogManagement.yaml
-2026-08-13 08:02:30  960.9 KiB production/v1.0.0/TMFC010-ResourceCatalogManagement_componentctk.zip
-2026-08-13 08:02:41    7.4 KiB production/v1.0.0/TMFC010-ResourceCatalogManagement_componentri.zip
-2026-08-13 08:02:36  129.9 KiB production/v1.0.0/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
-2026-08-13 08:02:31  478.9 KiB production/v1.0.0/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
+2026-08-13 08:08:54   16.6 KiB production/v1.0.0/TMFC001-ProductCatalogManagement.yaml
+2026-08-13 08:09:00  357.4 KiB production/v1.0.0/TMFC001-ProductCatalogManagement_Conformance.pdf
+2026-08-13 08:09:07  960.9 KiB production/v1.0.0/TMFC001-ProductCatalogManagement_componentctk.zip
+2026-08-13 08:09:08   10.7 KiB production/v1.0.0/TMFC001-ProductCatalogManagement_componentri.zip
+2026-08-13 08:08:58  537.4 KiB production/v1.0.0/TMFC001_Product_Catalog_Management_v2.1.2.pdf
+2026-08-13 08:09:04   16.9 KiB production/v1.0.0/TMFC005-ProductInventory.yaml
+2026-08-13 08:08:55  717 Bytes production/v1.0.0/TMFC005-ProductInventory_bdd.zip
+2026-08-13 08:08:52  960.9 KiB production/v1.0.0/TMFC005-ProductInventory_componentctk.zip
+2026-08-13 08:09:06    8.4 KiB production/v1.0.0/TMFC005-ProductInventory_componentri.zip
+2026-08-13 08:09:05    3.9 KiB production/v1.0.0/TMFC005-ProductInventory_v1.1.4_Conformance.md
+2026-08-13 08:08:57  409.6 KiB production/v1.0.0/TMFC005_Product_Inventory_v1.0.3.pdf
+2026-08-13 08:09:02   11.5 KiB production/v1.0.0/TMFC010-ResourceCatalogManagement.yaml
+2026-08-13 08:08:50  960.9 KiB production/v1.0.0/TMFC010-ResourceCatalogManagement_componentctk.zip
+2026-08-13 08:09:03    7.4 KiB production/v1.0.0/TMFC010-ResourceCatalogManagement_componentri.zip
+2026-08-13 08:08:56  129.9 KiB production/v1.0.0/TMFC010-ResourceCatalogManagement_v4.1.0_Conformance.pdf
+2026-08-13 08:08:51  478.9 KiB production/v1.0.0/TMFC010_Resource_Catalog_Management_v1.3.1.pdf
 
 Total Objects: 16
    Total Size: 4.8 MiB
