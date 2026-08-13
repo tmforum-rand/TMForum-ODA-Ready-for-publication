@@ -1,0 +1,267 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF669
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - partyRole:
+        - GET
+        - GET /id
+    - id: TMF673
+      apiType: openapi
+      apiSDO: tmForum
+      name: geographic-address-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicAddress:
+        - GET
+        - GET /id
+    - id: TMF674
+      apiType: openapi
+      apiSDO: tmForum
+      name: geographic-site-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicSite:
+        - GET
+        - GET /id
+    - id: TMF675
+      apiType: openapi
+      apiSDO: tmForum
+      name: geographic-location-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicLocation:
+        - GET
+        - GET /id
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+    - id: TMF688
+      apiType: openapi
+      apiSDO: tmForum
+      name: event-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - event:
+        - GET
+        - GET /id
+    exposedAPIs:
+    - id: TMF632
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - individual:
+        - GET
+        - GET/id
+        - POST
+        - PATCH/id
+        - DELETE/id
+      - organization:
+        - GET
+        - GET/id
+        - POST
+        - PATCH/id
+        - DELETE/id
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - GET
+        - GET/id
+        - POST
+        - DELETE/id
+      - taskFlow:
+        - GET
+        - GET/id
+        - PATCH/id
+  componentMetadata:
+    id: TMFC028
+    name: PartyManagement
+    version: 2.1.0
+    description: 'The Party Management component is responsible for the capture, validation
+      and management of Parties. A Party may be an individual or organization that
+      has a relationship with an enterprise. In this context it is responsible for
+      the end-to-end lifecycle of: Individual, Organization and its related sub-entities,
+      Contact Medium, Currency and tax exemption certificates, Identification, and
+      Community.'
+    publicationDate: 2024-10-14
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.3.16|Customer_Inventory_Management|v23.0
+    - 1.3.6|Customer_Information_Management|v23.0
+    - 1.3.4|Customer_Relationship_Management|v23.0
+    - 1.3.4.2|Establish_Customer_Relationship|v23.0
+    - 1.3.4.3|Re-establish_Customer_Relationship|v23.0
+    - 1.3.4.4|Terminate_Customer_Relationship|v23.0
+    - 1.6.3|Party_Relationship_Development_&_Retirement|v23.0
+    - 1.6.3.1|Party_Relationship_Management|v23.0
+    - 1.6.3.1.5|Collect_Party_data|v23.0
+    - 1.6.21|Party_Inventory_Management|v23.0
+    - 1.7.7|Human_Resources_Management|v23.0
+    - 1.7.7.2|Develop_the_Workforce|v23.0
+    functionalFrameworkFunctions:
+    - 92|Customer_Relation_Map_Exposure|v23.0
+    - 369|Customer_Data_Fencing|v23.0
+    - 225|Customer_Details_Management|v23.0
+    - 400|Customer_Information_Management|v23.0
+    - 282|Customer_Information_Presentation|v23.0
+    - 226|Customer_Preferences_Administration|v23.0
+    - 364|Customer/Prospect_Data_Acquisition|v23.0
+    - 233|Customer_Actions_Profile_Updating|v23.0
+    - 195|Customers_Hierarchy_and_Group_Management|v23.0
+    - 122|Customer_Information_Searching|v23.0
+    - 91|Customer_Profile_Updating|v23.0
+    - 121|Registration|v23.0
+    - 124|Guided_Customer_Information_Capturing|v23.0
+    - 1032|Partner_Group_and_Hierarchy_Definition|v23.0
+    - 1033|Partner_Group_and_Hierarchy_Assigning|v23.0
+    - 1035|Partner_Preferences_Management|v23.0
+    - 1034|Partner_Profile_Management|v23.0
+    - 1036|Partner_Profile_Enquiry_and_Filtering|v23.0
+    - 1037|Partner_Profile_Storage|v23.0
+    - 746|Partner_Workflow_Management|v23.0
+    SIDs:
+    - Shared_Domain|Party_ABE|Party_BE|v25.0
+    - Shared_Domain|Party_ABE|Contact_Medium_ABE|v25.0
+    - Shared_Domain|Party_ABE|TaxExemptionCertificate_BE|v25.0
+    - Shared_Domain|Party_ABE|Party_Identification_ABE|v25.0
+    - Shared_Domain|Party_ABE|Party_Community_ABE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      apiSDO: not_defined
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - apiType: openapi
+      implementation: /{{.Release.Name}}-partymngtapi
+      name: Party Management API
+      port: 80
+      resources:
+      - IndividualCreateEvent
+      - IndividualAttributeValueChangeEvent
+      - IndividualStateChangeEvent
+      - IndividualDeleteEvent
+      - OrganizationCreateEvent
+      - OrganizationAttributeValueChangeEvent
+      - OrganizationStateChangeEvent
+      - OrganizationDeleteEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+        version: v4.0.0
+      id: TMF632
+      apiSDO: not_defined
+    subscribedEvents: []

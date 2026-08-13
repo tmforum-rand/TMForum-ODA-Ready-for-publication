@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-serviceinventoryapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: {{.Release.Name}}-serviceinventoryapi
+  template:
+    metadata:
+      labels:
+        impl: {{.Release.Name}}-serviceinventoryapi
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        version:  serviceinventoryapi-0.2
+    spec:
+      containers:
+      - name: {{.Release.Name}}-serviceinventoryapi         
+        image: akumartmf/serviceinventoryapi:0.2
+        env:
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}           
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: MONGODB_HOST
+          value: {{.Release.Name}}-mongodb
+        - name: MONGODB_PORT
+          value: "{{.Values.mongodb.port}}"
+        - name: MONGODB_DATABASE
+          value: {{.Values.mongodb.database}}
+        - name: NODE_ENV
+          value: production
+        imagePullPolicy: Always  
+        ports:
+        - name: {{.Release.Name}}-servinvapi
+          containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceInventory/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          failureThreshold: 30

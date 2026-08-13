@@ -1,0 +1,51 @@
+{
+  "name": "component-ctk",
+  "version": "0.0.1",
+  "description": "ODA Component Compliance Test Kit CTK",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "cucumber-js --format html:results.html --format json:results.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmforum-rand/oda-component-definitions.git"
+  },
+  "keywords": [
+    "ODA",
+    "Component",
+    "CTK"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/tmforum-rand/oda-component-definitions/issues"
+  },
+  "homepage": "https://github.com/tmforum-rand/oda-component-definitions#readme",
+  "dependencies": {
+    "@cucumber/cucumber": "^10.8.0",
+    "@kubernetes/client-node": "^0.15.0",
+    "allure-mocha": "^2.0.0-beta.26",
+    "axios": "^1.7.9",
+    "chai": "^4.2.0",
+    "chai-files": "^1.4.0",
+    "chai-http": "^4.3.0",
+    "colors": "^1.4.0",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.21",
+    "mocha": "^8.4.0",
+    "mochawesome": "^7.1.3",
+    "mustache": "^4.2.0",
+    "path": "^0.12.7",
+    "stream-buffers": "^3.0.2",
+    "yaml": "^1.10.0"
+  },
+  "devDependencies": {
+    "cucumber-html-reporter": "^7.1.1",
+    "eslint": "^7.18.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1"
+  }
+}
