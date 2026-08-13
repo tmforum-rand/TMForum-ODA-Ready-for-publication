@@ -1,0 +1,403 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF632
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - individual:
+        - GET
+        - GET/id
+      - organization:
+        - GET
+        - GET/id
+    - id: TMF669
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-role-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - partyRole:
+        - GET
+        - GET/id
+    - id: TMF620
+      apiType: openapi
+      apiSDO: tmForum
+      name: product-catalog-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
+      resources:
+      - productOffering:
+        - GET
+        - GET/id
+      - productOfferingPrice:
+        - GET
+        - GET/id
+    - id: TMF651
+      apiType: openapi
+      apiSDO: tmForum
+      name: agreement-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - agreement:
+        - GET
+        - GET/id
+      - agreementSpecification:
+        - GET
+        - GET/id
+    - id: TMF648
+      apiType: openapi
+      apiSDO: tmForum
+      name: quote-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF648_Quote/4.0.0/swagger/TMF648_Quote_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - quote:
+        - GET
+        - GET /id
+    - id: TMF622
+      apiType: openapi
+      apiSDO: tmForum
+      name: product-ordering-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - productOrder:
+        - GET
+        - GET /id
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+    exposedAPIs:
+    - id: TMF699
+      apiType: openapi
+      apiSDO: tmForum
+      name: sales-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF699_Sales/4.0.0/swagger/TMF699_Sales_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - salesLead:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - salesOpportunity:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+  componentMetadata:
+    id: TMFC036
+    name: LeadAndOpportunityManagement
+    version: 1.2.0
+    description: Lead and Opportunity Management component provides the functionality
+      for lead and opportunity capture, qualification, reporting, and support during
+      the pre-sales stage.
+    publicationDate: 2023-11-18
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.1.11|Contact/Lead/Prospect_Management|v23.0
+    - 1.1.11.1|Manage_Sales_Contact|v23.0
+    - 1.1.11.2|Manage_Sales_Lead|v23.0
+    - 1.1.11.3|Manage_Sales_Prospect|v23.0
+    - 1.1.9|Selling|v23.0
+    - 1.1.9.1|Qualify_Selling_Opportunity|v23.0
+    - 1.1.9.3|Acquire_Sales_Prospect_Data|v23.0
+    - 1.1.7|Market_Sales_Support_&_Readiness|v23.0
+    - 1.1.7.2|Support_Selling|v23.0
+    - 1.1.7.5|Manage_Sales_Accounts|v23.0
+    functionalFrameworkFunctions:
+    - 394|Sales_Aids_Support|v23.0
+    - 372|Sales_Opportunity_Management|v23.0
+    - 375|Funnel_Assigning|v23.0
+    - 374|Funnel_Creation|v23.0
+    - 376|Funnel_Leads_Tracking|v23.0
+    - 726|Sales_Lead_Capturing|v23.0
+    SIDs:
+    - Market_&_Sales_Domain|Sales_Lead_and_Opportunity_ABE|Sales_Lead_ABE|v25.0
+    - Market_&_Sales_Domain|Sales_Lead_and_Opportunity_ABE|Sales_Opportunity_ABE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      apiSDO: not_defined
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/SalesManagement/hub
+      implementation: /{{.Release.Name}}-SalesManagement
+      name: SalesManagement
+      port: 80
+      resources:
+      - SalesLeadCreateEvent
+      - SalesLeadAttributeValueChangeEvent
+      - SalesLeadStateChangeEvent
+      - SalesLeadDeleteEvent
+      - SalesOpportunityCreateEvent
+      - SalesOpportunityAttributeValueChangeEvent
+      - SalesOpportunityStateChangeEvent
+      - SalesOpportunityDeleteEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF699_SalesManagement/master/TMF699-SalesManagement-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF699
+      apiSDO: not_defined
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - processFlowSpecificationAttributeValueChangeEvent
+      - processFlowSpecificationCreateEvent
+      - processFlowSpecificationDeleteEvent
+      - processFlowSpecificationStateChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      - taskFlowSpecificationAttributeValueChangeEvent
+      - taskFlowSpecificationCreateEvent
+      - taskFlowSpecificationDeleteEvent
+      - taskFlowSpecificationStateChangeEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF701
+      apiSDO: not_defined
+    subscribedEvents:
+    - implementation: /{{.Release.Name}}-PartyManagement
+      name: PartyManagement
+      port: 80
+      resources:
+      - IndividualCreateEvent
+      - IndividualAttributeValueChangeEvent
+      - IndividualStateChangeEvent
+      - IndividualDeleteEvent
+      - OrganizationCreateEvent
+      - OrganizationAttributeValueChangeEvent
+      - OrganizationStateChangeEvent
+      - OrganizationDeleteEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF632_PartyManagement/blob/master/TMF632-Party-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF632
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyManagement/call-back
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-ProductCatalogManagement
+      name: ProductCatalogManagement
+      port: 80
+      resources:
+      - ProductOfferingCreateEvent
+      - ProductOfferingAttributeValueChangeEvent
+      - ProductOfferingStateChangeEvent
+      - ProductOfferingDeleteEvent
+      - ProductSpecificationCreateEvent
+      - ProductSpecificationAttributeValueChangeEvent
+      - ProductSpecificationStateChangeEvent
+      - ProductSpecificationDeleteEvent
+      - ProductOfferingPriceCreateEvent
+      - ProductOfferingPriceAttributeValueChangeEvent
+      - ProductOfferingPriceStateChangeEvent
+      - ProductOfferingPriceDeleteEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF620_ProductCatalog/blob/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF620
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-ProductOrder
+      name: ProductOrder
+      port: 80
+      resources:
+      - ProductOrderCreateEvent
+      - ProductOrderAttributeValueChangeEvent
+      - ProductOrderDeleteEvent
+      - ProductOrderStateChangeEvent
+      - ProductOrderInformationRequiredEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF622_ProductOrder/blob/ProductOrder/TMF622-ProductOrder-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF622
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProductCatalogManagement/call-back
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-Agreement
+      name: AgreementManagement
+      port: 80
+      resources:
+      - AgreementCreateEvent
+      - AgreementAttributeValueChangeEvent
+      - AgreementStateChangeEvent
+      - AgreementDeleteEvent
+      - AgreementSpecificationCreateEvent
+      - AgreementSpecificationAttributeValueChangeEvent
+      - AgreementSpecificationStateChangeEvent
+      - AgreementSpecificationDeleteEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF651_AgreementManagement/blob/master/TMF651-Agreement-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF651
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Agreement/call-back
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-QuoteManagement
+      name: QuoteManagement
+      port: 80
+      resources:
+      - QuoteCreateEvent
+      - QuoteStateChangeEvent
+      - QuoteDeleteEvent
+      - QuoteInformationRequiredEvent
+      - QuoteAttributeValueChangeEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF648
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/QuoteManagement/call-back
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-PartyRoleManagement
+      name: PartyRoleManagement
+      port: 80
+      resources:
+      - PartyRoleCreateEvent
+      - PartyRoleAttributeValueChangeEvent
+      - PartyRoleStateChangeEvent
+      - PartyRoleDeleteEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF701
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/PartyRoleManagement/call-back
+      apiSDO: not_defined

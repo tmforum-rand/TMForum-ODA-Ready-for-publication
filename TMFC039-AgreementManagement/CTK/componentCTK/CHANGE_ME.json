@@ -1,0 +1,404 @@
+{
+    "releaseName": "<RELEASE_NAME>",
+    "component_to_run": "<COMPONENT_UNDER_TEST>",
+    "component_namespace": "components",
+    "standardComponentPath": "",
+    "ctk_name_mapping": {},
+    "runExposedOptional": false,
+    "runDependentOptional": false,
+    "runSecurityOptional": false,
+    "ctkVersion": "v1.2.0",
+    "apiVersionUnderTest": "",
+    "apiVersionOverrides": {},
+    "ctkLogging": {
+        "ctkLogs": "summary",
+        "ctkLogTailLines": 40
+    },
+    "download_sslVerify": true,
+    "standardComponentDownload": {
+        "apiBaseUrl": "https://api.github.com",
+        "repoOwner": "tmforum-rand",
+        "repoName": "TMForum-ODA-Ready-for-publication",
+        "repoPath": "Specification",
+        "gitUrl": "https://raw.githubusercontent.com/tmforum-rand/TMForum-ODA-Ready-for-publication/refs/heads",
+        "gitBranch": "v1.0.0"
+    },
+    "ctkconfig": {
+        "companyName": "<COMPANY_NAME>",
+        "productName": "<PRODUCT_NAME>",
+        "productUrl": "<PRODUCT_WEBPAGE_URL>",
+        "productVersion": "<PRODUCT_VERSION>",
+        "componentUrl": "https://www.tmforum.org/oda/directory/components-map",
+        "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        },
+        "payloads": {
+            "TMF669_v4": {
+                "PartyRole": {
+                    "POST": {
+                        "payload": {
+                            "name": "qqymucymyd"
+                        }
+                    }
+                }
+            }
+        },
+        "rejectUnauthorized": false
+    },
+    "dependentStubs": {
+        "tmfc002": {
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            },
+            "productInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_INVENTORY>"
+            }
+        },
+        "tmfc005": {
+            "productCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_PRODUCT_CATALOG>"
+            }
+        },
+        "tmfc007": {
+            "serviceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_CATALOG>"
+            },
+            "serviceInventory": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_INVENTORY>"
+            }
+        },
+        "tmfc008": {
+            "serviceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_SERVICE_CATALOG>"
+            }
+        },
+        "tmfc012": {
+            "resourceCatalog": {
+                "headers": {},
+                "releaseName": "<HELM_RELEASE_RESOURCE_CATALOG>"
+            }
+        }
+    },
+    "bddPayloads": {
+        "tmfc002": {
+            "product-target-0001": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                {
+                    "id": "110",
+                    "action": "add",
+                    "product": {
+                        "isBundle": false,
+                        "productSpecification": {
+                            "id": "__VALID_ID__",
+                            "href": "__VALID_HREF__",
+                            "name": "Mobile Telephony",
+                            "version": "1",
+                            "@type": "ProductSpecification"
+                        }
+                    },
+                    "@type": "ProductOrderItem"
+                }
+                ]
+            },
+            "product-target-0002": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                {
+                    "id": "110",
+                    "action": "add",
+                    "product": {
+                        "isBundle": false,
+                        "productSpecification": {
+                            "id": "invalid-id",
+                            "href": "invalid-href",
+                            "name": "Mobile Telephony",
+                            "version": "1",
+                            "@type": "ProductSpecification"
+                        }
+                    },
+                    "@type": "ProductOrderItem"
+                }
+                ]
+            },
+            "product-target-0003": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                    {
+                    "id": "110",
+                    "action": "modify",
+                    "product": {
+                        "id": "__VALID_ID__",
+                        "href": "__VALID_HREF__",
+                        "status": "active"
+                    },
+                    "@type": "ProductOrderItem"
+                    }
+                ]
+            },
+            "product-target-0004": {
+                "category": "B2Cproductorder",
+                "description": "Product Order illustration sample",
+                "externalId": "PO-456",
+                "priority": "1",
+                "requestedCompletionDate": "2019-05-02T08:13:59.506Z",
+                "requestedStartDate": "2019-05-03T08:13:59.506Z",
+                "productOrderItem": [
+                    {
+                    "id": "110",
+                    "action": "modify",
+                    "product": {
+                        "id": "invalid-id",
+                        "href": "invalid-href",
+                        "status": "active"
+                    },
+                    "@type": "ProductOrderItem"
+                    }
+                ]
+            },
+            "product-catalog-0001":{
+                "name": "Mobile Telephony",
+                "version": "1",
+                "lastUpdate": "2020-09-23T16:42:23.000Z",
+                "lifecycleStatus": "Active",
+                "@type": "ProductSpecification"
+            },
+            "product-inventory-0001":{
+                "isBundle": false,
+                "status": "created",
+                "productCharacteristic": [
+                {
+                    "name": "TEL_MSISDN",
+                    "valueType": "string",
+                    "value": "415 279 7439"
+                }
+                ],
+                "productSpecification": {
+                    "id": "__VALID_ID__",
+                    "href": "__VALID_HREF__",
+                    "name": "Mobile Telephony",
+                    "version": "1",
+                    "@type": "ProductSpecification"
+                }
+            }
+        },
+        "tmfc005": {
+            "product-target-0001": {
+                "status": "created",
+                "productSpecification": {
+                    "id": "__VALID_ID__",  
+                    "href": "__VALID_HREF__",
+                    "name": "Cisco Firepower NGFW"
+                }
+            },
+            "product-target-0002": {
+                "status": "created",
+                "productSpecification": {
+                    "id": "non-existent-id",  
+                    "href": "http://example.com/non-existent",
+                    "name": "Cisco Firepower NGFW"
+                }
+            },
+            "product-catalog-0001":{
+                "name": "Cisco Firepower NGFW"
+            }
+        },
+        "tmfc007": {
+            "service-target-0001": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                {
+                    "id": "1",
+                    "action": "add",
+                    "service": {
+                        "state": "active",
+                        "serviceType": "CFS",
+                        "serviceCharacteristic": [
+                        {
+                          "name": "vCPE_IP",
+                          "valueType": "String",
+                          "value": "193.218.236.21"
+                        }
+                        ],
+                        "serviceSpecification": {
+                            "id": "__VALID_ID__", 
+                            "href": "__VALID_HREF__",
+                            "name": "vCPE",
+                            "version": "1"
+                        }
+                    }
+                }
+                ]
+            },
+            "service-target-0002": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                {
+                    "id": "1",
+                    "action": "add",
+                    "service": {
+                        "state": "active",
+                        "serviceType": "CFS",
+                        "serviceCharacteristic": [
+                        {
+                          "name": "vCPE_IP",
+                          "valueType": "String",
+                          "value": "193.218.236.21"
+                        }
+                        ],
+                        "serviceSpecification": {
+                            "id": "non-existent-id",  
+                            "href": "http://example.com/non-existent",
+                            "name": "vCPE",
+                            "version": "1"
+                        }
+                    }
+                }
+                ]
+            },
+            "service-target-0003": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                    {
+                        "id": "1",
+                        "action": "modify",
+                        "service": {
+                            "state": "active",
+                            "serviceType": "CFS",
+                            "id": "__VALID_ID__", 
+                            "href": "__VALID_HREF__"
+                        }
+                    }
+                ]
+            },
+            "service-target-0004": {
+                "externalId": "OrangeBSS748",
+                "priority": "1",
+                "description": "Service order description",
+                "category": "CloudServiceOrdering",
+                "requestedStartDate": "2018-01-15T09:37:40.508Z",
+                "requestedCompletionDate": "2018-01-15T09:37:40.508Z",
+                "serviceOrderItem": [
+                    {
+                        "id": "1",
+                        "action": "modify",
+                        "service": {
+                            "state": "active",
+                            "serviceType": "CFS",
+                            "id": "non-existent-id",  
+                            "href": "http://example.com/non-existent"
+                        }
+                    }
+                ]
+            },
+            "service-catalog-0001":{
+                "id": "__VALID_ID__", 
+                "href": "__VALID_HREF__",
+                "name": "vCPE",
+                "version": "1"
+            },
+            "service-inventory-0001":{
+                "state": "active",
+                "serviceType": "CFS",
+                "serviceCharacteristic": [
+                {
+                    "name": "vCPE_IP",
+                    "valueType": "String",
+                    "value": "193.218.236.21"
+                }
+                ],
+                "serviceSpecification": {
+                    "id": "__VALID_ID__", 
+                    "href": "__VALID_HREF__",
+                    "name": "vCPE",
+                    "version": "1"
+                }
+            }
+        },
+        "tmfc008": {
+            "service-target-0001": {
+                "state": "active",
+                "serviceSpecification": {
+                    "id": "__VALID_ID__", 
+                    "href": "__VALID_HREF__", 
+                    "@referredType": "ServiceSpecification"
+                }
+            },
+            "service-target-0002": {
+                "state": "active",
+                "serviceSpecification": {
+                    "id": "non-existent-id",  
+                    "href": "http://example.com/non-existent",
+                    "@referredType": "ServiceSpecification"
+                }
+            },
+            "service-catalog-0001":{
+                "name": "Cloud Storage Service"
+            }
+        },
+        "tmfc012": {
+            "resource-target-0001": {
+                "name": "RouterXX",
+                "resourceSpecification": {
+                    "id": "__VALID_ID__", 
+                    "href": "__VALID_HREF__"
+                }
+                
+            },
+            "resource-target-0002": {
+                "name": "RouterXX",
+                "resourceSpecification": {
+                    "id": "non-existent-id",  
+                    "href": "http://example.com/non-existent"
+                }
+                
+            },
+            "resource-catalog-0001":{
+                "name": "Virtual Storage Medium",
+                "id": "39a4d9c4-8113-47e6-b7f5-0fceab81f4b4",
+                "href": "http://34.34.123.159/s010-resourcecatalog/tmf-api/resourceCatalog/v4/resourceSpecification/39a4d9c4-8113-47e6-b7f5-0fceab81f4b4"
+            }
+        }
+    },
+    "retrySettings": {
+        "maxRetries": 30,
+        "retryInterval": 10000
+    }
+}

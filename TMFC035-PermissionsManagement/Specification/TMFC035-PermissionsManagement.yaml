@@ -1,0 +1,233 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF632
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - individual:
+        - GET
+        - GET/id
+      - organization:
+        - GET
+        - GET/id
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+    exposedAPIs:
+    - id: TMF672
+      apiType: openapi
+      apiSDO: tmForum
+      name: user-role-permission-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - permission:
+        - GET
+        - GET/id
+        - POST
+        - PATCH/id
+        - DELETE/id
+      - userRole:
+        - GET
+        - GET/id
+        - POST
+        - PATCH/id
+        - DELETE/id
+    - id: TMF669
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - partyRole:
+        - GET
+        - GET/id
+        - POST
+        - PATCH/id
+        - DELETE/id
+  componentMetadata:
+    id: TMFC035
+    name: PermissionsManagement
+    version: 1.1.1
+    description: The Permissions Management component manages and exposes roles and
+      related permissions. This component enables creation, modification and deletion
+      of permissions and delegate permissions. When a specific role is assigned, a
+      set of permissions is inherited.
+    publicationDate: 2023-08-18
+    status: specified
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions: []
+    SIDs:
+    - Shared_Domain|Permission_ABE|PermissionSpecSet_BE|v25.0
+    - Shared_Domain|Permission_ABE|PermissionSet_BE|v25.0
+    - Shared_Domain|Permission_ABE|Permission_BE|v25.0
+    - Shared_Domain|Party_ABE|PartyRole_BE|v25.0
+    - Shared_Domain|Party_ABE|PartyRoleSpecification_BE|v25.0
+    - Shared_Domain|Party_ABE|Party_Organization_ABE|v25.0
+    - Market_&_Sales_Domain|Market_Sales_Party_Roles_ABE|v25.0
+    - Service_Domain|Service_Party_Roles_ABE|v25.0
+    - Resource_Domain|Resource_Party_Roles_ABE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      apiSDO: not_defined
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - implementation: /{{.Release.Name}}-userrole&permapi
+      name: userRole
+      port: 80
+      resources:
+      - permissionCreateEvent
+      - permissionAttributeValueChangeEvent
+      - permissionStateChangeEvent
+      - permissionDeleteEvent
+      - userRoleCreateEvent
+      - userRoleAttributeValueChangeEvent
+      - userRoleStateChangeEvent
+      - userRoleDeleteEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF672_UserRoleAndPermission/master/TMF672-UserRolePermission-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF672
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-partyroleapi
+      name: partyRole
+      port: 80
+      resources:
+      - PartyRoleCreateEvent
+      - PartyRoleAttributeValueChangeEvent
+      - PartyRoleStateChangeEvent
+      - PartyRoleDeleteEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRoleManagement/master/TMF672-PartyRoleManagement-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF669
+      apiSDO: not_defined
+    subscribedEvents:
+    - implementation: /{{.Release.Name}}-PartyManagement
+      name: PartyManagement
+      port: 80
+      resources:
+      - individualCreateEvent
+      - individualAttributeValueChangeEvent
+      - individualStateChangeEvent
+      - organizationCreateEvenet
+      - organizationAttributeValueChangeEvent
+      - organizationStateChangeEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_PartyManagement/master/TMF632-PartyManagement-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF632
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-ProcessFlowManagement
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF701_ProcessFlow/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF701
+      apiSDO: not_defined
