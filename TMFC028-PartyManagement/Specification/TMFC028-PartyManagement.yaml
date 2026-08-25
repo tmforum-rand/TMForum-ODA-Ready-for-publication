@@ -71,18 +71,6 @@ spec:
         - PATCH
         - GET
         - GET /id
-    - id: TMF688
-      apiType: openapi
-      apiSDO: tmForum
-      name: event-management-api
-      required: false
-      specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF688_Event/4.0.0/swagger/TMF688_Event_Management_API_v4.0.0_beta_swagger.json
-        version: v4.0.0
-      resources:
-      - event:
-        - GET
-        - GET /id
     exposedAPIs:
     - id: TMF632
       apiType: openapi

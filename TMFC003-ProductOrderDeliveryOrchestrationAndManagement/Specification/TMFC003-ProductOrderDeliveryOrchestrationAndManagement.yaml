@@ -74,7 +74,7 @@ spec:
       name: service-ordering-management-api
       required: true
       specification:
-      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF641_Service_Ordering/4.2.0/swagger/TMF641_Service_Ordering_v4.2.0_beta_swagger.json
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF641_Service_Ordering/4.2.0/swagger/TMF641-ServiceOrdering-v4.2.0.swagger.json
         version: v4.0.0
       resources:
       - serviceOrder:

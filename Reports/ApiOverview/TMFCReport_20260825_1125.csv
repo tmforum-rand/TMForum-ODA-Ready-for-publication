@@ -1034,8 +1034,6 @@ TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,pro
 TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,PATCH
 TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET
 TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET /id
-TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF688,v4.0.0,4.0.0,false,event,GET
-TMFC028,PartyManagement,coreFunction,dependentAPIs,TMF688,v4.0.0,4.0.0,false,event,GET /id
 TMFC028,PartyManagement,managementFunction,exposedAPIs,exposedAPI_id,v4.0.0,unknown,false,,
 TMFC028,PartyManagement,managementFunction,dependentAPIs,dependentAPI_id,dependentAPI_version,unknown,false,,
 TMFC028,PartyManagement,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,,
