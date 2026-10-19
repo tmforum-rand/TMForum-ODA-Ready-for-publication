@@ -1,6 +1,6 @@
 # TMForum-ODA-Ready-for-publication
 
-The **Ready-for-publication** repository holds the definitive delivered content for every TM Forum ODA component: the exact set of files that is published to the Component Directory on the TM Forum website. Nothing here needs further validation or building, and nothing here is edited by hand.
+The **Ready-for-publication** repository holds the delivered content for each TM Forum ODA component: the files published to the Component Directory on the TM Forum website. Content here has already been validated and built by the pipeline.
 
 **Project:** TM Forum ODA &nbsp;·&nbsp; **Program:** Open Digital Architecture &nbsp;·&nbsp; **Status:** Active
 
@@ -8,7 +8,7 @@ The **Ready-for-publication** repository holds the definitive delivered content 
 - **IG1266** Component Workstream Way-of-Working and Governance Process v3.0.0 — the process: who approves what, and in which phase.
 - **IG1266A** Component Workstream Tools for Way-of-Working and Governance Process v0.0.3 — the tooling that produces the artifacts moving through that process.
 
-This README summarises both. Where it differs from those documents, the documents take precedence.
+This README summarises both. Where it differs from those documents, the documents take precedence. The process and tooling are evolving through a transition period, so this README describes current practice and the direction of travel rather than fixed rules. Suggestions and improvements are welcome.
 
 ---
 
@@ -37,7 +37,7 @@ A component specification moves through one deterministic pipeline, from authori
 | 3. Authoring tools | `component-specification-studio` skill / Web Studio | Write the YAML and companion files to working branches of the Development repo |
 | 4. Specification | [TMForum-ODA-Component-Specification](https://github.com/tmforum-rand/TMForum-ODA-Component-Specification) | Authoritative accepted specifications: YAML, Specification PDF, Release Notes difference |
 | 5. Validate and build | [TMForum-ODA-CI](https://github.com/tmforum-rand/TMForum-ODA-CI) | Tags, validates, tests; generates the Implementation YAML and conformance assets |
-| **6. Ready for publication** | **TMForum-ODA-Ready-for-publication** (this repo) | **Definitive delivered content for each component** |
+| **6. Ready for publication** | **TMForum-ODA-Ready-for-publication** (this repo) | **Delivered content for each component** |
 | 7. S3 | S3 bucket | Hosted publication content used to build the Component Directory |
 | 8. Website | TM Forum website | Component Directory — latest version and status of each component |
 
@@ -77,17 +77,17 @@ Under IG1266A, a CI release delivers:
 
 ## How content arrives here
 
-**Only automation writes here.** Nobody authors or edits this repository by hand.
+**Content arrives through automation.** The CI/CD release workflow writes to this repository; authoring happens upstream in the Development repo.
 
 1. A team-accepted component is merged into the matching spec-suite branch of **Component-Specification**.
 2. **TMForum-ODA-CI** tags the commit, validates the YAML, runs conformance checks, lints and tests, and generates the Implementation YAML and conformance assets. It embeds the GitHub Tag in the CTK so that every specification instance is versioned.
 3. If CI succeeds, the release workflow merges the release into this repository automatically, together with the Release Notes difference.
 
-If something here is wrong, fix it at the source in the Development repo. The component is then re-accepted, merged into Component-Specification again, and rebuilt by CI. Published versions are never amended: a fix is always a new component version (fix forward).
+If something here needs changing, the fix is made at the source in the Development repo, re-accepted, merged into Component-Specification again and rebuilt by CI. Fixes are delivered as a new component version (fix forward).
 
 ## From here to the website
 
-The CD pipeline places this repository's definitive content in an S3 bucket of hosted publication content. The Component Directory on the TM Forum website is built from that bucket and always shows the latest version and status of each component.
+The CD pipeline places this repository's content in an S3 bucket of hosted publication content. The Component Directory on the TM Forum website is built from that bucket and shows the latest version and status of each component.
 
 ## Member review and status
 
@@ -98,14 +98,14 @@ The CD pipeline places this repository's definitive content in an S3 bucket of h
 
 If a conformance test fails, the fix is delivered as a new version at `preview`. The one-month clock restarts when that version is present here.
 
-`backlog` and `roadmap` specifications are still being worked on in the Development repo and should not reach this repository as published content.
+`backlog` and `roadmap` specifications are still being worked on in the Development repo and reach this repository once they move to `preview`.
 
 ## Using the assets
 
 - **Enterprise architects and business users:** read the Specification PDF.
 - **Builders and coders:** use the Implementation YAML and the Conformance Profile, which lists the mandatory and optional APIs.
 - **Testing an implementation:** run the CTK against a deployed instance. The Conformance Profile's CTK Run Configuration drives it, and BDD `*.feature` files cover behaviour such as dependent API calls and asynchronous requirements.
-- **Repeatability:** each release is tagged (`ID-ver-status`), so you can always retrieve the exact conformance set an implementation was certified against.
+- **Repeatability:** each release is tagged (`ID-ver-status`), so you can retrieve the conformance set an implementation was certified against.
 
 ## The component definition file
 
