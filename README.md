@@ -1,166 +1,146 @@
-# Ready For Publication Repository Assets
+# TMForum-ODA-Ready-for-publication
 
-This document explains the repository fundamentals such as the component specification, stub and CTK (Component Test Kit).  
-Component Specification purpose, attributes, and the key differences between the `oda.tmforum.org/v1beta3` and `oda.tmforum.org/v1beta4` are also going to be handled with in this documentation. 
+The **Ready-for-publication** repository holds the definitive delivered content for every TM Forum ODA component: the exact set of files that is published to the Component Directory on the TM Forum website. Nothing here needs further validation or building, and nothing here is edited by hand.
 
-Please Note :
-This repo is intended to house the Component project deliverables before they are committed to the TMForum.org website.
+**Project:** TM Forum ODA &nbsp;·&nbsp; **Program:** Open Digital Architecture &nbsp;·&nbsp; **Status:** Active
 
-It contains not only the YAML files specifying the Components but also (soon) the means to confirm that the Components specified can be certified as adhering to the Component Specification.
+**Governing documents:**
+- **IG1266** Component Workstream Way-of-Working and Governance Process v3.0.0 — the process: who approves what, and in which phase.
+- **IG1266A** Component Workstream Tools for Way-of-Working and Governance Process v0.0.3 — the tooling that produces the artifacts moving through that process.
 
-The specifications contained here are derived from content in closed repos, such as the TM Forum API repos and the Component Specification repo. The factory code for producing these assets is contained in private repos ODA CI and ODA Component Conformance.
-
-The releasable assets in this repository are:
-- Golden Component definitions for each componets, 
-- CTK's (Component Conformance Tests) (will be delivered soon)
-- Deployable reference implementation. (Component envelopes, stubs) (will be delivered soon)
+This README summarises both. Where it differs from those documents, the documents take precedence.
 
 ---
 
-## Purpose of the Component Specification File
-
-The component specification file serves as a blueprint for defining and describing components within the ODA-CA (Open Digital Architecture Component Accelerator) framework. It ensures a standardized structure for:
-
-- Defining component metadata (e.g., version, publication date, description).
-- Specifying the core, management, security, and event notification functions.
-- Listing APIs the component depends on or exposes.
-- Supporting consistent and reusable integration across different functional blocks.
-- Standardizing component structure to be used with the same version of the ODA-CA Canvas ecosystem.
-- Executing tests by comparing the actual vendors' or communication service providers' (CSPs) component specifications with this component specification.
-
----
-
-## Basic Attributes of the Component Specification
-
-### Component Metadata
-
-
-- **ID**: The unique identifier for the component.
-- **Name**: The unique naming for the component.
-- **Version**: Version of the specification (e.g., `2.0.0`, `2.1.0`).
-- **Functional Block**: The category the component belongs to (e.g., `CoreCommerce`, `PartyManagement`).
-- **Description**: Brief description of the component’s functionality.
-- **Publication Date**: When the specification was published.
-- **Status**: Indicates if the specification is in use, specified, deprecated, or in draft.
-- **Owners**: Component owners' information
-- **Maintainers**: Contributors' information
-- **eTOMs**: Lists the Business Process Framework belong to the component
-- **Functional Framework Functions**: Details an organization’s activities from a system point of view
-
-
-### Core Functions
-
-- **Dependent APIs**: Lists external APIs the component relies on, including ID, type, version, and url specifications.
-- **Exposed APIs**: Details APIs exposed by the component, including supported methods (e.g., GET, POST).
-
-### Management Functions
-
-- **Dependent APIs**: Lists external APIs component relies on as a management API, including ID, type, version, and url specification.
-- **Exposed APIs**: Details APIs exposed by the component, such as metrics exposed via Prometheus or other mechanisms.
-
-
-### Security Functions
-
-- **canvasSystemRole**: Specifies the name of the securty role 
-- **Secrets Management**: Defines how secrets are managed (e.g., `sideCar` approach).
-- **DependentAPIs**: Lists external APIs component relies on as a security API, including ID, type, version, and url specification.
-- **Exposed APIs**: Details APIs exposed by the component, such as party role management API or any security APIs exposed via Keycloak, Okta, AWS Cognito, Azure Active Directory B2C, Google Identity Platform or other mechanisms.
-
-### Event Notifications
-
-- **Published Events**: Events the component publishes, including the API type and resources affected.
-- **Subscribed Events**: Events the component subscribes to from other components.
-
+## Table of Contents
+- [Architecture at a glance](#architecture-at-a-glance)
+- [Branch architecture](#branch-architecture)
+- [What this repository holds](#what-this-repository-holds)
+- [How content arrives here](#how-content-arrives-here)
+- [From here to the website](#from-here-to-the-website)
+- [Member review and status](#member-review-and-status)
+- [Using the assets](#using-the-assets)
+- [The component definition file](#the-component-definition-file)
+- [Versioning](#versioning)
+- [Need help?](#need-help)
 
 ---
 
-## Key Differences: v1beta3 vs. v1beta4
+## Architecture at a glance
 
-### Changes in Attribute Structure:
+A component specification moves through one deterministic pipeline, from authoring to the Component Directory on the TM Forum website. **This repository is stage 6.**
 
-1. **`componentMetadata`**:
-   - Some attributes are moved from `spec` to `spec.componentMetadata`
-   - `componentMetadata` is newly created to collect basic attributes of component like `id`, `name`, `version`, `publicationDate`, and `owners`.
+| Stage | Repository / system | Role |
+|---|---|---|
+| 1. Inputs | TM Forum Frameworks and APIs | eTOM, SID, Functional Framework and Open API catalogs used to author specifications |
+| 2. Develop | [TMForum-ODA-Component_Development](https://github.com/tmforum-rand/TMForum-ODA-Component_Development) | Authoring, generation, review and team acceptance. Source of truth while a component is being specified. |
+| 3. Authoring tools | `component-specification-studio` skill / Web Studio | Write the YAML and companion files to working branches of the Development repo |
+| 4. Specification | [TMForum-ODA-Component-Specification](https://github.com/tmforum-rand/TMForum-ODA-Component-Specification) | Authoritative accepted specifications: YAML, Specification PDF, Release Notes difference |
+| 5. Validate and build | [TMForum-ODA-CI](https://github.com/tmforum-rand/TMForum-ODA-CI) | Tags, validates, tests; generates the Implementation YAML and conformance assets |
+| **6. Ready for publication** | **TMForum-ODA-Ready-for-publication** (this repo) | **Definitive delivered content for each component** |
+| 7. S3 | S3 bucket | Hosted publication content used to build the Component Directory |
+| 8. Website | TM Forum website | Component Directory — latest version and status of each component |
 
-2. **Newly Added Listings**:
-   - **`eTOMs`** and **`functionalFrameworkFunctions`** fields are introduced with a structured naming convention: `id_name_apiVersion`.
+Supporting repositories: [TMForum-ODA-Component-Conformance](https://github.com/tmforum-rand/TMForum-ODA-Component-Conformance) (source code for generating RIs, CTKs and conformance profiles) and [tmforum-oda/oda-canvas](https://github.com/tmforum-oda/oda-canvas) (source of the Implementation Schema).
 
-3. **Specifications**:
-   - Specifications is a collection which contains more than one specifications. Enhanced format to include details like `url`, `version`.
+## Branch architecture
 
-4. **Owners and Maintainers**:
-   - Both fields have 3 attributes : `name`, `email`, `url`.
+**Target:** every repository in the pipeline uses a single `main` branch. Component versions are carried by version folders and Git tags, not by branches.
 
-5. **Renaming controllerRole**:
-   - The `controllerRole` attribute of SecurityFunction changed as `canvasSystemRole`.
+**Interim (current):**
 
----
+| Repository | Branches in use |
+|---|---|
+| Component_Development | `main`. Each component version is a sibling folder (`TMFCnnn-vX.Y.Z`). |
+| Component-Specification | Spec-suite version branches `v1.0.0` (default) and `v1.1.0`. |
+| **Ready-for-publication** (this repo) | **Spec-suite version branches `v1.0.0` (default) and `v1.1.0`.** |
 
-## Example Comparison
+Each spec-suite branch corresponds to a version of the component YAML template (the `apiVersion` the YAML was authored against). Content arrives on the branch that matches the Component-Specification branch it was built from.
 
-### Example Dependent API (v1beta3)
+Where IG1266 or IG1266A refers to "the main branch of the Component-Specification repo", read it as **the matching spec-suite branch** until the migration to `main` is complete.
+
+## What this repository holds
+
+| Path | Contents |
+|---|---|
+| `TMFCnnn-<Name>/` | One folder per delivered component |
+| `…/Specification/` | The component YAML (`TMFCnnn-<Name>.yaml`) |
+| `…/ComponentConformanceProfile/` | Authoritative Conformance Profile (`TMFCnnn-<Name>_Conformance.md`), generated by CI |
+| `…/CTK/` | Conformance Test Kit (`componentCTK/`), reference implementation (`ComponentRI/`) and `Dockerfile` |
+| `…/TMFCnnn_<Name>.pdf` | Specification PDF |
+| `Reports/` | Cross-component overviews (API, functional, metadata) and S3 listings |
+
+Under IG1266A, a CI release delivers:
+- the **Implementation YAML**, the machine-usable form of the specification consumed by the ODA Canvas;
+- the **conformance assets**: the authoritative Conformance Profile, CTK, reference implementation (RI) and BDD `*.feature` files, plus the golden component;
+- the **Release Notes difference between Component Versions**, carried through from the Specification repo.
+
+## How content arrives here
+
+**Only automation writes here.** Nobody authors or edits this repository by hand.
+
+1. A team-accepted component is merged into the matching spec-suite branch of **Component-Specification**.
+2. **TMForum-ODA-CI** tags the commit, validates the YAML, runs conformance checks, lints and tests, and generates the Implementation YAML and conformance assets. It embeds the GitHub Tag in the CTK so that every specification instance is versioned.
+3. If CI succeeds, the release workflow merges the release into this repository automatically, together with the Release Notes difference.
+
+If something here is wrong, fix it at the source in the Development repo. The component is then re-accepted, merged into Component-Specification again, and rebuilt by CI. Published versions are never amended: a fix is always a new component version (fix forward).
+
+## From here to the website
+
+The CD pipeline places this repository's definitive content in an S3 bucket of hosted publication content. The Component Directory on the TM Forum website is built from that bucket and always shows the latest version and status of each component.
+
+## Member review and status
+
+| Status | What it means for this repository |
+|---|---|
+| `preview` | First published state. **Member review starts** when a `preview` version is present here. |
+| `production` | Set after the first successful conformance test, or **one month after** the `preview` version is present here, whichever comes first. Member review ends. Prior versions are kept for conformance repeatability. |
+
+If a conformance test fails, the fix is delivered as a new version at `preview`. The one-month clock restarts when that version is present here.
+
+`backlog` and `roadmap` specifications are still being worked on in the Development repo and should not reach this repository as published content.
+
+## Using the assets
+
+- **Enterprise architects and business users:** read the Specification PDF.
+- **Builders and coders:** use the Implementation YAML and the Conformance Profile, which lists the mandatory and optional APIs.
+- **Testing an implementation:** run the CTK against a deployed instance. The Conformance Profile's CTK Run Configuration drives it, and BDD `*.feature` files cover behaviour such as dependent API calls and asynchronous requirements.
+- **Repeatability:** each release is tagged (`ID-ver-status`), so you can always retrieve the exact conformance set an implementation was certified against.
+
+## The component definition file
+
+Specifications are written as a minimal "stage 2" YAML in the Development repo. CI expands each one into the "stage 3" Implementation YAML delivered here, adding the TM Forum reference-implementation specifics.
 
 ```yaml
-- id: TMF633
-  version: v4.0.0
-  apiType: openapi
-  name: service-catalog-management-api
-  specification: https://example.com/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
-  resources:
-  - serviceSpecification:
-    - GET
-    - GET /id
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  componentMetadata:        # id, name, version, description, publicationDate, status,
+                            # functionalBlock, owners, maintainers,
+                            # eTOMs, functionalFrameworkFunctions, SIDs
+  coreFunction:             # exposedAPIs / dependentAPIs
+  managementFunction:       # exposedAPIs / dependentAPIs (e.g. Prometheus metrics)
+  securityFunction:         # canvasSystemRole, secretsManagement, exposedAPIs / dependentAPIs
+  eventNotification:        # publishedEvents / subscribedEvents
 ```
 
-### Example Dependent API (v1beta4)
+Each API entry carries `id`, `apiSDO`, `required` and a `specification` list with one entry per supported API version (its resources and operations, or events). The Implementation YAML adds each version's `url`, `apiType`, `path`, `developerUI`, `implementation` and `port`.
 
-```yaml
-- id: TMF633
-  apiType: openapi
-  name: service-catalog-management-api
-  required: false
-  specification:
-  - url: https://example.com/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
-    version: v4.0.0
-  resources:
-  - serviceSpecification:
-    - GET
-    - GET /id
-```
+Framework references use a pipe-delimited `id|Name|version` form, for example `899|Single_Sign-On_Access_Control|v26.0` and `Shared_Domain|Digital_Identity_ABE|v26.0`.
 
-### Example Component Metadata (v1beta4)
+For a full worked example (TMFC020 Digital Identity Management v1.4.0, in both stage 2 and stage 3 forms), see the appendix of IG1266.
 
-```yaml
-  componentMetadata:
-    id: TMFC001
-    name: ProductCatalogManagement
-    version: 2.1.0
-    description: The Product Catalog Management ODA Component is responsible for organizing
-      the collection of Products and Product Offerings specifications that identify
-      and define all requirements of a product or a product offering that can be commercialized.
-    publicationDate: 2024-11-12 00:00:00
-    status: specified
-    functionalBlock: CoreCommerce
-    owners:
-    - email: Redacted
-      name: Redacted
-      url: Redacted
-    maintainers:
-    - name: Redacted
-      email: components@tmforum.org
-      url: Redacted
-    eTOMs:
-    - 1.2.20_Product_Catalog_Lifecycle_Management_v23.0
-    - 1.1.19_Loyalty_Program_Management_v23.0
-    functionalFrameworkFunctions:
-    - 3_Repository_Entity_Relations_Configuration_v23.0
-    - 4_Repository_Entity_Grouping_Configuration_v23.0
-```
+## Versioning
 
----
+| Version | Meaning | Where recorded |
+|---|---|---|
+| Component version (e.g. `1.4.0`) | The component specification's own semantic version | `componentMetadata.version` |
+| Spec-suite branch version (e.g. `v1.1.0`) | The YAML template version the component was authored against | Branch name here and in Component-Specification; `apiVersion` in the YAML |
+| Release tag (`ID-ver-status`) | The CI release that produced the delivered assets | GitHub Tag, embedded in the CTK |
 
-## How to Contribute
+## Need help?
 
-For contributions or questions about this component specification, please send an e-mail to `components@tmforum.org`.
-
-
+- **Members:** raise a GitHub Issue against [TMForum-ODA-Component_Development](https://github.com/tmforum-rand/TMForum-ODA-Component_Development/issues) for specification content, or against this repository for delivery or publication problems. You can also ask on the ODA Slack channel or the [TM Forum Community forum](https://engage.tmforum.org/communities/allcommunities).
+- **Email:** components@tmforum.org
