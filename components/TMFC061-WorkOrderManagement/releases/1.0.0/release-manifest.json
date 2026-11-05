@@ -1,0 +1,100 @@
+{
+  "contractVersion": 1,
+  "releaseId": "56dadf0b6ab71b71",
+  "component": {
+    "id": "TMFC061",
+    "name": "WorkOrderManagement",
+    "key": "TMFC061-WorkOrderManagement",
+    "sourceDir": "TMFC061-WorkOrderManagement"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC061-WorkOrderManagement/v1.0.0-specified",
+    "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5",
+    "version": "1.0.0",
+    "status": "specified",
+    "statusRaw": "specified",
+    "releaseNotes": {
+      "path": "specifications/TMFC061-WorkOrderManagement/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "1.0.0 (specified)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "10d90ee78b48c8e20a107430483f17838773740b343de72710cbd16ec6c74435"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.0.0",
+      "sha256": "0108b80ffec2db4c5029596d9c89191181938a7b4fc824bef3de8a0e23a319ac"
+    },
+    "handler": "v1_0",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_0:GA_COMPONENTS",
+    "eligible": false,
+    "detail": "TMFC061-WorkOrderManagement is not listed in GA_COMPONENTS"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 199,
+      "sha256": "10d90ee78b48c8e20a107430483f17838773740b343de72710cbd16ec6c74435",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC061-WorkOrderManagement.yaml",
+      "mediaType": "text/yaml",
+      "size": 14231,
+      "sha256": "4fd606c9e81280368879cd8e55e57936174f8fab68d6be8db32f85f1bf88e417",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC061_Work_Order_Management_v1.0.0.pdf",
+      "mediaType": "application/pdf",
+      "size": 453651,
+      "sha256": "d134f34415786c6ed2cec7251f55b9eb8c36eddcf929500510d2e2884dcfffeb",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.0.0/",
+      "status": "published",
+      "at": "2026-11-05T15:11:25Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC061-WorkOrderManagement/v1.0.0-specified",
+      "at": "2026-11-05T15:12:29Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42051675750",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:10:53Z",
+    "requestId": "84b94ca357a72197"
+  }
+}

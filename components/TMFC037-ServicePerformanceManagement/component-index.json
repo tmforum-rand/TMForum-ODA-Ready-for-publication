@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC037",
+    "name": "ServicePerformanceManagement",
+    "key": "TMFC037-ServicePerformanceManagement"
+  },
+  "latest": "1.2.0",
+  "latestByStatus": {
+    "specified": "1.2.0"
+  },
+  "releases": [
+    {
+      "version": "1.2.0",
+      "status": "specified",
+      "tag": "TMFC037-ServicePerformanceManagement/v1.2.0-specified",
+      "releaseId": "7f1b2df5fc1a776b",
+      "path": "components/TMFC037-ServicePerformanceManagement/releases/1.2.0/",
+      "manifest": "components/TMFC037-ServicePerformanceManagement/releases/1.2.0/release-manifest.json",
+      "manifestSha256": "a03294b746fc61d4dccb8ac0ea7aa8650c9f96e43fc2c052e377ea63d2952aa2",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

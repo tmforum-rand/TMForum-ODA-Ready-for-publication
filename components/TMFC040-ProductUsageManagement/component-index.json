@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC040",
+    "name": "ProductUsageManagement",
+    "key": "TMFC040-ProductUsageManagement"
+  },
+  "latest": "1.1.0",
+  "latestByStatus": {
+    "specified": "1.1.0"
+  },
+  "releases": [
+    {
+      "version": "1.1.0",
+      "status": "specified",
+      "tag": "TMFC040-ProductUsageManagement/v1.1.0-specified",
+      "releaseId": "c8f97624eb84cfce",
+      "path": "components/TMFC040-ProductUsageManagement/releases/1.1.0/",
+      "manifest": "components/TMFC040-ProductUsageManagement/releases/1.1.0/release-manifest.json",
+      "manifestSha256": "b7bef0dec466d64c1e406ef70cf91ecfb2385469cb70c2f57769f846ab062326",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

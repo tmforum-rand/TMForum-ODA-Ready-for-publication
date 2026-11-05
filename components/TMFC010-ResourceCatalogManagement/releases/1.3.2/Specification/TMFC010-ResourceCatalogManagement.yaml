@@ -1,0 +1,346 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF634
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-catalog-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
+      resources:
+      - resourceCatalog:
+        - GET
+        - GET /id
+      - resourceCategory:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - resourceSpecification:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - resourceCandidate:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - exportJob:
+        - GET
+        - POST
+        - DELETE
+      - importJob:
+        - GET
+        - POST
+        - DELETE
+    - id: TMF669
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-role-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - partyRole:
+        - GET
+        - GET /id
+    - id: TMF632
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+    - id: TMF662
+      apiType: openapi
+      apiSDO: tmForum
+      name: entity-catalog-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - entitySpecification:
+        - GET
+        - GET /id
+      - associationSpecification:
+        - GET
+        - GET /id
+    exposedAPIs:
+    - id: TMF634
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-catalog-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - resourceCatalog:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - resourceCategory:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - resourceSpecification:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - resourceCandidate:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - exportJob:
+        - GET
+        - GET /id
+        - POST
+        - DELETE
+      - importJob:
+        - GET
+        - GET /id
+        - POST
+        - DELETE
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+  componentMetadata:
+    id: TMFC010
+    name: ResourceCatalogManagement
+    version: 1.3.2
+    description: The Resource Catalog Management component is responsible for organizing
+      the collection of resource specifications that identify and define all requirements
+      for a resource. The Resource Catalog Management component has the functionality
+      that enables presentation of a customer-facing view, so users are able to browse
+      and select resources they need, as well as a technical view to enable definition
+      and setup of resources contained in the resource catalog. Additional functionalities
+      include capturing new resource specifications, managing resources (registering
+      assets and components and identifying and mapping connections/relationships),
+      administering the lifecycle of resources, describing relationships between resources,
+      reporting on resources and changes to their attributes, and facilitating easy
+      access to identify and assign resources.
+    publicationDate: 2024-12-03
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.5.15|Resource_Catalog_Lifecycle_Management|v23.0
+    - 1.5.16|Resource_Catalog_Operational_Readiness_Management|v23.0
+    - 1.5.17|Resource_Catalog_Content_Management|v23.0
+    - 1.5.18|Resource_Catalog_Planning_Management|v23.0
+    - 1.5.19|Resource_Specification_Management|v23.0
+    - 1.5.3|Resource_Specification_Development_&_Retirement|v23.0
+    - 1.5.3.4|Develop_Detailed_Resource_Specifications|v23.0
+    functionalFrameworkFunctions:
+    - 737|Resource_Capability_Specification_Management|v23.0
+    - 467|Resource_Data_Transformation/Parsing_Rules_Configuration|v23.0
+    - 951|Resource_Catalog_Entities_Management|v23.0
+    - 996|Resource_Task_Item_Policy_Control_Configuration|v23.0
+    - 1083|Resource_Specification_Repository_Management|v23.0
+    - 1088|Resource_Specification_to_Supplier_Product_Specification_Relationship_Design|v23.0
+    - 1089|Resource_Specification_Action_Skill_Design|v23.0
+    - 1082|Resource_Specification_Change_Auditing|v23.0
+    - 1064|Logical_and_Software_Resources_Designing|v23.0
+    - 1087|Resource_Specification_Design|v23.0
+    SIDs:
+    - Resource_Domain|Resource_Specification_ABE|v25.0
+    - Resource_Domain|Resource_Performance_ABE|ResourcePerformanceSpecification_BE|v25.0
+    - Resource_Domain|Resource_Usage_ABE|ResourceUsageSpec_BE|v25.0
+    - Resource_Domain|Resource_Configuration_ABE|ResourceConfigSpec_BE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      apiSDO: not_defined
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - hub: /{{.Release.Name}}-ResourceCatalog/hub
+      implementation: /{{.Release.Name}}-ResourceCatalogEvent
+      name: ResourceCatalogManagement
+      port: 80
+      resources:
+      - resourceCatalogCreateEvent
+      - resourceCatalogChangeEvent
+      - resourceCatalogDeleteEvent
+      - resourceCategoryCreateEvent
+      - resourceCategoryChangeEvent
+      - resourceCategoryDeleteEvent
+      - resourceCandidateCreateEvent
+      - resourceCandidateChangeEvent
+      - resourceCandidateDeleteEvent
+      - resourceSpecificationCreateEvent
+      - resourceSpecificationChangeEvent
+      - resourceSpecificationDeleteEvent
+      - importJobCreateEvent
+      - exportJobCreateEvent
+      - exportJobStateChangeEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF634_resourceCatalog/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
+        version: v4.0.0
+      version: 4
+      id: TMF634
+      apiSDO: not_defined
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
+      version: 4
+      apiType: openapi
+      id: TMF701
+      apiSDO: not_defined
+    subscribedEvents:
+    - id: TMF662
+      name: EntityCatalogManagement
+      port: 80
+      resources:
+      - entitySpecificationCreateEvent
+      - entitySpecificationAttributeValueChangeEvent
+      - entitySpecificationStateChangeEvent
+      - entitySpecificationDeleteEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF662_EntityCatalog/master/TMF662-EntityCatalog-v4.0.0.swagger.json
+        version: v4.0.0
+      version: 4
+      callback: /{{.Release.Name}}-EntityCatalog/call-back
+      apiSDO: not_defined
+    - id: TMF669
+      name: PartyRoleManagement
+      port: 80
+      resources:
+      - partyRoleDeleteEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF669_PartyRole/master/TMF669-PartyRole-v4.0.swagger.json
+        version: null
+      version: 4
+      callback: /{{.Release.Name}}-EntityCatalog/call-back
+      apiSDO: not_defined
+    - id: TMF632
+      name: Party
+      port: 80
+      resources:
+      - individualDeleteEvent
+      - organizationDeleteEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF632_Party/master/TMF632-Party-v4.0.0.swagger.json
+        version: v4.0.0
+      version: 4
+      callback: /{{.Release.Name}}-EntityCatalog/call-back
+      apiSDO: not_defined

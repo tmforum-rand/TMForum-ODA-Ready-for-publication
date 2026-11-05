@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC020",
+    "name": "DigitalIdentityManagement",
+    "key": "TMFC020-DigitalIdentityManagement"
+  },
+  "latest": "1.1.0",
+  "latestByStatus": {
+    "specified": "1.1.0"
+  },
+  "releases": [
+    {
+      "version": "1.1.0",
+      "status": "specified",
+      "tag": "TMFC020-DigitalIdentityManagement/v1.1.0-specified",
+      "releaseId": "d3e8b0f024bf5be4",
+      "path": "components/TMFC020-DigitalIdentityManagement/releases/1.1.0/",
+      "manifest": "components/TMFC020-DigitalIdentityManagement/releases/1.1.0/release-manifest.json",
+      "manifestSha256": "97d26447739ce6e3ffe365cf0bbe053cf7e200e51fe715cf27e3b755eef2f711",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

@@ -1,0 +1,284 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    exposedAPIs:
+    - id: TMF653
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-test-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF653_Service_Test/4.2.0/swagger/TMF653_Service_Test_Management_API_v4.2.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - serviceTest:
+        - GET
+        - POST
+        - GET /id
+        - PATCH /id
+        - DELETE /id
+      - serviceTestSpecification:
+        - GET
+        - POST
+        - GET /id
+        - PATCH /id
+        - DELETE /id
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+    dependentAPIs:
+    - id: TMF632
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+    - id: TMF669
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-role-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - partyRole:
+        - GET
+        - GET /id
+    - id: TMF633
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-catalog-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - serviceSpecification:
+        - GET
+        - GET /id
+    - id: TMF638
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-inventory-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - service:
+        - GET
+        - GET /id
+    - id: TMF639
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-inventory-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - resource:
+        - GET
+        - GET /id
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - processFlow:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+      - taskFlow:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+  componentMetadata:
+    id: TMFC055
+    name: ServiceTestManagement
+    eTOMs:
+    - 1.4.1|Service_Strategy_Management|v24.5
+    - 1.4.1.8|Service_Test_Strategy|v24.5
+    owners:
+    - url: Redacted
+      name: Redacted
+      email: Redacted
+    status: specified
+    version: 1.0.0
+    description: 'Service Test Management is responsible for managing the service
+      test specification and executing tests based on this specification to ensure
+      the service operates correctly.
+
+
+      Service test specification involves capturing potential tests for each Service
+      Specification that can be initiated either automatically or manually by the
+      service user. These tests are derived from those available at the service specification
+      or resource specification level.
+
+
+      The scope of the component includes the end-to-end execution and reporting of
+      tests, tailored to the specific context and actor involved.'
+    maintainers:
+    - url: Redacted
+      name: Redacted
+      email: components@tmforum.org
+    functionalBlock: Production
+    publicationDate: 2025-07-16
+    functionalFrameworkFunctions:
+    - 625|Service_Test_Operation_Control|v24.0
+    - 1136|Service_Test_Specification_and_Scenario_Management|v24.0
+    - 566|Service_Test_Result_Analysis_Policy_Configuration|v24.0
+    - 573|Service_Testing_Rules_Management|v24.0
+    - 581|Automated_Service_Test_Invocation|v24.0
+    - 1138|Service_Test_Reporting_Rules_Management|v24.0
+    - 582|Manual_Service_Test_Invocation|v24.0
+    - 627|Service_Test_Strategy_Management|v24.0
+    - 1137|Service_Test_Rules_Management|v24.0
+    - 575|Service_Test_Results_Reporting|v24.0
+    - 626|Service_Testing_Management|v24.0
+    - 577|Service_End_to_End_Test_Scheduling|v24.0
+    - 579|Service_End_to_End_Testing|v24.0
+    SIDs:
+    - Service_Domain|Service_Test_ABE|ServiceTest_BE|v25.0
+    - Service_Domain|Service_Test_ABE|ServiceTestSpec_BE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      apiSDO: not_defined
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - hub: ServiceTestManagement.com
+      name: ServiceTestManagement
+      port: 80
+      apiType: openapi
+      resources:
+      - serviceTestCreateEvent
+      - serviceTestStateChangeEvent
+      - serviceTestSpecificationCreateEvent
+      - serviceTestSpecificationDeleteEvent
+      - serviceTestAttributeValueChangeEvent
+      - serviceTestDeleteEvent
+      - serviceTestSpecificationAttributeValueChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF653_Service_Test/4.2.0/swagger/TMF653_Service_Test_Management_API_v4.2.0_swagger.json
+        version: v4.0.0
+      implementation: ServiceTestManagement
+      id: TMF653
+      apiSDO: not_defined
+    subscribedEvents:
+    - name: ServiceTestManagement
+      port: 80
+      apiType: openapi
+      resources:
+      - serviceSpecificationCreateEvent
+      - serviceSpecificationDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      implementation: /{{.Release.Name}}-ServiceTestManagement
+      id: TMF633
+      callback: ServiceTestManagement
+      apiSDO: not_defined
+    - name: PartyManagement
+      port: 80
+      apiType: openapi
+      resources:
+      - organizationDeleteEvent
+      - individualDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      implementation: /{{.Release.Name}}-PartyManagement
+      id: TMF632
+      callback: PartyManagement
+      apiSDO: not_defined

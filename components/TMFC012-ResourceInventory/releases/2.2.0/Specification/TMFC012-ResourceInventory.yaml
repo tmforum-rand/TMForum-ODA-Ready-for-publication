@@ -1,0 +1,453 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF634
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-catalog-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
+      resources:
+      - resourceSpecification:
+        - GET
+        - GET /id
+    - id: TMF669
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-role-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - partyRole:
+        - GET
+        - GET /id
+    - id: TMF632
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+    - id: TMF673
+      apiType: openapi
+      apiSDO: tmForum
+      name: geographic-address-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicAddress:
+        - GET
+        - GET /id
+      - geographicSubAddress:
+        - GET
+        - GET /id
+    - id: TMF674
+      apiType: openapi
+      apiSDO: tmForum
+      name: geographic-site-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicSite:
+        - GET
+        - GET /id
+    - id: TMF675
+      apiType: openapi
+      apiSDO: tmForum
+      name: geographic-location-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
+        version: v4.0.0
+      resources:
+      - geographicLocation:
+        - GET
+        - GET /id
+    - id: TMF639
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-inventory-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - resource:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+    exposedAPIs:
+    - id: TMF639
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-inventory-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - resource:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+    - id: TMF685
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-pool-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF685_Resource_Pool/5.0.0/swagger/TMF685-Resource_Pool_Management-v5.0.0.oas.yaml
+        version: v5.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - capacitySpecification:
+        - POST
+        - GET
+        - GET /id
+        - PATCH
+        - DELETE
+      - resourcePoolSpecification:
+        - POST
+        - PATCH
+        - GET
+        - GET /id
+        - DELETE
+      - resourcePool:
+        - POST
+        - PATCH
+        - GET
+        - GET /id
+        - DELETE
+      - resourcePoolSpecification:
+        - POST
+        - PATCH
+        - GET
+        - GET /id
+        - DELETE
+      - availabilityCheck:
+        - POST
+        - GET
+        - GET /id
+      - push:
+        - POST
+        - GET
+        - GET /id
+      - extract:
+        - POST
+        - GET
+        - GET /id
+    - id: TMF716
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-reservation
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF716_Resource_Reservation/4.0.0/swagger/TMF716_ResourceReservation_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - resourceReservation:
+        - POST
+        - GET
+        - GET /id
+        - PATCH
+        - DELETE
+      - cancelResourceReservation:
+        - POST
+        - GET
+        - GET /id
+  componentMetadata:
+    id: TMFC012
+    name: ResourceInventory
+    version: 2.2.0
+    description: The Resource Inventory component owns accounting for resources (all
+      inputs - including stock, parts, assets, production components etc.) that are
+      owned and/or held for allocation and/or use by the organization. The Resource
+      Inventory component has functionality that includes inventory item creation,
+      inventory organization, inventory search or filter, inventory monitoring and
+      tracking, inventory control (organization, re-stock management etc.) and inventory
+      auditing. The minimum check to be performed at inventory item creation or update
+      is for global consistency with related Resource Catalog information.
+    publicationDate: 2024-11-18
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.5.4|Resource_Support_Readiness|v23.0
+    - 1.5.4.5|Manage_Resource_Inventory|v23.0
+    functionalFrameworkFunctions:
+    - 426|Physical_Implementation_Information_Capturing|v23.0
+    - 442|Network_Overviews_Presentation|v23.0
+    - 453|Resource_Configuration_Change_Logging|v23.0
+    - 454|Resource_Configuration_Management|v23.0
+    - 456|Resource_Topology_Verification|v23.0
+    - 468|Resource_Information_Model_Creation|v23.0
+    - 470|Resource_Repository_Retrieval|v23.0
+    - 471|Resource_Repository_Updating|v23.0
+    - 472|Resource_Repository_Update_Notification|v23.0
+    - 562|Voucher_Reporting|v23.0
+    - 564|Voucher_Life_Cycle_Management|v23.0
+    - 738|Resource_Data_Inventory_Synchronization|v23.0
+    - 436|Number_Aging|v23.0
+    - 437|Number_Assigning|v23.0
+    - 439|Number_Searching|v23.0
+    - 440|Number_Tracking_and_Reporting|v23.0
+    - 743|Number_Portability_Orchestration|v23.0
+    - 744|Number_Portability_Risk_&_Effectiveness_Management|v23.0
+    - 745|Number_Portability_Validation|v23.0
+    - 1062|Number_Acquisition|v23.0
+    - 1249|Number_Porting|v23.0
+    - 438|Number_Reservation|v23.0
+    - 435|Number_Inventory_Establishing|v23.0
+    SIDs:
+    - Resource_Domain|Resource_ABE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      apiSDO: not_defined
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
+      implementation: /{{.Release.Name}}-ResourceInventory
+      name: ResourceInventory
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4.1.0
+      port: 8080
+      resources:
+      - resourceCreateEvent
+      - resourceChangeEvent
+      - resourceDeleteEvent
+      - resourceAttributeValueChangeEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF639-ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+        version: v4.0.0
+      version: 4
+      apiType: openapi
+      id: TMF639
+      apiSDO: not_defined
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF701
+      apiSDO: not_defined
+    subscribedEvents:
+    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/v4/docs
+      implementation: /{{.Release.Name}}-ResourceCatalog
+      name: ResourceCatalogManagement
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/v4.1.0
+      port: 8080
+      resources:
+      - resourceCatalogCreateEvent
+      - resourceCatalogChangeEvent
+      - resourceCatalogDeleteEvent
+      - resourceCategoryCreateEvent
+      - resourceCategoryChangeEvent
+      - resourceCategoryDeleteEvent
+      - resourceCandidateCreateEvent
+      - resourceCandidateChangeEvent
+      - resourceCandidateDeleteEvent
+      - resourceSpecificationCreateEvent
+      - resourceSpecificationChangeEvent
+      - resourceSpecificationDeleteEvent
+      - importJobCreateEvent
+      - exportJobCreateEvent
+      - exportJobStateChangeEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF634_resourceCatalog/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
+        version: v4.0.0
+      version: 4.1
+      apiType: openapi
+      id: TMF634
+      apiSDO: not_defined
+    - developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4/docs
+      implementation: /{{.Release.Name}}-ResourceInventory
+      name: ResourceInventory
+      path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceInventory/v4.1.0
+      port: 8080
+      resources:
+      - resourceCreateEvent
+      - resourceChangeEvent
+      - resourceDeleteEvent
+      - resourceAttributeValueChangeEvent
+      specification:
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF639-ResourceInventory/master/TMF639-ResourceInventory-v4.0.0.swagger.json
+        version: v4.0.0
+      version: 4
+      apiType: openapi
+      id: TMF639
+      apiSDO: not_defined
+    - name: PartyRoleManagement
+      port: 80
+      resources:
+      - PartyRoleCreateEvent
+      - PartyRoleAttributeValueChangeEvent
+      - PartyRoleStateChangeEvent
+      - PartyRoleDeleteEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF669-PartyRoleManagement/blob/master/TMF669-PartyRoleManagement-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF669
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-GeographicSiteManagement
+      name: GeographicSiteManagement
+      port: 80
+      resources:
+      - geographicSiteDeleteEvent
+      specification:
+      - url: https://open-api.tmforum.org20-GeographicSite-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: null
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicSite/call-back
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-GeographicLocation
+      name: GeographicLocation
+      port: 80
+      resources:
+      - geographicLocationDeleteEvent
+      specification:
+      - url: https://open-api.tmforum.org20-GeographicLocatin-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: null
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/GeographicLocation/call-back
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-PartyManagement
+      name: PartyManagement
+      port: 80
+      resources:
+      - individualDeleteEvent
+      - organizationDeleteEvent
+      specification:
+      - url: https://open-api.tmforum.org20-Party-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: null
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/Party/call-back
+      apiSDO: not_defined

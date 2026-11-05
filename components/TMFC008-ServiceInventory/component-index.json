@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC008",
+    "name": "ServiceInventory",
+    "key": "TMFC008-ServiceInventory"
+  },
+  "latest": "1.2.0",
+  "latestByStatus": {
+    "specified": "1.2.0"
+  },
+  "releases": [
+    {
+      "version": "1.2.0",
+      "status": "specified",
+      "tag": "TMFC008-ServiceInventory/v1.2.0-specified",
+      "releaseId": "d120461a82b8543d",
+      "path": "components/TMFC008-ServiceInventory/releases/1.2.0/",
+      "manifest": "components/TMFC008-ServiceInventory/releases/1.2.0/release-manifest.json",
+      "manifestSha256": "e15b3bec43991c41df3cbcbf3a75ff47e4dd6c50c369a245e1c42ff61fea41f9",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

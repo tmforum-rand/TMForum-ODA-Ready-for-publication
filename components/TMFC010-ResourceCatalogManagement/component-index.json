@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC010",
+    "name": "ResourceCatalogManagement",
+    "key": "TMFC010-ResourceCatalogManagement"
+  },
+  "latest": "1.3.2",
+  "latestByStatus": {
+    "specified": "1.3.2"
+  },
+  "releases": [
+    {
+      "version": "1.3.2",
+      "status": "specified",
+      "tag": "TMFC010-ResourceCatalogManagement/v1.3.2-specified",
+      "releaseId": "10cf2fc0a6fb6bee",
+      "path": "components/TMFC010-ResourceCatalogManagement/releases/1.3.2/",
+      "manifest": "components/TMFC010-ResourceCatalogManagement/releases/1.3.2/release-manifest.json",
+      "manifestSha256": "ee39e978b8a88c2bdd6feaa6aa3190e7547e5c7392b36c1adc1a715042361666",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "contractVersion": 1,
+  "releaseId": "d194075f0e2a603a",
+  "component": {
+    "id": "TMFC050",
+    "name": "ProductRecommendationManagement",
+    "key": "TMFC050-ProductRecommendationManagement",
+    "sourceDir": "TMFC050-ProductRecommendation"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC050-ProductRecommendationManagement/v1.0.0-specified",
+    "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5",
+    "version": "1.0.0",
+    "status": "specified",
+    "statusRaw": "specified",
+    "releaseNotes": {
+      "path": "specifications/TMFC050-ProductRecommendation/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "1.0.0 (specified)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "93ae34a7bdaeb9c0d1068d90e217f604ea65bb2831508cff96577303cc6bcd16"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.0.0",
+      "sha256": "0108b80ffec2db4c5029596d9c89191181938a7b4fc824bef3de8a0e23a319ac"
+    },
+    "handler": "v1_0",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_0:GA_COMPONENTS",
+    "eligible": false,
+    "detail": "TMFC050-ProductRecommendation is not listed in GA_COMPONENTS"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 397,
+      "sha256": "93ae34a7bdaeb9c0d1068d90e217f604ea65bb2831508cff96577303cc6bcd16",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC050-ProductRecommendation.yaml",
+      "mediaType": "text/yaml",
+      "size": 12903,
+      "sha256": "46397cd219a683e36ff3fd3379fb672decfba745a60581a8c64530dbeaf25443",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC050_Product_Recommendation_Management_v1.1.0.pdf",
+      "mediaType": "application/pdf",
+      "size": 615684,
+      "sha256": "26b78d5de4214f40c586577db981b3850df0bdaeedaf57ac3718d3bb280d9ac7",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.0.0/",
+      "status": "published",
+      "at": "2026-11-05T15:11:56Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC050-ProductRecommendationManagement/v1.0.0-specified",
+      "at": "2026-11-05T15:12:29Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42051675750",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:11:19Z",
+    "requestId": "84b94ca357a72197"
+  }
+}

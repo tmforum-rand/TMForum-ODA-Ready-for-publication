@@ -1,0 +1,89 @@
+{
+  "contractVersion": 1,
+  "releaseId": "52f43775bdbc0cda",
+  "component": {
+    "id": "TMFC062",
+    "name": "ResourceConfigurationandActivation",
+    "key": "TMFC062-ResourceConfigurationandActivation",
+    "sourceDir": "TMFC062-ResourceConfigurationandActivation"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC062-ResourceConfigurationandActivation/v1.0.0-specified",
+    "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5",
+    "version": "1.0.0",
+    "status": "specified",
+    "statusRaw": "specified",
+    "releaseNotes": {
+      "path": "specifications/TMFC062-ResourceConfigurationandActivation/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "1.0.0 (specified)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "817d28e318b3b4cc0eb5a6e3afe0691523db19ff81e45666c5a37561e938db1d"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.0.0",
+      "sha256": "0108b80ffec2db4c5029596d9c89191181938a7b4fc824bef3de8a0e23a319ac"
+    },
+    "handler": "v1_0",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_0:GA_COMPONENTS",
+    "eligible": false,
+    "detail": "TMFC062-ResourceConfigurationandActivation is not listed in GA_COMPONENTS"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 214,
+      "sha256": "817d28e318b3b4cc0eb5a6e3afe0691523db19ff81e45666c5a37561e938db1d",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC062-ResourceConfigurationandActivation.yaml",
+      "mediaType": "text/yaml",
+      "size": 7425,
+      "sha256": "151a61558a31fed99c69c71b9e4aad71bdb722f3f99674ae5f194623f102475a",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.0.0/",
+      "status": "published",
+      "at": "2026-11-05T15:11:49Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC062-ResourceConfigurationandActivation/v1.0.0-specified",
+      "at": "2026-11-05T15:12:29Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42051675750",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:11:15Z",
+    "requestId": "84b94ca357a72197"
+  }
+}

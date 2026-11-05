@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC014",
+    "name": "LocationManagement",
+    "key": "TMFC014-LocationManagement"
+  },
+  "latest": "1.2.1",
+  "latestByStatus": {
+    "specified": "1.2.1"
+  },
+  "releases": [
+    {
+      "version": "1.2.1",
+      "status": "specified",
+      "tag": "TMFC014-LocationManagement/v1.2.1-specified",
+      "releaseId": "e20832b7f9e63771",
+      "path": "components/TMFC014-LocationManagement/releases/1.2.1/",
+      "manifest": "components/TMFC014-LocationManagement/releases/1.2.1/release-manifest.json",
+      "manifestSha256": "5d031001c017fb0f5004c80f13b299374fa9a71024050602d2222b42d3449fe7",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC007",
+    "name": "ServiceOrderManagement",
+    "key": "TMFC007-ServiceOrderManagement"
+  },
+  "latest": "2.0.0",
+  "latestByStatus": {
+    "specified": "2.0.0"
+  },
+  "releases": [
+    {
+      "version": "2.0.0",
+      "status": "specified",
+      "tag": "TMFC007-ServiceOrderManagement/v2.0.0-specified",
+      "releaseId": "a39749b7745d1aa4",
+      "path": "components/TMFC007-ServiceOrderManagement/releases/2.0.0/",
+      "manifest": "components/TMFC007-ServiceOrderManagement/releases/2.0.0/release-manifest.json",
+      "manifestSha256": "bb4191f58fd110f807064c5654fd6aed72888e771d08ef20c309d92ccc45fb01",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedFrom": {
     "manifests": "components/*/releases/*/release-manifest.json",
-    "count": 3
+    "count": 35
   },
   "components": {
     "TMFC001-ProductCatalogManagement": {
@@ -35,6 +35,72 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T14:59:47Z"
+        }
+      ]
+    },
+    "TMFC002-ProductOrderCaptureAndValidation": {
+      "id": "TMFC002",
+      "name": "ProductOrderCaptureAndValidation",
+      "componentIndex": "components/TMFC002-ProductOrderCaptureAndValidation/component-index.json",
+      "latest": "2.1.0",
+      "latestByStatus": {
+        "specified": "2.1.0"
+      },
+      "releases": [
+        {
+          "version": "2.1.0",
+          "status": "specified",
+          "tag": "TMFC002-ProductOrderCaptureAndValidation/v2.1.0-specified",
+          "releaseId": "2ab1f8a7d8920d89",
+          "path": "components/TMFC002-ProductOrderCaptureAndValidation/releases/2.1.0/",
+          "manifest": "components/TMFC002-ProductOrderCaptureAndValidation/releases/2.1.0/release-manifest.json",
+          "manifestSha256": "15845c333e813f5ad9a590a058202c3aee9d5c2250811f216af855c97a0d3e15",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC003-ProductOrderDeliveryOrchestrationAndManagement": {
+      "id": "TMFC003",
+      "name": "ProductOrderDeliveryOrchestrationAndManagement",
+      "componentIndex": "components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/component-index.json",
+      "latest": "1.1.1",
+      "latestByStatus": {
+        "specified": "1.1.1"
+      },
+      "releases": [
+        {
+          "version": "1.1.1",
+          "status": "specified",
+          "tag": "TMFC003-ProductOrderDeliveryOrchestrationAndManagement/v1.1.1-specified",
+          "releaseId": "5eadb251fa42fa0f",
+          "path": "components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/releases/1.1.1/",
+          "manifest": "components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/releases/1.1.1/release-manifest.json",
+          "manifestSha256": "e43fbe0694860f3ad442d152571cea8afe2898511f256fd286e6f9b6f501cdab",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
         }
       ]
     },
@@ -71,6 +137,501 @@
         }
       ]
     },
+    "TMFC006-ServiceCatalogManagement": {
+      "id": "TMFC006",
+      "name": "ServiceCatalogManagement",
+      "componentIndex": "components/TMFC006-ServiceCatalogManagement/component-index.json",
+      "latest": "1.2.0",
+      "latestByStatus": {
+        "specified": "1.2.0"
+      },
+      "releases": [
+        {
+          "version": "1.2.0",
+          "status": "specified",
+          "tag": "TMFC006-ServiceCatalogManagement/v1.2.0-specified",
+          "releaseId": "e020f45b6cd1e879",
+          "path": "components/TMFC006-ServiceCatalogManagement/releases/1.2.0/",
+          "manifest": "components/TMFC006-ServiceCatalogManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "2ecdb92ff7d6cfc4523d7a5c986707f9783cac4cf740463b3bf09a9cf422914f",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC007-ServiceOrderManagement": {
+      "id": "TMFC007",
+      "name": "ServiceOrderManagement",
+      "componentIndex": "components/TMFC007-ServiceOrderManagement/component-index.json",
+      "latest": "2.0.0",
+      "latestByStatus": {
+        "specified": "2.0.0"
+      },
+      "releases": [
+        {
+          "version": "2.0.0",
+          "status": "specified",
+          "tag": "TMFC007-ServiceOrderManagement/v2.0.0-specified",
+          "releaseId": "a39749b7745d1aa4",
+          "path": "components/TMFC007-ServiceOrderManagement/releases/2.0.0/",
+          "manifest": "components/TMFC007-ServiceOrderManagement/releases/2.0.0/release-manifest.json",
+          "manifestSha256": "bb4191f58fd110f807064c5654fd6aed72888e771d08ef20c309d92ccc45fb01",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC008-ServiceInventory": {
+      "id": "TMFC008",
+      "name": "ServiceInventory",
+      "componentIndex": "components/TMFC008-ServiceInventory/component-index.json",
+      "latest": "1.2.0",
+      "latestByStatus": {
+        "specified": "1.2.0"
+      },
+      "releases": [
+        {
+          "version": "1.2.0",
+          "status": "specified",
+          "tag": "TMFC008-ServiceInventory/v1.2.0-specified",
+          "releaseId": "d120461a82b8543d",
+          "path": "components/TMFC008-ServiceInventory/releases/1.2.0/",
+          "manifest": "components/TMFC008-ServiceInventory/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "e15b3bec43991c41df3cbcbf3a75ff47e4dd6c50c369a245e1c42ff61fea41f9",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC009-ServiceQualificationManagement": {
+      "id": "TMFC009",
+      "name": "ServiceQualificationManagement",
+      "componentIndex": "components/TMFC009-ServiceQualificationManagement/component-index.json",
+      "latest": "1.1.0",
+      "latestByStatus": {
+        "specified": "1.1.0"
+      },
+      "releases": [
+        {
+          "version": "1.1.0",
+          "status": "specified",
+          "tag": "TMFC009-ServiceQualificationManagement/v1.1.0-specified",
+          "releaseId": "0d04e8c25c570497",
+          "path": "components/TMFC009-ServiceQualificationManagement/releases/1.1.0/",
+          "manifest": "components/TMFC009-ServiceQualificationManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "30657065861e6409b4882e353baa01c719167c60a5e61e14e8aab2932a3b2dc0",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC010-ResourceCatalogManagement": {
+      "id": "TMFC010",
+      "name": "ResourceCatalogManagement",
+      "componentIndex": "components/TMFC010-ResourceCatalogManagement/component-index.json",
+      "latest": "1.3.2",
+      "latestByStatus": {
+        "specified": "1.3.2"
+      },
+      "releases": [
+        {
+          "version": "1.3.2",
+          "status": "specified",
+          "tag": "TMFC010-ResourceCatalogManagement/v1.3.2-specified",
+          "releaseId": "10cf2fc0a6fb6bee",
+          "path": "components/TMFC010-ResourceCatalogManagement/releases/1.3.2/",
+          "manifest": "components/TMFC010-ResourceCatalogManagement/releases/1.3.2/release-manifest.json",
+          "manifestSha256": "ee39e978b8a88c2bdd6feaa6aa3190e7547e5c7392b36c1adc1a715042361666",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC011-ResourceOrderManagement": {
+      "id": "TMFC011",
+      "name": "ResourceOrderManagement",
+      "componentIndex": "components/TMFC011-ResourceOrderManagement/component-index.json",
+      "latest": "1.2.0",
+      "latestByStatus": {
+        "pre-production": "1.2.0"
+      },
+      "releases": [
+        {
+          "version": "1.2.0",
+          "status": "pre-production",
+          "tag": "TMFC011-ResourceOrderManagement/v1.2.0-pre-production",
+          "releaseId": "ed239d78309ba723",
+          "path": "components/TMFC011-ResourceOrderManagement/releases/1.2.0/",
+          "manifest": "components/TMFC011-ResourceOrderManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "30020152b6e2b0d46930b82b5b60dba4896237069e234eea1e2814a3414e13d5",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC012-ResourceInventory": {
+      "id": "TMFC012",
+      "name": "ResourceInventory",
+      "componentIndex": "components/TMFC012-ResourceInventory/component-index.json",
+      "latest": "2.2.0",
+      "latestByStatus": {
+        "specified": "2.2.0"
+      },
+      "releases": [
+        {
+          "version": "2.2.0",
+          "status": "specified",
+          "tag": "TMFC012-ResourceInventory/v2.2.0-specified",
+          "releaseId": "ef68eed4af4e1f1a",
+          "path": "components/TMFC012-ResourceInventory/releases/2.2.0/",
+          "manifest": "components/TMFC012-ResourceInventory/releases/2.2.0/release-manifest.json",
+          "manifestSha256": "d6e8beb735c482ad63274534a36d44e65971d465bba3ff3cbcfad7ddb42ad7ae",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC014-LocationManagement": {
+      "id": "TMFC014",
+      "name": "LocationManagement",
+      "componentIndex": "components/TMFC014-LocationManagement/component-index.json",
+      "latest": "1.2.1",
+      "latestByStatus": {
+        "specified": "1.2.1"
+      },
+      "releases": [
+        {
+          "version": "1.2.1",
+          "status": "specified",
+          "tag": "TMFC014-LocationManagement/v1.2.1-specified",
+          "releaseId": "e20832b7f9e63771",
+          "path": "components/TMFC014-LocationManagement/releases/1.2.1/",
+          "manifest": "components/TMFC014-LocationManagement/releases/1.2.1/release-manifest.json",
+          "manifestSha256": "5d031001c017fb0f5004c80f13b299374fa9a71024050602d2222b42d3449fe7",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC020-DigitalIdentityManagement": {
+      "id": "TMFC020",
+      "name": "DigitalIdentityManagement",
+      "componentIndex": "components/TMFC020-DigitalIdentityManagement/component-index.json",
+      "latest": "1.1.0",
+      "latestByStatus": {
+        "specified": "1.1.0"
+      },
+      "releases": [
+        {
+          "version": "1.1.0",
+          "status": "specified",
+          "tag": "TMFC020-DigitalIdentityManagement/v1.1.0-specified",
+          "releaseId": "d3e8b0f024bf5be4",
+          "path": "components/TMFC020-DigitalIdentityManagement/releases/1.1.0/",
+          "manifest": "components/TMFC020-DigitalIdentityManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "97d26447739ce6e3ffe365cf0bbe053cf7e200e51fe715cf27e3b755eef2f711",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC022-PartyPrivacyManagement": {
+      "id": "TMFC022",
+      "name": "PartyPrivacyManagement",
+      "componentIndex": "components/TMFC022-PartyPrivacyManagement/component-index.json",
+      "latest": "1.1.0",
+      "latestByStatus": {
+        "specified": "1.1.0"
+      },
+      "releases": [
+        {
+          "version": "1.1.0",
+          "status": "specified",
+          "tag": "TMFC022-PartyPrivacyManagement/v1.1.0-specified",
+          "releaseId": "981cc4cf38756150",
+          "path": "components/TMFC022-PartyPrivacyManagement/releases/1.1.0/",
+          "manifest": "components/TMFC022-PartyPrivacyManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "4654a9da19ce5c9fefef0f4dd8827596b47c579c37f31c9ea895957f75321bf6",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC023-PartyInteractionManagement": {
+      "id": "TMFC023",
+      "name": "PartyInteractionManagement",
+      "componentIndex": "components/TMFC023-PartyInteractionManagement/component-index.json",
+      "latest": "1.1.2",
+      "latestByStatus": {
+        "specified": "1.1.2"
+      },
+      "releases": [
+        {
+          "version": "1.1.2",
+          "status": "specified",
+          "tag": "TMFC023-PartyInteractionManagement/v1.1.2-specified",
+          "releaseId": "3e2b34db10cf2839",
+          "path": "components/TMFC023-PartyInteractionManagement/releases/1.1.2/",
+          "manifest": "components/TMFC023-PartyInteractionManagement/releases/1.1.2/release-manifest.json",
+          "manifestSha256": "d23328d7d75b610463c8ff8a2dfbe541ad3683776603a8e1cd636653be2cc9bf",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC024-BillingAccountManagement": {
+      "id": "TMFC024",
+      "name": "BillingAccountManagement",
+      "componentIndex": "components/TMFC024-BillingAccountManagement/component-index.json",
+      "latest": "2.1.1",
+      "latestByStatus": {
+        "specified": "2.1.1"
+      },
+      "releases": [
+        {
+          "version": "2.1.1",
+          "status": "specified",
+          "tag": "TMFC024-BillingAccountManagement/v2.1.1-specified",
+          "releaseId": "21c191218806dbea",
+          "path": "components/TMFC024-BillingAccountManagement/releases/2.1.1/",
+          "manifest": "components/TMFC024-BillingAccountManagement/releases/2.1.1/release-manifest.json",
+          "manifestSha256": "811567ddd55db63384f870ff9f5d6505ff54b5ee51adeed252330ab3819d5080",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC027-ProductConfigurator": {
+      "id": "TMFC027",
+      "name": "ProductConfigurator",
+      "componentIndex": "components/TMFC027-ProductConfigurator/component-index.json",
+      "latest": "2.1.1",
+      "latestByStatus": {
+        "specified": "2.1.1"
+      },
+      "releases": [
+        {
+          "version": "2.1.1",
+          "status": "specified",
+          "tag": "TMFC027-ProductConfigurator/v2.1.1-specified",
+          "releaseId": "42ff8f6f9ab9813e",
+          "path": "components/TMFC027-ProductConfigurator/releases/2.1.1/",
+          "manifest": "components/TMFC027-ProductConfigurator/releases/2.1.1/release-manifest.json",
+          "manifestSha256": "9d6822fbae0f87a4deeefd517343d1b4bd8b4d64953d38710c2937eba15fd027",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC028-PartyManagement": {
+      "id": "TMFC028",
+      "name": "PartyManagement",
+      "componentIndex": "components/TMFC028-PartyManagement/component-index.json",
+      "latest": "2.1.0",
+      "latestByStatus": {
+        "specified": "2.1.0"
+      },
+      "releases": [
+        {
+          "version": "2.1.0",
+          "status": "specified",
+          "tag": "TMFC028-PartyManagement/v2.1.0-specified",
+          "releaseId": "f9046ebae1930dcc",
+          "path": "components/TMFC028-PartyManagement/releases/2.1.0/",
+          "manifest": "components/TMFC028-PartyManagement/releases/2.1.0/release-manifest.json",
+          "manifestSha256": "1c7bcd966fbf5c69ada23f9fc482ce029137c6db63a2c1dea1c23a6ecaa787de",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC029-PaymentManagement": {
+      "id": "TMFC029",
+      "name": "PaymentManagement",
+      "componentIndex": "components/TMFC029-PaymentManagement/component-index.json",
+      "latest": "1.2.2",
+      "latestByStatus": {
+        "specified": "1.2.2"
+      },
+      "releases": [
+        {
+          "version": "1.2.2",
+          "status": "specified",
+          "tag": "TMFC029-PaymentManagement/v1.2.2-specified",
+          "releaseId": "c0b465f1788b1a4b",
+          "path": "components/TMFC029-PaymentManagement/releases/1.2.2/",
+          "manifest": "components/TMFC029-PaymentManagement/releases/1.2.2/release-manifest.json",
+          "manifestSha256": "1cdae7ef082c3e5d27fe6d767b09c657ca5b403eb8a727d6007623f59a93a816",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
     "TMFC030-BillGenerationManagement": {
       "id": "TMFC030",
       "name": "BillGenerationManagement",
@@ -101,6 +662,501 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T14:12:21Z"
+        }
+      ]
+    },
+    "TMFC031-BillCalculation": {
+      "id": "TMFC031",
+      "name": "BillCalculation",
+      "componentIndex": "components/TMFC031-BillCalculation/component-index.json",
+      "latest": "3.0.0",
+      "latestByStatus": {
+        "specified": "3.0.0"
+      },
+      "releases": [
+        {
+          "version": "3.0.0",
+          "status": "specified",
+          "tag": "TMFC031-BillCalculation/v3.0.0-specified",
+          "releaseId": "cf2dec5f3f2b330e",
+          "path": "components/TMFC031-BillCalculation/releases/3.0.0/",
+          "manifest": "components/TMFC031-BillCalculation/releases/3.0.0/release-manifest.json",
+          "manifestSha256": "a480d09193631c7b5824f2be1ca5ed2b654ad6607cac2a1fc9b54ba4586fa291",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC035-PermissionsManagement": {
+      "id": "TMFC035",
+      "name": "PermissionsManagement",
+      "componentIndex": "components/TMFC035-PermissionsManagement/component-index.json",
+      "latest": "1.1.1",
+      "latestByStatus": {
+        "specified": "1.1.1"
+      },
+      "releases": [
+        {
+          "version": "1.1.1",
+          "status": "specified",
+          "tag": "TMFC035-PermissionsManagement/v1.1.1-specified",
+          "releaseId": "9ac56669db280e8a",
+          "path": "components/TMFC035-PermissionsManagement/releases/1.1.1/",
+          "manifest": "components/TMFC035-PermissionsManagement/releases/1.1.1/release-manifest.json",
+          "manifestSha256": "0f5e6dd508db7c58d8526835cebe61d5b3721383cbee3703b3a3a645fe51242b",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC036-LeadAndOpportunityManagement": {
+      "id": "TMFC036",
+      "name": "LeadAndOpportunityManagement",
+      "componentIndex": "components/TMFC036-LeadAndOpportunityManagement/component-index.json",
+      "latest": "1.2.0",
+      "latestByStatus": {
+        "specified": "1.2.0"
+      },
+      "releases": [
+        {
+          "version": "1.2.0",
+          "status": "specified",
+          "tag": "TMFC036-LeadAndOpportunityManagement/v1.2.0-specified",
+          "releaseId": "99efe1cc4cf9ae2d",
+          "path": "components/TMFC036-LeadAndOpportunityManagement/releases/1.2.0/",
+          "manifest": "components/TMFC036-LeadAndOpportunityManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "0952a964675387b55f6ddb86fa5d31254d2ad78e41a5e138b7130fafef41bae7",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC037-ServicePerformanceManagement": {
+      "id": "TMFC037",
+      "name": "ServicePerformanceManagement",
+      "componentIndex": "components/TMFC037-ServicePerformanceManagement/component-index.json",
+      "latest": "1.2.0",
+      "latestByStatus": {
+        "specified": "1.2.0"
+      },
+      "releases": [
+        {
+          "version": "1.2.0",
+          "status": "specified",
+          "tag": "TMFC037-ServicePerformanceManagement/v1.2.0-specified",
+          "releaseId": "7f1b2df5fc1a776b",
+          "path": "components/TMFC037-ServicePerformanceManagement/releases/1.2.0/",
+          "manifest": "components/TMFC037-ServicePerformanceManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "a03294b746fc61d4dccb8ac0ea7aa8650c9f96e43fc2c052e377ea63d2952aa2",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC038-ResourcePerformanceManagement": {
+      "id": "TMFC038",
+      "name": "ResourcePerformanceManagement",
+      "componentIndex": "components/TMFC038-ResourcePerformanceManagement/component-index.json",
+      "latest": "1.2.0",
+      "latestByStatus": {
+        "specified": "1.2.0"
+      },
+      "releases": [
+        {
+          "version": "1.2.0",
+          "status": "specified",
+          "tag": "TMFC038-ResourcePerformanceManagement/v1.2.0-specified",
+          "releaseId": "0b0b47f77b0295c0",
+          "path": "components/TMFC038-ResourcePerformanceManagement/releases/1.2.0/",
+          "manifest": "components/TMFC038-ResourcePerformanceManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "4e8f0f5554d231b43fc4a57207a452213f28c5086f7cdbcfa16ae96f302b33ec",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC039-AgreementManagement": {
+      "id": "TMFC039",
+      "name": "AgreementManagement",
+      "componentIndex": "components/TMFC039-AgreementManagement/component-index.json",
+      "latest": "1.1.0",
+      "latestByStatus": {
+        "specified": "1.1.0"
+      },
+      "releases": [
+        {
+          "version": "1.1.0",
+          "status": "specified",
+          "tag": "TMFC039-AgreementManagement/v1.1.0-specified",
+          "releaseId": "e13da50a0819c1f7",
+          "path": "components/TMFC039-AgreementManagement/releases/1.1.0/",
+          "manifest": "components/TMFC039-AgreementManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "d78d302ebdce66bc5535248139eb0d56e2eaa5984061bba3acb85b32071f98c4",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC040-ProductUsageManagement": {
+      "id": "TMFC040",
+      "name": "ProductUsageManagement",
+      "componentIndex": "components/TMFC040-ProductUsageManagement/component-index.json",
+      "latest": "1.1.0",
+      "latestByStatus": {
+        "specified": "1.1.0"
+      },
+      "releases": [
+        {
+          "version": "1.1.0",
+          "status": "specified",
+          "tag": "TMFC040-ProductUsageManagement/v1.1.0-specified",
+          "releaseId": "c8f97624eb84cfce",
+          "path": "components/TMFC040-ProductUsageManagement/releases/1.1.0/",
+          "manifest": "components/TMFC040-ProductUsageManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "b7bef0dec466d64c1e406ef70cf91ecfb2385469cb70c2f57769f846ab062326",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC041-AnomalyManagement": {
+      "id": "TMFC041",
+      "name": "AnomalyManagement",
+      "componentIndex": "components/TMFC041-AnomalyManagement/component-index.json",
+      "latest": "1.1.0",
+      "latestByStatus": {
+        "specified": "1.1.0"
+      },
+      "releases": [
+        {
+          "version": "1.1.0",
+          "status": "specified",
+          "tag": "TMFC041-AnomalyManagement/v1.1.0-specified",
+          "releaseId": "c7b9d1a31dc5e9ca",
+          "path": "components/TMFC041-AnomalyManagement/releases/1.1.0/",
+          "manifest": "components/TMFC041-AnomalyManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "6bcde8a1dba6dd433ea8350ca8c3f7f4457c9da4fd5f6886b6d83f0959f13dc7",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC043-FaultManagement": {
+      "id": "TMFC043",
+      "name": "FaultManagement",
+      "componentIndex": "components/TMFC043-FaultManagement/component-index.json",
+      "latest": "1.0.0",
+      "latestByStatus": {
+        "specified": "1.0.0"
+      },
+      "releases": [
+        {
+          "version": "1.0.0",
+          "status": "specified",
+          "tag": "TMFC043-FaultManagement/v1.0.0-specified",
+          "releaseId": "80c154ef5e6e7724",
+          "path": "components/TMFC043-FaultManagement/releases/1.0.0/",
+          "manifest": "components/TMFC043-FaultManagement/releases/1.0.0/release-manifest.json",
+          "manifestSha256": "555875949850ceb4994c2d6ee9dceff4ff0a9e10b39d28dc2102fd7fd1a5abe0",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC046-WorkforceManagement": {
+      "id": "TMFC046",
+      "name": "WorkforceManagement",
+      "componentIndex": "components/TMFC046-WorkforceManagement/component-index.json",
+      "latest": "1.1.0",
+      "latestByStatus": {
+        "specified": "1.1.0"
+      },
+      "releases": [
+        {
+          "version": "1.1.0",
+          "status": "specified",
+          "tag": "TMFC046-WorkforceManagement/v1.1.0-specified",
+          "releaseId": "65bf6fa6e20f2e60",
+          "path": "components/TMFC046-WorkforceManagement/releases/1.1.0/",
+          "manifest": "components/TMFC046-WorkforceManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "9ea23365821f347233f8eac181fe4fdf89a1f52ae370d7e55da08c1a9d2084e4",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC050-ProductRecommendationManagement": {
+      "id": "TMFC050",
+      "name": "ProductRecommendationManagement",
+      "componentIndex": "components/TMFC050-ProductRecommendationManagement/component-index.json",
+      "latest": "1.0.0",
+      "latestByStatus": {
+        "specified": "1.0.0"
+      },
+      "releases": [
+        {
+          "version": "1.0.0",
+          "status": "specified",
+          "tag": "TMFC050-ProductRecommendationManagement/v1.0.0-specified",
+          "releaseId": "d194075f0e2a603a",
+          "path": "components/TMFC050-ProductRecommendationManagement/releases/1.0.0/",
+          "manifest": "components/TMFC050-ProductRecommendationManagement/releases/1.0.0/release-manifest.json",
+          "manifestSha256": "868525528781fd8fec5dbef7527e6ce83e553f7ff82abba69dc26d725b6a00b8",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC054-ProductTestManagement": {
+      "id": "TMFC054",
+      "name": "ProductTestManagement",
+      "componentIndex": "components/TMFC054-ProductTestManagement/component-index.json",
+      "latest": "1.0.0",
+      "latestByStatus": {
+        "specified": "1.0.0"
+      },
+      "releases": [
+        {
+          "version": "1.0.0",
+          "status": "specified",
+          "tag": "TMFC054-ProductTestManagement/v1.0.0-specified",
+          "releaseId": "c73b66995acc877d",
+          "path": "components/TMFC054-ProductTestManagement/releases/1.0.0/",
+          "manifest": "components/TMFC054-ProductTestManagement/releases/1.0.0/release-manifest.json",
+          "manifestSha256": "b597e164a179decc133ac522df4a3129a5ad2a93a88965b7585a191662e13795",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC055-ServiceTestManagement": {
+      "id": "TMFC055",
+      "name": "ServiceTestManagement",
+      "componentIndex": "components/TMFC055-ServiceTestManagement/component-index.json",
+      "latest": "1.0.0",
+      "latestByStatus": {
+        "specified": "1.0.0"
+      },
+      "releases": [
+        {
+          "version": "1.0.0",
+          "status": "specified",
+          "tag": "TMFC055-ServiceTestManagement/v1.0.0-specified",
+          "releaseId": "ca39da5678e356db",
+          "path": "components/TMFC055-ServiceTestManagement/releases/1.0.0/",
+          "manifest": "components/TMFC055-ServiceTestManagement/releases/1.0.0/release-manifest.json",
+          "manifestSha256": "ae86efc22871c512d4f1d3cd27e65f6bdad029a5d63e0deec9820b69bfd99c31",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC061-WorkOrderManagement": {
+      "id": "TMFC061",
+      "name": "WorkOrderManagement",
+      "componentIndex": "components/TMFC061-WorkOrderManagement/component-index.json",
+      "latest": "1.0.0",
+      "latestByStatus": {
+        "specified": "1.0.0"
+      },
+      "releases": [
+        {
+          "version": "1.0.0",
+          "status": "specified",
+          "tag": "TMFC061-WorkOrderManagement/v1.0.0-specified",
+          "releaseId": "56dadf0b6ab71b71",
+          "path": "components/TMFC061-WorkOrderManagement/releases/1.0.0/",
+          "manifest": "components/TMFC061-WorkOrderManagement/releases/1.0.0/release-manifest.json",
+          "manifestSha256": "b6a92cd99c25f39525984ee1d4720e10d5b14aedecc69fd9f1d6586b8c4412ed",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
+        }
+      ]
+    },
+    "TMFC062-ResourceConfigurationandActivation": {
+      "id": "TMFC062",
+      "name": "ResourceConfigurationandActivation",
+      "componentIndex": "components/TMFC062-ResourceConfigurationandActivation/component-index.json",
+      "latest": "1.0.0",
+      "latestByStatus": {
+        "specified": "1.0.0"
+      },
+      "releases": [
+        {
+          "version": "1.0.0",
+          "status": "specified",
+          "tag": "TMFC062-ResourceConfigurationandActivation/v1.0.0-specified",
+          "releaseId": "52f43775bdbc0cda",
+          "path": "components/TMFC062-ResourceConfigurationandActivation/releases/1.0.0/",
+          "manifest": "components/TMFC062-ResourceConfigurationandActivation/releases/1.0.0/release-manifest.json",
+          "manifestSha256": "5ff3118e56336c0f8af8108875f3c233048fa0dbba758341c05d712d68fd07e9",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:12:29Z"
         }
       ]
     }

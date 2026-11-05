@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC062",
+    "name": "ResourceConfigurationandActivation",
+    "key": "TMFC062-ResourceConfigurationandActivation"
+  },
+  "latest": "1.0.0",
+  "latestByStatus": {
+    "specified": "1.0.0"
+  },
+  "releases": [
+    {
+      "version": "1.0.0",
+      "status": "specified",
+      "tag": "TMFC062-ResourceConfigurationandActivation/v1.0.0-specified",
+      "releaseId": "52f43775bdbc0cda",
+      "path": "components/TMFC062-ResourceConfigurationandActivation/releases/1.0.0/",
+      "manifest": "components/TMFC062-ResourceConfigurationandActivation/releases/1.0.0/release-manifest.json",
+      "manifestSha256": "5ff3118e56336c0f8af8108875f3c233048fa0dbba758341c05d712d68fd07e9",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

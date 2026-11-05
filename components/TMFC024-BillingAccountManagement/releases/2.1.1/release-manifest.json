@@ -1,0 +1,100 @@
+{
+  "contractVersion": 1,
+  "releaseId": "21c191218806dbea",
+  "component": {
+    "id": "TMFC024",
+    "name": "BillingAccountManagement",
+    "key": "TMFC024-BillingAccountManagement",
+    "sourceDir": "TMFC024-BillingAccountManagement"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC024-BillingAccountManagement/v2.1.1-specified",
+    "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5",
+    "version": "2.1.1",
+    "status": "specified",
+    "statusRaw": "specified",
+    "releaseNotes": {
+      "path": "specifications/TMFC024-BillingAccountManagement/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "2.1.1 (specified)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "9bb73365d70056f3c443d4453bd29915413f8f3eafaf67b509b55f75a819fd3d"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.0.0",
+      "sha256": "0108b80ffec2db4c5029596d9c89191181938a7b4fc824bef3de8a0e23a319ac"
+    },
+    "handler": "v1_0",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_0:GA_COMPONENTS",
+    "eligible": false,
+    "detail": "TMFC024-BillingAccountManagement is not listed in GA_COMPONENTS"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 204,
+      "sha256": "9bb73365d70056f3c443d4453bd29915413f8f3eafaf67b509b55f75a819fd3d",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC024-BillingAccountManagement.yaml",
+      "mediaType": "text/yaml",
+      "size": 8113,
+      "sha256": "ced2b05760ae2e85565a9eb8f2b14d644d41b31a40f82d3af4410a155196338a",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC024_Billing_Account_Management_v2.1.0.pdf",
+      "mediaType": "application/pdf",
+      "size": 407131,
+      "sha256": "f80853849d6aa0fbbe55e8c6832b7d47bedfb74cb7cff169a6271ec1dbb0bd52",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.0.0/",
+      "status": "published",
+      "at": "2026-11-05T15:09:34Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC024-BillingAccountManagement/v2.1.1-specified",
+      "at": "2026-11-05T15:12:29Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42051675750",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:08:53Z",
+    "requestId": "84b94ca357a72197"
+  }
+}

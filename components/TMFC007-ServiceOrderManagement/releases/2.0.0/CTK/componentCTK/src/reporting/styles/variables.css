@@ -1,0 +1,36 @@
+:root {
+    --font-family-primary: 'Gotham';
+
+    --font-h1: 700 42px / 125% var(--font-family-primary);
+    --font-h2: 700 32px / 125% var(--font-family-primary);
+    --font-h3: 500 24px / 100% var(--font-family-primary);
+    --font-h4: 700 20px / 100% var(--font-family-primary);
+    --font-h5: 700 18px / 100% var(--font-family-primary);
+
+    --font-p1: 400 20px / 150% var(--font-family-primary);
+    --font-p2: 400 16px / 150% var(--font-family-primary);
+    --font-p3: 400 14px / var(--font-family-primary);
+
+    --font-hero: 700 64px / 125% var(--font-family-primary);
+
+    --font-highlight-article: 500 15px / 125% var(--font-family-primary);
+    --font-label: 400 16px / 140% var(--font-family-primary);
+    --font-cta: 700 16px / 125% var(--font-family-primary);
+    --font-eyebrow-large: 500 14px / 140% var(--font-family-primary);
+    --font-eyebrow-small: 500 12px / 140% var(--font-family-primary);
+
+    --white: #fff;
+    --core-red: #e0121d;
+    --blue: #3577da;
+    --core-blue: #0d2548;
+    --light-grey: #f8f9f9;
+    --grey: #d2d4da;
+    --dark-grey: #a9adb1;
+
+    --shadow-white: 0px 4px 30px 0px rgba(0, 0, 0, 0.17);
+
+    --border-radius-small: .5rem 0;
+    --border-radius-large: 2rem 0;
+
+    --max-width: 1200px;
+}

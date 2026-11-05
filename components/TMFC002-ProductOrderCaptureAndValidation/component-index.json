@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC002",
+    "name": "ProductOrderCaptureAndValidation",
+    "key": "TMFC002-ProductOrderCaptureAndValidation"
+  },
+  "latest": "2.1.0",
+  "latestByStatus": {
+    "specified": "2.1.0"
+  },
+  "releases": [
+    {
+      "version": "2.1.0",
+      "status": "specified",
+      "tag": "TMFC002-ProductOrderCaptureAndValidation/v2.1.0-specified",
+      "releaseId": "2ab1f8a7d8920d89",
+      "path": "components/TMFC002-ProductOrderCaptureAndValidation/releases/2.1.0/",
+      "manifest": "components/TMFC002-ProductOrderCaptureAndValidation/releases/2.1.0/release-manifest.json",
+      "manifestSha256": "15845c333e813f5ad9a590a058202c3aee9d5c2250811f216af855c97a0d3e15",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

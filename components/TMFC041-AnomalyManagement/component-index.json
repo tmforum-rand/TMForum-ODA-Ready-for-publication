@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC041",
+    "name": "AnomalyManagement",
+    "key": "TMFC041-AnomalyManagement"
+  },
+  "latest": "1.1.0",
+  "latestByStatus": {
+    "specified": "1.1.0"
+  },
+  "releases": [
+    {
+      "version": "1.1.0",
+      "status": "specified",
+      "tag": "TMFC041-AnomalyManagement/v1.1.0-specified",
+      "releaseId": "c7b9d1a31dc5e9ca",
+      "path": "components/TMFC041-AnomalyManagement/releases/1.1.0/",
+      "manifest": "components/TMFC041-AnomalyManagement/releases/1.1.0/release-manifest.json",
+      "manifestSha256": "6bcde8a1dba6dd433ea8350ca8c3f7f4457c9da4fd5f6886b6d83f0959f13dc7",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

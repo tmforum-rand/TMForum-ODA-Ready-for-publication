@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC050",
+    "name": "ProductRecommendationManagement",
+    "key": "TMFC050-ProductRecommendationManagement"
+  },
+  "latest": "1.0.0",
+  "latestByStatus": {
+    "specified": "1.0.0"
+  },
+  "releases": [
+    {
+      "version": "1.0.0",
+      "status": "specified",
+      "tag": "TMFC050-ProductRecommendationManagement/v1.0.0-specified",
+      "releaseId": "d194075f0e2a603a",
+      "path": "components/TMFC050-ProductRecommendationManagement/releases/1.0.0/",
+      "manifest": "components/TMFC050-ProductRecommendationManagement/releases/1.0.0/release-manifest.json",
+      "manifestSha256": "868525528781fd8fec5dbef7527e6ce83e553f7ff82abba69dc26d725b6a00b8",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

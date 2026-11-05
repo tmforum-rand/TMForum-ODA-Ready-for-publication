@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC029",
+    "name": "PaymentManagement",
+    "key": "TMFC029-PaymentManagement"
+  },
+  "latest": "1.2.2",
+  "latestByStatus": {
+    "specified": "1.2.2"
+  },
+  "releases": [
+    {
+      "version": "1.2.2",
+      "status": "specified",
+      "tag": "TMFC029-PaymentManagement/v1.2.2-specified",
+      "releaseId": "c0b465f1788b1a4b",
+      "path": "components/TMFC029-PaymentManagement/releases/1.2.2/",
+      "manifest": "components/TMFC029-PaymentManagement/releases/1.2.2/release-manifest.json",
+      "manifestSha256": "1cdae7ef082c3e5d27fe6d767b09c657ca5b403eb8a727d6007623f59a93a816",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}

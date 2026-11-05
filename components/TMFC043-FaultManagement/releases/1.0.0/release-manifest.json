@@ -1,0 +1,645 @@
+{
+  "contractVersion": 1,
+  "releaseId": "80c154ef5e6e7724",
+  "component": {
+    "id": "TMFC043",
+    "name": "FaultManagement",
+    "key": "TMFC043-FaultManagement",
+    "sourceDir": "TMFC043-FaultManagement"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC043-FaultManagement/v1.0.0-specified",
+    "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5",
+    "version": "1.0.0",
+    "status": "specified",
+    "statusRaw": "specified",
+    "releaseNotes": {
+      "path": "specifications/TMFC043-FaultManagement/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "1.0.0 (specified)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "5f658d5b60d32d7b23908c9acead8aca3972f6ac771bd7793c7c7e5b65b755eb"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.0.0",
+      "sha256": "0108b80ffec2db4c5029596d9c89191181938a7b4fc824bef3de8a0e23a319ac"
+    },
+    "handler": "v1_0",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_0:GA_COMPONENTS",
+    "eligible": true,
+    "detail": "TMFC043-FaultManagement is listed in GA_COMPONENTS"
+  },
+  "ctk": {
+    "packaging": "generic",
+    "framework": {
+      "repository": "tmforum-rand/TMForum-ODA-Component-Conformance",
+      "ref": "v1.2.0",
+      "commit": "301cb2cc8f252688fc18aeb9b86e675c63be62e0"
+    }
+  },
+  "artifacts": [
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/CHANGE_ME.json",
+      "mediaType": "application/json",
+      "size": 14773,
+      "sha256": "310e123449255bd1d38ba66a0873305fbc1c001b9e8ab44d5bae1069731eaa6a",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/MAC-LINUX-RUN.sh",
+      "mediaType": "text/x-shellscript",
+      "size": 391,
+      "sha256": "a3c30c7d47cbb611592f093d8d286a1321e854f1786463a2a0891d539ba9b6a9",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/README",
+      "mediaType": "application/octet-stream",
+      "size": 9207,
+      "sha256": "ca57e05a66685fe2df9e3e86a5fdc05afa0f3dd39347567230f2e9b32d07e5eb",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/WINDOWS-RUN.bat",
+      "mediaType": "text/plain",
+      "size": 359,
+      "sha256": "718b2c21da944ae6068d6068de8beca15aee0b9b5822d6c854fb4983c723a363",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/run.sh",
+      "mediaType": "text/x-shellscript",
+      "size": 188,
+      "sha256": "ab272eb22a36f813baebf66a0cbee32e091361a8867922466c4de0715ee06395",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/scripts/CTK_Executor.py",
+      "mediaType": "application/octet-stream",
+      "size": 37226,
+      "sha256": "b01b1f784210117170730ffd77c88108dbc83823180d7ccf52b4af6f538f8564",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/scripts/requirements.txt",
+      "mediaType": "text/plain",
+      "size": 30,
+      "sha256": "76d7168e8b0dece5d3e2e60a95dd6c8f7b08a40d4169aa4ea2517e4c180b7a1d",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/.mocharc.json",
+      "mediaType": "application/json",
+      "size": 145,
+      "sha256": "f1500ab31628c4306c0408ba54ff835133039a47a58973f4b31f0bcaf00d545e",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC002_ProductOrder.feature",
+      "mediaType": "text/plain",
+      "size": 2272,
+      "sha256": "c3d04896e40556d2f27d00b63b55031b4bbfa9ecd5408ddd73c7b0817c90f3e6",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC005_ProductInventory.feature",
+      "mediaType": "text/plain",
+      "size": 1632,
+      "sha256": "c42a91c1f0ccce66df8d356e43aea3c234e887aab78cecd2a1976735f05e3a80",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC007_ServiceOrder.feature",
+      "mediaType": "text/plain",
+      "size": 2272,
+      "sha256": "8c594f7ddcec0ca438cc16adbd3e3b323fbf88a777f34339a77d94affe0446bf",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC008_ServiceInventory.feature",
+      "mediaType": "text/plain",
+      "size": 1633,
+      "sha256": "08e314f828fd987475389f6a819102e3db58ad6b403af334f21c5bc7a5446ac8",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC012_ResourceInventory.feature",
+      "mediaType": "text/plain",
+      "size": 1635,
+      "sha256": "0188b0af38783f78afda6cd33ba89708f62212aee1fa8c3eb2f4b39120277da2",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/step_definitions/componentTests.js",
+      "mediaType": "text/javascript",
+      "size": 11466,
+      "sha256": "6abf65d4156cf46253d7da1e7955736f0898c8d8ccbc102d2661087629f54f46",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/utils/api.js",
+      "mediaType": "text/javascript",
+      "size": 2412,
+      "sha256": "ba33621fb1f91cbb5d102b720f759c192a24e74a45b53fe704a7bd0ae3f8ec47",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/utils/kubernetes.js",
+      "mediaType": "text/javascript",
+      "size": 13827,
+      "sha256": "78f82544d19b69c06edcf3d2219302615a28ad63ada0ab6ba0aad201e76aa810",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/utils/stubResolver.js",
+      "mediaType": "text/javascript",
+      "size": 4093,
+      "sha256": "c62e7d0a1e2b6933eb87e6dde493e6b6b965c4bd1a6c017f7043eab3d8e15800",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/index.js",
+      "mediaType": "text/javascript",
+      "size": 26516,
+      "sha256": "88b08569ebfc55acd601598c5851b1ccb1cd4a90bde8b23a0756fa3c24517de2",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/package-lock.json",
+      "mediaType": "application/json",
+      "size": 262810,
+      "sha256": "853bf50e3ef59a3e5602badf1a4489ae5a881d538e44eba6bbf4a1793d5702f8",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/package.json",
+      "mediaType": "application/json",
+      "size": 1385,
+      "sha256": "c0da6f20c0a8f00a4fe900f3233ea9bd981e24aac4bbf68961e8a70eb2c13357",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/MaterialIcons-Regular.woff",
+      "mediaType": "application/octet-stream",
+      "size": 57620,
+      "sha256": "c4a1baec300d09e03a8380b85918267ee80faae8e00c6c56b48e2e74b1d9b38d",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/MaterialIcons-Regular.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 44300,
+      "sha256": "a87d66c91b2e7dc5530aef76c03bd6a3d25ea5826110bf4803b561b811cc8726",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/app.css",
+      "mediaType": "application/octet-stream",
+      "size": 82777,
+      "sha256": "62177278525a130a0ec9d94173e2fd9bd8657508683ec5128955f1101136a1b7",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/app.js",
+      "mediaType": "text/javascript",
+      "size": 383956,
+      "sha256": "5937fc3aac02c536ec68cae5a57e1dfe0c4682a0f106a1489e6e7edd8773fa02",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/app.js.LICENSE.txt",
+      "mediaType": "text/plain",
+      "size": 1831,
+      "sha256": "a290e7c37af6c5d5b903b04460aa8c51fea7a44f803df591249beb42ab5cf177",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-light-webfont.woff",
+      "mediaType": "application/octet-stream",
+      "size": 25772,
+      "sha256": "e2570d57fe2aeca05f2ced18aaa04794d0c37b6328dd43db3899440d0f82f2b4",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-light-webfont.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 19508,
+      "sha256": "518c4b972ae268d4f6de5198286bbef76101e9aec1e8dc2fd89a048e6413211f",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-medium-webfont.woff",
+      "mediaType": "application/octet-stream",
+      "size": 26292,
+      "sha256": "071395ab255858617c5917976f4dc819b8e7768a0dc746f73962b02134ace40a",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-medium-webfont.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 19944,
+      "sha256": "1a2ebf8346140ef2446359f79f82d915789918085ca488924d87e164967ee36b",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-regular-webfont.woff",
+      "mediaType": "application/octet-stream",
+      "size": 26280,
+      "sha256": "3de4a86fbe66a3f94361150a58dffe4e777e4841ea64ae1aad3d760eb9118f7a",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-regular-webfont.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 19868,
+      "sha256": "80a369ee9cca4e0897fe248d8948ee3ae2e4e0fe8425840a93570e88a5c6812c",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/index.mustache",
+      "mediaType": "application/octet-stream",
+      "size": 14564,
+      "sha256": "5968cba3ed666dc2a721f5c21c5e957d57e50b0529859881048aea4be9cc7459",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Bold_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 53598,
+      "sha256": "01e953cb02a4dcac28cf5d8bd3612f1ae47fee64ddbcc7cecb20471980b0bca0",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Bold_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 39264,
+      "sha256": "319881caca6f5f0d1e8e24040579d93386008e39dee1045965124b86303143e1",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-BookItalic_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 59870,
+      "sha256": "7c0ae6140a8d6a1392046d452005f9bce8edfe602c732b366313bc931e9e201d",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-BookItalic_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 44280,
+      "sha256": "bd4debafd0e7c752d242d5cc3d0cac8cebc26fc8e8c5b07715b837b1db0d5e5a",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Book_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 56494,
+      "sha256": "829cd552114a54a7ecc85a2aed2cd47341b6173ed0dcf395e53c46b51c3a6677",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Book_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 41728,
+      "sha256": "3f51250e2d3ef478f59bc89cb67681b5ed423f8f8dc22062fb49e101e5032a2e",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Light_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 54878,
+      "sha256": "935636b8f2fb24f998153874abda5002c00fa061254bcc94480863f7217f4ae3",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Light_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 40280,
+      "sha256": "e266d1f2bcf1da0faff6964637fdcd9a4e47c50a7a56be74424f409f30c83c5e",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Medium_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 56110,
+      "sha256": "3b1a769d951ccffffc1cbda9cd9abd3ddc10ca946f9a5c7004b498884c899d10",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Medium_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 41488,
+      "sha256": "ba17f8257b1f710aa0e7136f4bd4b91a9a7db4f9cac2c409caf8708a64787303",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/index.css",
+      "mediaType": "application/octet-stream",
+      "size": 2401,
+      "sha256": "34a842f84219aa975b057becdeea1a9534ad9d38a72f4ee4f7955fe874031b39",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/typography.css",
+      "mediaType": "application/octet-stream",
+      "size": 2044,
+      "sha256": "91a89a5949811822b366ee9eda18f816d88465d63efe60331792da221fccbb16",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/variables.css",
+      "mediaType": "application/octet-stream",
+      "size": 1238,
+      "sha256": "2bfe5dec2cbd0970ff04a4edc15aa530da98f3ae71714b7e73dee0730954d6b9",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/test/apiInteraction.js",
+      "mediaType": "text/javascript",
+      "size": 2424,
+      "sha256": "cc2ec41375d2c963d8fab27a3506312470bd2977b85f9fc95ded033dda1b06a0",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/CoreFunction.js",
+      "mediaType": "text/javascript",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/ManagementFunction.js",
+      "mediaType": "text/javascript",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/Reporting.js",
+      "mediaType": "text/javascript",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/SecurityFunction.json",
+      "mediaType": "application/json",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/configuration.js",
+      "mediaType": "text/javascript",
+      "size": 17099,
+      "sha256": "c1aebddab7995f3f18e507837daf286648f006894784dd3e9fc74eae382b6a72",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/deployment.js",
+      "mediaType": "text/javascript",
+      "size": 42716,
+      "sha256": "d35bf16d7d1caaa19d2642f6d912260d21890602bbc2fc172d1a1f5c67c7ba1f",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "conformance-profile",
+      "path": "ComponentConformanceProfile/TMFC043-FaultManagement_Conformance.docx",
+      "mediaType": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "size": 65648,
+      "sha256": "f4a164e849bb20b310e5d830e699fc65bed5f4c4e9b91fd0dc05c63105fd2b4e",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 195,
+      "sha256": "5f658d5b60d32d7b23908c9acead8aca3972f6ac771bd7793c7c7e5b65b755eb",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC043-FaultManagement.yaml",
+      "mediaType": "text/yaml",
+      "size": 14536,
+      "sha256": "c1979d925c5620926449a0bfe1cb71f62fed44ce7801a9007f08aa588a935a0a",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "ctk-archive",
+      "path": "TMFC043-FaultManagement_componentctk.zip",
+      "mediaType": "application/zip",
+      "size": 982369,
+      "sha256": "4abe50f63d82684ba745aae77964e0395bc988bfe3cabeca6aae335dc596dc80",
+      "targets": [
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC043_Fault_Management_v1.0.1.pdf",
+      "mediaType": "application/pdf",
+      "size": 578755,
+      "sha256": "ac4ba7957d4c2b39f0482934a4738018f9663c879ea89c9d86df9167f498f2bf",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.0.0/",
+      "status": "published",
+      "at": "2026-11-05T15:11:37Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC043-FaultManagement/v1.0.0-specified",
+      "at": "2026-11-05T15:12:29Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42051675750",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:10:58Z",
+    "requestId": "84b94ca357a72197"
+  }
+}

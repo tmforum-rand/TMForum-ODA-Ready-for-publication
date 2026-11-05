@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-productorderapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: {{.Release.Name}}-productorderapi
+  template:
+    metadata:
+      labels:
+        impl: {{.Release.Name}}-productorderapi
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        version:  productorderapi-0.1
+    spec:
+      containers:
+      - name: {{.Release.Name}}-productorderapi         
+        image: {{.Values.api.image}}
+        env:
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}           
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: MONGODB_HOST
+          value: {{.Release.Name}}-mongodb
+        - name: MONGODB_PORT
+          value: "{{.Values.mongodb.port}}"
+        - name: MONGODB_DATABASE
+          value: {{.Values.mongodb.database}}
+        - name: NODE_ENV
+          value: production
+        imagePullPolicy: Always  
+        ports:
+        - name: {{.Release.Name}}-prdordapi
+          containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productOrderingManagement/v4/
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          failureThreshold: 30

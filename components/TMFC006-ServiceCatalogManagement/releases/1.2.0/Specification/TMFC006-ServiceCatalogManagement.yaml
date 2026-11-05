@@ -1,0 +1,362 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF634
+      apiType: openapi
+      apiSDO: tmForum
+      name: resource-catalog-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+        version: v4.0.0
+      resources:
+      - resourceSpecification:
+        - GET
+        - GET /id
+    - id: TMF669
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-role-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - partyRole:
+        - GET
+        - GET /id
+    - id: TMF632
+      apiType: openapi
+      apiSDO: tmForum
+      name: party-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - individual:
+        - GET
+        - GET /id
+      - organization:
+        - GET
+        - GET /id
+    - id: TMF662
+      apiType: openapi
+      apiSDO: tmForum
+      name: entity-catalog-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      resources:
+      - entitySpecification:
+        - GET
+        - GET /id
+      - associationSpecification:
+        - GET
+        - GET /id
+    exposedAPIs:
+    - id: TMF633
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-catalog-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - catalog:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - category:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - serviceSpecification:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - serviceCandidate:
+        - GET
+        - GET /id
+        - POST
+        - PATCH
+        - DELETE
+      - exportJob:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - importJob:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+    - id: TMF657
+      apiType: openapi
+      apiSDO: tmForum
+      name: service-quality-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF657_Service_Quality_Management/4.0.0/swagger/TMF657_Service_Quality_Management_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - serviceLevelSpecification:
+        - GET
+        - GET/id
+        - POST
+        - PATCH
+        - DELETE
+      - serviceLevelObjective:
+        - GET
+        - GET/id
+        - POST
+        - PATCH
+        - DELETE
+      - serviceLevelSpecParameter:
+        - GET
+        - GET/id
+        - POST
+        - PATCH
+        - DELETE
+    - id: TMF701
+      apiType: openapi
+      apiSDO: tmForum
+      name: process-flow-management-api
+      required: false
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        version: v4.0.0
+      path: not_defined
+      developerUI: not_defined
+      implementation: not_defined
+      port: 8080
+      resources:
+      - processFlow:
+        - POST
+        - GET
+        - GET /id
+        - DELETE
+      - taskFlow:
+        - PATCH
+        - GET
+        - GET /id
+  componentMetadata:
+    id: TMFC006
+    name: ServiceCatalogManagement
+    version: 1.2.0
+    description: 'This Component has conformance testing for v4 APIs only at this
+      point.
+
+      The Service Catalog Management component is responsible for organizing the collection
+      of service specifications that identify and define all requirements of a service
+      that can be performed. This component has the functionality that enables presentation
+      of a customer-facing view so users are able to search and select services they
+      need, as well as a technical view to enable definition and setup of what is
+      needed to deliver service specifications (Customer Facing Service Specifications
+      (CFSSs) and Resource Facing Service Specifications (RFSSs)) contained in the
+      service catalog. The Service Catalog Management component has functionalities
+      that include creation of new service specifications, managing service specifications,
+      administering the lifecycle of services, describing relationships between service
+      specification attributes, reporting on service specifications and their changes,
+      and facilitating easy and systematic indexing and access to services, as well
+      as facilitating automation of the service delivery process.'
+    publicationDate: 2024-11-12
+    status: specified
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.4.13|Service_Catalog_Lifecycle_Management|v23.0
+    - 1.4.14|Service_Catalog_Operational_Readiness_Management|v23.0
+    - 1.4.15|Service_Catalog_Content_Management|v23.0
+    - 1.4.16|Service_Catalog_Planning_Management|v23.0
+    - 1.4.19|Service_Specification_Management|v23.0
+    - 1.4.3|Service_Specification_Development_&_Retirement|v23.0
+    - 1.4.3.4|Develop_Detailed_Service_Specifications|v23.0
+    functionalFrameworkFunctions:
+    - 1135|Technical_Solution_Policy_Design|v23.0
+    - 995|Service_Task_Item_Policy_Control_Configuration|v23.0
+    - 1080|Service_Specification_Change_Auditing|v23.0
+    - 1081|Service_Specification_Repository_Management|v23.0
+    - 1084|Know-How_Specification_Design|v23.0
+    - 1085|Technical_Solution_Design|v23.0
+    - 1086|Service_Specification_to_Supplier_Product_Specification_Relationship_Design|v23.0
+    - 897|Building_Access_Control|v23.0
+    - 900|Authorization_Control_Management|v23.0
+    SIDs:
+    - Service_Domain|Service_Specification_ABE|v25.0
+    - Service_Domain|Service_Performance_ABE|Service_Level_Spec_ABE|v25.0
+    - Service_Domain|Service_Performance_ABE|Service_Performance_Specification_ABE|v25.0
+    - Service_Domain|Service_Usage_ABE|ServiceUsageSpec_BE|v25.0
+    - Service_Domain|Service_Configuration_ABE|ServiceConfigSpec_BE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      apiSDO: not_defined
+      specification:
+      - url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        version: v4.0.0
+      implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+      id: exposedAPI_id
+      version: exposedAPI_version
+      resources: []
+      required: false
+      developerUI: exposedAPI_developerUI
+    dependentAPIs:
+    - name: dependentAPI_name
+      id: dependentAPI_id
+      version: dependentAPI_version
+      apiType: dependentAPI_apiType
+      apiSDO: dependentAPI_apiSDO
+      specification:
+      - url: dependentAPI_spec
+        version: dependentAPI_version
+      resources: []
+      required: false
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      apiType: openapi
+      apiSDO: not_defined
+      name: party-role-management-api
+      required: true
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        version: v4.0.0
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+      implementation: '{{.Release.Name}}-partyroleapi'
+      port: 8080
+      resources: []
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceCatalog/hub
+      implementation: /{{.Release.Name}}-ServiceCatalog
+      name: ServiceCatalogManagement
+      port: 80
+      resources:
+      - serviceSpecificationCreateEvent
+      - serviceSpecificationChangeEvent
+      - serviceSpecificationDeleteEvent
+      - serviceCategoryCreateEvent
+      - serviceCategoryChangeEvent
+      - serviceCategoryDeleteEvent
+      - serviceCandidateCreateEvent
+      - serviceCandidateChangeEvent
+      - serviceCandidateDeleteEvent
+      - serviceCatalogCreateEvent
+      - serviceCatalogChangeEvent
+      - serviceCatalogDeleteEvent
+      - serviceCatalogBatchEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF633_ServiceCatalog/blob/master/TMF633-ServiceCatalog-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF633
+      apiSDO: not_defined
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualityManagement/hub
+      implementation: /{{.Release.Name}}-ServiceQualityManagement
+      name: ServiceQualityManagement
+      port: 80
+      resources:
+      - serviceLevelObjectiveCreateEvent
+      - serviceLevelObjectiveChangeEvent
+      - serviceLevelObjectiveAttributeValueChangeEvent
+      - serviceLevelSpecificationCreateEvent
+      - serviceLevelSpecificationDeleteEvent
+      - serviceLevelSpecificationAttributeValueChangeEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF657_ServiceQualityManagement/blob/master/TMF657-ServiceQualityManagement-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF657
+      apiSDO: not_defined
+    - hub: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ProcessFlowManagement/hub
+      implementation: /{{.Release.Name}}-ProcessFlowManagementEvent
+      name: ProcessFlowManagement
+      port: 80
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF701_ProcessFlow/blob/master/TMF701-ProcessFlow-v4.1.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF701
+      apiSDO: not_defined
+    subscribedEvents:
+    - implementation: /{{.Release.Name}}-ResourceCatalog
+      name: ResourceCatalogManagement
+      port: 80
+      resources:
+      - resourceSpecificationCreateEvent
+      - resourceSpecificationChangeEvent
+      - resourceSpecificationDeleteEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF634_ResourceCatalog/blob/master/TMF634-ResourceCatalog-v4.1.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF634
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ResourceCatalog/call-back
+      apiSDO: not_defined
+    - implementation: /{{.Release.Name}}-EntityCatalog
+      name: EntityCatalogManagement
+      port: 80
+      resources:
+      - entitySpecificationCreateEvent
+      - entitySpecificationAttributeValueChangeEvent
+      - entitySpecificationChangeEvent
+      - entitySpecificationDeleteEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF662_EntityCatalog/blob/master/TMF662-EntityCatalog-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      id: TMF662
+      callback: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EntityCatalog/call-back
+      apiSDO: not_defined

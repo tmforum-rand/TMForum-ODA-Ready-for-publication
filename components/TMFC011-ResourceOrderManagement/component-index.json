@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "component": {
+    "id": "TMFC011",
+    "name": "ResourceOrderManagement",
+    "key": "TMFC011-ResourceOrderManagement"
+  },
+  "latest": "1.2.0",
+  "latestByStatus": {
+    "pre-production": "1.2.0"
+  },
+  "releases": [
+    {
+      "version": "1.2.0",
+      "status": "pre-production",
+      "tag": "TMFC011-ResourceOrderManagement/v1.2.0-pre-production",
+      "releaseId": "ed239d78309ba723",
+      "path": "components/TMFC011-ResourceOrderManagement/releases/1.2.0/",
+      "manifest": "components/TMFC011-ResourceOrderManagement/releases/1.2.0/release-manifest.json",
+      "manifestSha256": "30020152b6e2b0d46930b82b5b60dba4896237069e234eea1e2814a3414e13d5",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+      },
+      "eligibility": {
+        "rule": "v1_0:GA_COMPONENTS",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.0.0/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:12:29Z"
+    }
+  ]
+}
