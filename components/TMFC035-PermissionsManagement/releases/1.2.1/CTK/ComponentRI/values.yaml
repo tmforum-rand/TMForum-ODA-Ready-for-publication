@@ -1,0 +1,68 @@
+component:
+  id: TMFC035
+  name: permissionsmanagement
+  functionalBlock: PartyManagement
+  publicationDate: 2026-05-21T00:00:00.000Z
+  version: "1.2.1"
+  storageClassName: default
+  apipolicy:
+    apiKeyVerification:
+      enabled: false
+      location: "header"
+    rateLimit:
+      enabled: false
+      identifier: "IP"
+      limit: "6"
+      interval: "pm"
+    quota:
+      identifier: ""
+      limit: ""
+    OASValidation:
+      requestEnabled: false
+      responseEnabled: false
+      allowUnspecifiedHeaders: false
+      allowUnspecifiedQueryParams: false
+      allowUnspecifiedCookies: false
+    CORS:
+      enabled: false
+      allowCredentials: false
+      allowOrigins: "https://allowed-origin.com"
+      handlePreflightRequests:
+        enabled: false
+        allowHeaders: "Accept, Content-Type"
+        allowMethods: "GET, POST"
+        maxAge: 36000
+    template: ""
+
+security:
+  canvasSystemRole: canvasRole
+
+mongodb:
+  port: 27017
+  database: tmf
+
+image:
+  pullPolicy: Always
+
+userrolepermapi:
+  image: "akumartmf/permissionsmanagementv4api:0.2"
+  versionLabel: permissionsmanagementv4api-0.2
+  port: 8672
+  otlp:
+    console:
+      enabled: false
+    protobuffCollector:
+      enabled: false
+      url: http://observability-opentelemetry-collector.monitoring.svc.cluster.local:4318/v1/traces
+
+partyroleapi:
+  image: "akumartmf/permissionsmanagementpartyroleapiv5api:0.1"
+  versionLabel: permissionsmanagementpartyroleapiv5api-0.1
+  port: 8669
+
+metrics:
+  image: "akumartmf/openmetrics:1.0"
+
+canvasinfo:
+  host: ""
+  basepath: ""

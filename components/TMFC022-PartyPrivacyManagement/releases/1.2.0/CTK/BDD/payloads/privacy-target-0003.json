@@ -1,0 +1,14 @@
+{
+  "@type": "PartyPrivacyAgreement",
+  "name": "Test Privacy Agreement",
+  "agreementType": "privacy",
+  "agreementItem": [{}],
+  "engagedParty": [
+    {
+      "@type": "PartyRoleRef",
+      "@referredType": "PartyRole",
+      "id": "__VALID_ID__",
+      "href": "__VALID_HREF__"
+    }
+  ]
+}

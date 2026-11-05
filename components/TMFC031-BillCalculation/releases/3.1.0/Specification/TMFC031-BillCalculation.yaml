@@ -1,0 +1,327 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF666
+      name: account-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/5.0.0/swagger/TMF666-Account_Management-v5.0.0.oas.yaml
+        resources:
+        - billingAccount:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF666_Account/4.0.0/swagger/TMF666_Account_Management_API_v4.0.0_swagger.json
+        resources:
+        - BillingAccount:
+          - GET
+          - GET /id
+    - id: TMF678
+      name: customer-bill-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/5.0.0/swagger/TMF678-CustomerBill-v5.0.0.oas.yaml
+        resources:
+        - billingCycle:
+          - GET
+          - GET /id
+    - id: TMF632
+      name: party-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/5.0.0/swagger/TMF632-Party_Management-v5.0.0.oas.yaml
+        resources:
+        - individual:
+          - GET
+          - GET /id
+        - organization:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        resources:
+        - individual:
+          - GET
+          - GET /id
+        - organization:
+          - GET
+          - GET /id
+    - id: TMF637
+      name: product-inventory-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/5.0.0/swagger/TMF637-ProductInventory-v5.0.0.oas.yaml
+        resources:
+        - product:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF637_Product_Inventory/4.0.0/swagger/TMF637_Product_Inventory_Management_API_v4.0.0_swagger.json
+        resources:
+        - product:
+          - GET
+          - GET /id
+    - id: TMF620
+      name: product-catalog-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/5.0.0/swagger/TMF620-Product_Catalog_Management-v5.0.0.oas.yaml
+        resources:
+        - productOffering:
+          - GET
+          - GET /id
+        - productOfferingPrice:
+          - GET
+          - GET /id
+        - productSpecification:
+          - GET
+          - GET /id
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+        resources:
+        - productOffering:
+          - GET
+          - GET /id
+        - productOfferingPrice:
+          - GET
+          - GET /id
+        - productSpecification:
+          - GET
+          - GET /id
+    - id: TMF701
+      name: process-flow-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        resources:
+        - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - PATCH
+    - id: TMF635
+      name: usage-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF635_Usage/4.0.0/swagger/TMF635_Usage_Management_API_v4.0.0_swagger.json
+        resources:
+        - usage:
+          - GET
+          - GET /id
+        - usageSpecification:
+          - GET
+          - GET /id
+    exposedAPIs:
+    - id: TMF678
+      name: customer-bill-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/5.0.0/swagger/TMF678-CustomerBill-v5.0.0.oas.yaml
+        resources:
+        - appliedCustomerBillingRate:
+          - GET
+          - GET /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF678_Customer_Bill/4.0.0/swagger/TMF678_Customer_Bill_Management_API_v4.0.0_swagger.json
+        resources:
+        - appliedCustomerBillingRate:
+          - GET
+          - GET /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+    - id: TMF701
+      name: process-flow-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        resources:
+        - processFlow:
+          - GET
+          - GET /id
+          - POST
+          - DELETE /id
+        - taskFlow:
+          - GET
+          - GET /id
+          - PATCH /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+  componentMetadata:
+    id: TMFC031
+    name: BillCalculation
+    version: 3.1.0
+    description: The Bill Calculation component processes all charges against billing
+      accounts during bill cycles. Bill Calculation can be executed both on a cyclic
+      basis and on demand. It performs calculations with bill compilation of charges,
+      credits, fees & taxes, including pro rata, at various levels, such as product
+      and/or account level that have been generated since the last run for that account,
+      applying promotions and discounts.
+    publicationDate: '2023-06-25'
+    status: roadmap
+    functionalBlock: CoreCommerce
+    owners:
+    - name: Redacted
+      email: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.3.9|Customer_Bill_Invoice_Management|v23.5
+    - 1.3.9.4|Pricing,_Discounting,_Adjustments_&_Rebates_Application|v23.5
+    - 1.3.9.4.1|Obtain_Billing_Events|v23.5
+    - 1.3.9.4.2|Apply_Pricing,_Discounting,_Adjustments_&_Rebates_to_Customer_Account|v23.5
+    - 1.3.9.4.3|Apply_Agreed_Customer_Bill_Adjustment|v23.5
+    - 1.6.15|BP_Bill/Invoice_Management|v23.5
+    - 1.6.15.1|BP_Bill/Invoice_Process_Management|v23.5
+    - 1.6.15.3|BP_Bill/Invoice_Lifecycle_Management|v23.5
+    - 1.6.15.3.1|Apply_BP_Pricing,_Discounting,_Adjustments_&_Rebates|v23.5
+    - 1.6.15.3.5|Receive_BP_Bill/Invoice|v23.5
+    functionalFrameworkFunctions:
+    - 67|Usage_Summary_and_Details_Presentation|v23.5.0.1
+    - 87|Billing_Event_Processing_Guiding|v23.5.0.1
+    - 316|Billing_Administration|v23.5.0.1
+    - 399|Billing_Management_Integration|v23.5.0.1
+    - 32|Billing_Initialization|v23.5.0.1
+    - 72|Billing_Account_Price_Plan_Determining|v23.5.0.1
+    - 70|Charge_To_Billing_Account_Distribution|v23.5.0.1
+    - 68|Charges_to_Billing_Statement_Identification|v23.5.0.1
+    - 158|Commitment_Tracking_Result_Determining|v23.5.0.1
+    - 159|Commitment_Tracking_Terms_&_Conditions_Evaluation|v23.5.0.1
+    - 160|Commitment_Tracking_Data_Collection|v23.5.0.1
+    - 256|Customer_Bill_Usage_and_Charges_Viewing|v23.5.0.1
+    - 89|Billing_Event_Aggregation|v23.5.0.1
+    - 90|Billing_Event_Processing_Analyzing|v23.5.0.1
+    - 183|Bill_Charges_Aggregation|v23.5.0.1
+    - 60|Split_Bill_Charge_Distribution|v23.5.0.1
+    - 184|Currency_Conversion|v23.5.0.1
+    - 61|On_Demand_Bill_Calculation|v23.5.0.1
+    - 300|Discount_Calculation|v23.5.0.1
+    - 55|Price_and_Discount_Calculation|v23.5.0.1
+    - 69|Charge_To_Billing_Account_Identification|v23.5.0.1
+    SIDs:
+    - Customer_Domain|Applied_Customer_Billing_Rate_ABE|v23.5.0
+    - Business_Partner_Domain|Applied_Party_Billing_Rate_ABE|v23.5.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      id: exposedAPI_id
+      apiSDO: not_defined
+      required: false
+      specification:
+      - version: v4.0.0
+        url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        apiType: prometheus
+        implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+        port: 4000
+        resources: []
+        developerUI: exposedAPI_developerUI
+    dependentAPIs: []
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      name: partyrole
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+        implementation: '{{.Release.Name}}-partyroleapi'
+        port: 8080
+    - id: TMF672
+      name: user-role-permission-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+      - version: v5.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+    dependentAPIs: []
+  eventNotification:
+    subscribedEvents:
+    - id: TMF635
+      name: usageManagement
+      resources:
+      - UsageCreateEvent
+      - UsageAttributeValueChangeEvent
+      - UsageDeleteEvent
+      - UsageStateChangeEvent
+      - UsageSpecificationCreateEvent
+      - UsageSpecificationAttributeValueChangeEvent
+      - UsageSpecificationDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF635_v4.0.0.swagger.json
+        version: v4.0.0
+      apiSDO: not_defined

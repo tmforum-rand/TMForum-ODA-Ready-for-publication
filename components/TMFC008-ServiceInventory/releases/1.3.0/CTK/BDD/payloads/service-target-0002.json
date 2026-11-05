@@ -1,0 +1,9 @@
+{
+  "@type": "Service",
+  "state": "active",
+  "serviceSpecification": {
+    "@type": "ServiceSpecificationRef",
+    "id": "non-existent-id",
+    "href": "non-existent-href"
+  }
+}

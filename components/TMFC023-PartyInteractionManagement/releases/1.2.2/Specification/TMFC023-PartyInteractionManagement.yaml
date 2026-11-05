@@ -1,0 +1,352 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF632
+      name: party-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/5.0.0/swagger/TMF632-Party_Management-v5.0.0.oas.yaml
+        resources:
+        - individual:
+          - GET
+          - GET /id
+        - organization:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        resources:
+        - individual:
+          - GET
+          - GET /id
+        - organization:
+          - GET
+          - GET /id
+    - id: TMF669
+      name: party-role-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/5.0.0/swagger/TMF669-Party_Role_Management-v5.0.0.oas.yaml
+        resources:
+        - partyRole:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources:
+        - partyRole:
+          - GET
+          - GET /id
+    - id: TMF662
+      name: entity-catalog-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF662_Entity_Catalog/4.0.0/swagger/TMF662_Entity_Catalog_Management_API_v4.0.0_swagger.json
+        resources:
+        - entitySpecification:
+          - GET
+          - GET /id
+        - entityCategory:
+          - GET
+          - GET /id
+        - entityCatalog:
+          - GET
+          - GET /id
+        - entityCatalogItem:
+          - GET
+          - GET /id
+    - id: TMF667
+      name: document-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF667_Document/4.0.0/swagger/TMF667_Document_Management_API_v4.0.0_swagger.json
+        resources:
+        - document:
+          - GET
+          - GET /id
+    - id: TMF681
+      name: communication-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF681_Communication/4.0.0/swagger/TMF681_Communication_Management_API_v4.0.0_swagger.json
+        resources:
+        - communicationMessage:
+          - GET
+          - GET /id
+    - id: TMF701
+      name: process-flow-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        resources:
+        - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - PATCH
+    exposedAPIs:
+    - id: TMF683
+      name: party-interaction-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/5.0.0/swagger/TMF683-Party_Interaction-v5.0.0.oas.yaml
+        resources:
+        - partyInteraction:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF683_Party_Interaction/4.0.0/swagger/TMF683_Party_Interaction_Management_API_v4.0.0_swagger.json
+        resources:
+        - partyInteraction:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+    - id: TMF701
+      name: process-flow-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        resources:
+        - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+  componentMetadata:
+    id: TMFC023
+    name: PartyInteractionManagement
+    version: 1.2.2
+    description: Party Interaction deals with the initial greeting and welcoming of
+      a new contact. This will typically be the first component in a customer experience
+      journey, shared by unassisted (self-service, retail kiosk) or assisted (call
+      center, retail store) channels. It will identify known Parties or new Parties
+      and react appropriately to propose available actions. It records all the interactions
+      for the Parties from all channels.
+    publicationDate: 2025-10-21
+    status: preview
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.3.5|Customer_Interaction_Management|v24.0
+    - 1.3.5.1|Create_Customer_Interaction|v24.0
+    - 1.3.5.2|Update_Customer_Interaction|v24.0
+    - 1.3.5.3|Close_Customer_Interaction|v24.0
+    - 1.3.5.4|Log_Customer_Interaction|v24.0
+    - 1.3.5.6|Track_and_Manage_Customer_Interaction|v24.0
+    - 1.3.5.7|Report_Customer_interaction|v24.0
+    - 1.6.9|Business_Partner_Interaction_Management|v24.0
+    - 1.6.9.1|Log_Business_Partner_Interaction|v24.0
+    - 1.6.9.3|Track_and_Manage_Business_Partner_Interaction|v24.0
+    - 1.6.9.5|Analyze_&_Report_Business_Partner_Interactions|v24.0
+    functionalFrameworkFunctions:
+    - 93|Customer_Behavior_Tracking|v24.0
+    - 163|Contact_Queuing|v24.0
+    - 165|Customer_Support_Collaboration_Access|v24.0
+    - 168|Voice_Channel_Contact_Routing|v24.0
+    - 189|Customer_Interaction_Information_Capturing|v24.0
+    - 191|Customer_Relationship/Context_Event_Data_Accumulation|v24.0
+    - 196|Customer_Interaction_Logging|v24.0
+    - 239|Recommendation_to_Customer_Notification|v24.0
+    - 1041|Partner_Interaction_Journalizing|v24.0
+    SIDs:
+    - Shared_Domain|Communication_Interaction_ABE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      id: exposedAPI_id
+      apiSDO: not_defined
+      required: false
+      specification:
+      - version: v4.0.0
+        url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        apiType: prometheus
+        implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+        port: 4000
+        resources: []
+        developerUI: exposedAPI_developerUI
+    dependentAPIs: []
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      name: partyrole
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+        implementation: '{{.Release.Name}}-partyroleapi'
+        port: 8080
+    - id: TMF672
+      name: user-role-permission-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+      - version: v5.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - id: TMF683
+      name: PartyInteractionManagement
+      resources:
+      - partyInteractionCreateEvent
+      - partyInteractionAttributeValueChangeEvent
+      - partyInteractionDeleteEvent
+      - partyInteractionStatusChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF683_v5.0.0.swagger.json
+        version: v5.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF701
+      name: ProcessFlowManagement
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    subscribedEvents:
+    - id: TMF632
+      name: PartyManagement
+      resources:
+      - individualCreateEvent
+      - individualAttributeValueChangeEvent
+      - individualStateChangeEvent
+      - individualDeleteEvent
+      - organizationCreateEvent
+      - organizationAttributeValueChangeEvent
+      - organizationStateChangeEvent
+      - organizationDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF669
+      name: PartyRoleManagement
+      resources:
+      - partyRoleCreateEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF667
+      name: documentManagement
+      resources:
+      - documentChangeEvent
+      - documentSpecificationAttributeValueChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF667_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF701
+      name: ProcessFlowManagement
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
+      apiType: openapi
+      apiSDO: not_defined

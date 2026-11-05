@@ -1,0 +1,100 @@
+{
+  "contractVersion": 1,
+  "releaseId": "6f9ab33285ef6e91",
+  "component": {
+    "id": "TMFC041",
+    "name": "AnomalyManagement",
+    "key": "TMFC041-AnomalyManagement",
+    "sourceDir": "TMFC041-AnomalyManagement"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC041-AnomalyManagement/v1.3.0-roadmap",
+    "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6",
+    "version": "1.3.0",
+    "status": "roadmap",
+    "statusRaw": "roadmap",
+    "releaseNotes": {
+      "path": "specifications/TMFC041-AnomalyManagement/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "1.3.0 (roadmap)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "7883a26ffa86517f449673d067f2e1e3a38c4c120a7c675dd6adb28ed15d17f5"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.1.0",
+      "sha256": "3487d167d9fd0fee6275156a36aaa7f57efd19b4aa93d32c1a853626499fac4a"
+    },
+    "handler": "v1_1",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_1:release-status",
+    "eligible": false,
+    "detail": "TMFC041-AnomalyManagement status roadmap is listed in S3_STRAPI_RELEASE_STATUS (preview, production, roadmap) and not listed in CTK_RELEASE_STATUS (preview, production)"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 298,
+      "sha256": "7883a26ffa86517f449673d067f2e1e3a38c4c120a7c675dd6adb28ed15d17f5",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC041-AnomalyManagement.yaml",
+      "mediaType": "text/yaml",
+      "size": 6619,
+      "sha256": "e2b9c36f0f6aa1a54e996839c57ee41bb247a51b9ef38f1f1abce87a54e16571",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC041_Anomaly_Management.pdf",
+      "mediaType": "application/pdf",
+      "size": 478328,
+      "sha256": "c0519a2ec6d6bee68f4f60ea83361ded45807e380be3bb15e41bc36c4cc027ee",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.1.0/TMFC041/",
+      "status": "published",
+      "at": "2026-11-05T15:51:03Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC041-AnomalyManagement/v1.3.0-roadmap",
+      "at": "2026-11-05T15:52:22Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42058461492",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:50:27Z",
+    "requestId": "3db121d23ea6c3e4"
+  }
+}

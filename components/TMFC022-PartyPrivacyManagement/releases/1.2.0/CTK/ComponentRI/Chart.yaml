@@ -1,0 +1,6 @@
+apiVersion: v2
+name: partyprivacymanagement-v5
+description: A reference example TMFC022 PartyPrivacyManagement ODA Component using TMF644 v5 API
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

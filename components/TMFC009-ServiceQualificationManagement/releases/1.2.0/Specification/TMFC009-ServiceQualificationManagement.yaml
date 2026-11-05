@@ -1,0 +1,338 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF633
+      name: service-catalog-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF633_Service_Catalog/4.0.0/swagger/TMF633_Service_Catalog_Management_API_v4.0.0_swagger.json
+        resources:
+        - serviceSpecification:
+          - GET
+          - GET /id
+        - serviceCategory:
+          - GET
+          - GET /id
+    - id: TMF638
+      name: service-inventory-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/5.0.0/swagger/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml
+        resources:
+        - service:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+        resources:
+        - service:
+          - GET
+          - GET /id
+    - id: TMF634
+      name: resource-catalog-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/5.0.0/swagger/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml
+        resources:
+        - resourceSpecification:
+          - GET
+          - GET /id
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/4.1.0/swagger/TMF634_Resource_Catalog_Management_API_v4.1.0_swagger.json
+        resources:
+        - resourceSpecification:
+          - GET
+          - GET /id
+    - id: TMF639
+      name: resource-inventory-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+        resources:
+        - resource:
+          - GET
+          - GET /id
+    - id: TMF632
+      name: party-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/5.0.0/swagger/TMF632-Party_Management-v5.0.0.oas.yaml
+        resources:
+        - individual:
+          - GET
+          - GET /id
+        - organization:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        resources:
+        - individual:
+          - GET
+          - GET /id
+        - organization:
+          - GET
+          - GET /id
+    - id: TMF669
+      name: party-role-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/5.0.0/swagger/TMF669-Party_Role_Management-v5.0.0.oas.yaml
+        resources:
+        - partyRole:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources:
+        - partyRole:
+          - GET
+          - GET /id
+    - id: TMF672
+      name: user-role-permission-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources:
+        - permission:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources:
+        - permission:
+          - GET
+          - GET /id
+    - id: TMF673
+      name: geographic-address-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        resources:
+        - geographicAddress:
+          - GET
+          - GET /id
+        - geographicSubAddress:
+          - GET
+          - GET /id
+    - id: TMF674
+      name: geographic-site-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+        resources:
+        - geographicSite:
+          - GET
+          - GET /id
+    - id: TMF675
+      name: geographic-location-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF675_Geographic_Location/4.0.0/swagger/TMF675_Geographic_Location_Management_API_v4.0.0_beta_swagger.json
+        resources:
+        - geographicLocation:
+          - GET
+          - GET /id
+    exposedAPIs:
+    - id: TMF645
+      name: service-qualification-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/5.0.0/swagger/TMF645-Service_Qualification_Management-v5.0.0.oas.yaml
+        resources:
+        - checkServiceQualification:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        - queryServiceQualification:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF645_Service_Qualification/4.0.0/swagger/TMF645_Service_Qualification_Management_API_v4.0.0_swagger.json
+        resources:
+        - checkServiceQualification:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        - queryServiceQualification:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+  componentMetadata:
+    id: TMFC009
+    name: ServiceQualificationManagement
+    version: 1.2.0
+    description: The Service Qualification Management component is responsible for
+      checking and validating the availability of a service according to specified
+      and configured business rules. It must identify at least one technical solution
+      (RFSspec) available to deliver the service (CFSspec) and check the availability
+      of all the resources types involved in this technical solution. No resources
+      are allocated during service qualification. The Service Qualification Management
+      component has functionality that includes checking service feasibility status
+      and publishing or reporting service qualification results, but also calculated
+      service delivery due date and identified need of an appointment at the customer
+      site. Service Qualification Management can also be responsible for the cost
+      calculation of the technical solution identified, when it cannot be determined
+      at catalog design time (complex B2B services). This information will be used
+      as an input to price calculation.
+    publicationDate: 2023-08-18
+    status: production
+    functionalBlock: Production
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.4.5|Service_Configuration_&_Activation|v23.0.1
+    functionalFrameworkFunctions:
+    - 319|Service_Feasibility_Checking|v23.0
+    - 586|Service_Availability_Validation|v23.0
+    - 571|Service_Delivery_Due_Date_Calculation|v23.0
+    SIDs:
+    - Service_Domain|Service_Configuration_ABE|v23.5.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      id: exposedAPI_id
+      apiSDO: not_defined
+      required: false
+      specification:
+      - version: v4.0.0
+        url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        apiType: prometheus
+        implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+        port: 4000
+        resources: []
+        developerUI: exposedAPI_developerUI
+    dependentAPIs: []
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      name: partyrole
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+        implementation: '{{.Release.Name}}-partyroleapi'
+        port: 8080
+    - id: TMF672
+      name: user-role-permission-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+      - version: v5.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - id: TMF645
+      developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/ServiceQualification/v4/docs
+      name: ServiceQualification
+      resources:
+      - checkServiceQualificationCreateEvent
+      - checkServiceQualificationStateChangeEvent
+      - checkServiceQualificationInformationRequiredEvent
+      - checkServiceQualificationAttributeValueChangeEvent
+      - checkServiceQualificationDeleteEvent
+      - queryServiceQualificationStateChangeEvent
+      - queryServiceQualificationCreateEvent
+      - queryServiceQualificationDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF645_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    subscribedEvents: []

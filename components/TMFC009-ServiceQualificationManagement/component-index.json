@@ -5,8 +5,9 @@
     "name": "ServiceQualificationManagement",
     "key": "TMFC009-ServiceQualificationManagement"
   },
-  "latest": "1.1.0",
+  "latest": "1.2.0",
   "latestByStatus": {
+    "production": "1.2.0",
     "specified": "1.1.0"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "1.2.0",
+      "status": "production",
+      "tag": "TMFC009-ServiceQualificationManagement/v1.2.0-production",
+      "releaseId": "dc6ad6371e8531f2",
+      "path": "components/TMFC009-ServiceQualificationManagement/releases/1.2.0/",
+      "manifest": "components/TMFC009-ServiceQualificationManagement/releases/1.2.0/release-manifest.json",
+      "manifestSha256": "44f46650351b261f3a50f8ba68abf351a442e36892926ca9be55df49715aa5fd",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC009/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

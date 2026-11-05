@@ -1,0 +1,9 @@
+{
+  "relatedParty": [
+    {
+      "@referredType": "Individual",
+      "id": "non-existent-id",
+      "href": "non-existent-href"
+    }
+  ]
+}

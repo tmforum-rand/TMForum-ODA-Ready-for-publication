@@ -1,0 +1,7 @@
+{
+  "name": "Test Resource",
+  "resourceSpecification": {
+    "id": "non-existent-id",
+    "href": "non-existent-href"
+  }
+}

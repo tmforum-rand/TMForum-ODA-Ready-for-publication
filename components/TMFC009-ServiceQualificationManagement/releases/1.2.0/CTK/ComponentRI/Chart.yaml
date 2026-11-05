@@ -1,0 +1,6 @@
+apiVersion: v2
+name: servicequalification-v5
+description: A reference example TMFC009-ServiceQualificationManagement ODA Component
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

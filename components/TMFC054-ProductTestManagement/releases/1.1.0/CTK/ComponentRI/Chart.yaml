@@ -1,0 +1,6 @@
+apiVersion: v2
+name: producttestmanagement
+description: A reference example TMFC054-ProductTestManagement ODA Component
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

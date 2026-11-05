@@ -5,8 +5,9 @@
     "name": "ProductOrderDeliveryOrchestrationAndManagement",
     "key": "TMFC003-ProductOrderDeliveryOrchestrationAndManagement"
   },
-  "latest": "1.1.1",
+  "latest": "2.0.0",
   "latestByStatus": {
+    "roadmap": "2.0.0",
     "specified": "1.1.1"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "2.0.0",
+      "status": "roadmap",
+      "tag": "TMFC003-ProductOrderDeliveryOrchestrationAndManagement/v2.0.0-roadmap",
+      "releaseId": "819872b7131b4e5f",
+      "path": "components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/releases/2.0.0/",
+      "manifest": "components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/releases/2.0.0/release-manifest.json",
+      "manifestSha256": "7078f32e456368a5a177bfd4b6d9d321f593e153da4f474750cf39257ea9e444",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC003/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

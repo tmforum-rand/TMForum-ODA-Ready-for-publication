@@ -5,8 +5,9 @@
     "name": "BillCalculation",
     "key": "TMFC031-BillCalculation"
   },
-  "latest": "3.0.0",
+  "latest": "3.1.0",
   "latestByStatus": {
+    "roadmap": "3.1.0",
     "specified": "3.0.0"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "3.1.0",
+      "status": "roadmap",
+      "tag": "TMFC031-BillCalculation/v3.1.0-roadmap",
+      "releaseId": "72ab2676a4cffd35",
+      "path": "components/TMFC031-BillCalculation/releases/3.1.0/",
+      "manifest": "components/TMFC031-BillCalculation/releases/3.1.0/release-manifest.json",
+      "manifestSha256": "02b243e2994a4a9e2159c003a7f5780c39a94dda84ef8371314ef9488fa5e903",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC031/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

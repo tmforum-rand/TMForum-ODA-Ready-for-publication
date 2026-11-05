@@ -1,0 +1,111 @@
+{
+  "contractVersion": 1,
+  "releaseId": "72ab2676a4cffd35",
+  "component": {
+    "id": "TMFC031",
+    "name": "BillCalculation",
+    "key": "TMFC031-BillCalculation",
+    "sourceDir": "TMFC031-BillCalculation"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC031-BillCalculation/v3.1.0-roadmap",
+    "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6",
+    "version": "3.1.0",
+    "status": "roadmap",
+    "statusRaw": "roadmap",
+    "releaseNotes": {
+      "path": "specifications/TMFC031-BillCalculation/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "3.1.0 (roadmap)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "81afdc737cae7086254fea81c95634244c4580923678f236ce2db5168e699bb0"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.1.0",
+      "sha256": "3487d167d9fd0fee6275156a36aaa7f57efd19b4aa93d32c1a853626499fac4a"
+    },
+    "handler": "v1_1",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_1:release-status",
+    "eligible": false,
+    "detail": "TMFC031-BillCalculation status roadmap is listed in S3_STRAPI_RELEASE_STATUS (preview, production, roadmap) and not listed in CTK_RELEASE_STATUS (preview, production)"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "conformance-profile",
+      "path": "ComponentConformanceProfile/TMFC031-BillCalculation_Conformance.md",
+      "mediaType": "text/markdown",
+      "size": 6902,
+      "sha256": "131448b9494bb0c880f9d5a13d20a862696a8d90f3afe7cb646223b5a4d893c6",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 296,
+      "sha256": "81afdc737cae7086254fea81c95634244c4580923678f236ce2db5168e699bb0",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC031-BillCalculation.yaml",
+      "mediaType": "text/yaml",
+      "size": 12453,
+      "sha256": "116320b0adef5b166fe99bb5463019e9066544cae4f09d57bb62e847b8487be1",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC031_Bill_Calculation_Management.pdf",
+      "mediaType": "application/pdf",
+      "size": 523629,
+      "sha256": "03b6c994f5cab5e4890485610c0742f4225d55d02531391b4e4fdceaf01dc79a",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.1.0/TMFC031/",
+      "status": "published",
+      "at": "2026-11-05T15:49:32Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC031-BillCalculation/v3.1.0-roadmap",
+      "at": "2026-11-05T15:52:22Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42058461492",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:48:52Z",
+    "requestId": "3db121d23ea6c3e4"
+  }
+}

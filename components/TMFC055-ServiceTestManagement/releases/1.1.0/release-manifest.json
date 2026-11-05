@@ -1,0 +1,936 @@
+{
+  "contractVersion": 1,
+  "releaseId": "38616c7956f9c8b0",
+  "component": {
+    "id": "TMFC055",
+    "name": "ServiceTestManagement",
+    "key": "TMFC055-ServiceTestManagement",
+    "sourceDir": "TMFC055-ServiceTestManagement"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC055-ServiceTestManagement/v1.1.0-preview",
+    "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6",
+    "version": "1.1.0",
+    "status": "preview",
+    "statusRaw": "preview",
+    "releaseNotes": {
+      "path": "specifications/TMFC055-ServiceTestManagement/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "1.1.0 (preview)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "46dd733a985e7bdef70cd43fa9a27b20689bb05b5e76e25bf4abd45330cd82a8"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.1.0",
+      "sha256": "3487d167d9fd0fee6275156a36aaa7f57efd19b4aa93d32c1a853626499fac4a"
+    },
+    "handler": "v1_1",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_1:release-status",
+    "eligible": true,
+    "detail": "TMFC055-ServiceTestManagement status preview is listed in S3_STRAPI_RELEASE_STATUS (preview, production, roadmap) and listed in CTK_RELEASE_STATUS (preview, production)"
+  },
+  "ctk": {
+    "packaging": "generic",
+    "framework": {
+      "repository": "tmforum-rand/TMForum-ODA-Component-Conformance",
+      "ref": "v1.3.1",
+      "commit": "1e07184f466b66bf8ef7331785fd68f555922f61"
+    }
+  },
+  "artifacts": [
+    {
+      "role": "ctk-bdd",
+      "path": "CTK/BDD/README.md",
+      "mediaType": "text/markdown",
+      "size": 4405,
+      "sha256": "fc5b351ba4944f091dad8c170d25f06bd9d75627647b10276e186515ff0764ff",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-bdd",
+      "path": "CTK/BDD/TMFC055-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 1553,
+      "sha256": "d5d7389f800aa95d705e995cb5730bf6b965ae779fcc853bf34439c0acb9e327",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-bdd",
+      "path": "CTK/BDD/payloads/service-inventory-0001.json",
+      "mediaType": "application/json",
+      "size": 153,
+      "sha256": "9f24e926a083e55bfa60cf98668251a9a7f4d653a85ecd2295d48ccacb73f067",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-bdd",
+      "path": "CTK/BDD/payloads/service-test-target-0001.json",
+      "mediaType": "application/json",
+      "size": 185,
+      "sha256": "ef4d27d3115e88639555036ce641767cc61f6664fc7ffd995e68013835d1d32b",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-bdd",
+      "path": "CTK/BDD/payloads/service-test-target-0002.json",
+      "mediaType": "application/json",
+      "size": 191,
+      "sha256": "7ea807ce2001143633609c8dbffc5446d0ffb695b3035345b453a4dc887ea1e8",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/Chart.yaml",
+      "mediaType": "text/yaml",
+      "size": 173,
+      "sha256": "f68e08b02947970455943286aebab84c4d34a1db6ac445101c7ca8edc1cf186e",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/README.md",
+      "mediaType": "text/markdown",
+      "size": 4425,
+      "sha256": "5cd91a5160bca2b5baaec6774fcae4f4f926e3d1a8eb328ed8d0251f5a6d5989",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/templates/component-servicetestmanagement.yaml",
+      "mediaType": "text/yaml",
+      "size": 3167,
+      "sha256": "75a801fa698f3bfcd7736ebd10409cf5466d9f2b0fd82c0a8de31c846afbcd66",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/templates/deployment-metricsapi.yaml",
+      "mediaType": "text/yaml",
+      "size": 827,
+      "sha256": "efe58b7247338cc812fd84da0f391a9f30ca17316bf58e21dc0dccd74a56964f",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/templates/deployment-mongodb.yaml",
+      "mediaType": "text/yaml",
+      "size": 888,
+      "sha256": "e08d78a53479b07ca0f8ec60ba29f3fb8e3b95ef132419c75d31c3d7237e1a0a",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/templates/deployment-servicetestapi.yaml",
+      "mediaType": "text/yaml",
+      "size": 1633,
+      "sha256": "654999912eb4d4b1431a73eb9456719d3e91c2a8c66a8f608dedc05aedc68baa",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/templates/job-servicetestmanagementinitialization.yaml",
+      "mediaType": "text/yaml",
+      "size": 719,
+      "sha256": "4256def0957a2963ee6e095b4ba52d53e8a19ab7475f7935a2ebee58512f4b95",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/templates/persistentVolumeClaim-mongodb.yaml",
+      "mediaType": "text/yaml",
+      "size": 271,
+      "sha256": "b283c4b2bfafc68041d7c3bf5dd711475cfcc8c953e2c6460d3291e79471f75f",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/templates/service-mongodb.yaml",
+      "mediaType": "text/yaml",
+      "size": 414,
+      "sha256": "9e982382eaa83738a6c16664ee3f604c43422ac7b0884c8218c43e8bc668a610",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/templates/service-registerallevents.yaml",
+      "mediaType": "text/yaml",
+      "size": 421,
+      "sha256": "e56ea0e3030ca3161ff8078dbf95f99c40bdbb7e7143a97ccb4178569bb52076",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/templates/service-servicetestapi.yaml",
+      "mediaType": "text/yaml",
+      "size": 395,
+      "sha256": "5ffd319bb33cfc815293ece570e103c37c28ffbbc64c14e9168bc67bc9ae690d",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-component-ri",
+      "path": "CTK/ComponentRI/values.yaml",
+      "mediaType": "text/yaml",
+      "size": 1277,
+      "sha256": "3f3f04a77a0ea102130467d2de9ad0eb9b72e5900d694de0340bea27fa0005d0",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/CHANGE_ME.json",
+      "mediaType": "application/json",
+      "size": 34860,
+      "sha256": "708ae4fb7aa907306aa605aa0848625583b207990ae64aab13b27027c74cb4e7",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/MAC-LINUX-RUN.sh",
+      "mediaType": "text/x-shellscript",
+      "size": 390,
+      "sha256": "e627c88cf923bf3cf78d2f5279d872c983d7d0c645ff7ce24401ae89af2e6beb",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/README",
+      "mediaType": "application/octet-stream",
+      "size": 9207,
+      "sha256": "ca57e05a66685fe2df9e3e86a5fdc05afa0f3dd39347567230f2e9b32d07e5eb",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/WINDOWS-RUN.bat",
+      "mediaType": "text/plain",
+      "size": 359,
+      "sha256": "718b2c21da944ae6068d6068de8beca15aee0b9b5822d6c854fb4983c723a363",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/run.sh",
+      "mediaType": "text/x-shellscript",
+      "size": 188,
+      "sha256": "ab272eb22a36f813baebf66a0cbee32e091361a8867922466c4de0715ee06395",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/scripts/CTK_Executor.py",
+      "mediaType": "application/octet-stream",
+      "size": 37478,
+      "sha256": "6fa523394e41ff1dca45f1d25f62bb5127c6d55a6ccf196191bc2b2adbffd1aa",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/scripts/requirements.txt",
+      "mediaType": "text/plain",
+      "size": 30,
+      "sha256": "76d7168e8b0dece5d3e2e60a95dd6c8f7b08a40d4169aa4ea2517e4c180b7a1d",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/.mocharc.json",
+      "mediaType": "application/json",
+      "size": 145,
+      "sha256": "f1500ab31628c4306c0408ba54ff835133039a47a58973f4b31f0bcaf00d545e",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC002_ProductOrder.feature",
+      "mediaType": "text/plain",
+      "size": 2272,
+      "sha256": "c3d04896e40556d2f27d00b63b55031b4bbfa9ecd5408ddd73c7b0817c90f3e6",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC005_ProductInventory.feature",
+      "mediaType": "text/plain",
+      "size": 1632,
+      "sha256": "c42a91c1f0ccce66df8d356e43aea3c234e887aab78cecd2a1976735f05e3a80",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC007_ServiceOrder.feature",
+      "mediaType": "text/plain",
+      "size": 2272,
+      "sha256": "8c594f7ddcec0ca438cc16adbd3e3b323fbf88a777f34339a77d94affe0446bf",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC008_ServiceInventory.feature",
+      "mediaType": "text/plain",
+      "size": 1633,
+      "sha256": "08e314f828fd987475389f6a819102e3db58ad6b403af334f21c5bc7a5446ac8",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC009-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 1811,
+      "sha256": "3deb044a1bebf0cdb20e6521875955f00d2a85bf7812d88c957ce70701f080c1",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC011-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 2203,
+      "sha256": "d7036f014b5f0a0ecc325ab133f8e09e7da5f573e655da4fb55a86b513cf7b62",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC012_ResourceInventory.feature",
+      "mediaType": "text/plain",
+      "size": 1635,
+      "sha256": "0188b0af38783f78afda6cd33ba89708f62212aee1fa8c3eb2f4b39120277da2",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC022-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 2167,
+      "sha256": "68614c475c3ec86b4e15326fe997df2b57ced6a14ea111d91c3fe14ee4a398a4",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC028_PartyManagement.feature",
+      "mediaType": "text/plain",
+      "size": 1788,
+      "sha256": "4bcf507b5103195aba0e6d69fc36cc39174ae952b5878f1173374a9ce94c81e5",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC035-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 2020,
+      "sha256": "cf876531157df6ad5e60008df8bafbda49801445e2966dc2b2a7679eea29a134",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC040-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 2297,
+      "sha256": "184f86760fc7be335cd788f952734726e0481eecfa849e55618a8093cdc8be1b",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC050-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 1699,
+      "sha256": "901afebbe489ec6c97e38d2645e255a0bf01b670c24b6d3277a49dea7fc7b946",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC054-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 2366,
+      "sha256": "3a5832675f20caf7bbb0124709a2b002927659e708ebe54b802a42cd85859f7b",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC055-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 1553,
+      "sha256": "d5d7389f800aa95d705e995cb5730bf6b965ae779fcc853bf34439c0acb9e327",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/TMFC062-DependentAPIInteraction.feature",
+      "mediaType": "text/plain",
+      "size": 2180,
+      "sha256": "d8c00f6eb5183e0c83b3566970b3a876770c86995096dcb073ef906971ffa507",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/step_definitions/componentTests.js",
+      "mediaType": "text/javascript",
+      "size": 14361,
+      "sha256": "3840da269e60990ad79e47492a51199950abd331b77655e1c183aec6ead276cb",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/utils/api.js",
+      "mediaType": "text/javascript",
+      "size": 2412,
+      "sha256": "ba33621fb1f91cbb5d102b720f759c192a24e74a45b53fe704a7bd0ae3f8ec47",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/utils/kubernetes.js",
+      "mediaType": "text/javascript",
+      "size": 13827,
+      "sha256": "78f82544d19b69c06edcf3d2219302615a28ad63ada0ab6ba0aad201e76aa810",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/features/utils/stubResolver.js",
+      "mediaType": "text/javascript",
+      "size": 4093,
+      "sha256": "c62e7d0a1e2b6933eb87e6dde493e6b6b965c4bd1a6c017f7043eab3d8e15800",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/index.js",
+      "mediaType": "text/javascript",
+      "size": 26865,
+      "sha256": "e7d2bb745e473bf10bf2e2c422a5e5ebc8ec7a9dc31362f2ae106d1920ebe576",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/package-lock.json",
+      "mediaType": "application/json",
+      "size": 262810,
+      "sha256": "853bf50e3ef59a3e5602badf1a4489ae5a881d538e44eba6bbf4a1793d5702f8",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/package.json",
+      "mediaType": "application/json",
+      "size": 1385,
+      "sha256": "c0da6f20c0a8f00a4fe900f3233ea9bd981e24aac4bbf68961e8a70eb2c13357",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/MaterialIcons-Regular.woff",
+      "mediaType": "application/octet-stream",
+      "size": 57620,
+      "sha256": "c4a1baec300d09e03a8380b85918267ee80faae8e00c6c56b48e2e74b1d9b38d",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/MaterialIcons-Regular.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 44300,
+      "sha256": "a87d66c91b2e7dc5530aef76c03bd6a3d25ea5826110bf4803b561b811cc8726",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/app.css",
+      "mediaType": "application/octet-stream",
+      "size": 82777,
+      "sha256": "62177278525a130a0ec9d94173e2fd9bd8657508683ec5128955f1101136a1b7",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/app.js",
+      "mediaType": "text/javascript",
+      "size": 383956,
+      "sha256": "5937fc3aac02c536ec68cae5a57e1dfe0c4682a0f106a1489e6e7edd8773fa02",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/app.js.LICENSE.txt",
+      "mediaType": "text/plain",
+      "size": 1831,
+      "sha256": "a290e7c37af6c5d5b903b04460aa8c51fea7a44f803df591249beb42ab5cf177",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-light-webfont.woff",
+      "mediaType": "application/octet-stream",
+      "size": 25772,
+      "sha256": "e2570d57fe2aeca05f2ced18aaa04794d0c37b6328dd43db3899440d0f82f2b4",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-light-webfont.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 19508,
+      "sha256": "518c4b972ae268d4f6de5198286bbef76101e9aec1e8dc2fd89a048e6413211f",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-medium-webfont.woff",
+      "mediaType": "application/octet-stream",
+      "size": 26292,
+      "sha256": "071395ab255858617c5917976f4dc819b8e7768a0dc746f73962b02134ace40a",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-medium-webfont.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 19944,
+      "sha256": "1a2ebf8346140ef2446359f79f82d915789918085ca488924d87e164967ee36b",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-regular-webfont.woff",
+      "mediaType": "application/octet-stream",
+      "size": 26280,
+      "sha256": "3de4a86fbe66a3f94361150a58dffe4e777e4841ea64ae1aad3d760eb9118f7a",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/assets/roboto-regular-webfont.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 19868,
+      "sha256": "80a369ee9cca4e0897fe248d8948ee3ae2e4e0fe8425840a93570e88a5c6812c",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/index.mustache",
+      "mediaType": "application/octet-stream",
+      "size": 15952,
+      "sha256": "47e72e191f5ecb75997350cc083d918c83b266df9aaa561c2b18b568692d81e0",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Bold_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 53598,
+      "sha256": "01e953cb02a4dcac28cf5d8bd3612f1ae47fee64ddbcc7cecb20471980b0bca0",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Bold_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 39264,
+      "sha256": "319881caca6f5f0d1e8e24040579d93386008e39dee1045965124b86303143e1",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-BookItalic_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 59870,
+      "sha256": "7c0ae6140a8d6a1392046d452005f9bce8edfe602c732b366313bc931e9e201d",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-BookItalic_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 44280,
+      "sha256": "bd4debafd0e7c752d242d5cc3d0cac8cebc26fc8e8c5b07715b837b1db0d5e5a",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Book_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 56494,
+      "sha256": "829cd552114a54a7ecc85a2aed2cd47341b6173ed0dcf395e53c46b51c3a6677",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Book_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 41728,
+      "sha256": "3f51250e2d3ef478f59bc89cb67681b5ed423f8f8dc22062fb49e101e5032a2e",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Light_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 54878,
+      "sha256": "935636b8f2fb24f998153874abda5002c00fa061254bcc94480863f7217f4ae3",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Light_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 40280,
+      "sha256": "e266d1f2bcf1da0faff6964637fdcd9a4e47c50a7a56be74424f409f30c83c5e",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Medium_Web.woff",
+      "mediaType": "application/octet-stream",
+      "size": 56110,
+      "sha256": "3b1a769d951ccffffc1cbda9cd9abd3ddc10ca946f9a5c7004b498884c899d10",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/fonts/Gotham-Medium_Web.woff2",
+      "mediaType": "application/octet-stream",
+      "size": 41488,
+      "sha256": "ba17f8257b1f710aa0e7136f4bd4b91a9a7db4f9cac2c409caf8708a64787303",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/index.css",
+      "mediaType": "application/octet-stream",
+      "size": 2768,
+      "sha256": "b1aca8a3ac44df9c6fbf8c14934efae7b107dcda06890c9bfa900c4bb5c03c72",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/typography.css",
+      "mediaType": "application/octet-stream",
+      "size": 2044,
+      "sha256": "91a89a5949811822b366ee9eda18f816d88465d63efe60331792da221fccbb16",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/reporting/styles/variables.css",
+      "mediaType": "application/octet-stream",
+      "size": 1238,
+      "sha256": "2bfe5dec2cbd0970ff04a4edc15aa530da98f3ae71714b7e73dee0730954d6b9",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/test/apiInteraction.js",
+      "mediaType": "text/javascript",
+      "size": 2424,
+      "sha256": "cc2ec41375d2c963d8fab27a3506312470bd2977b85f9fc95ded033dda1b06a0",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/CoreFunction.js",
+      "mediaType": "text/javascript",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/ManagementFunction.js",
+      "mediaType": "text/javascript",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/Reporting.js",
+      "mediaType": "text/javascript",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/SecurityFunction.json",
+      "mediaType": "application/json",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/configuration.js",
+      "mediaType": "text/javascript",
+      "size": 17099,
+      "sha256": "c1aebddab7995f3f18e507837daf286648f006894784dd3e9fc74eae382b6a72",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "ctk-generic",
+      "path": "CTK/componentCTK/src/tests/deployment.js",
+      "mediaType": "text/javascript",
+      "size": 44524,
+      "sha256": "7aea34f2bb0401f7e84dce04850956d2b7c35c8525977f2ff5f22eb450574e48",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "conformance-profile",
+      "path": "ComponentConformanceProfile/TMFC055-ServiceTestManagement_Conformance.md",
+      "mediaType": "text/markdown",
+      "size": 6037,
+      "sha256": "adfa38b5e739d005c05a1d3983a2c37587244f66efbdd1f18c833e5a04cba85b",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 302,
+      "sha256": "46dd733a985e7bdef70cd43fa9a27b20689bb05b5e76e25bf4abd45330cd82a8",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC055-ServiceTestManagement.yaml",
+      "mediaType": "text/yaml",
+      "size": 11561,
+      "sha256": "7af5734c2a6107f01c61ab51d5c1b33cab7a6e72ceb3796ee38a606bf34aa950",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "ctk-archive",
+      "path": "TMFC055-ServiceTestManagement_bdd.zip",
+      "mediaType": "application/zip",
+      "size": 3181,
+      "sha256": "971b5385b36d029ad6baa3d06885a74f30255e1fa1bc776724a67a027a13143d",
+      "targets": [
+        "s3"
+      ]
+    },
+    {
+      "role": "ctk-archive",
+      "path": "TMFC055-ServiceTestManagement_componentctk.zip",
+      "mediaType": "application/zip",
+      "size": 992805,
+      "sha256": "fc2b0c653917b144a38c939da42fac2adf1ca81168b294a6b6658438816c5e3e",
+      "targets": [
+        "s3"
+      ]
+    },
+    {
+      "role": "ctk-archive",
+      "path": "TMFC055-ServiceTestManagement_componentri.zip",
+      "mediaType": "application/zip",
+      "size": 7476,
+      "sha256": "fdce8b689080b2aa244c6899180d978425808063693867c757d5acf53165e906",
+      "targets": [
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC055_Service_Test_Management.pdf",
+      "mediaType": "application/pdf",
+      "size": 564481,
+      "sha256": "a3a11c0d88a56dd7dbd1c0c786a750d2229dbfadeb81903e1f31253141dee39e",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.1.0/TMFC055/",
+      "status": "published",
+      "at": "2026-11-05T15:51:54Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC055-ServiceTestManagement/v1.1.0-preview",
+      "at": "2026-11-05T15:52:22Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42058461492",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:51:02Z",
+    "requestId": "3db121d23ea6c3e4"
+  }
+}

@@ -1,0 +1,13 @@
+{
+    "description": "Resource order for vCPE provisioning",
+    "orderItem": [
+        {
+            "id": "1",
+            "action": "add",
+            "resource": {
+                "id": "__VALID_ID__",
+                "href": "__VALID_HREF__"
+            }
+        }
+    ]
+}

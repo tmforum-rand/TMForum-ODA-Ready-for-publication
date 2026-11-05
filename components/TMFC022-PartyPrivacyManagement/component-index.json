@@ -5,8 +5,9 @@
     "name": "PartyPrivacyManagement",
     "key": "TMFC022-PartyPrivacyManagement"
   },
-  "latest": "1.1.0",
+  "latest": "1.2.0",
   "latestByStatus": {
+    "preview": "1.2.0",
     "specified": "1.1.0"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "1.2.0",
+      "status": "preview",
+      "tag": "TMFC022-PartyPrivacyManagement/v1.2.0-preview",
+      "releaseId": "91e85cbb9181465d",
+      "path": "components/TMFC022-PartyPrivacyManagement/releases/1.2.0/",
+      "manifest": "components/TMFC022-PartyPrivacyManagement/releases/1.2.0/release-manifest.json",
+      "manifestSha256": "b82d5d2b8f2c5a9e5cff1823f450aad8a5206db6270b98a7c4d387f4f0606de4",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC022/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

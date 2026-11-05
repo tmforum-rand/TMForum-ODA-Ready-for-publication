@@ -1,0 +1,111 @@
+{
+  "contractVersion": 1,
+  "releaseId": "abb113fac903c181",
+  "component": {
+    "id": "TMFC027",
+    "name": "ProductConfigurator",
+    "key": "TMFC027-ProductConfigurator",
+    "sourceDir": "TMFC027-ProductConfigurator"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC027-ProductConfigurator/v2.2.1-roadmap",
+    "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6",
+    "version": "2.2.1",
+    "status": "roadmap",
+    "statusRaw": "roadmap",
+    "releaseNotes": {
+      "path": "specifications/TMFC027-ProductConfigurator/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "2.2.1 (roadmap)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "2cad5360ab51e0b75f7f688fb5e82d49d2cc04be3ddfb1883ad80b76b25396de"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.1.0",
+      "sha256": "3487d167d9fd0fee6275156a36aaa7f57efd19b4aa93d32c1a853626499fac4a"
+    },
+    "handler": "v1_1",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_1:release-status",
+    "eligible": false,
+    "detail": "TMFC027-ProductConfigurator status roadmap is listed in S3_STRAPI_RELEASE_STATUS (preview, production, roadmap) and not listed in CTK_RELEASE_STATUS (preview, production)"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "conformance-profile",
+      "path": "ComponentConformanceProfile/TMFC027-ProductConfigurator_Conformance.md",
+      "mediaType": "text/markdown",
+      "size": 7190,
+      "sha256": "b917fb0cdd2f24feeac30d1273639d08390b97c9329f7d15528a944cd523894b",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 300,
+      "sha256": "2cad5360ab51e0b75f7f688fb5e82d49d2cc04be3ddfb1883ad80b76b25396de",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC027-ProductConfigurator.yaml",
+      "mediaType": "text/yaml",
+      "size": 18104,
+      "sha256": "61db73ebf36104290564b59227ab99e0ecf00b1480b25c7fb176b72201b75966",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC027_Product_Configurator.pdf",
+      "mediaType": "application/pdf",
+      "size": 707905,
+      "sha256": "d82edf896e38f01371e93764f0f971bea506e66a2d26905221926a5de36ccb9c",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.1.0/TMFC027/",
+      "status": "published",
+      "at": "2026-11-05T15:49:10Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC027-ProductConfigurator/v2.2.1-roadmap",
+      "at": "2026-11-05T15:52:22Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42058461492",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:48:36Z",
+    "requestId": "3db121d23ea6c3e4"
+  }
+}

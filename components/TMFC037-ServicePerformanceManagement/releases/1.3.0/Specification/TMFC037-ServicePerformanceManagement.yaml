@@ -1,0 +1,481 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF628
+      name: performance-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF628_Performance/5.0.0/swagger/TMF628_Performance-v5.0.0.oas.yaml
+        resources:
+        - measurementCollectionJob:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - onDemandCollection:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - performanceIndicatorGroupSpecification:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - performanceIndicatorSpecification:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - trackingRecord:
+          - GET
+          - GET /id
+    - id: TMF639
+      name: resource-inventory-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF639_Resource_Inventory/4.0.0/swagger/TMF639_Resource_Inventory_Management_API_v4.0.0_swagger.json
+        resources:
+        - resource:
+          - GET
+          - GET /id
+    - id: TMF642
+      name: alarm-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF642_Alarm/4.0.0/swagger/TMF642_Alarm_Management_API_v4.0.0_swagger.json
+        resources:
+        - alarm:
+          - GET
+          - GET /id
+    - id: TMF638
+      name: service-inventory-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/5.0.0/swagger/TMF638-Service_Inventory_Management-v5.0.0.oas.yaml
+        resources:
+        - service:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF638_Service_Inventory/4.0.0/swagger/TMF638_Service_Inventory_Management_API_v4.0.0_swagger.json
+        resources:
+        - service:
+          - GET
+          - GET /id
+    - id: TMF673
+      name: geographic-address-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF673_Geographic_Address/4.0.0/swagger/TMF673_Geographic_Address_Management_API_v4.0.0_swagger.json
+        resources:
+        - geographicAddress:
+          - GET
+          - GET /id
+        - geographicSubAddress:
+          - GET
+          - GET /id
+    - id: TMF674
+      name: geographic-site-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF674_Geographic_Site/4.0.0/swagger/TMF674_Geographic_Site_Management_API_v4.0.0_swagger.json
+        resources:
+        - geographicSite:
+          - GET
+          - GET /id
+    - id: TMF657
+      name: service-quality-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF657_Service_Quality_Management/4.0.0/swagger/TMF657_Service_Quality_Management_Management_API_v4.0.0_swagger.json
+        resources:
+        - serviceLevelObjective:
+          - GET
+          - GET /id
+        - serviceLevelSpecification:
+          - GET
+          - GET /id
+    - id: TMF701
+      name: process-flow-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        resources:
+        - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+    exposedAPIs:
+    - id: TMF628
+      name: performance-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF628_Performance/5.0.0/swagger/TMF628_Performance-v5.0.0.oas.yaml
+        resources:
+        - measurementCollectionJob:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - onDemandCollection:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - performanceIndicatorGroupSpecification:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - performanceIndicatorSpecification:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - trackingRecord:
+          - GET
+          - GET /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+    - id: TMF649
+      name: performance-thresholding-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF649_Performance_Thresholding/4.0.0/swagger/TMF649_Performance_Thresholding_Management_API_v4.0.0_beta_swagger.json
+        resources:
+        - threshold:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        - thresholdJob:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+    - id: TMF642
+      name: alarm-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF642_Alarm/5.0.0/swagger/TMF642_Alarm_v5.0.1.oas.yaml
+        resources:
+        - alarm:
+          - GET
+          - GET /id
+          - POST
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF642_Alarm/4.0.0/swagger/TMF642_Alarm_Management_API_v4.0.0_swagger.json
+        resources:
+        - alarm:
+          - POST
+          - GET
+          - GET /id
+          - PATCH /id
+          - DELETE /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+    - id: TMF701
+      name: process-flow-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        resources:
+        - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+  componentMetadata:
+    id: TMFC037
+    name: ServicePerformanceManagement
+    version: 1.3.0
+    description: Service Performance Management component monitors, analyzes, and
+      reports on end-to-end service performance. This can include a real-time, end-to-end
+      view to ensure that each service is functioning correctly as well as a historical
+      view. These functions build on the Resource Performance data and active end-to-end
+      service performance test data to provide a view of a service. The component
+      provides a key input to determine Quality of Service.
+    publicationDate: '2026-05-21'
+    status: backlog
+    functionalBlock: Production
+    owners:
+    - name: Redacted
+      email: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.4.7|Service_Performance_Management|v25.0
+    - 1.4.7.6|Manage_Service_Performance_Requirement|v25.0
+    - 1.4.7.7|Manage_Service_Performance_Plan|v25.0
+    - 1.4.7.8|Manage_Service_Performance_Measure|v25.0
+    - 1.4.7.9|Manage_Service_Performance_Analysis|v25.0
+    - 1.4.7.10|Manage_Service_Performance_Control|v25.0
+    - 1.4.7.11|Manage_Service_Performance_Reporting|v25.0
+    functionalFrameworkFunctions:
+    - 603|Service_Performance_Data_Collection|v25.0
+    - 604|Service_Performance_Event_Correlation|v25.0
+    - 605|Service_Performance_Monitoring|v25.0
+    - 606|Service_Performance_Reporting|v25.0
+    SIDs:
+    - Service_Domain|Service_Performance_ABE|v25.0
+    - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Production_ABE|MeasurementProductionJob_BE|v25.0
+    - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Collection_ABE|AdhocCollection_BE|v25.0
+    - Patterns_Domain|Performance_ABE|Performance_Monitoring_ABE|Performance_Collection_ABE|MeasurementCollectionJob_BE|v25.0
+    - Patterns_Domain|Performance_ABE|Performance_Threshold_ABE|v25.0
+    - Resource_Domain|Resource_Trouble_ABE|Alarm_ABE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      id: exposedAPI_id
+      apiSDO: not_defined
+      required: false
+      specification:
+      - version: v4.0.0
+        url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        apiType: prometheus
+        implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+        port: 4000
+        resources: []
+        developerUI: exposedAPI_developerUI
+    dependentAPIs: []
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      name: partyrole
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+        implementation: '{{.Release.Name}}-partyroleapi'
+        port: 8080
+    - id: TMF672
+      name: user-role-permission-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+      - version: v5.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - id: TMF701
+      name: ProcessFlowManagement
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF642
+      name: AlarmManagement
+      resources:
+      - alarmStateChange**
+      - alarmCreateEvent**
+      - alarmClearEvent**
+      - alarmAckEvent**
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF628
+      name: PerformanceManagement
+      resources:
+      - measurementCollectionJobCreateEvent
+      - measurementCollectionJobExecutionStateChangeEvent
+      - measurementCollectionJobDeleteEvent
+      - measurementCollectionJobAttributeValueChangeEvent
+      - measurementCollectionJobFilesReadyEvent
+      - measurementCollectionJobFilesPreparationErrorEvent
+      - onDemandCollectionCreateEvent
+      - onDemandCollectionExecutionStateChangeEvent
+      - onDemandCollectionDeleteEvent
+      - onDemandCollectionAttributeValueChangeEvent
+      - onDemandCollectionFilesReadyEvent
+      - onDemandCollectionFilesPreparationErrorEvent
+      specification:
+      - url: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF628-Performance-v4.1.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF649
+      name: PerformanceThresholdManagement
+      resources:
+      - thresholdCreateNotification
+      - thresholdChangeNotification
+      - thresholdRuleCreateNotification
+      - thresholdRuleChangedNotification
+      - thresholdJobCreateNotification
+      - thresholdJobChangedNotification
+      - thresholdJobSuspendNotification
+      - thresholdJobResumeNotification
+      specification:
+      - url: https://github.com/tmforum-apis/TMF628_Performance/blob/main/TMF649-PerformanceThreshold-v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    subscribedEvents:
+    - id: TMF633
+      name: ServiceCatalogManagement
+      resources:
+      - serviceSpecificationChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF633_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF638
+      name: ServiceInventoryManagement
+      resources:
+      - serviceCreateEvent
+      - serviceAttributeValueChangeEvent
+      - serviceStateChangeEvent
+      - serviceDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF638_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF639
+      name: ResourceInventoryManagement
+      resources:
+      - resourceCreateEvent
+      - resourceAttributeValueChangeEvent
+      - resourceStateChangeEvent
+      - resourceDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF639_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF701
+      name: ProcessFlowManagement
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
+      apiType: openapi
+      apiSDO: not_defined

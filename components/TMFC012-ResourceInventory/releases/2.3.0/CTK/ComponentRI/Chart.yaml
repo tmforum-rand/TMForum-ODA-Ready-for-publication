@@ -1,0 +1,10 @@
+apiVersion: v2
+name: resourceinventorymanagement
+description: A reference example TMFC012-ResourceInventory ODA Component
+
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+version: 1.0.0
+# version: 1.0.0 - Initial TMFC012-ResourceInventory ODA Component implementation

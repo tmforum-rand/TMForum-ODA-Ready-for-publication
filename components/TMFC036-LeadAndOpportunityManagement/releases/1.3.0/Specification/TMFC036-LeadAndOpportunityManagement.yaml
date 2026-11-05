@@ -1,0 +1,422 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    dependentAPIs:
+    - id: TMF632
+      name: party-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/5.0.0/swagger/TMF632-Party_Management-v5.0.0.oas.yaml
+        resources:
+        - individual:
+          - GET
+          - GET /id
+        - organization:
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/4.0.0/swagger/TMF632_Party_Management_API_v4.0.0_swagger.json
+        resources:
+        - individual:
+          - GET
+          - GET /id
+        - organization:
+          - GET
+          - GET /id
+    - id: TMF669
+      name: party-role-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/5.0.0/swagger/TMF669-Party_Role_Management-v5.0.0.oas.yaml
+        resources:
+        - partyRole:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources:
+        - partyRole:
+          - GET
+          - GET /id
+    - id: TMF620
+      name: product-catalog-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/5.0.0/swagger/TMF620-Product_Catalog_Management-v5.0.0.oas.yaml
+        resources:
+        - productOffering:
+          - GET
+          - GET /id
+        - productOfferingPrice:
+          - GET
+          - GET /id
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json
+        resources:
+        - productOffering:
+          - GET
+          - GET /id
+        - productOfferingPrice:
+          - GET
+          - GET /id
+    - id: TMF651
+      name: agreement-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF651_Agreement/4.0.0/swagger/TMF651_Agreement_Management_API_v4.0.0_swagger.json
+        resources:
+        - agreement:
+          - GET
+          - GET /id
+        - agreementSpecification:
+          - GET
+          - GET /id
+    - id: TMF648
+      name: quote-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF648_Quote/4.0.0/swagger/TMF648_Quote_Management_API_v4.0.0_swagger.json
+        resources:
+        - quote:
+          - GET
+          - GET /id
+    - id: TMF622
+      name: product-ordering-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v5.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/5.0.0/swagger/TMF622-ProductOrdering-v5.0.0.oas.yaml
+        resources:
+        - productOrder:
+          - GET
+          - GET /id
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF622_Product_Ordering/4.0.0/swagger/TMF622_Product_Ordering_Management_API_v4.0.0_swagger.json
+        resources:
+        - productOrder:
+          - GET
+          - GET /id
+    - id: TMF701
+      name: process-flow-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        resources:
+        - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+    exposedAPIs:
+    - id: TMF699
+      name: sales-management-api
+      apiSDO: tmForum
+      required: true
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF699_Sales/4.0.0/swagger/TMF699_Sales_Management_API_v4.0.0_swagger.json
+        resources:
+        - salesLead:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        - salesOpportunity:
+          - GET
+          - GET /id
+          - POST
+          - PATCH
+          - DELETE
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+    - id: TMF701
+      name: process-flow-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF701_Process_Flow/4.1.0/swagger/TMF701_Process_Flow_Management_API_v4.1.0_beta_swagger.json
+        resources:
+        - processFlow:
+          - POST
+          - GET
+          - GET /id
+          - DELETE
+        - taskFlow:
+          - PATCH
+          - GET
+          - GET /id
+        path: not_defined
+        developerUI: not_defined
+        implementation: not_defined
+        port: 8080
+  componentMetadata:
+    id: TMFC036
+    name: LeadAndOpportunityManagement
+    version: 1.3.0
+    description: Lead and Opportunity Management component provides the functionality
+      for lead and opportunity capture, qualification, reporting, and support during
+      the pre-sales stage.
+    publicationDate: 2026-05-21
+    status: production
+    functionalBlock: PartyManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    maintainers:
+    - name: Redacted
+      email: components@tmforum.org
+      url: Redacted
+    eTOMs:
+    - 1.1.11|Contact/Lead/Prospect_Management|v23.0
+    - 1.1.11.1|Manage_Sales_Contact|v23.0
+    - 1.1.11.2|Manage_Sales_Lead|v23.0
+    - 1.1.11.3|Manage_Sales_Prospect|v23.0
+    - 1.1.9|Selling|v23.0
+    - 1.1.9.1|Qualify_Selling_Opportunity|v23.0
+    - 1.1.9.3|Acquire_Sales_Prospect_Data|v23.0
+    - 1.1.7|Market_Sales_Support_&_Readiness|v23.0
+    - 1.1.7.2|Support_Selling|v23.0
+    - 1.1.7.5|Manage_Sales_Accounts|v23.0
+    functionalFrameworkFunctions:
+    - 394|Sales_Aids_Support|v23.0
+    - 372|Sales_Opportunity_Management|v23.0
+    - 375|Funnel_Assigning|v23.0
+    - 374|Funnel_Creation|v23.0
+    - 376|Funnel_Leads_Tracking|v23.0
+    - 726|Sales_Lead_Capturing|v23.0
+    SIDs:
+    - Market_&_Sales_Domain|Sales_Lead_and_Opportunity_ABE|Sales_Lead_ABE|v25.0
+    - Market_&_Sales_Domain|Sales_Lead_and_Opportunity_ABE|Sales_Opportunity_ABE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      id: exposedAPI_id
+      apiSDO: not_defined
+      required: false
+      specification:
+      - version: v4.0.0
+        url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        apiType: prometheus
+        implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+        port: 4000
+        resources: []
+        developerUI: exposedAPI_developerUI
+    dependentAPIs: []
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      name: partyrole
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+        implementation: '{{.Release.Name}}-partyroleapi'
+        port: 8080
+    - id: TMF672
+      name: user-role-permission-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+      - version: v5.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - id: TMF699
+      name: SalesManagement
+      resources:
+      - SalesLeadCreateEvent
+      - SalesLeadAttributeValueChangeEvent
+      - SalesLeadStateChangeEvent
+      - SalesLeadDeleteEvent
+      - SalesOpportunityCreateEvent
+      - SalesOpportunityAttributeValueChangeEvent
+      - SalesOpportunityStateChangeEvent
+      - SalesOpportunityDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF699_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF701
+      name: ProcessFlowManagement
+      resources:
+      - processFlowCreateEvent
+      - processFlowStateChangeEvent
+      - processFlowStateDeleteEvent
+      - processFlowStateAttributeValueChangeEvent
+      - processFlowSpecificationAttributeValueChangeEvent
+      - processFlowSpecificationCreateEvent
+      - processFlowSpecificationDeleteEvent
+      - processFlowSpecificationStateChangeEvent
+      - taskFlowCreateEvent
+      - taskFlowStateChangeEvent
+      - taskFlowDeleteEvent
+      - taskFlowAttributeValueChangeEvent
+      - taskFlowInformationRequiredEvent
+      - taskFlowSpecificationAttributeValueChangeEvent
+      - taskFlowSpecificationCreateEvent
+      - taskFlowSpecificationDeleteEvent
+      - taskFlowSpecificationStateChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF701_Process_Management/5.0.0/swagger/TMF701-ProcessManagement-v5.0.0.oas.yaml
+        version: v5.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    subscribedEvents:
+    - id: TMF632
+      name: PartyManagement
+      resources:
+      - IndividualCreateEvent
+      - IndividualAttributeValueChangeEvent
+      - IndividualStateChangeEvent
+      - IndividualDeleteEvent
+      - OrganizationCreateEvent
+      - OrganizationAttributeValueChangeEvent
+      - OrganizationStateChangeEvent
+      - OrganizationDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF632_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF620
+      name: ProductCatalogManagement
+      resources:
+      - ProductOfferingCreateEvent
+      - ProductOfferingAttributeValueChangeEvent
+      - ProductOfferingStateChangeEvent
+      - ProductOfferingDeleteEvent
+      - ProductSpecificationCreateEvent
+      - ProductSpecificationAttributeValueChangeEvent
+      - ProductSpecificationStateChangeEvent
+      - ProductSpecificationDeleteEvent
+      - ProductOfferingPriceCreateEvent
+      - ProductOfferingPriceAttributeValueChangeEvent
+      - ProductOfferingPriceStateChangeEvent
+      - ProductOfferingPriceDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF620_v4.1.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF622
+      name: Product Ordering
+      resources:
+      - ProductOrderCreateEvent
+      - ProductOrderAttributeValueChangeEvent
+      - ProductOrderDeleteEvent
+      - ProductOrderStateChangeEvent
+      - ProductOrderInformationRequiredEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF622_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF651
+      name: AgreementManagement
+      resources:
+      - AgreementCreateEvent
+      - AgreementAttributeValueChangeEvent
+      - AgreementStateChangeEvent
+      - AgreementDeleteEvent
+      - AgreementSpecificationCreateEvent
+      - AgreementSpecificationAttributeValueChangeEvent
+      - AgreementSpecificationStateChangeEvent
+      - AgreementSpecificationDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF651_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF648
+      name: QuoteManagement
+      resources:
+      - QuoteCreateEvent
+      - QuoteStateChangeEvent
+      - QuoteDeleteEvent
+      - QuoteInformationRequiredEvent
+      - QuoteAttributeValueChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF648_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined
+    - id: TMF669
+      name: PartyRoleManagement
+      resources:
+      - PartyRoleCreateEvent
+      - PartyRoleAttributeValueChangeEvent
+      - PartyRoleStateChangeEvent
+      - PartyRoleDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF669_v4.0.0.swagger.json
+        version: v4.0.0
+      apiType: openapi
+      apiSDO: not_defined

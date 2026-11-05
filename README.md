@@ -208,38 +208,38 @@ Reports/                                         API, functional and metadata re
 |---|---|---|
 | [TMFC001-ProductCatalogManagement](components/TMFC001-ProductCatalogManagement/component-index.json) | [2.2.2](components/TMFC001-ProductCatalogManagement/releases/2.2.2/) | 2.1.2, 2.2.2 |
 | [TMFC002-ProductOrderCaptureAndValidation](components/TMFC002-ProductOrderCaptureAndValidation/component-index.json) | [2.1.0](components/TMFC002-ProductOrderCaptureAndValidation/releases/2.1.0/) | 2.1.0 |
-| [TMFC003-ProductOrderDeliveryOrchestrationAndManagement](components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/component-index.json) | [1.1.1](components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/releases/1.1.1/) | 1.1.1 |
+| [TMFC003-ProductOrderDeliveryOrchestrationAndManagement](components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/component-index.json) | [2.0.0](components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/releases/2.0.0/) | 1.1.1, 2.0.0 |
 | [TMFC005-ProductInventory](components/TMFC005-ProductInventory/component-index.json) | [1.1.4](components/TMFC005-ProductInventory/releases/1.1.4/) | 1.0.4, 1.1.4 |
-| [TMFC006-ServiceCatalogManagement](components/TMFC006-ServiceCatalogManagement/component-index.json) | [1.2.0](components/TMFC006-ServiceCatalogManagement/releases/1.2.0/) | 1.2.0 |
-| [TMFC007-ServiceOrderManagement](components/TMFC007-ServiceOrderManagement/component-index.json) | [2.0.0](components/TMFC007-ServiceOrderManagement/releases/2.0.0/) | 2.0.0 |
-| [TMFC008-ServiceInventory](components/TMFC008-ServiceInventory/component-index.json) | [1.2.0](components/TMFC008-ServiceInventory/releases/1.2.0/) | 1.2.0 |
-| [TMFC009-ServiceQualificationManagement](components/TMFC009-ServiceQualificationManagement/component-index.json) | [1.1.0](components/TMFC009-ServiceQualificationManagement/releases/1.1.0/) | 1.1.0 |
-| [TMFC010-ResourceCatalogManagement](components/TMFC010-ResourceCatalogManagement/component-index.json) | [1.3.2](components/TMFC010-ResourceCatalogManagement/releases/1.3.2/) | 1.3.2 |
-| [TMFC011-ResourceOrderManagement](components/TMFC011-ResourceOrderManagement/component-index.json) | [1.2.0](components/TMFC011-ResourceOrderManagement/releases/1.2.0/) | 1.2.0 |
-| [TMFC012-ResourceInventory](components/TMFC012-ResourceInventory/component-index.json) | [2.2.0](components/TMFC012-ResourceInventory/releases/2.2.0/) | 2.2.0 |
-| [TMFC014-LocationManagement](components/TMFC014-LocationManagement/component-index.json) | [1.2.1](components/TMFC014-LocationManagement/releases/1.2.1/) | 1.2.1 |
-| [TMFC020-DigitalIdentityManagement](components/TMFC020-DigitalIdentityManagement/component-index.json) | [1.1.0](components/TMFC020-DigitalIdentityManagement/releases/1.1.0/) | 1.1.0 |
-| [TMFC022-PartyPrivacyManagement](components/TMFC022-PartyPrivacyManagement/component-index.json) | [1.1.0](components/TMFC022-PartyPrivacyManagement/releases/1.1.0/) | 1.1.0 |
-| [TMFC023-PartyInteractionManagement](components/TMFC023-PartyInteractionManagement/component-index.json) | [1.1.2](components/TMFC023-PartyInteractionManagement/releases/1.1.2/) | 1.1.2 |
-| [TMFC024-BillingAccountManagement](components/TMFC024-BillingAccountManagement/component-index.json) | [2.1.1](components/TMFC024-BillingAccountManagement/releases/2.1.1/) | 2.1.1 |
-| [TMFC027-ProductConfigurator](components/TMFC027-ProductConfigurator/component-index.json) | [2.1.1](components/TMFC027-ProductConfigurator/releases/2.1.1/) | 2.1.1 |
-| [TMFC028-PartyManagement](components/TMFC028-PartyManagement/component-index.json) | [2.1.0](components/TMFC028-PartyManagement/releases/2.1.0/) | 2.1.0 |
-| [TMFC029-PaymentManagement](components/TMFC029-PaymentManagement/component-index.json) | [1.2.2](components/TMFC029-PaymentManagement/releases/1.2.2/) | 1.2.2 |
+| [TMFC006-ServiceCatalogManagement](components/TMFC006-ServiceCatalogManagement/component-index.json) | [1.3.0](components/TMFC006-ServiceCatalogManagement/releases/1.3.0/) | 1.2.0, 1.3.0 |
+| [TMFC007-ServiceOrderManagement](components/TMFC007-ServiceOrderManagement/component-index.json) | [2.1.0](components/TMFC007-ServiceOrderManagement/releases/2.1.0/) | 2.0.0, 2.1.0 |
+| [TMFC008-ServiceInventory](components/TMFC008-ServiceInventory/component-index.json) | [1.3.0](components/TMFC008-ServiceInventory/releases/1.3.0/) | 1.2.0, 1.3.0 |
+| [TMFC009-ServiceQualificationManagement](components/TMFC009-ServiceQualificationManagement/component-index.json) | [1.2.0](components/TMFC009-ServiceQualificationManagement/releases/1.2.0/) | 1.1.0, 1.2.0 |
+| [TMFC010-ResourceCatalogManagement](components/TMFC010-ResourceCatalogManagement/component-index.json) | [1.4.2](components/TMFC010-ResourceCatalogManagement/releases/1.4.2/) | 1.3.2, 1.4.2 |
+| [TMFC011-ResourceOrderManagement](components/TMFC011-ResourceOrderManagement/component-index.json) | [1.3.0](components/TMFC011-ResourceOrderManagement/releases/1.3.0/) | 1.2.0, 1.3.0 |
+| [TMFC012-ResourceInventory](components/TMFC012-ResourceInventory/component-index.json) | [2.3.0](components/TMFC012-ResourceInventory/releases/2.3.0/) | 2.2.0, 2.3.0 |
+| [TMFC014-LocationManagement](components/TMFC014-LocationManagement/component-index.json) | [1.3.1](components/TMFC014-LocationManagement/releases/1.3.1/) | 1.2.1, 1.3.1 |
+| [TMFC020-DigitalIdentityManagement](components/TMFC020-DigitalIdentityManagement/component-index.json) | [1.2.0](components/TMFC020-DigitalIdentityManagement/releases/1.2.0/) | 1.1.0, 1.2.0 |
+| [TMFC022-PartyPrivacyManagement](components/TMFC022-PartyPrivacyManagement/component-index.json) | [1.2.0](components/TMFC022-PartyPrivacyManagement/releases/1.2.0/) | 1.1.0, 1.2.0 |
+| [TMFC023-PartyInteractionManagement](components/TMFC023-PartyInteractionManagement/component-index.json) | [1.2.2](components/TMFC023-PartyInteractionManagement/releases/1.2.2/) | 1.1.2, 1.2.2 |
+| [TMFC024-BillingAccountManagement](components/TMFC024-BillingAccountManagement/component-index.json) | [2.2.1](components/TMFC024-BillingAccountManagement/releases/2.2.1/) | 2.1.1, 2.2.1 |
+| [TMFC027-ProductConfigurator](components/TMFC027-ProductConfigurator/component-index.json) | [2.2.1](components/TMFC027-ProductConfigurator/releases/2.2.1/) | 2.1.1, 2.2.1 |
+| [TMFC028-PartyManagement](components/TMFC028-PartyManagement/component-index.json) | [2.2.0](components/TMFC028-PartyManagement/releases/2.2.0/) | 2.1.0, 2.2.0 |
+| [TMFC029-PaymentManagement](components/TMFC029-PaymentManagement/component-index.json) | [1.3.2](components/TMFC029-PaymentManagement/releases/1.3.2/) | 1.2.2, 1.3.2 |
 | [TMFC030-BillGenerationManagement](components/TMFC030-BillGenerationManagement/component-index.json) | [2.1.0](components/TMFC030-BillGenerationManagement/releases/2.1.0/) | 2.0.0, 2.1.0 |
-| [TMFC031-BillCalculation](components/TMFC031-BillCalculation/component-index.json) | [3.0.0](components/TMFC031-BillCalculation/releases/3.0.0/) | 3.0.0 |
-| [TMFC035-PermissionsManagement](components/TMFC035-PermissionsManagement/component-index.json) | [1.1.1](components/TMFC035-PermissionsManagement/releases/1.1.1/) | 1.1.1 |
-| [TMFC036-LeadAndOpportunityManagement](components/TMFC036-LeadAndOpportunityManagement/component-index.json) | [1.2.0](components/TMFC036-LeadAndOpportunityManagement/releases/1.2.0/) | 1.2.0 |
-| [TMFC037-ServicePerformanceManagement](components/TMFC037-ServicePerformanceManagement/component-index.json) | [1.2.0](components/TMFC037-ServicePerformanceManagement/releases/1.2.0/) | 1.2.0 |
-| [TMFC038-ResourcePerformanceManagement](components/TMFC038-ResourcePerformanceManagement/component-index.json) | [1.2.0](components/TMFC038-ResourcePerformanceManagement/releases/1.2.0/) | 1.2.0 |
-| [TMFC039-AgreementManagement](components/TMFC039-AgreementManagement/component-index.json) | [1.1.0](components/TMFC039-AgreementManagement/releases/1.1.0/) | 1.1.0 |
-| [TMFC040-ProductUsageManagement](components/TMFC040-ProductUsageManagement/component-index.json) | [1.1.0](components/TMFC040-ProductUsageManagement/releases/1.1.0/) | 1.1.0 |
-| [TMFC041-AnomalyManagement](components/TMFC041-AnomalyManagement/component-index.json) | [1.1.0](components/TMFC041-AnomalyManagement/releases/1.1.0/) | 1.1.0 |
-| [TMFC043-FaultManagement](components/TMFC043-FaultManagement/component-index.json) | [1.0.0](components/TMFC043-FaultManagement/releases/1.0.0/) | 1.0.0 |
-| [TMFC046-WorkforceManagement](components/TMFC046-WorkforceManagement/component-index.json) | [1.1.0](components/TMFC046-WorkforceManagement/releases/1.1.0/) | 1.1.0 |
-| [TMFC050-ProductRecommendationManagement](components/TMFC050-ProductRecommendationManagement/component-index.json) | [1.0.0](components/TMFC050-ProductRecommendationManagement/releases/1.0.0/) | 1.0.0 |
-| [TMFC054-ProductTestManagement](components/TMFC054-ProductTestManagement/component-index.json) | [1.0.0](components/TMFC054-ProductTestManagement/releases/1.0.0/) | 1.0.0 |
-| [TMFC055-ServiceTestManagement](components/TMFC055-ServiceTestManagement/component-index.json) | [1.0.0](components/TMFC055-ServiceTestManagement/releases/1.0.0/) | 1.0.0 |
-| [TMFC061-WorkOrderManagement](components/TMFC061-WorkOrderManagement/component-index.json) | [1.0.0](components/TMFC061-WorkOrderManagement/releases/1.0.0/) | 1.0.0 |
+| [TMFC031-BillCalculation](components/TMFC031-BillCalculation/component-index.json) | [3.1.0](components/TMFC031-BillCalculation/releases/3.1.0/) | 3.0.0, 3.1.0 |
+| [TMFC035-PermissionsManagement](components/TMFC035-PermissionsManagement/component-index.json) | [1.2.1](components/TMFC035-PermissionsManagement/releases/1.2.1/) | 1.1.1, 1.2.1 |
+| [TMFC036-LeadAndOpportunityManagement](components/TMFC036-LeadAndOpportunityManagement/component-index.json) | [1.3.0](components/TMFC036-LeadAndOpportunityManagement/releases/1.3.0/) | 1.2.0, 1.3.0 |
+| [TMFC037-ServicePerformanceManagement](components/TMFC037-ServicePerformanceManagement/component-index.json) | [1.3.0](components/TMFC037-ServicePerformanceManagement/releases/1.3.0/) | 1.2.0, 1.3.0 |
+| [TMFC038-ResourcePerformanceManagement](components/TMFC038-ResourcePerformanceManagement/component-index.json) | [1.3.0](components/TMFC038-ResourcePerformanceManagement/releases/1.3.0/) | 1.2.0, 1.3.0 |
+| [TMFC039-AgreementManagement](components/TMFC039-AgreementManagement/component-index.json) | [1.2.0](components/TMFC039-AgreementManagement/releases/1.2.0/) | 1.1.0, 1.2.0 |
+| [TMFC040-ProductUsageManagement](components/TMFC040-ProductUsageManagement/component-index.json) | [1.2.0](components/TMFC040-ProductUsageManagement/releases/1.2.0/) | 1.1.0, 1.2.0 |
+| [TMFC041-AnomalyManagement](components/TMFC041-AnomalyManagement/component-index.json) | [1.3.0](components/TMFC041-AnomalyManagement/releases/1.3.0/) | 1.1.0, 1.3.0 |
+| [TMFC043-FaultManagement](components/TMFC043-FaultManagement/component-index.json) | [1.1.0](components/TMFC043-FaultManagement/releases/1.1.0/) | 1.0.0, 1.1.0 |
+| [TMFC046-WorkforceManagement](components/TMFC046-WorkforceManagement/component-index.json) | [1.2.0](components/TMFC046-WorkforceManagement/releases/1.2.0/) | 1.1.0, 1.2.0 |
+| [TMFC050-ProductRecommendationManagement](components/TMFC050-ProductRecommendationManagement/component-index.json) | [1.1.0](components/TMFC050-ProductRecommendationManagement/releases/1.1.0/) | 1.0.0, 1.1.0 |
+| [TMFC054-ProductTestManagement](components/TMFC054-ProductTestManagement/component-index.json) | [1.1.0](components/TMFC054-ProductTestManagement/releases/1.1.0/) | 1.0.0, 1.1.0 |
+| [TMFC055-ServiceTestManagement](components/TMFC055-ServiceTestManagement/component-index.json) | [1.1.0](components/TMFC055-ServiceTestManagement/releases/1.1.0/) | 1.0.0, 1.1.0 |
+| [TMFC061-WorkOrderManagement](components/TMFC061-WorkOrderManagement/component-index.json) | [1.1.0](components/TMFC061-WorkOrderManagement/releases/1.1.0/) | 1.0.0, 1.1.0 |
 | [TMFC062-ResourceConfigurationandActivation](components/TMFC062-ResourceConfigurationandActivation/component-index.json) | [1.0.0](components/TMFC062-ResourceConfigurationandActivation/releases/1.0.0/) | 1.0.0 |
 
 ---

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedFrom": {
     "manifests": "components/*/releases/*/release-manifest.json",
-    "count": 38
+    "count": 68
   },
   "components": {
     "TMFC001-ProductCatalogManagement": {
@@ -98,8 +98,9 @@
       "id": "TMFC003",
       "name": "ProductOrderDeliveryOrchestrationAndManagement",
       "componentIndex": "components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/component-index.json",
-      "latest": "1.1.1",
+      "latest": "2.0.0",
       "latestByStatus": {
+        "roadmap": "2.0.0",
         "specified": "1.1.1"
       },
       "releases": [
@@ -124,6 +125,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "2.0.0",
+          "status": "roadmap",
+          "tag": "TMFC003-ProductOrderDeliveryOrchestrationAndManagement/v2.0.0-roadmap",
+          "releaseId": "819872b7131b4e5f",
+          "path": "components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/releases/2.0.0/",
+          "manifest": "components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/releases/2.0.0/release-manifest.json",
+          "manifestSha256": "7078f32e456368a5a177bfd4b6d9d321f593e153da4f474750cf39257ea9e444",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC003/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -187,8 +210,9 @@
       "id": "TMFC006",
       "name": "ServiceCatalogManagement",
       "componentIndex": "components/TMFC006-ServiceCatalogManagement/component-index.json",
-      "latest": "1.2.0",
+      "latest": "1.3.0",
       "latestByStatus": {
+        "production": "1.3.0",
         "specified": "1.2.0"
       },
       "releases": [
@@ -213,6 +237,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.3.0",
+          "status": "production",
+          "tag": "TMFC006-ServiceCatalogManagement/v1.3.0-production",
+          "releaseId": "59722305f93d3206",
+          "path": "components/TMFC006-ServiceCatalogManagement/releases/1.3.0/",
+          "manifest": "components/TMFC006-ServiceCatalogManagement/releases/1.3.0/release-manifest.json",
+          "manifestSha256": "32ce7505ad5e991cc6b0f0c87496e6f1ec0167b3cd1dc09e2c81d1d3b70b5eb9",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC006/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -220,8 +266,9 @@
       "id": "TMFC007",
       "name": "ServiceOrderManagement",
       "componentIndex": "components/TMFC007-ServiceOrderManagement/component-index.json",
-      "latest": "2.0.0",
+      "latest": "2.1.0",
       "latestByStatus": {
+        "production": "2.1.0",
         "specified": "2.0.0"
       },
       "releases": [
@@ -246,6 +293,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "2.1.0",
+          "status": "production",
+          "tag": "TMFC007-ServiceOrderManagement/v2.1.0-production",
+          "releaseId": "0374410a3a83adb9",
+          "path": "components/TMFC007-ServiceOrderManagement/releases/2.1.0/",
+          "manifest": "components/TMFC007-ServiceOrderManagement/releases/2.1.0/release-manifest.json",
+          "manifestSha256": "cce361daf988485ba3e0e3d644b672addbc783d093c248baeca070bfe43a9388",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC007/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -253,8 +322,9 @@
       "id": "TMFC008",
       "name": "ServiceInventory",
       "componentIndex": "components/TMFC008-ServiceInventory/component-index.json",
-      "latest": "1.2.0",
+      "latest": "1.3.0",
       "latestByStatus": {
+        "production": "1.3.0",
         "specified": "1.2.0"
       },
       "releases": [
@@ -279,6 +349,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.3.0",
+          "status": "production",
+          "tag": "TMFC008-ServiceInventory/v1.3.0-production",
+          "releaseId": "5c1b4ed1ee5da020",
+          "path": "components/TMFC008-ServiceInventory/releases/1.3.0/",
+          "manifest": "components/TMFC008-ServiceInventory/releases/1.3.0/release-manifest.json",
+          "manifestSha256": "8a5324a5c16eea1b943cef5eef23689a9243cb18ddeeba745b632c2f69c14bec",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC008/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -286,8 +378,9 @@
       "id": "TMFC009",
       "name": "ServiceQualificationManagement",
       "componentIndex": "components/TMFC009-ServiceQualificationManagement/component-index.json",
-      "latest": "1.1.0",
+      "latest": "1.2.0",
       "latestByStatus": {
+        "production": "1.2.0",
         "specified": "1.1.0"
       },
       "releases": [
@@ -312,6 +405,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.2.0",
+          "status": "production",
+          "tag": "TMFC009-ServiceQualificationManagement/v1.2.0-production",
+          "releaseId": "dc6ad6371e8531f2",
+          "path": "components/TMFC009-ServiceQualificationManagement/releases/1.2.0/",
+          "manifest": "components/TMFC009-ServiceQualificationManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "44f46650351b261f3a50f8ba68abf351a442e36892926ca9be55df49715aa5fd",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC009/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -319,8 +434,9 @@
       "id": "TMFC010",
       "name": "ResourceCatalogManagement",
       "componentIndex": "components/TMFC010-ResourceCatalogManagement/component-index.json",
-      "latest": "1.3.2",
+      "latest": "1.4.2",
       "latestByStatus": {
+        "production": "1.4.2",
         "specified": "1.3.2"
       },
       "releases": [
@@ -345,6 +461,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.4.2",
+          "status": "production",
+          "tag": "TMFC010-ResourceCatalogManagement/v1.4.2-production",
+          "releaseId": "90da9622c2a5d5df",
+          "path": "components/TMFC010-ResourceCatalogManagement/releases/1.4.2/",
+          "manifest": "components/TMFC010-ResourceCatalogManagement/releases/1.4.2/release-manifest.json",
+          "manifestSha256": "6726e63bcf99e24c5d93afc42449959d093a4e01566cb650545b4a03bdca3896",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC010/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -352,9 +490,10 @@
       "id": "TMFC011",
       "name": "ResourceOrderManagement",
       "componentIndex": "components/TMFC011-ResourceOrderManagement/component-index.json",
-      "latest": "1.2.0",
+      "latest": "1.3.0",
       "latestByStatus": {
-        "pre-production": "1.2.0"
+        "pre-production": "1.2.0",
+        "preview": "1.3.0"
       },
       "releases": [
         {
@@ -378,6 +517,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.3.0",
+          "status": "preview",
+          "tag": "TMFC011-ResourceOrderManagement/v1.3.0-preview",
+          "releaseId": "80060f9b4f9752ec",
+          "path": "components/TMFC011-ResourceOrderManagement/releases/1.3.0/",
+          "manifest": "components/TMFC011-ResourceOrderManagement/releases/1.3.0/release-manifest.json",
+          "manifestSha256": "fed21c802a4c6efa2b76cb89959f426c7fd75e869613a1454f3cc09b2d0197f4",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC011/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -385,8 +546,9 @@
       "id": "TMFC012",
       "name": "ResourceInventory",
       "componentIndex": "components/TMFC012-ResourceInventory/component-index.json",
-      "latest": "2.2.0",
+      "latest": "2.3.0",
       "latestByStatus": {
+        "production": "2.3.0",
         "specified": "2.2.0"
       },
       "releases": [
@@ -411,6 +573,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "2.3.0",
+          "status": "production",
+          "tag": "TMFC012-ResourceInventory/v2.3.0-production",
+          "releaseId": "84e981bfb0b7c91e",
+          "path": "components/TMFC012-ResourceInventory/releases/2.3.0/",
+          "manifest": "components/TMFC012-ResourceInventory/releases/2.3.0/release-manifest.json",
+          "manifestSha256": "716290262cd5c5cc16543836cea82fcbdd81d69ab7521130d9ee6fad2b505c98",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC012/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -418,8 +602,9 @@
       "id": "TMFC014",
       "name": "LocationManagement",
       "componentIndex": "components/TMFC014-LocationManagement/component-index.json",
-      "latest": "1.2.1",
+      "latest": "1.3.1",
       "latestByStatus": {
+        "backlog": "1.3.1",
         "specified": "1.2.1"
       },
       "releases": [
@@ -444,6 +629,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.3.1",
+          "status": "backlog",
+          "tag": "TMFC014-LocationManagement/v1.3.1-backlog",
+          "releaseId": "41b253aaffb74546",
+          "path": "components/TMFC014-LocationManagement/releases/1.3.1/",
+          "manifest": "components/TMFC014-LocationManagement/releases/1.3.1/release-manifest.json",
+          "manifestSha256": "502ed8f85ab0dfa3674b1b147bc77d723b3d9f9b26281c7cb8e3a92996891765",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC014/",
+            "status": "skipped"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -451,8 +658,9 @@
       "id": "TMFC020",
       "name": "DigitalIdentityManagement",
       "componentIndex": "components/TMFC020-DigitalIdentityManagement/component-index.json",
-      "latest": "1.1.0",
+      "latest": "1.2.0",
       "latestByStatus": {
+        "roadmap": "1.2.0",
         "specified": "1.1.0"
       },
       "releases": [
@@ -477,6 +685,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.2.0",
+          "status": "roadmap",
+          "tag": "TMFC020-DigitalIdentityManagement/v1.2.0-roadmap",
+          "releaseId": "7f63a90b9f8494b7",
+          "path": "components/TMFC020-DigitalIdentityManagement/releases/1.2.0/",
+          "manifest": "components/TMFC020-DigitalIdentityManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "a324a6fa5d49b55efccb39662e43a685f5c0ddeef1bd010062e9fd7eb0bc08d9",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC020/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -484,8 +714,9 @@
       "id": "TMFC022",
       "name": "PartyPrivacyManagement",
       "componentIndex": "components/TMFC022-PartyPrivacyManagement/component-index.json",
-      "latest": "1.1.0",
+      "latest": "1.2.0",
       "latestByStatus": {
+        "preview": "1.2.0",
         "specified": "1.1.0"
       },
       "releases": [
@@ -510,6 +741,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.2.0",
+          "status": "preview",
+          "tag": "TMFC022-PartyPrivacyManagement/v1.2.0-preview",
+          "releaseId": "91e85cbb9181465d",
+          "path": "components/TMFC022-PartyPrivacyManagement/releases/1.2.0/",
+          "manifest": "components/TMFC022-PartyPrivacyManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "b82d5d2b8f2c5a9e5cff1823f450aad8a5206db6270b98a7c4d387f4f0606de4",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC022/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -517,8 +770,9 @@
       "id": "TMFC023",
       "name": "PartyInteractionManagement",
       "componentIndex": "components/TMFC023-PartyInteractionManagement/component-index.json",
-      "latest": "1.1.2",
+      "latest": "1.2.2",
       "latestByStatus": {
+        "preview": "1.2.2",
         "specified": "1.1.2"
       },
       "releases": [
@@ -543,6 +797,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.2.2",
+          "status": "preview",
+          "tag": "TMFC023-PartyInteractionManagement/v1.2.2-preview",
+          "releaseId": "6f6ff76fbf011689",
+          "path": "components/TMFC023-PartyInteractionManagement/releases/1.2.2/",
+          "manifest": "components/TMFC023-PartyInteractionManagement/releases/1.2.2/release-manifest.json",
+          "manifestSha256": "1554f7de2f3f90a1c4ff080000af70416642a1bb666eff492d2940f703ddbd96",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC023/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -550,8 +826,9 @@
       "id": "TMFC024",
       "name": "BillingAccountManagement",
       "componentIndex": "components/TMFC024-BillingAccountManagement/component-index.json",
-      "latest": "2.1.1",
+      "latest": "2.2.1",
       "latestByStatus": {
+        "roadmap": "2.2.1",
         "specified": "2.1.1"
       },
       "releases": [
@@ -576,6 +853,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "2.2.1",
+          "status": "roadmap",
+          "tag": "TMFC024-BillingAccountManagement/v2.2.1-roadmap",
+          "releaseId": "a68a3545b69284ce",
+          "path": "components/TMFC024-BillingAccountManagement/releases/2.2.1/",
+          "manifest": "components/TMFC024-BillingAccountManagement/releases/2.2.1/release-manifest.json",
+          "manifestSha256": "195eaafe866021f37f0def0fbd6d9df11e1f6828a11a20b7894921b7f0640a8b",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC024/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -583,8 +882,9 @@
       "id": "TMFC027",
       "name": "ProductConfigurator",
       "componentIndex": "components/TMFC027-ProductConfigurator/component-index.json",
-      "latest": "2.1.1",
+      "latest": "2.2.1",
       "latestByStatus": {
+        "roadmap": "2.2.1",
         "specified": "2.1.1"
       },
       "releases": [
@@ -609,6 +909,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "2.2.1",
+          "status": "roadmap",
+          "tag": "TMFC027-ProductConfigurator/v2.2.1-roadmap",
+          "releaseId": "abb113fac903c181",
+          "path": "components/TMFC027-ProductConfigurator/releases/2.2.1/",
+          "manifest": "components/TMFC027-ProductConfigurator/releases/2.2.1/release-manifest.json",
+          "manifestSha256": "7060eb1f1281cb55b4900b7907d7e60bdfa8fa53f13028eeb50f33335641d83c",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC027/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -616,8 +938,9 @@
       "id": "TMFC028",
       "name": "PartyManagement",
       "componentIndex": "components/TMFC028-PartyManagement/component-index.json",
-      "latest": "2.1.0",
+      "latest": "2.2.0",
       "latestByStatus": {
+        "production": "2.2.0",
         "specified": "2.1.0"
       },
       "releases": [
@@ -642,6 +965,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "2.2.0",
+          "status": "production",
+          "tag": "TMFC028-PartyManagement/v2.2.0-production",
+          "releaseId": "aef599c5a4c77971",
+          "path": "components/TMFC028-PartyManagement/releases/2.2.0/",
+          "manifest": "components/TMFC028-PartyManagement/releases/2.2.0/release-manifest.json",
+          "manifestSha256": "ad7b56f070d10413f0bee381c2ba0af7004fe6fe3423917456d21205ba78903c",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC028/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -649,8 +994,9 @@
       "id": "TMFC029",
       "name": "PaymentManagement",
       "componentIndex": "components/TMFC029-PaymentManagement/component-index.json",
-      "latest": "1.2.2",
+      "latest": "1.3.2",
       "latestByStatus": {
+        "production": "1.3.2",
         "specified": "1.2.2"
       },
       "releases": [
@@ -675,6 +1021,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.3.2",
+          "status": "production",
+          "tag": "TMFC029-PaymentManagement/v1.3.2-production",
+          "releaseId": "f4e27ef5817fbf92",
+          "path": "components/TMFC029-PaymentManagement/releases/1.3.2/",
+          "manifest": "components/TMFC029-PaymentManagement/releases/1.3.2/release-manifest.json",
+          "manifestSha256": "4c3b1f14dc34fbd24a33828bfcc075d4029b682474be73c6d732edcd90c458a5",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC029/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -738,8 +1106,9 @@
       "id": "TMFC031",
       "name": "BillCalculation",
       "componentIndex": "components/TMFC031-BillCalculation/component-index.json",
-      "latest": "3.0.0",
+      "latest": "3.1.0",
       "latestByStatus": {
+        "roadmap": "3.1.0",
         "specified": "3.0.0"
       },
       "releases": [
@@ -764,6 +1133,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "3.1.0",
+          "status": "roadmap",
+          "tag": "TMFC031-BillCalculation/v3.1.0-roadmap",
+          "releaseId": "72ab2676a4cffd35",
+          "path": "components/TMFC031-BillCalculation/releases/3.1.0/",
+          "manifest": "components/TMFC031-BillCalculation/releases/3.1.0/release-manifest.json",
+          "manifestSha256": "02b243e2994a4a9e2159c003a7f5780c39a94dda84ef8371314ef9488fa5e903",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC031/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -771,8 +1162,9 @@
       "id": "TMFC035",
       "name": "PermissionsManagement",
       "componentIndex": "components/TMFC035-PermissionsManagement/component-index.json",
-      "latest": "1.1.1",
+      "latest": "1.2.1",
       "latestByStatus": {
+        "preview": "1.2.1",
         "specified": "1.1.1"
       },
       "releases": [
@@ -797,6 +1189,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.2.1",
+          "status": "preview",
+          "tag": "TMFC035-PermissionsManagement/v1.2.1-preview",
+          "releaseId": "e6b977e2f4ef73ba",
+          "path": "components/TMFC035-PermissionsManagement/releases/1.2.1/",
+          "manifest": "components/TMFC035-PermissionsManagement/releases/1.2.1/release-manifest.json",
+          "manifestSha256": "aecad8792fa5e29ec204e251afb9085a965ec331f86d2f9e9ed1f1880d3a73a4",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC035/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -804,8 +1218,9 @@
       "id": "TMFC036",
       "name": "LeadAndOpportunityManagement",
       "componentIndex": "components/TMFC036-LeadAndOpportunityManagement/component-index.json",
-      "latest": "1.2.0",
+      "latest": "1.3.0",
       "latestByStatus": {
+        "production": "1.3.0",
         "specified": "1.2.0"
       },
       "releases": [
@@ -830,6 +1245,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.3.0",
+          "status": "production",
+          "tag": "TMFC036-LeadAndOpportunityManagement/v1.3.0-production",
+          "releaseId": "20051cc952b3a1f3",
+          "path": "components/TMFC036-LeadAndOpportunityManagement/releases/1.3.0/",
+          "manifest": "components/TMFC036-LeadAndOpportunityManagement/releases/1.3.0/release-manifest.json",
+          "manifestSha256": "864f461335d2d7fd16fc5dacc895ecdd57a3dbc485acfe046f5d49b14971e516",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC036/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -837,8 +1274,9 @@
       "id": "TMFC037",
       "name": "ServicePerformanceManagement",
       "componentIndex": "components/TMFC037-ServicePerformanceManagement/component-index.json",
-      "latest": "1.2.0",
+      "latest": "1.3.0",
       "latestByStatus": {
+        "backlog": "1.3.0",
         "specified": "1.2.0"
       },
       "releases": [
@@ -863,6 +1301,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.3.0",
+          "status": "backlog",
+          "tag": "TMFC037-ServicePerformanceManagement/v1.3.0-backlog",
+          "releaseId": "a132bde4a419407e",
+          "path": "components/TMFC037-ServicePerformanceManagement/releases/1.3.0/",
+          "manifest": "components/TMFC037-ServicePerformanceManagement/releases/1.3.0/release-manifest.json",
+          "manifestSha256": "183a08f9af20b8a19815e29f988e976f97621becf840ff416dce0d4ce0b8b571",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC037/",
+            "status": "skipped"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -870,8 +1330,9 @@
       "id": "TMFC038",
       "name": "ResourcePerformanceManagement",
       "componentIndex": "components/TMFC038-ResourcePerformanceManagement/component-index.json",
-      "latest": "1.2.0",
+      "latest": "1.3.0",
       "latestByStatus": {
+        "backlog": "1.3.0",
         "specified": "1.2.0"
       },
       "releases": [
@@ -896,6 +1357,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.3.0",
+          "status": "backlog",
+          "tag": "TMFC038-ResourcePerformanceManagement/v1.3.0-backlog",
+          "releaseId": "c40bdcd7611ec70f",
+          "path": "components/TMFC038-ResourcePerformanceManagement/releases/1.3.0/",
+          "manifest": "components/TMFC038-ResourcePerformanceManagement/releases/1.3.0/release-manifest.json",
+          "manifestSha256": "fc76ee24933162c576815aabeb7388b7b3de44cc11dad652025321f64cfe2923",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC038/",
+            "status": "skipped"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -903,8 +1386,9 @@
       "id": "TMFC039",
       "name": "AgreementManagement",
       "componentIndex": "components/TMFC039-AgreementManagement/component-index.json",
-      "latest": "1.1.0",
+      "latest": "1.2.0",
       "latestByStatus": {
+        "roadmap": "1.2.0",
         "specified": "1.1.0"
       },
       "releases": [
@@ -929,6 +1413,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.2.0",
+          "status": "roadmap",
+          "tag": "TMFC039-AgreementManagement/v1.2.0-roadmap",
+          "releaseId": "c76f67c1875ca6a6",
+          "path": "components/TMFC039-AgreementManagement/releases/1.2.0/",
+          "manifest": "components/TMFC039-AgreementManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "01055731bc663b996fd21fb144681815f6283f82e27a6fd4bd2e59617714bb8e",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC039/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -936,8 +1442,9 @@
       "id": "TMFC040",
       "name": "ProductUsageManagement",
       "componentIndex": "components/TMFC040-ProductUsageManagement/component-index.json",
-      "latest": "1.1.0",
+      "latest": "1.2.0",
       "latestByStatus": {
+        "preview": "1.2.0",
         "specified": "1.1.0"
       },
       "releases": [
@@ -962,6 +1469,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.2.0",
+          "status": "preview",
+          "tag": "TMFC040-ProductUsageManagement/v1.2.0-preview",
+          "releaseId": "8a99394411ae5975",
+          "path": "components/TMFC040-ProductUsageManagement/releases/1.2.0/",
+          "manifest": "components/TMFC040-ProductUsageManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "261eeb16b38d2e0dc6a5c7a5df750331b30118c4a785415be1bae7cdb0594f22",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC040/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -969,8 +1498,9 @@
       "id": "TMFC041",
       "name": "AnomalyManagement",
       "componentIndex": "components/TMFC041-AnomalyManagement/component-index.json",
-      "latest": "1.1.0",
+      "latest": "1.3.0",
       "latestByStatus": {
+        "roadmap": "1.3.0",
         "specified": "1.1.0"
       },
       "releases": [
@@ -995,6 +1525,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.3.0",
+          "status": "roadmap",
+          "tag": "TMFC041-AnomalyManagement/v1.3.0-roadmap",
+          "releaseId": "6f9ab33285ef6e91",
+          "path": "components/TMFC041-AnomalyManagement/releases/1.3.0/",
+          "manifest": "components/TMFC041-AnomalyManagement/releases/1.3.0/release-manifest.json",
+          "manifestSha256": "3b5d58cb21fc7e81122ba635265f11b74e56af15de5a6763eca55964264c67dc",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC041/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -1002,8 +1554,9 @@
       "id": "TMFC043",
       "name": "FaultManagement",
       "componentIndex": "components/TMFC043-FaultManagement/component-index.json",
-      "latest": "1.0.0",
+      "latest": "1.1.0",
       "latestByStatus": {
+        "preview": "1.1.0",
         "specified": "1.0.0"
       },
       "releases": [
@@ -1028,6 +1581,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.1.0",
+          "status": "preview",
+          "tag": "TMFC043-FaultManagement/v1.1.0-preview",
+          "releaseId": "0f75f083bf5aebf5",
+          "path": "components/TMFC043-FaultManagement/releases/1.1.0/",
+          "manifest": "components/TMFC043-FaultManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "ca37d85cf3f2de9efd7f45d647793e1b23fb55b75dd38c0d6673d503de140464",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC043/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -1035,8 +1610,9 @@
       "id": "TMFC046",
       "name": "WorkforceManagement",
       "componentIndex": "components/TMFC046-WorkforceManagement/component-index.json",
-      "latest": "1.1.0",
+      "latest": "1.2.0",
       "latestByStatus": {
+        "production": "1.2.0",
         "specified": "1.1.0"
       },
       "releases": [
@@ -1061,6 +1637,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.2.0",
+          "status": "production",
+          "tag": "TMFC046-WorkforceManagement/v1.2.0-production",
+          "releaseId": "07a4b9475b10152c",
+          "path": "components/TMFC046-WorkforceManagement/releases/1.2.0/",
+          "manifest": "components/TMFC046-WorkforceManagement/releases/1.2.0/release-manifest.json",
+          "manifestSha256": "428a2f6b3399d32f71293c3b9b2b0c5024669144c5e6429e3cc62c574da56135",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC046/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -1068,8 +1666,9 @@
       "id": "TMFC050",
       "name": "ProductRecommendationManagement",
       "componentIndex": "components/TMFC050-ProductRecommendationManagement/component-index.json",
-      "latest": "1.0.0",
+      "latest": "1.1.0",
       "latestByStatus": {
+        "preview": "1.1.0",
         "specified": "1.0.0"
       },
       "releases": [
@@ -1094,6 +1693,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.1.0",
+          "status": "preview",
+          "tag": "TMFC050-ProductRecommendationManagement/v1.1.0-preview",
+          "releaseId": "f394a322243930ff",
+          "path": "components/TMFC050-ProductRecommendationManagement/releases/1.1.0/",
+          "manifest": "components/TMFC050-ProductRecommendationManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "d17fad4ef16daacaf56d0a5e70635eea2551e2d7582d40e419daef9eee6efce5",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC050/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -1101,8 +1722,9 @@
       "id": "TMFC054",
       "name": "ProductTestManagement",
       "componentIndex": "components/TMFC054-ProductTestManagement/component-index.json",
-      "latest": "1.0.0",
+      "latest": "1.1.0",
       "latestByStatus": {
+        "preview": "1.1.0",
         "specified": "1.0.0"
       },
       "releases": [
@@ -1127,6 +1749,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.1.0",
+          "status": "preview",
+          "tag": "TMFC054-ProductTestManagement/v1.1.0-preview",
+          "releaseId": "5652a67a052c3b4d",
+          "path": "components/TMFC054-ProductTestManagement/releases/1.1.0/",
+          "manifest": "components/TMFC054-ProductTestManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "f1e7f305f6b9eb52abf1828438c8c2e90417ad8b652a4d78930cea086eb49e61",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC054/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -1134,8 +1778,9 @@
       "id": "TMFC055",
       "name": "ServiceTestManagement",
       "componentIndex": "components/TMFC055-ServiceTestManagement/component-index.json",
-      "latest": "1.0.0",
+      "latest": "1.1.0",
       "latestByStatus": {
+        "preview": "1.1.0",
         "specified": "1.0.0"
       },
       "releases": [
@@ -1160,6 +1805,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.1.0",
+          "status": "preview",
+          "tag": "TMFC055-ServiceTestManagement/v1.1.0-preview",
+          "releaseId": "38616c7956f9c8b0",
+          "path": "components/TMFC055-ServiceTestManagement/releases/1.1.0/",
+          "manifest": "components/TMFC055-ServiceTestManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "e2994591d3f125c87f818a41163b67e3f8e1c0044c266eb50c7ffa13ca6dc641",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC055/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },
@@ -1167,8 +1834,9 @@
       "id": "TMFC061",
       "name": "WorkOrderManagement",
       "componentIndex": "components/TMFC061-WorkOrderManagement/component-index.json",
-      "latest": "1.0.0",
+      "latest": "1.1.0",
       "latestByStatus": {
+        "backlog": "1.1.0",
         "specified": "1.0.0"
       },
       "releases": [
@@ -1193,6 +1861,28 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T15:12:29Z"
+        },
+        {
+          "version": "1.1.0",
+          "status": "backlog",
+          "tag": "TMFC061-WorkOrderManagement/v1.1.0-backlog",
+          "releaseId": "a8e264f9871dbe5f",
+          "path": "components/TMFC061-WorkOrderManagement/releases/1.1.0/",
+          "manifest": "components/TMFC061-WorkOrderManagement/releases/1.1.0/release-manifest.json",
+          "manifestSha256": "a30ecd12fb0d8c9f0429295f8dcc59d11039ebd3d37615ce3e5d25e2b90bb194",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+          },
+          "eligibility": {
+            "rule": "v1_1:release-status",
+            "ctkEligible": false
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.1.0/TMFC061/",
+            "status": "skipped"
+          },
+          "publishedAt": "2026-11-05T15:52:22Z"
         }
       ]
     },

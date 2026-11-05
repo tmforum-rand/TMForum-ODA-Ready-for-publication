@@ -5,8 +5,9 @@
     "name": "WorkOrderManagement",
     "key": "TMFC061-WorkOrderManagement"
   },
-  "latest": "1.0.0",
+  "latest": "1.1.0",
   "latestByStatus": {
+    "backlog": "1.1.0",
     "specified": "1.0.0"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "1.1.0",
+      "status": "backlog",
+      "tag": "TMFC061-WorkOrderManagement/v1.1.0-backlog",
+      "releaseId": "a8e264f9871dbe5f",
+      "path": "components/TMFC061-WorkOrderManagement/releases/1.1.0/",
+      "manifest": "components/TMFC061-WorkOrderManagement/releases/1.1.0/release-manifest.json",
+      "manifestSha256": "a30ecd12fb0d8c9f0429295f8dcc59d11039ebd3d37615ce3e5d25e2b90bb194",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC061/",
+        "status": "skipped"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

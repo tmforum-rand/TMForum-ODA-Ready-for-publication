@@ -5,8 +5,9 @@
     "name": "BillingAccountManagement",
     "key": "TMFC024-BillingAccountManagement"
   },
-  "latest": "2.1.1",
+  "latest": "2.2.1",
   "latestByStatus": {
+    "roadmap": "2.2.1",
     "specified": "2.1.1"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "2.2.1",
+      "status": "roadmap",
+      "tag": "TMFC024-BillingAccountManagement/v2.2.1-roadmap",
+      "releaseId": "a68a3545b69284ce",
+      "path": "components/TMFC024-BillingAccountManagement/releases/2.2.1/",
+      "manifest": "components/TMFC024-BillingAccountManagement/releases/2.2.1/release-manifest.json",
+      "manifestSha256": "195eaafe866021f37f0def0fbd6d9df11e1f6828a11a20b7894921b7f0640a8b",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC024/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

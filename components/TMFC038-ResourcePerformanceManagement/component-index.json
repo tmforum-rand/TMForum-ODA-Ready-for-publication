@@ -5,8 +5,9 @@
     "name": "ResourcePerformanceManagement",
     "key": "TMFC038-ResourcePerformanceManagement"
   },
-  "latest": "1.2.0",
+  "latest": "1.3.0",
   "latestByStatus": {
+    "backlog": "1.3.0",
     "specified": "1.2.0"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "1.3.0",
+      "status": "backlog",
+      "tag": "TMFC038-ResourcePerformanceManagement/v1.3.0-backlog",
+      "releaseId": "c40bdcd7611ec70f",
+      "path": "components/TMFC038-ResourcePerformanceManagement/releases/1.3.0/",
+      "manifest": "components/TMFC038-ResourcePerformanceManagement/releases/1.3.0/release-manifest.json",
+      "manifestSha256": "fc76ee24933162c576815aabeb7388b7b3de44cc11dad652025321f64cfe2923",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": false
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC038/",
+        "status": "skipped"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

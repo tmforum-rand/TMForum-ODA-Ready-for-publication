@@ -1,0 +1,10 @@
+{
+    "name": "Acme Corporation - Supplier Role",
+    "engagedParty": {
+        "id": "__VALID_PARTY_ID__",
+        "href": "__VALID_PARTY_HREF__",
+        "name": "Acme Corporation",
+        "role": "Supplier",
+        "@referredType": "organization"
+    }
+}

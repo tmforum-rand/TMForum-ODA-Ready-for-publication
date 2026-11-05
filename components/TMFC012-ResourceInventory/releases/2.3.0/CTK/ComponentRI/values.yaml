@@ -1,0 +1,62 @@
+# Default values for resourceinventorymanagement.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+component:
+  id: TMFC012
+  name: resourceinventory
+  functionalBlock: Production
+  publicationDate: 2026-06-08T00:00:00.000Z
+  version: "1.0.0"
+  storageClassName: default
+  apipolicy:
+    apiKeyVerification:
+      enabled: false
+      location: "header"
+    rateLimit:
+      enabled: false
+      identifier: "IP"
+      limit: "6"
+      interval: "pm"
+    quota:
+      identifier: ""
+      limit: ""
+    OASValidation:
+      requestEnabled: false
+      responseEnabled: false
+      allowUnspecifiedHeaders: false
+      allowUnspecifiedQueryParams: false
+      allowUnspecifiedCookies: false
+    CORS:
+      enabled: false
+      allowCredentials: false
+      allowOrigins: "https://allowed-origin.com, https://allowed-origin2.com"
+      handlePreflightRequests:
+        enabled: false
+        allowHeaders: "Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"
+        allowMethods: "GET, POST"
+        maxAge: 36000
+    template: ""
+  dependentAPIs:
+    enabled: true
+    rejectUnauthorizedCertificates: false
+    dependencyName: downstreamresourcecatalog
+security:
+  canvasSystemRole: canvasRole
+mongodb:
+  port: 27017
+  database: tmf
+api:
+  image: akumartmf/resourceinventoryapi:0.7
+  versionLabel: resourceinventoryapi-0.7
+  otlp:
+    console:
+      enabled: false
+    protobuffCollector:
+      enabled: true
+      url: http://observability-opentelemetry-collector.monitoring.svc.cluster.local:4318/v1/traces
+metrics:
+  image: akumartmf/resourceinventorymetrics:0.1
+canvasinfo:
+  host: info.canvas.svc.cluster.local
+  basepath: /

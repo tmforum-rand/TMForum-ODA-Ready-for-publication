@@ -5,8 +5,9 @@
     "name": "FaultManagement",
     "key": "TMFC043-FaultManagement"
   },
-  "latest": "1.0.0",
+  "latest": "1.1.0",
   "latestByStatus": {
+    "preview": "1.1.0",
     "specified": "1.0.0"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "1.1.0",
+      "status": "preview",
+      "tag": "TMFC043-FaultManagement/v1.1.0-preview",
+      "releaseId": "0f75f083bf5aebf5",
+      "path": "components/TMFC043-FaultManagement/releases/1.1.0/",
+      "manifest": "components/TMFC043-FaultManagement/releases/1.1.0/release-manifest.json",
+      "manifestSha256": "ca37d85cf3f2de9efd7f45d647793e1b23fb55b75dd38c0d6673d503de140464",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC043/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

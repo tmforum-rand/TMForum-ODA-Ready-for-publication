@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-servicequalificationapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: {{.Release.Name}}-servicequalificationapi
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        impl: {{.Release.Name}}-servicequalificationapi
+        version: {{.Values.api.versionLabel}}
+    spec:
+      containers:
+      - name: {{.Release.Name}}-servicequalificationapi
+        image: {{.Values.api.image}}
+        imagePullPolicy: {{.Values.image.pullPolicy}}
+        env:
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: PORT
+          value: "8645"
+        - name: dbhost
+          value: {{.Release.Name}}-mongodb
+        - name: dbport
+          value: "{{.Values.mongodb.port}}"
+        - name: dbname
+          value: {{.Values.mongodb.database}}
+        - name: LOG_LEVEL
+          value: "info"
+        ports:
+        - containerPort: 8645
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceQualificationManagement/v5/checkServiceQualification
+            port: 8645
+          failureThreshold: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceQualificationManagement/v5/checkServiceQualification
+            port: 8645
+          initialDelaySeconds: 10
+          periodSeconds: 5

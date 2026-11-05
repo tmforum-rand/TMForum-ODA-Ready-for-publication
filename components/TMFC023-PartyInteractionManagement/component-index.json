@@ -5,8 +5,9 @@
     "name": "PartyInteractionManagement",
     "key": "TMFC023-PartyInteractionManagement"
   },
-  "latest": "1.1.2",
+  "latest": "1.2.2",
   "latestByStatus": {
+    "preview": "1.2.2",
     "specified": "1.1.2"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "1.2.2",
+      "status": "preview",
+      "tag": "TMFC023-PartyInteractionManagement/v1.2.2-preview",
+      "releaseId": "6f6ff76fbf011689",
+      "path": "components/TMFC023-PartyInteractionManagement/releases/1.2.2/",
+      "manifest": "components/TMFC023-PartyInteractionManagement/releases/1.2.2/release-manifest.json",
+      "manifestSha256": "1554f7de2f3f90a1c4ff080000af70416642a1bb666eff492d2940f703ddbd96",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC023/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

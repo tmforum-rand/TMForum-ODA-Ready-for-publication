@@ -1,0 +1,161 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: components.oda.tmforum.org
+spec:
+  coreFunction:
+    exposedAPIs: []
+    dependentAPIs: []
+  componentMetadata:
+    id: TMFC041
+    name: AnomalyManagement
+    version: 1.3.0
+    description: The Anomaly Management component is responsible for predicting, detecting
+      and managing anomalous patterns in the usage and behavior of products, services
+      and resources in order to avoid occurrence of problems. Anomaly Management has
+      functionality for predicting, detecting and flagging unusual patterns or outliers
+      for products, services and resource entities, and initiating mitigatory actions
+      to prevent outlier patterns in usage or behavior becoming problems. In the event
+      of failure to predict or detect an early warning sign of a possible problem
+      occurrence, the component hands off mitigatory actions to the Party Problem
+      Management component.
+    publicationDate: 2026-05-21
+    status: roadmap
+    functionalBlock: IntelligenceManagement
+    owners:
+    - email: Redacted
+      name: Redacted
+      url: Redacted
+    eTOMs: []
+    functionalFrameworkFunctions:
+    - 1352|Anomaly_Pattern_Collection|v24.0
+    - 1353|Anomaly_Normal_Description_Capture|v24.0
+    - 1354|Anomaly_Pattern_Correlation|v24.0
+    - 1355|Anomaly_Learning|v24.0
+    - 1356|Anomaly_Alerting|v24.0
+    - 1357|Anomaly_Reporting|v24.0
+    - 1358|Anomaly_Pattern_Analysis|v24.0
+    - 1359|Univariate_Anomaly_Detection|v24.0
+    - 1360|Multivariate_Anomaly_Detection|v24.0
+    - 1361|Anomaly_Model_Selection|v24.0
+    - 1362|Real-time_Model_Inferencing|v24.0
+    - 1363|Anomaly_Batch_Inferencing|v24.0
+    - 1364|Anomaly_Pattern_Matching|v24.0
+    SIDs:
+    - Patterns_Domain|Anomaly_ABE|Anomaly_Entity_ABE|v25.0
+    - Patterns_Domain|Anomaly_ABE|Anomaly_Management_Plan_ABE|v25.0
+    - Patterns_Domain|Anomaly_ABE|Anomaly_Specification_ABE|v25.0
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      id: exposedAPI_id
+      apiSDO: not_defined
+      required: false
+      specification:
+      - version: v4.0.0
+        url: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        apiType: prometheus
+        implementation: '{{.Release.Name}}-{{.Values.component.name}}-sm'
+        path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+        port: 4000
+        resources: []
+        developerUI: exposedAPI_developerUI
+    dependentAPIs: []
+  securityFunction:
+    canvasSystemRole: '{{ .Values.security.controllerRole }}'
+    secretsManagement:
+      type: sideCar
+      sideCar:
+        port: 8080
+      podSelector:
+        namespace: '{{ .Values.secretsManagement.podSelector.namespace }}'
+        name: '{{ .Values.secretsManagement.podSelector.name }}'
+        serviceaccount: '{{ .Values.secretsManagement.podSelector.serviceaccount }}'
+    exposedAPIs:
+    - id: TMF669
+      name: partyrole
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/4.0.0/swagger/TMF669_Party_Role_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/partyRoleManagement/v4/docs
+        implementation: '{{.Release.Name}}-partyroleapi'
+        port: 8080
+    - id: TMF672
+      name: user-role-permission-management-api
+      apiSDO: tmForum
+      required: false
+      specification:
+      - version: v4.0.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/4.0.0/swagger/TMF672_User_Role_Permission_Management_API_v4.0.0_swagger.json
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v4/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+      - version: v5.1.0
+        apiType: openapi
+        url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF672_User_Role_Permission/5.1.0/swagger/TMF672-User_Role_Permission_Management_API-v5.1.0.oas.yaml
+        resources: []
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/userRolePermissionManagement/v5/docs
+        implementation: '{{.Release.Name}}-userrolepermissionapi'
+        port: 8080
+    dependentAPIs: []
+  eventNotification:
+    publishedEvents:
+    - id: TMF751
+      name: AnomalyManagementEvent
+      resources:
+      - anomalyCreateEvent
+      - anomalyDeleteEvent
+      - anomalyAttributeValueChangeEvent
+      - anomalyStateChangeEvent
+      - anomalySpecificationStatusChangeEvent
+      - anomalySpecificationAttributeValueChangeEvent
+      - anomalySpecificationCreateEvent
+      - anomalySpecificationDeleteEvent
+      specification:
+      - url: https://github.com/tmforum-rand/Open_API_And_Data_Model/blob/v4.0-Sprint-2020-03/apis/TMF751_AnomalyManagement/swaggers/TMF751-AnomalyManagement-v4.0.0.swagger.json
+        version: v4.0.0
+      apiSDO: not_defined
+      apiType: openapi
+    subscribedEvents:
+    - id: TMF915
+      name: Ai Management
+      resources:
+      - aiContractSpecificationCreateEvent
+      - aiContractSpecificationDeleteEvent
+      - aiContractSpecificationAttributeValueChangeEvent
+      - aiModelSpecificationCreateEvent
+      - aiModelSpecificationDeleteEvent
+      - aiModelSpecificationAttributeValueChangeEvent
+      - aiModelCreateEvent
+      - aiModelStateChangeEvent
+      - aiModelDeleteEvent
+      - aiModelAttributeValueChangeEvent
+      - aiContractCreateEvent
+      - aiContractDeleteEvent
+      - aiContractAttributeValueChangeEvent
+      - aiContractStateChangeEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF915_v4.0.0.swagger.json
+        version: v4.0.0
+      apiSDO: not_defined
+      apiType: openapi
+    - id: TMF642
+      name: AlarmManagement
+      resources:
+      - alarmCreateEvent
+      - alarmStateChangeEvent
+      - alarmDeleteEvent
+      specification:
+      - url: https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/ODA/TMF642_v4.0.0.swagger.json
+        version: v4.0.0
+      apiSDO: not_defined
+      apiType: openapi

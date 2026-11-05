@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-rolemanagement
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: {{.Release.Name}}-rolemanagement
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        impl: {{.Release.Name}}-rolemanagement
+    spec:
+      containers:
+      {{- if .Values.permissionspec.enabled }}
+      - name: {{.Release.Name}}-permissionspecapi
+        image: {{.Values.permissionspec.image}}
+        imagePullPolicy: {{.Values.image.pullPolicy}}
+        env:
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        ports:
+        - containerPort: 8080
+      {{- else }}
+      - name: {{.Release.Name}}-partyroleapi
+        image: {{.Values.partyrole.image}}
+        imagePullPolicy: {{.Values.image.pullPolicy}}
+        env:
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        ports:
+        - containerPort: 8080
+      {{- end }}

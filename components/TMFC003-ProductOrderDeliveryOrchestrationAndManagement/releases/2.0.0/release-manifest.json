@@ -1,0 +1,111 @@
+{
+  "contractVersion": 1,
+  "releaseId": "819872b7131b4e5f",
+  "component": {
+    "id": "TMFC003",
+    "name": "ProductOrderDeliveryOrchestrationAndManagement",
+    "key": "TMFC003-ProductOrderDeliveryOrchestrationAndManagement",
+    "sourceDir": "TMFC003-ProductOrderDeliveryOrchestrationAndManagement"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC003-ProductOrderDeliveryOrchestrationAndManagement/v2.0.0-roadmap",
+    "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6",
+    "version": "2.0.0",
+    "status": "roadmap",
+    "statusRaw": "roadmap",
+    "releaseNotes": {
+      "path": "specifications/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "2.0.0 (roadmap)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "b14027832a0e0c3c179a2a076b7d35692912bfe0c402f1424aecc0f356352b88"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.1.0",
+      "sha256": "3487d167d9fd0fee6275156a36aaa7f57efd19b4aa93d32c1a853626499fac4a"
+    },
+    "handler": "v1_1",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_1:release-status",
+    "eligible": false,
+    "detail": "TMFC003-ProductOrderDeliveryOrchestrationAndManagement status roadmap is listed in S3_STRAPI_RELEASE_STATUS (preview, production, roadmap) and not listed in CTK_RELEASE_STATUS (preview, production)"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "conformance-profile",
+      "path": "ComponentConformanceProfile/TMFC003-ProductOrderDeliveryOrchestrationAndManagement_Conformance.md",
+      "mediaType": "text/markdown",
+      "size": 7353,
+      "sha256": "0b8f29b616479d3668a385d9804ad7fb7286a45eac062cfe15cd95a258030cd6",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 327,
+      "sha256": "b14027832a0e0c3c179a2a076b7d35692912bfe0c402f1424aecc0f356352b88",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC003-ProductOrderDeliveryOrchestrationAndManagement.yaml",
+      "mediaType": "text/yaml",
+      "size": 17974,
+      "sha256": "681d979422524950840279cf77c437480ebd7f6795717a7b4cbf35a8cc2b0392",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC003_Product_Order_Delivery_Orchestration_and_Management.pdf",
+      "mediaType": "application/pdf",
+      "size": 546920,
+      "sha256": "f69f583be6de3e93787d8aa5f4301317641b2acd24dae040da3b79ecb7b32dca",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.1.0/TMFC003/",
+      "status": "published",
+      "at": "2026-11-05T15:49:16Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC003-ProductOrderDeliveryOrchestrationAndManagement/v2.0.0-roadmap",
+      "at": "2026-11-05T15:52:22Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42058461492",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:48:43Z",
+    "requestId": "3db121d23ea6c3e4"
+  }
+}

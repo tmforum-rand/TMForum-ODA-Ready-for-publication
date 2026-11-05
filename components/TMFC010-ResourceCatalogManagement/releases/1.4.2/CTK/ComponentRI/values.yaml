@@ -1,0 +1,63 @@
+component:
+  id: TMFC010
+  name: resourcecatalogmanagement
+  functionalBlock: Production
+  publicationDate: 2026-05-11T00:00:00.000Z
+  version: "1.4.2"
+  storageClassName: default
+  apipolicy:
+    apiKeyVerification:
+      enabled: false
+      location: "header"
+    rateLimit:
+      enabled: false
+      identifier: "IP"
+      limit: "6"
+      interval: "pm"
+    quota:
+      identifier: ""
+      limit: ""
+    OASValidation:
+      requestEnabled: false
+      responseEnabled: false
+      allowUnspecifiedHeaders: false
+      allowUnspecifiedQueryParams: false
+      allowUnspecifiedCookies: false
+    CORS:
+      enabled: false
+      allowCredentials: false
+      allowOrigins: "https://allowed-origin.com"
+      handlePreflightRequests:
+        enabled: false
+        allowHeaders: "Accept, Content-Type"
+        allowMethods: "GET, POST"
+        maxAge: 36000
+    template: ""
+
+security:
+  canvasSystemRole: canvasRole
+
+mongodb:
+  port: 27017
+  database: tmf
+
+image:
+  pullPolicy: Always
+
+api:
+  image: "akumartmf/resourcecatalogv5api:0.2"
+  versionLabel: resourcecatalogv5api-0.2
+  port: 8634
+  otlp:
+    console:
+      enabled: false
+    protobuffCollector:
+      enabled: false
+      url: http://observability-opentelemetry-collector.monitoring.svc.cluster.local:4318/v1/traces
+
+metrics:
+  image: "akumartmf/resourcecatalogmanagementmetrics:0.1"
+
+canvasinfo:
+  host: ""
+  basepath: ""

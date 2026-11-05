@@ -1,0 +1,75 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: {{.Release.Name}}-{{.Values.component.name}}
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  componentMetadata:
+    id: {{.Values.component.id}}
+    name: {{.Values.component.name}}
+    functionalBlock: {{.Values.component.functionalBlock}}
+    publicationDate: {{.Values.component.publicationDate}}
+    status: specified
+    version: {{.Values.component.version}}
+    description: "The Party Privacy Management component defines the privacy policy rules established by the CSP (according to applicable regulations such as GDPR in Europe); applies these rules to each Party interacting with the CSP and to all of their personal information and personally identifiable information; and registers explicit opt-in and opt-out given by Parties regarding the use of their personal information for dedicated purposes, such as marketing."
+    maintainers:
+    - name: TM Forum
+      email: components@tmforum.org
+    owners:
+    - name: TM Forum
+      email: components@tmforum.org
+
+  coreFunction:
+    exposedAPIs:
+    - name: privacy-management-api
+      id: TMF644
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF644_Privacy/5.0.0/swagger/TMF644-Privacy-v5.0.0.oas.yaml"
+        implementation: {{.Release.Name}}-privacymanagementapi
+        apiType: openapi
+        gatewayConfiguration:
+          apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 12}}
+          rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 12}}
+          quota: {{.Values.component.apipolicy.quota | toYaml | nindent 12}}
+          OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 12}}
+          CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 12}}
+          template: "{{.Values.component.apipolicy.template}}"
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/privacyManagement/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/privacyManagement/v5/api-docs
+        port: 8080
+
+    dependentAPIs:
+    - name: party-management-api
+      id: TMF632
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF632_Party/5.0.0/swagger/TMF632-Party_Management-v5.0.0.oas.yaml"
+        apiType: openapi
+    - name: party-role-management-api
+      id: TMF669
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF669_Party_Role/5.0.0/swagger/TMF669-Party_Role_Management-v5.0.0.oas.yaml"
+        apiType: openapi
+
+  eventNotification:
+    publishedEvents: []
+    subscribedEvents: []
+
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      gatewayConfiguration:
+        apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 10}}
+        rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 10}}
+        quota: {{.Values.component.apipolicy.quota | toYaml | nindent 10}}
+        OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 10}}
+        CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 10}}
+        template: "{{.Values.component.apipolicy.template}}"
+      implementation: {{.Release.Name}}-{{.Values.component.name}}-sm
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+
+  securityFunction:
+    canvasSystemRole: {{ .Values.security.canvasSystemRole }}
+    exposedAPIs: []

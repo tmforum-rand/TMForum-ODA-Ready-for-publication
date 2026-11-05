@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-svcatalogapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: {{.Release.Name}}-svcatalogapi
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        impl: {{.Release.Name}}-svcatalogapi
+        version: {{.Values.servicecatalogapi.versionLabel}}
+    spec:
+      containers:
+      - name: {{.Release.Name}}-svcatalogapi
+        image: {{.Values.servicecatalogapi.image}}
+        imagePullPolicy: {{.Values.image.pullPolicy}}
+        env:
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: PORT
+          value: "8080"
+        - name: OTL_EXPORTER_CONSOLE_ENABLED
+          value: "{{.Values.servicecatalogapi.otlp.console.enabled}}"
+        - name: OTL_EXPORTER_TRACE_PROTO_ENABLED
+          value: "{{.Values.servicecatalogapi.otlp.protobuffCollector.enabled}}"
+        - name: OTL_EXPORTER_TRACE_PROTO_COLLECTOR_URL
+          value: {{.Values.servicecatalogapi.otlp.protobuffCollector.url}}
+        - name: MONGODB_HOST
+          value: {{.Release.Name}}-mongodb
+        - name: MONGODB_PORT
+          value: "{{.Values.mongodb.port}}"
+        - name: MONGODB_DATABASE
+          value: {{.Values.mongodb.database}}
+        - name: NODE_ENV
+          value: production
+        - name: CANVAS_INFO_HOST_PORT
+          value: "{{.Values.canvasinfo.host}}"
+        - name: CANVAS_INFO_BASEPATH
+          value: "{{.Values.canvasinfo.basepath}}"
+        ports:
+        - name: {{.Release.Name}}-scapi
+          containerPort: 8080
+        startupProbe:
+          httpGet:
+            path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/serviceCatalogManagement/v4/serviceSpecification
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          failureThreshold: 30

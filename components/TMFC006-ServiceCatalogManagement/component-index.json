@@ -5,8 +5,9 @@
     "name": "ServiceCatalogManagement",
     "key": "TMFC006-ServiceCatalogManagement"
   },
-  "latest": "1.2.0",
+  "latest": "1.3.0",
   "latestByStatus": {
+    "production": "1.3.0",
     "specified": "1.2.0"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "1.3.0",
+      "status": "production",
+      "tag": "TMFC006-ServiceCatalogManagement/v1.3.0-production",
+      "releaseId": "59722305f93d3206",
+      "path": "components/TMFC006-ServiceCatalogManagement/releases/1.3.0/",
+      "manifest": "components/TMFC006-ServiceCatalogManagement/releases/1.3.0/release-manifest.json",
+      "manifestSha256": "32ce7505ad5e991cc6b0f0c87496e6f1ec0167b3cd1dc09e2c81d1d3b70b5eb9",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC006/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

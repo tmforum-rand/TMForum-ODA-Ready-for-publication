@@ -1,0 +1,65 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: {{.Release.Name}}-{{.Values.component.name}}
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  componentMetadata:
+    id: {{.Values.component.id}}
+    name: {{.Values.component.name}}
+    functionalBlock: {{.Values.component.functionalBlock}}
+    publicationDate: {{.Values.component.publicationDate}}
+    status: specified
+    version: {{.Values.component.version}}
+    description: "The Resource Catalog Management component is responsible for organizing the collection of resource specifications that identify and define all requirements for a resource."
+    maintainers:
+    - name: TM Forum
+      email: components@tmforum.org
+    owners:
+    - name: TM Forum
+      email: components@tmforum.org
+
+  coreFunction:
+    exposedAPIs:
+    - name: resource-catalog-management-api
+      id: TMF634
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF634_Resource_Catalog/5.0.0/swagger/TMF634-Resource_Catalog_Management-v5.0.0.oas.yaml"
+        implementation: {{.Release.Name}}-rescatapi
+        apiType: openapi
+        gatewayConfiguration:
+          apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 12}}
+          rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 12}}
+          quota: {{.Values.component.apipolicy.quota | toYaml | nindent 12}}
+          OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 12}}
+          CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 12}}
+          template: "{{.Values.component.apipolicy.template}}"
+        path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/resourceCatalog/v5
+        developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/resourceCatalog/v5/api-docs
+        port: 8634
+
+    dependentAPIs: []
+
+  eventNotification:
+    publishedEvents: []
+    subscribedEvents: []
+
+  managementFunction:
+    exposedAPIs:
+    - name: metrics
+      apiType: prometheus
+      gatewayConfiguration:
+        apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 10}}
+        rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 10}}
+        quota: {{.Values.component.apipolicy.quota | toYaml | nindent 10}}
+        OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 10}}
+        CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 10}}
+        template: "{{.Values.component.apipolicy.template}}"
+      implementation: {{.Release.Name}}-{{.Values.component.name}}-sm
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000
+
+  securityFunction:
+    canvasSystemRole: {{ .Values.security.canvasSystemRole }}
+    exposedAPIs: []

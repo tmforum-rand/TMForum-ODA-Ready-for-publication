@@ -1,0 +1,8 @@
+{
+  "@type": "Service",
+  "state": "active",
+  "serviceSpecification": {
+    "@type": "ServiceSpecificationRef",
+    "id": "test-service-spec-001"
+  }
+}

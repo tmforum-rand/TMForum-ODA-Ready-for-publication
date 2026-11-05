@@ -5,8 +5,9 @@
     "name": "ResourceInventory",
     "key": "TMFC012-ResourceInventory"
   },
-  "latest": "2.2.0",
+  "latest": "2.3.0",
   "latestByStatus": {
+    "production": "2.3.0",
     "specified": "2.2.0"
   },
   "releases": [
@@ -31,6 +32,28 @@
         "status": "published"
       },
       "publishedAt": "2026-11-05T15:12:29Z"
+    },
+    {
+      "version": "2.3.0",
+      "status": "production",
+      "tag": "TMFC012-ResourceInventory/v2.3.0-production",
+      "releaseId": "84e981bfb0b7c91e",
+      "path": "components/TMFC012-ResourceInventory/releases/2.3.0/",
+      "manifest": "components/TMFC012-ResourceInventory/releases/2.3.0/release-manifest.json",
+      "manifestSha256": "716290262cd5c5cc16543836cea82fcbdd81d69ab7521130d9ee6fad2b505c98",
+      "source": {
+        "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+        "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6"
+      },
+      "eligibility": {
+        "rule": "v1_1:release-status",
+        "ctkEligible": true
+      },
+      "s3": {
+        "prefix": "s3://oda-production/v1.1.0/TMFC012/",
+        "status": "published"
+      },
+      "publishedAt": "2026-11-05T15:52:22Z"
     }
   ]
 }

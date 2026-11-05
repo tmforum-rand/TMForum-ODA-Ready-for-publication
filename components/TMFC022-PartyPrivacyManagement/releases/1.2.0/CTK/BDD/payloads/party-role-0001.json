@@ -1,0 +1,9 @@
+{
+  "@type": "PartyRole",
+  "name": "Test Party Role",
+  "engagedParty": {
+    "@type": "PartyRef",
+    "@referredType": "Individual",
+    "id": "test-party-001"
+  }
+}

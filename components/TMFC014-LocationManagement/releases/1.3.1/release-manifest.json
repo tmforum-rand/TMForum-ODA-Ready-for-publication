@@ -1,0 +1,108 @@
+{
+  "contractVersion": 1,
+  "releaseId": "41b253aaffb74546",
+  "component": {
+    "id": "TMFC014",
+    "name": "LocationManagement",
+    "key": "TMFC014-LocationManagement",
+    "sourceDir": "TMFC014-LocationManagement"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC014-LocationManagement/v1.3.1-backlog",
+    "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6",
+    "version": "1.3.1",
+    "status": "backlog",
+    "statusRaw": "backlog",
+    "releaseNotes": {
+      "path": "specifications/TMFC014-LocationManagement/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "1.3.1 (backlog)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "56c9812499d90dde0440a6be8e931e7075cecb49cfa879089c92545649dc91a1"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.1.0",
+      "sha256": "3487d167d9fd0fee6275156a36aaa7f57efd19b4aa93d32c1a853626499fac4a"
+    },
+    "handler": "v1_1",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_1:release-status",
+    "eligible": false,
+    "detail": "TMFC014-LocationManagement status backlog is not listed in S3_STRAPI_RELEASE_STATUS (preview, production, roadmap) and not listed in CTK_RELEASE_STATUS (preview, production)"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "conformance-profile",
+      "path": "ComponentConformanceProfile/TMFC014-LocationManagement_Conformance.md",
+      "mediaType": "text/markdown",
+      "size": 6435,
+      "sha256": "5ee7ada03248540c2d93e07f4c53ca581f2d8d61af15d17151da45fe20dd6640",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 299,
+      "sha256": "56c9812499d90dde0440a6be8e931e7075cecb49cfa879089c92545649dc91a1",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC014-LocationManagement.yaml",
+      "mediaType": "text/yaml",
+      "size": 8199,
+      "sha256": "dde1417e5b13ecaf61b9b83631ca66f2f4db3997f552df9d2cee17e25d161b43",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC014_Location_Management.pdf",
+      "mediaType": "application/pdf",
+      "size": 451744,
+      "sha256": "a95de6f3fe4faf47ceeacad55bfc95269bad349c5fe194fbc5752b605ee4d320",
+      "targets": [
+        "rfp"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.1.0/TMFC014/",
+      "status": "skipped",
+      "at": "2026-11-05T15:49:41Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC014-LocationManagement/v1.3.1-backlog",
+      "at": "2026-11-05T15:52:22Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42058461492",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:49:20Z",
+    "requestId": "3db121d23ea6c3e4"
+  }
+}

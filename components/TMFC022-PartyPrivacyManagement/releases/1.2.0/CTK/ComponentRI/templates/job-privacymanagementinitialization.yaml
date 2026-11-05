@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{.Release.Name}}-privacymanagementinitialization
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{.Release.Name}}-{{.Values.component.name}}
+    spec:
+      restartPolicy: OnFailure
+      containers:
+      - name: {{.Release.Name}}-privacymanagementinitialization
+        image: "akumartmf/privacymanagementv5initialization:0.1"
+        env:
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: HUB_URL
+          value: "http://{{.Release.Name}}-privacymanagementapi:8080/{{.Release.Name}}-{{.Values.component.name}}/tmf-api/privacyManagement/v5/hub"
+        - name: LISTENER_URL
+          value: "http://{{.Release.Name}}-{{.Values.component.name}}-sm:4000/listener"
