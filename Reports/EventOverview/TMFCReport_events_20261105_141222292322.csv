@@ -1,0 +1,4 @@
+component,componentName,eventType,eventApiId,eventApiName,apiVersion,specVersion,eventName
+TMFC030,BillGenerationManagement,subscribedEvents,TMF669,partyRoleManagement,v4.0.0,4.0.0,partyRoleAttributeValueChangeEvent
+TMFC030,BillGenerationManagement,subscribedEvents,TMF669,partyRoleManagement,v4.0.0,4.0.0,partyRoleDeleteEvent
+TMFC030,BillGenerationManagement,subscribedEvents,TMF669,partyRoleManagement,v4.0.0,4.0.0,partyRoleStateChangeEvent

@@ -1,0 +1,53 @@
+component,name,function,apiType,api,version,specVersion,required,resource,method
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,individual,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF632,v4.0.0,4.0.0,true,organization,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF637,v4.0.0,4.0.0,false,product,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,true,billFormat,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,true,billFormat,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,true,billPresentationMedia,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,true,billPresentationMedia,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,true,billingAccount,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,true,billingAccount,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,true,billingCycleSpecification,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF666,v4.0.0,4.0.0,true,billingCycleSpecification,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF667,v4.0.0,4.0.0,false,document,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF667,v4.0.0,4.0.0,false,document,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF667,v4.0.0,4.0.0,false,document,POST
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,true,PartyRole,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF669,v4.0.0,4.0.0,true,PartyRole,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,payment,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,payment,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,payment,POST
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,refund,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,refund,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF676,v4.0.0,4.0.0,false,refund,POST
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,PATCH
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,POST
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET /id
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,PATCH
+TMFC030,BillGenerationManagement,coreFunction,dependentAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,POST
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,billCycle,GET
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,billCycle,GET /id
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,GET
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,GET / id
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,PATCH /id
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBill,POST
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBillOnDemand,GET
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBillOnDemand,GET /id
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF678,v4.0.0,4.0.0,true,customerBillOnDemand,POST
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,DELETE /id
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,GET /id
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,processFlow,POST
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,GET /id
+TMFC030,BillGenerationManagement,coreFunction,exposedAPIs,TMF701,v4.0.0,4.1.0,false,taskFlow,PATCH /id
+TMFC030,BillGenerationManagement,managementFunction,dependentAPIs,dependentAPI_id,dependentAPI_version,unknown,false,,
+TMFC030,BillGenerationManagement,managementFunction,exposedAPIs,exposedAPI_id,v4.0.0,unknown,false,,
+TMFC030,BillGenerationManagement,securityFunction,exposedAPIs,TMF669,v4.0.0,4.0.0,true,,

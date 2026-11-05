@@ -1,0 +1,2 @@
+component,name,componentVersion,description,publicationDate,status,functionalBlock
+TMFC030,BillGenerationManagement,2.0.0,"The Bill Generation component is responsible for Party invoice management. It addresses the invoice formatting, presentation and dispatching via the appropriate means of communication.",2024-12-03,specified,PartyManagement
