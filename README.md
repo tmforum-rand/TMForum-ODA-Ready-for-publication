@@ -207,6 +207,7 @@ Reports/                                         API, functional and metadata re
 | Component | Latest | Releases |
 |---|---|---|
 | [TMFC001-ProductCatalogManagement](components/TMFC001-ProductCatalogManagement/component-index.json) | [2.1.2](components/TMFC001-ProductCatalogManagement/releases/2.1.2/) | 2.1.2 |
+| [TMFC005-ProductInventory](components/TMFC005-ProductInventory/component-index.json) | [1.0.4](components/TMFC005-ProductInventory/releases/1.0.4/) | 1.0.4 |
 | [TMFC030-BillGenerationManagement](components/TMFC030-BillGenerationManagement/component-index.json) | [2.0.0](components/TMFC030-BillGenerationManagement/releases/2.0.0/) | 2.0.0 |
 
 ---

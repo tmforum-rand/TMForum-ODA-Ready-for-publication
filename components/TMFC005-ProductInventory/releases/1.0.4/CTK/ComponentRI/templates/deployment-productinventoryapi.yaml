@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Release.Name}}-productinventoryapi
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      impl: {{.Release.Name}}-productinventoryapi
+  template:
+    metadata:
+      labels:
+        impl: {{.Release.Name}}-productinventoryapi
+        app: {{.Release.Name}}-{{.Values.component.name}}
+        version:  productinventoryapi-0.2
+    spec:
+      containers:
+      - name: {{.Release.Name}}-productinventoryapi         
+        image: akumartmf/productinventoryapi:0.2
+        env:
+        - name: RELEASE_NAME
+          value: {{.Release.Name}}           
+        - name: COMPONENT_NAME
+          value: {{.Release.Name}}-{{.Values.component.name}}
+        - name: MONGODB_HOST
+          value: {{.Release.Name}}-mongodb
+        - name: MONGODB_PORT
+          value: "{{.Values.mongodb.port}}"
+        - name: MONGODB_DATABASE
+          value: {{.Values.mongodb.database}}
+        - name: NODE_ENV
+          value: production
+        imagePullPolicy: Always  
+        ports:
+        - name: {{.Release.Name}}-prodinvapi
+          containerPort: 8080

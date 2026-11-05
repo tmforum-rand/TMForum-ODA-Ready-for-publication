@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "generatedFrom": {
     "manifests": "components/*/releases/*/release-manifest.json",
-    "count": 2
+    "count": 3
   },
   "components": {
     "TMFC001-ProductCatalogManagement": {
@@ -35,6 +35,39 @@
             "status": "published"
           },
           "publishedAt": "2026-11-05T14:59:47Z"
+        }
+      ]
+    },
+    "TMFC005-ProductInventory": {
+      "id": "TMFC005",
+      "name": "ProductInventory",
+      "componentIndex": "components/TMFC005-ProductInventory/component-index.json",
+      "latest": "1.0.4",
+      "latestByStatus": {
+        "specified": "1.0.4"
+      },
+      "releases": [
+        {
+          "version": "1.0.4",
+          "status": "specified",
+          "tag": "TMFC005-ProductInventory/v1.0.4-specified",
+          "releaseId": "c0913f6f42c8745c",
+          "path": "components/TMFC005-ProductInventory/releases/1.0.4/",
+          "manifest": "components/TMFC005-ProductInventory/releases/1.0.4/release-manifest.json",
+          "manifestSha256": "6335d7e288cf4927f937f0d7538a01ea0e738f40c9bb9ef93c466208996f2512",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T15:05:16Z"
         }
       ]
     },
