@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Release.Name}}-productinvapi
+  labels:
+    app: {{.Release.Name}}-{{.Values.component.name}}
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  ports:
+  - name: productinvapi-http
+    port: 8637
+    targetPort: 8637
+    protocol: TCP
+  selector:
+    impl: {{.Release.Name}}-productinvapi
+  type: NodePort

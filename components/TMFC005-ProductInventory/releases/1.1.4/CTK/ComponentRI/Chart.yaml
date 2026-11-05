@@ -1,0 +1,6 @@
+apiVersion: v2
+name: productinventory-v5
+description: A reference example TMFC005-ProductInventory ODA Component
+type: application
+version: 1.0.0
+appVersion: "1.0.0"

@@ -1,0 +1,57 @@
+component:
+  id: TMFC005
+  name: productinventory
+  functionalBlock: CoreCommerce
+  publicationDate: 2026-05-21T00:00:00.000Z
+  version: "1.1.4"
+  storageClassName: default
+  apipolicy:
+    apiKeyVerification:
+      enabled: false
+      location: "header"
+    rateLimit:
+      enabled: false
+      identifier: "IP"
+      limit: "6"
+      interval: "pm"
+    quota:
+      identifier: ""
+      limit: ""
+    OASValidation:
+      requestEnabled: false
+      responseEnabled: false
+      allowUnspecifiedHeaders: false
+      allowUnspecifiedQueryParams: false
+      allowUnspecifiedCookies: false
+    CORS:
+      enabled: false
+      allowCredentials: false
+      allowOrigins: "https://allowed-origin.com"
+      handlePreflightRequests:
+        enabled: false
+        allowHeaders: "Accept, Content-Type"
+        allowMethods: "GET, POST"
+        maxAge: 36000
+    template: ""
+
+security:
+  canvasSystemRole: canvasRole
+
+mongodb:
+  port: 27017
+  database: tmf
+
+image:
+  pullPolicy: Always
+
+api:
+  image: "akumartmf/productinventoryapi:0.1"
+  versionLabel: productinventoryapi-0.1
+  port: 8637
+
+metrics:
+  image: "akumartmf/productinventorymetrics:0.1"
+
+canvasinfo:
+  host: ""
+  basepath: ""

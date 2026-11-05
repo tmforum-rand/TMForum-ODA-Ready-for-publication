@@ -1,0 +1,8 @@
+{
+    "status": "created",
+    "productSpecification": {
+        "id": "non-existent-id",  
+        "href": "http://example.com/non-existent",
+        "name": "Cisco Firepower NGFW"
+    }
+}
