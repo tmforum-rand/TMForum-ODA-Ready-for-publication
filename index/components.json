@@ -2,9 +2,42 @@
   "schemaVersion": 1,
   "generatedFrom": {
     "manifests": "components/*/releases/*/release-manifest.json",
-    "count": 1
+    "count": 2
   },
   "components": {
+    "TMFC001-ProductCatalogManagement": {
+      "id": "TMFC001",
+      "name": "ProductCatalogManagement",
+      "componentIndex": "components/TMFC001-ProductCatalogManagement/component-index.json",
+      "latest": "2.1.2",
+      "latestByStatus": {
+        "specified": "2.1.2"
+      },
+      "releases": [
+        {
+          "version": "2.1.2",
+          "status": "specified",
+          "tag": "TMFC001-ProductCatalogManagement/v2.1.2-specified",
+          "releaseId": "40538580ecac233f",
+          "path": "components/TMFC001-ProductCatalogManagement/releases/2.1.2/",
+          "manifest": "components/TMFC001-ProductCatalogManagement/releases/2.1.2/release-manifest.json",
+          "manifestSha256": "7958051104de1482fbbf7a48509bcac7965dcf3a994e1a37f456b5cd1283c2d4",
+          "source": {
+            "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+            "commit": "749b314549d0d8aac368dbb446cd95c20c15dda5"
+          },
+          "eligibility": {
+            "rule": "v1_0:GA_COMPONENTS",
+            "ctkEligible": true
+          },
+          "s3": {
+            "prefix": "s3://oda-production/v1.0.0/",
+            "status": "published"
+          },
+          "publishedAt": "2026-11-05T14:59:47Z"
+        }
+      ]
+    },
     "TMFC030-BillGenerationManagement": {
       "id": "TMFC030",
       "name": "BillGenerationManagement",

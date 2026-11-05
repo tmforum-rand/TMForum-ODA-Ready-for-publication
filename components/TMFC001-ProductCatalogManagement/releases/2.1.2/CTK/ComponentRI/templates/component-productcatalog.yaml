@@ -1,0 +1,84 @@
+apiVersion: oda.tmforum.org/v1
+kind: Component
+metadata:
+  name: {{.Release.Name}}-{{.Values.component.name}}
+  labels:
+    oda.tmforum.org/componentName: {{.Release.Name}}-{{.Values.component.name}}
+spec:
+  componentMetadata:
+    id: {{.Values.component.id}}
+    name: {{.Values.component.name}}
+    functionalBlock: {{.Values.component.functionalBlock}}
+    publicationDate: {{.Values.component.publicationDate}}
+    status: specified
+    version: {{.Values.component.version}}
+    description: "Simple Product Catalog ODA-Component from Open-API reference implementation."
+    maintainers:
+    - name: Lester Thomas
+      email: lester.thomas@vodafone.com
+    owners:
+      - name: Lester Thomas
+        email: lester.thomas@vodafone.com     
+  coreFunction:
+    exposedAPIs: 
+    - name: productcatalogmanagement
+      id: TMF620
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/OpenApiTable/TMF620_Product_Catalog/4.1.0/swagger/TMF620_Product_Catalog_Management_API_v4.1.0_swagger.json"
+      implementation: {{.Release.Name}}-prodcatapi
+      apiType: openapi
+      gatewayConfiguration:
+        apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 10}}
+        rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 10}}
+        quota: {{.Values.component.apipolicy.quota | toYaml | nindent 10}}
+        OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 10}}
+        CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 10}}
+        template: "{{.Values.component.apipolicy.template}}"
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/productCatalogManagement/v4/docs
+      port: 8080
+    - name: promotionmanagement
+      id: TMF671
+      specification:
+      - url: "https://tmf-open-api-table-documents.s3.eu-west-1.amazonaws.com/Beta/TMF671_Promotion/4.0.0/swagger/TMF671_Promotion_Management_API_v4.0.0_beta_swagger.json"
+      implementation: {{.Release.Name}}-promgmtapi
+      apiType: openapi
+      gatewayConfiguration:
+        apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 10}}
+        rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 10}}
+        quota: {{.Values.component.apipolicy.quota | toYaml | nindent 10}}
+        OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 10}}
+        CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 10}}
+        template: "{{.Values.component.apipolicy.template}}"
+      path: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/promotionManagement/v4
+      developerUI: /{{.Release.Name}}-{{.Values.component.name}}/tmf-api/promotionManagement/v4/docs
+      port: 8080      
+    dependentAPIs: 
+    {{- if .Values.component.dependentAPIs.enabled }}
+    - name: downstreamproductcatalog 
+      apiType: openapi     
+      specification: 
+      - url: https://raw.githubusercontent.com/tmforum-apis/TMF620_ProductCatalog/master/TMF620-ProductCatalog-v4.0.0.swagger.json
+    {{- else }}
+      []
+    {{- end }}
+  eventNotification:
+    publishedEvents: []
+    subscribedEvents: []
+  managementFunction: 
+    exposedAPIs: 
+    - name: metrics
+      apiType: prometheus
+      gatewayConfiguration:
+        apiKeyVerification: {{.Values.component.apipolicy.apiKeyVerification | toYaml | nindent 10}}
+        rateLimit: {{.Values.component.apipolicy.rateLimit | toYaml | nindent 10}}
+        quota: {{.Values.component.apipolicy.quota | toYaml | nindent 10}}
+        OASValidation: {{.Values.component.apipolicy.OASValidation | toYaml | nindent 10}}
+        CORS: {{.Values.component.apipolicy.CORS | toYaml | nindent 10}}
+        template: "{{.Values.component.apipolicy.template}}"
+      implementation: {{.Release.Name}}-{{.Values.component.name}}-sm
+      path: /{{.Release.Name}}-{{.Values.component.name}}/metrics
+      port: 4000    
+  securityFunction:
+    canvasSystemRole: {{ .Values.security.canvasSystemRole }}
+    exposedAPIs: []
