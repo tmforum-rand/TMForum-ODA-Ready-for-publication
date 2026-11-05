@@ -1,0 +1,72 @@
+component:
+  id: TMFC001
+  name: productcatalogmanagement
+  functionalBlock: CoreCommerce
+  publicationDate: 2026-05-11T00:00:00.000Z
+  version: "2.2.2"
+  storageClassName: default
+  apipolicy:
+    apiKeyVerification:
+      enabled: false
+      location: "header"
+    rateLimit:
+      enabled: false
+      identifier: "IP"
+      limit: "6"
+      interval: "pm"
+    quota:
+      identifier: ""
+      limit: ""
+    OASValidation:
+      requestEnabled: false
+      responseEnabled: false
+      allowUnspecifiedHeaders: false
+      allowUnspecifiedQueryParams: false
+      allowUnspecifiedCookies: false
+    CORS:
+      enabled: false
+      allowCredentials: false
+      allowOrigins: "https://allowed-origin.com"
+      handlePreflightRequests:
+        enabled: false
+        allowHeaders: "Accept, Content-Type"
+        allowMethods: "GET, POST"
+        maxAge: 36000
+    template: ""
+
+security:
+  canvasSystemRole: Admin
+
+mongodb:
+  port: 27017
+  database: tmf
+
+image:
+  pullPolicy: Always
+
+api:
+  image: "akumartmf/productcatalogv5api:0.5"
+  versionLabel: productcatalogv5api-0.5
+  port: 8620
+  otlp:
+    console:
+      enabled: false
+    protobuffCollector:
+      enabled: false
+      url: http://observability-opentelemetry-collector.monitoring.svc.cluster.local:4318/v1/traces
+
+metrics:
+  image: "akumartmf/productcatalogv5metrics:0.1"
+
+permissionspec:
+  image: lesterthomas/permissionspecapi:0.20
+  versionLabel: permissionspecapi-0.20
+  enabled: true
+
+partyrole:
+  image: lesterthomas/partyroleapi:1.1
+  versionLabel: partyroleapi-1.1
+
+canvasinfo:
+  host: ""
+  basepath: ""

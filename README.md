@@ -206,7 +206,7 @@ Reports/                                         API, functional and metadata re
 
 | Component | Latest | Releases |
 |---|---|---|
-| [TMFC001-ProductCatalogManagement](components/TMFC001-ProductCatalogManagement/component-index.json) | [2.1.2](components/TMFC001-ProductCatalogManagement/releases/2.1.2/) | 2.1.2 |
+| [TMFC001-ProductCatalogManagement](components/TMFC001-ProductCatalogManagement/component-index.json) | [2.2.2](components/TMFC001-ProductCatalogManagement/releases/2.2.2/) | 2.1.2, 2.2.2 |
 | [TMFC002-ProductOrderCaptureAndValidation](components/TMFC002-ProductOrderCaptureAndValidation/component-index.json) | [2.1.0](components/TMFC002-ProductOrderCaptureAndValidation/releases/2.1.0/) | 2.1.0 |
 | [TMFC003-ProductOrderDeliveryOrchestrationAndManagement](components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/component-index.json) | [1.1.1](components/TMFC003-ProductOrderDeliveryOrchestrationAndManagement/releases/1.1.1/) | 1.1.1 |
 | [TMFC005-ProductInventory](components/TMFC005-ProductInventory/component-index.json) | [1.0.4](components/TMFC005-ProductInventory/releases/1.0.4/) | 1.0.4 |
