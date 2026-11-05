@@ -225,7 +225,7 @@ Reports/                                         API, functional and metadata re
 | [TMFC027-ProductConfigurator](components/TMFC027-ProductConfigurator/component-index.json) | [2.1.1](components/TMFC027-ProductConfigurator/releases/2.1.1/) | 2.1.1 |
 | [TMFC028-PartyManagement](components/TMFC028-PartyManagement/component-index.json) | [2.1.0](components/TMFC028-PartyManagement/releases/2.1.0/) | 2.1.0 |
 | [TMFC029-PaymentManagement](components/TMFC029-PaymentManagement/component-index.json) | [1.2.2](components/TMFC029-PaymentManagement/releases/1.2.2/) | 1.2.2 |
-| [TMFC030-BillGenerationManagement](components/TMFC030-BillGenerationManagement/component-index.json) | [2.0.0](components/TMFC030-BillGenerationManagement/releases/2.0.0/) | 2.0.0 |
+| [TMFC030-BillGenerationManagement](components/TMFC030-BillGenerationManagement/component-index.json) | [2.1.0](components/TMFC030-BillGenerationManagement/releases/2.1.0/) | 2.0.0, 2.1.0 |
 | [TMFC031-BillCalculation](components/TMFC031-BillCalculation/component-index.json) | [3.0.0](components/TMFC031-BillCalculation/releases/3.0.0/) | 3.0.0 |
 | [TMFC035-PermissionsManagement](components/TMFC035-PermissionsManagement/component-index.json) | [1.1.1](components/TMFC035-PermissionsManagement/releases/1.1.1/) | 1.1.1 |
 | [TMFC036-LeadAndOpportunityManagement](components/TMFC036-LeadAndOpportunityManagement/component-index.json) | [1.2.0](components/TMFC036-LeadAndOpportunityManagement/releases/1.2.0/) | 1.2.0 |

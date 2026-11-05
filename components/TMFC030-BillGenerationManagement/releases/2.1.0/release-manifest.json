@@ -1,0 +1,111 @@
+{
+  "contractVersion": 1,
+  "releaseId": "b2767355f0f855c7",
+  "component": {
+    "id": "TMFC030",
+    "name": "BillGenerationManagement",
+    "key": "TMFC030-BillGenerationManagement",
+    "sourceDir": "TMFC030-BillGeneration"
+  },
+  "source": {
+    "repository": "tmforum-rand/TMForum-ODA-Component-Specification",
+    "tag": "TMFC030-BillGenerationManagement/v2.1.0-roadmap",
+    "commit": "e297a92340b32bf88a3d0434dfbdac0fe92b91f6",
+    "version": "2.1.0",
+    "status": "roadmap",
+    "statusRaw": "roadmap",
+    "releaseNotes": {
+      "path": "specifications/TMFC030-BillGeneration/ReleaseNotes/RELEASE_NOTES.md",
+      "section": "2.1.0 (roadmap)",
+      "files": [
+        {
+          "path": "ReleaseNotes/RELEASE_NOTES.md",
+          "sha256": "0c3b7b592c17e0c36d4c693baa67b58a6d70808dc807368a19d43a2d4c8e35d4"
+        }
+      ]
+    }
+  },
+  "processing": {
+    "apiVersion": "oda.tmforum.org/v1",
+    "schema": {
+      "version": "1.1.0",
+      "sha256": "3487d167d9fd0fee6275156a36aaa7f57efd19b4aa93d32c1a853626499fac4a"
+    },
+    "handler": "v1_1",
+    "odaCiCommit": "3b4a31deee758fbb935772f1166bfd4fca00d2e0",
+    "apiIndex": {
+      "sha256": "c0f166becff1300e68bf273927f8594bd093a0ea84d80edeba3fe9deb80f0106"
+    }
+  },
+  "eligibility": {
+    "rule": "v1_1:release-status",
+    "eligible": false,
+    "detail": "TMFC030-BillGeneration status roadmap is listed in S3_STRAPI_RELEASE_STATUS (preview, production, roadmap) and not listed in CTK_RELEASE_STATUS (preview, production)"
+  },
+  "ctk": {
+    "packaging": "none"
+  },
+  "artifacts": [
+    {
+      "role": "conformance-profile",
+      "path": "ComponentConformanceProfile/TMFC030-BillGeneration_Conformance.md",
+      "mediaType": "text/markdown",
+      "size": 7269,
+      "sha256": "3a19264cc36a2c8e83c628c77aa174a09fec8d98eacf9cf11cb0556aa7e36499",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "release-notes",
+      "path": "ReleaseNotes/RELEASE_NOTES.md",
+      "mediaType": "text/markdown",
+      "size": 470,
+      "sha256": "0c3b7b592c17e0c36d4c693baa67b58a6d70808dc807368a19d43a2d4c8e35d4",
+      "targets": [
+        "rfp"
+      ]
+    },
+    {
+      "role": "specification-generated",
+      "path": "Specification/TMFC030-BillGeneration.yaml",
+      "mediaType": "text/yaml",
+      "size": 12458,
+      "sha256": "b7b8df8ab0d96f7b0a8c6c6ac14e2e47c16f7b1230affc75a4784c0c7267adca",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    },
+    {
+      "role": "specification-document",
+      "path": "TMFC030_Bill_Generation_Management.pdf",
+      "mediaType": "application/pdf",
+      "size": 652326,
+      "sha256": "682097eb7004e522f315f9d6af9c93a7e7ddb62ccf8d189ffd2fe798215568e5",
+      "targets": [
+        "rfp",
+        "s3"
+      ]
+    }
+  ],
+  "publication": {
+    "s3": {
+      "prefix": "s3://oda-production/v1.1.0/TMFC030/",
+      "status": "published",
+      "at": "2026-11-05T15:35:09Z"
+    },
+    "rfp": {
+      "status": "published",
+      "tag": "TMFC030-BillGenerationManagement/v2.1.0-roadmap",
+      "at": "2026-11-05T15:35:27Z"
+    }
+  },
+  "provenance": {
+    "workflowRun": "https://github.com/tmforum-rand/TMForum-ODA-CI/actions/runs/42056028822",
+    "runAttempt": 1,
+    "builtAt": "2026-11-05T15:34:33Z",
+    "requestId": "5a20a835ce9cc9df"
+  }
+}
